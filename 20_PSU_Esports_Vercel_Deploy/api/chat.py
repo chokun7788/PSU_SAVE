@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import sys
 import time
+import os
 from dataclasses import asdict, is_dataclass
 from datetime import UTC, datetime
 from pathlib import Path
@@ -21,6 +22,10 @@ from app.session.chat_logger import write_chat_log  # noqa: E402
 
 app = Flask(__name__)
 MAX_BODY_BYTES = 128 * 1024
+
+
+def _truthy(value: str | None) -> bool:
+    return (value or "").strip().lower() in {"1", "true", "yes", "y", "on"}
 
 
 def _plain(value: Any) -> Any:
@@ -105,7 +110,8 @@ def chat():
     recent_history = payload.get("recent_history") or []
     debug = bool(payload.get("debug", False))
     experimental_rag_fallback = bool(payload.get("experimental_rag_fallback", False))
-    experimental_allow_llm = bool(payload.get("experimental_allow_llm", False))
+    requested_allow_llm = bool(payload.get("experimental_allow_llm", False))
+    experimental_allow_llm = requested_allow_llm and _truthy(os.getenv("PSU_VERCEL_ALLOW_LLM"))
 
     if not question:
         return jsonify({"ok": False, "error": "question_required"}), 400

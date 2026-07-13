@@ -74,6 +74,18 @@ def main() -> int:
     assert_not_contains(result.answer, ["PSU Phuket CS2 2026 Tournament"], "racing should not route to tournament")
     print("OK game catalog: racing genre")
 
+    result = answer_question_pipeline_debug("เกม Minecraft มีข้อมูลไหม", experimental_rag_fallback=True, experimental_allow_llm=True)
+    assert_contains(result.answer, ["ยังไม่พบ Minecraft", "รายการเกมที่ยืนยันได้"], "minecraft data availability")
+    if result.mode != "pipeline:games_known_unsupported_fast_path":
+        raise AssertionError(f"minecraft data availability: expected fast path, got {result.mode}")
+    print("OK game catalog: Minecraft unsupported fast path")
+
+    result = answer_question_pipeline_debug("เกม TEKKEN 8 มีข้อมูลไหม", experimental_rag_fallback=True, experimental_allow_llm=True)
+    assert_contains(result.answer, ["TEKKEN 8", "ได้ครับ"], "tekken data availability")
+    if result.mode != "pipeline:games_availability_fast_path":
+        raise AssertionError(f"tekken data availability: expected availability fast path, got {result.mode}")
+    print("OK game catalog: TEKKEN availability fast path")
+
     result = answer_question_pipeline_debug("TEKKEN 8 มีปุ่มอะไรบ้าง")
     assert_contains(
         result.answer,

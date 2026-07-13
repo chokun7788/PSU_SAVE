@@ -25,7 +25,7 @@ function saveMessages() {
 let clientSessionId = makeSessionId();
 const messages = [];
 const experimentalRagFallback = true;
-const experimentalAllowLlm = true;
+const experimentalAllowLlm = false;
 
 function formatSeconds(value) {
   const number = Number(value);
