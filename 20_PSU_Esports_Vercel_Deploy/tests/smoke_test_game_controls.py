@@ -1,0 +1,108 @@
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from app.pipeline.engine import answer_question_pipeline_debug  # noqa: E402
+
+
+def check(
+    question: str,
+    must_contain: list[str],
+    *,
+    must_not_contain: list[str] | None = None,
+    mode: str = "pipeline:game_control_vector_first",
+    route_category: str = "games",
+) -> None:
+    result = answer_question_pipeline_debug(question)
+    answer_lower = result.answer.lower()
+
+    missing = [item for item in must_contain if item.lower() not in answer_lower]
+    if missing:
+        raise AssertionError(f"{question}: missing {missing}\n{result.answer}")
+
+    forbidden = [item for item in (must_not_contain or []) if item.lower() in answer_lower]
+    if forbidden:
+        raise AssertionError(f"{question}: forbidden {forbidden}\n{result.answer}")
+
+    if result.mode != mode:
+        raise AssertionError(f"{question}: expected mode {mode}, got {result.mode}")
+
+    if result.route.category != route_category:
+        raise AssertionError(f"{question}: expected route {route_category}, got {result.route.category}")
+
+    if not result.validation.ok:
+        raise AssertionError(f"{question}: validation errors {result.validation.errors}\n{result.answer}")
+
+    print(f"OK {result.mode} {result.route.category} {result.elapsed:.4f}s | {question}")
+
+
+def main() -> int:
+    check(
+        "มาริโอคาร์ทไลฟ์ปุ่มเร่งเครื่องกดอะไร",
+        ["Mario Kart Live: Home Circuit", "A", "เร่งเครื่อง"],
+        must_not_contain=["Mario Kart 8 Deluxe", "ZR"],
+    )
+    check(
+        "มาริโอคาร์ทไลฟ์ปุ่มทั้งหมดมีอะไรบ้าง",
+        [
+            "Mario Kart Live: Home Circuit",
+            "Left Stick",
+            "A",
+            "B",
+            "L",
+            "R",
+            "X",
+            "Y",
+            "D-Pad",
+            "ปรับความเร็ว",
+            "จัดการแผนที่",
+        ],
+        must_not_contain=["Mario Kart 8 Deluxe", "ZR"],
+    )
+    check(
+        "Mario Kart 8 Deluxe ปุ่มทั้งหมดมีอะไรบ้าง",
+        ["Mario Kart 8 Deluxe", "L (Left Stick)", "A", "B", "ZL", "ZR", "+ (Plus)"],
+        must_not_contain=["Mario Kart Live: Home Circuit"],
+    )
+    check(
+        "ปุ่มกระโดดใน Call of Duty กดอะไร",
+        ["Call of Duty: Modern Warfare III", "L1", "กระโดด"],
+        must_not_contain=["The Last of Us"],
+    )
+    check(
+        "Call of Duty ปุ่มทั้งหมดมีอะไรบ้าง",
+        ["Call of Duty: Modern Warfare III", "L1", "R3", "Cross", "Circle", "L2", "R2", "R1", "Square", "Triangle", "L3"],
+        must_not_contain=["The Last of Us"],
+    )
+    check(
+        "เทคเคน 8 ปุ่มเตะขวากดอะไร",
+        ["TEKKEN 8", "Circle", "ลูกเตะขวา"],
+        must_not_contain=["D-Pad Up", "Triangle", "Cross"],
+    )
+    check(
+        "ปุ่มทั้งหมดของเทคเคน 8 มีอะไรบ้าง",
+        ["TEKKEN 8", "Square", "Triangle", "Cross", "Circle", "D-Pad Up", "D-Pad Left", "D-Pad Down", "L1", "R1", "Options"],
+    )
+    check(
+        "ลิตเติลไนท์แม ปุ่มวิ่งกดอะไร",
+        ["Little Nightmares", "Square", "วิ่ง"],
+    )
+    check(
+        "เกมเทคอิดเอ้าปุ่มกระโดดกดอะไร",
+        ["It Takes Two", "Cross", "กระโดด"],
+    )
+
+    print("GAME CONTROL SMOKE TEST OK")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

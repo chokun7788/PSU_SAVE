@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PSU Esports Chatbot Demo</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="chat-panel" aria-label="PSU Esports chatbot demo">
+        <header class="chat-header">
+          <div class="brand-block">
+            <p class="eyebrow">PSU Esports Studio - Phuket</p>
+            <h1>Chatbot Demo</h1>
+          </div>
+          <div class="header-meta">
+            <div class="date-chip" id="date-chip">กำลังโหลดวันที่</div>
+            <div class="status" id="status">
+              <span class="status-dot"></span>
+              <span>Local API</span>
+            </div>
+          </div>
+        </header>
+
+        <div class="demo-layout">
+          <aside class="side-panel" aria-label="ตัวอย่างคำถามและข้อมูลระบบ">
+            <section class="side-section">
+              <h2>ตัวอย่างคำถาม</h2>
+              <div class="sample-grid">
+                <button class="sample-button" type="button" data-question="เล่น VR มีค่าบริการเท่าไหร่">ราคา VR</button>
+                <button class="sample-button" type="button" data-question="วันนี้เปิดไหม">วันนี้เปิดไหม</button>
+                <button class="sample-button" type="button" data-question="วันจันทร์เปิดให้เล่นได้กี่โมง">เวลาเปิดวันจัทนร์</button>
+                <button class="sample-button" type="button" data-question="มีอุปกรณ์อะไรให้เล่นบ้าง">มีอุปกรณ์อะไรบ้าง</button>
+                <button class="sample-button" type="button" data-question="VR มีเกมอะไรบ้าง">เกมใน VR</button>
+                <button class="sample-button" type="button" data-question="ตอนนี้รายการแข่งมีเกมอะไรบ้าง">รายการเกมแข่ง</button>
+                <button class="sample-button" type="button" data-question="Beat Saber คือเกมอะไรแล้วเล่นยังไง">Beat Saber คือ</button>
+                <button class="sample-button" type="button" data-question="สอนจองได้รึเปล่า">วิธีจอง</button>
+              </div>
+            </section>
+
+            <section class="side-section">
+              <h2>ข้อมูลคำตอบล่าสุด</h2>
+              <dl class="metrics">
+                <div>
+                  <dt>Mode</dt>
+                  <dd id="metric-mode">-</dd>
+                </div>
+                <div>
+                  <dt>Route</dt>
+                  <dd id="metric-route">-</dd>
+                </div>
+                <div>
+                  <dt>Latency</dt>
+                  <dd id="metric-latency">-</dd>
+                </div>
+                <div>
+                  <dt>Confidence</dt>
+                  <dd id="metric-confidence">-</dd>
+                </div>
+              </dl>
+            </section>
+
+            <section class="side-section">
+              <h2>Sources</h2>
+              <div class="source-list" id="source-list">ยังไม่มีแหล่งข้อมูล</div>
+            </section>
+          </aside>
+
+          <section class="conversation" aria-label="บทสนทนา">
+            <div class="messages" id="messages" aria-live="polite"></div>
+
+            <form class="composer" id="chat-form">
+              <label class="sr-only" for="question">พิมพ์คำถาม</label>
+              <textarea id="question" name="question" rows="2" placeholder="พิมพ์คำถามเกี่ยวกับราคา เวลาเปิด-ปิด การจอง กฎศูนย์ หรือกติกาการแข่งขัน"></textarea>
+              <div class="composer-actions">
+                <button id="clear-chat" class="secondary-button" type="button">ล้าง</button>
+                <button id="send-button" class="primary-button" type="submit">ส่ง</button>
+              </div>
+            </form>
+          </section>
+        </div>
+
+        <details class="debug-panel">
+          <summary>ดู JSON debug ล่าสุด</summary>
+          <pre id="debug-output">ยังไม่มีข้อมูล</pre>
+        </details>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>

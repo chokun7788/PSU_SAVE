@@ -1,0 +1,355 @@
+# Extracted Text - ระบบจองและกฎการจอง
+
+- Category key: `reservation`
+- Pages: 1
+
+---
+
+## 1. PSU Esports Studio Phuket Reservation System – An online booking system for reserving esports facilities at PSU Esports Studio – Phuket. Users can easily check availability, schedule gaming sessions, and manage reservations in a convenient and efficient way.
+
+- URL: https://esports.computing.psu.ac.th/
+- Subcategory: `reservation_system`
+
+PSU Esports Studio Phuket Reservation System – An online booking system for reserving esports facilities at PSU Esports Studio – Phuket. Users can easily check availability, schedule gaming sessions, and manage reservations in a convenient and efficient way.
+PSU Esports Studio - Phuket Reservation System
+Select your equipment, pick your time and get gaming!
+Reserve Now
+Learn More
+Gaming Equipment Schedule at PSU Esports Studio - Phuket
+Day
+Morning
+09:00 – 12:00
+Afternoon
+13:00 – 16:00
+Monday
+Maintenance*
+Open for Service
+Tuesday – Thursday
+Open for Service
+Friday
+Maintenance**
+* Maintenance: Regular system check and software updates.
+** Maintenance: Weekly hardware inspection and cleaning.
+Rules and Regulations for Using Gaming Equipment at PSU Esports Studio - Phuket
+1. การจองการใช้บริการ
+1.1 ผู้ใช้งานต้องจองล่วงหน้าผ่านระบบออนไลน์ก่อนเวลาใช้งานอย่างน้อย 1 ชั่วโมง
+1.2 การจอง 1 ครั้งสามารถจองได้
+สูงสุด 3 Sessions
+1.3 ผู้ใช้งานจะต้องชำระค่าบริการหลังจากจองเสร็จเรียบร้อยในทันที หากไม่ชำระภายใน 10 นาที การจองจะถูกยกเลิก
+1.4 เมื่อกดจองแล้วจะไม่สามารถแก้ไขข้อมูลได้ หากต้องการแก้ไขข้อมูลให้ยกเลิกการจองผ่านทางอีเมลก่อนเวลาใช้งานอย่างน้อย 1 ชั่วโมง แล้วจองใหม่อีกครั้ง พร้อมแนบสลิปการโอนเงินที่ชำระมาก่อนหน้านี้
+1.6 การจองอาจถูกยกเลิกโดยไม่ต้องแจ้งให้ทราบล่วงหน้า หากข้อมูลไม่ถูกต้องหรือไม่ปฏิบัติตามกฎ
+1.7 ไม่สามารถโอนสิทธิ์การจองให้กับผู้อื่นได้
+1. Booking of Services
+1.1 Users must make a reservation through the online system at least 1 hour before the intended use time.
+1.2 One booking can include a
+maximum of 3 sessions
+.
+1.3 Users must pay the service fee immediately after completing the booking. If payment is not made within 10 minutes, the booking will be automatically cancelled.
+1.4 Once a booking is confirmed, no edits can be made. To make changes, users must cancel the booking via email at least 1 hour prior to the reserved time and make a new reservation along with attaching the payment transfer slip that was made previously.
+1.5 Bookings may be cancelled without prior notice if the information provided is incorrect or if the rules are violated.
+1.6 Reservations are non-transferable to other individuals.
+2. การเช็คอินและใช้บริการ
+2.1 ผู้ใช้งานต้องเช็คอินก่อนเวลาเริ่มต้นของรอบที่จอง โดยสามารถเช็คอินได้ล่วงหน้าสูงสุด 30 นาที และต้องเช็คอินก่อนถึงเวลาเริ่มต้นของรอบ มิฉะนั้นระบบจะยกเลิกการจองทันที และไม่มีการคืนเงินใด ๆ ทั้งสิ้น
+2.2 นำบัตรประจำตัวนักศึกษา, บัตรประจำตัวบุคลากร หรือบัตรประชาชนมาแสดงเมื่อเช็คอินเข้าใช้บริการ
+2. Check-in and Use of Services
+2.1 Users must check in before the reserved time slot begins. Check-in is available up to 30 minutes in advance. Failure to check in before the scheduled time will result in automatic cancellation with no refund.
+2.2 Users must present a student ID, staff ID, or national ID card upon check-in.
+3. การยกเลิกและการเปลี่ยนแปลงเวลา
+3.1 การยกเลิกการจองต้องทำล่วงหน้าอย่างน้อย 1 ชั่วโมง
+3.2 ไม่มีการคืนเงินในทุกกรณียกเว้นในกรณีที่ศูนย์เป็นฝ่ายผิดพลาด เช่น อุปกรณ์ขัดข้องหรือมีเหตุสุดวิสัยที่ทำให้ศูนย์ต้องปิดให้บริการ อย่างไรก็ตามสามารถเปลี่ยนแปลงเวลาใช้งานได้ โดยต้องแจ้งล่วงหน้าก่อนเวลาที่จองไว้อย่างน้อย 1 ชั่วโมง หากแจ้งล่าช้ากว่าเวลาที่กำหนดหรือไม่แจ้ง ทางศูนย์ขอสงวนสิทธิ์ในการไม่คืนเงินและไม่ชดเชยเวลาใด ๆ ทั้งสิ้น
+3. Cancellations and Time Changes
+3.1 Cancellations must be made at least 1 hour in advance.
+3.2 No refunds will be issued under any circumstances except when the studio is at fault, such as equipment malfunction or force majeure causing the center to close. However, time changes are allowed if requested at least 1 hour in advance. If the request is made late or not at all, no refund or compensation will be provided.
+4. ระเบียบข้อบังคับในการใช้บริการ
+4.1 กรุณาฝากสัมภาระก่อนเข้าใช้บริการ
+4.2 อนุญาตให้รับประทานอาหารและเครื่องดื่มเฉพาะในพื้นที่ที่กำหนดเท่านั้น
+4.3 กรุณานำอุปกรณ์และแผ่นเกมที่เบิกไปใช้งานมาคืนหลังจากใช้งานเสร็จ
+4.4 ห้ามทิ้งขยะหรือสิ่งของใด ๆ ในบริเวณที่ไม่ได้กำหนด
+4.5 กรุณางดส่งเสียงดังเกินควร ห้ามพูดจาดูหมิ่นหรือเสียดสีผู้อื่น
+4.6 ผู้ใช้งานต้องใช้อุปกรณ์ภายในศูนย์ฯ ด้วยความระมัดระวัง ห้ามทำให้เปียก ชำรุด หรือเสียหาย หากเกิดความเสียหายจากการใช้งานที่ไม่เหมาะสมหรือประมาท ผู้ใช้งานต้องรับผิดชอบค่าปรับหรือค่าชดเชย ดังนี้:
+ความเสียหายเล็กน้อย (รอยเปื้อน, คราบน้ำ, รอยขีดข่วน, ฝาปิดหลุด, ปุ่มหลวม) → ค่าปรับ 100 – 500 บาท
+ความเสียหายปานกลาง (เบาะขาด, รอยขีดข่วนลึก, โครงเฟอร์นิเจอร์เสียหาย, คอนโทรลเลอร์ปุ่มค้าง, หูฟังสายขาด) → ค่าซ่อมแซมตามราคาจริง หรือ 500 – 2,000 บาท
+ความเสียหายร้ายแรง (เฟอร์นิเจอร์เสียหายจนใช้ไม่ได้, จอแตก, คอมพิวเตอร์พัง, อุปกรณ์ใช้งานไม่ได้) → ชดเชยราคาทรัพย์สินเต็มจำนวนตามราคากลาง
+4.7 ห้ามเคลื่อนย้ายอุปกรณ์หรือสิ่งของใด ๆ โดยไม่ได้รับอนุญาต
+4.8 ห้ามนำอุปกรณ์อิเล็กทรอนิกส์ส่วนตัวมาใช้ปลั๊กไฟโดยไม่ได้รับอนุญาต
+4.9 ห้ามสูบบุหรี่ เสพสารเสพติด หรือดื่มเครื่องดื่มแอลกอฮอล์ภายในศูนย์
+4.10 ห้ามพกอาวุธ ของมีคม ห้ามทะเลาะวิวาท และห้ามเล่นการพนัน
+4.11 กรุณาตรวจสอบทรัพย์สินของท่านทุกครั้งระหว่างการใช้บริการ หากมีการสูญหาย ทางศูนย์ขอสงวนสิทธิ์ไม่รับผิดชอบในทุกกรณี
+4.12 หากพบปัญหาการใช้งาน พฤติกรรมที่ไม่เหมาะสม หรือข้อกังวลใด ๆ โปรดแจ้งเจ้าหน้าที่ทันที
+4.13 กรุณาช่วยกันรักษาความสะอาดและความเป็นระเบียบเรียบร้อยของพื้นที่
+4. Rules and Regulations for Service Use
+4.1 Please store personal belongings before using the service.
+4.2 Food and drinks are only allowed in designated areas.
+4.3 Please return borrowed equipment and game discs after use.
+4.4 Do not leave trash or personal items outside of designated areas.
+4.5 Please refrain from excessive noise and avoid using offensive or sarcastic language.
+4.6 Users must handle the studio’s equipment with care. Do not allow it to get wet, damaged, or broken. If damage occurs due to improper or negligent use, users will be responsible for the following fines or compensations:
+Minor damage (stains, watermarks, scratches, loose lids, loose buttons): 100–500 THB fine
+Moderate damage (torn seat, deep scratches, damaged furniture structure, stuck controller buttons, broken headphone cables): Actual repair cost or 500-2,000 THB
+Severe damage (unusable furniture, broken screens, computer failure, unusable equipment): Full compensation based on the market price
+4.7 Do not move any equipment or items without permission.
+4.8 Do not plug in personal electronic devices without authorization.
+4.9 Smoking, drug use, and alcohol consumption are strictly prohibited inside the studio.
+4.10 Do not bring weapons or sharp objects, engage in fights, or gamble.
+4.11 Always check your belongings during service use. The center is not responsible for any loss.
+4.12 If you encounter issues, inappropriate behavior, or have concerns, please notify staff immediately.
+4.13 Please help maintain the cleanliness and orderliness of the space.
+5. การลงโทษสำหรับการละเมิดกฎ
+5.1 หากพบว่ามีการละเมิดกฎ ผู้ใช้งานจะได้รับคำเตือนและอาจถูกระงับสิทธิ์การใช้งานชั่วคราวหรือถาวร ตามรายละเอียดดังต่อไปนี้
+คำเตือน
+ผู้ใช้งานที่ทำการละเมิดกฎจะได้รับคำเตือนจากเจ้าหน้าที่ โดยเจ้าหน้าที่จะแจ้งให้ทราบถึงการกระทำที่ไม่เหมาะสมและขอให้ปรับปรุงพฤติกรรมภายในกรอบเวลาที่กำหนด
+การระงับสิทธิ์การใช้งานชั่วคราว
+หากผู้ใช้งานละเมิดกฎซ้ำ หรือกระทำการที่ถือว่ามีความรุนแรง เช่น การกระทำที่ทำให้ผู้อื่นหรือทรัพย์สินเสียหาย อาจถูกระงับสิทธิ์การใช้งานเป็นระยะเวลา 1-7 วัน ขึ้นอยู่กับลักษณะของการละเมิด โดยเจ้าหน้าที่จะทำการแจ้งล่วงหน้าก่อนการระงับสิทธิ์
+การระงับสิทธิ์การใช้งานถาวร
+ในกรณีที่ผู้ใช้งานกระทำการละเมิดกฎอย่างร้ายแรง หรือมีการละเมิดซ้ำหลายครั้ง เช่น การทำลายทรัพย์สินหรือพฤติกรรมที่เป็นภัยต่อความปลอดภัยของผู้อื่น ผู้ใช้งานอาจถูกระงับสิทธิ์การใช้งานถาวร โดยจะไม่สามารถใช้บริการในอนาคต
+การชดเชยค่าเสียหาย
+หากการละเมิดกฎส่งผลให้เกิดความเสียหายต่อทรัพย์สินของศูนย์ฯ ผู้ใช้งานจะต้องรับผิดชอบค่าปรับหรือค่าซ่อมแซมตามที่ศูนย์กำหนด หากไม่ชำระค่าเสียหาย อาจมีผลกระทบต่อการใช้บริการในอนาคต
+การระงับการจอง
+หากพบการละเมิดกฎในระหว่างการจอง เช่น การจองซ้ำหรือการทุจริตโดยเจตนา ศูนย์ขอสงวนสิทธิ์ในการระงับการจองในอนาคตของผู้ใช้งานโดยไม่แจ้งล่วงหน้า
+บันทึกประวัติการละเมิด
+การละเมิดกฎจะถูกบันทึกในประวัติการใช้บริการของผู้ใช้งาน และอาจส่งผลต่อสิทธิ์ในการใช้บริการในอนาคต หากการละเมิดเป็นกรณีร้ายแรง ศูนย์อาจไม่ให้สิทธิ์ในการใช้บริการอีกต่อไป
+*หากผู้ใช้งานไม่พอใจการตัดสินใจของเจ้าหน้าที่เกี่ยวกับการลงโทษ สามารถยื่นคำร้องขอการพิจารณาใหม่ได้ภายใน 7 วันหลังจากการถูกลงโทษ
+5. Penalties for Rule Violations
+5.1 If a rule violation is detected, users will receive a warning and may be suspended temporarily or permanently depending on the severity.
+Warning: Users will be notified of the inappropriate behavior and asked to correct it within a specified time.
+Temporary Suspension: For repeat violations or serious actions (e.g., damage to others or property), users may be suspended for 1–7 days, depending on the case. Staff will notify users prior to suspension.
+Permanent Suspension: For severe or repeated violations (e.g., deliberate damage to property or behavior threatening others’ safety), users may be permanently banned from using the service.
+Damage Compensation: Users must pay fines or repair costs for damages caused. Failure to do so may impact future service eligibility.
+Booking Suspension: If misconduct occurs during the booking process (e.g., duplicate or fraudulent bookings), future bookings may be suspended without prior notice.
+Violation Record: All violations will be recorded in the user’s service history and may affect future usage rights. Severe violations may lead to a permanent ban.
+If a user disagrees with the disciplinary decision, they may submit an appeal within 7 days of the penalty issuance.
+6. ข้อกำหนดเพิ่มเติม
+6.1 PSU Esports Studio – Phuket ขอสงวนสิทธิ์ในการเปลี่ยนแปลงกฎระเบียบโดยไม่ต้องแจ้งให้ทราบล่วงหน้า
+6. Additional Terms
+6.1 PSU Esports Studio – Phuket reserves the right to change rules and regulations without prior notice.
+How to Use the Esports Studio Reservation System
+1. เลือกบริการ (Service) ที่ต้องการใช้บริการ จากนั้นกดปุ่ม Next มุมขวาล่าง
+2. เลือกวันและเวลาที่ต้องการใช้บริการ จากนั้นกดปุ่ม Next มุมขวาล่าง
+3. กรอกข้อมูลของผู้ใช้บริการ โดยจะมีข้อมูล Student ID/Staff ID/National ID ชื่อ นามสกุล, อีเมล, เบอร์โทรศัพท์ และคอมเมนต์ (ถ้ามี)
+ตรวจสอบความถูกต้องของข้อมูลให้เรียบร้อย
+4. ชำระเงินโดยการโอนเข้าบัญชีธนาคาร PSU Esports Studio – Phuket ตามจำนวนที่แสดงผล และแนบสลิปการโอนเงิน จากนั้นคลิกปุ่ม Next ที่มุมขวาล่างของหน้าจอ
+1. Select the service you wish to use, then click the Next button on the right-bottom side.
+2. Choose the date and time you want to use the service, then click the Next button on the right-bottom side.
+3. Fill in the user information, including Student ID/Staff ID/National ID, full name, email, phone number, and comments (if any).
+Please review the information carefully.
+4. Make the payment by transferring the displayed amount to the PSU Esports Studio – Phuket bank account, upload the payment slip, and then click the Next button at the bottom-right corner of the screen.
+Bank Account
+Siam Commercial Bank (ธนาคารไทยพาณิชย์) Account Name: PSU Esports Studio - Phuket Bank Account Number: 795-276244-1 Click to copy
+Make a Reservation
+Select a service
+Cockpit #1 (1 Person)
+60 min
+Read more
+List of games available
+– Gran Turismo 7 (Single Player)
+Cockpit #2 (1 Person)
+60 min
+Read more
+List of games available
+– Gran Turismo 7 (Single Player)
+Nintendo Swich (1-2 Persons)
+– (new) Pokémon Champions
+– Animal Crossing: New Horizon
+– It Takes Two
+– Little Nightmares II
+– Luigi’s Mansion™ 3
+– Mario Kart 8 Deluxe
+– Mario Party™ Superstars
+– Monster Hunter Rise
+– Moving Out 2
+– New Super Mario Bros. U Deluxe
+– Nintendo Switch Sports
+– Overcooked!
+– Overcooked! 2
+– Ring Fit Adventure
+– Super Mario Odyssey
+– Super Smash Bros Ultimate
+– The Legend of Zelda: Breath of The Wild
+Nintendo Swich (1-4 Persons)
+– (new) Pokémon Champions
+– Animal Crossing: New Horizon
+– It Takes Two
+– Little Nightmares II
+– Luigi’s Mansion™ 3
+– Mario Kart 8 Deluxe
+– Mario Party™ Superstars
+– Monster Hunter Rise
+– Moving Out 2
+– New Super Mario Bros. U Deluxe
+– Nintendo Switch Sports
+– Overcooked!
+– Overcooked! 2
+– Ring Fit Adventure
+– Super Mario Odyssey
+– Super Smash Bros Ultimate
+– The Legend of Zelda: Breath of The Wild
+PC #01 (1 Person)
+– (new) Tekken 8
+– Counter-Strike 2
+– League of Legends
+– PUBG: BATTLEGROUNDS
+– VALORANT
+PC #02 (1 Person)
+– (new) Tekken 8
+– Counter-Strike 2
+– League of Legends
+– PUBG: BATTLEGROUNDS
+– VALORANT
+PC #03 (1 Person)
+– (new) Call of Duty®: Warzone™
+PC #04 (1 Person)
+– (new) Call of Duty®: Warzone™
+PC #05 (1 Person)
+PC #06 (1 Person)
+PC #07 (1 Person)
+PC #08 (1 Person)
+PC #09 (1 Person)
+PC #10 (1 Person)
+PlayStation 5 #1 (1-2 Persons)
+– Call of Duty: Modern Warfare III
+– Delta Force *new
+– EA Sports FC 24
+– eFootball *new
+– FINAL FANTASY XVI
+– Fortnite *new
+– God of War Ragnarok
+– Hogwarts Legacy
+– Marvel’s Spider-Man 2
+– Naruto X Boruto Ultimate Ninja Storm Connections
+– Resident Evil 4
+– Resident Evil Village
+– TEKKEN 8
+– THE FINALS *new
+– The Last of Us Part I
+– The Last of Us Part II (Remastered)
+– Uncharted: Legacy of Thieves Collection
+PlayStation 5 #2 (1-2 Persons)
+– Call of Duty: Modern Warfare III
+– Delta Force *new
+– EA Sports FC 24
+– eFootball *new
+– FINAL FANTASY XVI
+– Fortnite *new
+– God of War Ragnarok
+– Hogwarts Legacy
+– Marvel’s Spider-Man 2
+– Naruto X Boruto Ultimate Ninja Storm Connections
+– Resident Evil 4
+– Resident Evil Village
+– TEKKEN 8
+– THE FINALS *new
+– The Last of Us Part I
+– The Last of Us Part II (Remastered)
+– Uncharted: Legacy of Thieves Collection
+VR Station (1-5 Persons) 1 Hour
+– Beat Saber
+– Horizon Call of the Mountain
+VR Station (1-5 Persons) 30 Mins
+30 min
+– Beat Saber
+– Horizon Call of the Mountain
+Book an appointment on
+Your local time
+Back
+Next
+Game Lists
+PSU Esports Studio – Phuket
+Prince of Songkla University, Phuket Campus
+80 Moo 1 Vichitsongkram Road, Kathu, Phuket 83120, Thailand
+Tel: +66 7627 6004
+Tel: +66 7627 6045
+Email: psuesportspkt@gmail.com
+Facebook: https://www.facebook.com/psuesportsphuket
+Website Security Policy
+PSU Esports Studio Phuket Reservation System
+An online booking system for reserving esports facilities at PSU Esports Studio – Phuket. Users can easily check availability, schedule gaming sessions, and manage reservations in a convenient and efficient way.
+© 2024-2026 PSU Esports Studio - Phuket, Prince of Songkla University, Phuket Campus. All rights reserved.
+Cookie Consent
+We use cookies to improve your experience on our site. By using our site, you consent to cookies.
+Preferences
+Reject
+Accept All
+Powered by (opens in a new window)
+Cookie Preferences
+×
+Manage your cookie preferences below:
+Toggle Essential
+Essential
+Essential cookies enable basic functions and are necessary for the proper function of the website.
+Name
+Description
+Duration
+Cookie Preferences
+This cookie is used to store the user's cookie consent preferences.
+30 days
+Toggle Comments
+Comments
+These cookies are needed for adding comments on this website.
+Name
+Description
+Duration
+comment_author
+Used to track the user across multiple sessions.
+Session
+comment_author_email
+Used to track the user across multiple sessions.
+Session
+comment_author_url
+Toggle Statistics
+Statistics
+Statistics cookies collect information anonymously. This information helps us understand how visitors use our website.
+Toggle Google Analytics
+Google Analytics
+Google Analytics is a powerful tool that tracks and analyzes website traffic for informed marketing decisions.
+Service URL:
+policies.google.com (opens in a new window)
+_gid
+ID used to identify users for 24 hours after last activity
+24 hours
+_gat
+Used to monitor number of Google Analytics server requests when using Google Tag Manager
+1 minute
+__utmv
+Contains custom information set by the web developer via the _setCustomVar method in Google Analytics. This cookie is updated every time new data is sent to the Google Analytics server.
+2 years after last activity
+__utmx
+Used to determine whether a user is included in an A / B or Multivariate test.
+18 months
+_ga
+ID used to identify users
+2 years
+_gali
+Used by Google Analytics to determine which links on a page are being clicked
+30 seconds
+_ga_
+ID used to identify users
+2 years
+__utma
+ID used to identify users and sessions
+2 years after last activity
+__utmt
+Used to monitor number of Google Analytics server requests
+10 minutes
+__utmb
+Used to distinguish new sessions and visits. This cookie is set when the GA.js javascript library is loaded and there is no existing __utmb cookie. The cookie is updated every time data is sent to the Google Analytics server.
+30 minutes after last activity
+__utmc
+Used only with old Urchin versions of Google Analytics and not with GA.js. Was used to distinguish between new sessions and visits at the end of a session.
+End of session (browser)
+__utmz
+Contains information about the traffic source or campaign that directed user to the website. The cookie is set when the GA.js javascript is loaded and updated when data is sent to the Google Anaytics server
+6 months after last activity
+_gac_
+Contains information related to marketing campaigns of the user. These are shared with Google AdWords / Google Ads when the Google Ads and Google Analytics accounts are linked together.
+90 days
+Toggle Cookie Policy
+Cookie Policy
+You can find more information about our
+Cookie Policy
+and
+Privacy Policy
+.
+Accept All
+Close
+Save and Close
+Powered by (opens in a new window)

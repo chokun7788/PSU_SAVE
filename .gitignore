@@ -1,0 +1,40 @@
+# Secrets / local env
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python cache / test cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node / frontend build cache
+node_modules/
+.next/
+dist/
+build/
+
+# Vercel local project state
+.vercel/
+
+# Local runtime logs and databases
+logs/
+data/logs/
+*.sqlite
+*.sqlite3
+*.db
+*.db-wal
+*.db-shm
+
+# Local vector DB runtime folders
+**/data/vector_db/chroma_psu_esports/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

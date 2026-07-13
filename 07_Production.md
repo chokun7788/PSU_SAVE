@@ -13,7 +13,7 @@
 
 **FastAPI endpoint (นิยมสุดในงาน AI)**
 ```python
-# pip install fastapi uvicorn
+# pip install fastapi uvico2rn
 from fastapi import FastAPI
 from pydantic import BaseModel
 

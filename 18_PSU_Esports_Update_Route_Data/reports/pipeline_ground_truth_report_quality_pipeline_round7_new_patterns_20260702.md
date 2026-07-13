@@ -1,0 +1,65 @@
+# Pipeline Ground Truth Evaluation
+
+วันที่: 2026-07-02
+
+## Summary
+
+- Total: 360
+- PASS: 359
+- FAIL: 1
+- ERROR: 0
+- Pass rate: 99.72%
+- Average latency: 0.0002s
+- P95 latency: 0.0003s
+- Keyword fail: 1
+- Source fail: 0
+- Quality fail: 0
+- Validation fail: 0
+
+## Mode Distribution
+
+- `pipeline:deterministic_calculator_fast`: 139
+- `pipeline:schedule_fast_path`: 47
+- `pipeline:games_fast_path`: 26
+- `pipeline:guard_no_answer`: 22
+- `pipeline:rules_fast_path`: 21
+- `pipeline:booking_fast_path`: 20
+- `pipeline:checkin_fast_path`: 12
+- `pipeline:equipment_fast_path`: 10
+- `pipeline:contact_fast_path`: 10
+- `pipeline:payment_fast_path`: 9
+- `pipeline:penalty_fast_path`: 9
+- `pipeline:knowledge_fast_path`: 7
+- `pipeline:category_rule_fast_path`: 6
+- `pipeline:overview_fast_path`: 5
+- `pipeline:news_fast_path`: 5
+- `pipeline:members_fast_path`: 5
+- `pipeline:mixed_reservation_fast`: 3
+- `pipeline:no_answer`: 2
+- `pipeline:mixed_rules_fast`: 2
+
+## Route Category Distribution
+
+- `service_fee`: 144
+- `schedule`: 47
+- `reservation`: 47
+- `games`: 28
+- `rules`: 22
+- `no_answer`: 22
+- `equipment`: 9
+- `penalty`: 9
+- `knowledge`: 9
+- `overview`: 9
+- `contact`: 8
+- `events_news`: 5
+- `general`: 1
+
+## Failed Cases
+
+| ID | Category | Route | Problem | Answer Short |
+|---|---|---|---|---|
+| v2_222 | equipment | `equipment` | 10 Units | สเปก PC ที่บันทึกไว้ตอนนี้: MSI MAG Infinite S3 14th, CPU Intel Core i5-14400, RAM DDR5 32GB, GPU NVIDIA GeForce RTX 5060 8GB, Mainboard MSI PRO H610M-G และใน PC Zone มี Gaming PC ทั้งหมด 10 เครื่อง หมายเหตุ: ข้อมูลนี้มา... |
+
+## Files
+
+- Results JSONL: `C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\reports\pipeline_ground_truth_results_quality_pipeline_round7_new_patterns_20260702.jsonl`

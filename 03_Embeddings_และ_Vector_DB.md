@@ -130,7 +130,7 @@ scores, ids = index.search(qv, k=2)
 print([docs[i] for i in ids[0]])
 ```
 
-### ต้องรู้อะไรบ้าง (concept)
+### ต้องรู้อะไรบ้าง (conce  pt)
 - **หน้าที่**: เก็บเวกเตอร์ + metadata และทำ similarity search ดึง top-k
 - **ANN (HNSW, IVF)**: อัลกอริทึมค้นเวกเตอร์ใกล้สุดแบบ "ประมาณ" เพื่อความเร็ว — รู้จักชื่อพอ
 - **Metadata filtering**: กรองด้วยเงื่อนไข เช่น "เฉพาะปี 2024" — สำคัญมากในงานจริง

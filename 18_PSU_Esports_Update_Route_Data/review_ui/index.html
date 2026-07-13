@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PSU Esports Human Review</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>PSU Esports Human Review</h1>
+      <p id="summaryText">กำลังโหลดข้อมูล...</p>
+    </div>
+    <div class="topActions">
+      <button id="exportJsonBtn" type="button">Export JSON</button>
+      <button id="exportMdBtn" type="button">Export Markdown</button>
+      <button id="resetBtn" type="button" class="ghost">Reset</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="filters">
+        <input id="searchInput" type="search" placeholder="ค้นหาคำถาม / id / route">
+        <select id="categoryFilter" aria-label="Category filter"></select>
+        <select id="decisionFilter" aria-label="Decision filter">
+          <option value="all">ทุก decision</option>
+          <option value="unreviewed">ยังไม่รีวิว</option>
+          <option value="pass">pass</option>
+          <option value="minor_fix">minor_fix</option>
+          <option value="major_fix">major_fix</option>
+          <option value="needs_data">needs_data</option>
+          <option value="needs_policy">needs_policy</option>
+        </select>
+      </div>
+      <div id="itemList" class="itemList" aria-label="Review items"></div>
+    </aside>
+
+    <section class="detailPane">
+      <div id="emptyState" class="emptyState">เลือกข้อทางซ้ายเพื่อเริ่มรีวิว</div>
+      <article id="reviewDetail" class="reviewDetail hidden">
+        <div class="metaLine" id="metaLine"></div>
+        <h2 id="questionTitle"></h2>
+
+        <section class="answerBlock">
+          <h3>คำตอบจาก AI</h3>
+          <pre id="aiAnswer"></pre>
+        </section>
+
+        <section class="answerBlock">
+          <h3>เกณฑ์อัตโนมัติ</h3>
+          <p id="expectedText"></p>
+        </section>
+
+        <section class="reviewBlock">
+          <h3>Decision</h3>
+          <div id="decisionButtons" class="buttonGrid"></div>
+        </section>
+
+        <section class="scoreGrid" id="scoreGrid"></section>
+
+        <section class="criteriaBlock">
+          <h3>เกณฑ์คะแนน 0-4</h3>
+          <div class="criteriaGrid">
+            <div><strong>4</strong><span>ดีแล้ว ใช้จริงได้ ตอบตรง อ่านง่าย</span></div>
+            <div><strong>3</strong><span>ถูก แต่ยังเรียงคำตอบ/เติมรายละเอียดได้อีกนิด</span></div>
+            <div><strong>2</strong><span>มีส่วนถูก แต่ทำให้ลูกค้าเข้าใจผิดได้</span></div>
+            <div><strong>1</strong><span>ตอบผิดเป็นหลัก แต่ยังเกี่ยวข้องนิดหน่อย</span></div>
+            <div><strong>0</strong><span>ผิด/มั่ว/ไม่มีข้อมูลแต่ตอบเหมือนมี</span></div>
+          </div>
+        </section>
+
+        <section class="noteGrid">
+          <label>
+            หมายเหตุ
+            <textarea id="notesInput" rows="4" placeholder="เช่น ตอบถูกแต่ควรสรุปก่อนว่าเปิด 09:00-16:00"></textarea>
+          </label>
+          <label>
+            สิ่งที่ควรแก้
+            <textarea id="fixInput" rows="4" placeholder="เช่น ให้ขึ้นต้นด้วยราคา 190 บาท ก่อนรายละเอียดตาราง"></textarea>
+          </label>
+        </section>
+
+        <section class="tagBlock">
+          <h3>Error tags</h3>
+          <div id="tagButtons" class="tagGrid"></div>
+        </section>
+
+        <div class="navActions">
+          <button id="prevBtn" type="button" class="ghost">ข้อก่อนหน้า</button>
+          <button id="markReviewedBtn" type="button">บันทึกข้อนี้</button>
+          <button id="nextBtn" type="button">ข้อต่อไป</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script src="review_data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

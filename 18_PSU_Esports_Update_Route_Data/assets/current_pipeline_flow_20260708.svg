@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1040" viewBox="0 0 1500 1040" role="img" aria-labelledby="title desc">
+  <title id="title">PSU Esports Chatbot Current Pipeline Flow</title>
+  <desc id="desc">Runtime question flow and offline data preparation flow for PSU Esports Chatbot.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#23527c"/>
+    </marker>
+    <style>
+      .bg { fill: #f7fbff; }
+      .lane { fill: #ffffff; stroke: #b7c9dc; stroke-width: 2; rx: 18; }
+      .box { fill: #ffffff; stroke: #23527c; stroke-width: 2.4; rx: 12; }
+      .box-blue { fill: #e7f2ff; stroke: #23527c; }
+      .box-green { fill: #e9f8ef; stroke: #28734a; }
+      .box-yellow { fill: #fff7df; stroke: #8a6b12; }
+      .box-red { fill: #fff0f0; stroke: #9b2f2f; }
+      .box-purple { fill: #f4efff; stroke: #5b3f91; }
+      .title { font: 700 34px Arial, sans-serif; fill: #17324d; }
+      .lane-title { font: 700 25px Arial, sans-serif; fill: #17324d; }
+      .h { font: 700 20px Arial, sans-serif; fill: #17324d; }
+      .t { font: 15px Arial, sans-serif; fill: #263747; }
+      .small { font: 13px Arial, sans-serif; fill: #40576b; }
+      .arrow { stroke: #23527c; stroke-width: 2.8; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #5b6b7c; stroke-width: 2; fill: none; stroke-dasharray: 7 6; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1500" height="1040"/>
+  <text class="title" x="50" y="58">PSU Esports Chatbot - Current Accuracy-First Pipeline</text>
+  <text class="small" x="52" y="86">Answer-first style, deterministic fast path first, hybrid retrieval and guard for uncertain questions.</text>
+
+  <rect class="lane" x="40" y="120" width="1420" height="500"/>
+  <text class="lane-title" x="70" y="160">Runtime flow: user question to final answer</text>
+
+  <rect class="box box-blue" x="70" y="200" width="190" height="110"/>
+  <text class="h" x="92" y="232">1. User question</text>
+  <text class="t" x="92" y="260">POST /api/chat</text>
+  <text class="small" x="92" y="284">message, session id</text>
+
+  <rect class="box" x="300" y="200" width="210" height="110"/>
+  <text class="h" x="322" y="232">2. Preprocess</text>
+  <text class="t" x="322" y="260">clean spaces</text>
+  <text class="t" x="322" y="284">normalize text</text>
+
+  <rect class="box" x="550" y="200" width="215" height="110"/>
+  <text class="h" x="572" y="232">3. Entities</text>
+  <text class="t" x="572" y="260">service, day, time</text>
+  <text class="t" x="572" y="284">price intent, group</text>
+
+  <rect class="box box-purple" x="805" y="200" width="215" height="110"/>
+  <text class="h" x="827" y="232">4. Route intent</text>
+  <text class="t" x="827" y="260">rule heuristics</text>
+  <text class="t" x="827" y="284">semantic intent</text>
+
+  <rect class="box box-green" x="1060" y="190" width="350" height="130"/>
+  <text class="h" x="1082" y="222">5. Deterministic fast path</text>
+  <text class="t" x="1082" y="250">price, schedule, calendar, games</text>
+  <text class="t" x="1082" y="274">equipment guide, competition fact cards</text>
+  <text class="small" x="1082" y="300">If confidence is high, answer here.</text>
+
+  <path class="arrow" d="M260 255 H300"/>
+  <path class="arrow" d="M510 255 H550"/>
+  <path class="arrow" d="M765 255 H805"/>
+  <path class="arrow" d="M1020 255 H1060"/>
+
+  <rect class="box box-yellow" x="190" y="385" width="330" height="155"/>
+  <text class="h" x="212" y="417">6. Hybrid retrieval</text>
+  <text class="t" x="212" y="445">curated lexical retrieval</text>
+  <text class="t" x="212" y="469">guarded local vector retrieval</text>
+  <text class="t" x="212" y="493">merge candidates</text>
+  <text class="small" x="212" y="520">Used when fast path is not enough.</text>
+
+  <rect class="box box-yellow" x="575" y="385" width="310" height="155"/>
+  <text class="h" x="597" y="417">7. Rerank</text>
+  <text class="t" x="597" y="445">category match</text>
+  <text class="t" x="597" y="469">entity match</text>
+  <text class="t" x="597" y="493">lexical + vector + priority</text>
+
+  <rect class="box box-red" x="940" y="385" width="250" height="155"/>
+  <text class="h" x="962" y="417">8. Evidence guard</text>
+  <text class="t" x="962" y="445">source exists</text>
+  <text class="t" x="962" y="469">no wrong category</text>
+  <text class="t" x="962" y="493">no weak game entity</text>
+  <text class="small" x="962" y="520">Fail -> polite no-answer.</text>
+
+  <rect class="box box-green" x="1245" y="385" width="170" height="155"/>
+  <text class="h" x="1266" y="417">9. Format</text>
+  <text class="t" x="1266" y="445">answer first</text>
+  <text class="t" x="1266" y="469">details</text>
+  <text class="t" x="1266" y="493">sources</text>
+
+  <path class="dash" d="M1235 320 C1235 360 355 350 355 385"/>
+  <path class="arrow" d="M520 462 H575"/>
+  <path class="arrow" d="M885 462 H940"/>
+  <path class="arrow" d="M1190 462 H1245"/>
+  <path class="arrow" d="M1330 385 V335 C1330 325 1330 320 1330 320"/>
+
+  <rect class="box" x="1070" y="555" width="345" height="45"/>
+  <text class="t" x="1090" y="583">Thai style post-processor: spacing, source protection</text>
+
+  <path class="arrow" d="M1330 540 V555"/>
+
+  <rect class="lane" x="40" y="670" width="1420" height="310"/>
+  <text class="lane-title" x="70" y="710">Data preparation flow: sources to curated data and vector file</text>
+
+  <rect class="box box-blue" x="70" y="750" width="240" height="125"/>
+  <text class="h" x="92" y="782">A. Source data</text>
+  <text class="t" x="92" y="810">official web pages</text>
+  <text class="t" x="92" y="834">local rules, images</text>
+  <text class="t" x="92" y="858">manual calendar files</text>
+
+  <rect class="box" x="365" y="750" width="260" height="125"/>
+  <text class="h" x="387" y="782">B. Extraction</text>
+  <text class="t" x="387" y="810">scrapers and converters</text>
+  <text class="t" x="387" y="834">normalize fields</text>
+  <text class="t" x="387" y="858">write JSONL</text>
+
+  <rect class="box box-purple" x="680" y="750" width="290" height="125"/>
+  <text class="h" x="702" y="782">C. Curated JSONL</text>
+  <text class="t" x="702" y="810">category, title, text</text>
+  <text class="t" x="702" y="834">source_url, tags, aliases</text>
+  <text class="t" x="702" y="858">priority, source_file</text>
+
+  <rect class="box box-yellow" x="1025" y="750" width="270" height="125"/>
+  <text class="h" x="1047" y="782">D. Vector index</text>
+  <text class="t" x="1047" y="810">local_hash_char_ngram_v1</text>
+  <text class="t" x="1047" y="834">word + char n-gram</text>
+  <text class="t" x="1047" y="858">data/vector/*.json</text>
+
+  <path class="arrow" d="M310 812 H365"/>
+  <path class="arrow" d="M625 812 H680"/>
+  <path class="arrow" d="M970 812 H1025"/>
+  <path class="dash" d="M1160 750 C1160 650 355 650 355 385"/>
+</svg>
