@@ -1,0 +1,2254 @@
+[
+  {
+    "id": "PBC-001",
+    "category": "play_booking_controls",
+    "question_no": 1,
+    "question": "จอง PS5 ต้องทำยังไง",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 1,
+    "mode": "pipeline:booking_howto_fast_path",
+    "route": "equipment/zone_equipment_lookup",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.1515,
+    "wall_sec": 0.1516,
+    "sources": "Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "จองคิวเล่นเกม/ใช้อุปกรณ์ได้ผ่านระบบจองออนไลน์ครับ\nถ้าต้องการจอง PlayStation 5 ให้เลือกบริการ PlayStation 5 และเลือกรอบเวลาที่ต้องการ\nขั้นตอนโดยสรุปคือ 1) เลือกบริการหรือโซนที่ต้องการใช้ 2) เลือกวันและรอบเวลา 3) กรอก Student ID/Staff ID/National ID ชื่อ นามสกุล อีเมล และเบอร์โทรศัพท์ 4) ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง 5) แนบสลิปและยืนยันการจอง\nต้องจองล่วงหน้าอย่างน้อย 1 ชั่วโมง และหลังจองต้องชำระเงินภายใน 10 นาทีครับ\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-002",
+    "category": "play_booking_controls",
+    "question_no": 2,
+    "question": "จอง Nintendo Switch ต้องเลือกอะไรบ้าง",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 2,
+    "mode": "pipeline:equipment_game_catalog_fast_path",
+    "route": "equipment/equipment_game_catalog",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.4932,
+    "wall_sec": 0.4933,
+    "sources": "our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "สรุปเกมที่เล่นได้ในโซนที่ถาม:\n\nNintendo Switch Zone (16 เกม)\n• Mario Kart 8 Deluxe\n• Mario Kart Live: Home Circuit\n• Overcooked 2\n• Super Smash Bros Ultimate\n• Nintendo Switch Sports\n• Animal Crossing: New Horizons\n• It Takes Two\n• LITTLE NIGHTMARES II\n• Luigi's Mansion 3\n• Mario Party Superstars\n• Monster Hunter Rise\n• Moving Out 2\n• New Super Mario Bros. U Deluxe\n• Super Mario Odyssey\n• The Legend of Zelda: Breath of the Wild\n• Ring Fit Adventure\n\nอุปกรณ์หลักของ Nintendo Switch Zone\n• TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)\n• Nintendo Switch OLED (จำนวน 1 เครื่อง)\n• Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)\n\nวิธีใช้งานโดยสรุป: จอง Nintendo Switch Zone แล้วเล่นผ่าน Nintendo Switch OLED กับ TV 86 นิ้ว ใช้จอย Joy-Con/Controller ตามเกมที่เลือก\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-003",
+    "category": "play_booking_controls",
+    "question_no": 3,
+    "question": "จอง VR ครึ่งชั่วโมงได้ไหม",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 3,
+    "mode": "pipeline:games_fast_path",
+    "route": "equipment/zone_equipment_lookup",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 11.059,
+    "wall_sec": 11.059,
+    "sources": "our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "VR Zone มีเกมที่ยืนยันได้ดังนี้\n\nVR Zone (2 เกม)\n• Beat Saber\n• Horizon Call of the Mountain\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-004",
+    "category": "play_booking_controls",
+    "question_no": 4,
+    "question": "จอง Cockpit ต้องจองล่วงหน้ากี่ชั่วโมง",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 4,
+    "mode": "pipeline:games_fast_path",
+    "route": "equipment/zone_equipment_lookup",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 23.1214,
+    "wall_sec": 23.1214,
+    "sources": "our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "Cockpit Zone มีเกมที่ยืนยันได้ดังนี้\n\nCockpit Zone (1 เกม)\n• Gran Turismo 7\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-005",
+    "category": "play_booking_controls",
+    "question_no": 5,
+    "question": "จอง PC ต้องกรอกข้อมูลอะไรบ้าง",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 5,
+    "mode": "pipeline:equipment_game_catalog_fast_path",
+    "route": "equipment/equipment_game_catalog",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.2074,
+    "wall_sec": 0.2074,
+    "sources": "our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "สรุปเกมที่เล่นได้ในโซนที่ถาม:\n\nPC Zone (6 เกม)\n• VALORANT\n• Counter-Strike 2\n• PUBG: BATTLEGROUNDS\n• Call of Duty: Warzone\n• TEKKEN 8\n• League of Legends\n\nอุปกรณ์หลักของ PC Zone\n• Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)\n• Gaming Monitor (จำนวน 10 จอ)\n• Gaming Chair (จำนวน 10 ตัว)\n• Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset\n\nวิธีใช้งานโดยสรุป: จอง PC Zone ตามรอบบริการ เข้าใช้งานเครื่องที่ศูนย์จัดไว้ แล้วเปิดเกมหรือโปรแกรมที่ต้องการตามรายการที่มี\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-006",
+    "category": "play_booking_controls",
+    "question_no": 6,
+    "question": "หลังจองต้องจ่ายเงินภายในกี่นาที",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 6,
+    "mode": "pipeline:payment_fast_path",
+    "route": "reservation/payment_policy",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.3015,
+    "wall_sec": 0.3015,
+    "sources": "Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "หลังจองต้องชำระเงินภายใน 10 นาที หากไม่ชำระ ระบบจะยกเลิกการจอง และถ้าต้องการใช้บริการต้องจองใหม่\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-007",
+    "category": "play_booking_controls",
+    "question_no": 7,
+    "question": "ถ้าจองผิดเวลาต้องแก้ยังไง",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 7,
+    "mode": "pipeline:booking_fast_path",
+    "route": "reservation/booking_policy",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.1737,
+    "wall_sec": 0.1737,
+    "sources": "Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "เมื่อกดจองแล้วจะไม่สามารถแก้ไขข้อมูลได้ หากต้องการแก้ไขต้องยกเลิกผ่านอีเมลก่อนเวลาใช้งานอย่างน้อย 1 ชั่วโมง แล้วจองใหม่ พร้อมแนบสลิปการโอนเงินเดิม\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-008",
+    "category": "play_booking_controls",
+    "question_no": 8,
+    "question": "ยกเลิกการจองต้องทำก่อนกี่ชั่วโมง",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 8,
+    "mode": "pipeline:booking_cancel_fast_path",
+    "route": "reservation/booking_policy",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.2677,
+    "wall_sec": 0.2677,
+    "sources": "Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "การยกเลิกการจองต้องทำล่วงหน้าอย่างน้อย 1 ชั่วโมงครับ หากต้องการแก้ไขข้อมูลหรือเวลาใช้งาน ต้องยกเลิกการจองเดิมก่อนแล้วจองใหม่ตามขั้นตอนของระบบ\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-009",
+    "category": "play_booking_controls",
+    "question_no": 9,
+    "question": "ตอนเช็คอินต้องใช้บัตรอะไร",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 9,
+    "mode": "pipeline:checkin_fast_path",
+    "route": "reservation/checkin_policy",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.1881,
+    "wall_sec": 0.1882,
+    "sources": "Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "ตอนเช็คอินต้องนำบัตรประจำตัวนักศึกษา บัตรประจำตัวบุคลากร หรือบัตรประชาชนมาแสดง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-010",
+    "category": "play_booking_controls",
+    "question_no": 10,
+    "question": "เช็คอินล่วงหน้าได้กี่นาที",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 10,
+    "mode": "pipeline:checkin_fast_path",
+    "route": "reservation/checkin_policy",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.1628,
+    "wall_sec": 0.1629,
+    "sources": "Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "เช็คอินได้ล่วงหน้าสูงสุด 30 นาที หรือ 1,800 วินาที และต้องเช็คอินก่อนเวลาเริ่มต้นของรอบที่จอง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-011",
+    "category": "play_booking_controls",
+    "question_no": 11,
+    "question": "จองได้สูงสุดกี่ session ต่อครั้ง",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 11,
+    "mode": "pipeline:booking_fast_path",
+    "route": "reservation/booking_policy",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.1889,
+    "wall_sec": 0.1889,
+    "sources": "Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "การจอง 1 ครั้งสามารถจองได้สูงสุด 3 Sessions\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-012",
+    "category": "play_booking_controls",
+    "question_no": 12,
+    "question": "ถ้าแนบสลิปผิดต้องทำยังไง",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 12,
+    "mode": "pipeline:mixed_reservation_fast",
+    "route": "reservation/payment_policy",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.1614,
+    "wall_sec": 0.1614,
+    "sources": "Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "ตอนจองต้องกรอก Student ID/Staff ID/National ID ชื่อ นามสกุล อีเมล เบอร์โทรศัพท์ และชำระโดยโอนเงินพร้อมแนบสลิป\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-013",
+    "category": "play_booking_controls",
+    "question_no": 13,
+    "question": "จองแทนเพื่อนได้ไหม",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 13,
+    "mode": "pipeline:booking_fast_path",
+    "route": "reservation/booking_policy",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.0859,
+    "wall_sec": 0.0859,
+    "sources": "Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "ไม่สามารถโอนสิทธิ์การจองให้ผู้อื่นได้\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-014",
+    "category": "play_booking_controls",
+    "question_no": 14,
+    "question": "ถ้าไม่จ่ายเงินหลัง booking จะเกิดอะไรขึ้น",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 14,
+    "mode": "pipeline:category_rule_fast_path",
+    "route": "reservation/payment_policy",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.5434,
+    "wall_sec": 0.5434,
+    "sources": "rule_payment_10_minutes: https://esports.computing.psu.ac.th/",
+    "answer": "หลังจองต้องชำระเงินทันที หากไม่ชำระภายใน 10 นาที การจองจะถูกยกเลิก และหากต้องการใช้บริการต้องทำรายการจองใหม่\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-015",
+    "category": "play_booking_controls",
+    "question_no": 15,
+    "question": "อยากจองเครื่องเล่นเกมกับเพื่อนต้องเริ่มตรงไหน",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 15,
+    "mode": "pipeline:booking_howto_fast_path",
+    "route": "contact/contact_lookup",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.3105,
+    "wall_sec": 0.3106,
+    "sources": "Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "จองคิวเล่นเกม/ใช้อุปกรณ์ได้ผ่านระบบจองออนไลน์ครับ\nขั้นตอนโดยสรุปคือ 1) เลือกบริการหรือโซนที่ต้องการใช้ 2) เลือกวันและรอบเวลา 3) กรอก Student ID/Staff ID/National ID ชื่อ นามสกุล อีเมล และเบอร์โทรศัพท์ 4) ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง 5) แนบสลิปและยืนยันการจอง\nต้องจองล่วงหน้าอย่างน้อย 1 ชั่วโมง และหลังจองต้องชำระเงินภายใน 10 นาทีครับ\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-016",
+    "category": "play_booking_controls",
+    "question_no": 16,
+    "question": "ถ้าไม่มีบัตรนักศึกษาตอนจองทำยังไง",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 16,
+    "mode": "pipeline:booking_howto_fast_path",
+    "route": "reservation/booking_policy",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.5362,
+    "wall_sec": 0.5362,
+    "sources": "Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "จองคิวเล่นเกม/ใช้อุปกรณ์ได้ผ่านระบบจองออนไลน์ครับ\nขั้นตอนโดยสรุปคือ 1) เลือกบริการหรือโซนที่ต้องการใช้ 2) เลือกวันและรอบเวลา 3) กรอก Student ID/Staff ID/National ID ชื่อ นามสกุล อีเมล และเบอร์โทรศัพท์ 4) ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง 5) แนบสลิปและยืนยันการจอง\nต้องจองล่วงหน้าอย่างน้อย 1 ชั่วโมง และหลังจองต้องชำระเงินภายใน 10 นาทีครับ\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-017",
+    "category": "play_booking_controls",
+    "question_no": 17,
+    "question": "จอง VR 1 ชั่วโมงกับ 30 นาทีต่างกันยังไง",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 17,
+    "mode": "pipeline:booking_howto_fast_path",
+    "route": "equipment/related_guidance",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.7118,
+    "wall_sec": 0.7119,
+    "sources": "Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "จองคิวเล่นเกม/ใช้อุปกรณ์ได้ผ่านระบบจองออนไลน์ครับ\nถ้าต้องการจอง VR ให้เลือกบริการ VR Station และเลือกรอบ 30 นาทีหรือ 1 ชั่วโมงตามที่ระบบมีให้เลือก\nขั้นตอนโดยสรุปคือ 1) เลือกบริการหรือโซนที่ต้องการใช้ 2) เลือกวันและรอบเวลา 3) กรอก Student ID/Staff ID/National ID ชื่อ นามสกุล อีเมล และเบอร์โทรศัพท์ 4) ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง 5) แนบสลิปและยืนยันการจอง\nต้องจองล่วงหน้าอย่างน้อย 1 ชั่วโมง และหลังจองต้องชำระเงินภายใน 10 นาทีครับ\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "comparison_question_should_start_with_difference"
+      ]
+    }
+  },
+  {
+    "id": "PBC-018",
+    "category": "play_booking_controls",
+    "question_no": 18,
+    "question": "จอง Nintendo สำหรับ 4 คนต้องเลือกแบบไหน",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 18,
+    "mode": "pipeline:games_fast_path",
+    "route": "equipment/zone_equipment_lookup",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 29.15,
+    "wall_sec": 29.15,
+    "sources": "our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "Nintendo Switch Zone มีเกมที่ยืนยันได้ดังนี้\n\nNintendo Switch Zone (16 เกม)\n• Mario Kart 8 Deluxe\n• Mario Kart Live: Home Circuit\n• Overcooked 2\n• Super Smash Bros Ultimate\n• Nintendo Switch Sports\n• Animal Crossing: New Horizons\n• It Takes Two\n• LITTLE NIGHTMARES II\n• Luigi's Mansion 3\n• Mario Party Superstars\n• Monster Hunter Rise\n• Moving Out 2\n• New Super Mario Bros. U Deluxe\n• Super Mario Odyssey\n• The Legend of Zelda: Breath of the Wild\n• Ring Fit Adventure\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "fact_answer_may_be_too_verbose"
+      ]
+    }
+  },
+  {
+    "id": "PBC-019",
+    "category": "play_booking_controls",
+    "question_no": 19,
+    "question": "อยากเล่นพวงมาลัยต้องจองโซนอะไร",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 19,
+    "mode": "pipeline:related_guidance_fast_path",
+    "route": "equipment/zone_equipment_lookup",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.4974,
+    "wall_sec": 0.4975,
+    "sources": "home: https://esports.phuket.psu.ac.th/home | our_games: https://esports.phuket.psu.ac.th/Services/our-games",
+    "answer": "ถ้าอยากเล่นเกมขับรถ แนะนำ Cockpit Zone\n- เหตุผล: Cockpit Zone คือโซนจำลองการขับรถ/เกมแข่งรถ ใช้เล่น Gran Turismo 7 ด้วยชุดพวงมาลัยและเบาะขับ\n- อุปกรณ์หลัก: TV 65 นิ้ว 2 เครื่อง (2 Units), Logitech G923 TRUEFORCE Racing wheel + Driving Force Shifter 2 ชุด (2 Units), Racezone Full Cockpit V3 2 ชุด (2 Units) และ Pulse Elite Wireless Headset 2 ชุด (2 Units)\n- เกมที่ยืนยันได้: Gran Turismo 7 (Single Player)\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/home และ https://esports.phuket.psu.ac.th/Services/our-games",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-020",
+    "category": "play_booking_controls",
+    "question_no": 20,
+    "question": "ถ้าไปถึงช้ากว่าเวลาจองจะยังเล่นได้ไหม",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 20,
+    "mode": "pipeline:rag_direct_curated",
+    "route": "reservation/booking_policy",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.6244,
+    "wall_sec": 0.6245,
+    "sources": "curated_checkin_30_minutes: https://esports.computing.psu.ac.th/ | curated_checkin_late_cancel: https://esports.computing.psu.ac.th/ | curated_time_change_policy: https://esports.computing.psu.ac.th/",
+    "answer": "ผู้ใช้งานต้องเช็คอินก่อนเวลาเริ่มต้นของรอบที่จอง โดยสามารถเช็คอินได้ล่วงหน้าสูงสุด 30 นาที และต้องเช็คอินก่อนถึงเวลาเริ่มต้นของรอบ\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-021",
+    "category": "play_booking_controls",
+    "question_no": 21,
+    "question": "จองแล้วเปลี่ยนคนเล่นได้ไหม",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 21,
+    "mode": "pipeline:rag_direct_curated",
+    "route": "reservation/booking_policy",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.2868,
+    "wall_sec": 0.2879,
+    "sources": "curated_time_change_policy: https://esports.computing.psu.ac.th/ | curated_booking_no_edit: https://esports.computing.psu.ac.th/ | curated_booking_non_transferable: https://esports.computing.psu.ac.th/",
+    "answer": "สามารถเปลี่ยนแปลงเวลาใช้งานได้ โดยต้องแจ้งล่วงหน้าก่อนเวลาที่จองไว้อย่างน้อย 1 ชั่วโมง หากแจ้งล่าช้าหรือไม่แจ้ง ศูนย์สงวนสิทธิ์ไม่คืนเงินและไม่ชดเชยเวลา\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-022",
+    "category": "play_booking_controls",
+    "question_no": 22,
+    "question": "จองแล้วขอเลื่อนวันได้ไหม",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 22,
+    "mode": "pipeline:rag_direct_curated",
+    "route": "reservation/booking_policy",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.5388,
+    "wall_sec": 0.5397,
+    "sources": "curated_booking_no_edit: https://esports.computing.psu.ac.th/ | curated_booking_non_transferable: https://esports.computing.psu.ac.th/ | curated_checkin_30_minutes: https://esports.computing.psu.ac.th/",
+    "answer": "เมื่อกดจองแล้วจะไม่สามารถแก้ไขข้อมูลได้ หากต้องการแก้ไขต้องยกเลิกการจองผ่านทางอีเมลก่อนเวลาใช้งานอย่างน้อย 1 ชั่วโมง แล้วจองใหม่อีกครั้ง พร้อมแนบสลิปการโอนเงินเดิม\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-023",
+    "category": "play_booking_controls",
+    "question_no": 23,
+    "question": "ระบบจองออนไลน์อยู่ที่ไหน",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 23,
+    "mode": "pipeline:category_rule_fast_path",
+    "route": "contact/contact_lookup",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.2479,
+    "wall_sec": 0.2479,
+    "sources": "rule_contact_location: https://esports.phuket.psu.ac.th/Contact-Us",
+    "answer": "PSU Esports Studio - Phuket ตั้งอยู่ที่มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต 80 หมู่ 1 ถ.วิชิตสงคราม อ.กะทู้ จ.ภูเก็ต 83120\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Contact-Us",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-024",
+    "category": "play_booking_controls",
+    "question_no": 24,
+    "question": "ก่อนเข้าใช้บริการต้องทำอะไรบ้าง",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 24,
+    "mode": "pipeline:general_llm_disabled",
+    "route": "general/unknown_domain_query",
+    "strategy": "llm",
+    "latency_sec": 0.4545,
+    "wall_sec": 0.4545,
+    "sources": "",
+    "answer": "คำถามนี้ถูกจัดเป็นคำถามทั่วไปนอกฐานข้อมูล PSU Esports Studio - Phuket แล้วครับ\nตอนนี้โหมดตอบจากความรู้ทั่วไปของ Local LLM ยังไม่ได้เปิดในสภาพแวดล้อมนี้ จึงไม่ดึงข้อมูลศูนย์มาตอบแทนเพื่อเลี่ยงคำตอบมั่ว",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "experimental_rag_fallback_general_route"
+      ]
+    }
+  },
+  {
+    "id": "PBC-025",
+    "category": "play_booking_controls",
+    "question_no": 25,
+    "question": "ถ้าจะจองหลายอุปกรณ์พร้อมกันต้องทำยังไง",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 25,
+    "mode": "pipeline:booking_howto_fast_path",
+    "route": "reservation/booking_policy",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.2586,
+    "wall_sec": 0.2586,
+    "sources": "Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "จองคิวเล่นเกม/ใช้อุปกรณ์ได้ผ่านระบบจองออนไลน์ครับ\nขั้นตอนโดยสรุปคือ 1) เลือกบริการหรือโซนที่ต้องการใช้ 2) เลือกวันและรอบเวลา 3) กรอก Student ID/Staff ID/National ID ชื่อ นามสกุล อีเมล และเบอร์โทรศัพท์ 4) ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง 5) แนบสลิปและยืนยันการจอง\nต้องจองล่วงหน้าอย่างน้อย 1 ชั่วโมง และหลังจองต้องชำระเงินภายใน 10 นาทีครับ\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-026",
+    "category": "play_booking_controls",
+    "question_no": 26,
+    "question": "จอง PlayStation 5 ใช้เวลารอบละกี่นาที",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 26,
+    "mode": "pipeline:games_fast_path",
+    "route": "equipment/zone_equipment_lookup",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 20.3442,
+    "wall_sec": 20.3442,
+    "sources": "our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "PlayStation 5 Zone มีเกมที่ยืนยันได้ดังนี้\n\nPlayStation 5 Zone (18 เกม)\n• TEKKEN 8\n• Marvel's Spider-Man 2\n• Fortnite\n• God of War Ragnarok\n• Overcooked 2\n• Gran Turismo 7\n• Beat Saber\n• It Takes Two\n• LITTLE NIGHTMARES II\n• Monster Hunter Rise\n• EA Sports FC 24\n• FINAL FANTASY XVI\n• Hogwarts Legacy\n• NARUTO X BORUTO Ultimate Ninja STORM CONNECTIONS\n• Resident Evil 4\n• Resident Evil Village\n• The Last of Us Part I / Part II\n• Uncharted: Legacy of Thieves Collection\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "fact_answer_may_be_too_verbose"
+      ]
+    }
+  },
+  {
+    "id": "PBC-027",
+    "category": "play_booking_controls",
+    "question_no": 27,
+    "question": "จอง Nintendo Switch ต้องระบุจำนวนผู้เล่นไหม",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 27,
+    "mode": "pipeline:games_fast_path",
+    "route": "equipment/zone_equipment_lookup",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 18.4084,
+    "wall_sec": 18.4085,
+    "sources": "our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "Nintendo Switch Zone มีเกมที่ยืนยันได้ดังนี้\n\nNintendo Switch Zone (16 เกม)\n• Mario Kart 8 Deluxe\n• Mario Kart Live: Home Circuit\n• Overcooked 2\n• Super Smash Bros Ultimate\n• Nintendo Switch Sports\n• Animal Crossing: New Horizons\n• It Takes Two\n• LITTLE NIGHTMARES II\n• Luigi's Mansion 3\n• Mario Party Superstars\n• Monster Hunter Rise\n• Moving Out 2\n• New Super Mario Bros. U Deluxe\n• Super Mario Odyssey\n• The Legend of Zelda: Breath of the Wild\n• Ring Fit Adventure\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "fact_answer_may_be_too_verbose"
+      ]
+    }
+  },
+  {
+    "id": "PBC-028",
+    "category": "play_booking_controls",
+    "question_no": 28,
+    "question": "ถ้าระบบจองไม่ขึ้นควรถามใคร",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 28,
+    "mode": "pipeline:rag_direct_curated",
+    "route": "reservation/booking_policy",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.299,
+    "wall_sec": 0.299,
+    "sources": "curated_checkin_late_cancel: https://esports.computing.psu.ac.th/ | curated_booking_no_edit: https://esports.computing.psu.ac.th/ | curated_reservation_max_sessions: https://esports.computing.psu.ac.th/",
+    "answer": "หากไม่เช็คอินก่อนถึงเวลาเริ่มต้นของรอบ ระบบจะยกเลิกการจองทันที และไม่มีการคืนเงินใด ๆ ทั้งสิ้น\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-029",
+    "category": "play_booking_controls",
+    "question_no": 29,
+    "question": "จองแล้วต้องตรวจสอบอีเมลไหม",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 29,
+    "mode": "pipeline:category_rule_fast_path",
+    "route": "contact/contact_lookup",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.2882,
+    "wall_sec": 0.2891,
+    "sources": "rule_contact_email: https://esports.phuket.psu.ac.th/Contact-Us",
+    "answer": "อีเมลติดต่อศูนย์คือ psuesportspkt@gmail.com\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Contact-Us",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-030",
+    "category": "play_booking_controls",
+    "question_no": 30,
+    "question": "จ่ายเงินผ่านบัญชีอะไร",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 30,
+    "mode": "pipeline:general_llm_disabled",
+    "route": "general/unknown_domain_query",
+    "strategy": "llm",
+    "latency_sec": 0.2189,
+    "wall_sec": 0.219,
+    "sources": "",
+    "answer": "คำถามนี้ถูกจัดเป็นคำถามทั่วไปนอกฐานข้อมูล PSU Esports Studio - Phuket แล้วครับ\nตอนนี้โหมดตอบจากความรู้ทั่วไปของ Local LLM ยังไม่ได้เปิดในสภาพแวดล้อมนี้ จึงไม่ดึงข้อมูลศูนย์มาตอบแทนเพื่อเลี่ยงคำตอบมั่ว",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "experimental_rag_fallback_general_route"
+      ]
+    }
+  },
+  {
+    "id": "PBC-031",
+    "category": "play_booking_controls",
+    "question_no": 31,
+    "question": "สอนขั้นตอนจองแบบสั้นๆ",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 31,
+    "mode": "pipeline:booking_howto_fast_path",
+    "route": "reservation/booking_policy",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.1829,
+    "wall_sec": 0.1829,
+    "sources": "Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "จองคิวเล่นเกม/ใช้อุปกรณ์ได้ผ่านระบบจองออนไลน์ครับ\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-032",
+    "category": "play_booking_controls",
+    "question_no": 32,
+    "question": "ถ้าอยากเล่นวันนี้ต้องจองทันทีได้ไหม",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 32,
+    "mode": "pipeline:rag_direct_curated",
+    "route": "reservation/booking_policy",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.4511,
+    "wall_sec": 0.4511,
+    "sources": "curated_checkin_late_cancel: https://esports.computing.psu.ac.th/ | curated_cancel_1_hour: https://esports.computing.psu.ac.th/ | curated_reservation_advance_time: https://esports.computing.psu.ac.th/",
+    "answer": "หากไม่เช็คอินก่อนถึงเวลาเริ่มต้นของรอบ ระบบจะยกเลิกการจองทันที และไม่มีการคืนเงินใด ๆ ทั้งสิ้น\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-033",
+    "category": "play_booking_controls",
+    "question_no": 33,
+    "question": "walk in ได้ไหมหรือต้องจองก่อน",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 33,
+    "mode": "pipeline:booking_fast_path",
+    "route": "reservation/booking_policy",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.3359,
+    "wall_sec": 0.3359,
+    "sources": "Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "ผู้ใช้งานต้องจองล่วงหน้าผ่านระบบออนไลน์ก่อนเวลาใช้งานอย่างน้อย 1 ชั่วโมง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-034",
+    "category": "play_booking_controls",
+    "question_no": 34,
+    "question": "จองแล้วลืมเช็คอินจะเป็นอะไรไหม",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 34,
+    "mode": "pipeline:multi_question_splitter",
+    "route": "multi_question/multi_question_split",
+    "strategy": "pipeline",
+    "latency_sec": 0.6955,
+    "wall_sec": 0.6965,
+    "sources": "curated_reservation_advance_time: https://esports.computing.psu.ac.th/ | curated_reservation_max_sessions: https://esports.computing.psu.ac.th/ | curated_payment_10_minutes: https://esports.computing.psu.ac.th/ | Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "คำถามนี้มีหลายเรื่อง ขอแยกตอบเป็นข้อ ๆ:\n\n1. จอง\nผู้ใช้งานต้องจองล่วงหน้าผ่านระบบออนไลน์ก่อนเวลาใช้งานอย่างน้อย 1 ชั่วโมง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/\n\n2. ลืมเช็คอินจะเป็นอะไรไหม\nสรุป: ต้องจองล่วงหน้าอย่างน้อย 1 ชั่วโมง, เช็คอินได้ล่วงหน้าสูงสุด 30 นาที และหากต้องยกเลิกหรือแก้ไขต้องแจ้งล่วงหน้าอย่างน้อย 1 ชั่วโมง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-035",
+    "category": "play_booking_controls",
+    "question_no": 35,
+    "question": "ต้องชำระเงินก่อนเล่นไหม",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 35,
+    "mode": "pipeline:rag_direct_curated",
+    "route": "reservation/payment_policy",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.2901,
+    "wall_sec": 0.2901,
+    "sources": "curated_booking_steps: https://esports.computing.psu.ac.th/ | curated_checkin_late_cancel: https://esports.computing.psu.ac.th/ | curated_payment_bank: https://esports.computing.psu.ac.th/",
+    "answer": "ขั้นตอนการจองคือ เลือกบริการที่ต้องการ เลือกวันและเวลา กรอกข้อมูลผู้ใช้บริการ ตรวจสอบข้อมูล ชำระเงินโดยโอนเข้าบัญชีธนาคาร และแนบสลิปการโอนเงิน\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-036",
+    "category": "play_booking_controls",
+    "question_no": 36,
+    "question": "ถ้าอยากเล่น PS5 กับเพื่อนสองคนต้องจองยังไง",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 36,
+    "mode": "pipeline:booking_howto_fast_path",
+    "route": "games/game_availability_lookup",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.6235,
+    "wall_sec": 0.6235,
+    "sources": "Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "จองคิวเล่นเกม/ใช้อุปกรณ์ได้ผ่านระบบจองออนไลน์ครับ\nถ้าต้องการจอง PlayStation 5 ให้เลือกบริการ PlayStation 5 และเลือกรอบเวลาที่ต้องการ\nขั้นตอนโดยสรุปคือ 1) เลือกบริการหรือโซนที่ต้องการใช้ 2) เลือกวันและรอบเวลา 3) กรอก Student ID/Staff ID/National ID ชื่อ นามสกุล อีเมล และเบอร์โทรศัพท์ 4) ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง 5) แนบสลิปและยืนยันการจอง\nต้องจองล่วงหน้าอย่างน้อย 1 ชั่วโมง และหลังจองต้องชำระเงินภายใน 10 นาทีครับ\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-037",
+    "category": "play_booking_controls",
+    "question_no": 37,
+    "question": "ถ้าอยากเล่น Switch สี่คนต้องจองยังไง",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 37,
+    "mode": "pipeline:booking_howto_fast_path",
+    "route": "games/game_availability_lookup",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.4316,
+    "wall_sec": 0.4316,
+    "sources": "Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "จองคิวเล่นเกม/ใช้อุปกรณ์ได้ผ่านระบบจองออนไลน์ครับ\nถ้าต้องการจอง Nintendo Switch ให้เลือกบริการ Nintendo Switch และเลือกจำนวนผู้เล่น/รอบเวลาตามที่ระบบมีให้เลือก\nขั้นตอนโดยสรุปคือ 1) เลือกบริการหรือโซนที่ต้องการใช้ 2) เลือกวันและรอบเวลา 3) กรอก Student ID/Staff ID/National ID ชื่อ นามสกุล อีเมล และเบอร์โทรศัพท์ 4) ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง 5) แนบสลิปและยืนยันการจอง\nต้องจองล่วงหน้าอย่างน้อย 1 ชั่วโมง และหลังจองต้องชำระเงินภายใน 10 นาทีครับ\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-038",
+    "category": "play_booking_controls",
+    "question_no": 38,
+    "question": "ถ้าอยากลอง VR ครั้งแรกควรจองแบบไหน",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 38,
+    "mode": "pipeline:games_fast_path",
+    "route": "equipment/zone_equipment_lookup",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 25.9154,
+    "wall_sec": 25.9155,
+    "sources": "our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "VR Zone มีเกมที่ยืนยันได้ดังนี้\n\nVR Zone (2 เกม)\n• Beat Saber\n• Horizon Call of the Mountain\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-039",
+    "category": "play_booking_controls",
+    "question_no": 39,
+    "question": "ถ้าอยากเล่นเกมขับรถต้องจองอะไร",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 39,
+    "mode": "pipeline:rag_direct_curated",
+    "route": "reservation/booking_policy",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.1674,
+    "wall_sec": 0.1675,
+    "sources": "curated_cancel_1_hour: https://esports.computing.psu.ac.th/ | curated_reservation_advance_time: https://esports.computing.psu.ac.th/ | curated_booking_steps: https://esports.computing.psu.ac.th/",
+    "answer": "การยกเลิกการจองต้องทำล่วงหน้าอย่างน้อย 1 ชั่วโมง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-040",
+    "category": "play_booking_controls",
+    "question_no": 40,
+    "question": "ถ้าจองผิดชื่อแก้ไขได้ไหม",
+    "expected_support": "in_kb",
+    "note": "",
+    "run_position": 40,
+    "mode": "pipeline:booking_fast_path",
+    "route": "reservation/booking_policy",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.2253,
+    "wall_sec": 0.2253,
+    "sources": "Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "เมื่อกดจองแล้วจะไม่สามารถแก้ไขข้อมูลได้ หากต้องการแก้ไขต้องยกเลิกผ่านอีเมลก่อนเวลาใช้งานอย่างน้อย 1 ชั่วโมง แล้วจองใหม่ พร้อมแนบสลิปการโอนเงินเดิม\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-041",
+    "category": "play_booking_controls",
+    "question_no": 41,
+    "question": "TEKKEN 8 ปุ่มทั้งหมดมีอะไรบ้าง",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 41,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/games_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.5928,
+    "wall_sec": 0.5929,
+    "sources": "game_control_summary_ps5_tekken_8: local://control_game/TEKKEN 8 Standard Edition.json | game_control_ps5_tekken_8_11_heat_smash: local://control_game/TEKKEN 8 Standard Edition.json",
+    "answer": "TEKKEN 8 บน PlayStation / PS5 มีปุ่มควบคุมดังนี้:\n- Square: หมัดซ้าย / ต่อยซ้าย - ออกหมัดแย็บหรือโจมตีด้วยมือซ้าย เป็นปุ่มหลักในการเริ่มต้นเฟรมคอมโบที่รวดเร็ว\n- Triangle: หมัดขวา / ต่อยขวา - ออกหมัดหนักหรือโจมตีด้วยมือขวา มักใช้ทำดาเมจแรงหรือสวนกลับ (Counter)\n- Cross: ลูกเตะซ้าย - ใช้ขาซ้ายเตะสกัดหรือโจมตีเพื่อเปิดช่องว่างของศัตรู\n- Circle: ลูกเตะขวา - ใช้ขาขวาหวดเตะอย่างรุนแรง มักเป็นท่าเคลียร์ระยะหรือตัดขาที่ทำดาเมจสูง\n- D-Pad Up: กระโดด - ควบคุมให้ตัวละครกระโดดขึ้นด้านบนเพื่อหลบการโจมตีล่าง หรือใช้กดร่วมกับปุ่มโจมตีกลางอากาศ\n- D-Pad Left: ถอยหลัง / บล็อก - บังคับตัวละครให้เดินถอยหลังเพื่อรักษาระยะ หรือใช้กดค้างเพื่อ \"บล็อก (Guard)\" การโจมตีระดับสูงและระดับกลางของศัตรู\n- D-Pad Down: ย่อตัว / ก้มหลบ - สั่งให้ตัวละครย่อตัวต่ำ ใช้ก้มหลบหมัดหรือการโจมตีระดับสูง (High) และใช้บล็อกการโจมตีระดับต่ำ (Low)\n- L (Left Stick): เคลื่อนที่ - ขยับทิศทางของตัวละคร بشكلทั่วไป หรือใช้โยกทิศทางในการเคลื่อนที่และเดินหน้าถอยหลัง\n- L1: สเปเชียลสไตล์ - กดเพื่อเปิด/ปิดโหมดช่วยเหลืออัจฉริยะ ช่วยให้กดคอมโบและท่าไม้ตายของตัวละครนั้น ๆ ได้ง่ายด้วยปุ่มเดียว\n- R1: เปิดใช้งาน Heat - ระเบิดพลัง Heat System เข้าสู่สถานะโอเวอร์ไดรฟ์เพื่อบัฟการโจมตีและเพิ่มคุณสมบัติพิเศษให้ตัวละคร\n- R1 (While in Heat): ฮีทสแมช - ปลดปล่อยท่าโจมตีเผด็จศึกอันทรงพลังปิดฉากคอมโบ โดยจะใช้เกจ Heat ที่เหลืออยู่ทั้งหมดทิ้งทันที\n- Options: หยุดเกม - หยุดเกมชั่วคราวเพื่อเข้าสู่หน้าต่างเมนู เช่น การเช็ก Move List (รายการท่า) หรือการตั้งค่าอื่น ๆ\nแหล่งข้อมูล: local://control_game/TEKKEN 8 Standard Edition.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-042",
+    "category": "play_booking_controls",
+    "question_no": 42,
+    "question": "TEKKEN 8 ปุ่มเตะขวากดอะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 42,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/games_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.5285,
+    "wall_sec": 0.5286,
+    "sources": "game_control_ps5_tekken_8_04_right_kick: local://control_game/TEKKEN 8 Standard Edition.json | game_control_summary_ps5_tekken_8: local://control_game/TEKKEN 8 Standard Edition.json",
+    "answer": "TEKKEN 8 บน PlayStation / PS5 ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- Circle: ลูกเตะขวา - ใช้ขาขวาหวดเตะอย่างรุนแรง มักเป็นท่าเคลียร์ระยะหรือตัดขาที่ทำดาเมจสูง\nแหล่งข้อมูล: local://control_game/TEKKEN 8 Standard Edition.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-043",
+    "category": "play_booking_controls",
+    "question_no": 43,
+    "question": "TEKKEN 8 ปุ่มต่อยซ้ายคือปุ่มไหน",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 43,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/games_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.5019,
+    "wall_sec": 0.502,
+    "sources": "game_control_ps5_tekken_8_01_left_punch: local://control_game/TEKKEN 8 Standard Edition.json | game_control_summary_ps5_tekken_8: local://control_game/TEKKEN 8 Standard Edition.json",
+    "answer": "TEKKEN 8 บน PlayStation / PS5 ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- Square: หมัดซ้าย / ต่อยซ้าย - ออกหมัดแย็บหรือโจมตีด้วยมือซ้าย เป็นปุ่มหลักในการเริ่มต้นเฟรมคอมโบที่รวดเร็ว\nแหล่งข้อมูล: local://control_game/TEKKEN 8 Standard Edition.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-044",
+    "category": "play_booking_controls",
+    "question_no": 44,
+    "question": "TEKKEN 8 ปุ่มเปิด Heat คืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 44,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/game_detail_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.4208,
+    "wall_sec": 0.4209,
+    "sources": "game_control_ps5_tekken_8_10_heat_activate: local://control_game/TEKKEN 8 Standard Edition.json | game_control_ps5_tekken_8_11_heat_smash: local://control_game/TEKKEN 8 Standard Edition.json",
+    "answer": "TEKKEN 8 บน PlayStation / PS5 ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- R1: เปิดใช้งาน Heat - ระเบิดพลัง Heat System เข้าสู่สถานะโอเวอร์ไดรฟ์เพื่อบัฟการโจมตีและเพิ่มคุณสมบัติพิเศษให้ตัวละคร\n- R1 (While in Heat): ฮีทสแมช - ปลดปล่อยท่าโจมตีเผด็จศึกอันทรงพลังปิดฉากคอมโบ โดยจะใช้เกจ Heat ที่เหลืออยู่ทั้งหมดทิ้งทันที\n- Cross: ลูกเตะซ้าย - ใช้ขาซ้ายเตะสกัดหรือโจมตีเพื่อเปิดช่องว่างของศัตรู\n- Circle: ลูกเตะขวา - ใช้ขาขวาหวดเตะอย่างรุนแรง มักเป็นท่าเคลียร์ระยะหรือตัดขาที่ทำดาเมจสูง\n- L1: สเปเชียลสไตล์ - กดเพื่อเปิด/ปิดโหมดช่วยเหลืออัจฉริยะ ช่วยให้กดคอมโบและท่าไม้ตายของตัวละครนั้น ๆ ได้ง่ายด้วยปุ่มเดียว\nแหล่งข้อมูล: local://control_game/TEKKEN 8 Standard Edition.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-045",
+    "category": "play_booking_controls",
+    "question_no": 45,
+    "question": "TEKKEN 8 ปุ่ม pause คืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 45,
+    "mode": "pipeline:competition_fact_card",
+    "route": "competition_rules/competition_rules_lookup",
+    "strategy": "pipeline",
+    "latency_sec": 0.2276,
+    "wall_sec": 0.2277,
+    "sources": "tekken8_pause_penalty: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "answer": "คำตอบ: Tekken 8 ไม่อนุญาตให้ Pause หลังเริ่มเกม หากตั้งใจกดหยุดเกมจะถูกปรับแพ้ 1 Round เว้นแต่ทั้งสองฝ่ายยินยอมและมีเหตุผลสมควร\n\nหลักฐานจากกติกา:\n- เอกสารระบุห้ามหยุดเกมหลังเริ่มแข่งขัน การ Pause โดยตั้งใจทำให้แพ้ 1 Round และ Pause ได้เฉพาะกรณีทั้งสองฝ่ายยินยอม/มีเหตุผลสมควร\n\nอ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-046",
+    "category": "play_booking_controls",
+    "question_no": 46,
+    "question": "Mario Kart 8 Deluxe ปุ่มเร่งเครื่องคืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 46,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/game_detail_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.6466,
+    "wall_sec": 0.6467,
+    "sources": "game_control_nintendo_mario_kart_8_deluxe_02_accelerate: local://control_game/Mario_Kart 8_Deluxe.json | game_control_summary_nintendo_mario_kart_8_deluxe: local://control_game/Mario_Kart 8_Deluxe.json",
+    "answer": "Mario Kart 8 Deluxe บน Nintendo Switch ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- A: เร่งเครื่อง - กดค้างไว้ตลอดเพื่อเร่งเครื่องยนต์ให้รถวิ่งไปข้างหน้า\nแหล่งข้อมูล: local://control_game/Mario_Kart 8_Deluxe.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-047",
+    "category": "play_booking_controls",
+    "question_no": 47,
+    "question": "Mario Kart 8 Deluxe ปุ่มดริฟต์กดอะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 47,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/games_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.4898,
+    "wall_sec": 0.4898,
+    "sources": "game_control_nintendo_mario_kart_8_deluxe_06_drift: local://control_game/Mario_Kart 8_Deluxe.json | game_control_summary_nintendo_mario_kart_8_deluxe: local://control_game/Mario_Kart 8_Deluxe.json",
+    "answer": "Mario Kart 8 Deluxe บน Nintendo Switch ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- ZR: ดริฟต์ - ใช้กระโดดและดริฟต์ขณะเข้าโค้งเพื่อทำความเร็ว หรือใช้ทำท่าผาดโผนเมื่อกระโดดออกจากเนินเร่งความเร็ว\nแหล่งข้อมูล: local://control_game/Mario_Kart 8_Deluxe.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-048",
+    "category": "play_booking_controls",
+    "question_no": 48,
+    "question": "Mario Kart 8 Deluxe ปุ่มใช้ไอเทมคืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 48,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/game_detail_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.5657,
+    "wall_sec": 0.5657,
+    "sources": "game_control_nintendo_mario_kart_8_deluxe_05_use_item_horn: local://control_game/Mario_Kart 8_Deluxe.json | game_control_summary_nintendo_mario_kart_8_deluxe: local://control_game/Mario_Kart 8_Deluxe.json",
+    "answer": "Mario Kart 8 Deluxe บน Nintendo Switch ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- ZL: ใช้ไอเทม / บีบแตร - ใช้ไอเทมที่เก็บมาจากกล่องสุ่ม หากไม่มีไอเทมจะเป็นการบีบแตรรถ\nแหล่งข้อมูล: local://control_game/Mario_Kart 8_Deluxe.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-049",
+    "category": "play_booking_controls",
+    "question_no": 49,
+    "question": "Mario Kart Live Home Circuit ปุ่มทั้งหมดมีอะไรบ้าง",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 49,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/games_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.7189,
+    "wall_sec": 0.719,
+    "sources": "game_control_summary_nintendo_mario_kart_live_home_circuit: local://control_game/Mario Kart Live Home Circuit.json | game_control_nintendo_mario_kart_live_home_circuit_05_drift: local://control_game/Mario Kart Live Home Circuit.json",
+    "answer": "Mario Kart Live: Home Circuit บน Nintendo Switch มีปุ่มควบคุมดังนี้:\nขณะขับ:\n- Left Stick: เลี้ยว - บังคับพวงมาลัยรถคาร์ทซ้ายหรือขวา\n- A: เร่งเครื่อง - กดค้างเพื่อเร่งความเร็วรถไปข้างหน้า\n- B: เบรก / ถอยหลัง - ชะลอรถ หรือกดค้างเพื่อถอยหลัง\n- L: ใช้ไอเทม - ใช้งานไอเทมที่เก็บได้ระหว่างแข่ง\n- R: ดริฟต์ - กดค้างขณะเลี้ยวเพื่อดริฟต์เข้าโค้ง\n- X: บีบแตร - บีบแตรส่งเสียงในเกม\n\nเมนู Pause:\n- X: ปรับความเร็ว (cc)\n- L: เปลี่ยนสภาพแวดล้อมสนาม\n- Y: เปิด/ปิดระบบช่วยขับ\n- R: จัดการแผนที่\n- D-Pad: ดูใบขับขี่และสถิติ\nแหล่งข้อมูล: local://control_game/Mario Kart Live Home Circuit.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-050",
+    "category": "play_booking_controls",
+    "question_no": 50,
+    "question": "Mario Kart Live Home Circuit ปุ่มเร่งเครื่องกดอะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 50,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/games_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.6686,
+    "wall_sec": 0.6686,
+    "sources": "game_control_nintendo_mario_kart_live_home_circuit_02_accelerate: local://control_game/Mario Kart Live Home Circuit.json | game_control_summary_nintendo_mario_kart_live_home_circuit: local://control_game/Mario Kart Live Home Circuit.json",
+    "answer": "Mario Kart Live: Home Circuit บน Nintendo Switch ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- A: เร่งเครื่อง - กดค้างเพื่อเร่งความเร็วรถไปข้างหน้า\nแหล่งข้อมูล: local://control_game/Mario Kart Live Home Circuit.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-051",
+    "category": "play_booking_controls",
+    "question_no": 51,
+    "question": "Call of Duty ปุ่มกระโดดคืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 51,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/game_detail_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.2814,
+    "wall_sec": 0.2814,
+    "sources": "game_control_ps5_call_of_duty_modern_warfare_iii_01_jump_mantle: local://control_game/Call of Duty Modern Warfare III.json | game_control_ps5_the_last_of_us_part_ii_12_jump: local://control_game/The Last of Us Part II.json",
+    "answer": "Call of Duty: Modern Warfare III บน PlayStation / PS5 ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- L1: กระโดด / ปีนป่าย - กระโดดข้ามสิ่งกีดขวาง (จุดเด่นของ Bumper Jumper)\nแหล่งข้อมูล: local://control_game/Call of Duty Modern Warfare III.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-052",
+    "category": "play_booking_controls",
+    "question_no": 52,
+    "question": "Call of Duty ปุ่มยิงคือปุ่มไหน",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 52,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/games_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.4159,
+    "wall_sec": 0.4159,
+    "sources": "game_control_summary_ps5_call_of_duty_modern_warfare_iii: local://control_game/Call of Duty Modern Warfare III.json | game_control_ps5_call_of_duty_modern_warfare_iii_09_switch_weapon: local://control_game/Call of Duty Modern Warfare III.json",
+    "answer": "Call of Duty: Modern Warfare III บน PlayStation / PS5 มีปุ่มควบคุมดังนี้:\n- L1: กระโดด / ปีนป่าย - กระโดดข้ามสิ่งกีดขวาง (จุดเด่นของ Bumper Jumper)\n- R3: เปลี่ยนท่า / สไลด์ / พุ่งหลบ - กดหรือกดค้างขณะวิ่งเพื่อสไลด์หรือพุ่ง (จุดเด่นของ Tactical)\n- Cross: ใช้อุปกรณ์ยุทธวิธี - ปาระเบิดแฟลชหรือสตัน\n- Circle: โจมตีประชิด - ใช้มีดฟันหรือพานท้ายปืนทุบศัตรู\n- L2: เล็งผ่านศูนย์เล็ง - กดค้างเพื่อยกปืนเล็ง\n- R2: ยิงอาวุธ - กดยิงปืน\n- R1: ใช้อุปกรณ์ทำลายล้าง - ขว้างระเบิดมือ ระเบิดเพลิง หรือมีดขว้าง\n- Square: โต้ตอบ / รีโหลด - เปลี่ยนกระสุนปืนหรือเก็บไอเทม\n- Triangle: สลับอาวุธ - สลับปืนหลักและปืนรอง\n- L3: วิ่ง / กลั้นหายใจ - กดเพื่อวิ่งเร็วขึ้น หรือกลั้นหายใจนิ่ง ๆ ตอนเล็งสไนเปอร์\nแหล่งข้อมูล: local://control_game/Call of Duty Modern Warfare III.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-053",
+    "category": "play_booking_controls",
+    "question_no": 53,
+    "question": "Call of Duty ปุ่มเล็งคืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 53,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/game_detail_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.4335,
+    "wall_sec": 0.4336,
+    "sources": "game_control_ps5_call_of_duty_modern_warfare_iii_05_aim_down_sight: local://control_game/Call of Duty Modern Warfare III.json | game_control_summary_ps5_call_of_duty_modern_warfare_iii: local://control_game/Call of Duty Modern Warfare III.json",
+    "answer": "Call of Duty: Modern Warfare III บน PlayStation / PS5 ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- L2: เล็งผ่านศูนย์เล็ง - กดค้างเพื่อยกปืนเล็ง\n- Triangle: สลับอาวุธ - สลับปืนหลักและปืนรอง\n- Circle: โจมตีประชิด - ใช้มีดฟันหรือพานท้ายปืนทุบศัตรู\n- R2: ยิงอาวุธ - กดยิงปืน\nแหล่งข้อมูล: local://control_game/Call of Duty Modern Warfare III.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-054",
+    "category": "play_booking_controls",
+    "question_no": 54,
+    "question": "Call of Duty ปุ่มรีโหลดคืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 54,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/game_detail_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.5018,
+    "wall_sec": 0.5019,
+    "sources": "game_control_ps5_call_of_duty_modern_warfare_iii_08_interact_reload: local://control_game/Call of Duty Modern Warfare III.json | game_control_summary_ps5_call_of_duty_modern_warfare_iii: local://control_game/Call of Duty Modern Warfare III.json",
+    "answer": "Call of Duty: Modern Warfare III บน PlayStation / PS5 ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- Square: โต้ตอบ / รีโหลด - เปลี่ยนกระสุนปืนหรือเก็บไอเทม\nแหล่งข้อมูล: local://control_game/Call of Duty Modern Warfare III.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-055",
+    "category": "play_booking_controls",
+    "question_no": 55,
+    "question": "Naruto X Boruto ปุ่มโจมตีคืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 55,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/game_detail_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.4731,
+    "wall_sec": 0.4731,
+    "sources": "game_control_ps5_naruto_x_boruto_ultimate_ninja_storm_connections_03_close_range_attack: local://control_game/Naruto X Boruto Ultimate Ninja Storm Connections.json | game_control_ps5_naruto_x_boruto_ultimate_ninja_storm_connections_08_guard: local://control_game/Naruto X Boruto Ultimate Ninja Storm Connections.json",
+    "answer": "NARUTO X BORUTO Ultimate Ninja STORM CONNECTIONS บน PlayStation / PS5 ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- Circle: โจมตีระยะประชิด - ต่อย/เตะ ทำคอมโบกระบวนท่า\n- R2: ป้องกัน - ตั้งการ์ดบล็อกการโจมตี\n- R1: กำลังเสริม 2 - เรียกตัวละครซัพพอร์ตคนที่ 2\n- Square: ดาวกระจาย - ปาดาวกระจายโจมตีระยะไกล\n- Cross: กระโดด - กระโดด หรือพุ่งตัวเข้าหาศัตรู\n- Touch Pad: เมนู - เปิดเมนูหยุดเกม\nแหล่งข้อมูล: local://control_game/Naruto X Boruto Ultimate Ninja Storm Connections.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-056",
+    "category": "play_booking_controls",
+    "question_no": 56,
+    "question": "Naruto X Boruto ปุ่มคาถานินจาคืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 56,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/game_detail_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.5747,
+    "wall_sec": 0.5748,
+    "sources": "game_control_ps5_naruto_x_boruto_ultimate_ninja_storm_connections_04_ninjutsu: local://control_game/Naruto X Boruto Ultimate Ninja Storm Connections.json | game_control_ps5_naruto_x_boruto_ultimate_ninja_storm_connections_11_use_battle_item_ninja_tools: local://control_game/Naruto X Boruto Ultimate Ninja Storm Connections.json",
+    "answer": "NARUTO X BORUTO Ultimate Ninja STORM CONNECTIONS บน PlayStation / PS5 ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- Triangle: คาถานินจา / จักระ - รีดเร้นจักระเพื่อใช้คาถาหรือท่าไม้ตายลับ (Secret Technique)\nแหล่งข้อมูล: local://control_game/Naruto X Boruto Ultimate Ninja Storm Connections.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-057",
+    "category": "play_booking_controls",
+    "question_no": 57,
+    "question": "Naruto X Boruto ปุ่มสลับร่างคืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 57,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/game_detail_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.5284,
+    "wall_sec": 0.5285,
+    "sources": "game_control_ps5_naruto_x_boruto_ultimate_ninja_storm_connections_07_substitution_ninjutsu: local://control_game/Naruto X Boruto Ultimate Ninja Storm Connections.json | game_control_summary_ps5_naruto_x_boruto_ultimate_ninja_storm_connections: local://control_game/Naruto X Boruto Ultimate Ninja Storm Connections.json",
+    "answer": "NARUTO X BORUTO Ultimate Ninja STORM CONNECTIONS บน PlayStation / PS5 ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- L2: คาถาสลับร่าง - สลับร่างหลบการโจมตี (ใช้เกจหลบหลีก)\n- Cross: กระโดด - กระโดด หรือพุ่งตัวเข้าหาศัตรู\n- R2: ป้องกัน - ตั้งการ์ดบล็อกการโจมตี\n- Square: ดาวกระจาย - ปาดาวกระจายโจมตีระยะไกล\n- Touch Pad: เมนู - เปิดเมนูหยุดเกม\n- Circle: โจมตีระยะประชิด - ต่อย/เตะ ทำคอมโบกระบวนท่า\nแหล่งข้อมูล: local://control_game/Naruto X Boruto Ultimate Ninja Storm Connections.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-058",
+    "category": "play_booking_controls",
+    "question_no": 58,
+    "question": "Little Nightmares II ปุ่มวิ่งคืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 58,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/game_detail_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.5188,
+    "wall_sec": 0.5189,
+    "sources": "game_control_ps5_little_nightmares_ii_04_sprint: local://control_game/LITTLE_NIGHTMARES_II.json | game_control_ps5_little_nightmares_ii_02_camera: local://control_game/LITTLE_NIGHTMARES_II.json",
+    "answer": "Little Nightmares II บน PlayStation / PS5 ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- Square: วิ่งเร็ว - กดเพื่อวิ่งสปรินต์ ใช้เพิ่มความเร็วในการเคลื่อนที่หรือวิ่งหนี\n- R (Right Stick): มุมกล้อง - แพนมุมกล้องเพื่อดูสภาพแวดล้อม และใช้ควบคุมทิศทางของไฟฉาย\n- Circle: ไฟฉาย / รีโมท - ใช้เปิดหรือปิดไฟฉายพกพา และใช้กดรีโมททีวี\n- Options: หยุดเกมชั่วคราว - หยุดเกมชั่วคราวและเข้าสู่เมนูหลัก\n- R1 / R2: จับ - กดค้างเพื่อจับสิ่งของ ปีนบันได ลากสิ่งของ หรือจับมือ Six\n- L1 / L2: ย่อตัว / สไลด์ - กดค้างเพื่อย่อตัวเดินย่อง หรือกดระหว่างวิ่งเพื่อสไลด์ลอดช่องแคบ\nแหล่งข้อมูล: local://control_game/LITTLE_NIGHTMARES_II.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-059",
+    "category": "play_booking_controls",
+    "question_no": 59,
+    "question": "Little Nightmares II ปุ่มกระโดดคืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 59,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/game_detail_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.299,
+    "wall_sec": 0.299,
+    "sources": "game_control_ps5_little_nightmares_ii_03_jump_throw_attack: local://control_game/LITTLE_NIGHTMARES_II.json | game_control_ps5_little_nightmares_ii_02_camera: local://control_game/LITTLE_NIGHTMARES_II.json",
+    "answer": "Little Nightmares II บน PlayStation / PS5 ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- Cross: กระโดด / ขว้าง / โจมตี - ใช้สำหรับกระโดด ขว้างไอเทม หรือใช้เหวี่ยงอาวุธโจมตี\nแหล่งข้อมูล: local://control_game/LITTLE_NIGHTMARES_II.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-060",
+    "category": "play_booking_controls",
+    "question_no": 60,
+    "question": "It Takes Two ปุ่มกระโดดคืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 60,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/game_detail_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.295,
+    "wall_sec": 0.295,
+    "sources": "game_control_ps5_it_takes_two_05_jump: local://control_game/It_Take_Two.json | game_control_summary_ps5_it_takes_two: local://control_game/It_Take_Two.json",
+    "answer": "It Takes Two บน PlayStation / PS5 ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- Cross (กากบาท): กระโดด - ใช้กระโดดข้ามสิ่งกีดขวาง (สามารถประยุกต์ใช้เพื่อ Double Jump ได้)\nแหล่งข้อมูล: local://control_game/It_Take_Two.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-061",
+    "category": "play_booking_controls",
+    "question_no": 61,
+    "question": "It Takes Two ปุ่มโต้ตอบคืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 61,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/game_control_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.4091,
+    "wall_sec": 0.4092,
+    "sources": "game_control_ps5_it_takes_two_07_interact: local://control_game/It_Take_Two.json | game_control_summary_ps5_it_takes_two: local://control_game/It_Take_Two.json",
+    "answer": "It Takes Two บน PlayStation / PS5 ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- Triangle (สามเหลี่ยม): โต้ตอบ - ใช้โต้ตอบกับสิ่งแวดล้อม เช่น ดึงคันโยก, หมุนวาล์ว, หรือคุยกับ NPC\nแหล่งข้อมูล: local://control_game/It_Take_Two.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-062",
+    "category": "play_booking_controls",
+    "question_no": 62,
+    "question": "Overcooked 2 ปุ่มหยิบของคืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 62,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/game_detail_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.4837,
+    "wall_sec": 0.4837,
+    "sources": "game_control_summary_ps5_overcooked: local://control_game/Overcooked + Overcooked! 2.json | game_control_ps5_overcooked_06_pause: local://control_game/Overcooked + Overcooked! 2.json",
+    "answer": "ยังไม่พบข้อมูลปุ่มควบคุมของ Overcooked 2 ที่ยืนยันได้ในฐานข้อมูลตอนนี้ครับ\nถ้าต้องการข้อมูลเกมนี้เพิ่มเติม สามารถถามเรื่องแนวเกม วิธีเล่นโดยสรุป หรือโซนที่เล่นได้แทนได้ครับ",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    }
+  },
+  {
+    "id": "PBC-063",
+    "category": "play_booking_controls",
+    "question_no": 63,
+    "question": "Overcooked 2 ปุ่มหั่นของคืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 63,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/game_detail_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.4486,
+    "wall_sec": 0.4486,
+    "sources": "game_control_summary_ps5_overcooked: local://control_game/Overcooked + Overcooked! 2.json | game_control_ps5_overcooked_03_chop_throw: local://control_game/Overcooked + Overcooked! 2.json",
+    "answer": "ยังไม่พบข้อมูลปุ่มควบคุมของ Overcooked 2 ที่ยืนยันได้ในฐานข้อมูลตอนนี้ครับ\nถ้าต้องการข้อมูลเกมนี้เพิ่มเติม สามารถถามเรื่องแนวเกม วิธีเล่นโดยสรุป หรือโซนที่เล่นได้แทนได้ครับ",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    }
+  },
+  {
+    "id": "PBC-064",
+    "category": "play_booking_controls",
+    "question_no": 64,
+    "question": "Super Smash Bros Ultimate ปุ่มโจมตีคืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 64,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/game_detail_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.5472,
+    "wall_sec": 0.5473,
+    "sources": "game_control_nintendo_super_smash_bros_ultimate_03_attack: local://control_game/Super Smash Bros Ultimate.json | game_control_nintendo_super_smash_bros_ultimate_04_special: local://control_game/Super Smash Bros Ultimate.json",
+    "answer": "ยังไม่พบข้อมูลปุ่มควบคุมของ Super Smash Bros Ultimate ที่ยืนยันได้ในฐานข้อมูลตอนนี้ครับ\nถ้าต้องการข้อมูลเกมนี้เพิ่มเติม สามารถถามเรื่องแนวเกม วิธีเล่นโดยสรุป หรือโซนที่เล่นได้แทนได้ครับ",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    }
+  },
+  {
+    "id": "PBC-065",
+    "category": "play_booking_controls",
+    "question_no": 65,
+    "question": "Super Smash Bros Ultimate ปุ่มกระโดดคืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 65,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/game_detail_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.3564,
+    "wall_sec": 0.3564,
+    "sources": "game_control_nintendo_super_smash_bros_ultimate_05_jump: local://control_game/Super Smash Bros Ultimate.json | game_control_summary_nintendo_super_smash_bros_ultimate: local://control_game/Super Smash Bros Ultimate.json",
+    "answer": "ยังไม่พบข้อมูลปุ่มควบคุมของ Super Smash Bros Ultimate ที่ยืนยันได้ในฐานข้อมูลตอนนี้ครับ\nถ้าต้องการข้อมูลเกมนี้เพิ่มเติม สามารถถามเรื่องแนวเกม วิธีเล่นโดยสรุป หรือโซนที่เล่นได้แทนได้ครับ",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    }
+  },
+  {
+    "id": "PBC-066",
+    "category": "play_booking_controls",
+    "question_no": 66,
+    "question": "Nintendo Switch Sports ใช้จอยยังไง",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 66,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "equipment/zone_equipment_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.446,
+    "wall_sec": 0.446,
+    "sources": "game_control_nintendo_moving_out_01_grab: local://control_game/Movine_Out_2.json | game_control_ps5_ea_sports_fc_24_03_through_pass: local://control_game/EA Sports FC 24.json",
+    "answer": "ยังไม่พบข้อมูลปุ่มควบคุมของ Nintendo Switch Sports ที่ยืนยันได้ในฐานข้อมูลตอนนี้ครับ\nถ้าต้องการข้อมูลเกมนี้เพิ่มเติม สามารถถามเรื่องแนวเกม วิธีเล่นโดยสรุป หรือโซนที่เล่นได้แทนได้ครับ",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    }
+  },
+  {
+    "id": "PBC-067",
+    "category": "play_booking_controls",
+    "question_no": 67,
+    "question": "Beat Saber เล่นยังไง",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 67,
+    "mode": "pipeline:game_detail_fast_path",
+    "route": "games/game_detail_lookup",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.1751,
+    "wall_sec": 0.1751,
+    "sources": "our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "Beat Saber: Beat Saber คือเกม VR จังหวะดนตรีที่ผู้เล่นใช้ดาบแสงฟันบล็อกตามจังหวะเพลง\nแนวเกม: เกม VR Rhythm\nวิธีเล่นโดยสรุป: สวมแว่น VR ถือคอนโทรลเลอร์ แล้วฟันบล็อกตามทิศทาง หลบสิ่งกีดขวาง และพยายามทำคะแนนตามจังหวะเพลง\nเล่นได้ที่: VR Zone\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-068",
+    "category": "play_booking_controls",
+    "question_no": 68,
+    "question": "Gran Turismo 7 ใช้พวงมาลัยยังไง",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 68,
+    "mode": "pipeline:games_fast_path",
+    "route": "games/games_lookup",
+    "strategy": "fastpath/rulebase",
+    "latency_sec": 0.2211,
+    "wall_sec": 0.2212,
+    "sources": "our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "Cockpit Zone มีเกมที่ยืนยันได้ดังนี้\n\nCockpit Zone (1 เกม)\n• Gran Turismo 7\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-069",
+    "category": "play_booking_controls",
+    "question_no": 69,
+    "question": "เกมนี้มีปุ่มอะไรบ้าง",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 69,
+    "mode": "pipeline:game_control_missing_game_context",
+    "route": "games/game_control_lookup",
+    "strategy": "pipeline",
+    "latency_sec": 0.1379,
+    "wall_sec": 0.1379,
+    "sources": "",
+    "answer": "ยังไม่แน่ใจว่าหมายถึงเกมไหนครับ จึงไม่ขอดึงปุ่มหรือวิธีเล่นของเกมอื่นมาตอบแทน\nให้พิมพ์ชื่อเกมมาด้วย เช่น `TEKKEN 8 มีปุ่มอะไรบ้าง`, `Mario Kart 8 Deluxe ใช้จอยยังไง` หรือถ้าเพิ่งถามชื่อเกมไปก่อนหน้า ให้ถามต่อใน session เดิมได้ครับ",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "game_control_needs_game_context"
+      ]
+    }
+  },
+  {
+    "id": "PBC-070",
+    "category": "play_booking_controls",
+    "question_no": 70,
+    "question": "เล่นยังไง",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 70,
+    "mode": "pipeline:game_control_missing_game_context",
+    "route": "games/game_control_lookup",
+    "strategy": "pipeline",
+    "latency_sec": 0.0267,
+    "wall_sec": 0.0268,
+    "sources": "",
+    "answer": "ยังไม่แน่ใจว่าหมายถึงเกมไหนครับ จึงไม่ขอดึงปุ่มหรือวิธีเล่นของเกมอื่นมาตอบแทน\nให้พิมพ์ชื่อเกมมาด้วย เช่น `TEKKEN 8 มีปุ่มอะไรบ้าง`, `Mario Kart 8 Deluxe ใช้จอยยังไง` หรือถ้าเพิ่งถามชื่อเกมไปก่อนหน้า ให้ถามต่อใน session เดิมได้ครับ",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "game_control_needs_game_context"
+      ]
+    }
+  },
+  {
+    "id": "PBC-071",
+    "category": "play_booking_controls",
+    "question_no": 71,
+    "question": "วิธีใช้จอย",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 71,
+    "mode": "pipeline:game_control_missing_game_context",
+    "route": "games/game_control_lookup",
+    "strategy": "pipeline",
+    "latency_sec": 0.0335,
+    "wall_sec": 0.0336,
+    "sources": "",
+    "answer": "ยังไม่แน่ใจว่าหมายถึงเกมไหนครับ จึงไม่ขอดึงปุ่มหรือวิธีเล่นของเกมอื่นมาตอบแทน\nให้พิมพ์ชื่อเกมมาด้วย เช่น `TEKKEN 8 มีปุ่มอะไรบ้าง`, `Mario Kart 8 Deluxe ใช้จอยยังไง` หรือถ้าเพิ่งถามชื่อเกมไปก่อนหน้า ให้ถามต่อใน session เดิมได้ครับ",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "game_control_needs_game_context"
+      ]
+    }
+  },
+  {
+    "id": "PBC-072",
+    "category": "play_booking_controls",
+    "question_no": 72,
+    "question": "มีปุ่มอะไรบ้างถ้ายังไม่ได้บอกชื่อเกม",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 72,
+    "mode": "pipeline:game_control_missing_game_context",
+    "route": "games/game_control_lookup",
+    "strategy": "pipeline",
+    "latency_sec": 0.4249,
+    "wall_sec": 0.4249,
+    "sources": "",
+    "answer": "ยังไม่แน่ใจว่าหมายถึงเกมไหนครับ จึงไม่ขอดึงปุ่มหรือวิธีเล่นของเกมอื่นมาตอบแทน\nให้พิมพ์ชื่อเกมมาด้วย เช่น `TEKKEN 8 มีปุ่มอะไรบ้าง`, `Mario Kart 8 Deluxe ใช้จอยยังไง` หรือถ้าเพิ่งถามชื่อเกมไปก่อนหน้า ให้ถามต่อใน session เดิมได้ครับ",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "game_control_needs_game_context"
+      ]
+    }
+  },
+  {
+    "id": "PBC-073",
+    "category": "play_booking_controls",
+    "question_no": 73,
+    "question": "ปุ่มทั้งหมดของเกมที่เพิ่งถามคืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 73,
+    "mode": "pipeline:game_meta_clarification",
+    "route": "games/game_meta_clarification",
+    "strategy": "pipeline",
+    "latency_sec": 0.5056,
+    "wall_sec": 0.5056,
+    "sources": "our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "ถามเรื่องเกมได้ครับ แต่คำถามนี้ยังกว้างเกินไป เลยไม่ขอดึงเกมใดเกมหนึ่งมาตอบแทน\n\nตัวอย่างที่ถามได้:\n- `มีเกมอะไรบ้าง`\n- `PS5 มีเกมอะไรบ้าง`\n- `TEKKEN 8 คือเกมอะไร`\n- `TEKKEN 8 มีปุ่มอะไรบ้าง`\n- `Nintendo Switch มีเกมแนวปาร์ตี้ไหม`",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "game_meta_query_needs_specific_intent"
+      ]
+    }
+  },
+  {
+    "id": "PBC-074",
+    "category": "play_booking_controls",
+    "question_no": 74,
+    "question": "ถ้าถามต่อว่าใช้จอยยังไงระบบจำเกมเดิมไหม",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 74,
+    "mode": "pipeline:game_meta_clarification",
+    "route": "games/game_meta_clarification",
+    "strategy": "pipeline",
+    "latency_sec": 0.62,
+    "wall_sec": 0.62,
+    "sources": "our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "ถามเรื่องเกมได้ครับ แต่คำถามนี้ยังกว้างเกินไป เลยไม่ขอดึงเกมใดเกมหนึ่งมาตอบแทน\n\nตัวอย่างที่ถามได้:\n- `มีเกมอะไรบ้าง`\n- `PS5 มีเกมอะไรบ้าง`\n- `TEKKEN 8 คือเกมอะไร`\n- `TEKKEN 8 มีปุ่มอะไรบ้าง`\n- `Nintendo Switch มีเกมแนวปาร์ตี้ไหม`",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "game_meta_query_needs_specific_intent"
+      ]
+    }
+  },
+  {
+    "id": "PBC-075",
+    "category": "play_booking_controls",
+    "question_no": 75,
+    "question": "ถามปุ่มเฉพาะของเกมที่ไม่มีข้อมูลจะตอบยังไง",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 75,
+    "mode": "pipeline:game_meta_clarification",
+    "route": "games/game_meta_clarification",
+    "strategy": "pipeline",
+    "latency_sec": 0.6932,
+    "wall_sec": 0.6933,
+    "sources": "our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "ถามเรื่องเกมได้ครับ แต่คำถามนี้ยังกว้างเกินไป เลยไม่ขอดึงเกมใดเกมหนึ่งมาตอบแทน\n\nตัวอย่างที่ถามได้:\n- `มีเกมอะไรบ้าง`\n- `PS5 มีเกมอะไรบ้าง`\n- `TEKKEN 8 คือเกมอะไร`\n- `TEKKEN 8 มีปุ่มอะไรบ้าง`\n- `Nintendo Switch มีเกมแนวปาร์ตี้ไหม`",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "game_meta_query_needs_specific_intent"
+      ]
+    }
+  },
+  {
+    "id": "PBC-076",
+    "category": "play_booking_controls",
+    "question_no": 76,
+    "question": "Minecraft มีปุ่มอะไรบ้างในศูนย์",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 76,
+    "mode": "pipeline:game_control_missing_game_context",
+    "route": "games/game_control_lookup",
+    "strategy": "pipeline",
+    "latency_sec": 0.3157,
+    "wall_sec": 0.3157,
+    "sources": "",
+    "answer": "ยังไม่แน่ใจว่าหมายถึงเกมไหนครับ จึงไม่ขอดึงปุ่มหรือวิธีเล่นของเกมอื่นมาตอบแทน\nให้พิมพ์ชื่อเกมมาด้วย เช่น `TEKKEN 8 มีปุ่มอะไรบ้าง`, `Mario Kart 8 Deluxe ใช้จอยยังไง` หรือถ้าเพิ่งถามชื่อเกมไปก่อนหน้า ให้ถามต่อใน session เดิมได้ครับ",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "game_control_needs_game_context"
+      ]
+    }
+  },
+  {
+    "id": "PBC-077",
+    "category": "play_booking_controls",
+    "question_no": 77,
+    "question": "ROV มีปุ่มในเครื่องศูนย์ไหม",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 77,
+    "mode": "pipeline:game_control_missing_game_context",
+    "route": "games/game_control_lookup",
+    "strategy": "pipeline",
+    "latency_sec": 0.3223,
+    "wall_sec": 0.3223,
+    "sources": "",
+    "answer": "ยังไม่แน่ใจว่าหมายถึงเกมไหนครับ จึงไม่ขอดึงปุ่มหรือวิธีเล่นของเกมอื่นมาตอบแทน\nให้พิมพ์ชื่อเกมมาด้วย เช่น `TEKKEN 8 มีปุ่มอะไรบ้าง`, `Mario Kart 8 Deluxe ใช้จอยยังไง` หรือถ้าเพิ่งถามชื่อเกมไปก่อนหน้า ให้ถามต่อใน session เดิมได้ครับ",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "game_control_needs_game_context"
+      ]
+    }
+  },
+  {
+    "id": "PBC-078",
+    "category": "play_booking_controls",
+    "question_no": 78,
+    "question": "เกมที่ไม่มีชื่อชัดเจนควรตอบปุ่มไหม",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 78,
+    "mode": "pipeline:game_control_missing_game_context",
+    "route": "games/game_control_lookup",
+    "strategy": "pipeline",
+    "latency_sec": 0.502,
+    "wall_sec": 0.5021,
+    "sources": "",
+    "answer": "ยังไม่แน่ใจว่าหมายถึงเกมไหนครับ จึงไม่ขอดึงปุ่มหรือวิธีเล่นของเกมอื่นมาตอบแทน\nให้พิมพ์ชื่อเกมมาด้วย เช่น `TEKKEN 8 มีปุ่มอะไรบ้าง`, `Mario Kart 8 Deluxe ใช้จอยยังไง` หรือถ้าเพิ่งถามชื่อเกมไปก่อนหน้า ให้ถามต่อใน session เดิมได้ครับ",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "game_control_needs_game_context"
+      ]
+    }
+  },
+  {
+    "id": "PBC-079",
+    "category": "play_booking_controls",
+    "question_no": 79,
+    "question": "ถ้าอยากรู้ปุ่มของ PS5 ต้องถามแบบไหน",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 79,
+    "mode": "pipeline:game_control_missing_game_context",
+    "route": "games/game_control_lookup",
+    "strategy": "pipeline",
+    "latency_sec": 0.167,
+    "wall_sec": 0.1674,
+    "sources": "",
+    "answer": "ยังไม่แน่ใจว่าหมายถึงเกมไหนครับ จึงไม่ขอดึงปุ่มหรือวิธีเล่นของเกมอื่นมาตอบแทน\nให้พิมพ์ชื่อเกมมาด้วย เช่น `TEKKEN 8 มีปุ่มอะไรบ้าง`, `Mario Kart 8 Deluxe ใช้จอยยังไง` หรือถ้าเพิ่งถามชื่อเกมไปก่อนหน้า ให้ถามต่อใน session เดิมได้ครับ",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "game_control_needs_game_context"
+      ]
+    }
+  },
+  {
+    "id": "PBC-080",
+    "category": "play_booking_controls",
+    "question_no": 80,
+    "question": "controller ของ Nintendo ใช้ยังไง",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 80,
+    "mode": "pipeline:game_control_missing_game_context",
+    "route": "games/game_control_lookup",
+    "strategy": "pipeline",
+    "latency_sec": 0.2802,
+    "wall_sec": 0.2803,
+    "sources": "",
+    "answer": "ยังไม่แน่ใจว่าหมายถึงเกมไหนครับ จึงไม่ขอดึงปุ่มหรือวิธีเล่นของเกมอื่นมาตอบแทน\nให้พิมพ์ชื่อเกมมาด้วย เช่น `TEKKEN 8 มีปุ่มอะไรบ้าง`, `Mario Kart 8 Deluxe ใช้จอยยังไง` หรือถ้าเพิ่งถามชื่อเกมไปก่อนหน้า ให้ถามต่อใน session เดิมได้ครับ",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "game_control_needs_game_context"
+      ]
+    }
+  },
+  {
+    "id": "PBC-081",
+    "category": "play_booking_controls",
+    "question_no": 81,
+    "question": "ปุ่ม Options ใน TEKKEN 8 ทำอะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 81,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/games_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.4108,
+    "wall_sec": 0.4109,
+    "sources": "game_control_ps5_tekken_8_12_pause: local://control_game/TEKKEN 8 Standard Edition.json | game_control_ps5_tekken_8_09_special_style: local://control_game/TEKKEN 8 Standard Edition.json",
+    "answer": "TEKKEN 8 บน PlayStation / PS5 ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- Options: หยุดเกม - หยุดเกมชั่วคราวเพื่อเข้าสู่หน้าต่างเมนู เช่น การเช็ก Move List (รายการท่า) หรือการตั้งค่าอื่น ๆ\nแหล่งข้อมูล: local://control_game/TEKKEN 8 Standard Edition.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-082",
+    "category": "play_booking_controls",
+    "question_no": 82,
+    "question": "ปุ่ม Cross ใน TEKKEN 8 ทำอะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 82,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/games_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.3611,
+    "wall_sec": 0.3611,
+    "sources": "game_control_ps5_tekken_8_03_left_kick: local://control_game/TEKKEN 8 Standard Edition.json | game_control_ps5_tekken_8_01_left_punch: local://control_game/TEKKEN 8 Standard Edition.json",
+    "answer": "TEKKEN 8 บน PlayStation / PS5 ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- Cross: ลูกเตะซ้าย - ใช้ขาซ้ายเตะสกัดหรือโจมตีเพื่อเปิดช่องว่างของศัตรู\nแหล่งข้อมูล: local://control_game/TEKKEN 8 Standard Edition.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-083",
+    "category": "play_booking_controls",
+    "question_no": 83,
+    "question": "ปุ่ม Circle ใน TEKKEN 8 ทำอะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 83,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/games_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.4261,
+    "wall_sec": 0.4262,
+    "sources": "game_control_ps5_tekken_8_04_right_kick: local://control_game/TEKKEN 8 Standard Edition.json | game_control_ps5_tekken_8_03_left_kick: local://control_game/TEKKEN 8 Standard Edition.json",
+    "answer": "TEKKEN 8 บน PlayStation / PS5 ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- Circle: ลูกเตะขวา - ใช้ขาขวาหวดเตะอย่างรุนแรง มักเป็นท่าเคลียร์ระยะหรือตัดขาที่ทำดาเมจสูง\nแหล่งข้อมูล: local://control_game/TEKKEN 8 Standard Edition.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-084",
+    "category": "play_booking_controls",
+    "question_no": 84,
+    "question": "ปุ่ม Triangle ใน TEKKEN 8 ทำอะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 84,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/games_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.497,
+    "wall_sec": 0.497,
+    "sources": "game_control_ps5_tekken_8_02_right_punch: local://control_game/TEKKEN 8 Standard Edition.json | game_control_ps5_tekken_8_09_special_style: local://control_game/TEKKEN 8 Standard Edition.json",
+    "answer": "Call of Duty: Modern Warfare III บน PlayStation / PS5 ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- Triangle: สลับอาวุธ - สลับปืนหลักและปืนรอง\nแหล่งข้อมูล: local://control_game/Call of Duty Modern Warfare III.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-085",
+    "category": "play_booking_controls",
+    "question_no": 85,
+    "question": "ปุ่ม Square ใน TEKKEN 8 ทำอะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 85,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/games_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.394,
+    "wall_sec": 0.394,
+    "sources": "game_control_ps5_tekken_8_01_left_punch: local://control_game/TEKKEN 8 Standard Edition.json | game_control_ps5_tekken_8_03_left_kick: local://control_game/TEKKEN 8 Standard Edition.json",
+    "answer": "TEKKEN 8 บน PlayStation / PS5 ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- Square: หมัดซ้าย / ต่อยซ้าย - ออกหมัดแย็บหรือโจมตีด้วยมือซ้าย เป็นปุ่มหลักในการเริ่มต้นเฟรมคอมโบที่รวดเร็ว\nแหล่งข้อมูล: local://control_game/TEKKEN 8 Standard Edition.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-086",
+    "category": "play_booking_controls",
+    "question_no": 86,
+    "question": "D-Pad ใน TEKKEN 8 ใช้ทำอะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 86,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/games_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.3873,
+    "wall_sec": 0.3873,
+    "sources": "game_control_ps5_tekken_8_05_jump: local://control_game/TEKKEN 8 Standard Edition.json | game_control_ps5_tekken_8_06_move_backward: local://control_game/TEKKEN 8 Standard Edition.json",
+    "answer": "TEKKEN 8 บน PlayStation / PS5 ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- D-Pad Up: กระโดด - ควบคุมให้ตัวละครกระโดดขึ้นด้านบนเพื่อหลบการโจมตีล่าง หรือใช้กดร่วมกับปุ่มโจมตีกลางอากาศ\n- D-Pad Left: ถอยหลัง / บล็อก - บังคับตัวละครให้เดินถอยหลังเพื่อรักษาระยะ หรือใช้กดค้างเพื่อ \"บล็อก (Guard)\" การโจมตีระดับสูงและระดับกลางของศัตรู\n- D-Pad Down: ย่อตัว / ก้มหลบ - สั่งให้ตัวละครย่อตัวต่ำ ใช้ก้มหลบหมัดหรือการโจมตีระดับสูง (High) และใช้บล็อกการโจมตีระดับต่ำ (Low)\n- L (Left Stick): เคลื่อนที่ - ขยับทิศทางของตัวละคร بشكلทั่วไป หรือใช้โยกทิศทางในการเคลื่อนที่และเดินหน้าถอยหลัง\n- Cross: ลูกเตะซ้าย - ใช้ขาซ้ายเตะสกัดหรือโจมตีเพื่อเปิดช่องว่างของศัตรู\nแหล่งข้อมูล: local://control_game/TEKKEN 8 Standard Edition.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-087",
+    "category": "play_booking_controls",
+    "question_no": 87,
+    "question": "L1 ใน TEKKEN 8 ใช้ทำอะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 87,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/games_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.3182,
+    "wall_sec": 0.3183,
+    "sources": "game_control_ps5_tekken_8_09_special_style: local://control_game/TEKKEN 8 Standard Edition.json | game_control_summary_ps5_tekken_8: local://control_game/TEKKEN 8 Standard Edition.json",
+    "answer": "TEKKEN 8 บน PlayStation / PS5 ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- L1: สเปเชียลสไตล์ - กดเพื่อเปิด/ปิดโหมดช่วยเหลืออัจฉริยะ ช่วยให้กดคอมโบและท่าไม้ตายของตัวละครนั้น ๆ ได้ง่ายด้วยปุ่มเดียว\nแหล่งข้อมูล: local://control_game/TEKKEN 8 Standard Edition.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-088",
+    "category": "play_booking_controls",
+    "question_no": 88,
+    "question": "R1 ใน TEKKEN 8 ใช้ทำอะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 88,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/games_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.303,
+    "wall_sec": 0.3031,
+    "sources": "game_control_ps5_tekken_8_10_heat_activate: local://control_game/TEKKEN 8 Standard Edition.json | game_control_ps5_tekken_8_11_heat_smash: local://control_game/TEKKEN 8 Standard Edition.json",
+    "answer": "TEKKEN 8 บน PlayStation / PS5 ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- R1: เปิดใช้งาน Heat - ระเบิดพลัง Heat System เข้าสู่สถานะโอเวอร์ไดรฟ์เพื่อบัฟการโจมตีและเพิ่มคุณสมบัติพิเศษให้ตัวละคร\nแหล่งข้อมูล: local://control_game/TEKKEN 8 Standard Edition.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-089",
+    "category": "play_booking_controls",
+    "question_no": 89,
+    "question": "Mario Kart Live ปุ่มจัดการแผนที่คืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 89,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/game_detail_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.7158,
+    "wall_sec": 0.7159,
+    "sources": "game_control_nintendo_mario_kart_live_home_circuit_10_map: local://control_game/Mario Kart Live Home Circuit.json | game_control_summary_nintendo_mario_kart_live_home_circuit: local://control_game/Mario Kart Live Home Circuit.json",
+    "answer": "Mario Kart Live: Home Circuit บน Nintendo Switch ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- R: จัดการแผนที่\nแหล่งข้อมูล: local://control_game/Mario Kart Live Home Circuit.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-090",
+    "category": "play_booking_controls",
+    "question_no": 90,
+    "question": "Mario Kart Live ปุ่มดูข้อมูลรถคืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 90,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/game_detail_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.5464,
+    "wall_sec": 0.5465,
+    "sources": "game_control_summary_nintendo_mario_kart_live_home_circuit: local://control_game/Mario Kart Live Home Circuit.json | game_control_nintendo_mario_kart_live_home_circuit_10_map: local://control_game/Mario Kart Live Home Circuit.json",
+    "answer": "Mario Kart Live: Home Circuit บน Nintendo Switch มีปุ่มควบคุมดังนี้:\nขณะขับ:\n- Left Stick: เลี้ยว - บังคับพวงมาลัยรถคาร์ทซ้ายหรือขวา\n- A: เร่งเครื่อง - กดค้างเพื่อเร่งความเร็วรถไปข้างหน้า\n- B: เบรก / ถอยหลัง - ชะลอรถ หรือกดค้างเพื่อถอยหลัง\n- L: ใช้ไอเทม - ใช้งานไอเทมที่เก็บได้ระหว่างแข่ง\n- R: ดริฟต์ - กดค้างขณะเลี้ยวเพื่อดริฟต์เข้าโค้ง\n- X: บีบแตร - บีบแตรส่งเสียงในเกม\n\nเมนู Pause:\n- X: ปรับความเร็ว (cc)\n- L: เปลี่ยนสภาพแวดล้อมสนาม\n- Y: เปิด/ปิดระบบช่วยขับ\n- R: จัดการแผนที่\n- D-Pad: ดูใบขับขี่และสถิติ\nแหล่งข้อมูล: local://control_game/Mario Kart Live Home Circuit.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "fact_answer_may_be_too_verbose"
+      ]
+    }
+  },
+  {
+    "id": "PBC-091",
+    "category": "play_booking_controls",
+    "question_no": 91,
+    "question": "Mario Kart 8 ปุ่มเบรกคืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 91,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/game_detail_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.4213,
+    "wall_sec": 0.4214,
+    "sources": "game_control_nintendo_mario_kart_8_deluxe_03_brake: local://control_game/Mario_Kart 8_Deluxe.json | game_control_summary_nintendo_mario_kart_8_deluxe: local://control_game/Mario_Kart 8_Deluxe.json",
+    "answer": "Mario Kart 8 Deluxe บน Nintendo Switch ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- B: เบรก / ถอยหลัง - แตะเพื่อเบรกชะลอความเร็ว หรือกดค้างไว้เมื่อรถหยุดนิ่งเพื่อขับถอยหลัง\nแหล่งข้อมูล: local://control_game/Mario_Kart 8_Deluxe.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-092",
+    "category": "play_booking_controls",
+    "question_no": 92,
+    "question": "Mario Kart 8 ปุ่มมองหลังคืออะไร",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 92,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/game_detail_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.4641,
+    "wall_sec": 0.4641,
+    "sources": "game_control_nintendo_mario_kart_8_deluxe_04_look_backward: local://control_game/Mario_Kart 8_Deluxe.json | game_control_nintendo_mario_kart_8_deluxe_03_brake: local://control_game/Mario_Kart 8_Deluxe.json",
+    "answer": "Mario Kart 8 Deluxe บน Nintendo Switch ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:\n- X: มองหลัง - หันมุมกล้องไปมองด้านหลังเพื่อเช็กระยะห่างของคู่แข่งหรือไอเทมที่ตามมา\nแหล่งข้อมูล: local://control_game/Mario_Kart 8_Deluxe.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-093",
+    "category": "play_booking_controls",
+    "question_no": 93,
+    "question": "Call of Duty ปุ่มทั้งหมดมีอะไรบ้าง",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 93,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/games_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.5665,
+    "wall_sec": 0.5666,
+    "sources": "game_control_summary_ps5_call_of_duty_modern_warfare_iii: local://control_game/Call of Duty Modern Warfare III.json | game_control_ps5_call_of_duty_modern_warfare_iii_04_melee: local://control_game/Call of Duty Modern Warfare III.json",
+    "answer": "Call of Duty: Modern Warfare III บน PlayStation / PS5 มีปุ่มควบคุมดังนี้:\n- L1: กระโดด / ปีนป่าย - กระโดดข้ามสิ่งกีดขวาง (จุดเด่นของ Bumper Jumper)\n- R3: เปลี่ยนท่า / สไลด์ / พุ่งหลบ - กดหรือกดค้างขณะวิ่งเพื่อสไลด์หรือพุ่ง (จุดเด่นของ Tactical)\n- Cross: ใช้อุปกรณ์ยุทธวิธี - ปาระเบิดแฟลชหรือสตัน\n- Circle: โจมตีประชิด - ใช้มีดฟันหรือพานท้ายปืนทุบศัตรู\n- L2: เล็งผ่านศูนย์เล็ง - กดค้างเพื่อยกปืนเล็ง\n- R2: ยิงอาวุธ - กดยิงปืน\n- R1: ใช้อุปกรณ์ทำลายล้าง - ขว้างระเบิดมือ ระเบิดเพลิง หรือมีดขว้าง\n- Square: โต้ตอบ / รีโหลด - เปลี่ยนกระสุนปืนหรือเก็บไอเทม\n- Triangle: สลับอาวุธ - สลับปืนหลักและปืนรอง\n- L3: วิ่ง / กลั้นหายใจ - กดเพื่อวิ่งเร็วขึ้น หรือกลั้นหายใจนิ่ง ๆ ตอนเล็งสไนเปอร์\nแหล่งข้อมูล: local://control_game/Call of Duty Modern Warfare III.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-094",
+    "category": "play_booking_controls",
+    "question_no": 94,
+    "question": "Naruto X Boruto ปุ่มทั้งหมดมีอะไรบ้าง",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 94,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/games_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.5579,
+    "wall_sec": 0.5579,
+    "sources": "game_control_ps5_naruto_x_boruto_ultimate_ninja_storm_connections_08_guard: local://control_game/Naruto X Boruto Ultimate Ninja Storm Connections.json | game_control_summary_ps5_naruto_x_boruto_ultimate_ninja_storm_connections: local://control_game/Naruto X Boruto Ultimate Ninja Storm Connections.json",
+    "answer": "NARUTO X BORUTO Ultimate Ninja STORM CONNECTIONS บน PlayStation / PS5 มีปุ่มควบคุมดังนี้:\n- LS (Left Stick): เคลื่อนที่ - บังคับทิศทางของตัวละคร\n- RS (Right Stick) Left/Right: เปลี่ยนตัวละครหลัก - ดันซ้ายหรือขวาเพื่อสลับบังคับเพื่อนร่วมทีมทันที\n- Circle: โจมตีระยะประชิด - ต่อย/เตะ ทำคอมโบกระบวนท่า\n- Triangle: คาถานินจา / จักระ - รีดเร้นจักระเพื่อใช้คาถาหรือท่าไม้ตายลับ (Secret Technique)\n- Square: ดาวกระจาย - ปาดาวกระจายโจมตีระยะไกล\n- Cross: กระโดด - กระโดด หรือพุ่งตัวเข้าหาศัตรู\n- L2: คาถาสลับร่าง - สลับร่างหลบการโจมตี (ใช้เกจหลบหลีก)\n- R2: ป้องกัน - ตั้งการ์ดบล็อกการโจมตี\n- L1: กำลังเสริม 1 - เรียกตัวละครซัพพอร์ตคนที่ 1\n- R1: กำลังเสริม 2 - เรียกตัวละครซัพพอร์ตคนที่ 2\n- D-Pad: ใช้อุปกรณ์นินจา - ใช้งานไอเทม 4 ทิศทาง\n- Touch Pad: เมนู - เปิดเมนูหยุดเกม\nแหล่งข้อมูล: local://control_game/Naruto X Boruto Ultimate Ninja Storm Connections.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-095",
+    "category": "play_booking_controls",
+    "question_no": 95,
+    "question": "Overcooked 2 ปุ่มทั้งหมดมีอะไรบ้าง",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 95,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/games_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.5288,
+    "wall_sec": 0.5289,
+    "sources": "game_control_summary_ps5_overcooked: local://control_game/Overcooked + Overcooked! 2.json | game_control_ps5_overcooked_06_pause: local://control_game/Overcooked + Overcooked! 2.json",
+    "answer": "ยังไม่พบข้อมูลปุ่มควบคุมของ Overcooked 2 ที่ยืนยันได้ในฐานข้อมูลตอนนี้ครับ\nถ้าต้องการข้อมูลเกมนี้เพิ่มเติม สามารถถามเรื่องแนวเกม วิธีเล่นโดยสรุป หรือโซนที่เล่นได้แทนได้ครับ",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-096",
+    "category": "play_booking_controls",
+    "question_no": 96,
+    "question": "Super Smash Bros ปุ่มทั้งหมดมีอะไรบ้าง",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 96,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/games_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.6538,
+    "wall_sec": 0.6539,
+    "sources": "game_control_summary_nintendo_super_smash_bros_ultimate: local://control_game/Super Smash Bros Ultimate.json | game_control_nintendo_super_smash_bros_ultimate_03_attack: local://control_game/Super Smash Bros Ultimate.json",
+    "answer": "Super Smash Bros. Ultimate บน Nintendo Switch มีปุ่มควบคุมดังนี้:\n- L (Left Stick): เคลื่อนที่ - ใช้เดิน วิ่ง หรือย่อตัว รวมถึงกำหนดทิศทางการโจมตีท่าต่าง ๆ\n- R (Right Stick): โจมตีสแมช - ก้านอนาล็อกขวาใช้สำหรับปล่อยท่า Smash Attack ไปตามทิศทางที่ดันอย่างรวดเร็ว\n- A: โจมตีปกติ - การโจมตีพื้นฐาน (Jab/Tilt/Aerial) ขึ้นอยู่กับทิศทางของอนาล็อกซ้าย\n- B: โจมตีพิเศษ - ท่าไม้ตายของตัวละคร (Special Moves) สามารถเปลี่ยนท่าได้ตามทิศทางอนาล็อกซ้าย\n- X / Y: กระโดด - ใช้กระโดด สามารถกดพร้อมปุ่มโจมตีเพื่อทำ Aerial Attack ได้\n- ZL / ZR: โล่ป้องกัน - กางโล่เพื่อป้องกันการโจมตี สามารถกดพร้อมอนาล็อกซ้ายเพื่อกลิ้งหลบได้\n- L / R: จับทุ่ม - จับคู่ต่อสู้เพื่อทุ่ม ใช้แก้ทางคู่ต่อสู้ที่กำลังกางโล่ได้ดี\n- D-Pad (Up, Down, Left, Right): ยั่วยุ - แสดงท่าทางยั่วยุตามทิศทางที่กด (Up Taunt, Down Taunt, Side Taunt)\n- + (Plus): หยุดเกม - หยุดเกมชั่วคราว\nแหล่งข้อมูล: local://control_game/Super Smash Bros Ultimate.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-097",
+    "category": "play_booking_controls",
+    "question_no": 97,
+    "question": "It Takes Two ปุ่มทั้งหมดมีอะไรบ้าง",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 97,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/games_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.4991,
+    "wall_sec": 0.4994,
+    "sources": "game_control_summary_ps5_it_takes_two: local://control_game/It_Take_Two.json | game_control_ps5_it_takes_two_11_rope_grapple: local://control_game/It_Take_Two.json",
+    "answer": "It Takes Two บน PlayStation / PS5 มีปุ่มควบคุมดังนี้:\n- L (Left Stick): เคลื่อนที่ - บังคับทิศทางการเคลื่อนที่และการเดินของตัวละคร\n- L3 (Click Left Stick): วิ่งสปรินต์ - กดก้านอนาล็อกซ้ายลงไปเพื่อวิ่งสปรินต์ เพิ่มความเร็วในการเคลื่อนที่\n- R (Right Stick): มุมกล้อง - หมุนและปรับมุมกล้องเพื่อดูสภาพแวดล้อมรอบตัว\n- R3 (Click Right Stick): ค้นหาผู้เล่นอื่น - แสดงตำแหน่งของผู้เล่นอีกคน (คู่หู) บนหน้าจอ เมื่ออยู่ห่างกันหรือหลงทาง\n- Cross (กากบาท): กระโดด - ใช้กระโดดข้ามสิ่งกีดขวาง (สามารถประยุกต์ใช้เพื่อ Double Jump ได้)\n- Square (สี่เหลี่ยม): พุ่งตัว - พุ่งตัวไปข้างหน้าอย่างรวดเร็วเพื่อหลบการโจมตี หรือพุ่งข้ามเหวที่กว้าง\n- Triangle (สามเหลี่ยม): โต้ตอบ - ใช้โต้ตอบกับสิ่งแวดล้อม เช่น ดึงคันโยก, หมุนวาล์ว, หรือคุยกับ NPC\n- Circle (วงกลม): ยกเลิก - ยกเลิกคำสั่ง หรือกดเพื่อออกจากเมนูต่าง ๆ\n- L2: ความสามารถประจำด่าน (ซ้าย) - ใช้อุปกรณ์หรือความสามารถพิเศษที่ได้รับเฉพาะในด่านนั้น ๆ มักใช้เป็นแอคชั่นเล็งหรืออุปกรณ์ชิ้นรอง\n- R2: ความสามารถประจำด่าน (ขวา) - ใช้อุปกรณ์หรือความสามารถพิเศษที่ได้รับเฉพาะในด่านนั้น ๆ มักใช้เป็นแอคชั่นยิง โจมตี หรืออุปกรณ์ชิ้นหลัก\n- R1: โหนเชือก / สลิง - ใช้เหวี่ยงตะขอสลิงเพื่อโหนเชือกข้ามไปยังจุดต่าง ๆ ในฉากที่กำหนดไว้\n- Options: หยุดเกมชั่วคราว - หยุดเกมชั่วคราวและเปิดหน้าต่างเมนูหลัก\nแหล่งข้อมูล: local://control_game/It_Take_Two.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-098",
+    "category": "play_booking_controls",
+    "question_no": 98,
+    "question": "Little Nightmares II ปุ่มทั้งหมดมีอะไรบ้าง",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 98,
+    "mode": "pipeline:game_control_vector_first",
+    "route": "games/games_lookup",
+    "strategy": "rag/vector",
+    "latency_sec": 0.6939,
+    "wall_sec": 0.6939,
+    "sources": "game_control_ps5_little_nightmares_ii_02_camera: local://control_game/LITTLE_NIGHTMARES_II.json | game_control_ps5_little_nightmares_ii_04_sprint: local://control_game/LITTLE_NIGHTMARES_II.json",
+    "answer": "Little Nightmares II บน PlayStation / PS5 มีปุ่มควบคุมดังนี้:\n- L (Left Stick): เคลื่อนที่ - บังคับทิศทางการเดินและเคลื่อนที่ของตัวละคร\n- R (Right Stick): มุมกล้อง - แพนมุมกล้องเพื่อดูสภาพแวดล้อม และใช้ควบคุมทิศทางของไฟฉาย\n- Cross: กระโดด / ขว้าง / โจมตี - ใช้สำหรับกระโดด ขว้างไอเทม หรือใช้เหวี่ยงอาวุธโจมตี\n- Square: วิ่งเร็ว - กดเพื่อวิ่งสปรินต์ ใช้เพิ่มความเร็วในการเคลื่อนที่หรือวิ่งหนี\n- Circle: ไฟฉาย / รีโมท - ใช้เปิดหรือปิดไฟฉายพกพา และใช้กดรีโมททีวี\n- Triangle: เรียก - ส่งเสียงเรียกตะโกนหา Six หรือใช้เพื่อจูงมือ\n- L1 / L2: ย่อตัว / สไลด์ - กดค้างเพื่อย่อตัวเดินย่อง หรือกดระหว่างวิ่งเพื่อสไลด์ลอดช่องแคบ\n- R1 / R2: จับ - กดค้างเพื่อจับสิ่งของ ปีนบันได ลากสิ่งของ หรือจับมือ Six\n- Options: หยุดเกมชั่วคราว - หยุดเกมชั่วคราวและเข้าสู่เมนูหลัก\nแหล่งข้อมูล: local://control_game/LITTLE_NIGHTMARES_II.json",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    }
+  },
+  {
+    "id": "PBC-099",
+    "category": "play_booking_controls",
+    "question_no": 99,
+    "question": "ถ้าไม่รู้ชื่อเกมแต่ถามปุ่ม ระบบควรถามกลับไหม",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 99,
+    "mode": "pipeline:game_meta_clarification",
+    "route": "games/game_meta_clarification",
+    "strategy": "pipeline",
+    "latency_sec": 0.2303,
+    "wall_sec": 0.2304,
+    "sources": "our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation",
+    "answer": "ถามเรื่องเกมได้ครับ แต่คำถามนี้ยังกว้างเกินไป เลยไม่ขอดึงเกมใดเกมหนึ่งมาตอบแทน\n\nตัวอย่างที่ถามได้:\n- `มีเกมอะไรบ้าง`\n- `PS5 มีเกมอะไรบ้าง`\n- `TEKKEN 8 คือเกมอะไร`\n- `TEKKEN 8 มีปุ่มอะไรบ้าง`\n- `Nintendo Switch มีเกมแนวปาร์ตี้ไหม`",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "game_meta_query_needs_specific_intent"
+      ]
+    }
+  },
+  {
+    "id": "PBC-100",
+    "category": "play_booking_controls",
+    "question_no": 100,
+    "question": "วิธีเล่นเกมที่ไม่อยู่ในรายการต้องตอบยังไง",
+    "expected_support": "game_controls_or_clarification",
+    "note": "",
+    "run_position": 100,
+    "mode": "pipeline:game_control_missing_game_context",
+    "route": "games/game_control_lookup",
+    "strategy": "pipeline",
+    "latency_sec": 0.6312,
+    "wall_sec": 0.6312,
+    "sources": "",
+    "answer": "ยังไม่แน่ใจว่าหมายถึงเกมไหนครับ จึงไม่ขอดึงปุ่มหรือวิธีเล่นของเกมอื่นมาตอบแทน\nให้พิมพ์ชื่อเกมมาด้วย เช่น `TEKKEN 8 มีปุ่มอะไรบ้าง`, `Mario Kart 8 Deluxe ใช้จอยยังไง` หรือถ้าเพิ่งถามชื่อเกมไปก่อนหน้า ให้ถามต่อใน session เดิมได้ครับ",
+    "trace": null,
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "game_control_needs_game_context"
+      ]
+    }
+  }
+]

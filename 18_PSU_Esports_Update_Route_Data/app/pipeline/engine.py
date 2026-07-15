@@ -40,6 +40,7 @@ from app.runtime.fast_answer import (
     HITS,
     FastAnswer,
     answer_equipment,
+    answer_competition_rules,
     answer_games,
     answer_price,
     answer_schedule,
@@ -641,6 +642,10 @@ class AnswerQualityPipeline:
                 trace.append(PipelineTrace("deterministic", handler.__name__, result.confidence, result.mode))
                 return result
 
+        if route.category == "general":
+            trace.append(PipelineTrace("deterministic", "skip_rule_matcher_for_general_route", 0.0, "general route must not borrow PSU rule answers"))
+            return None
+
         if route.category == "competition_rules":
             trace.append(PipelineTrace("category_rule_base", "skipped", 0.0, "competition_rules uses curated competition data"))
             return None
@@ -675,7 +680,7 @@ class AnswerQualityPipeline:
         if category == "games":
             return (answer_games, answer_equipment)
         if category == "competition_rules":
-            return ()
+            return (answer_competition_rules,)
         if category in {"reservation", "rules", "penalty", "contact", "overview", "knowledge", "events_news"}:
             return (answer_static_domain,)
         return (answer_price, answer_schedule, answer_equipment, answer_games, answer_static_domain)

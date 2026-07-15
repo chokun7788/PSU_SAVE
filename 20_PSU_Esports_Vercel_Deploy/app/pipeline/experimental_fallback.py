@@ -378,10 +378,6 @@ def build_experimental_fallback(
     allow_llm: bool,
     limit: int = 5,
 ) -> ExperimentalFallback:
-    soft = _soft_related_fallback(question)
-    if soft is not None:
-        return soft
-
     if route.category == "general" and not allow_llm:
         trace = PipelineTrace(
             "experimental_rag_fallback",
@@ -397,6 +393,10 @@ def build_experimental_fallback(
             0.42,
             trace,
         )
+
+    soft = _soft_related_fallback(question)
+    if soft is not None:
+        return soft
 
     if allow_llm and route.category == "general":
         llm_error = ""

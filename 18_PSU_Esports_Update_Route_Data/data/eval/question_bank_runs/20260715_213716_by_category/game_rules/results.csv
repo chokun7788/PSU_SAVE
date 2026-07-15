@@ -1,0 +1,935 @@
+﻿id,category,question_no,question,expected_support,mode,route,strategy,latency_sec,wall_sec,sources,answer
+GR-001,game_rules,1,ROV คือเกมอะไร,competition_rules,pipeline:game_detail_fast_path,games/game_availability_lookup,fastpath/rulebase,0.6271,0.6577,competition_rules: data/competition_rules,"RoV / Arena of Valor: RoV หรือ Arena of Valor คือเกม MOBA บนมือถือที่ผู้เล่นแบ่งเป็นทีม เลือกฮีโร่ และร่วมกันทำลายป้อม/ฐานของฝ่ายตรงข้าม
+แนวเกม: เกม MOBA แบบทีม
+วิธีเล่นโดยสรุป: โดยทั่วไปผู้เล่นต้องเลือกตำแหน่งและฮีโร่ให้เหมาะกับทีม เก็บเลเวล คุมแผนที่ ช่วยทีมไฟต์ และดันเลนเพื่อทำลายฐานคู่แข่ง ในฐานข้อมูลของศูนย์มีข้อมูลฝั่งกติกาการแข่งขัน แต่ยังไม่พบว่าอยู่ในรายการเกมให้เล่นของศูนย์
+เล่นได้ที่: มีข้อมูลกติกาการแข่งขัน แต่ยังไม่พบในรายการเกมให้เล่นของศูนย์
+แหล่งข้อมูล: data/competition_rules"
+GR-002,game_rules,2,ROV เป็นเกมแนวไหน,competition_rules,pipeline:related_guidance_fast_path,equipment/related_guidance,fastpath/rulebase,0.1796,0.1796,home: https://esports.phuket.psu.ac.th/home | our_games: https://esports.phuket.psu.ac.th/Services/our-games,"สรุปแนวเกมที่มีข้อมูลยืนยันได้:
+- FPS/Tactical/PC: VALORANT, Counter-Strike 2, Call of Duty: Warzone
+- MOBA: League of Legends
+- Fighting: TEKKEN 8
+- Racing/ขับรถ: Gran Turismo 7 ใน Cockpit Zone
+- VR/Rhythm: Beat Saber ใน VR Zone
+- Party/เล่นกับเพื่อน: Mario Kart 8 Deluxe, Overcooked 2, Super Smash Bros Ultimate, Nintendo Switch Sports
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home และ https://esports.phuket.psu.ac.th/Services/our-games"
+GR-003,game_rules,3,ROV มีข้อมูลกติกาการแข่งขันไหม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.8668,0.8669,rov_team_size_active_players: local://competition_rules/competition_rules_rov_blueket_2025_men,"คำตอบ: ไฟล์กติกา RoV ระบุว่าแข่งขันในโหมด 5v5 จึงยืนยันได้ว่าลงแข่งพร้อมกันฝ่ายละ 5 คน แต่ยังไม่พบจำนวนสมาชิกทีมรวมหรือตัวสำรองที่ระบุชัดเจนในไฟล์นี้
+
+หลักฐานจากกติกา:
+- เอกสารระบุการเข้าแข่งขันในโหมดการแข่งขัน 5v5 แต่ไม่ได้ระบุจำนวน roster รวม/ตัวสำรองแบบชัดเจน
+
+หมายเหตุ: คำตอบนี้เป็นการสรุปจากข้อมูลที่มีในไฟล์กติกา ไม่ใช่ข้อมูล roster/ตัวสำรองที่ระบุเป็นตัวเลขแยกไว้
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+GR-004,game_rules,4,ROV แข่งขันใช้ผู้เล่นกี่คน,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.2039,0.2039,rov_team_size_active_players: local://competition_rules/competition_rules_rov_blueket_2025_men,"คำตอบ: ไฟล์กติกา RoV ระบุว่าแข่งขันในโหมด 5v5 จึงยืนยันได้ว่าลงแข่งพร้อมกันฝ่ายละ 5 คน แต่ยังไม่พบจำนวนสมาชิกทีมรวมหรือตัวสำรองที่ระบุชัดเจนในไฟล์นี้
+
+หลักฐานจากกติกา:
+- เอกสารระบุการเข้าแข่งขันในโหมดการแข่งขัน 5v5 แต่ไม่ได้ระบุจำนวน roster รวม/ตัวสำรองแบบชัดเจน
+
+หมายเหตุ: คำตอบนี้เป็นการสรุปจากข้อมูลที่มีในไฟล์กติกา ไม่ใช่ข้อมูล roster/ตัวสำรองที่ระบุเป็นตัวเลขแยกไว้
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+GR-005,game_rules,5,ROV มีตัวสำรองได้ไหม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.1924,0.1924,rov_team_size_active_players: local://competition_rules/competition_rules_rov_blueket_2025_men,"คำตอบ: ไฟล์กติกา RoV ระบุว่าแข่งขันในโหมด 5v5 จึงยืนยันได้ว่าลงแข่งพร้อมกันฝ่ายละ 5 คน แต่ยังไม่พบจำนวนสมาชิกทีมรวมหรือตัวสำรองที่ระบุชัดเจนในไฟล์นี้
+
+หลักฐานจากกติกา:
+- เอกสารระบุการเข้าแข่งขันในโหมดการแข่งขัน 5v5 แต่ไม่ได้ระบุจำนวน roster รวม/ตัวสำรองแบบชัดเจน
+
+หมายเหตุ: คำตอบนี้เป็นการสรุปจากข้อมูลที่มีในไฟล์กติกา ไม่ใช่ข้อมูล roster/ตัวสำรองที่ระบุเป็นตัวเลขแยกไว้
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+GR-006,game_rules,6,ROV ถ้ามาสายจะเกิดอะไรขึ้น,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.3299,0.33,rov_late_start_forfeit: local://competition_rules/competition_rules_rov_blueket_2025_men,"คำตอบ: RoV ถ้าเริ่มแข่งล่าช้าเกิน 15 นาที จะถูกปรับแพ้ในรอบนั้น
+
+หลักฐานจากกติกา:
+- เอกสารระบุว่าหากเริ่มการแข่งขันล่าช้าเกิน 15 นาที ทีมที่ทำให้เกิดความล่าช้าจะถูกปรับแพ้
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+GR-007,game_rules,7,ROV ถ้าเกมหลุดระหว่างแข่งต้องทำยังไง,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.5421,0.5421,rov_pause_disconnect: local://competition_rules/competition_rules_rov_blueket_2025_men,"คำตอบ: RoV แต่ละทีมสามารถหยุดเกมได้สูงสุด 5 ครั้ง ครั้งละไม่เกิน 1 นาที และเมื่อครบเวลาต้องกลับเข้าแข่งขันต่อ
+
+หลักฐานจากกติกา:
+- เอกสารระบุแต่ละทีมมีสิทธิ์ขอหยุดเกม 5 ครั้ง ครั้งละไม่เกิน 1 นาที กรณีเกิดปัญหาเช่นหลุดเกมหรือขัดข้อง
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+GR-008,game_rules,8,ROV ขอ pause ระหว่างแข่งได้ไหม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.3496,0.3497,rov_pause_disconnect: local://competition_rules/competition_rules_rov_blueket_2025_men,"คำตอบ: RoV แต่ละทีมสามารถหยุดเกมได้สูงสุด 5 ครั้ง ครั้งละไม่เกิน 1 นาที และเมื่อครบเวลาต้องกลับเข้าแข่งขันต่อ
+
+หลักฐานจากกติกา:
+- เอกสารระบุแต่ละทีมมีสิทธิ์ขอหยุดเกม 5 ครั้ง ครั้งละไม่เกิน 1 นาที กรณีเกิดปัญหาเช่นหลุดเกมหรือขัดข้อง
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+GR-009,game_rules,9,ROV มีบทลงโทษอะไรบ้าง,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.6027,0.6028,competition_rules_rov_blueket_2025_men_s06_c04: local://competition_rules/competition_rules_rov_blueket_2025_men | competition_rules_rov_blueket_2025_men_s08_c01: local://competition_rules/competition_rules_rov_blueket_2025_men | competition_rules_rov_blueket_2025_men_s08_c02: local://competition_rules/competition_rules_rov_blueket_2025_men,"คำตอบ: 6.1.2.1. บทลงโทษ: ปรับแพ้ในเกมที่พบการกระทำผิดในทันทีและตัดสิทธิ์ทีมผู้เข้าแข่งขันดังกล่าวออกจากการแข่งขันทันที
+
+รายละเอียดที่เกี่ยวข้อง:
+- 6.1.3.1. บทลงโทษ: ปรับแพ้ในเกมที่พบการกระทำผิดในทันทีและตัดสิทธิ์ทีมผู้เข้าแข่งขันดังกล่าวออกจากการแข่งขันทันที
+- 6.1.4.1. บทลงโทษ: ปรับแพ้ในเกมที่พบการกระทำผิดในทันทีและตัดสิทธิ์ทีมผู้เข้าแข่งขันดังกล่าวออกจากการแข่งขันทันที
+- 6.1.5.1. บทลงโทษ: ปรับแพ้ในเกมที่พบการกระทำผิดในทันทีและตัดสิทธิ์ทีมผู้เข้าแข่งขันดังกล่าวออกจาก
+- 6.1.1.1. บทลงโทษ: ปรับแพ้ในเกมที่พบการกระทำผิดในทันที
+- 6.2.4.1. บทลงโทษ: หากทางทีมงานตรวจสอบพบ หรือได้รับการร้องเรียนจากผู้อื่น ทีมงานจะมีมาตรการลงโทษผู้เข้าแข่งขันที่ฝ่าฝืนกติกา โดยตัดสิทธิ์การเข้าร่วมแข่งขัน
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+GR-010,game_rules,10,ROV ใช้โปรแกรมช่วยเล่นได้ไหม,competition_rules,pipeline:games_known_unsupported_fast_path,games/game_availability_lookup,fastpath/rulebase,0.2917,0.2917,our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation,"ยังไม่พบ RoV / Arena of Valor ในรายการเกมที่ยืนยันได้ของ PSU Esports Studio - Phuket ครับ
+ในฐานข้อมูลมีข้อมูลกติกาการแข่งขันของเกมนี้ แต่ยังไม่พบว่าอยู่ในรายการเกมให้เล่นของศูนย์
+ถ้าต้องการเล่นเกมนี้ ควรสอบถามเจ้าหน้าที่ก่อนจองหรือก่อนเข้าใช้บริการ
+
+เกมที่มีข้อมูลยืนยันตอนนี้ทั้งหมด 36 เกม:
+
+PC Zone (6 เกม)
+• VALORANT
+• Counter-Strike 2
+• PUBG: BATTLEGROUNDS
+• Call of Duty: Warzone
+• TEKKEN 8
+• League of Legends
+
+PlayStation 5 Zone (18 เกม)
+• TEKKEN 8
+• Marvel's Spider-Man 2
+• Fortnite
+• God of War Ragnarok
+• Overcooked 2
+• Gran Turismo 7
+• Beat Saber
+• It Takes Two
+• LITTLE NIGHTMARES II
+• Monster Hunter Rise
+• EA Sports FC 24
+• FINAL FANTASY XVI
+• Hogwarts Legacy
+• NARUTO X BORUTO Ultimate Ninja STORM CONNECTIONS
+• Resident Evil 4
+• Resident Evil Village
+• The Last of Us Part I / Part II
+• Uncharted: Legacy of Thieves Collection
+
+Nintendo Switch Zone (16 เกม)
+• Mario Kart 8 Deluxe
+• Mario Kart Live: Home Circuit
+• Overcooked 2
+• Super Smash Bros Ultimate
+• Nintendo Switch Sports
+• Animal Crossing: New Horizons
+• It Takes Two
+• LITTLE NIGHTMARES II
+• Luigi's Mansion 3
+• Mario Party Superstars
+• Monster Hunter Rise
+• Moving Out 2
+• New Super Mario Bros. U Deluxe
+• Super Mario Odyssey
+• The Legend of Zelda: Breath of the Wild
+• Ring Fit Adventure
+
+Cockpit Zone (1 เกม)
+• Gran Turismo 7
+
+VR Zone (2 เกม)
+• Beat Saber
+• Horizon Call of the Mountain
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+GR-011,game_rules,11,ROV ถ้าทีมไม่ครบลงแข่งได้ไหม,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.437,0.437,competition_rules_rov_blueket_2025_men_s06_c03: local://competition_rules/competition_rules_rov_blueket_2025_men | competition_rules_rov_blueket_2025_men_s06_c01: local://competition_rules/competition_rules_rov_blueket_2025_men | competition_rules_rov_blueket_2025_men_s06_c02: local://competition_rules/competition_rules_rov_blueket_2025_men,"คำตอบ: 4.5.4.ผู้ตัดสินอาจสั่งให้หยุดพักเกมได้ ไม่ว่าด้วยเหตุใดก็ตาม
+
+รายละเอียดที่เกี่ยวข้อง:
+- 4.3.1.ในกรณีที่มีผู้เข้าแข่งขันหลุดออกจากเกม ให้ทำการหยุดเกมชั่วคราว โดยแต่ละทีมสามารถกดหยุดเกมได้ทีมละ 5 ครั้ง ครั้งละไม่เกิน 1 นาที ถ้าหากเกินเวลาดังกล่าว อีกทีมสามารถกด Resume ได้ทันทีและทำการแข่งขันต่อตามปกติ
+- 4.3.4.หากเกิดการ First Blood ขึ้นแล้ว หรือเริ่มเกมไปแล้วเกินกว่า 2 นาทีในเกม ห้ามไม่ให้ผู้เข้าแข่งขันทั้งสองฝ่ายขอเริ่มเกมใหม่ เว้นแต่ได้รับการอนุญาตจากคู่แข่ง และ/หรือตามเห็นสมควรจากกรรมการ
+- 4.2.6.ห้ามเลือกฮีโร่ซ้ำในการแข่งขัน หรือการกระทำอื่นใดอันทำให้เกิดปัญหาในระบบทุกกรณี
+- 4.3.3.ในกรณีที่ยังไม่มี First Blood และเวลาในเกมยังไม่เกิน 2 นาที ทีมที่ผู้เข้าแข่งขันหลุดสามารถแจ้งอีกทีมหนึ่งเพื่อขอเริ่มเกมใหม่ได้ทันที โดยผู้เข้าแข่งขันทุกคนจะต้องเลือกฮีโร่และตำแหน่งการเล่นเหมือนเกมแรกก่อนมีการขอเริ่มเกมใหม่
+- 4.2.4.ในการแข่งขัน ผู้เข้าแข่งขันทุกคนสามารถเลือกเล่นฮีโร่ได้ทั้งหมด
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+GR-012,game_rules,12,ROV รูปแบบการแข่งขันเป็นแบบไหน,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.5182,0.5182,rov_format_bo3_all_rounds: local://competition_rules/competition_rules_rov_blueket_2025_men,"คำตอบ: RoV รายการ Blueket Games 2025 ประเภททีมชาย แข่ง Best of 3 (BO3) ทุกรอบ
+
+หลักฐานจากกติกา:
+- เอกสารหัวข้อ 3. รูปแบบการแข่งขัน ระบุว่าแข่งแบบออฟไลน์ และแข่ง Best of 3 (BO3) ทุกรอบ
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+GR-013,game_rules,13,ROV รอบชิงเล่นกี่เกม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.2114,0.2114,rov_format_bo3_all_rounds: local://competition_rules/competition_rules_rov_blueket_2025_men,"คำตอบ: RoV รายการ Blueket Games 2025 ประเภททีมชาย แข่ง Best of 3 (BO3) ทุกรอบ
+
+หลักฐานจากกติกา:
+- เอกสารหัวข้อ 3. รูปแบบการแข่งขัน ระบุว่าแข่งแบบออฟไลน์ และแข่ง Best of 3 (BO3) ทุกรอบ
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+GR-014,game_rules,14,ROV มีการแบนตัวละครหรือแผนที่ไหม,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.5428,0.5429,competition_rules_rov_blueket_2025_men_s06_c01: local://competition_rules/competition_rules_rov_blueket_2025_men | competition_rules_rov_blueket_2025_men_s06_c04: local://competition_rules/competition_rules_rov_blueket_2025_men | competition_rules_rov_blueket_2025_men_s08_c01: local://competition_rules/competition_rules_rov_blueket_2025_men,"คำตอบ: 4.2.2.ใช้การแบนและเลือกฮีโร่แบบ Global Ban/Pick
+
+รายละเอียดที่เกี่ยวข้อง:
+- 4.6.3.2. ครั้งที่ 2: เพิ่มสิทธิการแบนฮีโร่ให้ฝั่งตรงข้ามเป็นจำนวน 1 ครั้ง
+- 4.6.3.3. ครั้งที่ 3: เพิ่มสิทธิการแบนฮีโร่ให้ฝั่งตรงข้ามเป็นจำนวน 2 ครั้ง
+- 6.1.1.1. บทลงโทษ: ปรับแพ้ในเกมที่พบการกระทำผิดในทันที
+- 4.2.1.ผู้เข้าแข่งขันทุกคนต้องมีฮีโร่อย่างน้อย 18 ตัว สำหรับการเข้าแข่งขันในโหมด “การแข่งขัน 5v5” (ชื่อเดิม Tournament Mode)
+- 4.3. การหลุดออกจากเกม (Disconnect) และการเริ่มเกมใหม่ (Rematch)
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+GR-015,game_rules,15,ROV ใช้บัญชีส่วนตัวหรือบัญชีที่จัดให้,competition_rules,pipeline:hybrid_guarded_rerank,games/games_lookup,rag/vector,4.9977,4.9985,our_games_scraped_moving_out_2: https://esports.phuket.psu.ac.th/Services/our-games | game_detail_valorant: https://esports.computing.psu.ac.th/reservation | our_games_scraped_mario_party_superstars: https://esports.phuket.psu.ac.th/Services/our-games | our_games_scraped_super_mario_odyssey: https://esports.phuket.psu.ac.th/Services/our-games,"Moving Out 2: Moving Out 2 เป็นภาคต่อสุดแหวกแนวของเกมจำลองการเคลื่อนที่ตามหลักฟิสิกส์ที่มีชื่อเสียงระดับโลก ทำงานเป็น F.A.R.T เดี่ยวหรือกับเพื่อนอีกสามคนสวมเครื่องแบบ Smooth Moves ของคุณและช่วยเหลือชาว Packmore และที่อื่น ๆ ให้แพ็คของและส่งออก!
+อยู่ในรายการเกมหน้า Our Games ส่วน: Nintendo Switch
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games, https://esports.computing.psu.ac.th/reservation"
+GR-016,game_rules,16,ROV เปลี่ยนสมาชิกทีมได้ไหม,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.3249,0.325,competition_rules_rov_blueket_2025_men_s06_c01: local://competition_rules/competition_rules_rov_blueket_2025_men | competition_rules_rov_blueket_2025_men_s06_c03: local://competition_rules/competition_rules_rov_blueket_2025_men | competition_rules_rov_blueket_2025_men_s06_c02: local://competition_rules/competition_rules_rov_blueket_2025_men,"คำตอบ: 4.3.1.ในกรณีที่มีผู้เข้าแข่งขันหลุดออกจากเกม ให้ทำการหยุดเกมชั่วคราว โดยแต่ละทีมสามารถกดหยุดเกมได้ทีมละ 5 ครั้ง ครั้งละไม่เกิน 1 นาที ถ้าหากเกินเวลาดังกล่าว อีกทีมสามารถกด Resume ได้ทันทีและทำการแข่งขันต่อตามปกติ
+
+รายละเอียดที่เกี่ยวข้อง:
+- 4.3.4.หากเกิดการ First Blood ขึ้นแล้ว หรือเริ่มเกมไปแล้วเกินกว่า 2 นาทีในเกม ห้ามไม่ให้ผู้เข้าแข่งขันทั้งสองฝ่ายขอเริ่มเกมใหม่ เว้นแต่ได้รับการอนุญาตจากคู่แข่ง และ/หรือตามเห็นสมควรจากกรรมการ
+- 4.5.4.ผู้ตัดสินอาจสั่งให้หยุดพักเกมได้ ไม่ว่าด้วยเหตุใดก็ตาม
+- 4.3.3.ในกรณีที่ยังไม่มี First Blood และเวลาในเกมยังไม่เกิน 2 นาที ทีมที่ผู้เข้าแข่งขันหลุดสามารถแจ้งอีกทีมหนึ่งเพื่อขอเริ่มเกมใหม่ได้ทันที โดยผู้เข้าแข่งขันทุกคนจะต้องเลือกฮีโร่และตำแหน่งการเล่นเหมือนเกมแรกก่อนมีการขอเริ่มเกมใหม่
+- 4.2.5.ในส่วนของสกิน ห้ามใช้สกินนอกจากสกิน Default เท่านั้น
+- 4.1.1.ห้ามใช้ชื่อตัวละครหรือคําพูดที่เป็นการหยาบคายหรือเสียดสีผู้อื่น
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+GR-017,game_rules,17,ROV ถ้าพบ bug ต้องแจ้งใคร,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.278,0.278,competition_rules_rov_blueket_2025_men_s06_c02: local://competition_rules/competition_rules_rov_blueket_2025_men | competition_rules_rov_blueket_2025_men_s06_c01: local://competition_rules/competition_rules_rov_blueket_2025_men | competition_rules_rov_blueket_2025_men_s08_c01: local://competition_rules/competition_rules_rov_blueket_2025_men,"คำตอบ: 4.3.2.หากผู้เข้าแข่งขันหลุดด้วยเหตุผลอื่น ๆ ที่เป็นเหตุสุดวิสัย (เช่นเครือข่ายผู้ให้บริการอินเตอร์เน็ตล่มทั้งบริเวณ หรือเกิดข้อผิดพลาดจากเซิร์ฟเวอร์ของเกม) ทางทีมที่มีส่วนเสียหาย ต้องแจ้งทีมงาน และขึ้นอยู่กับดุลยพินิจของกรรมการ ว่าจะเห็นสมควรให้แข่งขันใหม่หรือไม่
+
+รายละเอียดที่เกี่ยวข้อง:
+- 4.5.1.1. หากผู้เข้าแข่งขันคนใดจงใจไม่เชื่อมต่อเกม โดยไม่แจ้งให้ผู้ตัดสินทราบ ผู้ตัดสินมีสิทธิไม่อนุมัติคำขอหยุดเกมนั้น ๆ
+- 4.1.3.กรรมการจะเป็นผู้แจ้งหมายเลขห้อง เพื่อให้ผู้เข้าแข่งขันทั้งสองทีมเข้าห้องตามหมายเลขที่กำหนดไว้
+- 4.2.1.ผู้เข้าแข่งขันทุกคนต้องมีฮีโร่อย่างน้อย 18 ตัว สำหรับการเข้าแข่งขันในโหมด “การแข่งขัน 5v5” (ชื่อเดิม Tournament Mode)
+- 6.1.5.ห้ามมิให้ผู้เข้าแข่งขันเสพ ค้า หรือดำเนินการใด ๆ อันเกี่ยวกับยาเสพติด บุหรี่ และอาวุธ และอื่น ๆ ที่ต้องห้ามตามกฎหมายการแข่งขันทันที
+- 4.3.1.ในกรณีที่มีผู้เข้าแข่งขันหลุดออกจากเกม ให้ทำการหยุดเกมชั่วคราว โดยแต่ละทีมสามารถกดหยุดเกมได้ทีมละ 5 ครั้ง ครั้งละไม่เกิน 1 นาที ถ้าหากเกินเวลาดังกล่าว อีกทีมสามารถกด Resume ได้ทันทีและทำการแข่งขันต่อตามปกติ
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+GR-018,game_rules,18,ROV ใช้ voice chat ได้ไหม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.1732,0.1732,rov_device_mobile_only: local://competition_rules/competition_rules_rov_blueket_2025_men,"คำตอบ: RoV ใช้โทรศัพท์มือถือในการแข่งขัน ไม่อนุญาตให้ใช้ Tablet หรือ iPad
+
+หลักฐานจากกติกา:
+- เอกสารระบุให้ใช้โทรศัพท์มือถือ และไม่อนุญาตให้ใช้ Tablet/iPad ในการแข่งขัน
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+GR-019,game_rules,19,ROV ถ้าคู่แข่งไม่มาต้องทำยังไง,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.3917,0.3917,rov_pause_disconnect: local://competition_rules/competition_rules_rov_blueket_2025_men,"คำตอบ: RoV แต่ละทีมสามารถหยุดเกมได้สูงสุด 5 ครั้ง ครั้งละไม่เกิน 1 นาที และเมื่อครบเวลาต้องกลับเข้าแข่งขันต่อ
+
+หลักฐานจากกติกา:
+- เอกสารระบุแต่ละทีมมีสิทธิ์ขอหยุดเกม 5 ครั้ง ครั้งละไม่เกิน 1 นาที กรณีเกิดปัญหาเช่นหลุดเกมหรือขัดข้อง
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+GR-020,game_rules,20,ROV ต้องเช็คอินก่อนแข่งไหม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.3327,0.3328,rov_rematch_first_blood: local://competition_rules/competition_rules_rov_blueket_2025_men,"คำตอบ: RoV ขอแข่งใหม่ได้เฉพาะก่อนเกิด First Blood และก่อนเวลาเกม 2 นาที หากเกิด First Blood แล้วหรือเกิน 2 นาที ต้องได้รับความยินยอมจากฝ่ายตรงข้ามหรือผู้ตัดสิน
+
+หลักฐานจากกติกา:
+- เอกสารระบุเงื่อนไขการขอแข่งขันใหม่ก่อน First Blood และก่อน 2 นาที พร้อมข้อยกเว้นโดยฝ่ายตรงข้าม/ผู้ตัดสิน
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+GR-021,game_rules,21,ROV มีข้อห้ามเรื่องอุปกรณ์ไหม,competition_rules,pipeline:games_known_unsupported_fast_path,games/game_availability_lookup,fastpath/rulebase,0.465,0.465,our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation,"ยังไม่พบ RoV / Arena of Valor ในรายการเกมที่ยืนยันได้ของ PSU Esports Studio - Phuket ครับ
+ในฐานข้อมูลมีข้อมูลกติกาการแข่งขันของเกมนี้ แต่ยังไม่พบว่าอยู่ในรายการเกมให้เล่นของศูนย์
+ถ้าต้องการเล่นเกมนี้ ควรสอบถามเจ้าหน้าที่ก่อนจองหรือก่อนเข้าใช้บริการ
+
+เกมที่มีข้อมูลยืนยันตอนนี้ทั้งหมด 36 เกม:
+
+PC Zone (6 เกม)
+• VALORANT
+• Counter-Strike 2
+• PUBG: BATTLEGROUNDS
+• Call of Duty: Warzone
+• TEKKEN 8
+• League of Legends
+
+PlayStation 5 Zone (18 เกม)
+• TEKKEN 8
+• Marvel's Spider-Man 2
+• Fortnite
+• God of War Ragnarok
+• Overcooked 2
+• Gran Turismo 7
+• Beat Saber
+• It Takes Two
+• LITTLE NIGHTMARES II
+• Monster Hunter Rise
+• EA Sports FC 24
+• FINAL FANTASY XVI
+• Hogwarts Legacy
+• NARUTO X BORUTO Ultimate Ninja STORM CONNECTIONS
+• Resident Evil 4
+• Resident Evil Village
+• The Last of Us Part I / Part II
+• Uncharted: Legacy of Thieves Collection
+
+Nintendo Switch Zone (16 เกม)
+• Mario Kart 8 Deluxe
+• Mario Kart Live: Home Circuit
+• Overcooked 2
+• Super Smash Bros Ultimate
+• Nintendo Switch Sports
+• Animal Crossing: New Horizons
+• It Takes Two
+• LITTLE NIGHTMARES II
+• Luigi's Mansion 3
+• Mario Party Superstars
+• Monster Hunter Rise
+• Moving Out 2
+• New Super Mario Bros. U Deluxe
+• Super Mario Odyssey
+• The Legend of Zelda: Breath of the Wild
+• Ring Fit Adventure
+
+Cockpit Zone (1 เกม)
+• Gran Turismo 7
+
+VR Zone (2 เกม)
+• Beat Saber
+• Horizon Call of the Mountain
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+GR-022,game_rules,22,ROV ถ้าทำผิดกติกาจะโดนปรับแพ้ไหม,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.5099,0.5099,competition_rules_rov_blueket_2025_men_s06_c02: local://competition_rules/competition_rules_rov_blueket_2025_men | competition_rules_rov_blueket_2025_men_s08_c01: local://competition_rules/competition_rules_rov_blueket_2025_men | competition_rules_rov_blueket_2025_men_s06_c01: local://competition_rules/competition_rules_rov_blueket_2025_men,"คำตอบ: 4.3.5.หากพบหลักฐานว่าผู้เข้าแข่งขันคนใดเจตนากดหยุดเกม ไม่ว่าจะในจังหวะสำคัญ หรือเพื่อการก่อกวน ปรับแพ้ในเกมที่พบการกระทำผิดในทันที และตัดสิทธิ์ทีมผู้เข้าแข่งขันดังกล่าวออกจากการแข่งขันทันที
+
+รายละเอียดที่เกี่ยวข้อง:
+- 6.1.1.1. บทลงโทษ: ปรับแพ้ในเกมที่พบการกระทำผิดในทันที
+- 6.1.2.1. บทลงโทษ: ปรับแพ้ในเกมที่พบการกระทำผิดในทันทีและตัดสิทธิ์ทีมผู้เข้าแข่งขันดังกล่าวออกจากการแข่งขันทันที
+- 6.1.3.1. บทลงโทษ: ปรับแพ้ในเกมที่พบการกระทำผิดในทันทีและตัดสิทธิ์ทีมผู้เข้าแข่งขันดังกล่าวออกจากการแข่งขันทันที
+- 6.1.4.1. บทลงโทษ: ปรับแพ้ในเกมที่พบการกระทำผิดในทันทีและตัดสิทธิ์ทีมผู้เข้าแข่งขันดังกล่าวออกจากการแข่งขันทันที
+- 6.1.5.1. บทลงโทษ: ปรับแพ้ในเกมที่พบการกระทำผิดในทันทีและตัดสิทธิ์ทีมผู้เข้าแข่งขันดังกล่าวออกจาก
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+GR-023,game_rules,23,ROV มีกติกาเรื่อง remake หรือ restart ไหม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.621,0.621,rov_rematch_first_blood: local://competition_rules/competition_rules_rov_blueket_2025_men,"คำตอบ: RoV ขอแข่งใหม่ได้เฉพาะก่อนเกิด First Blood และก่อนเวลาเกม 2 นาที หากเกิด First Blood แล้วหรือเกิน 2 นาที ต้องได้รับความยินยอมจากฝ่ายตรงข้ามหรือผู้ตัดสิน
+
+หลักฐานจากกติกา:
+- เอกสารระบุเงื่อนไขการขอแข่งขันใหม่ก่อน First Blood และก่อน 2 นาที พร้อมข้อยกเว้นโดยฝ่ายตรงข้าม/ผู้ตัดสิน
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+GR-024,game_rules,24,ROV ถ้าเน็ตล่มระหว่างแข่งนับผลยังไง,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.5531,0.5532,competition_rules_rov_blueket_2025_men_s06_c02: local://competition_rules/competition_rules_rov_blueket_2025_men | competition_rules_rov_blueket_2025_men_s06_c03: local://competition_rules/competition_rules_rov_blueket_2025_men | competition_rules_rov_blueket_2025_men_s06_c04: local://competition_rules/competition_rules_rov_blueket_2025_men,"คำตอบ: 4.3.2.หากผู้เข้าแข่งขันหลุดด้วยเหตุผลอื่น ๆ ที่เป็นเหตุสุดวิสัย (เช่นเครือข่ายผู้ให้บริการอินเตอร์เน็ตล่มทั้งบริเวณ หรือเกิดข้อผิดพลาดจากเซิร์ฟเวอร์ของเกม) ทางทีมที่มีส่วนเสียหาย ต้องแจ้งทีมงาน และขึ้นอยู่กับดุลยพินิจของกรรมการ ว่าจะเห็นสมควรให้แข่งขันใหม่หรือไม่
+
+รายละเอียดที่เกี่ยวข้อง:
+- 4.3.4.หากเกิดการ First Blood ขึ้นแล้ว หรือเริ่มเกมไปแล้วเกินกว่า 2 นาทีในเกม ห้ามไม่ให้ผู้เข้าแข่งขันทั้งสองฝ่ายขอเริ่มเกมใหม่ เว้นแต่ได้รับการอนุญาตจากคู่แข่ง และ/หรือตามเห็นสมควรจากกรรมการ
+- 4.3.3.ในกรณีที่ยังไม่มี First Blood และเวลาในเกมยังไม่เกิน 2 นาที ทีมที่ผู้เข้าแข่งขันหลุดสามารถแจ้งอีกทีมหนึ่งเพื่อขอเริ่มเกมใหม่ได้ทันที โดยผู้เข้าแข่งขันทุกคนจะต้องเลือกฮีโร่และตำแหน่งการเล่นเหมือนเกมแรกก่อนมีการขอเริ่มเกมใหม่
+- 4.3.5.หากพบหลักฐานว่าผู้เข้าแข่งขันคนใดเจตนากดหยุดเกม ไม่ว่าจะในจังหวะสำคัญ หรือเพื่อการก่อกวน ปรับแพ้ในเกมที่พบการกระทำผิดในทันที และตัดสิทธิ์ทีมผู้เข้าแข่งขันดังกล่าวออกจากการแข่งขันทันที
+- 4.5.1.1. หากผู้เข้าแข่งขันคนใดจงใจไม่เชื่อมต่อเกม โดยไม่แจ้งให้ผู้ตัดสินทราบ ผู้ตัดสินมีสิทธิไม่อนุมัติคำขอหยุดเกมนั้น ๆ
+- 4.5.2.หากเกมหยุดลงเป็นเวลาเกินกว่า 10 นาที ทางทีมงานมีสิทธิสั่งให้เริ่มเกมใหม่ เว้นแต่ทีมผู้เข้าร่วมแข่งขันทีมใดทีมหนึ่งมีคะแนนมากกว่าอีกทีมเป็นจำนวนมาก ทางทีมงานอาจใช้ดุลยพินิจในการสั่งให้ทีมที่มีคะแนนมากกว่าดังกล่าวเป็นผู้ชนะในเกมที่หยุดลงนั้นตามที่เห็นควร
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+GR-025,game_rules,25,ROV แหล่งข้อมูลกติกามาจากไหน,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.4482,0.4482,rov_team_size_active_players: local://competition_rules/competition_rules_rov_blueket_2025_men,"คำตอบ: ไฟล์กติกา RoV ระบุว่าแข่งขันในโหมด 5v5 จึงยืนยันได้ว่าลงแข่งพร้อมกันฝ่ายละ 5 คน แต่ยังไม่พบจำนวนสมาชิกทีมรวมหรือตัวสำรองที่ระบุชัดเจนในไฟล์นี้
+
+หลักฐานจากกติกา:
+- เอกสารระบุการเข้าแข่งขันในโหมดการแข่งขัน 5v5 แต่ไม่ได้ระบุจำนวน roster รวม/ตัวสำรองแบบชัดเจน
+
+หมายเหตุ: คำตอบนี้เป็นการสรุปจากข้อมูลที่มีในไฟล์กติกา ไม่ใช่ข้อมูล roster/ตัวสำรองที่ระบุเป็นตัวเลขแยกไว้
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+GR-026,game_rules,26,VALORANT คือเกมอะไร,competition_rules,pipeline:game_detail_fast_path,games/game_availability_lookup,fastpath/rulebase,0.2087,0.2087,Reservation: https://esports.computing.psu.ac.th/reservation,"VALORANT: VALORANT คือเกมยิงเชิงกลยุทธ์ที่ผู้เล่นเลือก Agent ที่มีสกิลเฉพาะ แล้วเล่นเป็นฝ่ายบุก/รับในแต่ละรอบ
+แนวเกม: เกมยิง Tactical FPS แบบทีม 5v5
+วิธีเล่นโดยสรุป: ฝ่ายบุกต้องวาง Spike ส่วนฝ่ายรับต้องป้องกันพื้นที่หรือกู้ Spike การเล่นเน้นการเล็ง การสื่อสาร การใช้สกิล และการเล่นเป็นทีม
+เล่นได้ที่: PC Zone
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation"
+GR-027,game_rules,27,VALORANT เป็นเกมแนวไหน,competition_rules,pipeline:related_guidance_fast_path,equipment/related_guidance,fastpath/rulebase,0.2478,0.2478,home: https://esports.phuket.psu.ac.th/home | our_games: https://esports.phuket.psu.ac.th/Services/our-games,"สรุปแนวเกมที่มีข้อมูลยืนยันได้:
+- FPS/Tactical/PC: VALORANT, Counter-Strike 2, Call of Duty: Warzone
+- MOBA: League of Legends
+- Fighting: TEKKEN 8
+- Racing/ขับรถ: Gran Turismo 7 ใน Cockpit Zone
+- VR/Rhythm: Beat Saber ใน VR Zone
+- Party/เล่นกับเพื่อน: Mario Kart 8 Deluxe, Overcooked 2, Super Smash Bros Ultimate, Nintendo Switch Sports
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home และ https://esports.phuket.psu.ac.th/Services/our-games"
+GR-028,game_rules,28,VALORANT มีข้อมูลกติกาการแข่งขันไหม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.9296,0.9296,valorant_team_size_players: local://competition_rules/competition_rules_valorant_psu_phuket_2026,"คำตอบ: VALORANT แต่ละทีมมีผู้เล่นตัวจริง 5 คน
+
+หลักฐานจากกติกา:
+- เอกสารการแข่งขัน VALORANT ระบุการแข่งขันแบบทีม 5 คนต่อทีม
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+GR-029,game_rules,29,VALORANT แข่งขันใช้ผู้เล่นกี่คน,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.4002,0.4003,valorant_team_size_players: local://competition_rules/competition_rules_valorant_psu_phuket_2026,"คำตอบ: VALORANT แต่ละทีมมีผู้เล่นตัวจริง 5 คน
+
+หลักฐานจากกติกา:
+- เอกสารการแข่งขัน VALORANT ระบุการแข่งขันแบบทีม 5 คนต่อทีม
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+GR-030,game_rules,30,VALORANT มีตัวสำรองได้ไหม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.3554,0.3554,valorant_team_size_players: local://competition_rules/competition_rules_valorant_psu_phuket_2026,"คำตอบ: VALORANT แต่ละทีมมีผู้เล่นตัวจริง 5 คน
+
+หลักฐานจากกติกา:
+- เอกสารการแข่งขัน VALORANT ระบุการแข่งขันแบบทีม 5 คนต่อทีม
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+GR-031,game_rules,31,VALORANT ถ้ามาสายจะเกิดอะไรขึ้น,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.7807,0.7808,competition_rules_valorant_psu_phuket_2026_s01_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s08_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s02_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026,"คำตอบ: * หากเกิดบั๊กก่อนที่จะมีการทำดาเมจใส่กัน เจ้าหน้าที่อาจย้อนรอบให้ได้
+
+รายละเอียดที่เกี่ยวข้อง:
+- อุปกรณ์ที่นำมาเองได้ คีย์บอร์ด (มีสาย/ไร้สาย), เมาส์(มีสาย/ไร้สาย), ตัวยึดสายเมาส์ (mouse bungee), แผ่นรองเมาส์ หูฟังแบบ In-ear (มีสาย), Headset (มีสาย)
+- อุปกรณ์อิเล็กทรอนิกส์ ห้ามนำโทรศัพท์มือถือ, แท็บเล็ต หรือสมาร์ทวอทช์ เข้าไปในพื้นที่แข่ง จนกว่าจะจบแมตช์
+- เอกสารและโน้ต ผู้เล่นห้ามนำโน้ตหรือเอกสารเข้าไป แต่ หัวหน้าทีม สามารถนำเข้าไปได้ และต้องให้เอกสารแก่กรรมการก่อนการแข่งขันทุกครั้ง
+- อุปกรณ์ที่ผู้จัดจัดเตรียมให้ ผู้จัดจะจัดเตรียม PC, จอภาพ, หูฟังพร้อมไมโครโฟน, โต๊ะ และเก้าอี้ให้
+- Play Through Bug บั๊กที่ไม่ส่งผลกระทบต่อความยุติธรรมอย่างมีนัยสำคัญ ผู้เล่นต้องเล่นต่อไปและไม่สามารถขอ Challenge ได้
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+GR-032,game_rules,32,VALORANT ถ้าเกมหลุดระหว่างแข่งต้องทำยังไง,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.6773,0.6773,valorant_emergency_pause: local://competition_rules/competition_rules_valorant_psu_phuket_2026,"คำตอบ: VALORANT Emergency/Technical Pause ขอได้ทีมละ 1 ครั้งต่อแผนที่ และเวลาหยุดรวมสูงสุด 10 นาที
+
+หลักฐานจากกติกา:
+- เอกสารระบุแต่ละทีมมี Emergency Pause ได้ 1 ครั้งต่อแผนที่ และเวลาหยุดรวมสูงสุด 10 นาที
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+GR-033,game_rules,33,VALORANT ขอ pause ระหว่างแข่งได้ไหม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.4318,0.4318,valorant_emergency_pause: local://competition_rules/competition_rules_valorant_psu_phuket_2026,"คำตอบ: VALORANT Emergency/Technical Pause ขอได้ทีมละ 1 ครั้งต่อแผนที่ และเวลาหยุดรวมสูงสุด 10 นาที
+
+หลักฐานจากกติกา:
+- เอกสารระบุแต่ละทีมมี Emergency Pause ได้ 1 ครั้งต่อแผนที่ และเวลาหยุดรวมสูงสุด 10 นาที
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+GR-034,game_rules,34,VALORANT มีบทลงโทษอะไรบ้าง,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.4422,0.4423,competition_rules_valorant_psu_phuket_2026_s09_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s10_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s04_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026,"คำตอบ: บทลงโทษ
+
+รายละเอียดที่เกี่ยวข้อง:
+- ประเภทบทลงโทษในเกม
+- เจ้าหน้าที่จะพิจารณาโทษตามเจตนา (Intent) ผลกระทบ (Impact)
+- ห้ามใช้สกิลในพื้นที่นอกขอบเขตแผนที่ (Out of boundaries) เพื่อหาข้อมูลหรือสร้างความได้เปรียบ
+- การปรับแพ้ (Forfeiture) หากมีการปรับแพ้ ผลการแข่งในแผนที่นั้นจะถูกบันทึกเป็น 13-0
+- ห้ามวางกล้อง Cypher ในจุดที่มองไม่เห็นหรือทำลายไม่ได้ผ่านการทะลุ Texture ของแผนที่
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+GR-035,game_rules,35,VALORANT ใช้โปรแกรมช่วยเล่นได้ไหม,competition_rules,pipeline:games_availability_fast_path,games/game_availability_lookup,fastpath/rulebase,0.3434,0.3434,our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation,"เล่น VALORANT ได้ครับ
+มีให้เล่นที่: PC Zone
+แนะนำให้จองโซนที่ต้องการก่อนเข้าใช้บริการ และถ้าไม่แน่ใจเรื่องเครื่องหรือรอบเวลาให้สอบถามเจ้าหน้าที่ก่อนจองครับ
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+GR-036,game_rules,36,VALORANT ถ้าทีมไม่ครบลงแข่งได้ไหม,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.4722,0.4722,competition_rules_valorant_psu_phuket_2026_s02_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s01_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s08_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026,"คำตอบ: * จำนวนบุคลากร ในช่วงเตรียมตัว (Match Prep) มีผู้เล่นได้ไม่เกิน 6 คน
+
+รายละเอียดที่เกี่ยวข้อง:
+- อุปกรณ์อิเล็กทรอนิกส์ ห้ามนำโทรศัพท์มือถือ, แท็บเล็ต หรือสมาร์ทวอทช์ เข้าไปในพื้นที่แข่ง จนกว่าจะจบแมตช์
+- เอกสารและโน้ต ผู้เล่นห้ามนำโน้ตหรือเอกสารเข้าไป แต่ หัวหน้าทีม สามารถนำเข้าไปได้ และต้องให้เอกสารแก่กรรมการก่อนการแข่งขันทุกครั้ง
+- อุปกรณ์ที่นำมาเองได้ คีย์บอร์ด (มีสาย/ไร้สาย), เมาส์(มีสาย/ไร้สาย), ตัวยึดสายเมาส์ (mouse bungee), แผ่นรองเมาส์ หูฟังแบบ In-ear (มีสาย), Headset (มีสาย)
+- เทคโนโลยีคีย์บอร์ด อนุญาตให้ใช้ Snap Tap, SOCD หรือเทคโนโลยีที่เทียบเท่าได้ เว้นแต่เจ้าหน้าที่จะสั่งเป็นอย่างอื่น
+- หากเกิดบั๊กก่อนที่จะมีการทำดาเมจใส่กัน เจ้าหน้าที่อาจย้อนรอบให้ได้
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+GR-037,game_rules,37,VALORANT รูปแบบการแข่งขันเป็นแบบไหน,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.6672,0.6673,competition_rules_valorant_psu_phuket_2026_s01_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s02_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s03_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026,"คำตอบ: กฎระเบียบและรูปแบบการแข่งขัน VALORANT
+
+รายละเอียดที่เกี่ยวข้อง:
+- ในการแข่งขันแบบ LAN ผู้เล่นต้องปฏิบัติตามข้อกำหนดเรื่องอุปกรณ์อย่างเคร่งครัดเพื่อความเท่าเทียม
+- เทคโนโลยีคีย์บอร์ด อนุญาตให้ใช้ Snap Tap, SOCD หรือเทคโนโลยีที่เทียบเท่าได้ เว้นแต่เจ้าหน้าที่จะสั่งเป็นอย่างอื่น
+- พื้นที่การแข่งขันและกฎระเบียบ
+- เวลาการรายงานตัว ต้องมาถึงสนามแข่งไม่น้อยกว่า 30 นาที ก่อนเวลาแข่ง
+- ห้ามแสดงกราฟ FPS หรือ Latency ระหว่างการแข่งขัน
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+GR-038,game_rules,38,VALORANT รอบชิงเล่นกี่เกม,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.3436,0.3436,competition_rules_valorant_psu_phuket_2026_s08_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s01_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s02_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026,"คำตอบ: * จำนวนบุคลากร ในช่วงเตรียมตัว (Match Prep) มีผู้เล่นได้ไม่เกิน 6 คน
+
+รายละเอียดที่เกี่ยวข้อง:
+- รวมเวลาทั้งหมดไม่เกิน 10 นาที ต่อหนึ่งแมตช์ หากเกินเวลาผู้เล่นรายนั้นอาจหมดสิทธิ์แข่งต่อและต้องใช้ตัวสำรองแทน
+- Play Through Bug บั๊กที่ไม่ส่งผลกระทบต่อความยุติธรรมอย่างมีนัยสำคัญ ผู้เล่นต้องเล่นต่อไปและไม่สามารถขอ Challenge ได้
+- ขอได้ 1 ครั้งต่อแผนที่
+- รายการ PSU Phuket VALORANT 2026 Tournament
+- Update: 17/02/2026
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+GR-039,game_rules,39,VALORANT มีการแบนตัวละครหรือแผนที่ไหม,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.6778,0.6778,competition_rules_valorant_psu_phuket_2026_s03_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s04_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s09_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026,"คำตอบ: * แบนจนเหลือ 3 แผนที่
+
+รายละเอียดที่เกี่ยวข้อง:
+- การปรับแพ้ (Forfeiture) หากมีการปรับแพ้ ผลการแข่งในแผนที่นั้นจะถูกบันทึกเป็น 13-0
+- เวลาการรายงานตัว ต้องมาถึงสนามแข่งไม่น้อยกว่า 30 นาที ก่อนเวลาแข่ง
+- แผนที่ใหม่ จะถูกจำกัดห้ามใช้ประมาณ 4 สัปดาห์ หลังเปิดให้เล่นในโหมด Competitive
+- ผู้เล่นต้อง ปิด (OFF) การแสดงผลเลือด (Blood) และศพ (Bodies)
+- ห้ามแสดงกราฟ FPS หรือ Latency ระหว่างการแข่งขัน
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+GR-040,game_rules,40,VALORANT ใช้บัญชีส่วนตัวหรือบัญชีที่จัดให้,competition_rules,pipeline:games_fast_path,games/games_lookup,fastpath/rulebase,0.8564,0.8577,our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation,"PC Zone มีเกมที่ยืนยันได้ดังนี้
+
+PC Zone (6 เกม)
+• VALORANT
+• Counter-Strike 2
+• PUBG: BATTLEGROUNDS
+• Call of Duty: Warzone
+• TEKKEN 8
+• League of Legends
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+GR-041,game_rules,41,VALORANT เปลี่ยนสมาชิกทีมได้ไหม,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.4846,0.4847,competition_rules_valorant_psu_phuket_2026_s02_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s08_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s06_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026,"คำตอบ: * เมื่อเข้าสู่ช่วงต่อเวลา (Overtime) จะได้เพิ่มอีกทีมละ 1 ครั้ง โดยที่โควตาจากรอบปกติจะไม่ถูกนำมาทบ
+
+รายละเอียดที่เกี่ยวข้อง:
+- อุปกรณ์อิเล็กทรอนิกส์ ห้ามนำโทรศัพท์มือถือ, แท็บเล็ต หรือสมาร์ทวอทช์ เข้าไปในพื้นที่แข่ง จนกว่าจะจบแมตช์
+- เอกสารและโน้ต ผู้เล่นห้ามนำโน้ตหรือเอกสารเข้าไป แต่ หัวหน้าทีม สามารถนำเข้าไปได้ และต้องให้เอกสารแก่กรรมการก่อนการแข่งขันทุกครั้ง
+- Major Bug บั๊กที่ส่งผลกระทบต่อการเล่นหรือกลไกเกมอย่างมากและไม่มีทางแก้ไขเฉพาะหน้า ทีมสามารถขอ Challenge เพื่อตรวจสอบได้
+- จำนวนบุคลากร ในช่วงเตรียมตัว (Match Prep) มีผู้เล่นได้ไม่เกิน 6 คน
+- หากเกิดบั๊กก่อนที่จะมีการทำดาเมจใส่กัน เจ้าหน้าที่อาจย้อนรอบให้ได้
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+GR-042,game_rules,42,VALORANT ถ้าพบ bug ต้องแจ้งใคร,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.3009,0.301,competition_rules_valorant_psu_phuket_2026_s08_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s01_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s07_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026,"คำตอบ: * Play Through Bug บั๊กที่ไม่ส่งผลกระทบต่อความยุติธรรมอย่างมีนัยสำคัญ ผู้เล่นต้องเล่นต่อไปและไม่สามารถขอ Challenge ได้
+
+รายละเอียดที่เกี่ยวข้อง:
+- Major Bug บั๊กที่ส่งผลกระทบต่อการเล่นหรือกลไกเกมอย่างมากและไม่มีทางแก้ไขเฉพาะหน้า ทีมสามารถขอ Challenge เพื่อตรวจสอบได้
+- Game Breaking Bug บั๊กที่ทำลายความยุติธรรมของรอบนั้นจนไม่สามารถตัดสินผลแพ้ชนะได้
+- หากเป็น Game Breaking Bug เจ้าหน้าที่จะสั่งย้อนรอบไปยังจุดเริ่มต้นของรอบนั้นทันที
+- หากเกิดบั๊กก่อนที่จะมีการทำดาเมจใส่กัน เจ้าหน้าที่อาจย้อนรอบให้ได้
+- หากมีการทำดาเมจไปแล้ว จะไม่มีการย้อนรอบยกเว้นผ่านกระบวนการ Challenge
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+GR-043,game_rules,43,VALORANT ใช้ voice chat ได้ไหม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.2602,0.2603,valorant_map_pool: local://competition_rules/competition_rules_valorant_psu_phuket_2026,"คำตอบ: VALORANT ใช้แผนที่ Abyss, Ascent, Bind, Corrode, Haven, Lotus และ Sunset
+
+หลักฐานจากกติกา:
+- เอกสารระบุ map pool ของ VALORANT ได้แก่ Abyss, Ascent, Bind, Corrode, Haven, Lotus และ Sunset
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+GR-044,game_rules,44,VALORANT ถ้าคู่แข่งไม่มาต้องทำยังไง,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.4904,0.4904,valorant_agent_map_restriction: local://competition_rules/competition_rules_valorant_psu_phuket_2026,"คำตอบ: VALORANT จำกัดคอนเทนต์ใหม่: Agent ใหม่ต้องรอประมาณ 2 สัปดาห์ และแผนที่ใหม่ต้องรอประมาณ 4 สัปดาห์ก่อนใช้แข่ง
+
+หลักฐานจากกติกา:
+- เอกสารระบุข้อจำกัด Agent ใหม่ประมาณ 2 สัปดาห์ และแผนที่ใหม่ประมาณ 4 สัปดาห์
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+GR-045,game_rules,45,VALORANT ต้องเช็คอินก่อนแข่งไหม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.5008,0.5008,valorant_agent_map_restriction: local://competition_rules/competition_rules_valorant_psu_phuket_2026,"คำตอบ: VALORANT จำกัดคอนเทนต์ใหม่: Agent ใหม่ต้องรอประมาณ 2 สัปดาห์ และแผนที่ใหม่ต้องรอประมาณ 4 สัปดาห์ก่อนใช้แข่ง
+
+หลักฐานจากกติกา:
+- เอกสารระบุข้อจำกัด Agent ใหม่ประมาณ 2 สัปดาห์ และแผนที่ใหม่ประมาณ 4 สัปดาห์
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+GR-046,game_rules,46,VALORANT มีข้อห้ามเรื่องอุปกรณ์ไหม,competition_rules,pipeline:games_availability_fast_path,games/game_availability_lookup,fastpath/rulebase,0.5847,0.5848,our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation,"เล่น VALORANT ได้ครับ
+มีให้เล่นที่: PC Zone
+แนะนำให้จองโซนที่ต้องการก่อนเข้าใช้บริการ และถ้าไม่แน่ใจเรื่องเครื่องหรือรอบเวลาให้สอบถามเจ้าหน้าที่ก่อนจองครับ
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+GR-047,game_rules,47,VALORANT ถ้าทำผิดกติกาจะโดนปรับแพ้ไหม,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.6002,0.6002,competition_rules_valorant_psu_phuket_2026_s04_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s13_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s14_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026,"คำตอบ: 3. การปรับแพ้ในรอบ (Round Loss) เมื่อพบว่าผู้เล่นหรือทีมมีเจตนาใช้ช่องโหว่เพื่อสร้างความได้เปรียบ
+
+รายละเอียดที่เกี่ยวข้อง:
+- 4. การปรับแพ้ในแผนที่ (Map Forfeit) สำหรับความผิดร้ายแรงหรือความผิดซ้ำที่ส่งผลกระทบต่อผลการแข่งในแผนที่นั้น
+- การปรับแพ้ (Forfeiture) หากมีการปรับแพ้ ผลการแข่งในแผนที่นั้นจะถูกบันทึกเป็น 13-0
+- การบันทึกผล เจ้าหน้าที่จะยืนยัน และบันทึกผลการแข่งทันที
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+GR-048,game_rules,48,VALORANT มีกติกาเรื่อง remake หรือ restart ไหม,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.7783,0.7784,competition_rules_valorant_psu_phuket_2026_s02_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s01_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s07_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026,"คำตอบ: * อาหารและเครื่องดื่ม อนุญาตเฉพาะน้ำดื่มในภาชนะที่ปิดสนิทและหมากฝรั่งเท่านั้น
+
+รายละเอียดที่เกี่ยวข้อง:
+- ใช้เมื่อมีปัญหาอุปกรณ์ขัดข้อง, หลุดจากการเชื่อมต่อ หรือปัญหาซอฟต์แวร์
+- อุปกรณ์อิเล็กทรอนิกส์ ห้ามนำโทรศัพท์มือถือ, แท็บเล็ต หรือสมาร์ทวอทช์ เข้าไปในพื้นที่แข่ง จนกว่าจะจบแมตช์
+- เทคโนโลยีคีย์บอร์ด อนุญาตให้ใช้ Snap Tap, SOCD หรือเทคโนโลยีที่เทียบเท่าได้ เว้นแต่เจ้าหน้าที่จะสั่งเป็นอย่างอื่น
+- เอกสารและโน้ต ผู้เล่นห้ามนำโน้ตหรือเอกสารเข้าไป แต่ หัวหน้าทีม สามารถนำเข้าไปได้ และต้องให้เอกสารแก่กรรมการก่อนการแข่งขันทุกครั้ง
+- ห้ามใช้มาโคร (Macros) ทั้งที่ตั้งค่าผ่านซอฟต์แวร์หรือฮาร์ดแวร์
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+GR-049,game_rules,49,VALORANT ถ้าเน็ตล่มระหว่างแข่งนับผลยังไง,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.6046,0.6046,competition_rules_valorant_psu_phuket_2026_s08_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s03_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026 | competition_rules_valorant_psu_phuket_2026_s02_c01: local://competition_rules/competition_rules_valorant_psu_phuket_2026,"คำตอบ: * เวลาการรายงานตัว ต้องมาถึงสนามแข่งไม่น้อยกว่า 30 นาที ก่อนเวลาแข่ง
+
+รายละเอียดที่เกี่ยวข้อง:
+- ห้ามแสดงกราฟ FPS หรือ Latency ระหว่างการแข่งขัน
+- อุปกรณ์อิเล็กทรอนิกส์ ห้ามนำโทรศัพท์มือถือ, แท็บเล็ต หรือสมาร์ทวอทช์ เข้าไปในพื้นที่แข่ง จนกว่าจะจบแมตช์
+- พื้นที่การแข่งขันและกฎระเบียบ
+- บั๊กคือข้อผิดพลาดในเกมที่ทำให้เกิดผลลัพธ์ที่ไม่ตั้งใจ โดยแบ่งประเภทเพื่อกำหนดแนวทางปฏิบัติ ดังนี้
+- หากมีการทำดาเมจไปแล้ว จะไม่มีการย้อนรอบยกเว้นผ่านกระบวนการ Challenge
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+GR-050,game_rules,50,VALORANT แหล่งข้อมูลกติกามาจากไหน,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.5403,0.5403,valorant_agent_map_restriction: local://competition_rules/competition_rules_valorant_psu_phuket_2026,"คำตอบ: VALORANT จำกัดคอนเทนต์ใหม่: Agent ใหม่ต้องรอประมาณ 2 สัปดาห์ และแผนที่ใหม่ต้องรอประมาณ 4 สัปดาห์ก่อนใช้แข่ง
+
+หลักฐานจากกติกา:
+- เอกสารระบุข้อจำกัด Agent ใหม่ประมาณ 2 สัปดาห์ และแผนที่ใหม่ประมาณ 4 สัปดาห์
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+GR-051,game_rules,51,CS2 คือเกมอะไร,competition_rules,pipeline:game_detail_fast_path,games/game_availability_lookup,fastpath/rulebase,0.1264,0.1265,Reservation: https://esports.computing.psu.ac.th/reservation,"Counter-Strike 2: Counter-Strike 2 คือเกมยิงแข่งขันแบบทีมที่แบ่งเป็นฝ่ายบุกและฝ่ายรับ โดยมีเป้าหมายหลักเกี่ยวกับการวาง/กู้ระเบิดหรือจัดการฝ่ายตรงข้าม
+แนวเกม: เกมยิง Tactical FPS
+วิธีเล่นโดยสรุป: เล่นเป็นรอบ ๆ ต้องซื้ออาวุธ วางแผนกับทีม คุมพื้นที่ และใช้การเล็งกับการสื่อสารเพื่อชนะรอบ
+เล่นได้ที่: PC Zone
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation"
+GR-052,game_rules,52,CS2 เป็นเกมแนวไหน,competition_rules,pipeline:related_guidance_fast_path,equipment/related_guidance,fastpath/rulebase,0.1728,0.1728,home: https://esports.phuket.psu.ac.th/home | our_games: https://esports.phuket.psu.ac.th/Services/our-games,"สรุปแนวเกมที่มีข้อมูลยืนยันได้:
+- FPS/Tactical/PC: VALORANT, Counter-Strike 2, Call of Duty: Warzone
+- MOBA: League of Legends
+- Fighting: TEKKEN 8
+- Racing/ขับรถ: Gran Turismo 7 ใน Cockpit Zone
+- VR/Rhythm: Beat Saber ใน VR Zone
+- Party/เล่นกับเพื่อน: Mario Kart 8 Deluxe, Overcooked 2, Super Smash Bros Ultimate, Nintendo Switch Sports
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home และ https://esports.phuket.psu.ac.th/Services/our-games"
+GR-053,game_rules,53,CS2 มีข้อมูลกติกาการแข่งขันไหม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.6307,0.6307,cs2_map_pool: local://competition_rules/competition_rules_cs2_psu_phuket_2026,"คำตอบ: CS2 ใช้แผนที่ Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train
+
+หลักฐานจากกติกา:
+- เอกสารระบุ map pool สำหรับการแข่งขัน CS2 ได้แก่ Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+GR-054,game_rules,54,CS2 แข่งขันใช้ผู้เล่นกี่คน,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.2363,0.2364,cs2_team_size_players: local://competition_rules/competition_rules_cs2_psu_phuket_2026,"คำตอบ: CS2 แต่ละทีมประกอบด้วยผู้เล่น 5 คน
+
+หลักฐานจากกติกา:
+- เอกสารระบุว่าองค์ประกอบทีมแต่ละทีมประกอบด้วยผู้เล่น 5 คน
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+GR-055,game_rules,55,CS2 มีตัวสำรองได้ไหม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.2134,0.2134,cs2_team_size_players: local://competition_rules/competition_rules_cs2_psu_phuket_2026,"คำตอบ: CS2 แต่ละทีมประกอบด้วยผู้เล่น 5 คน
+
+หลักฐานจากกติกา:
+- เอกสารระบุว่าองค์ประกอบทีมแต่ละทีมประกอบด้วยผู้เล่น 5 คน
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+GR-056,game_rules,56,CS2 ถ้ามาสายจะเกิดอะไรขึ้น,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.5316,0.5317,competition_rules_cs2_psu_phuket_2026_s15_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026 | competition_rules_cs2_psu_phuket_2026_s41_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026 | competition_rules_cs2_psu_phuket_2026_s58_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026,"คำตอบ: 7. เวลาการแข่งขัน สายการแข่งขันจะประกาศล่วงหน้าอย่างน้อย 1 วัน ต้องยืนยันการเข้าแข่งขันก่อนเริ่มแมตช์ การมาสายอาจถูกตัดสิทธิ์
+
+รายละเอียดที่เกี่ยวข้อง:
+- 1. ผู้เล่นสามารถนำคีย์บอร์ด (มีสาย/ไร้สาย), เมาส์(มีสาย/ไร้สาย), ตัวยึดสายเมาส์ (mouse bungee), แผ่นรองเมาส์ หูฟังแบบ In-ear (มีสาย), Headset (มีสาย) มาเองได้
+- 2. การประท้วง ต้องยื่นเรื่องภายใน 15 นาทีหลังจากจบแมตช์ โดยกัปตันทีมหรือโค้ชเท่านั้น
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+GR-057,game_rules,57,CS2 ถ้าเกมหลุดระหว่างแข่งต้องทำยังไง,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.5454,0.5454,cs2_pause_policy: local://competition_rules/competition_rules_cs2_psu_phuket_2026,"คำตอบ: ต่างกันคือ CS2 Technical Pause ขอได้ทีมละ 2 ครั้ง รวมไม่เกิน 10 นาที ส่วน Tactical Timeout ขอได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที
+
+หลักฐานจากกติกา:
+- เอกสารระบุ Technical Pause ได้ทีมละ 2 ครั้ง ระยะเวลารวมไม่เกิน 10 นาที และ Tactical Timeout ได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+GR-058,game_rules,58,CS2 ขอ pause ระหว่างแข่งได้ไหม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.3295,0.3296,cs2_pause_policy: local://competition_rules/competition_rules_cs2_psu_phuket_2026,"คำตอบ: ต่างกันคือ CS2 Technical Pause ขอได้ทีมละ 2 ครั้ง รวมไม่เกิน 10 นาที ส่วน Tactical Timeout ขอได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที
+
+หลักฐานจากกติกา:
+- เอกสารระบุ Technical Pause ได้ทีมละ 2 ครั้ง ระยะเวลารวมไม่เกิน 10 นาที และ Tactical Timeout ได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+GR-059,game_rules,59,CS2 มีบทลงโทษอะไรบ้าง,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.3012,0.3013,competition_rules_cs2_psu_phuket_2026_s54_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026 | competition_rules_cs2_psu_phuket_2026_s35_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026 | competition_rules_cs2_psu_phuket_2026_s15_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026,"คำตอบ: 8. ตารางบทลงโทษ (Penalties)
+
+รายละเอียดที่เกี่ยวข้อง:
+- 5. พฤติกรรมและบทลงโทษ
+- บทลงโทษ
+- 7. เวลาการแข่งขัน สายการแข่งขันจะประกาศล่วงหน้าอย่างน้อย 1 วัน ต้องยืนยันการเข้าแข่งขันก่อนเริ่มแมตช์ การมาสายอาจถูกตัดสิทธิ์
+- ตักเตือน → ปรับแพ้ในรอบนั้น → ตัดสิทธิ์
+- ปรับแพ้ในรอบนั้น / ตัดสิทธิ์จากการแข่งขัน
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+GR-060,game_rules,60,CS2 ใช้โปรแกรมช่วยเล่นได้ไหม,competition_rules,pipeline:games_availability_fast_path,games/game_availability_lookup,fastpath/rulebase,0.2989,0.2989,our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation,"เล่น Counter-Strike 2 ได้ครับ
+มีให้เล่นที่: PC Zone
+แนะนำให้จองโซนที่ต้องการก่อนเข้าใช้บริการ และถ้าไม่แน่ใจเรื่องเครื่องหรือรอบเวลาให้สอบถามเจ้าหน้าที่ก่อนจองครับ
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+GR-061,game_rules,61,CS2 ถ้าทีมไม่ครบลงแข่งได้ไหม,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.3365,0.3366,competition_rules_cs2_psu_phuket_2026_s17_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026 | competition_rules_cs2_psu_phuket_2026_s04_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026 | competition_rules_cs2_psu_phuket_2026_s52_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026,"คำตอบ: 1. คุณสมบัติทั่วไป เปิดรับเฉพาะนักศึกษาที่กำลังศึกษาอยู่ในมหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ตเท่านั้น
+
+รายละเอียดที่เกี่ยวข้อง:
+- 3. ผู้เล่นห้ามนำโน้ตหรือเอกสารเข้าไป แต่หัวหน้าทีม สามารถนำเข้าไปได้ และต้องให้เอกสารแก่กรรมการก่อนการแข่งขันทุกครั้ง
+- 1. ขอบเขตการบังคับใช้ กฎระเบียบนี้ใช้กับผู้เล่น ทีม และเจ้าหน้าที่ทุกคนที่เข้าร่วมการแข่งขัน CS2 อย่างเป็นทางการที่จัดโดย PSU Esports Studio - Phuket
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+GR-062,game_rules,62,CS2 รูปแบบการแข่งขันเป็นแบบไหน,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.4708,0.4708,cs2_format_single_elim_bo3: local://competition_rules/competition_rules_cs2_psu_phuket_2026,"คำตอบ: CS2 เป็น Single Elimination และรอบรองชนะเลิศ/รอบชิงชนะเลิศเป็น Best of 3 (BO3)
+
+หลักฐานจากกติกา:
+- เอกสารระบุรูปแบบทัวร์นาเมนต์ Single Elimination และกำหนดรอบรอง/รอบชิงเป็น BO3
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+GR-063,game_rules,63,CS2 รอบชิงเล่นกี่เกม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.2279,0.228,cs2_format_single_elim_bo3: local://competition_rules/competition_rules_cs2_psu_phuket_2026,"คำตอบ: CS2 เป็น Single Elimination และรอบรองชนะเลิศ/รอบชิงชนะเลิศเป็น Best of 3 (BO3)
+
+หลักฐานจากกติกา:
+- เอกสารระบุรูปแบบทัวร์นาเมนต์ Single Elimination และกำหนดรอบรอง/รอบชิงเป็น BO3
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+GR-064,game_rules,64,CS2 มีการแบนตัวละครหรือแผนที่ไหม,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.5705,0.5706,competition_rules_cs2_psu_phuket_2026_s54_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026 | competition_rules_cs2_psu_phuket_2026_s37_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026 | competition_rules_cs2_psu_phuket_2026_s28_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026,"คำตอบ: ปรับแพ้ในรอบนั้น / ตัดสิทธิ์จากการแข่งขัน
+
+รายละเอียดที่เกี่ยวข้อง:
+- 2. การใช้บัค ห้ามใช้บัคของแผนที่หรือ Engine เกมเด็ดขาด หากฝ่าฝืนจะถูกปรับแพ้ในรอบ/แผนที่นั้น หรือตัดสิทธิ์
+- การพิมพ์แชทในเกมที่ไม่เหมาะสม
+- 3. แผนที่ในการแข่งขัน
+- ตักเตือน → ปรับแพ้ในรอบนั้น → ตัดสิทธิ์
+- เพิกเฉยต่อคำตัดสินของเจ้าหน้าที่
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+GR-065,game_rules,65,CS2 ใช้บัญชีส่วนตัวหรือบัญชีที่จัดให้,competition_rules,pipeline:games_fast_path,games/games_lookup,fastpath/rulebase,0.6795,0.6801,our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation,"PC Zone มีเกมที่ยืนยันได้ดังนี้
+
+PC Zone (6 เกม)
+• VALORANT
+• Counter-Strike 2
+• PUBG: BATTLEGROUNDS
+• Call of Duty: Warzone
+• TEKKEN 8
+• League of Legends
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+GR-066,game_rules,66,CS2 เปลี่ยนสมาชิกทีมได้ไหม,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.4367,0.4367,competition_rules_cs2_psu_phuket_2026_s11_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026 | competition_rules_cs2_psu_phuket_2026_s50_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026 | competition_rules_cs2_psu_phuket_2026_s18_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026,"คำตอบ: 1. ต้องไม่มีการเปลี่ยนแปลงสมาชิกในทีมตลอดระยะเวลาการแข่งขัน
+
+รายละเอียดที่เกี่ยวข้อง:
+- 1. จำนวนบุคลากรในช่วงเตรียมตัว มีผู้เล่นได้ไม่เกิน 6 คน
+- 2. องค์ประกอบทีม แต่ละทีมประกอบด้วยผู้เล่น 5 คน
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+GR-067,game_rules,67,CS2 ถ้าพบ bug ต้องแจ้งใคร,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.2926,0.2926,competition_rules_cs2_psu_phuket_2026_s33_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026 | competition_rules_cs2_psu_phuket_2026_s06_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026 | competition_rules_cs2_psu_phuket_2026_s09_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026,"คำตอบ: 3. การหยุดเกมทางเทคนิค ทีมละ 2 ครั้ง ครั้งละไม่เกิน 10 นาที หากพบปัญหาต้องรีบแจ้งกรรมการทันที
+
+รายละเอียดที่เกี่ยวข้อง:
+- 3. ภาษา ภาษาทางการของการแข่งขันคือ ภาษาไทย การสื่อสาร การประท้วง และการรายงานผลทั้งหมดต้องใช้ภาษาไทย เว้นแต่จะระบุไว้เป็นอย่างอื่น
+- 5. การสื่อสาร ผู้เข้าร่วมทุกคนต้องใช้เซิร์ฟเวอร์ Discord ที่ทางศูนย์เป็นผู้กำหนด
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+GR-068,game_rules,68,CS2 ใช้ voice chat ได้ไหม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.1965,0.1966,cs2_pause_policy: local://competition_rules/competition_rules_cs2_psu_phuket_2026,"คำตอบ: ต่างกันคือ CS2 Technical Pause ขอได้ทีมละ 2 ครั้ง รวมไม่เกิน 10 นาที ส่วน Tactical Timeout ขอได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที
+
+หลักฐานจากกติกา:
+- เอกสารระบุ Technical Pause ได้ทีมละ 2 ครั้ง ระยะเวลารวมไม่เกิน 10 นาที และ Tactical Timeout ได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+GR-069,game_rules,69,CS2 ถ้าคู่แข่งไม่มาต้องทำยังไง,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.4635,0.4635,cs2_pause_policy: local://competition_rules/competition_rules_cs2_psu_phuket_2026,"คำตอบ: ต่างกันคือ CS2 Technical Pause ขอได้ทีมละ 2 ครั้ง รวมไม่เกิน 10 นาที ส่วน Tactical Timeout ขอได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที
+
+หลักฐานจากกติกา:
+- เอกสารระบุ Technical Pause ได้ทีมละ 2 ครั้ง ระยะเวลารวมไม่เกิน 10 นาที และ Tactical Timeout ได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+GR-070,game_rules,70,CS2 ต้องเช็คอินก่อนแข่งไหม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.3346,0.3347,cs2_team_size_players: local://competition_rules/competition_rules_cs2_psu_phuket_2026,"คำตอบ: CS2 แต่ละทีมประกอบด้วยผู้เล่น 5 คน
+
+หลักฐานจากกติกา:
+- เอกสารระบุว่าองค์ประกอบทีมแต่ละทีมประกอบด้วยผู้เล่น 5 คน
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+GR-071,game_rules,71,CS2 มีข้อห้ามเรื่องอุปกรณ์ไหม,competition_rules,pipeline:games_availability_fast_path,games/game_availability_lookup,fastpath/rulebase,0.493,0.4931,our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation,"เล่น Counter-Strike 2 ได้ครับ
+มีให้เล่นที่: PC Zone
+แนะนำให้จองโซนที่ต้องการก่อนเข้าใช้บริการ และถ้าไม่แน่ใจเรื่องเครื่องหรือรอบเวลาให้สอบถามเจ้าหน้าที่ก่อนจองครับ
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+GR-072,game_rules,72,CS2 ถ้าทำผิดกติกาจะโดนปรับแพ้ไหม,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.497,0.497,competition_rules_cs2_psu_phuket_2026_s54_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026 | competition_rules_cs2_psu_phuket_2026_s37_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026 | competition_rules_cs2_psu_phuket_2026_s15_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026,"คำตอบ: ตักเตือน → ปรับแพ้ในรอบนั้น → ตัดสิทธิ์
+
+รายละเอียดที่เกี่ยวข้อง:
+- ปรับแพ้ในรอบนั้น / ตัดสิทธิ์จากการแข่งขัน
+- 2. การใช้บัค ห้ามใช้บัคของแผนที่หรือ Engine เกมเด็ดขาด หากฝ่าฝืนจะถูกปรับแพ้ในรอบ/แผนที่นั้น หรือตัดสิทธิ์
+- ปรับแพ้ในรอบนั้น → ตัดสิทธิ์
+- ปรับแพ้ในรอบนั้น / ตัดสิทธิ์
+- ปรับแพ้ในแมตช์นั้น
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+GR-073,game_rules,73,CS2 มีกติกาเรื่อง remake หรือ restart ไหม,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.6859,0.6859,competition_rules_cs2_psu_phuket_2026_s58_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026 | competition_rules_cs2_psu_phuket_2026_s06_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026 | competition_rules_cs2_psu_phuket_2026_s32_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026,"คำตอบ: 2. การประท้วง ต้องยื่นเรื่องภายใน 15 นาทีหลังจากจบแมตช์ โดยกัปตันทีมหรือโค้ชเท่านั้น
+
+รายละเอียดที่เกี่ยวข้อง:
+- 3. ภาษา ภาษาทางการของการแข่งขันคือ ภาษาไทย การสื่อสาร การประท้วง และการรายงานผลทั้งหมดต้องใช้ภาษาไทย เว้นแต่จะระบุไว้เป็นอย่างอื่น
+- 2. การเลือกฝั่ง ใช้การแข่งดวลมีดเพื่อเลือกฝั่ง
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+GR-074,game_rules,74,CS2 ถ้าเน็ตล่มระหว่างแข่งนับผลยังไง,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.51,0.5101,competition_rules_cs2_psu_phuket_2026_s54_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026 | competition_rules_cs2_psu_phuket_2026_s09_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026 | competition_rules_cs2_psu_phuket_2026_s38_c01: local://competition_rules/competition_rules_cs2_psu_phuket_2026,"คำตอบ: 5. การสื่อสาร ผู้เข้าร่วมทุกคนต้องใช้เซิร์ฟเวอร์ Discord ที่ทางศูนย์เป็นผู้กำหนด
+
+รายละเอียดที่เกี่ยวข้อง:
+- ปรับแพ้ในรอบนั้น / ตัดสิทธิ์จากการแข่งขัน
+- 3. การดูสตรีม ห้ามผู้เล่นดูสตรีมสดระหว่างแข่ง
+- การด่าทอ/ใช้ความรุนแรงทางวาจา
+- หยุดเกมโดยไม่ได้รับอนุญาต
+- ตักเตือน → ปรับแพ้ในรอบนั้น → ตัดสิทธิ์
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+GR-075,game_rules,75,CS2 แหล่งข้อมูลกติกามาจากไหน,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.3742,0.3742,cs2_pause_policy: local://competition_rules/competition_rules_cs2_psu_phuket_2026,"คำตอบ: ต่างกันคือ CS2 Technical Pause ขอได้ทีมละ 2 ครั้ง รวมไม่เกิน 10 นาที ส่วน Tactical Timeout ขอได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที
+
+หลักฐานจากกติกา:
+- เอกสารระบุ Technical Pause ได้ทีมละ 2 ครั้ง ระยะเวลารวมไม่เกิน 10 นาที และ Tactical Timeout ได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+GR-076,game_rules,76,TEKKEN 8 คือเกมอะไร,competition_rules,pipeline:game_detail_fast_path,games/game_availability_lookup,fastpath/rulebase,0.159,0.1591,our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation,"TEKKEN 8: TEKKEN 8 คือเกมต่อสู้แบบตัวต่อตัว ผู้เล่นเลือกตัวละครแล้วใช้คอมโบ การป้องกัน และจังหวะสวนกลับเพื่อชนะคู่แข่ง
+แนวเกม: เกมต่อสู้ 1v1
+วิธีเล่นโดยสรุป: เล่นเป็นรอบ เลือกตัวละคร ฝึกท่าพื้นฐาน/คอมโบ อ่านจังหวะคู่ต่อสู้ และทำให้พลังชีวิตอีกฝ่ายหมดก่อน
+เล่นได้ที่: PC Zone และ PlayStation 5 Zone
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+GR-077,game_rules,77,TEKKEN 8 เป็นเกมแนวไหน,competition_rules,pipeline:related_guidance_fast_path,equipment/related_guidance,fastpath/rulebase,0.2464,0.2464,home: https://esports.phuket.psu.ac.th/home | our_games: https://esports.phuket.psu.ac.th/Services/our-games,"สรุปแนวเกมที่มีข้อมูลยืนยันได้:
+- FPS/Tactical/PC: VALORANT, Counter-Strike 2, Call of Duty: Warzone
+- MOBA: League of Legends
+- Fighting: TEKKEN 8
+- Racing/ขับรถ: Gran Turismo 7 ใน Cockpit Zone
+- VR/Rhythm: Beat Saber ใน VR Zone
+- Party/เล่นกับเพื่อน: Mario Kart 8 Deluxe, Overcooked 2, Super Smash Bros Ultimate, Nintendo Switch Sports
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home และ https://esports.phuket.psu.ac.th/Services/our-games"
+GR-078,game_rules,78,TEKKEN 8 มีข้อมูลกติกาการแข่งขันไหม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.8451,0.8451,tekken8_format_ps5_1v1: local://competition_rules/competition_rules_tekken8_psu_esports,"คำตอบ: Tekken 8 เป็นการแข่งขันออฟไลน์แบบ 1v1 บน PlayStation 5 ใช้รูปแบบ First to 2 (FT2), Round 3 และเวลา 60 วินาที
+
+หลักฐานจากกติกา:
+- เอกสารระบุแข่งขันแบบ Offline, Platform PlayStation 5, 1v1, FT2, R3 และตั้งเวลา 60 วินาที
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports"
+GR-079,game_rules,79,TEKKEN 8 แข่งขันใช้ผู้เล่นกี่คน,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.3937,0.3937,competition_rules_tekken8_psu_esports_s07_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s02_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s06_c01: local://competition_rules/competition_rules_tekken8_psu_esports,"คำตอบ: การหยุดเกม
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports"
+GR-080,game_rules,80,TEKKEN 8 มีตัวสำรองได้ไหม,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.3108,0.3108,competition_rules_tekken8_psu_esports_s02_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s06_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s04_c01: local://competition_rules/competition_rules_tekken8_psu_esports,"คำตอบ: กติกาการแข่งขัน
+
+รายละเอียดที่เกี่ยวข้อง:
+- แข่งขันแบบ ออฟไลน์ (Offline)
+- ใช้เครื่องเกม PlayStation 5
+- แข่งขันแบบ เดี่ยว (1v1)
+- รูปแบบการแข่งขัน:
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports"
+GR-081,game_rules,81,TEKKEN 8 ถ้ามาสายจะเกิดอะไรขึ้น,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.5264,0.5264,competition_rules_tekken8_psu_esports_s03_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s08_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s07_c01: local://competition_rules/competition_rules_tekken8_psu_esports,"คำตอบ: * ห้ามใช้ Bug หรือ Glitch ที่ส่งผลให้เกิดความได้เปรียบ
+
+รายละเอียดที่เกี่ยวข้อง:
+- หากเกิดปัญหาใด ๆ ต้องแจ้งผู้จัดการแข่งขันทันที
+- ในกรณีเกิดข้อโต้แย้งหรือการประท้วง คำตัดสินของผู้ดูแลหรือกรรมการจะถือเป็นที่สิ้นสุด
+- สามารถเลือก ตัวละครใดก็ได้ (ยกเว้น ตัวละคร DLC)
+- ห้ามออกจากเกมก่อนจบการแข่งขัน ยกเว้นได้รับอนุญาตจากกรรมการ
+- เมื่อเริ่มเกมแล้ว ห้ามหยุดเกม ด้วยเหตุผลใด ๆ
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports"
+GR-082,game_rules,82,TEKKEN 8 ถ้าเกมหลุดระหว่างแข่งต้องทำยังไง,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.5624,0.5625,tekken8_pause_penalty: local://competition_rules/competition_rules_tekken8_psu_esports,"คำตอบ: Tekken 8 ไม่อนุญาตให้ Pause หลังเริ่มเกม หากตั้งใจกดหยุดเกมจะถูกปรับแพ้ 1 Round เว้นแต่ทั้งสองฝ่ายยินยอมและมีเหตุผลสมควร
+
+หลักฐานจากกติกา:
+- เอกสารระบุห้ามหยุดเกมหลังเริ่มแข่งขัน การ Pause โดยตั้งใจทำให้แพ้ 1 Round และ Pause ได้เฉพาะกรณีทั้งสองฝ่ายยินยอม/มีเหตุผลสมควร
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports"
+GR-083,game_rules,83,TEKKEN 8 ขอ pause ระหว่างแข่งได้ไหม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.3835,0.3836,tekken8_pause_penalty: local://competition_rules/competition_rules_tekken8_psu_esports,"คำตอบ: Tekken 8 ไม่อนุญาตให้ Pause หลังเริ่มเกม หากตั้งใจกดหยุดเกมจะถูกปรับแพ้ 1 Round เว้นแต่ทั้งสองฝ่ายยินยอมและมีเหตุผลสมควร
+
+หลักฐานจากกติกา:
+- เอกสารระบุห้ามหยุดเกมหลังเริ่มแข่งขัน การ Pause โดยตั้งใจทำให้แพ้ 1 Round และ Pause ได้เฉพาะกรณีทั้งสองฝ่ายยินยอม/มีเหตุผลสมควร
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports"
+GR-084,game_rules,84,TEKKEN 8 มีบทลงโทษอะไรบ้าง,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.3666,0.3667,competition_rules_tekken8_psu_esports_s03_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s05_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s07_c01: local://competition_rules/competition_rules_tekken8_psu_esports,"คำตอบ: * หากมีการกดหยุดเกมโดยเจตนา จะถูก ปรับแพ้ 1 รอบทันที
+
+รายละเอียดที่เกี่ยวข้อง:
+- ห้ามแสดงพฤติกรรมที่ขาดน้ำใจนักกีฬา เช่น การเยาะเย้ย ถากถาง หรือแสดงความไม่สุภาพทั้งทางวาจาและการกระทำต่อผู้อื่น ผู้ที่ฝ่าฝืนจะถูกปรับแพ้ทันทีโดยไม่มีข้อยกเว้น
+- ผู้เข้าแข่งขันต้องให้เกียรติผู้ตัดสินและผู้เข้าแข่งขันคนอื่น ห้ามแสดงพฤติกรรมดูถูกหรือไม่ให้เกียรติในทุกกรณี ผู้ที่ฝ่าฝืนจะถูกปรับแพ้ทันทีโดยไม่มีข้อยกเว้น
+- หากออกจากเกมโดยไม่ได้รับอนุญาต จะถูกปรับแพ้ทันที
+- ห้าม ปรับแต่งตัวละคร ทุกกรณี (เช่น ชุด, ทรงผม, เอฟเฟกต์การต่อสู้, ออร่า ฯลฯ)
+- ห้ามใช้ Bug หรือ Glitch ที่ส่งผลให้เกิดความได้เปรียบ
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports"
+GR-085,game_rules,85,TEKKEN 8 ใช้โปรแกรมช่วยเล่นได้ไหม,competition_rules,pipeline:games_availability_fast_path,games/game_availability_lookup,fastpath/rulebase,0.3419,0.3419,our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation,"เล่น TEKKEN 8 ได้ครับ
+มีให้เล่นที่: PC Zone และ PlayStation 5 Zone
+แนะนำให้จองโซนที่ต้องการก่อนเข้าใช้บริการ และถ้าไม่แน่ใจเรื่องเครื่องหรือรอบเวลาให้สอบถามเจ้าหน้าที่ก่อนจองครับ
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+GR-086,game_rules,86,TEKKEN 8 ถ้าทีมไม่ครบลงแข่งได้ไหม,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.4303,0.4304,competition_rules_tekken8_psu_esports_s02_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s06_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s07_c01: local://competition_rules/competition_rules_tekken8_psu_esports,"คำตอบ: * ห้ามออกจากเกมก่อนจบการแข่งขัน ยกเว้นได้รับอนุญาตจากกรรมการ
+
+รายละเอียดที่เกี่ยวข้อง:
+- หากออกจากเกมโดยไม่ได้รับอนุญาต จะถูกปรับแพ้ทันที
+- การกดหยุดเกม (Pause) ทำได้เมื่อผู้เล่นทุกคนยินยอม และมีเหตุผลที่เหมาะสม เช่น อุปกรณ์ขัดข้องหรือเหตุฉุกเฉิน
+- หากกดหยุดเกมโดยไม่จำเป็น จะได้รับโทษเช่นเดียวกับการออกจากเกมก่อนจบ
+- ในแต่ละเกมใช้กติกา R3 (แข่ง 3 รอบต่อเกม) และ 60S (จำกัดเวลา 60 วินาทีต่อรอบ)
+- หากเสมอกันที่ 1-1 จะต้องแข่งขัน เกมตัดสิน
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports"
+GR-087,game_rules,87,TEKKEN 8 รูปแบบการแข่งขันเป็นแบบไหน,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.5577,0.5577,tekken8_format_ps5_1v1: local://competition_rules/competition_rules_tekken8_psu_esports,"คำตอบ: Tekken 8 เป็นการแข่งขันออฟไลน์แบบ 1v1 บน PlayStation 5 ใช้รูปแบบ First to 2 (FT2), Round 3 และเวลา 60 วินาที
+
+หลักฐานจากกติกา:
+- เอกสารระบุแข่งขันแบบ Offline, Platform PlayStation 5, 1v1, FT2, R3 และตั้งเวลา 60 วินาที
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports"
+GR-088,game_rules,88,TEKKEN 8 รอบชิงเล่นกี่เกม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.332,0.3321,tekken8_format_ps5_1v1: local://competition_rules/competition_rules_tekken8_psu_esports,"คำตอบ: Tekken 8 เป็นการแข่งขันออฟไลน์แบบ 1v1 บน PlayStation 5 ใช้รูปแบบ First to 2 (FT2), Round 3 และเวลา 60 วินาที
+
+หลักฐานจากกติกา:
+- เอกสารระบุแข่งขันแบบ Offline, Platform PlayStation 5, 1v1, FT2, R3 และตั้งเวลา 60 วินาที
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports"
+GR-089,game_rules,89,TEKKEN 8 มีการแบนตัวละครหรือแผนที่ไหม,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.6878,0.6878,competition_rules_tekken8_psu_esports_s03_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s07_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s02_c01: local://competition_rules/competition_rules_tekken8_psu_esports,"คำตอบ: * หากมีการกดหยุดเกมโดยเจตนา จะถูก ปรับแพ้ 1 รอบทันที
+
+รายละเอียดที่เกี่ยวข้อง:
+- สามารถเลือก ตัวละครใดก็ได้ (ยกเว้น ตัวละคร DLC)
+- ห้าม ปรับแต่งตัวละคร ทุกกรณี (เช่น ชุด, ทรงผม, เอฟเฟกต์การต่อสู้, ออร่า ฯลฯ)
+- ห้ามใช้ Bug หรือ Glitch ที่ส่งผลให้เกิดความได้เปรียบ
+- การกดหยุดเกม (Pause) ทำได้เมื่อผู้เล่นทุกคนยินยอม และมีเหตุผลที่เหมาะสม เช่น อุปกรณ์ขัดข้องหรือเหตุฉุกเฉิน
+- FT2: ผู้ชนะคือผู้ที่ชนะครบ 2 เกมก่อน
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports"
+GR-090,game_rules,90,TEKKEN 8 ใช้บัญชีส่วนตัวหรือบัญชีที่จัดให้,competition_rules,pipeline:games_fast_path,games/games_lookup,fastpath/rulebase,0.8853,0.8863,our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation,"PlayStation 5 Zone มีเกมที่ยืนยันได้ดังนี้
+
+PlayStation 5 Zone (18 เกม)
+• TEKKEN 8
+• Marvel's Spider-Man 2
+• Fortnite
+• God of War Ragnarok
+• Overcooked 2
+• Gran Turismo 7
+• Beat Saber
+• It Takes Two
+• LITTLE NIGHTMARES II
+• Monster Hunter Rise
+• EA Sports FC 24
+• FINAL FANTASY XVI
+• Hogwarts Legacy
+• NARUTO X BORUTO Ultimate Ninja STORM CONNECTIONS
+• Resident Evil 4
+• Resident Evil Village
+• The Last of Us Part I / Part II
+• Uncharted: Legacy of Thieves Collection
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+GR-091,game_rules,91,TEKKEN 8 เปลี่ยนสมาชิกทีมได้ไหม,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.4943,0.4944,competition_rules_tekken8_psu_esports_s02_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s06_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s08_c01: local://competition_rules/competition_rules_tekken8_psu_esports,"คำตอบ: * ผู้จัดมีสิทธิ์ปรับเปลี่ยนกฎการแข่งขันได้ตลอดเวลาโดยไม่ต้องแจ้งให้ทราบล่วงหน้า
+
+รายละเอียดที่เกี่ยวข้อง:
+- คำตัดสินของกรรมการถือเป็นที่สิ้นสุด
+- แข่งขันแบบ เดี่ยว (1v1)
+- หากเสมอกันที่ 1-1 จะต้องแข่งขัน เกมตัดสิน
+- FT2: ผู้ชนะคือผู้ที่ชนะครบ 2 เกมก่อน
+- ในแต่ละเกมใช้กติกา R3 (แข่ง 3 รอบต่อเกม) และ 60S (จำกัดเวลา 60 วินาทีต่อรอบ)
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports"
+GR-092,game_rules,92,TEKKEN 8 ถ้าพบ bug ต้องแจ้งใคร,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.2934,0.2934,competition_rules_tekken8_psu_esports_s08_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s02_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s06_c01: local://competition_rules/competition_rules_tekken8_psu_esports,"คำตอบ: * หากเกิดปัญหาใด ๆ ต้องแจ้งผู้จัดการแข่งขันทันที
+
+รายละเอียดที่เกี่ยวข้อง:
+- หากเสมอกันที่ 1-1 จะต้องแข่งขัน เกมตัดสิน
+- ผู้เข้าแข่งขันต้องยอมรับและปฏิบัติตามกฎ กติกา และคำตัดสินของกรรมการโดยไม่มีเงื่อนไข
+- ในกรณีเกิดข้อโต้แย้งหรือการประท้วง คำตัดสินของผู้ดูแลหรือกรรมการจะถือเป็นที่สิ้นสุด
+- ใช้เครื่องเกม PlayStation 5
+- FT2: ผู้ชนะคือผู้ที่ชนะครบ 2 เกมก่อน
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports"
+GR-093,game_rules,93,TEKKEN 8 ใช้ voice chat ได้ไหม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.2344,0.2345,tekken8_character_dlc_rule: local://competition_rules/competition_rules_tekken8_psu_esports,"คำตอบ: Tekken 8 เลือกตัวละครได้ทุกตัว ยกเว้นตัวละคร DLC และห้ามใช้ customization โดยให้ใช้ชุด/สกินมาตรฐาน
+
+หลักฐานจากกติกา:
+- เอกสารระบุอนุญาตให้ใช้ตัวละครทุกตัว ยกเว้น DLC Character และไม่อนุญาตให้ใช้ Customization
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports"
+GR-094,game_rules,94,TEKKEN 8 ถ้าคู่แข่งไม่มาต้องทำยังไง,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.4316,0.4316,tekken8_format_ps5_1v1: local://competition_rules/competition_rules_tekken8_psu_esports,"คำตอบ: Tekken 8 เป็นการแข่งขันออฟไลน์แบบ 1v1 บน PlayStation 5 ใช้รูปแบบ First to 2 (FT2), Round 3 และเวลา 60 วินาที
+
+หลักฐานจากกติกา:
+- เอกสารระบุแข่งขันแบบ Offline, Platform PlayStation 5, 1v1, FT2, R3 และตั้งเวลา 60 วินาที
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports"
+GR-095,game_rules,95,TEKKEN 8 ต้องเช็คอินก่อนแข่งไหม,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.425,0.425,tekken8_equipment_ps5: local://competition_rules/competition_rules_tekken8_psu_esports,"คำตอบ: Tekken 8 แข่งขันบนเครื่อง PlayStation 5
+
+หลักฐานจากกติกา:
+- เอกสารระบุ Platform การแข่งขันเป็น PlayStation 5
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports"
+GR-096,game_rules,96,TEKKEN 8 มีข้อห้ามเรื่องอุปกรณ์ไหม,competition_rules,pipeline:games_availability_fast_path,games/game_availability_lookup,fastpath/rulebase,0.5452,0.5452,our_games: https://esports.phuket.psu.ac.th/Services/our-games | Reservation: https://esports.computing.psu.ac.th/reservation,"เล่น TEKKEN 8 ได้ครับ
+มีให้เล่นที่: PC Zone และ PlayStation 5 Zone
+แนะนำให้จองโซนที่ต้องการก่อนเข้าใช้บริการ และถ้าไม่แน่ใจเรื่องเครื่องหรือรอบเวลาให้สอบถามเจ้าหน้าที่ก่อนจองครับ
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+GR-097,game_rules,97,TEKKEN 8 ถ้าทำผิดกติกาจะโดนปรับแพ้ไหม,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.5816,0.5816,competition_rules_tekken8_psu_esports_s03_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s07_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s05_c01: local://competition_rules/competition_rules_tekken8_psu_esports,"คำตอบ: * หากมีการกดหยุดเกมโดยเจตนา จะถูก ปรับแพ้ 1 รอบทันที
+
+รายละเอียดที่เกี่ยวข้อง:
+- หากออกจากเกมโดยไม่ได้รับอนุญาต จะถูกปรับแพ้ทันที
+- ห้ามแสดงพฤติกรรมที่ขาดน้ำใจนักกีฬา เช่น การเยาะเย้ย ถากถาง หรือแสดงความไม่สุภาพทั้งทางวาจาและการกระทำต่อผู้อื่น ผู้ที่ฝ่าฝืนจะถูกปรับแพ้ทันทีโดยไม่มีข้อยกเว้น
+- ห้าม ปรับแต่งตัวละคร ทุกกรณี (เช่น ชุด, ทรงผม, เอฟเฟกต์การต่อสู้, ออร่า ฯลฯ)
+- ผู้เข้าแข่งขันต้องให้เกียรติผู้ตัดสินและผู้เข้าแข่งขันคนอื่น ห้ามแสดงพฤติกรรมดูถูกหรือไม่ให้เกียรติในทุกกรณี ผู้ที่ฝ่าฝืนจะถูกปรับแพ้ทันทีโดยไม่มีข้อยกเว้น
+- ห้ามออกจากเกมก่อนจบการแข่งขัน ยกเว้นได้รับอนุญาตจากกรรมการ
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports"
+GR-098,game_rules,98,TEKKEN 8 มีกติกาเรื่อง remake หรือ restart ไหม,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.708,0.7081,competition_rules_tekken8_psu_esports_s02_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s06_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s08_c01: local://competition_rules/competition_rules_tekken8_psu_esports,"คำตอบ: * ใช้เครื่องเกม PlayStation 5
+
+รายละเอียดที่เกี่ยวข้อง:
+- ในแต่ละเกมใช้กติกา R3 (แข่ง 3 รอบต่อเกม) และ 60S (จำกัดเวลา 60 วินาทีต่อรอบ)
+- ผู้เข้าแข่งขันต้องยอมรับและปฏิบัติตามกฎ กติกา และคำตัดสินของกรรมการโดยไม่มีเงื่อนไข
+- ในกรณีเกิดข้อโต้แย้งหรือการประท้วง คำตัดสินของผู้ดูแลหรือกรรมการจะถือเป็นที่สิ้นสุด
+- คำตัดสินของกรรมการถือเป็นที่สิ้นสุด
+- กติกาการแข่งขัน
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports"
+GR-099,game_rules,99,TEKKEN 8 ถ้าเน็ตล่มระหว่างแข่งนับผลยังไง,competition_rules,pipeline:rag_direct_curated,competition_rules/competition_rules_lookup,pipeline,0.7277,0.7277,competition_rules_tekken8_psu_esports_s02_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s06_c01: local://competition_rules/competition_rules_tekken8_psu_esports | competition_rules_tekken8_psu_esports_s04_c01: local://competition_rules/competition_rules_tekken8_psu_esports,"คำตอบ: * ในแต่ละเกมใช้กติกา R3 (แข่ง 3 รอบต่อเกม) และ 60S (จำกัดเวลา 60 วินาทีต่อรอบ)
+
+รายละเอียดที่เกี่ยวข้อง:
+- เวลาแข่งขันต่อรอบ (Timer): 60 วินาที
+- หากเสมอกันที่ 1-1 จะต้องแข่งขัน เกมตัดสิน
+- ผู้เข้าแข่งขันต้องยอมรับและปฏิบัติตามกฎ กติกา และคำตัดสินของกรรมการโดยไม่มีเงื่อนไข
+- แข่งขันแบบ ออฟไลน์ (Offline)
+- แข่งขันแบบ เดี่ยว (1v1)
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports"
+GR-100,game_rules,100,TEKKEN 8 แหล่งข้อมูลกติกามาจากไหน,competition_rules,pipeline:competition_fact_card,competition_rules/competition_rules_lookup,pipeline,0.4817,0.4817,tekken8_format_ps5_1v1: local://competition_rules/competition_rules_tekken8_psu_esports,"คำตอบ: Tekken 8 เป็นการแข่งขันออฟไลน์แบบ 1v1 บน PlayStation 5 ใช้รูปแบบ First to 2 (FT2), Round 3 และเวลา 60 วินาที
+
+หลักฐานจากกติกา:
+- เอกสารระบุแข่งขันแบบ Offline, Platform PlayStation 5, 1v1, FT2, R3 และตั้งเวลา 60 วินาที
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports"

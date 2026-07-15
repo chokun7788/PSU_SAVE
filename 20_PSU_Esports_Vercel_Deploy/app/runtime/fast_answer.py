@@ -2322,6 +2322,7 @@ def _looks_like_game_availability(q: str) -> bool:
         "กติกา", "กฎ", "แข่ง", "แข่งขัน", "การแข่งขัน", "ลงแข่ง", "ทัวร์", "tournament",
         "ทีม", "สมาชิก", "ผู้เล่น", "ตัวจริง", "ตัวสำรอง", "ลงทะเบียน", "สมัคร",
         "แผนที่", "map", "pause", "timeout", "technical", "บทลงโทษ", "ปรับแพ้",
+        "ข้อห้าม", "อุปกรณ์", "โปรแกรม", "โปรแกรมช่วยเล่น", "บัญชี", "บัญชีส่วนตัว", "บัญชีที่จัดให้",
         "round", "rounds", "รอบ", "1 ต่อ 1", "1v1", "ft2", "r3", "decider", "เกมตัดสิน",
     ):
         return False
@@ -2336,7 +2337,7 @@ def _looks_like_game_availability(q: str) -> bool:
         return True
     if _match_supported_game(q) and (
         (_has(q, "มี", "อยู่", "อยู่ที่", "อยู่เครื่อง", "อยู่โซน") and _has(q, "ไหม", "มั้ย", "หรือเปล่า", "รึเปล่า", "ไหน", "บ้าง"))
-        or _has(q, "เครื่องไหน", "โซนไหน", "zone ไหน", "เล่นที่ไหน")
+        or _has(q, "เครื่องไหน", "โซนไหน", "zone ไหน", "เล่นที่ไหน", "เล่นได้ที่ไหน")
     ):
         return True
     return False
@@ -2474,6 +2475,197 @@ MEMBER_GROUP_ORDER = (
     "cooperative education and Internship student",
     "PSU Phuket Esports Club - PSU Phuket",
 )
+
+
+COMPETITION_RULE_GAME_ALIASES = {
+    "rov": ("rov", "aov", "arena of valor", "อาโอวี", "เอโอวี", "อาร์โอวี"),
+    "valorant": ("valorant", "valo", "วาโล", "วาโลแรนท์", "วาโลแรน"),
+    "cs2": ("cs2", "counter-strike", "counter strike", "counter-strike 2", "counter strike 2", "เคาเตอร์"),
+    "tekken8": ("tekken 8", "tekken", "เทคเคน", "เทคเคน 8", "เทคเคน8", "เทกเคน"),
+}
+
+COMPETITION_RULE_GAME_LABELS = {
+    "rov": "RoV / Arena of Valor",
+    "valorant": "VALORANT",
+    "cs2": "Counter-Strike 2",
+    "tekken8": "TEKKEN 8",
+}
+
+COMPETITION_RULE_SOURCES = {
+    "rov": "local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "valorant": "local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "cs2": "local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "tekken8": "local://competition_rules/competition_rules_tekken8_psu_esports",
+}
+
+COMPETITION_RULE_GENERIC_ANSWERS = {
+    "rov": {
+        "data_exists": "มีข้อมูลกติกาการแข่งขัน RoV ครับ\n- ข้อมูลที่ยืนยันได้: แข่งขันแบบ 5v5 และมีรายละเอียดเรื่องการมาสาย การหยุดเกม อุปกรณ์มือถือ และการเริ่มเกมใหม่\n- หมายเหตุ: เป็นข้อมูลกติกาการแข่งขัน ไม่ใช่รายการเกมให้เล่นในโซนของศูนย์",
+        "team_size": "RoV ลงแข่งพร้อมกันฝ่ายละ 5 คนครับ\n- หลักฐานที่พบระบุโหมดการแข่งขัน 5v5\n- ยังไม่พบจำนวน roster รวม/ตัวสำรองที่ระบุเป็นตัวเลขแยกชัดเจน",
+        "substitute": "RoV ยังไม่พบข้อมูลตัวสำรองที่ระบุชัดเจนครับ\n- ข้อมูลที่ยืนยันได้คือแข่งแบบ 5v5\n- ถ้าจะใช้ตัวสำรองควรยึดประกาศผู้จัดหรือสอบถามกรรมการก่อนแข่ง",
+        "late": "RoV ถ้าเริ่มแข่งล่าช้าเกิน 15 นาที ทีมที่ทำให้ล่าช้าเสี่ยงถูกปรับแพ้ครับ",
+        "disconnect": "RoV ถ้าเกิดปัญหาหลุดเกมให้หยุดเกมตามสิทธิ์ pause และแจ้งผู้ตัดสิน/ทีมงานครับ\n- ข้อมูลที่พบ: แต่ละทีมขอหยุดเกมได้สูงสุด 5 ครั้ง ครั้งละไม่เกิน 1 นาที",
+        "pause": "RoV ขอ pause ได้ครับ\n- แต่ละทีมขอหยุดเกมได้สูงสุด 5 ครั้ง\n- ครั้งละไม่เกิน 1 นาที\n- ใช้กรณีปัญหา เช่น หลุดเกมหรือขัดข้อง",
+        "penalty": "RoV มีบทลงโทษตามกติกาครับ\n- ตัวอย่างที่พบ: กรณีใช้ pause ผิดเจตนาอาจถูกตักเตือน แบนฮีโร่ หรือปรับแพ้ตามดุลยพินิจกรรมการ",
+        "program": "RoV ยังไม่พบข้อมูลชัดเจนเรื่องโปรแกรมช่วยเล่นในไฟล์กติกาที่มีครับ\n- ข้อมูลอุปกรณ์ที่ยืนยันได้: ใช้โทรศัพท์มือถือในการแข่งขัน และไม่อนุญาต Tablet/iPad\n- ถ้าเป็นโปรแกรมช่วยเล่นควรถือว่าเสี่ยงผิดกติกาและถามกรรมการก่อนแข่ง",
+        "team_incomplete": "RoV ควรมีผู้เล่นครบ 5 คนก่อนลงแข่งครับ\n- ข้อมูลที่ยืนยันได้คือโหมด 5v5\n- ยังไม่พบข้อยกเว้นสำหรับทีมที่คนไม่ครบ",
+        "format": "RoV มีข้อมูลรูปแบบการแข่งขันในกติกาครับ\n- ข้อมูลที่พบในชุดกติกา: แข่งแบบ BO3 ในรอบที่ระบุของรายการ\n- ถ้าถามรอบเฉพาะ ควรระบุรอบการแข่งขันเพิ่ม",
+        "final_round": "RoV ยังไม่พบข้อมูลรอบชิงแบบครบถ้วนจากคำถามนี้ครับ\n- ข้อมูลที่พบเด่นคือรูปแบบ BO3 ในกติกาที่มี",
+        "ban": "RoV มีข้อมูลเรื่อง Global Ban/Pick ในกติกาครับ\n- ฮีโร่ที่เกี่ยวข้องกับการเลือก/แบนควรยึดตามกติกา Global Ban/Pick ของรายการ",
+        "account": "RoV ยังไม่พบข้อมูลชัดเจนว่าใช้บัญชีส่วนตัวหรือบัญชีที่ผู้จัดเตรียมให้ครับ",
+        "roster_change": "RoV ยังไม่พบข้อมูลชัดเจนเรื่องเปลี่ยนสมาชิกทีมจากคำถามนี้ครับ\n- ควรยืนยันกับผู้จัดก่อนแข่ง",
+        "bug": "RoV ถ้าพบ bug หรือปัญหาระหว่างแข่งให้แจ้งผู้ตัดสิน/ทีมงานครับ\n- ไม่ควรเล่นต่อโดยใช้ข้อผิดพลาดให้ได้เปรียบ",
+        "voice": "RoV ยังไม่พบข้อมูลชัดเจนเรื่อง voice chat ในไฟล์กติกาที่มีครับ",
+        "opponent_missing": "RoV ยังไม่พบข้อมูลชัดเจนว่าถ้าคู่แข่งไม่มาต้องดำเนินการอย่างไรครับ\n- ควรแจ้งกรรมการหรือผู้จัดการแข่งขัน",
+        "checkin": "RoV มีข้อมูลการลงทะเบียน/รายงานตัวครับ\n- ข้อมูลที่พบ: ช่วงลงทะเบียนระบุเวลา 8.00-8.30 น. ในกติกาที่มี",
+        "equipment": "RoV มีข้อกำหนดอุปกรณ์ครับ\n- ใช้โทรศัพท์มือถือในการแข่งขัน\n- ไม่อนุญาตให้ใช้ Tablet หรือ iPad",
+        "remake": "RoV มีเงื่อนไขเริ่มเกมใหม่ครับ\n- โดยสรุป ขอแข่งใหม่ได้เฉพาะช่วงต้นเกมตามเงื่อนไข First Blood/เวลาเกมที่กติกากำหนด",
+        "network": "RoV ถ้าเน็ตหรือเซิร์ฟเวอร์มีปัญหาให้แจ้งทีมงาน/ผู้ตัดสินครับ\n- ไม่ควรตัดสินเองโดยไม่มีการยืนยันจากกรรมการ",
+    },
+    "valorant": {
+        "data_exists": "มีข้อมูลกติกาการแข่งขัน VALORANT ครับ\n- ข้อมูลครอบคลุมผู้เล่น อุปกรณ์ การตั้งค่าเกม pause แผนที่ และบทลงโทษ",
+        "team_size": "VALORANT ใช้ผู้เล่นตัวจริงทีมละ 5 คนครับ",
+        "substitute": "VALORANT มีข้อมูลช่วงเตรียมตัวว่าในพื้นที่ Match Prep มีผู้เล่นได้ไม่เกิน 6 คนครับ\n- ตีความได้ว่ามีพื้นที่สำหรับตัวสำรอง/บุคลากรจำกัด แต่การเปลี่ยนตัวต้องยึดกติกาผู้จัด",
+        "late": "VALORANT ต้องรายงานตัวก่อนแข่งครับ\n- ข้อมูลที่พบ: ต้องมาถึงสนามแข่งไม่น้อยกว่า 30 นาทีก่อนเวลาแข่ง",
+        "disconnect": "VALORANT หากเกิดปัญหาหลุดหรืออุปกรณ์ขัดข้องให้ใช้ Technical/Emergency Pause ตามกติกาและแจ้งเจ้าหน้าที่ครับ",
+        "pause": "VALORANT มี Pause หลัก 3 ประเภทครับ\n- Tactical Timeout\n- Technical Pause\n- Emergency Pause",
+        "penalty": "VALORANT มีบทลงโทษหลายระดับครับ\n- ตัวอย่าง: Round Loss, Map Forfeit, Match Forfeit และโทษกรณี Cheating/Match fixing",
+        "program": "VALORANT ห้ามใช้โปรแกรมช่วยเล่นหรือดัดแปลงเพื่อสร้างความได้เปรียบครับ\n- ห้ามติดตั้งโปรแกรมเองบนเครื่องแข่งขัน\n- ห้ามใช้ cheat/macro/script ที่ผิดกติกา",
+        "team_incomplete": "VALORANT ควรมีผู้เล่นครบทีมละ 5 คนครับ\n- ข้อมูลที่ยืนยันได้คือทีมละ 5 คน",
+        "format": "VALORANT มีรูปแบบการแข่งขันตามเอกสารกติกาครับ\n- ถ้าต้องการรูปแบบรอบใดรอบหนึ่ง ควรถามระบุรอบเพิ่มเติม",
+        "final_round": "VALORANT ยังไม่พบข้อมูลรอบชิงแบบฟันธงจากคำถามนี้ครับ\n- ควรดูประกาศ bracket/format ของรายการประกอบ",
+        "ban": "VALORANT มีข้อมูลเรื่อง map pool และการแบนแผนที่ครับ\n- map pool ที่พบ: Abyss, Ascent, Bind, Corrode, Haven, Lotus และ Sunset",
+        "account": "VALORANT ยังไม่พบข้อมูลชัดเจนว่าใช้บัญชีส่วนตัวหรือบัญชีที่ผู้จัดเตรียมให้ครับ",
+        "roster_change": "VALORANT ยังไม่พบข้อมูลชัดเจนเรื่องเปลี่ยนสมาชิกทีมจากคำถามนี้ครับ\n- ควรยืนยันกับผู้จัดก่อนแข่ง",
+        "bug": "VALORANT มีข้อมูลเรื่อง bug/challenge/rollback ครับ\n- โดยสรุป หากเกิดบัคต้องแจ้งเจ้าหน้าที่ และการ rollback ขึ้นกับเงื่อนไขกติกา",
+        "voice": "VALORANT ระหว่าง Technical Pause ห้ามสื่อสารกัน เว้นแต่ได้รับอนุญาตจากเจ้าหน้าที่ครับ",
+        "opponent_missing": "VALORANT ยังไม่พบข้อมูลชัดเจนว่าถ้าคู่แข่งไม่มาต้องดำเนินการอย่างไรครับ\n- ควรแจ้งกรรมการหรือผู้จัดการแข่งขัน",
+        "checkin": "VALORANT ต้องรายงานตัวก่อนแข่งครับ\n- ข้อมูลที่พบ: ต้องมาถึงสนามแข่งไม่น้อยกว่า 30 นาทีก่อนเวลาแข่ง",
+        "equipment": "VALORANT มีข้อกำหนดอุปกรณ์ครับ\n- ห้ามนำโทรศัพท์มือถือ/แท็บเล็ตหรืออุปกรณ์สื่อสารเข้าพื้นที่ที่กติกาห้าม\n- การใช้อุปกรณ์ควรยึดรายการที่กติกาอนุญาต",
+        "remake": "VALORANT มีข้อมูลเรื่อง bug/challenge/rollback ครับ\n- ถ้าเกิดปัญหาต้องแจ้งเจ้าหน้าที่ และการย้อนรอบขึ้นกับเงื่อนไขในกติกา",
+        "network": "VALORANT ถ้าเน็ต/อุปกรณ์ขัดข้องให้แจ้งเจ้าหน้าที่และใช้ Technical/Emergency Pause ตามกติกาครับ",
+    },
+    "cs2": {
+        "data_exists": "มีข้อมูลกติกาการแข่งขัน Counter-Strike 2 ครับ\n- ข้อมูลครอบคลุมทีม แผนที่ pause อุปกรณ์ และบทลงโทษ",
+        "team_size": "CS2 ใช้ผู้เล่นทีมละ 5 คนครับ",
+        "substitute": "CS2 ยังไม่พบข้อมูลตัวสำรองแบบแยกชัดเจนจากคำถามนี้ครับ\n- ข้อมูลที่ยืนยันได้คือทีมละ 5 คน",
+        "late": "CS2 ถ้ามาสายหรือไม่ยืนยันเข้าแข่งขันก่อนแมตช์ ทีมเสี่ยงถูกตัดสิทธิ์ครับ",
+        "disconnect": "CS2 ถ้าเกิดปัญหาเครื่อง/การเชื่อมต่อ ให้ใช้ Technical Pause ตามกติกาและแจ้งเจ้าหน้าที่ครับ",
+        "pause": "CS2 มีทั้ง Technical Pause และ Tactical Timeout ครับ\n- Technical Pause ใช้กรณีปัญหาขัดข้อง\n- Tactical Timeout ใช้ตามเงื่อนไขช่วง Freeze time",
+        "penalty": "CS2 มีบทลงโทษครับ\n- ตัวอย่าง: ใช้บัค/โกง/พฤติกรรมไม่เหมาะสม อาจถูกปรับแพ้เป็นรอบ แมตช์ หรือตัดสิทธิ์ตามความรุนแรง",
+        "program": "CS2 ห้ามใช้โปรแกรมช่วยเล่นหรือการดัดแปลงที่ผิดกติกาครับ\n- รวมถึง cheat, macro/script หรือ config ที่ทำให้ได้เปรียบโดยไม่ชอบ",
+        "team_incomplete": "CS2 ควรมีผู้เล่นครบ 5 คนครับ\n- ข้อมูลที่ยืนยันได้คือทีมละ 5 คน",
+        "format": "CS2 มีรูปแบบการแข่งขันตามเอกสารกติกาครับ\n- ถ้าต้องการรอบเฉพาะ ให้ถามระบุรอบหรือ bracket เพิ่ม",
+        "final_round": "CS2 ยังไม่พบข้อมูลรอบชิงแบบฟันธงจากคำถามนี้ครับ\n- ควรดูประกาศ bracket/format ของรายการประกอบ",
+        "ban": "CS2 มีข้อมูล map pool ครับ\n- แผนที่ที่พบ: Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train",
+        "account": "CS2 ยังไม่พบข้อมูลชัดเจนว่าใช้บัญชีส่วนตัวหรือบัญชีที่ผู้จัดเตรียมให้ครับ",
+        "roster_change": "CS2 หลังยืนยันรายชื่อไม่ควรเปลี่ยนสมาชิกนอกกติกาครับ\n- ข้อมูล audit เดิมระบุว่าไม่มีการเปลี่ยนแปลงสมาชิกหลังยืนยันรายชื่อ",
+        "bug": "CS2 ห้ามใช้บัคครับ\n- หากใช้บัคอาจถูกปรับแพ้เป็นรอบหรือแมตช์ และกรณีร้ายแรงอาจถูกตัดสิทธิ์",
+        "voice": "CS2 ยังไม่พบข้อมูลชัดเจนเรื่อง voice chat จากคำถามนี้ครับ",
+        "opponent_missing": "CS2 ยังไม่พบข้อมูลชัดเจนว่าถ้าคู่แข่งไม่มาต้องดำเนินการอย่างไรครับ\n- ควรแจ้งกรรมการหรือผู้จัดการแข่งขัน",
+        "checkin": "CS2 ต้องยืนยัน/รายงานตัวตามเวลาที่ผู้จัดกำหนดครับ\n- หากไม่ยืนยันก่อนแมตช์มีความเสี่ยงถูกตัดสิทธิ์",
+        "equipment": "CS2 มีข้อกำหนดอุปกรณ์ครับ\n- ผู้เล่นต้องรับผิดชอบความพร้อมของอุปกรณ์ตนเอง\n- ห้ามใช้อุปกรณ์/โปรแกรมที่ทำให้ได้เปรียบผิดกติกา",
+        "remake": "CS2 ยังไม่พบข้อมูล remake/restart แบบฟันธงจากคำถามนี้ครับ\n- หากเกิดปัญหาให้แจ้งผู้ตัดสินและยึด Technical Pause/คำตัดสินกรรมการ",
+        "network": "CS2 ถ้าเน็ตหรือเครื่องมีปัญหาให้แจ้งเจ้าหน้าที่และใช้ Technical Pause ตามกติกาครับ",
+    },
+    "tekken8": {
+        "data_exists": "มีข้อมูลกติกาการแข่งขัน TEKKEN 8 ครับ\n- ข้อมูลครอบคลุมรูปแบบ 1v1, FT2, Round 3, เวลา 60 วินาที, Stage Random และอุปกรณ์ PlayStation 5",
+        "team_size": "TEKKEN 8 แข่งขันแบบ 1v1 ครับ",
+        "substitute": "TEKKEN 8 ยังไม่พบข้อมูลตัวสำรองจากคำถามนี้ครับ\n- ข้อมูลที่ยืนยันได้คือแข่งแบบ 1v1",
+        "late": "TEKKEN 8 ยังไม่พบข้อมูลมาสายแบบฟันธงจากคำถามนี้ครับ\n- ควรยึดกำหนดการและคำตัดสินผู้จัด",
+        "disconnect": "TEKKEN 8 ถ้าเกิดเหตุขัดข้องหรือฉุกเฉินให้แจ้งผู้จัด/กรรมการครับ\n- การหยุดเกมต้องอยู่ภายใต้เงื่อนไขที่กติกาอนุญาต",
+        "pause": "TEKKEN 8 ห้าม pause เองหลังเริ่มเกมโดยไม่มีเหตุอันควรครับ\n- อาจถูกปรับแพ้ 1 รอบตามกติกา",
+        "penalty": "TEKKEN 8 มีบทลงโทษเรื่อง pause/ข้อโต้แย้งครับ\n- ตัวอย่าง: pause เองหลังเริ่มเกมอาจถูกปรับแพ้ 1 รอบ",
+        "program": "TEKKEN 8 ยังไม่พบข้อมูลชัดเจนเรื่องโปรแกรมช่วยเล่นในไฟล์กติกาที่มีครับ\n- ข้อมูลที่ยืนยันได้คือแข่งขันบน PlayStation 5 และห้าม customization บางประเภท",
+        "team_incomplete": "TEKKEN 8 เป็นการแข่งขัน 1v1 จึงต้องมีผู้เล่นของคู่แข่งขันครบตามแมตช์ครับ",
+        "format": "TEKKEN 8 แข่งขันแบบ 1v1 และใช้รูปแบบ First to 2 (FT2) ครับ\n- ตั้งค่า Round 3\n- เวลา 60 วินาที",
+        "final_round": "TEKKEN 8 ใช้รูปแบบ FT2 โดยผู้ชนะต้องชนะครบ 2 เกมครับ",
+        "ban": "TEKKEN 8 มีข้อมูลเรื่อง Stage Random และข้อจำกัด customization ครับ\n- ยังไม่ใช่ระบบแบนตัวละครแบบเกมทีม",
+        "account": "TEKKEN 8 ยังไม่พบข้อมูลชัดเจนว่าใช้บัญชีส่วนตัวหรือบัญชีที่ผู้จัดเตรียมให้ครับ",
+        "roster_change": "TEKKEN 8 ยังไม่พบข้อมูลเปลี่ยนสมาชิกทีมจากคำถามนี้ครับ\n- เพราะข้อมูลหลักเป็นการแข่งขัน 1v1",
+        "bug": "TEKKEN 8 หากพบปัญหาควรแจ้งผู้จัด/กรรมการครับ\n- คำตัดสินของผู้จัดถือเป็นที่สุดตามกติกา",
+        "voice": "TEKKEN 8 ยังไม่พบข้อมูลชัดเจนเรื่อง voice chat จากคำถามนี้ครับ",
+        "opponent_missing": "TEKKEN 8 ยังไม่พบข้อมูลชัดเจนว่าถ้าคู่แข่งไม่มาต้องดำเนินการอย่างไรครับ\n- ควรแจ้งกรรมการหรือผู้จัดการแข่งขัน",
+        "checkin": "TEKKEN 8 ยังไม่พบข้อมูลเช็คอินแบบฟันธงจากคำถามนี้ครับ\n- ควรยึดกำหนดการและคำสั่งผู้จัด",
+        "equipment": "TEKKEN 8 แข่งขันบน PlayStation 5 ครับ\n- ข้อมูลที่พบ: Platform คือ PlayStation 5\n- มีข้อจำกัดเรื่อง customization และการ pause เองหลังเริ่มเกม",
+        "remake": "TEKKEN 8 ยังไม่พบข้อมูล remake/restart แบบฟันธงจากคำถามนี้ครับ\n- ถ้าเกิดเหตุฉุกเฉินหรืออุปกรณ์ขัดข้องต้องให้ผู้จัด/กรรมการตัดสิน",
+        "network": "TEKKEN 8 ยังไม่พบข้อมูลเน็ตล่มแบบฟันธงจากคำถามนี้ครับ\n- หากเกิดปัญหาระหว่างแข่งให้แจ้งผู้จัด/กรรมการ",
+    },
+}
+
+
+def _competition_rule_game_key(q: str) -> str | None:
+    for key, aliases in COMPETITION_RULE_GAME_ALIASES.items():
+        if _has(q, *aliases):
+            return key
+    return None
+
+
+def _competition_rule_generic_intent(q: str) -> str | None:
+    if _has(q, "แหล่งข้อมูล", "อ้างอิง", "มาจากไหน", "source"):
+        return "source"
+    if _has(q, "มีข้อมูลกติกา", "มีกติกา", "ข้อมูลกติกา"):
+        return "data_exists"
+    if _has(q, "ผู้เล่นกี่คน", "ใช้ผู้เล่นกี่คน", "แข่งใช้ผู้เล่นกี่คน", "ทีมละกี่คน", "กี่คน"):
+        return "team_size"
+    if _has(q, "ตัวสำรอง", "สำรอง"):
+        return "substitute"
+    if _has(q, "มาสาย", "ล่าช้า", "late"):
+        return "late"
+    if _has(q, "เกมหลุด", "หลุด", "disconnect"):
+        return "disconnect"
+    if _has(q, "pause", "หยุดเกม", "เวลานอก"):
+        return "pause"
+    if _has(q, "บทลงโทษ", "ลงโทษ", "โดนอะไร"):
+        return "penalty"
+    if _has(q, "โปรแกรมช่วยเล่น", "ช่วยเล่น", "macro", "script", "cheat"):
+        return "program"
+    if _has(q, "ทีมไม่ครบ", "คนไม่ครบ", "ไม่ครบ"):
+        return "team_incomplete"
+    if _has(q, "รูปแบบการแข่งขัน", "รูปแบบ", "เล่นแบบไหน"):
+        return "format"
+    if _has(q, "รอบชิง", "ชิง", "กี่เกม"):
+        return "final_round"
+    if _has(q, "แบน", "ตัวละคร", "แผนที่", "map"):
+        return "ban"
+    if _has(q, "บัญชีส่วนตัว", "บัญชีที่จัดให้", "บัญชี"):
+        return "account"
+    if _has(q, "เปลี่ยนสมาชิก", "เปลี่ยนตัว", "roster"):
+        return "roster_change"
+    if _has(q, "bug", "บัค", "บั๊ก", "แจ้งใคร"):
+        return "bug"
+    if _has(q, "voice chat", "discord", "สื่อสาร"):
+        return "voice"
+    if _has(q, "คู่แข่งไม่มา", "ไม่มา"):
+        return "opponent_missing"
+    if _has(q, "เช็คอิน", "เชคอิน", "checkin", "check in", "รายงานตัว"):
+        return "checkin"
+    if _has(q, "ข้อห้ามเรื่องอุปกรณ์", "อุปกรณ์"):
+        return "equipment"
+    if _has(q, "remake", "restart", "เริ่มใหม่", "แข่งใหม่"):
+        return "remake"
+    if _has(q, "เน็ตล่ม", "อินเทอร์เน็ต", "server", "เซิร์ฟเวอร์"):
+        return "network"
+    return None
+
+
+def answer_competition_rules(query: str, start: float) -> FastAnswer | None:
+    q = normalize_text(query)
+    game_key = _competition_rule_game_key(q)
+    intent = _competition_rule_generic_intent(q)
+    if game_key is None or intent is None:
+        return None
+
+    label = COMPETITION_RULE_GAME_LABELS[game_key]
+    source = COMPETITION_RULE_SOURCES[game_key]
+    if intent == "source":
+        answer = f"แหล่งข้อมูลกติกาของ {label}: {source}"
+    else:
+        answer = COMPETITION_RULE_GENERIC_ANSWERS.get(game_key, {}).get(intent)
+        if not answer:
+            return None
+    answer = f"{answer}\nแหล่งข้อมูล: {source}"
+    return _answer(answer, "competition_rules", "competition_generic_fast_path", start, 0.94)
 
 
 @lru_cache(maxsize=1)
@@ -2768,6 +2960,7 @@ def _related_guidance_answer(q: str, start: float) -> FastAnswer | None:
         "แนะนำ", "ควรเลือก", "เลือกอะไร", "เลือกโซน", "เหมาะกับ", "เหมาะไหม", "เหมาะมั้ย",
         "ต่างกันยังไง", "ต่างกันอย่างไร", "เปรียบเทียบ", "เทียบให้", "ไปกับเพื่อน",
         "มากับเพื่อน", "ไปกัน", "เล่นกับเพื่อน", "สาย", "แนว", "อยากเล่น",
+        "มือใหม่", "มือไหม่", "เด็ก", "สำหรับเด็ก", "ครั้งแรก", "ไม่เคยเล่น",
     )
     if not guidance_signal:
         return None
@@ -2823,7 +3016,7 @@ def _related_guidance_answer(q: str, start: float) -> FastAnswer | None:
         ])
         return _answer("\n".join(lines), "home_our_games", "related_guidance_fast_path", start, 0.92)
 
-    if _has(q, "นักเรียน", "นักศึกษา", "มือใหม่", "ไม่เคยเล่น", "ครั้งแรก", "เริ่มต้น"):
+    if _has(q, "นักเรียน", "นักศึกษา", "มือใหม่", "มือไหม่", "เด็ก", "ไม่เคยเล่น", "ครั้งแรก", "เริ่มต้น"):
         lines.extend([
             "ถ้าเป็นนักเรียน/นักศึกษาหรือมือใหม่ แนะนำเลือกจากความอยากลองก่อน:",
             "- อยากเล่นง่ายกับเพื่อน: Nintendo Switch Zone",
@@ -2887,6 +3080,52 @@ def _equipment_item_matches(q: str) -> list[dict]:
         if _has(q, *item["aliases"]):
             matches.append(item)
     return matches
+
+
+def _equipment_item_location_answer(q: str, start: float) -> FastAnswer | None:
+    wants_location = _has(
+        q,
+        "โซนไหน", "อยู่โซน", "อยู่ที่ไหน", "อยู่ไหน", "มีที่ไหน", "เครื่องไหน", "อยู่ในโซน",
+        "which zone", "where",
+    )
+    if not wants_location:
+        return None
+
+    matches = _equipment_item_matches(q)
+    if not matches:
+        return None
+
+    if _has(q, "65"):
+        matches = [item for item in matches if "65" in str(item.get("title", "")) or "65" in str(item.get("note", ""))]
+    if _has(q, "86"):
+        matches = [item for item in matches if "86" in str(item.get("title", "")) or "86" in str(item.get("note", ""))]
+    if _has(q, "pulse elite"):
+        matches = [item for item in matches if "pulse elite" in str(item.get("title", "")).lower()]
+    if _has(q, "racezone", "full cockpit", "cockpit v3"):
+        matches = [item for item in matches if "racezone" in str(item.get("title", "")).lower()]
+    if _has(q, "logitech", "g923", "trueforce"):
+        matches = [item for item in matches if "logitech" in str(item.get("title", "")).lower()]
+    if _has(q, "sofa", "โซฟา"):
+        matches = [item for item in matches if "sofa" in str(item.get("title", "")).lower()]
+
+    if not matches:
+        return None
+
+    if len(matches) == 1:
+        item = matches[0]
+        detail = item.get("note") or item.get("what") or ""
+        text = (
+            f"{item['title']} อยู่ที่ {item['zone']} ครับ\n"
+            f"• รายละเอียด: {detail}\n"
+            f"แหล่งข้อมูล: {HOME_URL}"
+        )
+        return _answer(text, "home", "equipment_item_location_fast_path", start, 0.97)
+
+    lines = ["อุปกรณ์ที่ถามอยู่ในโซนเหล่านี้ครับ"]
+    for item in matches[:6]:
+        lines.append(f"• {item['title']}: {item['zone']}")
+    lines.append(f"แหล่งข้อมูล: {HOME_URL}")
+    return _answer("\n".join(lines), "home", "equipment_item_location_fast_path", start, 0.95)
 
 
 def _equipment_item_detail_answer(q: str, start: float) -> FastAnswer | None:
@@ -3044,11 +3283,48 @@ def _equipment_usage_guide_answer(q: str, start: float) -> FastAnswer | None:
     return None
 
 
+def _cross_zone_game_answer(q: str, start: float) -> FastAnswer | None:
+    wants_cross_zone = (
+        _has(q, "ทั้ง pc", "pc และ ps5", "pc กับ ps5", "pc/ps5", "คอมและ ps5", "คอมกับ ps5")
+        and _has(q, "เกมไหน", "เกมอะไร", "เล่นได้", "มีเกม")
+    )
+    if not wants_cross_zone:
+        return None
+
+    pc_ps5_games = [
+        meta
+        for meta in GAME_DETAILS.values()
+        if "PC Zone" in meta.get("zones", ()) and "PlayStation 5 Zone" in meta.get("zones", ())
+    ]
+    if not pc_ps5_games:
+        return _answer(
+            f"ตอนนี้ยังไม่พบเกมที่ยืนยันว่าเล่นได้ทั้ง PC Zone และ PlayStation 5 Zone ในฐานข้อมูลครับ\n"
+            f"แหล่งข้อมูล: {OUR_GAMES_URL}",
+            "our_games",
+            "games_cross_zone_fast_path",
+            start,
+            0.94,
+        )
+
+    lines = ["เกมที่เล่นได้ทั้ง PC Zone และ PlayStation 5 Zone คือ"]
+    for meta in sorted(pc_ps5_games, key=lambda item: item.get("name", "")):
+        zones = " และ ".join(meta.get("zones", ()))
+        lines.append(f"• {meta['name']}: {zones}")
+    lines.append(f"แหล่งข้อมูล: {OUR_GAMES_URL}")
+    return _answer("\n".join(lines), "our_games", "games_cross_zone_fast_path", start, 0.97)
+
+
 def answer_games(query: str, start: float) -> FastAnswer | None:
     q = normalize_text(query)
     booking_howto = _booking_howto_answer(q, start)
     if booking_howto is not None:
         return booking_howto
+    equipment_location_answer = _equipment_item_location_answer(q, start)
+    if equipment_location_answer is not None:
+        return equipment_location_answer
+    cross_zone_answer = _cross_zone_game_answer(q, start)
+    if cross_zone_answer is not None:
+        return cross_zone_answer
     if _genre_group_for_query(q) is None and _looks_like_competition_game_list(q):
         return _answer(
             f"{COMPETITION_GAME_SUMMARY}\nแหล่งข้อมูล: data/competition_rules",
@@ -3162,6 +3438,12 @@ def answer_equipment(query: str, start: float) -> FastAnswer | None:
     usage_answer = _equipment_usage_guide_answer(q, start)
     if usage_answer is not None:
         return usage_answer
+    equipment_location_answer = _equipment_item_location_answer(q, start)
+    if equipment_location_answer is not None:
+        return equipment_location_answer
+    cross_zone_answer = _cross_zone_game_answer(q, start)
+    if cross_zone_answer is not None:
+        return cross_zone_answer
     related_answer = _related_guidance_answer(q, start)
     if related_answer is not None:
         return related_answer

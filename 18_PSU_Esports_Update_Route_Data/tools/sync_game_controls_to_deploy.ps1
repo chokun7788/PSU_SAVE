@@ -53,6 +53,8 @@ function Sync-RelativeDirectory {
 
 Copy-RelativeFile "app\pipeline\vector_retrieval.py"
 Copy-RelativeFile "app\pipeline\engine.py"
+Copy-RelativeFile "app\pipeline\router.py"
+Copy-RelativeFile "app\pipeline\experimental_fallback.py"
 Copy-RelativeFile "app\pipeline\preprocess.py"
 Copy-RelativeFile "app\pipeline\schemas.py"
 Copy-RelativeFile "app\pipeline\formatter.py"

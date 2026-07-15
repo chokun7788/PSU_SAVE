@@ -25,7 +25,7 @@ function saveMessages() {
 let clientSessionId = makeSessionId();
 const messages = [];
 const experimentalRagFallback = true;
-const experimentalAllowLlm = true;
+const experimentalAllowLlm = ["localhost", "127.0.0.1"].includes(window.location.hostname);
 
 function formatSeconds(value) {
   const number = Number(value);
