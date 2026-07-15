@@ -28,7 +28,12 @@ from app.pipeline.retrieval import (
 from app.pipeline.router import route_intent
 from app.pipeline.schemas import PipelineAnswer, PipelineRoute, PipelineTrace, ValidationResult
 from app.pipeline.validator import validate_answer
-from app.pipeline.vector_retrieval import answer_from_vector_hits, looks_like_game_control_query, retrieve_vector_guarded
+from app.pipeline.vector_retrieval import (
+    answer_from_vector_hits,
+    has_explicit_game_hint,
+    looks_like_game_control_query,
+    retrieve_vector_guarded,
+)
 from app.rules.matcher import RuleMatcher
 from app.runtime.fast_answer import (
     COMPETITION_GAME_SUMMARY,
@@ -78,6 +83,36 @@ def _looks_like_standalone_question(q: str) -> bool:
         "minecraft", "roblox", "valorant", "วาโล", "cs2", "rov", "tekken",
     )
     return has_question_signal and has_domain_signal
+
+
+def _looks_like_game_play_followup(query: str) -> bool:
+    q = normalize_text(query)
+    return any(term in q for term in (
+        "เล่นยังไง",
+        "เล่นอย่างไร",
+        "วิธีเล่น",
+        "สอนเล่น",
+        "เล่นแบบไหน",
+        "เล่นยังไงบ้าง",
+        "เล่นยังไงได้บ้าง",
+    ))
+
+
+def _looks_like_unclear_game_meta_query(query: str) -> bool:
+    q = normalize_text(query)
+    if "เกม" not in q and "game" not in q:
+        return False
+    return any(term in q for term in (
+        "ถาม",
+        "ถามได้",
+        "ถามอะไร",
+        "ถามอะไรได้บ้าง",
+        "เกี่ยวกับเกม",
+        "เรื่องเกม",
+        "อยากรู้เรื่องเกม",
+        "หลายๆอย่าง",
+        "หลายอย่าง",
+    ))
 
 
 def _split_multi_question(query: str) -> list[str]:
@@ -318,7 +353,7 @@ class AnswerQualityPipeline:
                 validation = ValidationResult(ok=True, warnings=("experimental_rag_fallback_bypassed_guard_no_answer",))
                 return self._build_result(
                     fallback.answer,
-                    fallback.hits or HITS["reservation"],
+                    fallback.hits,
                     started,
                     "pipeline:" + fallback.mode,
                     fallback.confidence,
@@ -331,6 +366,55 @@ class AnswerQualityPipeline:
             return self._build_result(guard_answer, HITS["reservation"], started, "pipeline:guard_no_answer", guard_confidence, route, entities, validation, trace)
 
         trace.append(route_trace)
+
+        if _looks_like_unclear_game_meta_query(pre.clean_query) and not has_explicit_game_hint(pre.clean_query):
+            game_route = PipelineRoute("games", "game_meta_clarification", 0.74, "clarification", "low", "broad game meta query without specific game")
+            answer = (
+                "ถามเรื่องเกมได้ครับ แต่คำถามนี้ยังกว้างเกินไป เลยไม่ขอดึงเกมใดเกมหนึ่งมาตอบแทน\n\n"
+                "ตัวอย่างที่ถามได้:\n"
+                "- `มีเกมอะไรบ้าง`\n"
+                "- `PS5 มีเกมอะไรบ้าง`\n"
+                "- `TEKKEN 8 คือเกมอะไร`\n"
+                "- `TEKKEN 8 มีปุ่มอะไรบ้าง`\n"
+                "- `Nintendo Switch มีเกมแนวปาร์ตี้ไหม`"
+            )
+            validation = ValidationResult(ok=True, warnings=("game_meta_query_needs_specific_intent",))
+            trace.append(PipelineTrace("clarification", "game_meta_query_missing_intent", 0.74, "broad game meta query skips retrieval"))
+            return self._build_result(
+                answer,
+                HITS["our_games"],
+                started,
+                "pipeline:game_meta_clarification",
+                0.74,
+                game_route,
+                entities,
+                validation,
+                trace,
+            )
+
+        if (
+            (looks_like_game_control_query(pre.clean_query) or _looks_like_game_play_followup(pre.clean_query))
+            and not has_explicit_game_hint(pre.clean_query)
+        ):
+            control_route = PipelineRoute("games", "game_control_lookup", 0.72, "clarification", "low", "control query without explicit game")
+            answer = (
+                "ยังไม่แน่ใจว่าหมายถึงเกมไหนครับ จึงไม่ขอดึงปุ่มหรือวิธีเล่นของเกมอื่นมาตอบแทน\n"
+                "ให้พิมพ์ชื่อเกมมาด้วย เช่น `TEKKEN 8 มีปุ่มอะไรบ้าง`, `Mario Kart 8 Deluxe ใช้จอยยังไง` "
+                "หรือถ้าเพิ่งถามชื่อเกมไปก่อนหน้า ให้ถามต่อใน session เดิมได้ครับ"
+            )
+            validation = ValidationResult(ok=True, warnings=("game_control_needs_game_context",))
+            trace.append(PipelineTrace("clarification", "game_control_missing_game", 0.72, "control query has no explicit game hint"))
+            return self._build_result(
+                answer,
+                [],
+                started,
+                "pipeline:game_control_missing_game_context",
+                0.72,
+                control_route,
+                entities,
+                validation,
+                trace,
+            )
 
         if route.category in {"games", "equipment", "general", "unknown"} and looks_like_game_control_query(pre.clean_query):
             control_route = route
@@ -464,7 +548,7 @@ class AnswerQualityPipeline:
                 validation = ValidationResult(ok=True, warnings=("experimental_rag_fallback_general_route",))
                 return self._build_result(
                     fallback.answer,
-                    fallback.hits or HITS["reservation"],
+                    fallback.hits,
                     started,
                     "pipeline:" + fallback.mode,
                     fallback.confidence,
@@ -476,7 +560,7 @@ class AnswerQualityPipeline:
             fallback = format_no_answer(route.category)
             validation = ValidationResult(ok=True, warnings=("fallback_general_route_no_curated_guessing",))
             trace.append(PipelineTrace("fallback", "general_route_no_curated_guessing", 0.55, "general route skips curated retrieval to avoid weak-context guessing"))
-            return self._build_result(fallback, HITS["reservation"], started, "pipeline:no_answer", 0.55, route, entities, validation, trace)
+            return self._build_result(fallback, [], started, "pipeline:no_answer", 0.55, route, entities, validation, trace)
 
         rag_hits, rag_trace = retrieve_curated(pre.clean_query, route.category)
         trace.append(rag_trace)
@@ -580,6 +664,8 @@ class AnswerQualityPipeline:
 
     @staticmethod
     def _handlers_for_route(category: str):
+        if category == "general":
+            return ()
         if category == "service_fee":
             return (answer_price,)
         if category == "schedule":

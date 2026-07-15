@@ -333,8 +333,15 @@ def answer_from_vector_hits(hits: list[dict[str, Any]], query: str = "") -> tupl
         answer = str(best.get("text", "")).strip()
     if not answer:
         return None, [], 0.0
+    if answer.startswith("ยังไม่แน่ใจว่าหมายถึงเกมไหน"):
+        return answer, [], 0.56
     source_url = str(best.get("source_url", "")).strip()
-    if source_url and "แหล่งข้อมูล:" not in answer and not answer.startswith("ยังไม่พบข้อมูลปุ่มควบคุม"):
+    if (
+        source_url
+        and "แหล่งข้อมูล:" not in answer
+        and not answer.startswith("ยังไม่พบข้อมูลปุ่มควบคุม")
+        and not answer.startswith("ยังไม่แน่ใจว่าหมายถึงเกมไหน")
+    ):
         answer = answer.rstrip() + f"\nแหล่งข้อมูล: {source_url}"
     confidence = min(0.88, 0.58 + score / 24)
     return answer, [hit_from_curated(row) for row in hits[:2]], confidence
@@ -391,6 +398,10 @@ def _explicit_game_hint(query: str) -> str | None:
         if compact and compact in q_compact:
             return game
     return None
+
+
+def has_explicit_game_hint(query: str) -> bool:
+    return _explicit_game_hint(query) is not None
 
 
 def _same_game(left: str, right: str) -> bool:
@@ -505,6 +516,13 @@ def _answer_from_game_control_hits(hits: list[dict[str, Any]], query: str = "") 
             if source_url:
                 lines.append(f"แหล่งข้อมูล: {source_url}")
             return "\n".join(lines)
+
+    if not explicit_game:
+        return (
+            "ยังไม่แน่ใจว่าหมายถึงเกมไหนครับ จึงไม่ขอดึงปุ่มหรือวิธีเล่นของเกมอื่นมาตอบแทน\n"
+            "ให้พิมพ์ชื่อเกมมาด้วย เช่น `TEKKEN 8 มีปุ่มอะไรบ้าง`, `Mario Kart 8 Deluxe ใช้จอยยังไง` "
+            "หรือถ้าเพิ่งถามชื่อเกมไปก่อนหน้า ให้ถามต่อใน session เดิมได้ครับ"
+        )
 
     grouped: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
     for hit in hits:

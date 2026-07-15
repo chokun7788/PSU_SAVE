@@ -46,6 +46,24 @@ def check(
 
 def main() -> int:
     check(
+        "เกมนี้มีปุ่มอะไรบ้าง",
+        ["ยังไม่แน่ใจว่าหมายถึงเกมไหน", "TEKKEN 8", "Mario Kart 8 Deluxe"],
+        must_not_contain=["NARUTO X BORUTO", "local://control_game"],
+        mode="pipeline:game_control_missing_game_context",
+    )
+    check(
+        "เล่นยังไง",
+        ["ยังไม่แน่ใจว่าหมายถึงเกมไหน", "TEKKEN 8", "Mario Kart 8 Deluxe"],
+        must_not_contain=["NARUTO X BORUTO", "local://control_game"],
+        mode="pipeline:game_control_missing_game_context",
+    )
+    check(
+        "ถามหลายๆอย่างเกี่ยวกับเกม",
+        ["ถามเรื่องเกมได้", "มีเกมอะไรบ้าง", "TEKKEN 8 มีปุ่มอะไรบ้าง"],
+        must_not_contain=["NARUTO X BORUTO", "The Legend of Zelda"],
+        mode="pipeline:game_meta_clarification",
+    )
+    check(
         "มาริโอคาร์ทไลฟ์ปุ่มเร่งเครื่องกดอะไร",
         ["Mario Kart Live: Home Circuit", "A", "เร่งเครื่อง"],
         must_not_contain=["Mario Kart 8 Deluxe", "ZR"],

@@ -64,6 +64,23 @@ def _looks_like_student_fee_query(q: str) -> bool:
     return _has(q, *student_terms) and _has(q, *fee_terms) and _has(q, *usage_terms)
 
 
+def _looks_like_general_knowledge_query(q: str) -> bool:
+    cooking_terms = (
+        "ทำอาหาร", "ทำกับข้าว", "ข้าวผัด", "อาหารผัด", "สูตร", "เมนู", "วัตถุดิบ",
+        "ปรุง", "ทอด", "ต้ม", "ผัด", "แกง", "อบ", "หมัก", "ทำยังไงให้อร่อย",
+    )
+    explanation_terms = (
+        "คืออะไร", "อธิบาย", "สอน", "วิธีทำ", "ทำยังไง", "ทำอย่างไร",
+        "หลักการ", "แปลว่า", "ตัวอย่าง", "เปรียบเทียบ",
+    )
+    psu_terms = (
+        "psu", "มอ", "ศูนย์", "esports", "studio", "จอง", "เช็คอิน", "เชคอิน",
+        "ค่าบริการ", "ราคา", "โซน", "zone", "pc", "ps5", "playstation",
+        "nintendo", "switch", "vr", "cockpit",
+    )
+    return _has(q, *explanation_terms) and _has(q, *cooking_terms) and not _has(q, *psu_terms)
+
+
 def _looks_like_pc_available_query(q: str) -> bool:
     pc_terms = ("pc", "คอม", "คอมพิวเตอร์", "เครื่องคอม", "pc zone")
     available_terms = ("มี", "ให้เล่น", "เล่นได้", "ใช้ได้", "เข้าใช้", "เปิดให้เล่น")
@@ -286,7 +303,9 @@ def route_intent(pre: PreprocessedInput, entities: EntityBundle) -> tuple[Pipeli
     semantic_match = match_semantic_intent(q)
 
     # Put specific/high-risk intents before broad terms such as "เวลา", "อุปกรณ์", or game names.
-    if _looks_like_equipment_item_query(q):
+    if _looks_like_general_knowledge_query(q):
+        route = PipelineRoute("general", "general_knowledge_query", 0.86, "general", "low", "general knowledge terms found without PSU domain")
+    elif _looks_like_equipment_item_query(q):
         route = PipelineRoute("equipment", "equipment_item_lookup", 0.96, "fact", "low", "specific equipment item terms found")
     elif _looks_like_equipment_game_catalog_query(q):
         route = PipelineRoute("equipment", "equipment_game_catalog", 0.96, "list", "low", "equipment game catalog terms found")
@@ -343,7 +362,14 @@ def route_intent(pre: PreprocessedInput, entities: EntityBundle) -> tuple[Pipeli
         route = PipelineRoute("rules", "studio_rules", 0.93, "fact", "medium", "specific rules terms found")
     elif _has(q, "ข่าว", "กิจกรรม", "การแข่งขัน", "แข่ง", "จัดวัน", "จัดให้ใคร", "2569", "2026", "game on", "valorant 2026", "cs 2 2026", "25 เมษายน", "21 กุมภาพันธ์", "surat smash", "ตัวแทน", "นักศึกษาชาวจีน") and not _has(q, "วันเกิด", "birthday", "ปาร์ตี้", "party", "วันหยุด", "เทศกาล", "ปฏิทิน", "ราชการ", "เดือนนี้", "เดือนหน้า", "เดือนที่แล้ว", "ปีนี้", "ปีหน้า", "ปีที่แล้ว", "กี่วัน", "ประเภทเกม", "แนวเกม"):
         route = PipelineRoute("events_news", "news_lookup", 0.86, "summary", "medium", "news/event terms found")
-    elif _has(q, "อธิการบดี", "คณบดี", "ผู้จัดการศูนย์", "ประธาน psu", "gallery"):
+    elif _has(
+        q,
+        "member", "members", "สมาชิก", "สมาชิกทีม", "ทีมงาน", "บุคลากร", "ตำแหน่ง",
+        "อธิการบดี", "รองอธิการบดี", "คณบดี", "ผู้ช่วยอธิการบดี", "ผู้จัดการ", "ผู้จัดการศูนย์",
+        "นักวิชาการคอมพิวเตอร์", "สหกิจ", "ฝึกงาน", "internship", "intern", "cooperative",
+        "psu phuket esports club", "esports club", "ชมรม", "ประธาน psu", "ประธานชมรม",
+        "รองประธาน", "เลขานุการ", "เหรัญญิก", "ประชาสัมพันธ์", "กรรมการ", "gallery",
+    ):
         route = PipelineRoute("overview", "members_lookup", 0.88, "fact", "low", "members/gallery terms found")
     elif _has(q, "อีสปอร์ตคือ", "esports", "moba", "multiplayer online battle arena", "เกมตีป้อม", "ประเภทเกม", "แนวเกม", "เกมยอดนิยม", "เกมที่นิยม", "เกมนิยม", "อาชีพ", "spacewar", "ประวัติ", "เริ่มครั้งแรก") or (_has(q, "ฝึก", "ทักษะ") and _has(q, "overcooked", "mario kart")):
         route = PipelineRoute("knowledge", "knowledge_lookup", 0.88, "summary", "low", "knowledge terms found")

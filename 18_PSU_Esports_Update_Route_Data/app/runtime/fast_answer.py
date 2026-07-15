@@ -38,7 +38,7 @@ HOME_URL = "https://esports.phuket.psu.ac.th/home"
 CONTACT_URL = "https://esports.computing.psu.ac.th/contact-us"
 KNOWLEDGE_URL = "https://esports.computing.psu.ac.th/knowledge"
 NEWS_URL = "https://esports.computing.psu.ac.th/events-news/news"
-MEMBERS_URL = "https://esports.computing.psu.ac.th/members"
+MEMBERS_URL = "https://esports.phuket.psu.ac.th/about-us/Members"
 OUR_GAMES_URL = "https://esports.phuket.psu.ac.th/Services/our-games"
 EQUIPMENT_HOW_TO_URL = "https://esports.phuket.psu.ac.th/Services/how-to-use-equipment-in-studio"
 POPULAR_GAMES_KNOWLEDGE_URL = "https://esports.phuket.psu.ac.th/Knowledge/%E0%B9%80%E0%B8%81%E0%B8%A1%E0%B8%97%E0%B8%99%E0%B8%A2%E0%B8%A1%E0%B9%83%E0%B8%99%E0%B8%9B%E0%B8%88%E0%B8%88%E0%B8%9A%E0%B8%99"
@@ -49,6 +49,7 @@ GAME_TITLE_ALIASES_PATH = ROOT_DIR / "data" / "curated" / "game_title_aliases.js
 GAME_ITEM_DETAILS_PATH = ROOT_DIR / "data" / "curated" / "game_item_details.jsonl"
 OUR_GAMES_SCRAPED_DETAILS_PATH = ROOT_DIR / "data" / "curated" / "our_games_scraped_details.jsonl"
 GAME_CONTROL_FACTS_PATH = ROOT_DIR / "data" / "curated" / "game_control_facts.jsonl"
+MEMBER_PROFILES_PATH = ROOT_DIR / "data" / "curated" / "member_profiles.jsonl"
 
 
 def _read_jsonl(path: Path) -> list[dict]:
@@ -193,6 +194,7 @@ HITS = {
     "equipment_how_to": [_hit("equipment_how_to", "equipment", EQUIPMENT_HOW_TO_URL, "How to Use Equipment in Studio")],
     "news": [_hit("News", "events_news", NEWS_URL, "News")],
     "members": [_hit("Members", "about_us", MEMBERS_URL, "Members")],
+    "competition_rules": [_hit("competition_rules", "competition_rules", "data/competition_rules", "Competition Rules")],
     "our_games": [
         _hit("our_games", "games", OUR_GAMES_URL, "Our Games"),
         _hit("Reservation", "reservation", RESERVATION_URL, "Reservation"),
@@ -316,6 +318,24 @@ SUPPORTED_GAME_CATALOG = {
 
 
 GAME_DETAILS = {
+    "rov": {
+        "name": "RoV / Arena of Valor",
+        "aliases": ("rov", "arena of valor", "aov", "อาร์โอวี", "อาโอวี", "เอโอวี", "เกมตีป้อม"),
+        "zones": ("มีข้อมูลกติกาการแข่งขัน แต่ยังไม่พบในรายการเกมให้เล่นของศูนย์",),
+        "genre": "เกม MOBA แบบทีม",
+        "summary": "RoV หรือ Arena of Valor คือเกม MOBA บนมือถือที่ผู้เล่นแบ่งเป็นทีม เลือกฮีโร่ และร่วมกันทำลายป้อม/ฐานของฝ่ายตรงข้าม",
+        "how": "โดยทั่วไปผู้เล่นต้องเลือกตำแหน่งและฮีโร่ให้เหมาะกับทีม เก็บเลเวล คุมแผนที่ ช่วยทีมไฟต์ และดันเลนเพื่อทำลายฐานคู่แข่ง ในฐานข้อมูลของศูนย์มีข้อมูลฝั่งกติกาการแข่งขัน แต่ยังไม่พบว่าอยู่ในรายการเกมให้เล่นของศูนย์",
+        "source": "competition_rules",
+    },
+    "minecraft": {
+        "name": "Minecraft",
+        "aliases": ("minecraft", "มายคราฟ", "ไมน์คราฟต์", "ไมน์คราฟ"),
+        "zones": ("ยังไม่พบในรายการเกมให้เล่นของศูนย์",),
+        "genre": "เกม Sandbox / Survival / Creative",
+        "summary": "Minecraft คือเกมแซนด์บ็อกซ์ที่ผู้เล่นสำรวจโลกบล็อก ขุดทรัพยากร สร้างสิ่งปลูกสร้าง คราฟต์ของ และเลือกเล่นได้ทั้งแนวเอาชีวิตรอดหรือสร้างสรรค์",
+        "how": "โดยทั่วไปเริ่มจากเก็บทรัพยากร สร้างเครื่องมือ สร้างที่พัก สำรวจโลก และตั้งเป้าหมายเอง เช่น เอาชีวิตรอด สร้างเมือง เล่นกับเพื่อน หรือทำมินิเกม หมายเหตุ: คำอธิบายนี้เป็นความรู้ทั่วไปของเกม ไม่ใช่ข้อมูลยืนยันว่าเกมนี้มีให้เล่นในศูนย์",
+        "source": "our_games",
+    },
     "valorant": {
         "name": "VALORANT",
         "aliases": ("valorant", "วาโล", "valo", "วาโลแรนท์", "วาโลแรน"),
@@ -2442,7 +2462,170 @@ def _game_detail_lines(meta: dict) -> list[str]:
 
 def _source_url_for_game(meta: dict) -> str:
     source_key = str(meta.get("source") or "our_games")
-    return OUR_GAMES_URL if source_key == "our_games" else RESERVATION_URL
+    if source_key == "our_games":
+        return OUR_GAMES_URL
+    if source_key == "competition_rules":
+        return "data/competition_rules"
+    return RESERVATION_URL
+
+
+MEMBER_GROUP_ORDER = (
+    "Members",
+    "cooperative education and Internship student",
+    "PSU Phuket Esports Club - PSU Phuket",
+)
+
+
+@lru_cache(maxsize=1)
+def _member_profiles() -> tuple[dict, ...]:
+    return tuple(_read_jsonl(MEMBER_PROFILES_PATH))
+
+
+def _looks_like_member_query(q: str) -> bool:
+    return _has(
+        q,
+        "member", "members", "สมาชิก", "สมาชิกทีม", "ทีมงาน", "บุคลากร", "ตำแหน่ง",
+        "ผู้จัดการ", "อธิการบดี", "รองอธิการบดี", "คณบดี", "ผู้ช่วยอธิการบดี",
+        "นักวิชาการคอมพิวเตอร์", "สหกิจ", "ฝึกงาน", "internship", "intern", "cooperative",
+        "psu phuket esports club", "esports club", "ชมรม", "ประธาน", "รองประธาน",
+        "เลขานุการ", "เหรัญญิก", "ประชาสัมพันธ์", "กรรมการ",
+    )
+
+
+def _member_group_for_query(q: str) -> str | None:
+    if _has(q, "สหกิจ", "ฝึกงาน", "internship", "intern", "cooperative", "ai chat bot developer", "web & ai", "game and 3d"):
+        return "cooperative education and Internship student"
+    if _has(q, "psu phuket esports club", "esports club", "ชมรม", "ประธาน", "รองประธาน", "เลขานุการ", "เหรัญญิก", "ประชาสัมพันธ์", "กรรมการ"):
+        return "PSU Phuket Esports Club - PSU Phuket"
+    if _has(q, "อธิการบดี", "รองอธิการบดี", "คณบดี", "ผู้ช่วยอธิการบดี", "ผู้จัดการ", "นักวิชาการคอมพิวเตอร์", "ผู้บริหาร", "members หลัก"):
+        return "Members"
+    return None
+
+
+def _member_role_for_query(q: str) -> str | None:
+    roles = (
+        "AI Chat Bot Developer",
+        "Game and 3D Developer",
+        "Web & AI Developer",
+        "Internship Student",
+        "นักศึกษาสหกิจ",
+        "นักศึกษาฝึกงาน",
+        "อธิการบดี",
+        "รองอธิการบดี",
+        "คณบดี",
+        "ผู้ช่วยอธิการบดีฝ่ายวิชาการ",
+        "ผู้จัดการ",
+        "นักวิชาการคอมพิวเตอร์",
+        "ประธาน",
+        "รองประธาน",
+        "เลขานุการ",
+        "เหรัญญิก",
+        "ประชาสัมพันธ์",
+        "กรรมการ",
+    )
+    q_norm = normalize_text(q)
+    for role in roles:
+        if normalize_text(role) in q_norm:
+            return role
+    return None
+
+
+def _member_name_match(q: str) -> dict | None:
+    q_key = _game_alias_key(q)
+    q_norm = normalize_text(q)
+    best: tuple[int, dict] | None = None
+    for row in _member_profiles():
+        name = str(row.get("name") or "")
+        name_key = _game_alias_key(name)
+        if name_key and name_key in q_key:
+            return row
+        parts = [part for part in re.split(r"\s+", normalize_text(name)) if len(_game_alias_key(part)) >= 4]
+        score = sum(1 for part in parts if part and part in q_norm)
+        if score and (best is None or score > best[0]):
+            best = (score, row)
+    return best[1] if best else None
+
+
+def _format_member_row(row: dict) -> str:
+    line = f"- {row.get('name')}: {row.get('role')}"
+    affiliation = str(row.get("affiliation") or "").strip()
+    period = str(row.get("period") or "").strip()
+    if affiliation:
+        line += f" ({affiliation})"
+    if period:
+        line += f" | ระยะเวลา: {period}"
+    return line
+
+
+def _format_member_groups(rows: list[dict]) -> str:
+    grouped: dict[str, list[dict]] = {group: [] for group in MEMBER_GROUP_ORDER}
+    for row in rows:
+        grouped.setdefault(str(row.get("group") or "Members"), []).append(row)
+    lines: list[str] = []
+    for group in MEMBER_GROUP_ORDER:
+        group_rows = grouped.get(group) or []
+        if not group_rows:
+            continue
+        if lines:
+            lines.append("")
+        lines.append(f"{group}:")
+        lines.extend(_format_member_row(row) for row in group_rows)
+    return "\n".join(lines)
+
+
+def answer_members(query: str, start: float) -> FastAnswer | None:
+    q = normalize_text(query)
+    if not _looks_like_member_query(q):
+        return None
+
+    rows = list(_member_profiles())
+    if not rows:
+        return None
+
+    name_match = _member_name_match(q)
+    role = _member_role_for_query(q)
+    group = _member_group_for_query(q)
+    if group == "cooperative education and Internship student" and _has(q, "cooperative", "สหกิจ", "ฝึกงาน") and _has(q, "มีใครบ้าง", "รายชื่อ", "ทั้งหมด"):
+        role = None
+
+    if name_match is not None:
+        answer = (
+            f"{name_match.get('name')} อยู่ในหมวด {name_match.get('group')}\n"
+            f"ตำแหน่ง: {name_match.get('role')}"
+        )
+        affiliation = str(name_match.get("affiliation") or "").strip()
+        period = str(name_match.get("period") or "").strip()
+        if affiliation:
+            answer += f"\nสังกัด/รายละเอียด: {affiliation}"
+        if period:
+            answer += f"\nระยะเวลา: {period}"
+        answer += f"\nแหล่งข้อมูล: {MEMBERS_URL}"
+        return _answer(answer, "members", "members_person_lookup_fast_path", start, 0.96)
+
+    filtered = rows
+    if group:
+        filtered = [row for row in filtered if str(row.get("group") or "") == group]
+    if role:
+        role_norm = normalize_text(role)
+        filtered = [row for row in filtered if role_norm in normalize_text(str(row.get("role") or ""))]
+
+    if not filtered:
+        return _answer(
+            f"ยังไม่พบสมาชิกที่ตรงกับเงื่อนไขนี้ในหน้า Members ครับ\nแหล่งข้อมูล: {MEMBERS_URL}",
+            "members",
+            "members_no_match_fast_path",
+            start,
+            0.82,
+        )
+
+    if role:
+        header = f"สมาชิกที่มีตำแหน่งเกี่ยวกับ `{role}`:"
+    elif group:
+        header = f"สมาชิกในหมวด {group}:"
+    else:
+        header = "สมาชิกจากหน้า Members แยกตามหมวด:"
+    answer = f"{header}\n{_format_member_groups(filtered)}\nแหล่งข้อมูล: {MEMBERS_URL}"
+    return _answer(answer, "members", "members_lookup_fast_path", start, 0.95)
 
 
 def _match_all_game_details(q: str) -> list[tuple[str, dict]]:
@@ -3093,6 +3276,10 @@ def answer_static_domain(query: str, start: float) -> FastAnswer | None:
     booking_howto = _booking_howto_answer(q, start)
     if booking_howto is not None:
         return booking_howto
+
+    members_answer = answer_members(q, start)
+    if members_answer is not None:
+        return members_answer
 
     popularity_answer = _game_popularity_no_answer(q, start)
     if popularity_answer is not None:

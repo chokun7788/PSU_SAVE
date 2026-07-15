@@ -21,6 +21,12 @@ from app.pipeline.vector_retrieval import retrieve_vector_guarded
 DEFAULT_OLLAMA_URL = os.getenv("OLLAMA_URL", "http://127.0.0.1:11434")
 DEFAULT_MODEL = os.getenv("PSU_CHATBOT_OLLAMA_MODEL", "qwen2.5:3b")
 DEFAULT_TIMEOUT_SEC = float(os.getenv("PSU_EXPERIMENTAL_LLM_TIMEOUT_SEC", "1.5"))
+DEFAULT_GENERAL_NUM_PREDICT = int(os.getenv("PSU_GENERAL_LLM_NUM_PREDICT", "256"))
+DEFAULT_RAG_NUM_PREDICT = int(os.getenv("PSU_RAG_LLM_NUM_PREDICT", "180"))
+
+
+class OllamaEmptyResponseError(RuntimeError):
+    """Raised when Ollama returns only thinking/internal text and no final answer."""
 
 
 @dataclass(frozen=True)
@@ -254,7 +260,12 @@ CONTEXT:
 ANSWER:"""
 
 
-def _call_ollama(prompt: str, *, timeout_sec: float = DEFAULT_TIMEOUT_SEC) -> str:
+def _call_ollama(
+    prompt: str,
+    *,
+    timeout_sec: float = DEFAULT_TIMEOUT_SEC,
+    num_predict: int = DEFAULT_RAG_NUM_PREDICT,
+) -> str:
     payload = {
         "model": DEFAULT_MODEL,
         "prompt": prompt,
@@ -262,7 +273,7 @@ def _call_ollama(prompt: str, *, timeout_sec: float = DEFAULT_TIMEOUT_SEC) -> st
         "options": {
             "temperature": 0.15,
             "top_p": 0.8,
-            "num_predict": 140,
+            "num_predict": num_predict,
             "num_ctx": 3072,
         },
     }
@@ -274,7 +285,44 @@ def _call_ollama(prompt: str, *, timeout_sec: float = DEFAULT_TIMEOUT_SEC) -> st
     )
     with urllib.request.urlopen(request, timeout=timeout_sec) as response:
         data = json.loads(response.read().decode("utf-8"))
-    return str(data.get("response", "")).strip()
+    answer = str(data.get("response", "")).strip()
+    if answer:
+        return answer
+    thinking = str(data.get("thinking", "")).strip()
+    if thinking:
+        raise OllamaEmptyResponseError(
+            "Ollama returned thinking but no final response "
+            f"(thinking_len={len(thinking)}, done_reason={data.get('done_reason') or 'unknown'}, "
+            f"num_predict={num_predict}, model={DEFAULT_MODEL})."
+        )
+    return ""
+
+
+def _build_general_prompt(question: str) -> str:
+    return f"""ตอบเป็นภาษาไทยแบบสั้น กระชับ และเป็นประโยชน์
+คำถามนี้อยู่นอกฐานข้อมูล PSU Esports Studio - Phuket จึงให้ตอบจากความรู้ทั่วไปของโมเดล
+ห้ามอ้างว่าเป็นข้อมูลของ PSU Esports Studio - Phuket
+ห้ามแต่งราคา เวลา ขั้นตอนบริการ หรือกฎของศูนย์
+ถ้าคำถามต้องใช้ข้อมูลล่าสุด/ข้อมูลเฉพาะสถานที่ ให้บอกว่าควรตรวจสอบแหล่งข้อมูลจริงเพิ่มเติม
+
+QUESTION:
+{question}
+
+ANSWER:"""
+
+
+def _general_llm_answer(question: str) -> str:
+    answer = _call_ollama(
+        _build_general_prompt(question),
+        timeout_sec=float(os.getenv("PSU_GENERAL_LLM_TIMEOUT_SEC", "12")),
+        num_predict=int(os.getenv("PSU_GENERAL_LLM_NUM_PREDICT", str(DEFAULT_GENERAL_NUM_PREDICT))),
+    )
+    if not answer:
+        return ""
+    note = "หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket"
+    if "หมายเหตุ" not in answer:
+        answer = answer.rstrip() + f"\n{note}"
+    return answer
 
 
 def _direct_rag_answer(question: str, rows: list[dict[str, Any]]) -> str:
@@ -298,6 +346,30 @@ def _no_context_answer(route: PipelineRoute) -> str:
     )
 
 
+def _general_unavailable_answer(llm_error: str = "") -> str:
+    timeout_sec = os.getenv("PSU_GENERAL_LLM_TIMEOUT_SEC", str(DEFAULT_TIMEOUT_SEC))
+    num_predict = os.getenv("PSU_GENERAL_LLM_NUM_PREDICT", str(DEFAULT_GENERAL_NUM_PREDICT))
+    hint = (
+        f"\nรายละเอียด: {llm_error}"
+        if llm_error and ("thinking but no final response" in llm_error or "OllamaEmptyResponseError" in llm_error)
+        else ""
+    )
+    return (
+        "คำถามนี้ถูกจัดเป็นคำถามทั่วไปนอกฐานข้อมูล PSU Esports Studio - Phuket แล้วครับ\n"
+        f"แต่ Local LLM รุ่น `{DEFAULT_MODEL}` ยังไม่ส่งคำตอบสุดท้ายกลับมา จึงยังตอบจากความรู้ทั่วไปไม่ได้\n"
+        f"ค่าปัจจุบัน: timeout={timeout_sec}s, num_predict={num_predict}\n"
+        "ถ้าใช้ `qwen3:4b` แล้วเจออาการนี้ แนะนำให้ลอง `qwen2.5:3b` ก่อน เพราะ Qwen3 เป็น thinking model และอาจใช้ token ไปกับการคิดจน response ว่าง"
+        f"{hint}"
+    )
+
+
+def _general_disabled_answer() -> str:
+    return (
+        "คำถามนี้ถูกจัดเป็นคำถามทั่วไปนอกฐานข้อมูล PSU Esports Studio - Phuket แล้วครับ\n"
+        "ตอนนี้โหมดตอบจากความรู้ทั่วไปของ Local LLM ยังไม่ได้เปิดในสภาพแวดล้อมนี้ จึงไม่ดึงข้อมูลศูนย์มาตอบแทนเพื่อเลี่ยงคำตอบมั่ว"
+    )
+
+
 def build_experimental_fallback(
     question: str,
     route: PipelineRoute,
@@ -310,9 +382,63 @@ def build_experimental_fallback(
     if soft is not None:
         return soft
 
+    if route.category == "general" and not allow_llm:
+        trace = PipelineTrace(
+            "experimental_rag_fallback",
+            "general_llm_disabled",
+            0.42,
+            "general route skips document retrieval when general LLM is disabled",
+            {"allow_llm": False, "model": DEFAULT_MODEL},
+        )
+        return ExperimentalFallback(
+            _general_disabled_answer(),
+            [],
+            "general_llm_disabled",
+            0.42,
+            trace,
+        )
+
+    if allow_llm and route.category == "general":
+        llm_error = ""
+        try:
+            answer = _general_llm_answer(question)
+            if answer:
+                trace = PipelineTrace(
+                    "experimental_rag_fallback",
+                    "general_llm",
+                    0.58,
+                    "general route uses local LLM without document retrieval",
+                    {"allow_llm": True, "model": DEFAULT_MODEL},
+                )
+                return ExperimentalFallback(
+                    answer,
+                    [],
+                    "general_llm_fallback",
+                    0.58,
+                    trace,
+                )
+        except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError, OllamaEmptyResponseError) as exc:
+            llm_error = f"{type(exc).__name__}: {exc}"
+        trace = PipelineTrace(
+            "experimental_rag_fallback",
+            "general_llm_unavailable",
+            0.42,
+            "general route skips document retrieval to avoid PSU context noise",
+            {"allow_llm": True, "model": DEFAULT_MODEL, "llm_error": llm_error},
+        )
+        return ExperimentalFallback(
+            _general_unavailable_answer(llm_error),
+            [],
+            "general_llm_unavailable",
+            0.42,
+            trace,
+        )
+
     rows, details = _retrieve_experimental_rows(question, route, limit)
     if not rows:
         trace = PipelineTrace("experimental_rag_fallback", "no_context", 0.42, "; ".join(details), {"allow_llm": allow_llm})
+        if allow_llm and route.category == "general" and llm_error:
+            trace.metadata["llm_error"] = llm_error
         return ExperimentalFallback(
             _no_context_answer(route),
             [],
@@ -324,7 +450,10 @@ def build_experimental_fallback(
     llm_error = ""
     if allow_llm:
         try:
-            answer = _call_ollama(_build_prompt(question, rows))
+            answer = _call_ollama(
+                _build_prompt(question, rows),
+                num_predict=int(os.getenv("PSU_RAG_LLM_NUM_PREDICT", str(DEFAULT_RAG_NUM_PREDICT))),
+            )
             if answer:
                 source_line = _source_line(rows)
                 if source_line and "แหล่งข้อมูล" not in answer:
@@ -343,7 +472,7 @@ def build_experimental_fallback(
                     0.70,
                     trace,
                 )
-        except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError) as exc:
+        except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError, OllamaEmptyResponseError) as exc:
             llm_error = f"{type(exc).__name__}: {exc}"
 
     answer = _direct_rag_answer(question, rows)
