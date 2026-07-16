@@ -17,6 +17,8 @@ def _looks_like_schedule_date_query(q: str) -> bool:
 
 
 def _looks_like_competition_rule_query(q: str) -> bool:
+    if _has(q, "ปุ่ม", "กดปุ่ม", "กดอะไร", "ปุ่มอะไร", "button", "buttons", "controls", "controller"):
+        return False
     game_terms = (
         "cs2", "counter-strike", "counter strike", "เคาเตอร์", "valorant", "วาโล", "วาโลแรนท์", "วาโลแรน", "valo", "rov", "arena of valor",
         "aov", "เกมตีป้อม", "อาโอวี", "เอโอวี", "อาร์โอวี", "tekken", "tekken 8", "เทคเคน", "เทคเคน 8", "เทคเคน8", "เทกเคน", "blueket", "psu phuket cs2", "psu phuket valorant", "psu esports tekken",
@@ -154,7 +156,10 @@ def _looks_like_zone_equipment_query(q: str) -> bool:
 
 
 def _looks_like_equipment_item_query(q: str) -> bool:
-    if _has(q, "ราคา", "ค่าบริการ", "กี่บาท", "เท่าไหร่", "เท่าไร", "เสียเงิน", "เสียกี่"):
+    if _has(q, "ราคา", "ค่าบริการ", "กี่บาท", "เท่าไหร่", "เท่าไร", "เสียเงิน", "เสียกี่") and not _has(
+        q,
+        "ขนาด", "กี่นิ้ว", "นิ้ว", "ทีวี", "tv",
+    ):
         return False
     item_terms = (
         "gaming pc", "msi mag infinite", "gaming monitor", "gaming keyboard", "gaming mouse", "gaming headset",
@@ -162,20 +167,21 @@ def _looks_like_equipment_item_query(q: str) -> bool:
         "racezone", "full cockpit", "cockpit v3", "pulse elite", "wireless headset",
         "nintendo switch oled", "switch oled", "playstation 5 slim", "ps5 slim",
         "sony playstation vr2", "playstation vr2", "ps vr2", "psvr2", "vr2",
-        "tv 65", "tv 86", "sofa", "monitor", "keyboard", "mouse", "headset",
+        "tv", "tv 65", "tv 86", "sofa", "monitor", "keyboard", "mouse", "headset",
         "เมาส์", "เม้า", "เม้าส์", "คีย์บอร์ด", "แป้นพิมพ์", "หูฟัง", "เฮดเซ็ต", "เก้าอี้",
         "พวงมาลัย", "คันเกียร์", "เบาะขับรถ", "แว่น vr", "แว่นวีอาร์", "แว่น",
-        "นินเทนโด", "สวิตช์", "สวิทช์", "เพลย์ห้า", "ทีวี 65", "ทีวี 86", "โซฟา",
+        "นินเทนโด", "สวิตช์", "สวิทช์", "เพลย์ห้า", "ทีวี", "ทีวี 65", "ทีวี 86", "โซฟา",
     )
     question_terms = (
         "คืออะไร", "อะไรคือ", "มีอะไร", "ทำอะไร", "ใช้ทำอะไร", "เล่นอะไร", "เล่นยังไง", "เล่นอย่างไร",
         "ใช้ยังไง", "ใช้อย่างไร", "วิธีเล่น", "วิธีใช้", "อุปกรณ์", "รุ่นอะไร",
+        "โซนไหน", "อยู่ที่ไหน", "อยู่ไหน", "ขนาดเท่าไหร่", "ขนาดเท่าไร",
     )
     if _has(q, "zone", "โซน") and not _has(
         q,
         "g923", "trueforce", "shifter", "racezone", "pulse elite", "vr2", "psvr2",
         "playstation vr2", "แว่น", "oled", "slim", "เมาส์", "คีย์บอร์ด", "หูฟัง",
-        "เก้าอี้", "พวงมาลัย", "คันเกียร์",
+        "เก้าอี้", "พวงมาลัย", "คันเกียร์", "ทีวี", "tv",
     ):
         return False
     return _has(q, *item_terms) and _has(q, *question_terms)

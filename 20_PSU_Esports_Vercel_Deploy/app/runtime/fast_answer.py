@@ -2063,9 +2063,9 @@ GAME_GENRE_GROUPS = {
         "keywords": ("fps", "ยิง"),
     },
     "battle_royale": {
-        "label": "Battle Royale",
-        "aliases": ("battle royale", "แบทเทิลรอยัล", "แบทเทิล โรยัล", "แบตเทิลรอยัล", "เอาชีวิตรอด"),
-        "keywords": ("battle royale", "เอาชีวิตรอด"),
+        "label": "Battle Royale / Survival",
+        "aliases": ("battle royale", "แบทเทิลรอยัล", "แบทเทิล โรยัล", "แบตเทิลรอยัล", "survival", "เอาชีวิตรอด"),
+        "keywords": ("battle royale", "survival", "เอาชีวิตรอด"),
     },
     "fighting": {
         "label": "Fighting",
@@ -2250,7 +2250,7 @@ def _game_genre_list_answer(q: str, start: float) -> FastAnswer | None:
     for meta in _verified_game_catalog():
         genre = normalize_text(str(meta.get("genre", "")))
         summary = normalize_text(str(meta.get("summary", "")))
-        if any(keyword in genre or keyword in summary for keyword in keywords):
+        if any(keyword in genre for keyword in keywords) or (not genre and any(keyword in summary for keyword in keywords)):
             rows.append(meta)
     if not rows:
         return _answer(
@@ -3095,6 +3095,14 @@ def _equipment_item_location_answer(q: str, start: float) -> FastAnswer | None:
     if not matches:
         return None
 
+    if (
+        len(matches) == 1
+        and matches[0].get("title", "").startswith("Gaming PC")
+        and _has(q, "เกม", "game", "fps", "moba", "ปาร์ตี้", "party", "แนว")
+        and not _has(q, "เครื่อง", "สเปก", "สเป็ค", "spec", "อุปกรณ์", "รุ่น")
+    ):
+        return None
+
     if _has(q, "65"):
         matches = [item for item in matches if "65" in str(item.get("title", "")) or "65" in str(item.get("note", ""))]
     if _has(q, "86"):
@@ -3126,6 +3134,42 @@ def _equipment_item_location_answer(q: str, start: float) -> FastAnswer | None:
         lines.append(f"• {item['title']}: {item['zone']}")
     lines.append(f"แหล่งข้อมูล: {HOME_URL}")
     return _answer("\n".join(lines), "home", "equipment_item_location_fast_path", start, 0.95)
+
+
+def _zone_tv_size_answer(q: str, start: float) -> FastAnswer | None:
+    if not _has(q, "ทีวี", "tv") or not _has(q, "ขนาด", "กี่นิ้ว", "เท่าไหร่", "เท่าไร", "size"):
+        return None
+    keys = _zone_keys_for_query(q)
+    if not keys:
+        return None
+
+    tv_items = [
+        item
+        for item in EQUIPMENT_ITEM_DETAILS.values()
+        if str(item.get("title", "")).lower().startswith("tv ")
+    ]
+    lines: list[str] = []
+    for key in keys:
+        zone_title = ZONE_DETAILS.get(key, {}).get("title", CATALOG_ZONE_BY_KEY.get(key, key))
+        zone_tvs = [item for item in tv_items if item.get("zone") == zone_title]
+        if not zone_tvs:
+            continue
+        if len(zone_tvs) == 1:
+            item = zone_tvs[0]
+            lines.append(f"{zone_title} มี {item['title']} ครับ")
+            if item.get("note"):
+                lines.append(f"• {item['note']}")
+        else:
+            lines.append(f"{zone_title} มีทีวีตามข้อมูลนี้ครับ")
+            for item in zone_tvs:
+                lines.append(f"• {item['title']}: {item.get('note', '')}")
+        lines.append("")
+
+    if not lines:
+        return None
+    text = "\n".join(line for line in lines if line != "")
+    text += f"\nแหล่งข้อมูล: {HOME_URL}"
+    return _answer(text, "home", "equipment_tv_size_fast_path", start, 0.97)
 
 
 def _equipment_item_detail_answer(q: str, start: float) -> FastAnswer | None:
@@ -3314,6 +3358,59 @@ def _cross_zone_game_answer(q: str, start: float) -> FastAnswer | None:
     return _answer("\n".join(lines), "our_games", "games_cross_zone_fast_path", start, 0.97)
 
 
+def _zone_suitability_answer(q: str, start: float) -> FastAnswer | None:
+    keys = _zone_keys_for_query(q)
+    if not keys:
+        return None
+    if not _has(q, "เหมาะกับ", "เหมาะไหม", "เหมาะมั้ย", "แนวไหน", "แนวอะไร", "มือใหม่", "มือไหม่", "ครั้งแรก", "ไม่เคยเล่น"):
+        return None
+
+    lines: list[str] = []
+    for key in keys[:2]:
+        zone = ZONE_DETAILS[key]
+        games = [
+            meta
+            for meta in GAME_DETAILS.values()
+            if CATALOG_ZONE_BY_KEY.get(key) in meta.get("zones", ())
+        ]
+        if _has(q, "มือใหม่", "มือไหม่", "ครั้งแรก", "ไม่เคยเล่น"):
+            if key == "vr":
+                lines.append("VR Zone เหมาะกับมือใหม่ที่อยากลองประสบการณ์ VR ครับ")
+                lines.append("• แนะนำเริ่มจาก Beat Saber เพราะรูปแบบการเล่นเข้าใจง่ายกว่าเกมผจญภัย VR")
+                lines.append("• ควรให้เจ้าหน้าที่ช่วยแนะนำการใส่แว่นและคอนโทรลเลอร์ก่อนเริ่มเล่น")
+            elif key == "nintendo":
+                lines.append("Nintendo Switch Zone เหมาะกับมือใหม่และเล่นกับเพื่อนครับ")
+                lines.append("• จุดเด่นคือเกมเล่นง่าย/เล่นเป็นกลุ่ม เช่น Mario Kart, Overcooked และ Switch Sports")
+            elif key == "cockpit":
+                lines.append("Cockpit Zone เหมาะกับคนที่อยากลองเกมขับรถมากกว่ามือใหม่ทั่วไปครับ")
+                lines.append("• ถ้าไม่เคยเล่นควรให้เจ้าหน้าที่แนะนำพวงมาลัย เบรก คันเร่ง และเมนูเกมก่อน")
+            elif key == "ps5":
+                lines.append("PlayStation 5 Zone เหมาะกับคนที่อยากเล่นเกมคอนโซลครับ")
+                lines.append("• มือใหม่ควรเริ่มจากเกมที่คุ้นแนวหรือให้เจ้าหน้าที่ช่วยแนะนำจอย/เมนูก่อน")
+            else:
+                lines.append("PC Zone เหมาะกับคนที่คุ้นเมาส์คีย์บอร์ดหรืออยากเล่นเกม FPS/MOBA ครับ")
+                lines.append("• มือใหม่ควรเริ่มจากเกมที่คุ้นแนวและสอบถามเจ้าหน้าที่เรื่องบัญชี/โปรแกรมก่อนเล่น")
+        else:
+            lines.append(f"{zone['title']} เหมาะกับแนวนี้ครับ")
+            genres: list[str] = []
+            for meta in games:
+                genre = str(meta.get("genre") or "ยังไม่ระบุแนวเกม")
+                if genre not in genres:
+                    genres.append(genre)
+            for genre in genres[:6]:
+                lines.append(f"• {genre}")
+
+        if games:
+            lines.append("เกมที่ยืนยันได้ในโซนนี้")
+            for meta in games[:10]:
+                genre = str(meta.get("genre") or "ยังไม่ระบุแนวเกม")
+                lines.append(f"• {meta['name']}: {genre}")
+        lines.append("")
+
+    lines.append(f"แหล่งข้อมูล: {HOME_URL} และ {OUR_GAMES_URL}")
+    return _answer("\n".join(line for line in lines if line != ""), "home_our_games", "zone_suitability_fast_path", start, 0.95)
+
+
 def answer_games(query: str, start: float) -> FastAnswer | None:
     q = normalize_text(query)
     booking_howto = _booking_howto_answer(q, start)
@@ -3322,6 +3419,12 @@ def answer_games(query: str, start: float) -> FastAnswer | None:
     equipment_location_answer = _equipment_item_location_answer(q, start)
     if equipment_location_answer is not None:
         return equipment_location_answer
+    tv_size_answer = _zone_tv_size_answer(q, start)
+    if tv_size_answer is not None:
+        return tv_size_answer
+    zone_suitability_answer = _zone_suitability_answer(q, start)
+    if zone_suitability_answer is not None:
+        return zone_suitability_answer
     cross_zone_answer = _cross_zone_game_answer(q, start)
     if cross_zone_answer is not None:
         return cross_zone_answer
@@ -3441,9 +3544,18 @@ def answer_equipment(query: str, start: float) -> FastAnswer | None:
     equipment_location_answer = _equipment_item_location_answer(q, start)
     if equipment_location_answer is not None:
         return equipment_location_answer
+    tv_size_answer = _zone_tv_size_answer(q, start)
+    if tv_size_answer is not None:
+        return tv_size_answer
+    zone_suitability_answer = _zone_suitability_answer(q, start)
+    if zone_suitability_answer is not None:
+        return zone_suitability_answer
     cross_zone_answer = _cross_zone_game_answer(q, start)
     if cross_zone_answer is not None:
         return cross_zone_answer
+    genre_answer = _game_genre_list_answer(q, start)
+    if genre_answer is not None:
+        return genre_answer
     related_answer = _related_guidance_answer(q, start)
     if related_answer is not None:
         return related_answer
@@ -3549,11 +3661,191 @@ def _booking_howto_answer(q: str, start: float) -> FastAnswer | None:
     return _answer(answer, "reservation", "booking_howto_fast_path", start, 0.97)
 
 
+def _booking_specific_answer(q: str, start: float) -> FastAnswer | None:
+    if _has(q, "จองแล้วลืมเช็คอิน", "ลืมเช็คอิน", "ลืมเชคอิน", "ไปถึงช้า", "ช้ากว่าเวลาจอง"):
+        return _answer(
+            "ถ้าลืมเช็คอินหรือไปถึงช้ากว่าเวลาเริ่มรอบ มีความเสี่ยงที่การจองจะถูกยกเลิกครับ\n"
+            "• ผู้ใช้งานต้องเช็คอินก่อนเวลาเริ่มต้นของรอบที่จอง\n"
+            "• สามารถเช็คอินได้ล่วงหน้าสูงสุด 30 นาที\n"
+            "• หากไม่เช็คอินก่อนเริ่มรอบ ระบบอาจยกเลิกการจองและไม่มีการคืนเงิน\n"
+            f"แหล่งข้อมูล: {RESERVATION_URL}",
+            "reservation",
+            "booking_late_checkin_fast_path",
+            start,
+            0.96,
+        )
+
+    if _has(q, "เปลี่ยนคนเล่น", "เปลี่ยนผู้เล่น", "เปลี่ยนคนใช้", "โอนให้เพื่อน", "ให้เพื่อนเล่นแทน"):
+        return _answer(
+            "จองแล้วไม่ควรเปลี่ยนคนเล่นหรือโอนสิทธิ์ให้ผู้อื่นครับ\n"
+            "• ข้อมูลการจองผูกกับข้อมูลผู้ใช้บริการที่กรอกไว้\n"
+            "• หากต้องแก้ไขข้อมูล ควรยกเลิกการจองเดิมตามเงื่อนไขแล้วจองใหม่\n"
+            f"แหล่งข้อมูล: {RESERVATION_URL}",
+            "reservation",
+            "booking_transfer_fast_path",
+            start,
+            0.95,
+        )
+
+    if _has(q, "ต้องชำระเงินก่อนเล่น", "ชำระเงินก่อนเล่น", "จ่ายเงินก่อนเล่น", "ต้องจ่ายก่อนเล่น"):
+        return _answer(
+            "ต้องชำระเงินก่อนเข้าใช้บริการครับ\n"
+            "• หลังจองต้องชำระเงินภายใน 10 นาที\n"
+            "• ชำระโดยโอนเข้าบัญชีที่ระบบแจ้ง แล้วแนบสลิปเพื่อยืนยันการจอง\n"
+            f"แหล่งข้อมูล: {RESERVATION_URL}",
+            "reservation",
+            "booking_payment_before_play_fast_path",
+            start,
+            0.96,
+        )
+
+    if _has(q, "จองแล้วต้องตรวจสอบอีเมล", "ตรวจสอบอีเมล", "เช็คอีเมล", "เช็คเมล") and _has(q, "จอง", "booking"):
+        return _answer(
+            "ควรตรวจสอบอีเมลที่ใช้จองครับ\n"
+            "• ใช้ติดตามข้อมูล/หลักฐานการจองและการติดต่อจากระบบหรือเจ้าหน้าที่\n"
+            "• หากต้องยกเลิกหรือแก้ไขการจอง ระบบมีขั้นตอนที่เกี่ยวข้องกับอีเมลและควรทำล่วงหน้าอย่างน้อย 1 ชั่วโมง\n"
+            f"แหล่งข้อมูล: {RESERVATION_URL}",
+            "reservation",
+            "booking_email_check_fast_path",
+            start,
+            0.94,
+        )
+
+    if _has(q, "vr", "วีอาร์", "แว่น"):
+        if _has(q, "1 ชั่วโมง", "หนึ่งชั่วโมง", "60 นาที", "30 นาที", "ต่างกัน") and _has(q, "ต่างกัน", "เทียบ", "กับ"):
+            return _answer(
+                "VR มีรอบ 30 นาทีและ 1 ชั่วโมงครับ\n"
+                "• 30 นาที: เหมาะกับการลองเล่นครั้งแรกหรือเล่นสั้น ๆ\n"
+                "• 1 ชั่วโมง: เหมาะกับเล่นนานขึ้นหรือเล่นหลายคนในรอบเดียว\n"
+                "• ทั้งสองแบบให้เลือกบริการ VR Station และเลือกรอบเวลาที่ว่างในระบบจอง\n"
+                f"แหล่งข้อมูล: {RESERVATION_URL}",
+                "reservation",
+                "booking_vr_duration_fast_path",
+                start,
+                0.97,
+            )
+        if _has(q, "ครึ่งชั่วโมง", "30 นาที", "สามสิบ") and _has(q, "จอง", "ได้ไหม"):
+            return _answer(
+                "จอง VR ครึ่งชั่วโมงได้ครับ\n"
+                "• ในระบบจองมี VR Station แบบ 30 นาที และแบบ 1 ชั่วโมง\n"
+                "• ถ้าเป็นครั้งแรกหรืออยากลองสั้น ๆ แนะนำเริ่มที่ 30 นาที\n"
+                "• ถ้าต้องการเล่นนานขึ้นหรือเล่นหลายคน ค่อยเลือก 1 ชั่วโมงตามรอบที่ว่าง\n"
+                f"แหล่งข้อมูล: {RESERVATION_URL}",
+                "reservation",
+                "booking_vr_duration_fast_path",
+                start,
+                0.97,
+            )
+        if _has(q, "ครั้งแรก", "มือใหม่", "ลอง"):
+            return _answer(
+                "ถ้าอยากลอง VR ครั้งแรก แนะนำจอง VR Station แบบ 30 นาทีก่อนครับ\n"
+                "• เลือกบริการ VR Station ในระบบจอง\n"
+                "• เลือกรอบ 30 นาทีหรือ 1 ชั่วโมงตามที่ต้องการ\n"
+                "• ก่อนเล่นควรให้เจ้าหน้าที่ช่วยแนะนำการใส่แว่นและคอนโทรลเลอร์\n"
+                f"แหล่งข้อมูล: {RESERVATION_URL}",
+                "reservation",
+                "booking_vr_first_time_fast_path",
+                start,
+                0.96,
+            )
+
+    if _has(q, "playstation", "ps5", "เพลย์") and _has(q, "รอบละกี่นาที", "กี่นาที", "ใช้เวลา"):
+        return _answer(
+            "PlayStation 5 ในระบบจองเป็นรอบ 60 นาทีครับ\n"
+            "• มี PlayStation 5 #1 และ PlayStation 5 #2 สำหรับ 1-2 คนต่อรอบ\n"
+            f"แหล่งข้อมูล: {RESERVATION_URL}",
+            "reservation",
+            "booking_ps5_duration_fast_path",
+            start,
+            0.96,
+        )
+
+    if _has(q, "nintendo", "switch", "นินเทนโด", "สวิตช์", "สวิทช์") and _has(q, "4 คน", "สี่คน", "จำนวนผู้เล่น", "กี่คน"):
+        return _answer(
+            "Nintendo Switch ต้องเลือกบริการตามจำนวนผู้เล่นครับ\n"
+            "• ถ้าเล่น 1-2 คน ให้เลือก Nintendo Switch แบบ 1-2 Persons\n"
+            "• ถ้าเล่น 3-4 คน ให้เลือก Nintendo Switch แบบ 3-4 Persons\n"
+            "• จากนั้นเลือกวัน/รอบเวลา กรอกข้อมูล ชำระเงิน และแนบสลิปตามขั้นตอนจอง\n"
+            f"แหล่งข้อมูล: {RESERVATION_URL}",
+            "reservation",
+            "booking_nintendo_players_fast_path",
+            start,
+            0.96,
+        )
+    if _has(q, "nintendo", "switch", "นินเทนโด", "สวิตช์", "สวิทช์") and _has(q, "ต้องเลือกอะไร", "เลือกอะไรบ้าง", "จอง"):
+        return _answer(
+            "จอง Nintendo Switch ต้องเลือกบริการ จำนวนผู้เล่น วัน และรอบเวลาครับ\n"
+            "• เลือก Nintendo Switch แบบ 1-2 Persons หรือ 3-4 Persons ตามจำนวนคนเล่น\n"
+            "• เลือกวันและรอบเวลาที่ต้องการ\n"
+            "• กรอกข้อมูลผู้ใช้บริการ ชำระเงิน และแนบสลิปเพื่อยืนยันการจอง\n"
+            f"แหล่งข้อมูล: {RESERVATION_URL}",
+            "reservation",
+            "booking_nintendo_choice_fast_path",
+            start,
+            0.96,
+        )
+
+    if _has(q, "ระบบจองไม่ขึ้น", "จองไม่ขึ้น", "เว็บจองไม่ขึ้น", "ระบบล่ม", "เข้าเว็บจองไม่ได้"):
+        return _answer(
+            "ถ้าระบบจองไม่ขึ้น ให้ติดต่อเจ้าหน้าที่หรือช่องทางติดต่อของ PSU Esports Studio - Phuket ก่อนครับ\n"
+            "• อย่าชำระเงินเองถ้ายังไม่มีรายการจองในระบบ\n"
+            "• ถ้าต้องการใช้บริการวันเดียวกัน ยังต้องยึดเงื่อนไขจองล่วงหน้าอย่างน้อย 1 ชั่วโมงและรอบที่ว่าง\n"
+            f"แหล่งข้อมูล: {RESERVATION_URL}",
+            "reservation",
+            "booking_support_fast_path",
+            start,
+            0.95,
+        )
+
+    if _has(q, "เล่นวันนี้", "วันนี้") and _has(q, "จอง", "ทันที", "ได้ไหม"):
+        return _answer(
+            "ถ้าอยากเล่นวันนี้ทำได้เมื่อยังมีรอบว่างและจองล่วงหน้าได้ทันอย่างน้อย 1 ชั่วโมงครับ\n"
+            "• ต้องจองผ่านระบบออนไลน์ก่อนเข้าใช้บริการ\n"
+            "• หลังจองต้องชำระเงินภายใน 10 นาที\n"
+            "• ถ้ารอบใกล้เกินไปหรือไม่มีรอบว่าง ระบบอาจจองไม่ได้\n"
+            f"แหล่งข้อมูล: {RESERVATION_URL}",
+            "reservation",
+            "booking_same_day_fast_path",
+            start,
+            0.96,
+        )
+
+    if _has(q, "ขับรถ", "พวงมาลัย", "gran turismo") and _has(q, "จอง", "ต้องจองอะไร", "เลือกอะไร"):
+        return _answer(
+            "ถ้าอยากเล่นเกมขับรถ ให้จอง Cockpit Zone / Cockpit ครับ\n"
+            "• โซนนี้มี Racezone Full Cockpit V3, Logitech G923 TRUEFORCE Racing Wheel และ Driving Force Shifter\n"
+            "• เกมที่ยืนยันได้คือ Gran Turismo 7\n"
+            f"แหล่งข้อมูล: {RESERVATION_URL}",
+            "reservation",
+            "booking_cockpit_fast_path",
+            start,
+            0.96,
+        )
+
+    if _has(q, "สลิปผิด", "แนบสลิปผิด", "สลิปไม่ถูก", "อัปสลิปผิด", "อัพสลิปผิด"):
+        return _answer(
+            "ถ้าแนบสลิปผิด ให้ติดต่อเจ้าหน้าที่และทำตามขั้นตอนแก้ไข/ยกเลิกการจองครับ\n"
+            "• เมื่อกดจองแล้วระบบไม่ให้แก้ไขข้อมูลโดยตรง\n"
+            "• หากต้องแก้ไข ควรยกเลิกผ่านอีเมลก่อนเวลาใช้งานอย่างน้อย 1 ชั่วโมง แล้วจองใหม่ตามขั้นตอน\n"
+            f"แหล่งข้อมูล: {RESERVATION_URL}",
+            "reservation",
+            "booking_slip_fix_fast_path",
+            start,
+            0.95,
+        )
+
+    return None
+
+
 def answer_static_domain(query: str, start: float) -> FastAnswer | None:
     q = normalize_text(query)
 
     if _has(q, *UNKNOWN_TERMS):
         return _no_answer(start)
+
+    booking_specific = _booking_specific_answer(q, start)
+    if booking_specific is not None:
+        return booking_specific
 
     booking_howto = _booking_howto_answer(q, start)
     if booking_howto is not None:

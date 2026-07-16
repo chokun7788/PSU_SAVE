@@ -99,6 +99,31 @@ def _looks_like_game_play_followup(query: str) -> bool:
     ))
 
 
+def _looks_like_equipment_location_query(query: str) -> bool:
+    q = normalize_text(query)
+    if not _has(q, "โซนไหน", "อยู่โซน", "อยู่ที่ไหน", "อยู่ไหน", "มีที่ไหน", "อยู่ในโซน"):
+        return False
+    return _has(
+        q,
+        "playstation vr2", "ps vr2", "psvr2", "vr2", "แว่น", "logitech", "g923",
+        "racezone", "full cockpit", "pulse elite", "headset", "ทีวี", "tv", "โซฟา",
+        "sofa", "พวงมาลัย", "คันเกียร์", "nintendo switch oled", "switch oled",
+        "playstation 5 slim", "ps5 slim",
+    )
+
+
+def _known_named_game_without_control_data(query: str) -> str | None:
+    q = normalize_text(query)
+    aliases = (
+        ("Minecraft", ("minecraft", "มายคราฟ")),
+        ("RoV / Arena of Valor", ("rov", "arena of valor", "aov", "อาร์โอวี", "อาโอวี", "เอโอวี", "เกมตีป้อม")),
+    )
+    for name, terms in aliases:
+        if _has(q, *terms):
+            return name
+    return None
+
+
 def _looks_like_unclear_game_meta_query(query: str) -> bool:
     q = normalize_text(query)
     if "เกม" not in q and "game" not in q:
@@ -120,6 +145,9 @@ def _split_multi_question(query: str) -> list[str]:
     clean = re.sub(r"\s+", " ", query or "").strip()
     if not clean:
         return []
+    normalized = normalize_text(clean)
+    if _has(normalized, "จองแล้ว") and _has(normalized, "เช็คอิน", "เชคอิน", "ลืม"):
+        return [clean]
 
     parts = [
         part.strip(" \t\r\n?？")
@@ -396,7 +424,28 @@ class AnswerQualityPipeline:
         if (
             (looks_like_game_control_query(pre.clean_query) or _looks_like_game_play_followup(pre.clean_query))
             and not has_explicit_game_hint(pre.clean_query)
+            and not _looks_like_equipment_location_query(pre.clean_query)
         ):
+            named_game = _known_named_game_without_control_data(pre.clean_query)
+            if named_game is not None:
+                control_route = PipelineRoute("games", "game_control_lookup", 0.78, "no_answer", "low", "named game has no verified control data")
+                answer = (
+                    f"ยังไม่พบข้อมูลปุ่มควบคุมของ {named_game} ที่ยืนยันได้ในฐานข้อมูลของศูนย์ตอนนี้ครับ\n"
+                    "ถ้าต้องการถามว่าเกมนี้มีให้เล่นในศูนย์ไหม หรือเป็นเกมแนวไหน สามารถถามต่อได้เลย"
+                )
+                validation = ValidationResult(ok=True, warnings=("game_control_named_game_no_verified_data",))
+                trace.append(PipelineTrace("clarification", "named_game_without_control_data", 0.78, named_game))
+                return self._build_result(
+                    answer,
+                    [],
+                    started,
+                    "pipeline:game_control_named_no_data",
+                    0.78,
+                    control_route,
+                    entities,
+                    validation,
+                    trace,
+                )
             control_route = PipelineRoute("games", "game_control_lookup", 0.72, "clarification", "low", "control query without explicit game")
             answer = (
                 "ยังไม่แน่ใจว่าหมายถึงเกมไหนครับ จึงไม่ขอดึงปุ่มหรือวิธีเล่นของเกมอื่นมาตอบแทน\n"
