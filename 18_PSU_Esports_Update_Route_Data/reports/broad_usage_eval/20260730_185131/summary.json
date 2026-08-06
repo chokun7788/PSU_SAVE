@@ -1,0 +1,222 @@
+{
+  "generated_at": "2026-07-30T18:53:15",
+  "case_count": 667,
+  "turn_count": 679,
+  "passed": 671,
+  "failed": 8,
+  "pass_rate": 0.9882,
+  "total_wall_sec": 103.855,
+  "allow_llm": false,
+  "rag_fallback": false,
+  "group_counts": {
+    "service_fee": {
+      "total": 88,
+      "pass": 87,
+      "fail": 1
+    },
+    "games": {
+      "total": 158,
+      "pass": 155,
+      "fail": 3
+    },
+    "game_controls": {
+      "total": 159,
+      "pass": 156,
+      "fail": 3
+    },
+    "equipment": {
+      "total": 58,
+      "pass": 58,
+      "fail": 0
+    },
+    "reservation": {
+      "total": 20,
+      "pass": 20,
+      "fail": 0
+    },
+    "schedule": {
+      "total": 10,
+      "pass": 10,
+      "fail": 0
+    },
+    "members": {
+      "total": 47,
+      "pass": 47,
+      "fail": 0
+    },
+    "competition_rules": {
+      "total": 75,
+      "pass": 75,
+      "fail": 0
+    },
+    "compound": {
+      "total": 15,
+      "pass": 15,
+      "fail": 0
+    },
+    "ambiguity_no_answer": {
+      "total": 25,
+      "pass": 25,
+      "fail": 0
+    },
+    "session_followup": {
+      "total": 24,
+      "pass": 23,
+      "fail": 1
+    }
+  },
+  "strategy_counts": {
+    "fast/rule": 126,
+    "structured": 487,
+    "pipeline": 9,
+    "clarification": 15,
+    "rag/retrieval": 20,
+    "compound": 15,
+    "no_answer": 7
+  },
+  "mode_counts": {
+    "pipeline:deterministic_calculator_fast": 58,
+    "pipeline:structured_service_fee": 1,
+    "pipeline:structured_service_fee_by_game": 30,
+    "pipeline:structured_game_detail": 111,
+    "pipeline:structured_service_game_availability": 52,
+    "pipeline:structured_game_controls": 154,
+    "pipeline:structured_game_zone_ranking": 1,
+    "pipeline:games_genre_list_fast_path": 1,
+    "pipeline:structured_game_controls_no_data": 4,
+    "pipeline:game_control_missing_game_context": 9,
+    "pipeline:structured_equipment_catalog": 8,
+    "pipeline:ambiguity_clarification": 15,
+    "pipeline:structured_equipment_item": 49,
+    "pipeline:structured_reservation_fact": 17,
+    "pipeline:structured_booking_selection": 4,
+    "pipeline:booking_howto_fast_path": 1,
+    "pipeline:booking_fast_path": 1,
+    "pipeline:mixed_reservation_fast": 1,
+    "pipeline:booking_cancel_fast_path": 1,
+    "pipeline:structured_schedule": 7,
+    "pipeline:calendar_closure_fast_path": 1,
+    "pipeline:calendar_schedule_fast_path": 1,
+    "pipeline:calendar_upcoming_holidays_fast_path": 1,
+    "pipeline:structured_members_group_list": 5,
+    "pipeline:structured_members_group_count": 3,
+    "pipeline:structured_members_person_lookup": 25,
+    "pipeline:structured_members_role_lookup": 16,
+    "pipeline:competition_fact_card": 15,
+    "pipeline:competition_generic_fast_path": 60,
+    "pipeline:multi_question_splitter": 15,
+    "pipeline:guard_no_answer": 7,
+    "pipeline:rag_direct_curated": 1,
+    "pipeline:no_answer": 3,
+    "pipeline:games_known_unsupported_fast_path": 1
+  },
+  "problem_counts": {
+    "missing 'Overcooked 2'": 1,
+    "missing 'The Last of Us Part I / Part II'": 1,
+    "missing any of ['The Last of Us Part I / Part II', 'วิธีเล่น', 'เล่นได้ที่']": 1,
+    "missing any of ['แนวเกม', 'เกม Action-Adventure']": 1,
+    "missing 'Mario Kart Live'": 2,
+    "missing any of ['L (Left Stick)', 'เคลื่อนที่']": 1,
+    "missing any of ['L3 (Click Left Stick)', 'หันมองจุดสนใจ']": 1
+  },
+  "top_failures": [
+    {
+      "case_id": "SF-081",
+      "group": "service_fee",
+      "question": "Overcooked 2 ราคาเท่าไหร่",
+      "resolved_question": "",
+      "mode": "pipeline:structured_service_fee_by_game",
+      "route": "service_fee/service_fee_query",
+      "problems": [
+        "missing 'Overcooked 2'"
+      ],
+      "answer_preview": "Overcooked! 2 ไม่มีราคาแยกตามชื่อเกมครับ ต้องดูราคาตามโซน/บริการที่ใช้เล่นเกมนี้  Nintendo Switch Zone ยังไม่ทราบกลุ่มผู้ใช้ จึงแสดงราคา Nintendo Switch ทุกกลุ่มให้เทียบก่อน  Nintendo Switch 1 ชั่วโมง (1-2 คน) •    นักศึกษา/นักเรียน/บุคลากร"
+    },
+    {
+      "case_id": "G-077",
+      "group": "games",
+      "question": "The Last of Us Part I / Part II คือเกมอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:structured_game_detail",
+      "route": "games/game_availability_lookup",
+      "problems": [
+        "missing 'The Last of Us Part I / Part II'"
+      ],
+      "answer_preview": "The Last of Us Part I: สัมผัสการเล่าเรื่องสุดซึ้งและตัวละครที่ลืมไม่ลงใน The Last of Us ที่ชนะรางวัล Game of the Year กว่า 200 รางวัล ในอารยธรรมที่ล่มสลาย ที่ที่ผู้ติดเชื้อและผู้รอดชีวิตไร้ซึ่งความเมตตามีอยู่เต็มไปหมด โจเอล ตัวเอกผู้รู้สึกเ"
+    },
+    {
+      "case_id": "G-079",
+      "group": "games",
+      "question": "The Last of Us Part I / Part II เล่นยังไง",
+      "resolved_question": "",
+      "mode": "pipeline:structured_game_controls",
+      "route": "games/game_control_lookup",
+      "problems": [
+        "missing any of ['The Last of Us Part I / Part II', 'วิธีเล่น', 'เล่นได้ที่']"
+      ],
+      "answer_preview": "The Last of Us Part I มีข้อมูลปุ่มควบคุมดังนี้: PlayStation / PS5 •    L (Left Stick): เคลื่อนที่ - บังคับทิศทางการเดินและการย่องเคลื่อนที่ของตัวละคร •    L3 (Click Left Stick): หันมองจุดสนใจ - กดเพื่อหันมุมกล้องไปยังวัตถุ เหตุการณ์ หรือจุด"
+    },
+    {
+      "case_id": "G-080",
+      "group": "games",
+      "question": "The Last of Us Part I / Part II เป็นเกมแนวไหน",
+      "resolved_question": "",
+      "mode": "pipeline:structured_game_detail",
+      "route": "games/game_detail_lookup",
+      "problems": [
+        "missing any of ['แนวเกม', 'เกม Action-Adventure']"
+      ],
+      "answer_preview": "The Last of Us Part I: สัมผัสการเล่าเรื่องสุดซึ้งและตัวละครที่ลืมไม่ลงใน The Last of Us ที่ชนะรางวัล Game of the Year กว่า 200 รางวัล ในอารยธรรมที่ล่มสลาย ที่ที่ผู้ติดเชื้อและผู้รอดชีวิตไร้ซึ่งความเมตตามีอยู่เต็มไปหมด โจเอล ตัวเอกผู้รู้สึกเ"
+    },
+    {
+      "case_id": "GC-069",
+      "group": "game_controls",
+      "question": "Mario Kart Live: Home Circuit ปุ่มทั้งหมดมีอะไรบ้าง",
+      "resolved_question": "",
+      "mode": "pipeline:structured_game_controls",
+      "route": "games/game_control_lookup",
+      "problems": [
+        "missing 'Mario Kart Live'"
+      ],
+      "answer_preview": "Mario Kart 8 Deluxe มีข้อมูลปุ่มควบคุมดังนี้: Nintendo Switch •    L (Left Stick): เลี้ยว / ควบคุมทิศทาง - บังคับพวงมาลัยรถให้เลี้ยวไปทางซ้ายหรือขวา •    A: เร่งเครื่อง - กดค้างไว้ตลอดเพื่อเร่งเครื่องยนต์ให้รถวิ่งไปข้างหน้า •    B: เบรก / ถ"
+    },
+    {
+      "case_id": "GC-139",
+      "group": "game_controls",
+      "question": "The Last of Us Part II ปุ่มเคลื่อนที่กดอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:structured_game_controls_no_data",
+      "route": "games/game_control_lookup",
+      "problems": [
+        "missing any of ['L (Left Stick)', 'เคลื่อนที่']"
+      ],
+      "answer_preview": "The Last of Us Part II (Remastered) มีอยู่ในรายการเกมที่ยืนยันได้ของ PSU Esports Studio - Phuket ครับ เล่นเกมที่ชนะรางวัล Game of the Year กว่า 300 รางวัล ในรูปแบบรีมาสเตอร์สำหรับคอนโซล PlayStation®5 สัมผัสเรื่องราวของเอลลี่และแอ็บบี้อีกครั"
+    },
+    {
+      "case_id": "GC-140",
+      "group": "game_controls",
+      "question": "The Last of Us Part II ปุ่มหันมองจุดสนใจกดอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:structured_game_controls_no_data",
+      "route": "games/game_control_lookup",
+      "problems": [
+        "missing any of ['L3 (Click Left Stick)', 'หันมองจุดสนใจ']"
+      ],
+      "answer_preview": "The Last of Us Part II (Remastered) มีอยู่ในรายการเกมที่ยืนยันได้ของ PSU Esports Studio - Phuket ครับ เล่นเกมที่ชนะรางวัล Game of the Year กว่า 300 รางวัล ในรูปแบบรีมาสเตอร์สำหรับคอนโซล PlayStation®5 สัมผัสเรื่องราวของเอลลี่และแอ็บบี้อีกครั"
+    },
+    {
+      "case_id": "SF-002",
+      "group": "session_followup",
+      "question": "ปุ่มเร่งเครื่องกดอะไร",
+      "resolved_question": "Mario Kart 8 Deluxe ปุ่มเร่งเครื่องกดอะไร",
+      "mode": "pipeline:structured_game_controls",
+      "route": "games/game_control_lookup",
+      "problems": [
+        "missing 'Mario Kart Live'"
+      ],
+      "answer_preview": "Mario Kart 8 Deluxe ปุ่มที่ตรงกับคำถาม: Nintendo Switch •    A: เร่งเครื่อง - กดค้างไว้ตลอดเพื่อเร่งเครื่องยนต์ให้รถวิ่งไปข้างหน้า แหล่งข้อมูล: https://gameinputdatabase.com/game/57"
+    }
+  ],
+  "bank_jsonl": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.jsonl",
+  "bank_json": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.json"
+}

@@ -1,0 +1,488 @@
+﻿id,passed,route_ok,intent_ok,not_forbidden,question,expected_category,expected_intent,expected_domain,expected_operation,actual_category,actual_intent,actual_domain,actual_operation,mode,confidence,route_confidence,intent_confidence,elapsed,notes,answer
+RT-SF-001,True,True,True,True,นักศึกษา PSU เล่น Nintendo Switch ราคาเท่าไหร่,service_fee,service_fee_query,service_fee,price_calculate,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,0.97,0.92,5.5269,price must win over Nintendo game catalog,"ราคา Nintendo Switch สำหรับกลุ่ม PSU Student and Staff
+•    Nintendo Switch 1-2 คน: 0 บาท
+•    Nintendo Switch 3-4 คน: 0 บาท
+กลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff
+หมายเหตุ: คำถามยังไม่ระบุจำนวนผู้เล่น จึงแสดงทั้งราคา 1-2 คนและ 3-4 คน
+
+รายละเอียดจากตาราง:
+Nintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 50 บาท
+•    General Adult: 140 บาท
+
+Nintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 100 บาท
+•    General Adult: 280 บาท
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RT-SF-002,True,True,True,True,คนนอกเล่น VR กี่บาท,service_fee,service_fee_query,service_fee,price_calculate,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,0.97,0.92,0.5342,general adult price,"ราคา VR สำหรับกลุ่ม General Adult / บุคคลทั่วไป
+•    VR 30 นาที: 525 บาท
+•    VR 1 ชั่วโมง: 1,050 บาท
+กลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป
+หมายเหตุ: คำถามยังไม่ระบุระยะเวลา จึงแสดงทั้งราคา 30 นาทีและ 1 ชั่วโมง
+
+รายละเอียดจากตาราง:
+VR 30 นาที (1-5 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 190 บาท
+•    General Adult: 525 บาท
+
+VR 1 ชั่วโมง (60 นาที, 1-5 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 375 บาท
+•    General Adult: 1,050 บาท
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RT-SF-003,True,True,True,True,PS5 ราคาเท่าไหร่,service_fee,service_fee_query,service_fee,price_calculate,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,0.97,0.92,0.4722,simple PS5 price,"PlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 50 บาท
+•    General Adult: 150 บาท
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RT-SF-004,True,True,True,True,Cockpit ค่าบริการเท่าไร,service_fee,service_fee_query,service_fee,price_calculate,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,0.97,0.92,1.121,cockpit price,"Cockpit 60 นาที (1 ชั่วโมง, 1 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 65 บาท
+•    General Adult: 200 บาท
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RT-SF-005,True,True,True,True,ถ้าเป็นบุคคลทั่วไป จอง Cockpit ราคาเท่าไหร่,service_fee,service_fee_query,service_fee,price_calculate,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,0.97,0.92,2.516,price wins even with booking word,"ราคา 200 บาท สำหรับกลุ่ม General Adult / บุคคลทั่วไป
+•    Cockpit 60 นาที: 200 บาท
+กลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป
+
+รายละเอียดจากตาราง:
+Cockpit 60 นาที (1 ชั่วโมง, 1 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 65 บาท
+•    General Adult: 200 บาท
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RT-SF-006,True,True,True,True,ถ้าจอง PS5 ตั้งแต่ 9โมงถึง11โมงเสียกี่บาท,service_fee,service_fee_query,service_fee,price_calculate,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,0.97,0.92,2.9358,time range with price,"ระยะเวลาที่ถามคือ 2 ชั่วโมง ใช้ 2 session ตามแพ็กเกจ PlayStation 5 60 นาที
+แบ่งช่วงเวลาเป็น: 09:00-10:00, 10:00-11:00
+ยังไม่ทราบกลุ่มผู้ใช้ จึงแสดงราคาทุกกลุ่มให้เทียบก่อน:
+•    PSU Student and Staff: 0 บาท/session x 2 = 0 บาท
+•    PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน: 50 บาท/session x 2 = 100 บาท
+•    General Adult / บุคคลทั่วไป: 150 บาท/session x 2 = 300 บาท
+
+รายละเอียดจากตาราง:
+PlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 50 บาท
+•    General Adult: 150 บาท
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RT-SF-007,True,True,True,True,นักศึกษาต่างมหาลัยเล่น Nintendo Switch 3 คน 2 ชั่วโมงเสียเท่าไหร่,service_fee,service_fee_query,service_fee,price_calculate,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,0.97,0.92,3.9799,multi parameter price,"ราคา Nintendo Switch สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน
+•    Nintendo Switch 1-2 คน: 50 บาท
+•    Nintendo Switch 3-4 คน: 100 บาท
+กลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น
+หมายเหตุ: คำถามยังไม่ระบุจำนวนผู้เล่น จึงแสดงทั้งราคา 1-2 คนและ 3-4 คน
+
+รายละเอียดจากตาราง:
+Nintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 50 บาท
+•    General Adult: 140 บาท
+
+Nintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 100 บาท
+•    General Adult: 280 บาท
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RT-SF-008,True,True,True,True,ค่าเล่นแต่ละเครื่องมีอะไรบ้าง,service_fee,service_fee_query,service_fee,list,service_fee,service_fee_query,service_fee,list,pipeline:deterministic_calculator_fast,0.88,0.96,0.82,1.6766,full fee table,"ตาราง Service Fee 2026
+
+PlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 50 บาท
+•    General Adult: 150 บาท
+
+Nintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 50 บาท
+•    General Adult: 140 บาท
+
+Nintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 100 บาท
+•    General Adult: 280 บาท
+
+Cockpit 60 นาที (1 ชั่วโมง, 1 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 65 บาท
+•    General Adult: 200 บาท
+
+VR 30 นาที (1-5 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 190 บาท
+•    General Adult: 525 บาท
+
+VR 1 ชั่วโมง (60 นาที, 1-5 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 375 บาท
+•    General Adult: 1,050 บาท
+
+หมายเหตุ: ใน Service Fee 2026 ที่มีตอนนี้ยังไม่พบราคา PC ที่ยืนยันได้
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RT-GM-001,True,True,True,True,Nintendo Switch มีเกมอะไรบ้าง,games,list,games,list,games,list,games,list,pipeline:structured_games_catalog,0.97,0.96,0.82,1.6233,game catalog not price,"Nintendo Switch Zone มีเกมที่ยืนยันได้ดังนี้
+
+Nintendo Switch Zone (18 เกม)
+•    Animal Crossing: New Horizons
+•    It Takes Two
+•    Little Nightmares II
+•    Luigi's Mansion 3
+•    Mario Kart 8 Deluxe
+•    Mario Kart Live: Home Circuit
+•    Mario Party Superstars
+•    Monster Hunter Rise
+•    Moving Out
+•    Moving Out 2
+•    New Super Mario Bros. U Deluxe
+•    Nintendo Switch Sports
+•    Overcooked + Overcooked! 2
+•    Overcooked 2
+•    Ring Fit Adventure
+•    Super Mario Odyssey
+•    Super Smash Bros Ultimate
+•    The Legend of Zelda: Breath of the Wild
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+RT-GM-002,True,True,True,True,เกมใน PS5 มีอะไรบ้าง,games,list,games,list,games,list,games,list,pipeline:structured_games_catalog,0.97,0.96,0.82,1.4234,PS5 game list,"PlayStation 5 Zone มีเกมที่ยืนยันได้ดังนี้
+
+PlayStation 5 Zone (23 เกม)
+•    Beat Saber
+•    Call of Duty: Modern Warfare III
+•    EA Sports FC 24
+•    FINAL FANTASY XVI
+•    Fortnite
+•    God of War Ragnarok
+•    Gran Turismo 7
+•    Hogwarts Legacy
+•    It Takes Two
+•    Little Nightmares II
+•    Marvel's Spider-Man 2
+•    Monster Hunter Rise
+•    NARUTO X BORUTO Ultimate Ninja Storm Connections
+•    Overcooked!
+•    Resident Evil 4
+•    Resident Evil 4 (Remake)
+•    Resident Evil Village
+•    TEKKEN 8
+•    The Last of Us Part I
+•    The Last of Us Part I / Part II
+•    The Last of Us Part II
+•    The Last of Us Part II (Remastered)
+•    Uncharted: Legacy of Thieves Collection
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+RT-GM-003,True,True,True,True,เกมทั้งหมดมีอะไรบ้าง,games,list,games,list,games,list,games,list,pipeline:structured_games_catalog,0.95,0.96,0.82,1.387,all games,"ตอนนี้มีเกมที่ยืนยันได้ทั้งหมด 44 เกมครับ
+
+PC Zone (6 เกม)
+•    Call of Duty: Warzone
+•    Counter-Strike 2
+•    League of Legends
+•    PUBG: BATTLEGROUNDS
+•    TEKKEN 8
+•    VALORANT
+
+PlayStation 5 Zone (23 เกม)
+•    Beat Saber
+•    Call of Duty: Modern Warfare III
+•    EA Sports FC 24
+•    FINAL FANTASY XVI
+•    Fortnite
+•    God of War Ragnarok
+•    Gran Turismo 7
+•    Hogwarts Legacy
+•    It Takes Two
+•    Little Nightmares II
+•    Marvel's Spider-Man 2
+•    Monster Hunter Rise
+•    NARUTO X BORUTO Ultimate Ninja Storm Connections
+•    Overcooked!
+•    Resident Evil 4
+•    Resident Evil 4 (Remake)
+•    Resident Evil Village
+•    TEKKEN 8
+•    The Last of Us Part I
+•    The Last of Us Part I / Part II
+•    The Last of Us Part II
+•    The Last of Us Part II (Remastered)
+•    Uncharted: Legacy of Thieves Collection
+
+Nintendo Switch Zone (18 เกม)
+•    Animal Crossing: New Horizons
+•    It Takes Two
+•    Little Nightmares II
+•    Luigi's Mansion 3
+•    Mario Kart 8 Deluxe
+•    Mario Kart Live: Home Circuit
+•    Mario Party Superstars
+•    Monster Hunter Rise
+•    Moving Out
+•    Moving Out 2
+•    New Super Mario Bros. U Deluxe
+•    Nintendo Switch Sports
+•    Overcooked + Overcooked! 2
+•    Overcooked 2
+•    Ring Fit Adventure
+•    Super Mario Odyssey
+•    Super Smash Bros Ultimate
+•    The Legend of Zelda: Breath of the Wild
+
+Cockpit Zone (1 เกม)
+•    Gran Turismo 7
+
+VR Zone (2 เกม)
+•    Beat Saber
+•    Horizon Call of the Mountain
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+RT-GM-004,True,True,True,True,มี TEKKEN 8 ไหม,games,game_availability_lookup,games,availability,games,game_availability_lookup,games,availability,pipeline:structured_game_detail,0.94,0.94,0.84,0.0993,availability,"TEKKEN 8: TEKKEN 8 คือเกมต่อสู้แบบตัวต่อตัว ผู้เล่นเลือกตัวละครแล้วใช้คอมโบ การป้องกัน และจังหวะสวนกลับเพื่อชนะคู่แข่ง
+แนวเกม: เกมต่อสู้ 1v1
+วิธีเล่นโดยสรุป: เล่นเป็นรอบ เลือกตัวละคร ฝึกท่าพื้นฐาน/คอมโบ อ่านจังหวะคู่ต่อสู้ และทำให้พลังชีวิตอีกฝ่ายหมดก่อน
+เล่นได้ที่: PC Zone และ PlayStation 5 Zone
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+RT-GM-005,True,True,True,True,อยากเล่น Mario Kart ต้องไปโซนไหน,games,game_availability_lookup,games,availability,games,game_availability_lookup,games,availability,pipeline:structured_game_detail,0.94,0.94,0.84,0.4332,game location,"Mario Kart 8 Deluxe: Mario Kart 8 Deluxe คือเกมแข่งรถสไตล์ปาร์ตี้ที่ใช้ตัวละคร Nintendo ขับรถแข่งกันในสนามหลากหลายแบบ
+แนวเกม: เกมแข่งรถ Party Racing
+วิธีเล่นโดยสรุป: เลือกตัวละครและรถ ขับเข้าเส้นชัย ใช้ไอเทมช่วยโจมตี/ป้องกัน และเล่นสนุกได้หลายคน
+เล่นได้ที่: Nintendo Switch Zone
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+RT-GM-006,True,True,True,True,เกมแนว MOBA มีอะไรบ้าง,games,list,games,list,games,list,games,list,pipeline:structured_games_catalog,0.95,0.9,0.74,1.5356,genre/knowledge list can refine to games,"ตอนนี้มีเกมที่ยืนยันได้ทั้งหมด 44 เกมครับ
+
+PC Zone (6 เกม)
+•    Call of Duty: Warzone
+•    Counter-Strike 2
+•    League of Legends
+•    PUBG: BATTLEGROUNDS
+•    TEKKEN 8
+•    VALORANT
+
+PlayStation 5 Zone (23 เกม)
+•    Beat Saber
+•    Call of Duty: Modern Warfare III
+•    EA Sports FC 24
+•    FINAL FANTASY XVI
+•    Fortnite
+•    God of War Ragnarok
+•    Gran Turismo 7
+•    Hogwarts Legacy
+•    It Takes Two
+•    Little Nightmares II
+•    Marvel's Spider-Man 2
+•    Monster Hunter Rise
+•    NARUTO X BORUTO Ultimate Ninja Storm Connections
+•    Overcooked!
+•    Resident Evil 4
+•    Resident Evil 4 (Remake)
+•    Resident Evil Village
+•    TEKKEN 8
+•    The Last of Us Part I
+•    The Last of Us Part I / Part II
+•    The Last of Us Part II
+•    The Last of Us Part II (Remastered)
+•    Uncharted: Legacy of Thieves Collection
+
+Nintendo Switch Zone (18 เกม)
+•    Animal Crossing: New Horizons
+•    It Takes Two
+•    Little Nightmares II
+•    Luigi's Mansion 3
+•    Mario Kart 8 Deluxe
+•    Mario Kart Live: Home Circuit
+•    Mario Party Superstars
+•    Monster Hunter Rise
+•    Moving Out
+•    Moving Out 2
+•    New Super Mario Bros. U Deluxe
+•    Nintendo Switch Sports
+•    Overcooked + Overcooked! 2
+•    Overcooked 2
+•    Ring Fit Adventure
+•    Super Mario Odyssey
+•    Super Smash Bros Ultimate
+•    The Legend of Zelda: Breath of the Wild
+
+Cockpit Zone (1 เกม)
+•    Gran Turismo 7
+
+VR Zone (2 เกม)
+•    Beat Saber
+•    Horizon Call of the Mountain
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+RT-CTRL-001,True,True,True,True,TEKKEN 8 ปุ่มทั้งหมดมีอะไรบ้าง,games,game_control_lookup,game_controls,control,games,game_control_lookup,game_controls,control,pipeline:structured_game_controls,0.96,0.95,0.9,0.494,controls,"TEKKEN 8 มีข้อมูลปุ่มควบคุมดังนี้:
+PlayStation / PS5
+•    Square: หมัดซ้าย / ต่อยซ้าย - ออกหมัดแย็บหรือโจมตีด้วยมือซ้าย เป็นปุ่มหลักในการเริ่มต้นเฟรมคอมโบที่รวดเร็ว
+•    Triangle: หมัดขวา / ต่อยขวา - ออกหมัดหนักหรือโจมตีด้วยมือขวา มักใช้ทำดาเมจแรงหรือสวนกลับ (Counter)
+•    Cross: ลูกเตะซ้าย - ใช้ขาซ้ายเตะสกัดหรือโจมตีเพื่อเปิดช่องว่างของศัตรู
+•    Circle: ลูกเตะขวา - ใช้ขาขวาหวดเตะอย่างรุนแรง มักเป็นท่าเคลียร์ระยะหรือตัดขาที่ทำดาเมจสูง
+•    D-Pad Up: กระโดด - ควบคุมให้ตัวละครกระโดดขึ้นด้านบนเพื่อหลบการโจมตีล่าง หรือใช้กดร่วมกับปุ่มโจมตีกลางอากาศ
+•    D-Pad Left: ถอยหลัง / บล็อก - บังคับตัวละครให้เดินถอยหลังเพื่อรักษาระยะ หรือใช้กดค้างเพื่อ ""บล็อก (Guard)"" การโจมตีระดับสูงและระดับกลางของศัตรู
+•    D-Pad Down: ย่อตัว / ก้มหลบ - สั่งให้ตัวละครย่อตัวต่ำ ใช้ก้มหลบหมัดหรือการโจมตีระดับสูง (High) และใช้บล็อกการโจมตีระดับต่ำ (Low)
+•    L (Left Stick): เคลื่อนที่ - ขยับทิศทางของตัวละคร بشكلทั่วไป หรือใช้โยกทิศทางในการเคลื่อนที่และเดินหน้าถอยหลัง
+•    L1: สเปเชียลสไตล์ - กดเพื่อเปิด/ปิดโหมดช่วยเหลืออัจฉริยะ ช่วยให้กดคอมโบและท่าไม้ตายของตัวละครนั้น ๆ ได้ง่ายด้วยปุ่มเดียว
+•    R1: เปิดใช้งาน Heat - ระเบิดพลัง Heat System เข้าสู่สถานะโอเวอร์ไดรฟ์เพื่อบัฟการโจมตีและเพิ่มคุณสมบัติพิเศษให้ตัวละคร
+•    R1 (While in Heat): ฮีทสแมช - ปลดปล่อยท่าโจมตีเผด็จศึกอันทรงพลังปิดฉากคอมโบ โดยจะใช้เกจ Heat ที่เหลืออยู่ทั้งหมดทิ้งทันที
+•    Options: หยุดเกม - หยุดเกมชั่วคราวเพื่อเข้าสู่หน้าต่างเมนู เช่น การเช็ก Move List (รายการท่า) หรือการตั้งค่าอื่น ๆ
+แหล่งข้อมูล: local://control_game/TEKKEN 8 Standard Edition.json"
+RT-CTRL-002,True,True,True,True,Mario Kart กดปุ่มอะไร,games,game_control_lookup,game_controls,control,games,game_control_lookup,game_controls,control,pipeline:structured_game_controls,0.96,0.95,0.9,0.1837,control not game detail,"Mario Kart 8 Deluxe มีข้อมูลปุ่มควบคุมดังนี้:
+Nintendo Switch
+•    L (Left Stick): เลี้ยว / ควบคุมทิศทาง - บังคับพวงมาลัยรถให้เลี้ยวไปทางซ้ายหรือขวา
+•    A: เร่งเครื่อง - กดค้างไว้ตลอดเพื่อเร่งเครื่องยนต์ให้รถวิ่งไปข้างหน้า
+•    B: เบรก / ถอยหลัง - แตะเพื่อเบรกชะลอความเร็ว หรือกดค้างไว้เมื่อรถหยุดนิ่งเพื่อขับถอยหลัง
+•    X: มองหลัง - หันมุมกล้องไปมองด้านหลังเพื่อเช็กระยะห่างของคู่แข่งหรือไอเทมที่ตามมา
+•    ZL: ใช้ไอเทม / บีบแตร - ใช้ไอเทมที่เก็บมาจากกล่องสุ่ม หากไม่มีไอเทมจะเป็นการบีบแตรรถ
+•    ZR: ดริฟต์ - ใช้กระโดดและดริฟต์ขณะเข้าโค้งเพื่อทำความเร็ว หรือใช้ทำท่าผาดโผนเมื่อกระโดดออกจากเนินเร่งความเร็ว
+•    + (Plus): หยุดเกม - หยุดเกมชั่วคราวเพื่อเข้าสู่เมนูหลักหรือตั้งค่าระบบช่วยเหลือ
+แหล่งข้อมูล: local://control_game/Mario_Kart 8_Deluxe.json"
+RT-CTRL-003,True,True,True,True,Overcooked ใช้ controller ยังไง,games,game_control_lookup,game_controls,control,games,game_control_lookup,game_controls,control,pipeline:structured_game_controls_no_data,0.82,0.95,0.9,0.3212,controller intent,ยังไม่พบข้อมูลปุ่มควบคุมของ Overcooked + Overcooked! 2 ที่ยืนยันได้ในฐานข้อมูลตอนนี้ครับ
+RT-CTRL-004,True,True,True,True,ปุ่ม R1 ใน TEKKEN 8 ทำอะไร,games,game_control_lookup,game_controls,control,games,game_control_lookup,game_controls,control,pipeline:structured_game_controls,0.96,0.95,0.9,0.3098,single button lookup,"TEKKEN 8 ปุ่มที่ตรงกับคำถาม:
+PlayStation / PS5
+•    R1: เปิดใช้งาน Heat - ระเบิดพลัง Heat System เข้าสู่สถานะโอเวอร์ไดรฟ์เพื่อบัฟการโจมตีและเพิ่มคุณสมบัติพิเศษให้ตัวละคร
+แหล่งข้อมูล: local://control_game/TEKKEN 8 Standard Edition.json"
+RT-RSV-001,True,True,True,True,จอง PS5 ยังไง,reservation,booking_policy,reservation,how_to,reservation,booking_policy,reservation,how_to,pipeline:structured_booking_selection,0.96,0.92,0.87,0.0818,booking policy,"จอง PlayStation 5 ต้องเลือกบริการ PlayStation 5 และเลือกรอบเวลาที่ต้องการครับ
+•    ข้อมูลค่าบริการที่มีระบุ PlayStation 5 ต่อ 60 นาที สำหรับ 1-2 คน
+•    จากนั้นกรอกข้อมูลผู้ใช้บริการ ชำระเงิน และแนบสลิปเพื่อยืนยันการจอง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/"
+RT-RSV-002,True,True,True,True,ถ้าจะเล่น Nintendo Switch ต้องจองยังไง,reservation,booking_policy,reservation,how_to,reservation,booking_policy,reservation,how_to,pipeline:structured_booking_selection,0.96,0.92,0.87,2.1204,booking wins over game,"จอง Nintendo Switch ต้องเลือกบริการตามจำนวนผู้เล่นครับ
+•    ถ้าเล่น 1-2 คน ให้เลือก Nintendo Switch แบบ 1-2 Persons
+•    ถ้าเล่น 3-4 คน ให้เลือก Nintendo Switch แบบ 3-4 Persons
+•    จากนั้นเลือกวัน รอบเวลา กรอกข้อมูลผู้ใช้บริการ ชำระเงิน และแนบสลิปเพื่อยืนยันการจอง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/"
+RT-RSV-003,True,True,True,True,จองแล้วต้องเช็คอินไหม,reservation,booking_policy,reservation,how_to,reservation,booking_policy,reservation,how_to,pipeline:structured_reservation_fact,0.94,0.92,0.82,0.4423,checkin,"ถ้าไม่เช็คอินก่อนเวลาเริ่มต้นของรอบ ระบบจะยกเลิกการจองทันที และไม่มีการคืนเงิน
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/"
+RT-RSV-004,True,True,True,True,คนนึงเล่นได้กี่ชั่วโมงต่อวัน,reservation,booking_policy,reservation,count,reservation,booking_policy,reservation,count,pipeline:structured_reservation_fact,0.94,0.96,0.84,0.6474,session limit,"การจอง 1 ครั้งสามารถจองได้สูงสุด 3 Sessions สำหรับ PlayStation 5: 1 session = 1 ชั่วโมง ดังนั้น 3 sessions = สูงสุด 3 ชั่วโมงต่อการจอง 1 ครั้ง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/"
+RT-RSV-005,True,True,True,True,PS5 เล่นได้กี่ชั่วโมงต่อวัน,reservation,booking_policy,reservation,count,reservation,booking_policy,reservation,count,pipeline:structured_reservation_fact,0.94,0.96,0.84,0.5069,service session limit,"การจอง 1 ครั้งสามารถจองได้สูงสุด 3 Sessions สำหรับ PlayStation 5: 1 session = 1 ชั่วโมง ดังนั้น 3 sessions = สูงสุด 3 ชั่วโมงต่อการจอง 1 ครั้ง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/"
+RT-MEM-001,True,True,True,True,สมาชิก PSU Esport มีกี่หมวด,overview,group_count,members,group_count,overview,group_count,members,group_count,pipeline:structured_members_group_count,0.98,0.92,0.82,0.6229,member group count,"สมาชิกในหน้า Members แบ่งเป็น 3 หมวดครับ
+•    Members: 7 คน
+•    cooperative education and Internship student: 5 คน
+•    PSU Phuket Esports Club - PSU Phuket: 13 คน
+รวมทั้งหมด 25 คน
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members"
+RT-MEM-002,True,True,True,True,ตอนนี้สตาฟมีใครบ้าง,overview,list,members,list,overview,list,members,list,pipeline:structured_members_group_list,0.96,0.92,0.82,0.2291,staff list,"สมาชิกจากหน้า Members แยกตามหมวด รวม 25 คน:
+Members (7 คน):
+•    ผศ.ดร.นิวัติ แก้วประดับ: อธิการบดี
+•    รศ.ดร.พันธ์ ทองชุมนุม: รองอธิการบดี
+•    รศ.ดร.อซีส นันทอมรพงศ์: คณบดี
+•    ผศ.ดร.ณัฐพงศ์ ทองเทพ: ผู้ช่วยอธิการบดีฝ่ายวิชาการ
+•    นายพฤทธิ์ เกษตรสมบูรณ์: นักวิชาการคอมพิวเตอร์
+•    นายณัฐวัฒน์ นิธิคุณานนต์: นักวิชาการคอมพิวเตอร์
+•    นายชนะชัย สิริพันธ์วราภรณ์: ผู้จัดการ
+
+cooperative education and Internship student (5 คน):
+•    นายณภัทร เชื้อเหล่าวานิช: นักศึกษาสหกิจ Game and 3D Developer
+•    Mr. Amine Abidellaoui: Internship Student
+•    นายสุพศิน อะนะฝรั่ง: นักศึกษาสหกิจ Web & AI Developer
+•    Mr. Yanis Igoudjil: Internship Student
+•    นายภาสวุฒิ ชูติประชากิจ: นักศึกษาฝึกงานโครงการ Super AI SS6 ตำแหน่ง AI Chat Bot Developer
+
+PSU Phuket Esports Club - PSU Phuket (13 คน):
+•    นายษุภากรณ์ จิราจินดากุล: ประธาน
+•    นายนพัทธ์ ฝอยทอง: รองประธาน
+•    นายปัณณวิชญ์ หนูเรือง: เลขานุการ
+•    นายภูจิตร จิรวิริยาภรณ์: เหรัญญิก
+•    นายธนชาติ เอ่งฉ้วน: ประชาสัมพันธ์
+•    นางสาวกมลวรรณ นวลสาย: กรรมการ
+•    นางสาวชญาภา จันทร์เอิบ: กรรมการ
+•    นางสาวณัฐธิดา คำทะเนตร์: กรรมการ
+•    นางสาวสุภาสินี ธนภพ: กรรมการ
+•    นางสาวอาทิตยา แดงประดับ: กรรมการ
+•    นายณัฐพนธ์ อินทรสังขนาวิน: กรรมการ
+•    นายอภิวิชญ์ เลิศกมลรักษ์: กรรมการ
+•    นายอรรถนนท์ สุขแก้ว: กรรมการ
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members"
+RT-MEM-003,True,True,True,True,ใครเป็นผู้จัดการ,overview,members_lookup,members,role_lookup,overview,members_lookup,members,role_lookup,pipeline:structured_members_role_lookup,0.97,0.92,0.82,0.1613,role lookup,"ตำแหน่ง ผู้จัดการ มี 1 คนครับ
+•    นายชนะชัย สิริพันธ์วราภรณ์: ผู้จัดการ (PSU Esports Studio - Phuket วิทยาลัยการคอมพิวเตอร์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต)
+  ◦    หมวด: Members
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members"
+RT-MEM-004,True,True,True,True,ตำแหน่ง Game and 3D Developer คือใคร,overview,members_lookup,members,role_lookup,overview,members_lookup,members,role_lookup,pipeline:structured_members_role_lookup,0.97,0.92,0.82,0.5736,role contains game word but is member role,"ตำแหน่ง นักศึกษาสหกิจ Game and 3D Developer มี 1 คนครับ
+•    นายณภัทร เชื้อเหล่าวานิช: นักศึกษาสหกิจ Game and 3D Developer (วิทยาลัยการคอมพิวเตอร์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต; ระยะเวลา: 6/1/2025 - 30/4/2025)
+  ◦    หมวด: cooperative education and Internship student
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members"
+RT-MEM-005,True,True,True,True,cooperative education มีใครบ้าง,overview,list,members,list,overview,list,members,list,pipeline:structured_members_group_list,0.96,0.92,0.74,0.4649,member subgroup,"สมาชิกในหมวด cooperative education and Internship student:
+cooperative education and Internship student (5 คน):
+•    นายณภัทร เชื้อเหล่าวานิช: นักศึกษาสหกิจ Game and 3D Developer (วิทยาลัยการคอมพิวเตอร์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต; ระยะเวลา: 6/1/2025 - 30/4/2025)
+•    Mr. Amine Abidellaoui: Internship Student (High School Bristol Cannes, France; ระยะเวลา: 10/11/2025 - 19/12/2025)
+•    นายสุพศิน อะนะฝรั่ง: นักศึกษาสหกิจ Web & AI Developer (วิทยาลัยการคอมพิวเตอร์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต; ระยะเวลา: 12/1/2026 - 8/5/2026)
+•    Mr. Yanis Igoudjil: Internship Student (Industrial Engineering and Information Systems, EPF Graduate School of Engineering, Cachan Val-De-Marne, France; ระยะเวลา: 29/06/2026 - 18/09/2026)
+•    นายภาสวุฒิ ชูติประชากิจ: นักศึกษาฝึกงานโครงการ Super AI SS6 ตำแหน่ง AI Chat Bot Developer (วิศวกรรมระบบไอโอทีและสารสนเทศ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง; ระยะเวลา: 07/2026 - 08/2026)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members"
+RT-EQ-001,True,True,True,True,Home มีอุปกรณ์อะไรบ้าง,equipment,list,equipment,list,equipment,list,equipment,list,pipeline:structured_equipment_catalog,0.95,0.82,0.82,0.2853,equipment home,"อุปกรณ์ในศูนย์แยกตามโซน:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (10 Units)
+•    Gaming Monitor (10 Units)
+•    Gaming Keyboard
+•    Gaming Mouse
+•    Gaming Headset
+•    Gaming Chair (10 Units)
+Cockpit Zone
+•    Logitech G923 TRUEFORCE Racing Wheel (2 Units with Driving Force Shifter)
+•    Driving Force Shifter (2 Units with Logitech G923)
+•    Racezone Full Cockpit V3 (2 Units)
+•    Pulse Elite Wireless Headset (2 Units)
+•    TV 65 นิ้ว (2 Units)
+Nintendo Switch Zone
+•    Nintendo Switch OLED (1 Unit)
+•    TV 86 นิ้ว (1 Unit)
+•    Sofa 2 seats (2 Sets)
+PlayStation 5 Zone / VR Zone
+•    PlayStation 5 Slim With Ultra HD Blu-Ray Disc Drive (2 Units in PlayStation 5 Zone and 1 Unit in VR Zone)
+VR Zone
+•    Sony PlayStation VR2 (1 Unit)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+RT-EQ-002,True,True,True,True,PC Zone มีอุปกรณ์อะไร,equipment,list,equipment,list,equipment,list,equipment,list,pipeline:structured_equipment_catalog,0.95,0.95,0.82,0.2371,zone equipment,"อุปกรณ์ใน PC Zone:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (10 Units)
+•    Gaming Monitor (10 Units)
+•    Gaming Keyboard
+•    Gaming Mouse
+•    Gaming Headset
+•    Gaming Chair (10 Units)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+RT-EQ-003,True,True,True,True,PS5 ใช้เครื่องรุ่นไหน,equipment,list,equipment,list,equipment,list,equipment,list,pipeline:structured_equipment_catalog,0.95,0.94,0.82,0.6065,device model,"อุปกรณ์ใน PlayStation 5 Zone:
+PlayStation 5 Zone / VR Zone
+•    PlayStation 5 Slim With Ultra HD Blu-Ray Disc Drive (2 Units in PlayStation 5 Zone and 1 Unit in VR Zone)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+RT-EQ-004,True,True,True,True,Cockpit มีพวงมาลัยอะไร,equipment,list,equipment,list,equipment,list,equipment,list,pipeline:structured_equipment_catalog,0.95,0.94,0.82,0.4366,equipment detail,"อุปกรณ์ใน Cockpit Zone:
+Cockpit Zone
+•    Logitech G923 TRUEFORCE Racing Wheel (2 Units with Driving Force Shifter)
+•    Driving Force Shifter (2 Units with Logitech G923)
+•    Racezone Full Cockpit V3 (2 Units)
+•    Pulse Elite Wireless Headset (2 Units)
+•    TV 65 นิ้ว (2 Units)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+RT-SCH-001,True,True,True,True,วันจันทร์เปิดกี่โมง,schedule,schedule_query,schedule,schedule_lookup,schedule,schedule_query,schedule,schedule_lookup,pipeline:structured_schedule,0.96,0.96,0.9,0.7716,opening hours,"วันจันทร์: เปิดให้เล่นช่วง 13:00-16:00 ส่วน 09:00-12:00 เป็น Maintenance*
+
+รายละเอียดจากตาราง:
+•    วันจันทร์: Morning 09:00-12:00 = maintenance, Afternoon 13:00-16:00 = open
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/"
+RT-SCH-002,True,True,True,True,ศุกร์บ่ายเล่นได้ไหม,schedule,schedule_query,schedule,availability,schedule,schedule_query,schedule,availability,pipeline:schedule_fast_path,0.98,0.96,0.82,1.6144,schedule by day/session,"วันศุกร์ให้ดูเป็นพิเศษ: ช่วงบ่าย 13:00-16:00 เป็น Maintenance สำหรับ Weekly hardware inspection and cleaning
+
+รายละเอียดจากตาราง:
+•    Morning คือ 09:00-12:00
+•    Afternoon คือ 13:00-16:00
+•    Monday ช่วง Morning 09:00-12:00 เป็น Maintenance*
+•    Monday ช่วง Afternoon 13:00-16:00 เป็น Open for Service
+•    Tuesday-Thursday เปิดตามรอบปกติ 09:00-12:00 และ 13:00-16:00
+•    Friday ช่วง Afternoon 13:00-16:00 เป็น Maintenance สำหรับ Weekly hardware inspection and cleaning
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation"
+RT-SCH-003,True,True,True,True,ช่วงเช้าเปิดไหม,schedule,schedule_query,schedule,schedule_lookup,schedule,schedule_query,schedule,schedule_lookup,pipeline:structured_schedule,0.96,0.9,0.9,0.1208,morning,"รอบเช้า Morning คือ 09:00-12:00 แต่วันจันทร์ช่วงนี้เป็น Maintenance*
+
+รายละเอียดจากตาราง:
+•    วันจันทร์: Morning 09:00-12:00 = maintenance, Afternoon 13:00-16:00 = open
+•    วันอังคาร: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open
+•    วันพุธ: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open
+•    วันพฤหัสบดี: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open
+•    วันศุกร์: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = maintenance
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/"
+RT-RULE-001,True,True,True,True,เอาอาหารเข้าได้ไหม,rules,studio_rules,rules,rule_lookup,rules,studio_rules,rules,rule_lookup,pipeline:rules_fast_path,0.9,0.93,0.9,0.1635,studio rule,"อนุญาตให้รับประทานอาหารและเครื่องดื่มเฉพาะในพื้นที่ที่กำหนดเท่านั้น
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation"
+RT-RULE-002,True,True,True,True,ทำจอยพังโดนปรับเท่าไหร่,penalty,penalty_policy,penalty,rule_lookup,penalty,penalty_policy,penalty,rule_lookup,pipeline:penalty_fast_path,0.9,0.94,0.93,0.6642,penalty amount is not service fee,"ต้องรับผิดชอบค่าปรับ/ค่าซ่อมครับ หากทำเมาส์หรืออุปกรณ์ของศูนย์เสียหาย โดยข้อมูลกฎที่มีระบุว่า ความเสียหายเล็กน้อยคิด 100-500 บาท และความเสียหายปานกลางคิด 500-2,000 บาทหรือตามราคาซ่อมจริง หากเสียหายร้ายแรงอาจต้องชดเชยเต็มจำนวนตามราคากลาง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation"
+RT-RULE-003,True,True,True,True,ของหายทำยังไง,rules,studio_rules,rules,rule_lookup,rules,studio_rules,rules,rule_lookup,pipeline:mixed_rules_fast,0.9,0.8902,0.9,0.1338,lost item,"ทรัพย์สินสูญหายศูนย์ไม่รับผิดชอบ แต่ถ้าผู้ใช้ทำอุปกรณ์เสียหายหรือเปียก ผู้ใช้ต้องรับผิดชอบค่าปรับ/ค่าซ่อม
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation"
+RT-GEN-001,True,True,True,True,เมืองหลวงของประเทศไทยคืออะไร,general,general_knowledge_query,general,detail,general,general_knowledge_query,general,detail,pipeline:general_llm_disabled,0.42,0.86,0.74,0.5424,general fallback,"ตอนนี้โหมดตอบจากความรู้ทั่วไปของ Local LLM ยังไม่ได้เปิดในสภาพแวดล้อมนี้ครับ
+ให้เปิด `experimental_allow_llm=True` หรือใช้ notebook local hybrid chat เพื่อให้โมเดลตอบคำถามทั่วไป"
+RT-GEN-002,True,True,True,True,นายเป็นใคร,knowledge,detail,knowledge,detail,knowledge,detail,knowledge,detail,pipeline:chatbot_identity_fast_path,0.98,0.97,0.97,0.0624,chatbot identity,"ผมคือ PSU Esports Assistant แชทบอทผู้ช่วยของ PSU Esports Studio - Phuket ครับ
+
+ผมช่วยตอบคำถามเกี่ยวกับ:
+•    เกมที่มีให้เล่นและเกมที่เกี่ยวข้องกับการแข่งขัน
+•    ปุ่มควบคุมและวิธีเล่นของเกมที่มีข้อมูลยืนยัน
+•    อุปกรณ์และโซนบริการ เช่น PC, PS5, Nintendo Switch, VR และ Cockpit
+•    วิธีจอง เช็คอิน ค่าบริการ เวลาเปิด-ปิด และกฎการใช้งาน
+•    สมาชิกทีม ตำแหน่ง และหมวดสมาชิกของ PSU Esports Studio - Phuket
+
+ถ้าเป็นข้อมูลของศูนย์ ผมจะตอบจากฐานข้อมูลที่ยืนยันได้ก่อนเสมอ ถ้ายังไม่มีข้อมูลยืนยัน ผมจะบอกตรง ๆ ครับ
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"

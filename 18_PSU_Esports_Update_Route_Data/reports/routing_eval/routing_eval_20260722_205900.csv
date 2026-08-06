@@ -1,0 +1,157 @@
+﻿id,passed,route_ok,intent_ok,not_forbidden,question,expected_category,expected_intent,expected_domain,expected_operation,actual_category,actual_intent,actual_domain,actual_operation,mode,confidence,route_confidence,intent_confidence,elapsed,notes,answer
+RT-SF-001,True,True,True,True,นักศึกษา PSU เล่น Nintendo Switch ราคาเท่าไหร่,service_fee,service_fee_query,service_fee,price_calculate,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,0.97,0.92,3.5938,price must win over Nintendo game catalog,"ราคา Nintendo Switch สำหรับกลุ่ม PSU Student and Staff
+•    Nintendo Switch 1-2 คน: 0 บาท
+•    Nintendo Switch 3-4 คน: 0 บาท
+กลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff
+หมายเหตุ: คำถามยังไม่ระบุจำนวนผู้เล่น จึงแสดงทั้งราคา 1-2 คนและ 3-4 คน
+
+รายละเอียดจากตาราง:
+Nintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 50 บาท
+•    General Adult: 140 บาท
+
+Nintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 100 บาท
+•    General Adult: 280 บาท
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RT-SF-002,True,True,True,True,คนนอกเล่น VR กี่บาท,service_fee,service_fee_query,service_fee,price_calculate,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,0.97,0.92,0.4104,general adult price,"ราคา VR สำหรับกลุ่ม General Adult / บุคคลทั่วไป
+•    VR 30 นาที: 525 บาท
+•    VR 1 ชั่วโมง: 1,050 บาท
+กลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป
+หมายเหตุ: คำถามยังไม่ระบุระยะเวลา จึงแสดงทั้งราคา 30 นาทีและ 1 ชั่วโมง
+
+รายละเอียดจากตาราง:
+VR 30 นาที (1-5 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 190 บาท
+•    General Adult: 525 บาท
+
+VR 1 ชั่วโมง (60 นาที, 1-5 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 375 บาท
+•    General Adult: 1,050 บาท
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RT-SF-003,True,True,True,True,PS5 ราคาเท่าไหร่,service_fee,service_fee_query,service_fee,price_calculate,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,0.97,0.92,0.3947,simple PS5 price,"PlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 50 บาท
+•    General Adult: 150 บาท
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RT-SF-004,True,True,True,True,Cockpit ค่าบริการเท่าไร,service_fee,service_fee_query,service_fee,price_calculate,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,0.97,0.92,0.9511,cockpit price,"Cockpit 60 นาที (1 ชั่วโมง, 1 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 65 บาท
+•    General Adult: 200 บาท
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RT-SF-005,True,True,True,True,ถ้าเป็นบุคคลทั่วไป จอง Cockpit ราคาเท่าไหร่,service_fee,service_fee_query,service_fee,price_calculate,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,0.97,0.92,1.8832,price wins even with booking word,"ราคา 200 บาท สำหรับกลุ่ม General Adult / บุคคลทั่วไป
+•    Cockpit 60 นาที: 200 บาท
+กลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป
+
+รายละเอียดจากตาราง:
+Cockpit 60 นาที (1 ชั่วโมง, 1 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 65 บาท
+•    General Adult: 200 บาท
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RT-SF-006,True,True,True,True,ถ้าจอง PS5 ตั้งแต่ 9โมงถึง11โมงเสียกี่บาท,service_fee,service_fee_query,service_fee,price_calculate,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,0.97,0.92,2.0298,time range with price,"ระยะเวลาที่ถามคือ 2 ชั่วโมง ใช้ 2 session ตามแพ็กเกจ PlayStation 5 60 นาที
+แบ่งช่วงเวลาเป็น: 09:00-10:00, 10:00-11:00
+ยังไม่ทราบกลุ่มผู้ใช้ จึงแสดงราคาทุกกลุ่มให้เทียบก่อน:
+•    PSU Student and Staff: 0 บาท/session x 2 = 0 บาท
+•    PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน: 50 บาท/session x 2 = 100 บาท
+•    General Adult / บุคคลทั่วไป: 150 บาท/session x 2 = 300 บาท
+
+รายละเอียดจากตาราง:
+PlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 50 บาท
+•    General Adult: 150 บาท
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RT-SF-007,True,True,True,True,นักศึกษาต่างมหาลัยเล่น Nintendo Switch 3 คน 2 ชั่วโมงเสียเท่าไหร่,service_fee,service_fee_query,service_fee,price_calculate,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,0.97,0.92,2.2068,multi parameter price,"ราคา Nintendo Switch สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน
+•    Nintendo Switch 1-2 คน: 50 บาท
+•    Nintendo Switch 3-4 คน: 100 บาท
+กลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น
+หมายเหตุ: คำถามยังไม่ระบุจำนวนผู้เล่น จึงแสดงทั้งราคา 1-2 คนและ 3-4 คน
+
+รายละเอียดจากตาราง:
+Nintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 50 บาท
+•    General Adult: 140 บาท
+
+Nintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 100 บาท
+•    General Adult: 280 บาท
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RT-SF-008,False,False,False,False,ค่าเล่นแต่ละเครื่องมีอะไรบ้าง,service_fee,service_fee_query,service_fee,price_calculate,equipment,list,equipment,list,pipeline:structured_equipment_catalog,0.95,0.96,0.82,0.3316,full fee table,"อุปกรณ์ในศูนย์แยกตามโซน:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (10 Units)
+•    Gaming Monitor (10 Units)
+•    Gaming Keyboard
+•    Gaming Mouse
+•    Gaming Headset
+•    Gaming Chair (10 Units)
+Cockpit Zone
+•    Logitech G923 TRUEFORCE Racing Wheel (2 Units with Driving Force Shifter)
+•    Driving Force Shifter (2 Units with Logitech G923)
+•    Racezone Full Cockpit V3 (2 Units)
+•    Pulse Elite Wireless Headset (2 Units)
+•    TV 65 นิ้ว (2 Units)
+Nintendo Switch Zone
+•    Nintendo Switch OLED (1 Unit)
+•    TV 86 นิ้ว (1 Unit)
+•    Sofa 2 seats (2 Sets)
+PlayStation 5 Zone / VR Zone
+•    PlayStation 5 Slim With Ultra HD Blu-Ray Disc Drive (2 Units in PlayStation 5 Zone and 1 Unit in VR Zone)
+VR Zone
+•    Sony PlayStation VR2 (1 Unit)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+RT-GM-001,False,False,True,True,Nintendo Switch มีเกมอะไรบ้าง,equipment,equipment_game_catalog,games,list,games,list,games,list,pipeline:structured_games_catalog,0.97,0.96,0.82,1.2522,game catalog not price,"Nintendo Switch Zone มีเกมที่ยืนยันได้ดังนี้
+
+Nintendo Switch Zone (18 เกม)
+•    Animal Crossing: New Horizons
+•    It Takes Two
+•    Little Nightmares II
+•    Luigi's Mansion 3
+•    Mario Kart 8 Deluxe
+•    Mario Kart Live: Home Circuit
+•    Mario Party Superstars
+•    Monster Hunter Rise
+•    Moving Out
+•    Moving Out 2
+•    New Super Mario Bros. U Deluxe
+•    Nintendo Switch Sports
+•    Overcooked + Overcooked! 2
+•    Overcooked 2
+•    Ring Fit Adventure
+•    Super Mario Odyssey
+•    Super Smash Bros Ultimate
+•    The Legend of Zelda: Breath of the Wild
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+RT-GM-002,False,False,True,True,เกมใน PS5 มีอะไรบ้าง,games,game_catalog_lookup,games,list,games,list,games,list,pipeline:structured_games_catalog,0.97,0.96,0.82,1.2497,PS5 game list,"PlayStation 5 Zone มีเกมที่ยืนยันได้ดังนี้
+
+PlayStation 5 Zone (23 เกม)
+•    Beat Saber
+•    Call of Duty: Modern Warfare III
+•    EA Sports FC 24
+•    FINAL FANTASY XVI
+•    Fortnite
+•    God of War Ragnarok
+•    Gran Turismo 7
+•    Hogwarts Legacy
+•    It Takes Two
+•    Little Nightmares II
+•    Marvel's Spider-Man 2
+•    Monster Hunter Rise
+•    NARUTO X BORUTO Ultimate Ninja Storm Connections
+•    Overcooked!
+•    Resident Evil 4
+•    Resident Evil 4 (Remake)
+•    Resident Evil Village
+•    TEKKEN 8
+•    The Last of Us Part I
+•    The Last of Us Part I / Part II
+•    The Last of Us Part II
+•    The Last of Us Part II (Remastered)
+•    Uncharted: Legacy of Thieves Collection
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"

@@ -1,0 +1,255 @@
+﻿case_id,kind,group,turn_index,question,resolved_question,used_context,passed,problems,risk,mode,route_category,route_intent,strategy,confidence,latency_sec,wall_sec,answer,sources
+CR-001,single,competition_rules,,VALORANT กติกาการแข่งขันคืออะไร,,,True,[],high,pipeline:competition_fact_card,competition_rules,competition_rules_lookup,rag/retrieval,0.96,0.596,0.6298,"คำตอบ: VALORANT จำกัดคอนเทนต์ใหม่: Agent ใหม่ต้องรอประมาณ 2 สัปดาห์ และแผนที่ใหม่ต้องรอประมาณ 4 สัปดาห์ก่อนใช้แข่ง
+
+หลักฐานจากกติกา:
+•    เอกสารระบุข้อจำกัด Agent ใหม่ประมาณ 2 สัปดาห์ และแผนที่ใหม่ประมาณ 4 สัปดาห์
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026","[""valorant_agent_map_restriction: local://competition_rules/competition_rules_valorant_psu_phuket_2026""]"
+CR-002,single,competition_rules,,VALORANT ใช้ผู้เล่นกี่คน,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0691,0.0691,"VALORANT ใช้ผู้เล่นตัวจริงทีมละ 5 คนครับ
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-003,single,competition_rules,,VALORANT มาสายจะโดนอะไร,,,False,"[""route_category expected ['competition_rules'], got reservation"", ""missing any of ['VALORANT', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']""]",high,pipeline:structured_reservation_fact,reservation,booking_policy,structured,0.94,0.2424,0.2425,"ถ้าไม่เช็คอินก่อนเวลาเริ่มต้นของรอบ ระบบจะยกเลิกการจองทันที และไม่มีการคืนเงิน
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""late_checkin: https://esports.computing.psu.ac.th/""]"
+CR-004,single,competition_rules,,VALORANT pause ได้ไหม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0337,0.0338,"VALORANT มี Pause หลัก 3 ประเภทครับ
+•    Tactical Timeout
+•    Technical Pause
+•    Emergency Pause
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-005,single,competition_rules,,VALORANT ถ้าเกมหลุดทำยังไง,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0661,0.0662,"VALORANT หากเกิดปัญหาหลุดหรืออุปกรณ์ขัดข้องให้ใช้ Technical/Emergency Pause ตามกติกาและแจ้งเจ้าหน้าที่ครับ
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-006,single,competition_rules,,VALORANT ขอ restart ได้ไหม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0435,0.0435,"VALORANT มีข้อมูลเรื่อง bug/challenge/rollback ครับ
+•    ถ้าเกิดปัญหาต้องแจ้งเจ้าหน้าที่ และการย้อนรอบขึ้นกับเงื่อนไขในกติกา
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-007,single,competition_rules,,VALORANT รูปแบบการแข่งขันเป็นยังไง,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0851,0.0852,"VALORANT มีรูปแบบการแข่งขันตามเอกสารกติกาครับ
+•    ถ้าต้องการรูปแบบรอบใดรอบหนึ่ง ควรถามระบุรอบเพิ่มเติม
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-008,single,competition_rules,,VALORANT รอบชิงเล่นกี่เกม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0633,0.0634,"VALORANT ยังไม่พบข้อมูลรอบชิงแบบฟันธงจากคำถามนี้ครับ
+•    ควรดูประกาศ bracket/format ของรายการประกอบ
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-009,single,competition_rules,,VALORANT มีตัวสำรองได้ไหม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0643,0.0644,"VALORANT มีข้อมูลช่วงเตรียมตัวว่าในพื้นที่ Match Prep มีผู้เล่นได้ไม่เกิน 6 คนครับ
+•    ตีความได้ว่ามีพื้นที่สำหรับตัวสำรอง/บุคลากรจำกัด แต่การเปลี่ยนตัวต้องยึดกติกาผู้จัด
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-010,single,competition_rules,,VALORANT มีข้อห้ามอะไรบ้าง,,,True,[],high,pipeline:competition_fact_card,competition_rules,competition_rules_lookup,rag/retrieval,0.96,0.0675,0.0675,"คำตอบ: VALORANT ใช้แผนที่ Abyss, Ascent, Bind, Corrode, Haven, Lotus และ Sunset
+
+หลักฐานจากกติกา:
+•    เอกสารระบุ map pool ของ VALORANT ได้แก่ Abyss, Ascent, Bind, Corrode, Haven, Lotus และ Sunset
+
+อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026","[""valorant_map_pool: local://competition_rules/competition_rules_valorant_psu_phuket_2026""]"
+CR-011,single,competition_rules,,VALORANT ถ้าใช้ bug จะโดนอะไร,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0524,0.0524,"VALORANT มีบทลงโทษหลายระดับครับ
+•    ตัวอย่าง: Round Loss, Map Forfeit, Match Forfeit และโทษกรณี Cheating/Match fixing
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-012,single,competition_rules,,VALORANT ต้องเช็คอินก่อนแข่งไหม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0681,0.0681,"VALORANT ต้องรายงานตัวก่อนแข่งครับ
+•    ข้อมูลที่พบ: ต้องมาถึงสนามแข่งไม่น้อยกว่า 30 นาทีก่อนเวลาแข่ง
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-013,single,competition_rules,,VALORANT ใช้บัญชีอะไรแข่ง,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0452,0.0452,"VALORANT ยังไม่พบข้อมูลชัดเจนว่าใช้บัญชีส่วนตัวหรือบัญชีที่ผู้จัดเตรียมให้ครับ
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-014,single,competition_rules,,VALORANT แผนที่มีอะไรบ้าง,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0427,0.0427,"VALORANT มีข้อมูลเรื่อง map pool และการแบนแผนที่ครับ
+•    map pool ที่พบ: Abyss, Ascent, Bind, Corrode, Haven, Lotus และ Sunset
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-015,single,competition_rules,,VALORANT สรุปกติกาสั้นๆ,,,True,[],high,pipeline:competition_fact_card,competition_rules,competition_rules_lookup,rag/retrieval,0.96,0.0491,0.0491,"คำตอบ: VALORANT ขอ Tactical Timeout ได้ทีมละ 2 ครั้งต่อแผนที่ ครั้งละ 60 วินาที และถ้าเข้า Overtime จะได้เพิ่มอีก 1 ครั้ง
+แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026","[""valorant_tactical_timeout: local://competition_rules/competition_rules_valorant_psu_phuket_2026""]"
+CR-016,single,competition_rules,,CS2 กติกาการแข่งขันคืออะไร,,,True,[],high,pipeline:competition_fact_card,competition_rules,competition_rules_lookup,rag/retrieval,0.96,0.8379,0.838,"คำตอบ: CS2 ใช้แผนที่ Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train
+
+หลักฐานจากกติกา:
+•    เอกสารระบุ map pool สำหรับการแข่งขัน CS2 ได้แก่ Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""cs2_map_pool: local://competition_rules/competition_rules_cs2_psu_phuket_2026""]"
+CR-017,single,competition_rules,,CS2 ใช้ผู้เล่นกี่คน,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0586,0.0586,"CS2 ใช้ผู้เล่นทีมละ 5 คนครับ
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-018,single,competition_rules,,CS2 มาสายจะโดนอะไร,,,False,"[""route_category expected ['competition_rules'], got reservation"", ""missing any of ['CS2', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']""]",high,pipeline:structured_reservation_fact,reservation,booking_policy,structured,0.94,0.1687,0.1688,"ถ้าไม่เช็คอินก่อนเวลาเริ่มต้นของรอบ ระบบจะยกเลิกการจองทันที และไม่มีการคืนเงิน
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""late_checkin: https://esports.computing.psu.ac.th/""]"
+CR-019,single,competition_rules,,CS2 pause ได้ไหม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0293,0.0293,"CS2 มีทั้ง Technical Pause และ Tactical Timeout ครับ
+•    Technical Pause ใช้กรณีปัญหาขัดข้อง
+•    Tactical Timeout ใช้ตามเงื่อนไขช่วง Freeze time
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-020,single,competition_rules,,CS2 ถ้าเกมหลุดทำยังไง,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0674,0.0674,"CS2 ถ้าเกิดปัญหาเครื่อง/การเชื่อมต่อ ให้ใช้ Technical Pause ตามกติกาและแจ้งเจ้าหน้าที่ครับ
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-021,single,competition_rules,,CS2 ขอ restart ได้ไหม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0564,0.0564,"CS2 ยังไม่พบข้อมูล remake/restart แบบฟันธงจากคำถามนี้ครับ
+•    หากเกิดปัญหาให้แจ้งผู้ตัดสินและยึด Technical Pause/คำตัดสินกรรมการ
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-022,single,competition_rules,,CS2 รูปแบบการแข่งขันเป็นยังไง,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.1053,0.1053,"CS2 มีรูปแบบการแข่งขันตามเอกสารกติกาครับ
+•    ถ้าต้องการรอบเฉพาะ ให้ถามระบุรอบหรือ bracket เพิ่ม
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-023,single,competition_rules,,CS2 รอบชิงเล่นกี่เกม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0628,0.0629,"CS2 ยังไม่พบข้อมูลรอบชิงแบบฟันธงจากคำถามนี้ครับ
+•    ควรดูประกาศ bracket/format ของรายการประกอบ
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-024,single,competition_rules,,CS2 มีตัวสำรองได้ไหม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0723,0.0723,"CS2 ยังไม่พบข้อมูลตัวสำรองแบบแยกชัดเจนจากคำถามนี้ครับ
+•    ข้อมูลที่ยืนยันได้คือทีมละ 5 คน
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-025,single,competition_rules,,CS2 มีข้อห้ามอะไรบ้าง,,,True,[],high,pipeline:competition_fact_card,competition_rules,competition_rules_lookup,rag/retrieval,0.96,0.0829,0.0829,"คำตอบ: CS2 ใช้แผนที่ Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train
+
+หลักฐานจากกติกา:
+•    เอกสารระบุ map pool สำหรับการแข่งขัน CS2 ได้แก่ Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""cs2_map_pool: local://competition_rules/competition_rules_cs2_psu_phuket_2026""]"
+CR-026,single,competition_rules,,CS2 ถ้าใช้ bug จะโดนอะไร,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0696,0.0696,"CS2 มีบทลงโทษครับ
+•    ตัวอย่าง: ใช้บัค/โกง/พฤติกรรมไม่เหมาะสม อาจถูกปรับแพ้เป็นรอบ แมตช์ หรือตัดสิทธิ์ตามความรุนแรง
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-027,single,competition_rules,,CS2 ต้องเช็คอินก่อนแข่งไหม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0997,0.0997,"CS2 ต้องยืนยัน/รายงานตัวตามเวลาที่ผู้จัดกำหนดครับ
+•    หากไม่ยืนยันก่อนแมตช์มีความเสี่ยงถูกตัดสิทธิ์
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-028,single,competition_rules,,CS2 ใช้บัญชีอะไรแข่ง,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0766,0.0767,"CS2 ยังไม่พบข้อมูลชัดเจนว่าใช้บัญชีส่วนตัวหรือบัญชีที่ผู้จัดเตรียมให้ครับ
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-029,single,competition_rules,,CS2 แผนที่มีอะไรบ้าง,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0729,0.073,"CS2 มีข้อมูล map pool ครับ
+•    แผนที่ที่พบ: Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-030,single,competition_rules,,CS2 สรุปกติกาสั้นๆ,,,True,[],high,pipeline:competition_fact_card,competition_rules,competition_rules_lookup,rag/retrieval,0.96,0.0649,0.065,"คำตอบ: ต่างกันคือ CS2 Technical Pause ขอได้ทีมละ 2 ครั้ง รวมไม่เกิน 10 นาที ส่วน Tactical Timeout ขอได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""cs2_pause_policy: local://competition_rules/competition_rules_cs2_psu_phuket_2026""]"
+CR-031,single,competition_rules,,Counter-Strike 2 กติกาการแข่งขันคืออะไร,,,True,[],high,pipeline:competition_fact_card,competition_rules,competition_rules_lookup,rag/retrieval,0.96,0.0888,0.0888,"คำตอบ: CS2 ใช้แผนที่ Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train
+
+หลักฐานจากกติกา:
+•    เอกสารระบุ map pool สำหรับการแข่งขัน CS2 ได้แก่ Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""cs2_map_pool: local://competition_rules/competition_rules_cs2_psu_phuket_2026""]"
+CR-032,single,competition_rules,,Counter-Strike 2 ใช้ผู้เล่นกี่คน,,,False,"[""missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']""]",high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0574,0.0574,"CS2 ใช้ผู้เล่นทีมละ 5 คนครับ
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-033,single,competition_rules,,Counter-Strike 2 มาสายจะโดนอะไร,,,False,"[""route_category expected ['competition_rules'], got reservation"", ""missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']""]",high,pipeline:structured_reservation_fact,reservation,booking_policy,structured,0.94,0.21,0.21,"ถ้าไม่เช็คอินก่อนเวลาเริ่มต้นของรอบ ระบบจะยกเลิกการจองทันที และไม่มีการคืนเงิน
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""late_checkin: https://esports.computing.psu.ac.th/""]"
+CR-034,single,competition_rules,,Counter-Strike 2 pause ได้ไหม,,,False,"[""missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']""]",high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.038,0.0381,"CS2 มีทั้ง Technical Pause และ Tactical Timeout ครับ
+•    Technical Pause ใช้กรณีปัญหาขัดข้อง
+•    Tactical Timeout ใช้ตามเงื่อนไขช่วง Freeze time
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-035,single,competition_rules,,Counter-Strike 2 ถ้าเกมหลุดทำยังไง,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0627,0.0628,"CS2 ถ้าเกิดปัญหาเครื่อง/การเชื่อมต่อ ให้ใช้ Technical Pause ตามกติกาและแจ้งเจ้าหน้าที่ครับ
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-036,single,competition_rules,,Counter-Strike 2 ขอ restart ได้ไหม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0683,0.0683,"CS2 ยังไม่พบข้อมูล remake/restart แบบฟันธงจากคำถามนี้ครับ
+•    หากเกิดปัญหาให้แจ้งผู้ตัดสินและยึด Technical Pause/คำตัดสินกรรมการ
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-037,single,competition_rules,,Counter-Strike 2 รูปแบบการแข่งขันเป็นยังไง,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.1038,0.1039,"CS2 มีรูปแบบการแข่งขันตามเอกสารกติกาครับ
+•    ถ้าต้องการรอบเฉพาะ ให้ถามระบุรอบหรือ bracket เพิ่ม
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-038,single,competition_rules,,Counter-Strike 2 รอบชิงเล่นกี่เกม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0698,0.0698,"CS2 ยังไม่พบข้อมูลรอบชิงแบบฟันธงจากคำถามนี้ครับ
+•    ควรดูประกาศ bracket/format ของรายการประกอบ
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-039,single,competition_rules,,Counter-Strike 2 มีตัวสำรองได้ไหม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0744,0.0744,"CS2 ยังไม่พบข้อมูลตัวสำรองแบบแยกชัดเจนจากคำถามนี้ครับ
+•    ข้อมูลที่ยืนยันได้คือทีมละ 5 คน
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-040,single,competition_rules,,Counter-Strike 2 มีข้อห้ามอะไรบ้าง,,,True,[],high,pipeline:competition_fact_card,competition_rules,competition_rules_lookup,rag/retrieval,0.96,0.0701,0.0702,"คำตอบ: CS2 ใช้แผนที่ Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train
+
+หลักฐานจากกติกา:
+•    เอกสารระบุ map pool สำหรับการแข่งขัน CS2 ได้แก่ Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train
+
+อ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""cs2_map_pool: local://competition_rules/competition_rules_cs2_psu_phuket_2026""]"
+CR-041,single,competition_rules,,Counter-Strike 2 ถ้าใช้ bug จะโดนอะไร,,,False,"[""missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']""]",high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.067,0.0671,"CS2 มีบทลงโทษครับ
+•    ตัวอย่าง: ใช้บัค/โกง/พฤติกรรมไม่เหมาะสม อาจถูกปรับแพ้เป็นรอบ แมตช์ หรือตัดสิทธิ์ตามความรุนแรง
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-042,single,competition_rules,,Counter-Strike 2 ต้องเช็คอินก่อนแข่งไหม,,,False,"[""missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']""]",high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0798,0.0799,"CS2 ต้องยืนยัน/รายงานตัวตามเวลาที่ผู้จัดกำหนดครับ
+•    หากไม่ยืนยันก่อนแมตช์มีความเสี่ยงถูกตัดสิทธิ์
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-043,single,competition_rules,,Counter-Strike 2 ใช้บัญชีอะไรแข่ง,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0612,0.0612,"CS2 ยังไม่พบข้อมูลชัดเจนว่าใช้บัญชีส่วนตัวหรือบัญชีที่ผู้จัดเตรียมให้ครับ
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-044,single,competition_rules,,Counter-Strike 2 แผนที่มีอะไรบ้าง,,,False,"[""missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']""]",high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0639,0.0639,"CS2 มีข้อมูล map pool ครับ
+•    แผนที่ที่พบ: Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""competition_rules: data/competition_rules""]"
+CR-045,single,competition_rules,,Counter-Strike 2 สรุปกติกาสั้นๆ,,,False,"[""missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']""]",high,pipeline:competition_fact_card,competition_rules,competition_rules_lookup,rag/retrieval,0.96,0.0624,0.0625,"คำตอบ: ต่างกันคือ CS2 Technical Pause ขอได้ทีมละ 2 ครั้ง รวมไม่เกิน 10 นาที ส่วน Tactical Timeout ขอได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที
+แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026","[""cs2_pause_policy: local://competition_rules/competition_rules_cs2_psu_phuket_2026""]"
+CR-046,single,competition_rules,,TEKKEN 8 กติกาการแข่งขันคืออะไร,,,True,[],high,pipeline:competition_fact_card,competition_rules,competition_rules_lookup,rag/retrieval,0.96,0.4295,0.4295,"คำตอบ: Tekken 8 เป็นการแข่งขันออฟไลน์แบบ 1v1 บน PlayStation 5 ใช้รูปแบบ First to 2 (FT2), Round 3 และเวลา 60 วินาที
+
+หลักฐานจากกติกา:
+•    เอกสารระบุแข่งขันแบบ Offline, Platform PlayStation 5, 1v1, FT2, R3 และตั้งเวลา 60 วินาที
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports","[""tekken8_format_ps5_1v1: local://competition_rules/competition_rules_tekken8_psu_esports""]"
+CR-047,single,competition_rules,,TEKKEN 8 ใช้ผู้เล่นกี่คน,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0675,0.0676,"TEKKEN 8 แข่งขันแบบ 1v1 ครับ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports","[""competition_rules: data/competition_rules""]"
+CR-048,single,competition_rules,,TEKKEN 8 มาสายจะโดนอะไร,,,False,"[""route_category expected ['competition_rules'], got reservation"", ""missing any of ['TEKKEN', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']""]",high,pipeline:structured_reservation_fact,reservation,booking_policy,structured,0.94,0.2373,0.2374,"ถ้าไม่เช็คอินก่อนเวลาเริ่มต้นของรอบ ระบบจะยกเลิกการจองทันที และไม่มีการคืนเงิน
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""late_checkin: https://esports.computing.psu.ac.th/""]"
+CR-049,single,competition_rules,,TEKKEN 8 pause ได้ไหม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0469,0.0469,"TEKKEN 8 ห้าม pause เองหลังเริ่มเกมโดยไม่มีเหตุอันควรครับ
+•    อาจถูกปรับแพ้ 1 รอบตามกติกา
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports","[""competition_rules: data/competition_rules""]"
+CR-050,single,competition_rules,,TEKKEN 8 ถ้าเกมหลุดทำยังไง,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0872,0.0873,"TEKKEN 8 ถ้าเกิดเหตุขัดข้องหรือฉุกเฉินให้แจ้งผู้จัด/กรรมการครับ
+•    การหยุดเกมต้องอยู่ภายใต้เงื่อนไขที่กติกาอนุญาต
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports","[""competition_rules: data/competition_rules""]"
+CR-051,single,competition_rules,,TEKKEN 8 ขอ restart ได้ไหม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0582,0.0582,"TEKKEN 8 ยังไม่พบข้อมูล remake/restart แบบฟันธงจากคำถามนี้ครับ
+•    ถ้าเกิดเหตุฉุกเฉินหรืออุปกรณ์ขัดข้องต้องให้ผู้จัด/กรรมการตัดสิน
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports","[""competition_rules: data/competition_rules""]"
+CR-052,single,competition_rules,,TEKKEN 8 รูปแบบการแข่งขันเป็นยังไง,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.1797,0.1797,"TEKKEN 8 แข่งขันแบบ 1v1 และใช้รูปแบบ First to 2 (FT2) ครับ
+•    ตั้งค่า Round 3
+•    เวลา 60 วินาที
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports","[""competition_rules: data/competition_rules""]"
+CR-053,single,competition_rules,,TEKKEN 8 รอบชิงเล่นกี่เกม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.1046,0.1046,"TEKKEN 8 ใช้รูปแบบ FT2 โดยผู้ชนะต้องชนะครบ 2 เกมครับ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports","[""competition_rules: data/competition_rules""]"
+CR-054,single,competition_rules,,TEKKEN 8 มีตัวสำรองได้ไหม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.1128,0.1129,"TEKKEN 8 ยังไม่พบข้อมูลตัวสำรองจากคำถามนี้ครับ
+•    ข้อมูลที่ยืนยันได้คือแข่งแบบ 1v1
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports","[""competition_rules: data/competition_rules""]"
+CR-055,single,competition_rules,,TEKKEN 8 มีข้อห้ามอะไรบ้าง,,,True,[],high,pipeline:competition_fact_card,competition_rules,competition_rules_lookup,rag/retrieval,0.96,0.1079,0.1079,"คำตอบ: Tekken 8 เลือกตัวละครได้ทุกตัว ยกเว้นตัวละคร DLC และห้ามใช้ customization โดยให้ใช้ชุด/สกินมาตรฐาน
+
+หลักฐานจากกติกา:
+•    เอกสารระบุอนุญาตให้ใช้ตัวละครทุกตัว ยกเว้น DLC Character และไม่อนุญาตให้ใช้ Customization
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports","[""tekken8_character_dlc_rule: local://competition_rules/competition_rules_tekken8_psu_esports""]"
+CR-056,single,competition_rules,,TEKKEN 8 ถ้าใช้ bug จะโดนอะไร,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0848,0.0848,"TEKKEN 8 มีบทลงโทษเรื่อง pause/ข้อโต้แย้งครับ
+•    ตัวอย่าง: pause เองหลังเริ่มเกมอาจถูกปรับแพ้ 1 รอบ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports","[""competition_rules: data/competition_rules""]"
+CR-057,single,competition_rules,,TEKKEN 8 ต้องเช็คอินก่อนแข่งไหม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.1123,0.1124,"TEKKEN 8 ยังไม่พบข้อมูลเช็คอินแบบฟันธงจากคำถามนี้ครับ
+•    ควรยึดกำหนดการและคำสั่งผู้จัด
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports","[""competition_rules: data/competition_rules""]"
+CR-058,single,competition_rules,,TEKKEN 8 ใช้บัญชีอะไรแข่ง,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0882,0.0883,"TEKKEN 8 ยังไม่พบข้อมูลชัดเจนว่าใช้บัญชีส่วนตัวหรือบัญชีที่ผู้จัดเตรียมให้ครับ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports","[""competition_rules: data/competition_rules""]"
+CR-059,single,competition_rules,,TEKKEN 8 แผนที่มีอะไรบ้าง,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0864,0.0864,"TEKKEN 8 มีข้อมูลเรื่อง Stage Random และข้อจำกัด customization ครับ
+•    ยังไม่ใช่ระบบแบนตัวละครแบบเกมทีม
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports","[""competition_rules: data/competition_rules""]"
+CR-060,single,competition_rules,,TEKKEN 8 สรุปกติกาสั้นๆ,,,True,[],high,pipeline:competition_fact_card,competition_rules,competition_rules_lookup,rag/retrieval,0.96,0.0807,0.0808,"คำตอบ: Tekken 8 เป็นการแข่งขันออฟไลน์แบบ 1v1 บน PlayStation 5 ใช้รูปแบบ First to 2 (FT2), Round 3 และเวลา 60 วินาที
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports","[""tekken8_format_ps5_1v1: local://competition_rules/competition_rules_tekken8_psu_esports""]"
+CR-061,single,competition_rules,,ROV กติกาการแข่งขันคืออะไร,,,True,[],high,pipeline:competition_fact_card,competition_rules,competition_rules_lookup,rag/retrieval,0.96,0.3044,0.3045,"คำตอบ: ไฟล์กติกา RoV ระบุว่าแข่งขันในโหมด 5v5 จึงยืนยันได้ว่าลงแข่งพร้อมกันฝ่ายละ 5 คน แต่ยังไม่พบจำนวนสมาชิกทีมรวมหรือตัวสำรองที่ระบุชัดเจนในไฟล์นี้
+
+หลักฐานจากกติกา:
+•    เอกสารระบุการเข้าแข่งขันในโหมดการแข่งขัน 5v5 แต่ไม่ได้ระบุจำนวน roster รวม/ตัวสำรองแบบชัดเจน
+
+หมายเหตุ: คำตอบนี้เป็นการสรุปจากข้อมูลที่มีในไฟล์กติกา ไม่ใช่ข้อมูล roster/ตัวสำรองที่ระบุเป็นตัวเลขแยกไว้
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men","[""rov_team_size_active_players: local://competition_rules/competition_rules_rov_blueket_2025_men""]"
+CR-062,single,competition_rules,,ROV ใช้ผู้เล่นกี่คน,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0513,0.0514,"RoV ลงแข่งพร้อมกันฝ่ายละ 5 คนครับ
+•    หลักฐานที่พบระบุโหมดการแข่งขัน 5v5
+•    ยังไม่พบจำนวน roster รวม/ตัวสำรองที่ระบุเป็นตัวเลขแยกชัดเจน
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men","[""competition_rules: data/competition_rules""]"
+CR-063,single,competition_rules,,ROV มาสายจะโดนอะไร,,,False,"[""route_category expected ['competition_rules'], got reservation"", ""missing any of ['ROV', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']""]",high,pipeline:structured_reservation_fact,reservation,booking_policy,structured,0.94,0.1596,0.1596,"ถ้าไม่เช็คอินก่อนเวลาเริ่มต้นของรอบ ระบบจะยกเลิกการจองทันที และไม่มีการคืนเงิน
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""late_checkin: https://esports.computing.psu.ac.th/""]"
+CR-064,single,competition_rules,,ROV pause ได้ไหม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0424,0.0424,"RoV ขอ pause ได้ครับ
+•    แต่ละทีมขอหยุดเกมได้สูงสุด 5 ครั้ง
+•    ครั้งละไม่เกิน 1 นาที
+•    ใช้กรณีปัญหา เช่น หลุดเกมหรือขัดข้อง
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men","[""competition_rules: data/competition_rules""]"
+CR-065,single,competition_rules,,ROV ถ้าเกมหลุดทำยังไง,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0931,0.0931,"RoV ถ้าเกิดปัญหาหลุดเกมให้หยุดเกมตามสิทธิ์ pause และแจ้งผู้ตัดสิน/ทีมงานครับ
+•    ข้อมูลที่พบ: แต่ละทีมขอหยุดเกมได้สูงสุด 5 ครั้ง ครั้งละไม่เกิน 1 นาที
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men","[""competition_rules: data/competition_rules""]"
+CR-066,single,competition_rules,,ROV ขอ restart ได้ไหม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0792,0.0792,"RoV มีเงื่อนไขเริ่มเกมใหม่ครับ
+•    โดยสรุป ขอแข่งใหม่ได้เฉพาะช่วงต้นเกมตามเงื่อนไข First Blood/เวลาเกมที่กติกากำหนด
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men","[""competition_rules: data/competition_rules""]"
+CR-067,single,competition_rules,,ROV รูปแบบการแข่งขันเป็นยังไง,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.1251,0.1251,"RoV มีข้อมูลรูปแบบการแข่งขันในกติกาครับ
+•    ข้อมูลที่พบในชุดกติกา: แข่งแบบ BO3 ในรอบที่ระบุของรายการ
+•    ถ้าถามรอบเฉพาะ ควรระบุรอบการแข่งขันเพิ่ม
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men","[""competition_rules: data/competition_rules""]"
+CR-068,single,competition_rules,,ROV รอบชิงเล่นกี่เกม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0757,0.0758,"RoV ยังไม่พบข้อมูลรอบชิงแบบครบถ้วนจากคำถามนี้ครับ
+•    ข้อมูลที่พบเด่นคือรูปแบบ BO3 ในกติกาที่มี
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men","[""competition_rules: data/competition_rules""]"
+CR-069,single,competition_rules,,ROV มีตัวสำรองได้ไหม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0783,0.0784,"RoV ยังไม่พบข้อมูลตัวสำรองที่ระบุชัดเจนครับ
+•    ข้อมูลที่ยืนยันได้คือแข่งแบบ 5v5
+•    ถ้าจะใช้ตัวสำรองควรยึดประกาศผู้จัดหรือสอบถามกรรมการก่อนแข่ง
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men","[""competition_rules: data/competition_rules""]"
+CR-070,single,competition_rules,,ROV มีข้อห้ามอะไรบ้าง,,,True,[],high,pipeline:competition_fact_card,competition_rules,competition_rules_lookup,rag/retrieval,0.96,0.073,0.073,"คำตอบ: RoV ถ้าเริ่มแข่งล่าช้าเกิน 15 นาที จะถูกปรับแพ้ในรอบนั้น
+
+หลักฐานจากกติกา:
+•    เอกสารระบุว่าหากเริ่มการแข่งขันล่าช้าเกิน 15 นาที ทีมที่ทำให้เกิดความล่าช้าจะถูกปรับแพ้
+
+อ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men","[""rov_late_start_forfeit: local://competition_rules/competition_rules_rov_blueket_2025_men""]"
+CR-071,single,competition_rules,,ROV ถ้าใช้ bug จะโดนอะไร,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0637,0.0637,"RoV มีบทลงโทษตามกติกาครับ
+•    ตัวอย่างที่พบ: กรณีใช้ pause ผิดเจตนาอาจถูกตักเตือน แบนฮีโร่ หรือปรับแพ้ตามดุลยพินิจกรรมการ
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men","[""competition_rules: data/competition_rules""]"
+CR-072,single,competition_rules,,ROV ต้องเช็คอินก่อนแข่งไหม,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.093,0.093,"RoV มีข้อมูลการลงทะเบียน/รายงานตัวครับ
+•    ข้อมูลที่พบ: ช่วงลงทะเบียนระบุเวลา 8.00-8.30 น. ในกติกาที่มี
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men","[""competition_rules: data/competition_rules""]"
+CR-073,single,competition_rules,,ROV ใช้บัญชีอะไรแข่ง,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0788,0.0789,"RoV ยังไม่พบข้อมูลชัดเจนว่าใช้บัญชีส่วนตัวหรือบัญชีที่ผู้จัดเตรียมให้ครับ
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men","[""competition_rules: data/competition_rules""]"
+CR-074,single,competition_rules,,ROV แผนที่มีอะไรบ้าง,,,True,[],high,pipeline:competition_generic_fast_path,competition_rules,competition_rules_lookup,fast/rule,0.94,0.0747,0.0747,"RoV มีข้อมูลเรื่อง Global Ban/Pick ในกติกาครับ
+•    ฮีโร่ที่เกี่ยวข้องกับการเลือก/แบนควรยึดตามกติกา Global Ban/Pick ของรายการ
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men","[""competition_rules: data/competition_rules""]"
+CR-075,single,competition_rules,,ROV สรุปกติกาสั้นๆ,,,True,[],high,pipeline:competition_fact_card,competition_rules,competition_rules_lookup,rag/retrieval,0.96,0.0859,0.0859,"คำตอบ: ไฟล์กติกา RoV ระบุว่าแข่งขันในโหมด 5v5 จึงยืนยันได้ว่าลงแข่งพร้อมกันฝ่ายละ 5 คน แต่ยังไม่พบจำนวนสมาชิกทีมรวมหรือตัวสำรองที่ระบุชัดเจนในไฟล์นี้
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men","[""rov_team_size_active_players: local://competition_rules/competition_rules_rov_blueket_2025_men""]"

@@ -32,14 +32,14 @@ def main() -> int:
         [
             "อุปกรณ์บนหน้า Home:",
             "PC Zone",
-            "• Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)",
-            "• Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset",
+            "•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)",
+            "•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset",
             "Cockpit Zone",
-            "• TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)",
+            "•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)",
             "PlayStation 5 Zone",
-            "• PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)",
+            "•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)",
             "VR Zone",
-            "• Sony PlayStation VR2 (จำนวน 1 ชุด)",
+            "•    Sony PlayStation VR2 (จำนวน 1 ชุด)",
         ],
         "home equipment formatting",
     )
@@ -51,9 +51,9 @@ def main() -> int:
         ps5_games,
         [
             "PlayStation 5 Zone",
-            "• EA Sports FC 24",
-            "• FINAL FANTASY XVI",
-            "• TEKKEN 8",
+            "•    EA Sports FC 24",
+            "•    FINAL FANTASY XVI",
+            "•    TEKKEN 8",
         ],
         "ps5 game formatting",
     )
@@ -66,9 +66,10 @@ def main() -> int:
         [
             "PC Zone",
             "Nintendo Switch Zone",
-            "• Mario Kart Live: Home Circuit",
+            "•    Mario Kart 8 Deluxe",
+            "•    Pokémon Champions",
             "VR Zone",
-            "• Beat Saber",
+            "•    Beat Saber",
         ],
         "all game formatting",
     )

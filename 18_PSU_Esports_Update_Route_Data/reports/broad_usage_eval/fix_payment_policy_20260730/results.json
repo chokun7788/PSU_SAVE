@@ -1,0 +1,841 @@
+[
+  {
+    "case_id": "R-001",
+    "kind": "single",
+    "group": "reservation",
+    "turn_index": null,
+    "question": "จองยังไง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_reservation_fact",
+    "route_category": "reservation",
+    "route_intent": "booking_policy",
+    "strategy": "structured",
+    "confidence": 0.94,
+    "latency_sec": 1.0367,
+    "wall_sec": 1.089,
+    "answer": "ขั้นตอนจองโดยสรุป:\n•    เลือกบริการหรือโซนที่ต้องการใช้\n•    เลือกวันและรอบเวลาที่ต้องการ\n•    กรอก Student ID/Staff ID/National ID, ชื่อ, นามสกุล, อีเมล และเบอร์โทรศัพท์\n•    ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง\n•    แนบสลิปและยืนยันการจอง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "sources": [
+      "booking_steps: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "how_to",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "steps",
+        "controls_if_game"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.87,
+      "method": "heuristic",
+      "reason": "domain_terms=3; reservation route overrides entity/game domain; how-to terms found"
+    }
+  },
+  {
+    "case_id": "R-002",
+    "kind": "single",
+    "group": "reservation",
+    "turn_index": null,
+    "question": "สรุปขั้นตอนจองให้หน่อย",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_reservation_fact",
+    "route_category": "reservation",
+    "route_intent": "booking_policy",
+    "strategy": "structured",
+    "confidence": 0.94,
+    "latency_sec": 1.359,
+    "wall_sec": 1.3591,
+    "answer": "ขั้นตอนจองโดยสรุป:\n•    เลือกบริการหรือโซนที่ต้องการใช้\n•    เลือกวันและรอบเวลาที่ต้องการ\n•    กรอก Student ID/Staff ID/National ID, ชื่อ, นามสกุล, อีเมล และเบอร์โทรศัพท์\n•    ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง\n•    แนบสลิปและยืนยันการจอง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "sources": [
+      "booking_steps: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "how_to",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "steps",
+        "policy"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.82,
+      "method": "heuristic",
+      "reason": "domain_terms=3; reservation route overrides entity/game domain; no clear operation terms; reservation unknown treated as how_to/policy"
+    }
+  },
+  {
+    "case_id": "R-003",
+    "kind": "single",
+    "group": "reservation",
+    "turn_index": null,
+    "question": "จอง PS5 ต้องทำยังไง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_booking_selection",
+    "route_category": "reservation",
+    "route_intent": "booking_policy",
+    "strategy": "structured",
+    "confidence": 0.96,
+    "latency_sec": 1.3406,
+    "wall_sec": 1.3407,
+    "answer": "จอง PlayStation 5 ต้องเลือกบริการ PlayStation 5 และเลือกรอบเวลาที่ต้องการครับ\n•    ข้อมูลค่าบริการที่มีระบุ PlayStation 5 ต่อ 60 นาที สำหรับ 1-2 คน\n•    จากนั้นกรอกข้อมูลผู้ใช้บริการ ชำระเงิน และแนบสลิปเพื่อยืนยันการจอง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "sources": [
+      "booking_selection_ps5: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "service_fee_answer_missing_service_fee_source"
+      ]
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "how_to",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "steps",
+        "controls_if_game"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.87,
+      "method": "heuristic",
+      "reason": "domain_terms=3; reservation route overrides entity/game domain; how-to terms found"
+    }
+  },
+  {
+    "case_id": "R-004",
+    "kind": "single",
+    "group": "reservation",
+    "turn_index": null,
+    "question": "จอง Nintendo Switch ต้องทำยังไง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_booking_selection",
+    "route_category": "reservation",
+    "route_intent": "booking_policy",
+    "strategy": "structured",
+    "confidence": 0.96,
+    "latency_sec": 0.0819,
+    "wall_sec": 0.082,
+    "answer": "ถ้าจะเล่น Nintendo Switch Sports ให้จอง Nintendo Switch Zone ครับ\nจอง Nintendo Switch ต้องเลือกบริการตามจำนวนผู้เล่นครับ\n•    ถ้าเล่น 1-2 คน ให้เลือก Nintendo Switch แบบ 1-2 Persons\n•    ถ้าเล่น 3-4 คน ให้เลือก Nintendo Switch แบบ 3-4 Persons\n•    จากนั้นเลือกวัน รอบเวลา กรอกข้อมูลผู้ใช้บริการ ชำระเงิน และแนบสลิปเพื่อยืนยันการจอง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "sources": [
+      "booking_selection_nintendo: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "how_to",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "steps",
+        "controls_if_game"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.87,
+      "method": "heuristic",
+      "reason": "known game alias found; reservation route overrides entity/game domain; how-to terms found"
+    }
+  },
+  {
+    "case_id": "R-005",
+    "kind": "single",
+    "group": "reservation",
+    "turn_index": null,
+    "question": "จอง VR ต้องทำยังไง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:booking_howto_fast_path",
+    "route_category": "reservation",
+    "route_intent": "how_to",
+    "strategy": "fast/rule",
+    "confidence": 0.97,
+    "latency_sec": 0.7559,
+    "wall_sec": 0.7559,
+    "answer": "จองคิวเล่นเกม/ใช้อุปกรณ์ได้ผ่านระบบจองออนไลน์ครับ\nถ้าต้องการจอง VR ให้เลือกบริการ VR Station และเลือกรอบ 30 นาทีหรือ 1 ชั่วโมงตามที่ระบบมีให้เลือก\nขั้นตอนโดยสรุปคือ 1) เลือกบริการหรือโซนที่ต้องการใช้ 2) เลือกวันและรอบเวลา 3) กรอก Student ID/Staff ID/National ID ชื่อ นามสกุล อีเมล และเบอร์โทรศัพท์ 4) ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง 5) แนบสลิปและยืนยันการจอง\nต้องจองล่วงหน้าอย่างน้อย 1 ชั่วโมง และหลังจองต้องชำระเงินภายใน 10 นาทีครับ\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "sources": [
+      "Reservation: https://esports.computing.psu.ac.th/reservation"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "how_to",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "steps",
+        "controls_if_game"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.87,
+      "method": "heuristic",
+      "reason": "domain_terms=3; reservation route overrides entity/game domain; how-to terms found"
+    }
+  },
+  {
+    "case_id": "R-006",
+    "kind": "single",
+    "group": "reservation",
+    "turn_index": null,
+    "question": "จอง Cockpit ต้องทำยังไง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_booking_selection",
+    "route_category": "reservation",
+    "route_intent": "booking_policy",
+    "strategy": "structured",
+    "confidence": 0.96,
+    "latency_sec": 1.2432,
+    "wall_sec": 1.2432,
+    "answer": "ถ้าอยากเล่นเกมขับรถหรือใช้พวงมาลัย ให้จอง Cockpit Zone / Cockpit ครับ\n•    โซนนี้ใช้กับชุด Racezone Full Cockpit V3 และ Logitech G923 TRUEFORCE Racing Wheel\n•    เกมที่ยืนยันได้คือ Gran Turismo 7\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "sources": [
+      "booking_selection_cockpit: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "how_to",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "steps",
+        "controls_if_game"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.87,
+      "method": "heuristic",
+      "reason": "domain_terms=3; reservation route overrides entity/game domain; how-to terms found"
+    }
+  },
+  {
+    "case_id": "R-007",
+    "kind": "single",
+    "group": "reservation",
+    "turn_index": null,
+    "question": "จอง PC ต้องทำยังไง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_reservation_fact",
+    "route_category": "reservation",
+    "route_intent": "booking_policy",
+    "strategy": "structured",
+    "confidence": 0.94,
+    "latency_sec": 0.7666,
+    "wall_sec": 0.7666,
+    "answer": "ขั้นตอนจองโดยสรุป:\n•    เลือกบริการหรือโซนที่ต้องการใช้\n•    เลือกวันและรอบเวลาที่ต้องการ\n•    กรอก Student ID/Staff ID/National ID, ชื่อ, นามสกุล, อีเมล และเบอร์โทรศัพท์\n•    ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง\n•    แนบสลิปและยืนยันการจอง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "sources": [
+      "booking_steps: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "how_to",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "steps",
+        "controls_if_game"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.87,
+      "method": "heuristic",
+      "reason": "domain_terms=3; reservation route overrides entity/game domain; how-to terms found"
+    }
+  },
+  {
+    "case_id": "R-008",
+    "kind": "single",
+    "group": "reservation",
+    "turn_index": null,
+    "question": "ต้องจองล่วงหน้ากี่ชั่วโมง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_reservation_fact",
+    "route_category": "reservation",
+    "route_intent": "booking_policy",
+    "strategy": "structured",
+    "confidence": 0.94,
+    "latency_sec": 1.6465,
+    "wall_sec": 1.6466,
+    "answer": "ต้องจองล่วงหน้าผ่านระบบออนไลน์ก่อนเวลาใช้งานอย่างน้อย 1 ชั่วโมง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "sources": [
+      "booking_advance: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "count",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "count_items"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.84,
+      "method": "heuristic",
+      "reason": "domain_terms=3; reservation route overrides entity/game domain; count terms found"
+    }
+  },
+  {
+    "case_id": "R-009",
+    "kind": "single",
+    "group": "reservation",
+    "turn_index": null,
+    "question": "จองได้สูงสุดกี่ session",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_reservation_fact",
+    "route_category": "reservation",
+    "route_intent": "booking_policy",
+    "strategy": "structured",
+    "confidence": 0.94,
+    "latency_sec": 1.412,
+    "wall_sec": 1.4121,
+    "answer": "การจอง 1 ครั้งสามารถจองได้สูงสุด 3 Sessions สำหรับ PlayStation 5: 1 session = 1 ชั่วโมง ดังนั้น 3 sessions = สูงสุด 3 ชั่วโมงต่อการจอง 1 ครั้ง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "sources": [
+      "booking_max_sessions: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "service_fee_answer_missing_service_fee_source"
+      ]
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "count",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "count_items"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.84,
+      "method": "heuristic",
+      "reason": "domain_terms=4; reservation route overrides entity/game domain; count terms found"
+    }
+  },
+  {
+    "case_id": "R-010",
+    "kind": "single",
+    "group": "reservation",
+    "turn_index": null,
+    "question": "หลังจองต้องจ่ายภายในกี่นาที",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_reservation_fact",
+    "route_category": "reservation",
+    "route_intent": "booking_policy",
+    "strategy": "structured",
+    "confidence": 0.94,
+    "latency_sec": 0.2518,
+    "wall_sec": 0.2518,
+    "answer": "หลังจองต้องชำระเงินทันที หากไม่ชำระภายใน 10 นาที การจองจะถูกยกเลิกและต้องจองใหม่\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "sources": [
+      "payment_timeout: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "count",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_payment_deadline"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; reservation route overrides entity/game domain; payment deadline count terms found"
+    }
+  },
+  {
+    "case_id": "R-011",
+    "kind": "single",
+    "group": "reservation",
+    "turn_index": null,
+    "question": "จองแล้วแก้ไขได้ไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:booking_fast_path",
+    "route_category": "reservation",
+    "route_intent": "how_to",
+    "strategy": "fast/rule",
+    "confidence": 0.9,
+    "latency_sec": 0.7082,
+    "wall_sec": 0.7083,
+    "answer": "เมื่อกดจองแล้วจะไม่สามารถแก้ไขข้อมูลได้ หากต้องการแก้ไขต้องยกเลิกผ่านอีเมลก่อนเวลาใช้งานอย่างน้อย 1 ชั่วโมง แล้วจองใหม่ พร้อมแนบสลิปการโอนเงินเดิม\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "sources": [
+      "Reservation: https://esports.computing.psu.ac.th/reservation"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "how_to",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "steps",
+        "policy"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.82,
+      "method": "heuristic",
+      "reason": "domain_terms=3; reservation route overrides entity/game domain; no clear operation terms; reservation unknown treated as how_to/policy"
+    }
+  },
+  {
+    "case_id": "R-012",
+    "kind": "single",
+    "group": "reservation",
+    "turn_index": null,
+    "question": "จองแล้วโอนสิทธิ์ให้เพื่อนได้ไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_reservation_fact",
+    "route_category": "reservation",
+    "route_intent": "booking_policy",
+    "strategy": "structured",
+    "confidence": 0.94,
+    "latency_sec": 2.8593,
+    "wall_sec": 2.8594,
+    "answer": "ไม่สามารถโอนสิทธิ์การจองให้ผู้อื่นได้\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "sources": [
+      "transfer_booking: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "how_to",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "steps",
+        "policy"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.82,
+      "method": "heuristic",
+      "reason": "domain_terms=3; reservation route overrides entity/game domain; no clear operation terms; reservation unknown treated as how_to/policy"
+    }
+  },
+  {
+    "case_id": "R-013",
+    "kind": "single",
+    "group": "reservation",
+    "turn_index": null,
+    "question": "เช็คอินล่วงหน้าได้กี่นาที",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_reservation_fact",
+    "route_category": "reservation",
+    "route_intent": "booking_policy",
+    "strategy": "structured",
+    "confidence": 0.94,
+    "latency_sec": 0.2224,
+    "wall_sec": 0.2224,
+    "answer": "เช็คอินได้ล่วงหน้าสูงสุด 30 นาที และต้องเช็คอินก่อนเวลาเริ่มต้นของรอบที่จอง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "sources": [
+      "checkin_advance: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "count",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "count_items"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.84,
+      "method": "heuristic",
+      "reason": "domain_terms=3; reservation route overrides entity/game domain; count terms found"
+    }
+  },
+  {
+    "case_id": "R-014",
+    "kind": "single",
+    "group": "reservation",
+    "turn_index": null,
+    "question": "ถ้ายกเลิกต้องทำยังไง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_reservation_fact",
+    "route_category": "reservation",
+    "route_intent": "booking_policy",
+    "strategy": "structured",
+    "confidence": 0.94,
+    "latency_sec": 0.2191,
+    "wall_sec": 0.2191,
+    "answer": "ขั้นตอนจองโดยสรุป:\n•    เลือกบริการหรือโซนที่ต้องการใช้\n•    เลือกวันและรอบเวลาที่ต้องการ\n•    กรอก Student ID/Staff ID/National ID, ชื่อ, นามสกุล, อีเมล และเบอร์โทรศัพท์\n•    ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง\n•    แนบสลิปและยืนยันการจอง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "sources": [
+      "booking_steps: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "how_to",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "steps",
+        "controls_if_game"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.87,
+      "method": "heuristic",
+      "reason": "domain_terms=2; reservation route overrides entity/game domain; how-to terms found"
+    }
+  },
+  {
+    "case_id": "R-015",
+    "kind": "single",
+    "group": "reservation",
+    "turn_index": null,
+    "question": "ถ้าไปช้าจะเป็นอะไรไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_reservation_fact",
+    "route_category": "reservation",
+    "route_intent": "booking_policy",
+    "strategy": "structured",
+    "confidence": 0.94,
+    "latency_sec": 0.1591,
+    "wall_sec": 0.1592,
+    "answer": "ถ้าไม่เช็คอินก่อนเวลาเริ่มต้นของรอบ ระบบจะยกเลิกการจองทันที และไม่มีการคืนเงิน\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "sources": [
+      "late_checkin: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "how_to",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "steps",
+        "policy"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.82,
+      "method": "heuristic",
+      "reason": "domain_terms=2; reservation route overrides entity/game domain; no clear operation terms; reservation unknown treated as how_to/policy"
+    }
+  },
+  {
+    "case_id": "R-016",
+    "kind": "single",
+    "group": "reservation",
+    "turn_index": null,
+    "question": "walk in ได้ไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_reservation_fact",
+    "route_category": "reservation",
+    "route_intent": "booking_policy",
+    "strategy": "structured",
+    "confidence": 0.94,
+    "latency_sec": 0.0577,
+    "wall_sec": 0.0577,
+    "answer": "ผู้ใช้งานต้องจองล่วงหน้าผ่านระบบออนไลน์ก่อนเวลาใช้งานอย่างน้อย 1 ชั่วโมง จึงไม่ควร walk in โดยไม่จองก่อน\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "sources": [
+      "walk_in_policy: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "how_to",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "steps",
+        "policy"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.82,
+      "method": "heuristic",
+      "reason": "domain_terms=2; reservation route overrides entity/game domain; no clear operation terms; reservation unknown treated as how_to/policy"
+    }
+  },
+  {
+    "case_id": "R-017",
+    "kind": "single",
+    "group": "reservation",
+    "turn_index": null,
+    "question": "ต้องแนบสลิปไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:mixed_reservation_fast",
+    "route_category": "reservation",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "rag/retrieval",
+    "confidence": 0.9,
+    "latency_sec": 0.0762,
+    "wall_sec": 0.0763,
+    "answer": "ตอนจองต้องกรอก Student ID/Staff ID/National ID ชื่อ นามสกุล อีเมล เบอร์โทรศัพท์ และชำระโดยโอนเงินพร้อมแนบสลิป\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "sources": [
+      "Reservation: https://esports.computing.psu.ac.th/reservation"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_payment_policy"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.89,
+      "method": "heuristic",
+      "reason": "domain_terms=2; reservation route overrides entity/game domain; payment policy terms found"
+    }
+  },
+  {
+    "case_id": "R-018",
+    "kind": "single",
+    "group": "reservation",
+    "turn_index": null,
+    "question": "จองแล้วไม่สามารถยกเลิกได้ใช่ไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:booking_cancel_fast_path",
+    "route_category": "reservation",
+    "route_intent": "how_to",
+    "strategy": "fast/rule",
+    "confidence": 0.96,
+    "latency_sec": 2.8013,
+    "wall_sec": 2.8013,
+    "answer": "การยกเลิกการจองต้องทำล่วงหน้าอย่างน้อย 1 ชั่วโมงครับ หากต้องการแก้ไขข้อมูลหรือเวลาใช้งาน ต้องยกเลิกการจองเดิมก่อนแล้วจองใหม่ตามขั้นตอนของระบบ\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "sources": [
+      "Reservation: https://esports.computing.psu.ac.th/reservation"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "how_to",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "steps",
+        "policy"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.82,
+      "method": "heuristic",
+      "reason": "domain_terms=3; reservation route overrides entity/game domain; no clear operation terms; reservation unknown treated as how_to/policy"
+    }
+  },
+  {
+    "case_id": "R-019",
+    "kind": "single",
+    "group": "reservation",
+    "turn_index": null,
+    "question": "ถ้าจองผิดข้อมูลต้องทำยังไง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_reservation_fact",
+    "route_category": "reservation",
+    "route_intent": "booking_policy",
+    "strategy": "structured",
+    "confidence": 0.94,
+    "latency_sec": 2.1297,
+    "wall_sec": 2.1297,
+    "answer": "ขั้นตอนจองโดยสรุป:\n•    เลือกบริการหรือโซนที่ต้องการใช้\n•    เลือกวันและรอบเวลาที่ต้องการ\n•    กรอก Student ID/Staff ID/National ID, ชื่อ, นามสกุล, อีเมล และเบอร์โทรศัพท์\n•    ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง\n•    แนบสลิปและยืนยันการจอง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "sources": [
+      "booking_steps: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "how_to",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "steps",
+        "controls_if_game"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.87,
+      "method": "heuristic",
+      "reason": "domain_terms=3; reservation route overrides entity/game domain; how-to terms found"
+    }
+  },
+  {
+    "case_id": "R-020",
+    "kind": "single",
+    "group": "reservation",
+    "turn_index": null,
+    "question": "จ่ายเงินผ่านช่องทางไหน",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_reservation_fact",
+    "route_category": "reservation",
+    "route_intent": "booking_policy",
+    "strategy": "structured",
+    "confidence": 0.94,
+    "latency_sec": 0.1483,
+    "wall_sec": 0.1483,
+    "answer": "ชำระเงินโดยโอนผ่านธนาคารไทยพาณิชย์ ชื่อบัญชี PSU Esports Studio - Phuket เลขบัญชี 795-276244-1 และต้องแนบสลิปการโอนเงิน\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "sources": [
+      "payment_bank: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "how_to",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "steps",
+        "policy"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.82,
+      "method": "heuristic",
+      "reason": "domain_terms=2; reservation route overrides entity/game domain; no clear operation terms; reservation unknown treated as how_to/policy"
+    }
+  }
+]

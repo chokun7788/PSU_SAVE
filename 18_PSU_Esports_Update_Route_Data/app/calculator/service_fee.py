@@ -3,6 +3,10 @@ from __future__ import annotations
 import math
 import re
 
+from app.core.source_registry import (
+    PC_SERVICE_FEE_LOCAL_UPDATE_20260727_ID,
+    SERVICE_FEE_IMAGE_2026_ID,
+)
 from app.core.normalization import (
     CUSTOMER_GROUP_ALIASES,
     SERVICE_ALIASES,
@@ -15,9 +19,17 @@ from app.core.normalization import (
 
 
 SOURCE_URL = "https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+PC_PRICE_SOURCE_NOTE = "หมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27"
 
 
 SERVICE_FEES = {
+    "pc": {
+        "label": "PC",
+        "unit_label": "1 ชั่วโมง",
+        "minutes_per_session": 60,
+        "capacity": "1 คน",
+        "prices": {"psu_student_staff": 0, "general_student": 25, "general_adult": 70},
+    },
     "ps5": {
         "label": "PlayStation 5",
         "unit_label": "1 ชั่วโมง",
@@ -69,6 +81,8 @@ GROUP_LABELS = {
     "general_adult": "บุคคลทั่วไป (General Adult)",
 }
 
+GROUP_ORDER = ("psu_student_staff", "general_student", "general_adult")
+
 
 def _detect_minutes(query: str) -> int | None:
     q = normalize_text(query)
@@ -86,6 +100,14 @@ def _detect_minutes(query: str) -> int | None:
     return None
 
 
+def _mentions_vr_30_and_60(query: str) -> bool:
+    q = normalize_text(query)
+    mentions_30 = contains_alias(q, TIME_WORD_ALIASES["half_hour"], fuzzy=False)[0] or bool(re.search(r"\b30\s*(?:นาที|min|minutes?)", q))
+    mentions_60 = contains_alias(q, TIME_WORD_ALIASES["one_hour"], fuzzy=False)[0] or bool(re.search(r"\b(?:1|หนึ่ง)\s*(?:ชั่วโมง|ชม|hour|hr)", q)) or bool(re.search(r"\b60\s*(?:นาที|min|minutes?)", q))
+    comparison = any(term in q for term in ["ต่างกัน", "เทียบ", "เปรียบเทียบ", "แพงกว่า", "ถูกกว่า", "กับ"])
+    return mentions_30 and mentions_60 and comparison
+
+
 def _detect_people(query: str) -> int | None:
     q = normalize_text(query)
     match = re.search(r"(\d+)\s*(?:คน|persons?|people)", q)
@@ -98,7 +120,7 @@ def _select_service_key(query: str) -> tuple[str | None, str]:
     if service_key is None:
         return None, "ไม่พบบริการที่ตรงกับคำถาม"
     if service_key == "pc":
-        return "pc", "พบคำว่า PC แต่ยังไม่มีราคาที่ตรวจยืนยันได้ใน Service Fee 2026"
+        return "pc", "พบบริการ PC"
     if service_key == "nintendo_switch":
         people = _detect_people(query)
         if people and people >= 3:
@@ -126,6 +148,26 @@ def _detect_group(query: str) -> tuple[str | None, bool, str]:
         return "psu_student_staff", False, "พบกลุ่มผู้ใช้ PSU Student and Staff"
     if any(term in q for term in ["ไม่ใช่มอ", "ไม่ใช่ มอ", "ไม่ได้เรียนมอ", "ไม่ได้เรียน มอ"]):
         return "general_student", False, "พบกลุ่มผู้ใช้ General Student จากคำว่าไม่ใช่/ไม่ได้เรียน มอ"
+    if not any(term in q for term in [
+        "นักศึกษา", "นักเรียน", "นิสิต", "เด็ก", "student", "staff", "บุคลากร",
+        "psu", "มอ", "สงขลานครินทร์", "บุคคลทั่วไป", "คนทั่วไป", "ผู้ใหญ่",
+        "คนออก", "ประชาชน", "ต่างมหาลัย", "ต่างมหาวิทยาลัย", "ต่างสถาบัน",
+        "มหาลัย", "มหาวิทยาลัย", "สจล", "ลาดกระบัง", "จุฬา", "ธรรมศาสตร์",
+        "เกษตร", "เชียงใหม่", "ขอนแก่น", "มหิดล", "ราชภัฏ", "ราชมงคล",
+        "เทคนิค", "อาชีวะ", "kmitl", "chula", "tu", "ku", "cmu", "kku",
+        "mahidol", "alumni", "ศิษย์เก่า", "general student", "general adult",
+        "external student", "adult",
+    ]):
+        return None, False, "ไม่พบกลุ่มผู้ใช้"
+    if any(term in q for term in ["นักเรียน", "นักศึกษา", "นิสิต", "เด็ก", "student"]) and not any(term in q for term in [
+        "มอ", "psu", "สงขลานครินทร์", "บุคลากร",
+        "ต่างมหาลัย", "ต่างมหาวิทยาลัย", "ต่างสถาบัน", "ศิษย์เก่า",
+        "สจล", "ลาดกระบัง", "จุฬา", "ธรรมศาสตร์", "เกษตร", "เชียงใหม่", "ขอนแก่น",
+        "มหิดล", "ราชภัฏ", "ราชมงคล", "เทคนิค", "อาชีวะ",
+        "kmitl", "chula", "tu", "ku", "cmu", "kku", "mahidol",
+        "บุคคลทั่วไป", "คนทั่วไป", "ผู้ใหญ่", "general adult", "adult", "คนออก", "ประชาชน",
+    ]):
+        return "general_student", False, "พบคำเรียกนักเรียน/นักศึกษาและไม่พบว่าเป็น PSU จึงจัดเป็น General Student"
     group = detect_from_aliases(q, CUSTOMER_GROUP_ALIASES)
     if group["key"] == "psu_student_staff" and not group["ambiguous"]:
         return "psu_student_staff", False, "พบกลุ่มผู้ใช้ PSU Student and Staff"
@@ -161,12 +203,21 @@ def _sessions_for(service_key: str, requested_minutes: int | None) -> int:
     return max(1, math.ceil(requested_minutes / int(fee["minutes_per_session"])))
 
 
+def _money(value: int) -> str:
+    return f"{value:,} บาท"
+
+
+def _service_title(service_key: str) -> str:
+    fee = SERVICE_FEES[service_key]
+    return f"{fee['label']} {fee['unit_label']} ({fee['capacity']})"
+
+
 def _format_price_line(group_key: str, price: int, sessions: int, service_key: str) -> str:
     total = price * sessions
     fee = SERVICE_FEES[service_key]
     if sessions == 1:
-        return f"- {GROUP_LABELS[group_key]}: {price} บาท/{fee['unit_label']}"
-    return f"- {GROUP_LABELS[group_key]}: {price} บาท/{fee['unit_label']} x {sessions} = {total} บาท"
+        return f"•    {GROUP_LABELS[group_key]}: {_money(price)}/{fee['unit_label']}"
+    return f"•    {GROUP_LABELS[group_key]}: {_money(price)}/{fee['unit_label']} x {sessions} = {_money(total)}"
 
 
 def _answer_multi_package_price(
@@ -180,14 +231,10 @@ def _answer_multi_package_price(
 ) -> dict:
     lines: list[str] = []
     if group_key:
-        summary_parts = []
+        lines.append(f"ราคา {service_label} สำหรับ {GROUP_LABELS[group_key]}")
         for key in package_keys:
-            fee = SERVICE_FEES[key]
-            summary_parts.append(f"{fee['unit_label']} {fee['prices'][group_key]} บาท")
-        lines.append(f"ราคา {service_label} สำหรับ {GROUP_LABELS[group_key]}: " + ", ".join(summary_parts))
-        for key in package_keys:
-            fee = SERVICE_FEES[key]
-            lines.append(f"- {fee['label']} {fee['unit_label']} ({fee['capacity']}) ราคา {fee['prices'][group_key]} บาท")
+            price = SERVICE_FEES[key]["prices"][group_key]
+            lines.append(f"•    {_service_title(key)}: {_money(price)}")
         group_line = _group_detail_line(group_key, ambiguous, query)
         if group_line:
             lines.append(group_line)
@@ -198,9 +245,10 @@ def _answer_multi_package_price(
             lines.append(f"ยังไม่ทราบกลุ่มผู้ใช้ จึงแสดงราคา {service_label} ทุกกลุ่มให้เทียบก่อน")
         for key in package_keys:
             fee = SERVICE_FEES[key]
-            lines.append(f"- {fee['label']} {fee['unit_label']} ({fee['capacity']})")
-            for current_group in ["psu_student_staff", "general_student", "general_adult"]:
-                lines.append(f"  - {GROUP_LABELS[current_group]}: {fee['prices'][current_group]} บาท")
+            lines.append("")
+            lines.append(_service_title(key))
+            for current_group in GROUP_ORDER:
+                lines.append(f"•    {GROUP_LABELS[current_group]}: {_money(fee['prices'][current_group])}")
     lines.append(note)
     lines.append(f"แหล่งข้อมูล: {SOURCE_URL}")
     return {
@@ -214,6 +262,7 @@ def _answer_multi_package_price(
         "sessions": 1,
         "answer": "\n".join(lines),
         "source_url": SOURCE_URL,
+        "source_ids": [SERVICE_FEE_IMAGE_2026_ID],
     }
 
 
@@ -228,26 +277,16 @@ def answer_service_fee(query: str) -> dict:
 
     group_key, ambiguous, group_reason = _detect_group(q)
 
-    if service_key == "pc":
-        group_line = _group_detail_line(group_key, ambiguous, q)
-        group_suffix = f"\n{group_line}" if group_line else ""
-        return {
-            "matched": True,
-            "confidence": 0.88,
-            "answer_type": "fact_missing_data",
-            "reason": service_reason,
-            "answer": (
-                "ราคา PC: ยังไม่พบราคาที่ตรวจยืนยันได้ใน Service Fee 2026 ครับ"
-                + group_suffix +
-                "\n"
-                "ข้อมูลราคาที่พบในภาพมี PlayStation 5, Nintendo Switch, Cockpit และ VR\n"
-                "ดังนั้นยังไม่ควรคำนวณยอดเงิน PC แบบฟันธง ควรถามเจ้าหน้าที่หรืออัปเดตตารางราคา PC เพิ่มก่อน\n"
-                f"แหล่งข้อมูล: {SOURCE_URL}"
-            ),
-            "source_url": SOURCE_URL,
-        }
-
     requested_minutes = _detect_minutes(q)
+    if service_key in {"vr_30", "vr_60"} and _mentions_vr_30_and_60(q):
+        return _answer_multi_package_price(
+            package_keys=["vr_30", "vr_60"],
+            group_key=group_key,
+            ambiguous=ambiguous,
+            query=q,
+            service_label="VR",
+            note="หมายเหตุ: คำถามเปรียบเทียบ VR 30 นาทีและ 1 ชั่วโมง จึงแสดงทั้งสองแพ็กเกจ",
+        )
     if service_key == "vr_30" and requested_minutes is None and contains_alias(q, SERVICE_ALIASES["vr"], fuzzy=False)[0]:
         return _answer_multi_package_price(
             package_keys=["vr_30", "vr_60"],
@@ -269,7 +308,7 @@ def answer_service_fee(query: str) -> dict:
     sessions = _sessions_for(service_key, requested_minutes)
     fee = SERVICE_FEES[service_key]
 
-    header = f"{fee['label']} ({fee['capacity']}) ราคาอ้างอิงตามแพ็กเกจ {fee['unit_label']}"
+    header = f"{fee['label']} {fee['unit_label']} ({fee['capacity']})"
     lines = []
 
     if ambiguous:
@@ -281,17 +320,20 @@ def answer_service_fee(query: str) -> dict:
     elif group_key:
         price = fee["prices"][group_key]
         total = price * sessions
-        lines.append(f"{header} สำหรับ {GROUP_LABELS[group_key]} ราคา {total} บาท")
+        lines.append(f"ราคา {header} สำหรับ {GROUP_LABELS[group_key]}")
+        lines.append(f"•    {_money(total)}")
         if sessions > 1:
-            lines.append(f"คำนวณจาก {price} บาท/{fee['unit_label']} x {sessions} session")
+            lines.append(f"•    คำนวณจาก {_money(price)}/{fee['unit_label']} x {sessions} session")
     else:
         lines.append("ยังไม่ทราบกลุ่มผู้ใช้ จึงแสดงราคาทุกกลุ่มให้เทียบก่อน")
         lines.append(header)
-        for key in ["psu_student_staff", "general_student", "general_adult"]:
+        for key in GROUP_ORDER:
             lines.append(_format_price_line(key, fee["prices"][key], sessions, service_key))
 
     if requested_minutes is not None:
         lines.append(f"ระยะเวลาที่ถามประมาณ {requested_minutes} นาที ใช้ {sessions} session ตามแพ็กเกจนี้")
+    if service_key == "pc":
+        lines.append(PC_PRICE_SOURCE_NOTE)
     lines.append(f"แหล่งข้อมูล: {SOURCE_URL}")
 
     return {
@@ -305,4 +347,9 @@ def answer_service_fee(query: str) -> dict:
         "sessions": sessions,
         "answer": "\n".join(lines),
         "source_url": SOURCE_URL,
+        "source_ids": (
+            [SERVICE_FEE_IMAGE_2026_ID, PC_SERVICE_FEE_LOCAL_UPDATE_20260727_ID]
+            if service_key == "pc"
+            else [SERVICE_FEE_IMAGE_2026_ID]
+        ),
     }

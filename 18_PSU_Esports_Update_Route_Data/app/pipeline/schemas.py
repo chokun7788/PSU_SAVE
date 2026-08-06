@@ -46,6 +46,19 @@ class PipelineTrace:
 
 
 @dataclass(frozen=True)
+class UniversalIntent:
+    domain: str
+    operation: str
+    target: str = ""
+    filters: dict[str, Any] = field(default_factory=dict)
+    needs: tuple[str, ...] = ()
+    answer_style: str = "direct"
+    confidence: float = 0.0
+    method: str = "heuristic"
+    reason: str = ""
+
+
+@dataclass(frozen=True)
 class ValidationResult:
     ok: bool
     errors: tuple[str, ...] = ()
@@ -63,3 +76,5 @@ class PipelineAnswer:
     entities: EntityBundle
     validation: ValidationResult
     trace: list[PipelineTrace] = field(default_factory=list)
+    universal_intent: UniversalIntent | None = None
+    decision_artifact: dict[str, Any] | None = None

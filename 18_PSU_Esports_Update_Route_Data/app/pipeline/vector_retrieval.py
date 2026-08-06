@@ -39,6 +39,8 @@ GAME_CONTROL_TERMS = (
     "l1", "l2", "r1", "r2", "l3", "r3", "d-pad", "dpad", "analog",
 )
 
+SHORT_GAME_CONTROL_TOKENS = {"l1", "l2", "r1", "r2", "l3", "r3"}
+
 FULL_GAME_CONTROL_TERMS = (
     "ปุ่มทั้งหมด", "ทั้งหมด", "ทุกปุ่ม", "ปุ่มครบ", "ปุ่มควบคุม", "มีอะไรบ้าง",
     "มีปุ่มอะไร", "มีปุ่มอะไรบ้าง", "ปุ่มอะไร", "ปุ่มอะไรบ้าง", "ปุ่มไหนบ้าง",
@@ -219,7 +221,14 @@ def _is_game_detail_intent(query: str, route: PipelineRoute) -> bool:
 
 def looks_like_game_control_query(query: str) -> bool:
     q = normalize_text(query)
-    return any(term in q for term in GAME_CONTROL_TERMS)
+    if any(term in q for term in GAME_CONTROL_TERMS if term not in SHORT_GAME_CONTROL_TOKENS):
+        return True
+    # Short button names must be standalone tokens. Substring matching would
+    # misread equipment names such as "PlayStation VR2" as the R2 button.
+    return any(
+        re.search(rf"(?<![0-9a-z]){re.escape(term)}(?![0-9a-z])", q) is not None
+        for term in SHORT_GAME_CONTROL_TOKENS
+    )
 
 
 def _looks_like_full_game_control_query(query: str) -> bool:

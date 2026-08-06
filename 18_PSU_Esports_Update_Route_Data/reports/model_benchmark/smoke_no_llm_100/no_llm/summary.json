@@ -1,0 +1,64 @@
+{
+  "run_label": "no_llm",
+  "run_kind": "no_llm",
+  "model": "",
+  "allow_llm": false,
+  "timeout_sec": 20.0,
+  "num_predict": 256,
+  "ollama_url": "",
+  "tool_router": false,
+  "facts_composer": false,
+  "disable_health_manager": false,
+  "cases": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\model_benchmark_1500.jsonl",
+  "limit": 100,
+  "resumed_from": 0,
+  "total_wall_sec": 7.566,
+  "generated_at": "2026-07-31T15:55:12",
+  "total": 100,
+  "passed": 100,
+  "pass_rate": 100.0,
+  "avg_score": 100.0,
+  "avg_wall_sec": 0.075,
+  "median_wall_sec": 0.0144,
+  "p95_wall_sec": 0.1709,
+  "max_wall_sec": 1.0383,
+  "llm_call_total": 44,
+  "mode_counts": {
+    "pipeline:deterministic_calculator_fast": 57,
+    "pipeline:structured_service_fee": 1,
+    "pipeline:structured_service_fee_by_game": 30,
+    "pipeline:structured_game_detail": 9,
+    "pipeline:structured_service_game_availability": 3
+  },
+  "route_counts": {
+    "service_fee/service_fee_query": 88,
+    "games/game_availability_lookup": 5,
+    "games/game_detail_lookup": 7
+  },
+  "group_counts": {
+    "service_fee": 88,
+    "games": 12
+  },
+  "quality_bucket_counts": {
+    "psu_fact": 100
+  },
+  "top_errors": {},
+  "by_group": {
+    "games": {
+      "total": 12,
+      "passed": 12,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.1205,
+      "p95_wall_sec": 0.1524
+    },
+    "service_fee": {
+      "total": 88,
+      "passed": 88,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.0688,
+      "p95_wall_sec": 0.1834
+    }
+  }
+}

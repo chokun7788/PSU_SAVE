@@ -1,0 +1,51 @@
+{
+  "generated_at": "2026-07-30T17:06:20",
+  "case_count": 10,
+  "turn_count": 10,
+  "passed": 9,
+  "failed": 1,
+  "pass_rate": 0.9,
+  "total_wall_sec": 4.057,
+  "allow_llm": false,
+  "rag_fallback": false,
+  "group_counts": {
+    "schedule": {
+      "total": 10,
+      "pass": 9,
+      "fail": 1
+    }
+  },
+  "strategy_counts": {
+    "structured": 6,
+    "fast/rule": 3,
+    "rag/retrieval": 1
+  },
+  "mode_counts": {
+    "pipeline:structured_schedule": 6,
+    "pipeline:calendar_closure_fast_path": 1,
+    "pipeline:calendar_schedule_fast_path": 1,
+    "pipeline:calendar_upcoming_holidays_fast_path": 1,
+    "pipeline:no_answer": 1
+  },
+  "problem_counts": {
+    "route_category expected ['schedule', 'reservation'], got general": 1,
+    "missing any of ['เปิด', 'ปิด', 'เวลา', 'วัน', 'ไม่เปิด']": 1
+  },
+  "top_failures": [
+    {
+      "case_id": "S-010",
+      "group": "schedule",
+      "question": "ตารางเวลาให้บริการเป็นยังไง",
+      "resolved_question": "",
+      "mode": "pipeline:no_answer",
+      "route": "general/unknown_domain_query",
+      "problems": [
+        "route_category expected ['schedule', 'reservation'], got general",
+        "missing any of ['เปิด', 'ปิด', 'เวลา', 'วัน', 'ไม่เปิด']"
+      ],
+      "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    }
+  ],
+  "bank_jsonl": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.jsonl",
+  "bank_json": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.json"
+}

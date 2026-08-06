@@ -1,0 +1,46 @@
+{
+  "generated_at": "2026-07-30T16:56:23",
+  "case_count": 88,
+  "turn_count": 88,
+  "passed": 87,
+  "failed": 1,
+  "pass_rate": 0.9886,
+  "total_wall_sec": 7.776,
+  "allow_llm": false,
+  "rag_fallback": false,
+  "group_counts": {
+    "service_fee": {
+      "total": 88,
+      "pass": 87,
+      "fail": 1
+    }
+  },
+  "strategy_counts": {
+    "fast/rule": 58,
+    "structured": 30
+  },
+  "mode_counts": {
+    "pipeline:deterministic_calculator_fast": 58,
+    "pipeline:structured_service_fee": 1,
+    "pipeline:structured_service_fee_by_game": 29
+  },
+  "problem_counts": {
+    "missing 'Nintendo Switch Sports'": 1
+  },
+  "top_failures": [
+    {
+      "case_id": "SF-083",
+      "group": "service_fee",
+      "question": "Nintendo Switch Sports ราคาเท่าไหร่",
+      "resolved_question": "",
+      "mode": "pipeline:deterministic_calculator_fast",
+      "route": "service_fee/service_fee_query",
+      "problems": [
+        "missing 'Nintendo Switch Sports'"
+      ],
+      "answer_preview": "Nintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง) •    PSU Student and Staff: 0 บาท •    PSU Alumni and General Student: 50 บาท •    General Adult: 140 บาท  Nintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง) •    PSU Student and Staff: 0 บาท •    PSU Alum"
+    }
+  ],
+  "bank_jsonl": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.jsonl",
+  "bank_json": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.json"
+}

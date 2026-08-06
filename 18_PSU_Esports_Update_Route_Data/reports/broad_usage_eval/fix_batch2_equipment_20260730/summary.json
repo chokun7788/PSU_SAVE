@@ -1,0 +1,60 @@
+{
+  "generated_at": "2026-07-30T17:01:44",
+  "case_count": 58,
+  "turn_count": 58,
+  "passed": 56,
+  "failed": 2,
+  "pass_rate": 0.9655,
+  "total_wall_sec": 9.147,
+  "allow_llm": false,
+  "rag_fallback": false,
+  "group_counts": {
+    "equipment": {
+      "total": 58,
+      "pass": 56,
+      "fail": 2
+    }
+  },
+  "strategy_counts": {
+    "structured": 54,
+    "clarification": 4
+  },
+  "mode_counts": {
+    "pipeline:structured_equipment_catalog": 5,
+    "pipeline:ambiguity_clarification": 4,
+    "pipeline:structured_equipment_item": 47,
+    "pipeline:structured_games_genre_list": 2
+  },
+  "problem_counts": {
+    "route_category expected ['equipment'], got games": 1,
+    "mode expected prefix ['pipeline": 1
+  },
+  "top_failures": [
+    {
+      "case_id": "E-041",
+      "group": "equipment",
+      "question": "Nintendo Switch OLED คืออะไร",
+      "resolved_question": "",
+      "mode": "pipeline:structured_games_genre_list",
+      "route": "games/detail",
+      "problems": [
+        "route_category expected ['equipment'], got games"
+      ],
+      "answer_preview": "เกมแนว Sports / เกมกีฬา ที่พบในรายการเกมที่ยืนยันได้:  EA Sports FC 24 •    แนวเกม: เกมฟุตบอล •    เล่นได้ที่: PlayStation 5 Zone  Nintendo Switch Sports •    แนวเกม: เกมกีฬา Motion Control •    เล่นได้ที่: Nintendo Switch Zone แหล่งข้อมูล:"
+    },
+    {
+      "case_id": "E-042",
+      "group": "equipment",
+      "question": "Nintendo Switch OLED อยู่โซนไหน",
+      "resolved_question": "",
+      "mode": "pipeline:structured_games_genre_list",
+      "route": "games/game_availability_lookup",
+      "problems": [
+        "mode expected prefix ['pipeline:structured_equipment_item', 'pipeline:equipment_item_location_fast_path'], got pipeline:structured_games_genre_list"
+      ],
+      "answer_preview": "เกมแนว Sports / เกมกีฬา ที่พบในรายการเกมที่ยืนยันได้:  EA Sports FC 24 •    แนวเกม: เกมฟุตบอล •    เล่นได้ที่: PlayStation 5 Zone  Nintendo Switch Sports •    แนวเกม: เกมกีฬา Motion Control •    เล่นได้ที่: Nintendo Switch Zone แหล่งข้อมูล:"
+    }
+  ],
+  "bank_jsonl": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.jsonl",
+  "bank_json": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.json"
+}

@@ -1,0 +1,177 @@
+{
+  "generated_at": "2026-07-30T17:18:57",
+  "case_count": 75,
+  "turn_count": 75,
+  "passed": 64,
+  "failed": 11,
+  "pass_rate": 0.8533,
+  "total_wall_sec": 8.413,
+  "allow_llm": false,
+  "rag_fallback": false,
+  "group_counts": {
+    "competition_rules": {
+      "total": 75,
+      "pass": 64,
+      "fail": 11
+    }
+  },
+  "strategy_counts": {
+    "rag/retrieval": 15,
+    "fast/rule": 55,
+    "structured": 5
+  },
+  "mode_counts": {
+    "pipeline:competition_fact_card": 15,
+    "pipeline:competition_generic_fast_path": 55,
+    "pipeline:structured_reservation_fact": 5
+  },
+  "problem_counts": {
+    "route_category expected ['competition_rules'], got reservation": 5,
+    "missing any of ['VALORANT', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']": 1,
+    "missing any of ['CS2', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']": 1,
+    "missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']": 7,
+    "missing any of ['TEKKEN', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']": 1,
+    "missing any of ['ROV', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']": 1
+  },
+  "top_failures": [
+    {
+      "case_id": "CR-003",
+      "group": "competition_rules",
+      "question": "VALORANT มาสายจะโดนอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:structured_reservation_fact",
+      "route": "reservation/booking_policy",
+      "problems": [
+        "route_category expected ['competition_rules'], got reservation",
+        "missing any of ['VALORANT', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "ถ้าไม่เช็คอินก่อนเวลาเริ่มต้นของรอบ ระบบจะยกเลิกการจองทันที และไม่มีการคืนเงิน แหล่งข้อมูล: https://esports.computing.psu.ac.th/"
+    },
+    {
+      "case_id": "CR-018",
+      "group": "competition_rules",
+      "question": "CS2 มาสายจะโดนอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:structured_reservation_fact",
+      "route": "reservation/booking_policy",
+      "problems": [
+        "route_category expected ['competition_rules'], got reservation",
+        "missing any of ['CS2', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "ถ้าไม่เช็คอินก่อนเวลาเริ่มต้นของรอบ ระบบจะยกเลิกการจองทันที และไม่มีการคืนเงิน แหล่งข้อมูล: https://esports.computing.psu.ac.th/"
+    },
+    {
+      "case_id": "CR-032",
+      "group": "competition_rules",
+      "question": "Counter-Strike 2 ใช้ผู้เล่นกี่คน",
+      "resolved_question": "",
+      "mode": "pipeline:competition_generic_fast_path",
+      "route": "competition_rules/competition_rules_lookup",
+      "problems": [
+        "missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "CS2 ใช้ผู้เล่นทีมละ 5 คนครับ แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    },
+    {
+      "case_id": "CR-033",
+      "group": "competition_rules",
+      "question": "Counter-Strike 2 มาสายจะโดนอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:structured_reservation_fact",
+      "route": "reservation/booking_policy",
+      "problems": [
+        "route_category expected ['competition_rules'], got reservation",
+        "missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "ถ้าไม่เช็คอินก่อนเวลาเริ่มต้นของรอบ ระบบจะยกเลิกการจองทันที และไม่มีการคืนเงิน แหล่งข้อมูล: https://esports.computing.psu.ac.th/"
+    },
+    {
+      "case_id": "CR-034",
+      "group": "competition_rules",
+      "question": "Counter-Strike 2 pause ได้ไหม",
+      "resolved_question": "",
+      "mode": "pipeline:competition_generic_fast_path",
+      "route": "competition_rules/competition_rules_lookup",
+      "problems": [
+        "missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "CS2 มีทั้ง Technical Pause และ Tactical Timeout ครับ •    Technical Pause ใช้กรณีปัญหาขัดข้อง •    Tactical Timeout ใช้ตามเงื่อนไขช่วง Freeze time แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    },
+    {
+      "case_id": "CR-041",
+      "group": "competition_rules",
+      "question": "Counter-Strike 2 ถ้าใช้ bug จะโดนอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:competition_generic_fast_path",
+      "route": "competition_rules/competition_rules_lookup",
+      "problems": [
+        "missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "CS2 มีบทลงโทษครับ •    ตัวอย่าง: ใช้บัค/โกง/พฤติกรรมไม่เหมาะสม อาจถูกปรับแพ้เป็นรอบ แมตช์ หรือตัดสิทธิ์ตามความรุนแรง แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    },
+    {
+      "case_id": "CR-042",
+      "group": "competition_rules",
+      "question": "Counter-Strike 2 ต้องเช็คอินก่อนแข่งไหม",
+      "resolved_question": "",
+      "mode": "pipeline:competition_generic_fast_path",
+      "route": "competition_rules/competition_rules_lookup",
+      "problems": [
+        "missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "CS2 ต้องยืนยัน/รายงานตัวตามเวลาที่ผู้จัดกำหนดครับ •    หากไม่ยืนยันก่อนแมตช์มีความเสี่ยงถูกตัดสิทธิ์ แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    },
+    {
+      "case_id": "CR-044",
+      "group": "competition_rules",
+      "question": "Counter-Strike 2 แผนที่มีอะไรบ้าง",
+      "resolved_question": "",
+      "mode": "pipeline:competition_generic_fast_path",
+      "route": "competition_rules/competition_rules_lookup",
+      "problems": [
+        "missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "CS2 มีข้อมูล map pool ครับ •    แผนที่ที่พบ: Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    },
+    {
+      "case_id": "CR-045",
+      "group": "competition_rules",
+      "question": "Counter-Strike 2 สรุปกติกาสั้นๆ",
+      "resolved_question": "",
+      "mode": "pipeline:competition_fact_card",
+      "route": "competition_rules/competition_rules_lookup",
+      "problems": [
+        "missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "คำตอบ: ต่างกันคือ CS2 Technical Pause ขอได้ทีมละ 2 ครั้ง รวมไม่เกิน 10 นาที ส่วน Tactical Timeout ขอได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    },
+    {
+      "case_id": "CR-048",
+      "group": "competition_rules",
+      "question": "TEKKEN 8 มาสายจะโดนอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:structured_reservation_fact",
+      "route": "reservation/booking_policy",
+      "problems": [
+        "route_category expected ['competition_rules'], got reservation",
+        "missing any of ['TEKKEN', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "ถ้าไม่เช็คอินก่อนเวลาเริ่มต้นของรอบ ระบบจะยกเลิกการจองทันที และไม่มีการคืนเงิน แหล่งข้อมูล: https://esports.computing.psu.ac.th/"
+    },
+    {
+      "case_id": "CR-063",
+      "group": "competition_rules",
+      "question": "ROV มาสายจะโดนอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:structured_reservation_fact",
+      "route": "reservation/booking_policy",
+      "problems": [
+        "route_category expected ['competition_rules'], got reservation",
+        "missing any of ['ROV', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "ถ้าไม่เช็คอินก่อนเวลาเริ่มต้นของรอบ ระบบจะยกเลิกการจองทันที และไม่มีการคืนเงิน แหล่งข้อมูล: https://esports.computing.psu.ac.th/"
+    }
+  ],
+  "bank_jsonl": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.jsonl",
+  "bank_json": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.json"
+}

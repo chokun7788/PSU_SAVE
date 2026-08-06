@@ -1,0 +1,58 @@
+{
+  "run_label": "llm_scb10x_typhoon2.5-qwen3-4b",
+  "run_kind": "llm",
+  "model": "scb10x/typhoon2.5-qwen3-4b",
+  "allow_llm": true,
+  "timeout_sec": 10.0,
+  "num_predict": 64,
+  "ollama_url": "http://127.0.0.1:11434",
+  "tool_router": false,
+  "facts_composer": false,
+  "disable_health_manager": false,
+  "cases": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\model_benchmark_1500.jsonl",
+  "limit": 10,
+  "source_case_count": 275,
+  "selection_strategy": "stratified_by_group",
+  "warmup": {
+    "enabled": true,
+    "ok": true,
+    "elapsed_sec": 4.7256,
+    "response_chars": 17,
+    "error": ""
+  },
+  "resumed_from": 0,
+  "total_wall_sec": 25.256,
+  "generated_at": "2026-08-06T16:52:16",
+  "total": 10,
+  "passed": 10,
+  "pass_rate": 100.0,
+  "avg_score": 100.0,
+  "avg_wall_sec": 2.5244,
+  "median_wall_sec": 1.8986,
+  "p95_wall_sec": 8.5811,
+  "max_wall_sec": 8.5811,
+  "llm_call_total": 10,
+  "mode_counts": {
+    "pipeline:general_llm_fallback": 10
+  },
+  "route_counts": {
+    "general/general_knowledge_query": 10
+  },
+  "group_counts": {
+    "general_llm": 10
+  },
+  "quality_bucket_counts": {
+    "general_llm": 10
+  },
+  "top_errors": {},
+  "by_group": {
+    "general_llm": {
+      "total": 10,
+      "passed": 10,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 2.5244,
+      "p95_wall_sec": 8.5811
+    }
+  }
+}

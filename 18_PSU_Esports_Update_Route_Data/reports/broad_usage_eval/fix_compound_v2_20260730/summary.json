@@ -1,0 +1,60 @@
+{
+  "generated_at": "2026-07-30T17:23:12",
+  "case_count": 15,
+  "turn_count": 15,
+  "passed": 13,
+  "failed": 2,
+  "pass_rate": 0.8667,
+  "total_wall_sec": 6.358,
+  "allow_llm": false,
+  "rag_fallback": false,
+  "group_counts": {
+    "compound": {
+      "total": 15,
+      "pass": 13,
+      "fail": 2
+    }
+  },
+  "strategy_counts": {
+    "compound": 14,
+    "structured": 1
+  },
+  "mode_counts": {
+    "pipeline:multi_question_splitter": 14,
+    "pipeline:structured_game_controls": 1
+  },
+  "problem_counts": {
+    "missing any of ['คำถามที่', 'ราคา', 'ปุ่ม', 'Zone', 'จอง']": 1,
+    "route_category expected ['multi_question'], got games": 1,
+    "mode expected prefix ['pipeline": 1
+  },
+  "top_failures": [
+    {
+      "case_id": "C-007",
+      "group": "compound",
+      "question": "สมาชิกมีกี่คน แล้วใครเป็นอธิการบดี",
+      "resolved_question": "",
+      "mode": "pipeline:multi_question_splitter",
+      "route": "multi_question/multi_question_split",
+      "problems": [
+        "missing any of ['คำถามที่', 'ราคา', 'ปุ่ม', 'Zone', 'จอง']"
+      ],
+      "answer_preview": "คำถามนี้มีหลายเรื่อง ขอแยกตอบเป็นข้อ ๆ:  •    สมาชิกมีกี่คน สมาชิกในหน้า Members แบ่งเป็น 3 หมวดครับ •    Members: 7 คน •    cooperative education and Internship student: 5 คน •    PSU Phuket Esports Club - PSU Phuket: 13 คน รวมทั้งหมด 25 ค"
+    },
+    {
+      "case_id": "C-011",
+      "group": "compound",
+      "question": "Call of Duty ปุ่มยิงอะไร แล้วเล่นได้ที่ไหน",
+      "resolved_question": "",
+      "mode": "pipeline:structured_game_controls",
+      "route": "games/game_control_lookup",
+      "problems": [
+        "route_category expected ['multi_question'], got games",
+        "mode expected prefix ['pipeline:multi_question_splitter'], got pipeline:structured_game_controls"
+      ],
+      "answer_preview": "Call of Duty: Modern Warfare III ปุ่มที่ตรงกับคำถาม: PlayStation / PS5 •    R2: ยิงอาวุธ - กดยิงปืน แหล่งข้อมูล: https://www.gamepur.com/guides/best-modern-warfare-3-controller-settings-aim-assist-deadzones-button-layout"
+    }
+  ],
+  "bank_jsonl": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.jsonl",
+  "bank_json": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.json"
+}

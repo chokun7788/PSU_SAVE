@@ -1,0 +1,77 @@
+{
+  "generated_at": "2026-07-30T17:22:15",
+  "case_count": 15,
+  "turn_count": 15,
+  "passed": 12,
+  "failed": 3,
+  "pass_rate": 0.8,
+  "total_wall_sec": 6.377,
+  "allow_llm": false,
+  "rag_fallback": false,
+  "group_counts": {
+    "compound": {
+      "total": 15,
+      "pass": 12,
+      "fail": 3
+    }
+  },
+  "strategy_counts": {
+    "compound": 12,
+    "structured": 3
+  },
+  "mode_counts": {
+    "pipeline:multi_question_splitter": 12,
+    "pipeline:structured_game_controls": 2,
+    "pipeline:structured_members_role_lookup": 1
+  },
+  "problem_counts": {
+    "route_category expected ['multi_question'], got games": 2,
+    "mode expected prefix ['pipeline": 3,
+    "route_category expected ['multi_question'], got overview": 1,
+    "missing any of ['คำถามที่', 'ราคา', 'ปุ่ม', 'Zone', 'จอง']": 1
+  },
+  "top_failures": [
+    {
+      "case_id": "C-004",
+      "group": "compound",
+      "question": "Gran Turismo 7 เล่นยังไง แล้วปุ่มเร่งกดอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:structured_game_controls",
+      "route": "games/game_control_lookup",
+      "problems": [
+        "route_category expected ['multi_question'], got games",
+        "mode expected prefix ['pipeline:multi_question_splitter'], got pipeline:structured_game_controls"
+      ],
+      "answer_preview": "Gran Turismo 7 ปุ่มที่ตรงกับคำถาม: PlayStation / PS5 •    R2: คันเร่ง - กดเพื่อเร่งเครื่อง •    R3: ไนตรัส / เร่งแซง - ใช้งานระบบเพิ่มความเร็วพิเศษที่มีติดตั้งในรถบางรุ่น แหล่งข้อมูล: https://gameinputdatabase.com/game/135"
+    },
+    {
+      "case_id": "C-007",
+      "group": "compound",
+      "question": "สมาชิกมีกี่คน แล้วใครเป็นอธิการบดี",
+      "resolved_question": "",
+      "mode": "pipeline:structured_members_role_lookup",
+      "route": "overview/members_lookup",
+      "problems": [
+        "route_category expected ['multi_question'], got overview",
+        "mode expected prefix ['pipeline:multi_question_splitter'], got pipeline:structured_members_role_lookup",
+        "missing any of ['คำถามที่', 'ราคา', 'ปุ่ม', 'Zone', 'จอง']"
+      ],
+      "answer_preview": "ตำแหน่ง อธิการบดี มี 1 คนครับ •    ผศ.ดร.นิวัติ แก้วประดับ: อธิการบดี (มหาวิทยาลัยสงขลานครินทร์)   ◦    หมวด: Members แหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members"
+    },
+    {
+      "case_id": "C-011",
+      "group": "compound",
+      "question": "Call of Duty ปุ่มยิงอะไร แล้วเล่นได้ที่ไหน",
+      "resolved_question": "",
+      "mode": "pipeline:structured_game_controls",
+      "route": "games/game_control_lookup",
+      "problems": [
+        "route_category expected ['multi_question'], got games",
+        "mode expected prefix ['pipeline:multi_question_splitter'], got pipeline:structured_game_controls"
+      ],
+      "answer_preview": "Call of Duty: Modern Warfare III ปุ่มที่ตรงกับคำถาม: PlayStation / PS5 •    R2: ยิงอาวุธ - กดยิงปืน แหล่งข้อมูล: https://www.gamepur.com/guides/best-modern-warfare-3-controller-settings-aim-assist-deadzones-button-layout"
+    }
+  ],
+  "bank_jsonl": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.jsonl",
+  "bank_json": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.json"
+}

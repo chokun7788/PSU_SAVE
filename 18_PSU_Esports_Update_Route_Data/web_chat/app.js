@@ -109,6 +109,10 @@ function recentHistory() {
     .map((item) => ({
       role: item.role,
       text: item.text,
+      universal_intent: item.universalIntent || null,
+      route_category: item.routeCategory || "",
+      route_intent: item.routeIntent || "",
+      resolved_text: item.resolvedText || "",
     }));
 }
 
@@ -212,6 +216,10 @@ async function ask(question) {
       role: "assistant",
       text: data.answer,
       meta,
+      universalIntent: data.universal_intent || null,
+      routeCategory: data.route_category || "",
+      routeIntent: data.route_intent || "",
+      resolvedText: data.context_resolution ? data.context_resolution.resolved_question : "",
     });
 
     updateMetrics(data);
@@ -219,6 +227,8 @@ async function ask(question) {
       mode: data.mode,
       route_category: data.route_category,
       route_intent: data.route_intent,
+      universal_intent: data.universal_intent,
+      context_resolution: data.context_resolution,
       confidence: data.confidence,
       latency_sec: data.latency_sec,
       experimental_rag_fallback: data.experimental_rag_fallback,

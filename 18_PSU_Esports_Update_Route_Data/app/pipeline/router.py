@@ -10,14 +10,45 @@ def _has(q: str, *terms: str) -> bool:
     return any(term in q for term in terms)
 
 
+def _looks_like_chatbot_greeting_query(q: str) -> bool:
+    clean = q.strip().lower()
+    if not clean:
+        return False
+    thai_greeting_terms = (
+        "สวัสดี", "หวัดดี", "ดีครับ", "ดีค่ะ", "ดีคับ", "ทักครับ", "ทักค่ะ",
+    )
+    english_greeting_terms = ("hello", "hi", "hey")
+    if clean in (*thai_greeting_terms, *english_greeting_terms):
+        return True
+    if len(clean) <= 40 and _has(clean, *thai_greeting_terms):
+        return True
+    if len(clean) <= 40 and any(token in english_greeting_terms for token in re.findall(r"\b[a-z]+\b", clean)):
+        return True
+    return False
+
+
+def _looks_like_chatbot_identity_query(q: str) -> bool:
+    identity_terms = (
+        "นายเป็นใคร", "คุณเป็นใคร", "แกเป็นใคร", "เธอเป็นใคร", "ตัวเองเป็นใคร",
+        "เป็น ai อะไร", "เป็น ai จริงหรือเปล่า", "เป็น ai ไหม", "เป็นคนแอบพิมพ์", "คนแอบพิมพ์",
+        "เป็น model อะไร", "เป็นโมเดลอะไร", "ชื่ออะไร",
+        "ทำอะไรได้บ้าง", "ทำไรได้บ้าง", "ช่วยอะไรได้บ้าง", "ช่วยไรได้บ้าง", "ตอบอะไรได้บ้าง", "ตอบไรได้บ้าง", "ถามอะไรได้บ้าง", "ถามไรได้บ้าง",
+        "แชทบอทนี้", "chatbot นี้", "bot นี้", "บอทนี้", "assistant นี้",
+        "who are you", "what are you", "what can you do",
+    )
+    return _has(q, *identity_terms)
+
+
 def _looks_like_schedule_date_query(q: str) -> bool:
-    has_date = _has(q, "วันนี้", "พรุ่งนี้", "มะรืน", "today", "ตอนนี้", "ขณะนี้", "เวลานี้", "วันหยุด", "เทศกาล", "หยุด", "ราชการ", "ปฏิทิน", "เดือนนี้", "เดือนหน้า", "เดือนที่แล้ว", "เดือนก่อน", "ปีนี้", "ปีหน้า", "ปีที่แล้ว", "ปีก่อน", "กรกฎาคม", "กรกฎา", "ก.ค.", "กค") or bool(re.search(r"\b\d{1,2}[/-]\d{1,2}(?:[/-]\d{2,4})?\b", q)) or bool(re.search(r"(?:อีก|หลังจากนี้)\s*\d{1,4}\s*(?:วัน|สัปดาห์|อาทิตย์)|\d{1,4}\s*วัน(?:ข้างหน้า|ถัดไป|ก่อน)|(?:ปี|พ\.ศ\.|พศ|ค\.ศ\.|คศ)?\s*\d{4}", q))
+    has_date = _has(q, "วันนี้", "พรุ่งนี้", "มะรืน", "today", "ตอนนี้", "ขณะนี้", "เวลานี้", "วันหยุด", "เทศกาล", "หยุด", "ราชการ", "ปฏิทิน", "เดือนนี้", "เดือนหน้า", "เดือนที่แล้ว", "เดือนก่อน", "ปีนี้", "ปีหน้า", "ปีที่แล้ว", "ปีก่อน", "กรกฎาคม", "กรกฎา", "ก.ค.", "กค", "วันจัน", "จันทร์", "monday", "อังคาร", "tuesday", "พุธ", "wednesday", "พฤหัส", "พฤหัสบดี", "thursday", "ศุกร์", "friday") or bool(re.search(r"\b\d{1,2}[/-]\d{1,2}(?:[/-]\d{2,4})?\b", q)) or bool(re.search(r"(?:อีก|หลังจากนี้)\s*\d{1,4}\s*(?:วัน|สัปดาห์|อาทิตย์)|\d{1,4}\s*วัน(?:ข้างหน้า|ถัดไป|ก่อน)|(?:ปี|พ\.ศ\.|พศ|ค\.ศ\.|คศ)?\s*\d{4}", q))
     has_schedule = _has(q, "เปิด", "ปิด", "เล่นได้", "ให้บริการ", "เวลา", "กี่โมง", "ช่วงไหน", "วันที่เท่าไหร่", "วันที่เท่าไร", "วันอะไร", "วันหยุดอะไร", "วันหยุดไทยไหม", "เทศกาล", "หยุดไหม", "หยุดบ้าง", "หยุดวันไหน", "เปิดไหม", "เปิดรึเปล่า", "เปิดหรือเปล่า", "กี่วัน", "กี่รายการ", "อะไรบ้าง")
     return has_date and has_schedule
 
 
 def _looks_like_competition_rule_query(q: str) -> bool:
     if _has(q, "ปุ่ม", "กดปุ่ม", "กดอะไร", "ปุ่มอะไร", "button", "buttons", "controls", "controller"):
+        return False
+    if _has(q, "เล่นที่ไหน", "เล่นได้ที่ไหน", "อยู่โซนไหน", "เครื่องไหน", "มีที่ไหน") and not _has(q, "แข่ง", "แข่งขัน", "ทัวร์", "tournament", "จัด"):
         return False
     game_terms = (
         "cs2", "counter-strike", "counter strike", "เคาเตอร์", "valorant", "วาโล", "วาโลแรนท์", "วาโลแรน", "valo", "rov", "arena of valor",
@@ -49,6 +80,23 @@ def _looks_like_competition_rule_query(q: str) -> bool:
     return _has(q, *game_terms) and _has(q, *rule_terms)
 
 
+def _looks_like_game_control_query(q: str) -> bool:
+    if _has(q, "ปุ่มหลวม", "ปุ่มพัง", "ปุ่มเสีย", "จอยพัง", "controller พัง", "ค่าซ่อม", "ค่าปรับ"):
+        return False
+    control_terms = ("ปุ่ม", "กดปุ่ม", "กดอะไร", "ปุ่มอะไร", "button", "buttons", "controls", "controller", "จอย")
+    game_terms = (
+        "call of duty", "warzone", "modern warfare", "cs2", "counter-strike", "counter strike",
+        "valorant", "pubg", "league of legends", "tekken", "เทคเคน", "fortnite",
+        "god of war", "gran turismo", "hogwarts", "spider-man", "spider man",
+        "mario", "overcooked", "super smash", "smash bros", "resident evil",
+        "naruto", "boruto", "last of us", "uncharted", "beat saber", "horizon",
+        "final fantasy", "monster hunter", "little nightmares", "it takes two",
+        "luigi", "moving out", "ring fit", "zelda", "switch sports", "animal crossing",
+    )
+    has_named_game = _has(q, *game_terms) or bool(re.search(r"\b[a-z][a-z0-9'’:-]{2,}\b", q))
+    return has_named_game and _has(q, *control_terms)
+
+
 def _looks_like_competition_prize_query(q: str) -> bool:
     game_terms = (
         "cs2", "counter-strike", "counter strike", "valorant", "วาโล", "วาโลแรนท์", "วาโลแรน", "rov", "arena of valor",
@@ -68,6 +116,110 @@ def _looks_like_student_fee_query(q: str) -> bool:
     return _has(q, *student_terms) and _has(q, *fee_terms) and _has(q, *usage_terms)
 
 
+def _looks_like_members_lookup_query(q: str) -> bool:
+    if _looks_like_text_generation_query(q):
+        return False
+    member_terms = (
+        "member", "members", "staff", "สตาฟ", "เจ้าหน้าที่", "คนดูแล", "ทีมงาน", "บุคลากร",
+        "สมาชิก", "สมาชิกทีม", "ตำแหน่ง", "ทำตำแหน่ง", "หมวด", "แต่ละหมวด", "แต่ละกลุ่ม",
+        "ทำแชทบอท", "ทำ chatbot", "พัฒนาแชทบอท", "พัฒนา chatbot", "สร้างแชทบอท", "สร้าง chatbot",
+        "คนทำแชทบอท", "ผู้ทำแชทบอท", "คนพัฒนาแชทบอท", "ผู้พัฒนาแชทบอท", "chatbot developer", "ai chat bot developer",
+        "อธิการบดี", "รองอธิการบดี", "คณบดี",
+        "ผู้ช่วยอธิการบดี", "ผู้จัดการ", "ผู้จัดการศูนย์", "นักวิชาการคอมพิวเตอร์",
+        "สหกิจ", "ฝึกงาน", "internship", "intern", "cooperative",
+        "psu phuket esports club", "esports club", "ชมรม", "ประธาน psu", "ประธานชมรม",
+        "รองประธาน", "เลขานุการ", "เหรัญญิก", "ประชาสัมพันธ์", "กรรมการ",
+    )
+    return _has(q, *member_terms)
+
+
+def _looks_like_text_generation_query(q: str) -> bool:
+    generation_terms = (
+        "เขียน", "ช่วยเขียน", "แต่ง", "ช่วยแต่ง", "ร่าง", "ช่วยร่าง",
+        "ประโยค", "แคปชั่น", "caption", "ข้อความ", "คำโปรย", "ประชาสัมพันธ์กิจกรรม",
+        "โปรโมต", "โปรโมท", "ประกาศ", "โพสต์",
+    )
+    if not _has(q, *generation_terms):
+        return False
+    member_lookup_terms = (
+        "ใคร", "ใครบ้าง", "ใครเป็น", "ใครทำ", "คนไหน", "รายชื่อ", "สมาชิก",
+        "ทีมงาน", "ตำแหน่ง", "ทำตำแหน่ง", "ผู้รับผิดชอบ",
+    )
+    return not _has(q, *member_lookup_terms)
+
+
+def _looks_like_price_service_query(q: str, entities: EntityBundle) -> bool:
+    price_terms = (
+        "ราคา", "ค่าบริการ", "กี่บาท", "เท่าไหร่", "เท่าไร", "เสียกี่บาท", "เสียเงิน",
+        "เสียค่า", "ต้องจ่าย", "จ่ายไหม", "บาท", "ฟรี", "คิดเงิน", "คำนวณ",
+        "ต่อชั่วโมง", "service fee", "price", "cost", "fee", "ค่าใช้จ่าย",
+    )
+    service_terms = (
+        "ps5", "playstation", "เพลย์", "nintendo", "switch", "cockpit", "พวงมาลัย",
+        "vr", "วีอาร์", "pc", "คอม",
+    )
+    return (entities.price_intent or _has(q, *price_terms)) and (bool(entities.service) or _has(q, *service_terms))
+
+
+def _looks_like_service_fee_comparison_query(q: str, entities: EntityBundle) -> bool:
+    if not (entities.service or _has(q, "ps5", "playstation", "เพลย์", "nintendo", "switch", "cockpit", "พวงมาลัย", "vr", "วีอาร์", "pc", "คอม")):
+        return False
+    duration_or_group_terms = (
+        "30 นาที", "ครึ่งชั่วโมง", "1 ชั่วโมง", "หนึ่งชั่วโมง", "60 นาที", "ชั่วโมง", "ชม",
+        "student", "staff", "นักศึกษา", "นักเรียน", "บุคลากร", "ศิษย์เก่า", "alumni",
+        "general student", "general adult", "บุคคลทั่วไป", "คนทั่วไป",
+    )
+    comparison_or_fee_terms = (
+        "ต่างกัน", "ต่างกันยังไง", "ต่างกันอย่างไร", "เทียบ", "เปรียบเทียบ",
+        "เสียเงินไหม", "ต้องเสียเงิน", "ต้องจ่าย", "จ่ายไหม", "ฟรีไหม", "ฟรี",
+        "แพงกว่า", "ถูกกว่า",
+    )
+    return _has(q, *duration_or_group_terms) and _has(q, *comparison_or_fee_terms)
+
+
+def _looks_like_booking_session_limit_query(q: str) -> bool:
+    return (
+        _has(q, "สูงสุดกี่ session", "กี่ sessions", "จองได้กี่ session", "จองได้กี่รอบ")
+        or (
+            _has(q, "เล่นได้กี่ชั่วโมง", "กี่ชั่วโมงต่อวัน", "เล่นกี่ชั่วโมง")
+            and _has(q, "คน", "คนนึง", "หนึ่งคน", "ต่อวัน", "ps5", "playstation", "เพลย์", "จอง")
+        )
+    )
+
+
+def _looks_like_service_capacity_query(q: str) -> bool:
+    if not _has(
+        q,
+        "เล่นได้กี่คน", "รองรับกี่คน", "รับได้กี่คน", "นั่งได้กี่คน", "ได้กี่คน",
+        "กี่คน", "กี่ player", "กี่ players", "กี่ person", "กี่ persons", "จำนวนผู้เล่น",
+    ):
+        return False
+    return _has(
+        q,
+        "pc", "คอม", "ps5", "playstation", "เพลย์", "nintendo", "switch",
+        "cockpit", "vr", "station", "zone", "โซน", "#", "persons",
+    )
+
+
+def _looks_like_booking_selection_query(q: str) -> bool:
+    booking_terms = (
+        "ต้องจองอะไร",
+        "จองอะไร",
+        "จองโซนไหน",
+        "จองเครื่องไหน",
+        "ต้องเลือกอะไร",
+        "เลือกบริการไหน",
+        "เลือกโซนไหน",
+        "เลือกเครื่องไหน",
+        "เข้าใช้บริการต้องทำอะไร",
+        "ถ้าจะเล่น",
+        "อยากเล่น",
+    )
+    if not _has(q, *booking_terms, "จอง", "booking", "book"):
+        return False
+    return _has(q, "เล่น", "เกม", "zone", "โซน", "pc", "ps5", "playstation", "nintendo", "switch", "vr", "cockpit", "call of duty", "mario", "gran turismo", "tekken", "warzone")
+
+
 def _looks_like_general_knowledge_query(q: str) -> bool:
     cooking_terms = (
         "ทำอาหาร", "ทำกับข้าว", "ข้าวผัด", "อาหารผัด", "สูตร", "เมนู", "วัตถุดิบ",
@@ -83,6 +235,30 @@ def _looks_like_general_knowledge_query(q: str) -> bool:
         "nintendo", "switch", "vr", "cockpit",
     )
     return _has(q, *explanation_terms) and _has(q, *cooking_terms) and not _has(q, *psu_terms)
+
+
+def _looks_like_general_explanation_query(q: str) -> bool:
+    """Keep general technical explanations out of the generic game route."""
+    concept_terms = (
+        "api", "json", "latency", "gpu", "server", "client", "reservation",
+        "fps", "frame rate", "refresh rate", "เฟรมเรต", "ความละเอียด",
+        "คอมพิวเตอร์", "ระบบคอมพิวเตอร์", "mechanical keyboard",
+    )
+    explanation_terms = (
+        "คืออะไร", "อธิบาย", "แตกต่าง", "ต่างกัน", "แปลว่า", "สรุป",
+        "ยกตัวอย่าง", "แบบเข้าใจง่าย", "แบบสั้น", "หมายถึงอะไร",
+    )
+    psu_operation_terms = (
+        "ราคา", "กี่บาท", "ค่าบริการ", "จอง", "booking", "book",
+        "ปุ่ม", "button", "controls", "controller", "อยู่โซนไหน",
+        "เครื่องไหน", "มีเกมอะไร", "รายชื่อเกม", "เปิดกี่โมง", "ปิดกี่โมง",
+        "อุปกรณ์", "สมาชิก", "กติกา", "แข่งขัน", "ทัวร์นาเมนต์",
+    )
+    return (
+        _has(q, *concept_terms)
+        and _has(q, *explanation_terms)
+        and not _has(q, *psu_operation_terms)
+    )
 
 
 def _looks_like_out_of_domain_query(q: str) -> bool:
@@ -175,6 +351,7 @@ def _looks_like_equipment_item_query(q: str) -> bool:
     question_terms = (
         "คืออะไร", "อะไรคือ", "มีอะไร", "ทำอะไร", "ใช้ทำอะไร", "เล่นอะไร", "เล่นยังไง", "เล่นอย่างไร",
         "ใช้ยังไง", "ใช้อย่างไร", "วิธีเล่น", "วิธีใช้", "อุปกรณ์", "รุ่นอะไร",
+        "รุ่นไหน", "เครื่องรุ่นไหน", "พวงมาลัยอะไร", "แว่นอะไร", "สเปค", "สเป็ค", "spec",
         "โซนไหน", "อยู่ที่ไหน", "อยู่ไหน", "ขนาดเท่าไหร่", "ขนาดเท่าไร",
     )
     if _has(q, "zone", "โซน") and not _has(
@@ -187,6 +364,26 @@ def _looks_like_equipment_item_query(q: str) -> bool:
     return _has(q, *item_terms) and _has(q, *question_terms)
 
 
+def _looks_like_known_equipment_item_query(q: str) -> bool:
+    if _has(q, "ราคา", "ค่าบริการ", "กี่บาท", "เท่าไหร่", "เท่าไร", "เสียเงิน", "service fee"):
+        return False
+    equipment_aliases = (
+        "gaming pc", "msi mag infinite", "gaming monitor", "gaming keyboard", "gaming mouse",
+        "gaming headset", "gaming chair", "logitech g923", "trueforce", "racing wheel",
+        "driving force shifter", "gear shifter", "shifter", "racezone", "full cockpit",
+        "pulse elite", "wireless headset", "nintendo switch oled", "switch oled",
+        "playstation 5 slim", "ultra hd blu-ray", "playstation vr2", "psvr2", "vr2",
+        "tv 65", "tv 86", "ทีวี 65", "ทีวี 86", "65 นิ้ว", "86 นิ้ว",
+        "sofa 2", "sofa", "โซฟา",
+    )
+    equipment_question_terms = (
+        "คืออะไร", "อะไรคือ", "อยู่โซนไหน", "อยู่ที่ไหน", "อยู่ไหน", "มีที่ไหน",
+        "เครื่องไหน", "ใช้ทำอะไร", "ใช้งานยังไง", "ใช้ยังไง", "กี่", "จำนวน",
+        "รุ่นไหน", "สเปค", "สเป็ค", "spec",
+    )
+    return _has(q, *equipment_aliases) and (_has(q, *equipment_question_terms) or not _has(q, "เกม", "ปุ่ม", "กดอะไร"))
+
+
 def _looks_like_equipment_game_catalog_query(q: str) -> bool:
     if _has(
         q,
@@ -194,6 +391,9 @@ def _looks_like_equipment_game_catalog_query(q: str) -> bool:
     ):
         return False
     if _has(q, "\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c") and not _has(q, "\u0e40\u0e01\u0e21", "\u0e40\u0e25\u0e48\u0e19", "game", "games"):
+        return False
+    # คำถามอย่าง "เกมใน PS5 มีอะไรมั่ง" ต้องไป games/list ไม่ใช่ equipment catalog
+    if _has(q, "เกมใน", "เกมบน", "เกมของ", "game on", "games on") and not _has(q, "อุปกรณ์", "เครื่อง", "จอย", "controller"):
         return False
     equipment_terms = (
         "\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c", "\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07", "\u0e42\u0e0b\u0e19", "zone",
@@ -237,12 +437,13 @@ def _looks_like_related_guidance_query(q: str) -> bool:
         "ต่างกันยังไง", "ต่างกันอย่างไร", "เปรียบเทียบ", "เทียบให้", "ไปกับเพื่อน",
         "มากับเพื่อน", "ไปกัน", "เล่นกับเพื่อน", "สาย", "แนว", "ควรเล่น", "โซนไหน",
         "มือใหม่", "มือไหม่", "เด็ก", "สำหรับเด็ก", "ครั้งแรก", "ไม่เคยเล่น",
+        "อยากเล่น", "ต้องใช้อะไร", "ใช้อะไร", "ใช้อุปกรณ์อะไร",
     )
     domain_terms = (
         "ศูนย์", "โซน", "zone", "เกม", "เล่น", "เพื่อน", "นักเรียน", "นักศึกษา",
         "vr", "วีอาร์", "ps5", "เพลย์", "cockpit", "คอกพิท", "ค็อกพิท", "ขับรถ",
         "nintendo", "switch", "pc", "คอม", "beat saber", "gran turismo", "จังหวะ",
-        "ขยับตัว", "ออกกำลัง", "ครอบครัว",
+        "ขยับตัว", "ออกกำลัง", "ครอบครัว", "รถ", "รถแข่ง", "แข่งรถ", "racing",
     )
     if _has(q, "ราคา", "ค่าบริการ", "กี่บาท", "เท่าไหร่", "เท่าไร", "เสียเงิน"):
         return False
@@ -304,11 +505,35 @@ def _looks_like_game_catalog_query(q: str) -> bool:
         return False
     catalog_terms = (
         "มีเกมอะไร", "มีเกมไร", "เกมอะไรบ้าง", "เกมไรบ้าง", "เกมอะไรให้เล่น",
-        "เกมทั้งหมด", "รายชื่อเกม", "รายการเกม", "list game", "games",
+        "เกมทั้งหมด", "เกมใน", "เกมบน", "เกมของ", "รายชื่อเกม", "รายการเกม", "list game", "games",
         "มีอะไรให้เล่น", "เล่นเกมอะไรได้บ้าง", "เล่นเกมไรได้บ้าง",
         "เล่นอะไรได้บ้าง", "เล่นไรได้บ้าง",
     )
     return _has(q, *catalog_terms)
+
+
+def _looks_like_game_genre_query(q: str) -> bool:
+    if _has(q, "ราคา", "ค่าบริการ", "กี่บาท", "เท่าไหร่", "เท่าไร", "เสียเงิน", "service fee"):
+        return False
+    genre_terms = (
+        "เกมยิง", "เกมปืน", "fps", "เอฟพีเอส", "battle royale", "แบทเทิลรอยัล",
+        "เกมต่อสู้", "เกมแข่งรถ", "เกมขับรถ", "เกมกีฬา", "เกมปาร์ตี้", "เกม co-op",
+        "เกม coop", "เกมสยอง", "เกมผี", "เกม rpg", "เกมจังหวะ", "เกมออกกำลังกาย",
+        "แนวเกม", "ประเภทเกม",
+    )
+    list_terms = ("มีอะไรบ้าง", "มีอะไรมั่ง", "มีไรบ้าง", "มีเกมอะไร", "เกมไหน", "อะไรบ้าง", "รายชื่อ", "รายการ")
+    return _has(q, *genre_terms) and (_has(q, *list_terms) or _has(q, "เกม"))
+
+
+def _looks_like_cross_zone_game_query(q: str) -> bool:
+    if _has(q, "ราคา", "ค่าบริการ", "กี่บาท", "เท่าไหร่", "เท่าไร", "เสียเงิน", "service fee"):
+        return False
+    return _has(
+        q,
+        "เกมไหนเล่นได้หลายโซน", "เกมอะไรเล่นได้หลายโซน", "เกมไหนมีหลายโซน",
+        "เกมอะไรมีหลายโซน", "เกมไหนอยู่หลายโซน", "เกมอะไรอยู่หลายโซน",
+        "เล่นได้หลายโซน", "อยู่หลายโซน", "หลายโซน", "หลายเครื่อง",
+    ) and _has(q, "เกม", "game", "games", "เล่น")
 
 
 def _looks_like_game_availability_query(q: str) -> bool:
@@ -322,7 +547,7 @@ def _looks_like_game_availability_query(q: str) -> bool:
         "ทีม", "สมาชิก", "ผู้เล่น", "ตัวจริง", "ตัวสำรอง", "ลงทะเบียน", "สมัคร",
         "แผนที่", "map", "pause", "timeout", "technical", "บทลงโทษ", "ปรับแพ้",
         "ข้อห้าม", "อุปกรณ์", "โปรแกรม", "โปรแกรมช่วยเล่น", "บัญชี", "บัญชีส่วนตัว", "บัญชีที่จัดให้",
-        "round", "rounds", "รอบ", "1 ต่อ 1", "1v1", "ft2", "r3", "decider", "เกมตัดสิน",
+        "รอบ", "1 ต่อ 1", "1v1", "ft2", "r3", "decider", "เกมตัดสิน",
     ):
         return False
     play_terms = (
@@ -347,14 +572,103 @@ def _looks_like_game_availability_query(q: str) -> bool:
     return False
 
 
+def _looks_like_damage_penalty_query(q: str) -> bool:
+    return _has(
+        q,
+        "เสียหาย",
+        "พัง",
+        "ค่าปรับ",
+        "โดนปรับ",
+        "ปรับเท่าไหร่",
+        "ค่าซ่อม",
+        "ชดเชย",
+        "จอแตก",
+        "จอยพัง",
+        "คอมพัง",
+        "เมาส์พัง",
+        "คีย์บอร์ดพัง",
+        "อุปกรณ์เสีย",
+        "เต็มจำนวน",
+    )
+
+
+def _looks_like_studio_rules_query(q: str) -> bool:
+    return _has(
+        q,
+        "กติกาในศูนย์",
+        "กฎในศูนย์",
+        "กติกาการใช้บริการ",
+        "กฎการใช้บริการ",
+        "ข้อห้ามในศูนย์",
+        "ในศูนย์ห้าม",
+        "ศูนย์ห้าม",
+        "ห้ามอะไรในศูนย์",
+        "ระเบียบในศูนย์",
+        "กฎของศูนย์",
+    )
+
+
 def route_intent(pre: PreprocessedInput, entities: EntityBundle) -> tuple[PipelineRoute, PipelineTrace]:
     q = pre.normalized_query
-    semantic_match = match_semantic_intent(q)
+    semantic_match = None
+    looks_like_payment_policy = _has(q, "ชำระ", "จ่ายภายใน", "ชำระภายใน", "จ่ายเงินผ่าน", "ช่องทางไหน", "โอนเงิน", "สลิป", "เลขบัญชี", "ธนาคาร", "ไม่จ่าย", "ลืมจ่าย", "payment timeout", "หลังจองต้องจ่าย", "จ่ายภายในกี่นาที", "จ่ายเงินผ่านบัญชี")
+    looks_like_late_or_walkin = _has(q, "ไปช้า", "ไปถึงช้า", "มาสาย", "เช็คอินช้า", "เช็คอินไม่ทัน", "เชคอินไม่ทัน", "walk in", "walk-in", "วอล์คอิน")
+    looks_like_schedule_overview = _has(q, "ตารางเวลา", "ตารางวัลา", "เวลาให้บริการ", "วัลาให้บริการ", "รอบให้บริการ", "ช่วงเช้า", "รอบเช้า", "ช่วงบ่าย", "รอบบ่าย", "morning", "afternoon")
 
     # Put specific/high-risk intents before broad terms such as "เวลา", "อุปกรณ์", or game names.
-    if _looks_like_out_of_domain_query(q) or _looks_like_general_knowledge_query(q):
+    if _looks_like_chatbot_greeting_query(q):
+        route = PipelineRoute("knowledge", "chatbot_greeting", 0.98, "summary", "low", "chatbot greeting terms found")
+    elif _looks_like_chatbot_identity_query(q):
+        route = PipelineRoute("knowledge", "chatbot_identity", 0.97, "summary", "low", "chatbot identity/capability terms found")
+    elif looks_like_payment_policy:
+        route = PipelineRoute("reservation", "payment_policy", 0.93, "fact", "medium", "payment terms found before price terms")
+    elif _looks_like_damage_penalty_query(q):
+        route = PipelineRoute("penalty", "penalty_policy", 0.94, "fact", "high", "damage/penalty terms found before price/semantic routing")
+    elif _looks_like_studio_rules_query(q):
+        route = PipelineRoute("rules", "studio_rules", 0.94, "fact", "medium", "studio rules terms found before competition rules")
+    elif _looks_like_competition_rule_query(q):
+        route = PipelineRoute("competition_rules", "competition_rules_lookup", 0.97, "fact", "medium", "competition rule terms found before reservation/check-in")
+    elif looks_like_late_or_walkin:
+        route = PipelineRoute("reservation", "booking_policy", 0.92, "fact", "medium", "late check-in/walk-in booking terms found")
+    elif _looks_like_service_capacity_query(q):
+        route = PipelineRoute("reservation", "service_capacity_query", 0.96, "fact", "low", "service capacity terms found before equipment/schedule routing")
+    elif looks_like_schedule_overview:
+        route = PipelineRoute("schedule", "schedule_query", 0.94, "fact", "medium", "schedule overview/slot terms found")
+    elif _looks_like_text_generation_query(q):
+        route = PipelineRoute("general", "general_knowledge_query", 0.87, "general", "low", "text generation request found before member role terms")
+    elif _looks_like_known_equipment_item_query(q):
+        route = PipelineRoute("equipment", "equipment_item_lookup", 0.98, "fact", "low", "known equipment item terms found before game/control routing")
+    elif _looks_like_game_control_query(q):
+        route = PipelineRoute("games", "game_control_lookup", 0.97, "fact", "low", "game control terms found before member/role routing")
+    elif _looks_like_price_service_query(q, entities):
+        route = PipelineRoute("service_fee", "service_fee_query", 0.97, "calculation" if entities.comparison_intent or _has(q, "ถึง", "-", "to", "ชั่วโมง", "ชม") else "fact", "medium", "service fee terms found before reservation/schedule")
+    elif _looks_like_service_fee_comparison_query(q, entities):
+        route = PipelineRoute("service_fee", "service_fee_query", 0.96, "calculation", "medium", "service fee comparison/free terms found")
+    elif _looks_like_booking_session_limit_query(q):
+        route = PipelineRoute("reservation", "booking_session_limit", 0.96, "fact", "medium", "booking/session limit terms found")
+    elif _looks_like_booking_selection_query(q):
+        route = PipelineRoute("reservation", "booking_policy", 0.94, "fact", "medium", "booking selection terms found before game availability")
+    elif _looks_like_known_equipment_item_query(q):
+        route = PipelineRoute("equipment", "equipment_item_lookup", 0.97, "fact", "low", "known equipment item terms found before game/general routing")
+    elif _looks_like_cross_zone_game_query(q):
+        route = PipelineRoute("games", "game_catalog_lookup", 0.96, "list", "low", "cross-zone game list terms found before schedule")
+    elif _looks_like_game_genre_query(q):
+        route = PipelineRoute("games", "game_catalog_lookup", 0.96, "list", "low", "game genre list terms found before equipment")
+    elif _looks_like_game_availability_query(q):
+        route = PipelineRoute("games", "game_availability_lookup", 0.95, "fact", "low", "game availability terms found before schedule")
+    elif _looks_like_game_catalog_query(q):
+        route = PipelineRoute("games", "game_catalog_lookup", 0.96, "list", "low", "explicit game catalog terms found before schedule")
+    elif _looks_like_members_lookup_query(q):
+        route = PipelineRoute("overview", "members_lookup", 0.92, "fact", "low", "members/staff terms found before broad routing")
+    elif _looks_like_schedule_date_query(q):
+        route = PipelineRoute("schedule", "schedule_query", 0.96, "fact", "medium", "date/opening schedule terms found")
+    elif (
+        _looks_like_out_of_domain_query(q)
+        or _looks_like_general_knowledge_query(q)
+        or _looks_like_general_explanation_query(q)
+    ):
         route = PipelineRoute("general", "general_knowledge_query", 0.86, "general", "low", "general knowledge terms found without PSU domain")
-    elif _has(q, "ชำระ", "จ่ายภายใน", "โอนเงิน", "สลิป", "เลขบัญชี", "ธนาคาร", "ไม่จ่าย", "ลืมจ่าย", "payment timeout", "หลังจองต้องจ่าย", "จ่ายภายในกี่นาที", "จ่ายเงินผ่านบัญชี"):
+    elif looks_like_payment_policy:
         route = PipelineRoute("reservation", "payment_policy", 0.93, "fact", "medium", "payment terms found")
     elif _has(q, "จองผิด", "แก้เวลา", "แก้ไข", "ยกเลิก", "จองใหม่", "booking", "จอง", "book", "ล่วงหน้า", "กรอกข้อมูล", "เลือกอะไร", "ก่อนเข้าใช้บริการ", "เข้าใช้บริการต้องทำอะไร"):
         route = PipelineRoute("reservation", "booking_policy", 0.92, "fact", "medium", "reservation/edit terms found")
@@ -374,8 +688,6 @@ def route_intent(pre: PreprocessedInput, entities: EntityBundle) -> tuple[Pipeli
         route = PipelineRoute("games", "game_availability_lookup", 0.94, "fact", "low", "game availability terms found")
     elif _looks_like_game_detail_query(q):
         route = PipelineRoute("games", "game_detail_lookup", 0.95, "fact", "low", "specific game detail terms found")
-    elif _looks_like_schedule_date_query(q):
-        route = PipelineRoute("schedule", "schedule_query", 0.96, "fact", "medium", "date/opening schedule terms found")
     elif _looks_like_related_guidance_query(q):
         route = PipelineRoute("equipment", "related_guidance", 0.90, "summary", "medium", "related guidance terms found")
     elif _looks_like_game_catalog_query(q):
@@ -386,7 +698,7 @@ def route_intent(pre: PreprocessedInput, entities: EntityBundle) -> tuple[Pipeli
         route = PipelineRoute("no_answer", "competition_prize_unknown", 0.94, "no_answer", "medium", "competition prize terms found but no verified prize data")
     elif _looks_like_competition_rule_query(q):
         route = PipelineRoute("competition_rules", "competition_rules_lookup", 0.94, "fact", "medium", "competition rule terms found")
-    elif semantic_match is not None:
+    elif (semantic_match := match_semantic_intent(q)) is not None:
         route = PipelineRoute(
             semantic_match.category,
             semantic_match.intent_id,
@@ -401,7 +713,7 @@ def route_intent(pre: PreprocessedInput, entities: EntityBundle) -> tuple[Pipeli
         route = PipelineRoute("reservation", "checkin_policy", 0.94, "fact", "medium", "checkin terms found")
     elif _has(q, "อีเมล", "email", "facebook", "เฟส", "เบอร์", "โทร", "เบอร์ติดต่อ", "ติดต่อ", "ที่ตั้ง", "อยู่ที่ไหน", "อยู่ตรงไหน", "ตรงไหน"):
         route = PipelineRoute("contact", "contact_lookup", 0.92, "fact", "low", "contact terms found")
-    elif _has(q, "ชำระ", "จ่ายภายใน", "โอนเงิน", "สลิป", "เลขบัญชี", "ธนาคาร", "ไม่จ่าย", "ลืมจ่าย", "payment timeout", "หลังจองต้องจ่าย", "จ่ายภายในกี่นาที"):
+    elif looks_like_payment_policy:
         route = PipelineRoute("reservation", "payment_policy", 0.93, "fact", "medium", "payment terms found")
     elif _has(q, "รอยขีดข่วน", "เบาะขาด", "ปุ่มหลวม", "สายขาด", "โครงเฟอร์นิเจอร์", "ฝาปิดหลุด", "คราบน้ำ", "รอยเปื้อน", "ปรับเท่าไหร่", "โดนปรับ", "ค่าซ่อม"):
         route = PipelineRoute("penalty", "penalty_policy", 0.93, "fact", "high", "damage/penalty terms found")
@@ -409,20 +721,13 @@ def route_intent(pre: PreprocessedInput, entities: EntityBundle) -> tuple[Pipeli
         route = PipelineRoute("service_fee", "service_fee_query", 0.95, "calculation" if entities.comparison_intent else "fact", "medium", "price/service entity found")
     elif _has(q, "จองผิด", "แก้เวลา", "แก้ไข", "ยกเลิก", "จองใหม่", "booking", "จอง", "book", "ล่วงหน้า"):
         route = PipelineRoute("reservation", "booking_policy", 0.90, "fact", "medium", "reservation/edit terms found")
-    elif _has(q, "ชำระ", "จ่ายภายใน", "โอนเงิน", "สลิป", "เลขบัญชี", "ธนาคาร", "ไม่จ่าย", "ลืมจ่าย", "payment timeout"):
+    elif looks_like_payment_policy:
         route = PipelineRoute("reservation", "payment_policy", 0.92, "fact", "medium", "payment terms found")
     elif _has(q, "ของหาย", "อุปกรณ์เปียก", "ย้ายอุปกรณ์", "เคลื่อนย้ายอุปกรณ์", "แผ่นเกม", "ไม่คืน", "สูบบุหรี่", "แอลกอฮอล์", "มีด", "พนัน", "ปลั๊ก", "เสียงดัง", "เสียดสี", "ทิ้งขยะ", "ฝากสัมภาระ", "ฝากกระเป๋า", "ขนม", "กินน้ำ", "อาหาร", "เครื่องดื่ม", "พบปัญหา", "ปัญหาเครื่อง", "เอาอาหารเข้า", "นำอาหารเข้า"):
         route = PipelineRoute("rules", "studio_rules", 0.93, "fact", "medium", "specific rules terms found")
     elif _has(q, "ข่าว", "กิจกรรม", "การแข่งขัน", "แข่ง", "จัดวัน", "จัดให้ใคร", "2569", "2026", "game on", "valorant 2026", "cs 2 2026", "25 เมษายน", "21 กุมภาพันธ์", "surat smash", "ตัวแทน", "นักศึกษาชาวจีน") and not _has(q, "วันเกิด", "birthday", "ปาร์ตี้", "party", "วันหยุด", "เทศกาล", "ปฏิทิน", "ราชการ", "เดือนนี้", "เดือนหน้า", "เดือนที่แล้ว", "ปีนี้", "ปีหน้า", "ปีที่แล้ว", "กี่วัน", "ประเภทเกม", "แนวเกม"):
         route = PipelineRoute("events_news", "news_lookup", 0.86, "summary", "medium", "news/event terms found")
-    elif _has(
-        q,
-        "member", "members", "สมาชิก", "สมาชิกทีม", "ทีมงาน", "บุคลากร", "ตำแหน่ง",
-        "อธิการบดี", "รองอธิการบดี", "คณบดี", "ผู้ช่วยอธิการบดี", "ผู้จัดการ", "ผู้จัดการศูนย์",
-        "นักวิชาการคอมพิวเตอร์", "สหกิจ", "ฝึกงาน", "internship", "intern", "cooperative",
-        "psu phuket esports club", "esports club", "ชมรม", "ประธาน psu", "ประธานชมรม",
-        "รองประธาน", "เลขานุการ", "เหรัญญิก", "ประชาสัมพันธ์", "กรรมการ", "gallery",
-    ):
+    elif _looks_like_members_lookup_query(q) or _has(q, "gallery"):
         route = PipelineRoute("overview", "members_lookup", 0.88, "fact", "low", "members/gallery terms found")
     elif _has(q, "อีสปอร์ตคือ", "esports", "moba", "multiplayer online battle arena", "เกมตีป้อม", "ประเภทเกม", "แนวเกม", "เกมยอดนิยม", "เกมที่นิยม", "เกมนิยม", "อาชีพ", "spacewar", "ประวัติ", "เริ่มครั้งแรก") or (_has(q, "ฝึก", "ทักษะ") and _has(q, "overcooked", "mario kart")):
         route = PipelineRoute("knowledge", "knowledge_lookup", 0.88, "summary", "low", "knowledge terms found")

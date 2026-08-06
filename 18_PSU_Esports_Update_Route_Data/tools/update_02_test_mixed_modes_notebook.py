@@ -46,7 +46,7 @@ def main() -> None:
 - `mode="rag_llm"` ดึงข้อมูลก่อน แล้วให้ Ollama เรียบเรียงจาก context เท่านั้น เหมาะกับคำถามที่ต้องสรุป/อธิบายหลายส่วน
 - `mode="auto"` ให้ระบบเลือกเอง โดย exact fact จะตอบด้วย rulebase/fact card ก่อน ส่วนคำถามที่ต้องสรุปจะลอง RAG+LLM
 
-ค่า default ใช้ `qwen2.5:3b` เพื่อให้พยายามจบในเวลาประมาณไม่เกิน 10 วินาที ถ้าอยากลองคุณภาพที่อาจดีขึ้นให้เปลี่ยน `MODEL = "qwen3:4b"`"""
+ค่า default ใช้ `scb10x/typhoon2.5-qwen3-4b` ซึ่งเป็นโมเดลหลักของระบบปัจจุบัน"""
         ),
         code_cell(
             """from pathlib import Path
@@ -65,7 +65,7 @@ from app.runtime.mixed_mode_tester import (
     route_preview,
 )
 
-MODEL = "qwen2.5:3b"   # เปลี่ยนเป็น "qwen3:4b" ได้ ถ้าอยากลองโมเดลที่ใหญ่ขึ้น
+MODEL = "scb10x/typhoon2.5-qwen3-4b"
 LLM_TIMEOUT_SEC = 8.0  # รวมกับ retrieval แล้วควรอยู่แถวๆ ไม่เกิน 10 วิ ถ้าเครื่องหน่วงให้เพิ่มเป็น 10-12
 TOP_K = 5
 

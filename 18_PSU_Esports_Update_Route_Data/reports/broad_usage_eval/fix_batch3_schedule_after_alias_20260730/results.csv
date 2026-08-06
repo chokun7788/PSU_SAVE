@@ -1,0 +1,86 @@
+﻿case_id,kind,group,turn_index,question,resolved_question,used_context,passed,problems,risk,mode,route_category,route_intent,strategy,confidence,latency_sec,wall_sec,answer,sources
+S-001,single,schedule,,เปิดกี่โมง,,,True,[],medium,pipeline:structured_schedule,schedule,schedule_query,structured,0.96,0.3981,0.4339,"เวลาบริการตามตารางคือ Morning 09:00-12:00 และ Afternoon 13:00-16:00
+
+รายละเอียดจากตาราง:
+•    วันจันทร์: Morning 09:00-12:00 = maintenance, Afternoon 13:00-16:00 = open
+•    วันอังคาร: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open
+•    วันพุธ: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open
+•    วันพฤหัสบดี: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open
+•    วันศุกร์: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = maintenance
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""reservation_schedule: https://esports.computing.psu.ac.th/""]"
+S-002,single,schedule,,ปิดกี่โมง,,,True,[],medium,pipeline:structured_schedule,schedule,schedule_query,structured,0.96,0.0137,0.0137,"เวลาบริการตามตารางคือ Morning 09:00-12:00 และ Afternoon 13:00-16:00
+
+รายละเอียดจากตาราง:
+•    วันจันทร์: Morning 09:00-12:00 = maintenance, Afternoon 13:00-16:00 = open
+•    วันอังคาร: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open
+•    วันพุธ: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open
+•    วันพฤหัสบดี: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open
+•    วันศุกร์: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = maintenance
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""reservation_schedule: https://esports.computing.psu.ac.th/""]"
+S-003,single,schedule,,วันนี้เปิดไหม,,,True,[],medium,pipeline:calendar_closure_fast_path,schedule,schedule_query,fast/rule,0.99,1.2606,1.2607,"วันนี้ 30/07/2026 (วันพฤหัสบดี): ศูนย์ปิดให้บริการ (วันหยุดราชการ)
+ศูนย์ปิดให้บริการตามวันหยุดราชการ/วันปิดพิเศษที่ระบุไว้ในระบบ
+วันที่อ้างอิงของระบบ: วันนี้คือ 30/07/2026 (วันพฤหัสบดี) ตามเวลาไทย
+หมายเหตุ: วันปิดพิเศษ/วันหยุดราชการจะ override ตารางเปิดปิดปกติ
+แหล่งข้อมูลตารางบริการ: https://esports.computing.psu.ac.th/reservation
+แหล่งข้อมูลวันปิด: manual_admin_config","[""Reservation: https://esports.computing.psu.ac.th/reservation""]"
+S-004,single,schedule,,วันจันทร์เปิดกี่โมง,,,True,[],medium,pipeline:structured_schedule,schedule,schedule_query,structured,0.96,0.0628,0.0628,"วันจันทร์: เปิดให้เล่นช่วง 13:00-16:00 ส่วน 09:00-12:00 เป็น Maintenance*
+
+รายละเอียดจากตาราง:
+•    วันจันทร์: Morning 09:00-12:00 = maintenance, Afternoon 13:00-16:00 = open
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""reservation_schedule: https://esports.computing.psu.ac.th/""]"
+S-005,single,schedule,,วันอาทิตย์เปิดไหม,,,True,[],medium,pipeline:structured_schedule,schedule,schedule_query,structured,0.96,0.0498,0.0499,"เวลาบริการตามตารางคือ Morning 09:00-12:00 และ Afternoon 13:00-16:00
+
+รายละเอียดจากตาราง:
+•    วันจันทร์: Morning 09:00-12:00 = maintenance, Afternoon 13:00-16:00 = open
+•    วันอังคาร: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open
+•    วันพุธ: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open
+•    วันพฤหัสบดี: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open
+•    วันศุกร์: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = maintenance
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""reservation_schedule: https://esports.computing.psu.ac.th/""]"
+S-006,single,schedule,,ช่วงเช้าเล่นได้ไหม,,,True,[],medium,pipeline:structured_schedule,schedule,schedule_query,structured,0.96,0.0446,0.0446,"รอบเช้า Morning คือ 09:00-12:00 แต่วันจันทร์ช่วงนี้เป็น Maintenance*
+
+รายละเอียดจากตาราง:
+•    วันจันทร์: Morning 09:00-12:00 = maintenance, Afternoon 13:00-16:00 = open
+•    วันอังคาร: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open
+•    วันพุธ: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open
+•    วันพฤหัสบดี: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open
+•    วันศุกร์: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = maintenance
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""reservation_schedule: https://esports.computing.psu.ac.th/""]"
+S-007,single,schedule,,ตอนเย็นเปิดถึงกี่โมง,,,True,[],medium,pipeline:structured_schedule,schedule,schedule_query,structured,0.96,0.0524,0.0525,"เวลาบริการตามตารางคือ Morning 09:00-12:00 และ Afternoon 13:00-16:00
+
+รายละเอียดจากตาราง:
+•    วันจันทร์: Morning 09:00-12:00 = maintenance, Afternoon 13:00-16:00 = open
+•    วันอังคาร: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open
+•    วันพุธ: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open
+•    วันพฤหัสบดี: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open
+•    วันศุกร์: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = maintenance
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""reservation_schedule: https://esports.computing.psu.ac.th/""]"
+S-008,single,schedule,,พรุ่งนี้เปิดไหม,,,True,[],medium,pipeline:calendar_schedule_fast_path,schedule,schedule_query,fast/rule,0.98,0.8713,0.8714,"พรุ่งนี้ 31/07/2026 (วันศุกร์): วันศุกร์เปิดช่วงเช้า 09:00-12:00 แต่ช่วงบ่าย 13:00-16:00 เป็น Maintenance สำหรับตรวจเช็คและทำความสะอาดอุปกรณ์
+วันที่อ้างอิงของระบบ: วันนี้คือ 30/07/2026 (วันพฤหัสบดี) ตามเวลาไทย
+
+ปฏิทินไทยของวันที่นี้:
+ไม่พบวันหยุดไทยหรือเทศกาลในปฏิทินที่บันทึกไว้สำหรับวันที่นี้
+
+รายละเอียดจากตาราง:
+•    วันจันทร์ช่วงเช้า 09:00-12:00 เป็น Maintenance* และเปิดช่วงบ่าย 13:00-16:00
+•    วันอังคาร-พฤหัสบดีเปิด 09:00-12:00 และ 13:00-16:00
+•    วันศุกร์เปิดช่วงเช้า 09:00-12:00 และช่วงบ่าย 13:00-16:00 เป็น Maintenance
+•    วันหยุดราชการ/วันปิดพิเศษในไฟล์ปฏิทินจะมีผลก่อนตารางปกติ
+แหล่งข้อมูลตารางบริการ: https://esports.computing.psu.ac.th/reservation","[""Reservation: https://esports.computing.psu.ac.th/reservation""]"
+S-009,single,schedule,,วันหยุดเปิดไหม,,,True,[],medium,pipeline:calendar_upcoming_holidays_fast_path,schedule,schedule_query,fast/rule,0.96,0.8946,0.8947,"วันหยุดไทย/เทศกาลถัดไปที่มีในปฏิทิน:
+•    30/07/2026 (วันพฤหัสบดี): วันเข้าพรรษา (observance)
+•    12/08/2026 (วันพุธ): วันแม่แห่งชาติ / วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง (national_holiday)
+•    24/09/2026 (วันพฤหัสบดี): วันมหิดล (observance)
+•    13/10/2026 (วันอังคาร): วันนวมินทรมหาราช (national_holiday)
+•    16/10/2026 (วันศุกร์): วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ (bank_holiday_bangkok)
+หมายเหตุ: รายการนี้เป็นข้อมูลปฏิทินไทยประกอบ ไม่ได้แปลว่าศูนย์ปิดโดยอัตโนมัติ
+แหล่งข้อมูลปฏิทินไทย: https://www.timeanddate.com/holidays/thailand","[""Reservation: https://esports.computing.psu.ac.th/reservation""]"
+S-010,single,schedule,,ตารางเวลาให้บริการเป็นยังไง,,,True,[],medium,pipeline:structured_schedule,schedule,schedule_query,structured,0.96,0.0704,0.0704,"เวลาบริการตามตารางคือ Morning 09:00-12:00 และ Afternoon 13:00-16:00
+
+รายละเอียดจากตาราง:
+•    วันจันทร์: Morning 09:00-12:00 = maintenance, Afternoon 13:00-16:00 = open
+•    วันอังคาร: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open
+•    วันพุธ: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open
+•    วันพฤหัสบดี: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open
+•    วันศุกร์: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = maintenance
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""reservation_schedule: https://esports.computing.psu.ac.th/""]"

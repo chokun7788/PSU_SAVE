@@ -1,0 +1,230 @@
+{
+  "run_label": "no_llm",
+  "run_kind": "no_llm",
+  "model": "",
+  "allow_llm": false,
+  "timeout_sec": 20.0,
+  "num_predict": 128,
+  "ollama_url": "",
+  "tool_router": false,
+  "facts_composer": false,
+  "disable_health_manager": false,
+  "cases": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\model_benchmark_1500.jsonl",
+  "limit": 0,
+  "resumed_from": 0,
+  "total_wall_sec": 7.076,
+  "generated_at": "2026-07-31T16:48:34",
+  "total": 34,
+  "passed": 29,
+  "pass_rate": 85.29,
+  "avg_score": 97.12,
+  "avg_wall_sec": 0.2071,
+  "median_wall_sec": 0.0842,
+  "p95_wall_sec": 0.7069,
+  "max_wall_sec": 1.9267,
+  "llm_call_total": 7,
+  "mode_counts": {
+    "pipeline:ambiguity_clarification": 3,
+    "pipeline:game_control_missing_game_context": 2,
+    "pipeline:structured_service_game_availability": 3,
+    "pipeline:structured_game_detail": 6,
+    "pipeline:structured_equipment_item": 1,
+    "pipeline:competition_fact_card": 1,
+    "pipeline:competition_generic_fast_path": 1,
+    "pipeline:multi_question_splitter": 2,
+    "pipeline:structured_equipment_catalog": 1,
+    "pipeline:structured_game_controls": 2,
+    "pipeline:general_llm_disabled": 2,
+    "pipeline:structured_members_group_list": 1,
+    "pipeline:structured_members_group_count": 1,
+    "pipeline:structured_schedule": 4,
+    "pipeline:structured_reservation_fact": 2,
+    "pipeline:deterministic_calculator_fast": 2
+  },
+  "route_counts": {
+    "clarification/ambiguity_gate_clarification": 3,
+    "games/game_control_lookup": 4,
+    "games/game_availability_lookup": 6,
+    "games/list": 1,
+    "equipment/equipment_item_lookup": 1,
+    "competition_rules/competition_rules_lookup": 2,
+    "multi_question/multi_question_split": 2,
+    "equipment/list": 1,
+    "games/game_detail_lookup": 2,
+    "general/unknown_domain_query": 2,
+    "overview/list": 1,
+    "overview/group_count": 1,
+    "schedule/schedule_query": 4,
+    "reservation/booking_policy": 2,
+    "service_fee/service_fee_query": 2
+  },
+  "group_counts": {
+    "ambiguity_no_answer": 2,
+    "ambiguous_controls": 2,
+    "availability_game": 2,
+    "availability_machine_split": 2,
+    "availability_service": 2,
+    "competition_rules": 2,
+    "compound": 2,
+    "equipment": 2,
+    "game_controls": 2,
+    "game_detail": 2,
+    "games": 2,
+    "general_llm": 2,
+    "members": 2,
+    "policy_schedule_rules": 2,
+    "reservation": 2,
+    "schedule": 2,
+    "service_fee": 2
+  },
+  "quality_bucket_counts": {
+    "psu_fact": 30,
+    "ambiguity": 2,
+    "general_llm": 2
+  },
+  "top_errors": {
+    "missing_any:ไม่มี|PC #03-#10": 2,
+    "category_mismatch:equipment": 1,
+    "missing_any:1 คน|คน": 1,
+    "missing_any:latency|หน่วง": 1,
+    "missing_any:เฟรม|ความละเอียด": 1
+  },
+  "by_group": {
+    "ambiguity_no_answer": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.1497,
+      "p95_wall_sec": 0.2893
+    },
+    "ambiguous_controls": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.0891,
+      "p95_wall_sec": 0.1459
+    },
+    "availability_game": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.6159,
+      "p95_wall_sec": 1.1672
+    },
+    "availability_machine_split": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_score": 84.0,
+      "avg_wall_sec": 0.0091,
+      "p95_wall_sec": 0.0094
+    },
+    "availability_service": {
+      "total": 2,
+      "passed": 1,
+      "pass_rate": 50.0,
+      "avg_score": 83.0,
+      "avg_wall_sec": 0.0237,
+      "p95_wall_sec": 0.036
+    },
+    "competition_rules": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.216,
+      "p95_wall_sec": 0.3921
+    },
+    "compound": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.3665,
+      "p95_wall_sec": 0.7069
+    },
+    "equipment": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.0281,
+      "p95_wall_sec": 0.0464
+    },
+    "game_controls": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.1117,
+      "p95_wall_sec": 0.1282
+    },
+    "game_detail": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.1023,
+      "p95_wall_sec": 0.1306
+    },
+    "games": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.0993,
+      "p95_wall_sec": 0.1043
+    },
+    "general_llm": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_score": 84.0,
+      "avg_wall_sec": 0.1475,
+      "p95_wall_sec": 0.1491
+    },
+    "members": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.2811,
+      "p95_wall_sec": 0.4253
+    },
+    "policy_schedule_rules": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.076,
+      "p95_wall_sec": 0.0954
+    },
+    "reservation": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 1.1677,
+      "p95_wall_sec": 1.9267
+    },
+    "schedule": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.0208,
+      "p95_wall_sec": 0.025
+    },
+    "service_fee": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.0158,
+      "p95_wall_sec": 0.0219
+    }
+  }
+}

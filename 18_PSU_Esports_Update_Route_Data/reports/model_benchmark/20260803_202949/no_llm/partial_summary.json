@@ -1,0 +1,94 @@
+{
+  "run_label": "no_llm",
+  "run_kind": "no_llm",
+  "model": "",
+  "partial": true,
+  "total_requested": 1600,
+  "completed": 425,
+  "total_wall_sec": 233.514,
+  "generated_at": "2026-08-03T20:33:43",
+  "total": 425,
+  "passed": 422,
+  "pass_rate": 99.29,
+  "avg_score": 99.85,
+  "avg_wall_sec": 0.5462,
+  "median_wall_sec": 0.4616,
+  "p95_wall_sec": 0.84,
+  "max_wall_sec": 16.5024,
+  "llm_call_total": 0,
+  "mode_counts": {
+    "pipeline:deterministic_calculator_fast": 57,
+    "pipeline:structured_service_fee": 1,
+    "pipeline:structured_service_fee_by_game": 30,
+    "pipeline:structured_game_detail": 104,
+    "pipeline:structured_service_game_availability": 42,
+    "pipeline:structured_game_controls": 147,
+    "pipeline:no_answer": 3,
+    "pipeline:structured_games_catalog": 2,
+    "pipeline:structured_games_genre_list": 3,
+    "pipeline:structured_games_family": 1,
+    "pipeline:structured_game_controls_no_data": 4,
+    "pipeline:game_control_missing_game_context": 7,
+    "pipeline:structured_equipment_catalog": 5,
+    "pipeline:ambiguity_clarification": 4,
+    "pipeline:structured_equipment_item": 15
+  },
+  "route_counts": {
+    "service_fee/service_fee_query": 88,
+    "games/game_availability_lookup": 71,
+    "games/game_detail_lookup": 71,
+    "games/game_control_lookup": 158,
+    "games/list": 12,
+    "equipment/list": 6,
+    "clarification/ambiguity_gate_clarification": 4,
+    "equipment/equipment_item_lookup": 15
+  },
+  "group_counts": {
+    "service_fee": 88,
+    "games": 158,
+    "game_controls": 155,
+    "equipment": 24
+  },
+  "quality_bucket_counts": {
+    "psu_fact": 425
+  },
+  "top_errors": {
+    "missing_any:เกม|Zone|TEKKEN|Mario|Gran Turismo": 2,
+    "missing:Mario Party Superstars": 1,
+    "category_mismatch:equipment": 1
+  },
+  "by_group": {
+    "equipment": {
+      "total": 24,
+      "passed": 24,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.2722,
+      "p95_wall_sec": 0.3416
+    },
+    "game_controls": {
+      "total": 155,
+      "passed": 155,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.4333,
+      "p95_wall_sec": 0.6291
+    },
+    "games": {
+      "total": 158,
+      "passed": 155,
+      "pass_rate": 98.1,
+      "avg_score": 99.61,
+      "avg_wall_sec": 0.7568,
+      "p95_wall_sec": 0.9157
+    },
+    "service_fee": {
+      "total": 88,
+      "passed": 88,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.4416,
+      "p95_wall_sec": 0.6362
+    }
+  }
+}

@@ -900,7 +900,10 @@ def answer_from_competition_fact_hits(hits: list[dict[str, Any]], query: str = "
     source_url = str(best.get("source_url", "")).strip()
     answer_type = str(best.get("answer_type", "")).strip()
 
-    lines = [f"คำตอบ: {answer}"]
+    answer_text = answer
+    if game and game.lower() not in answer.lower():
+        answer_text = f"{game}: {answer}"
+    lines = [f"คำตอบ: {answer_text}"]
     if evidence:
         lines.append("")
         lines.append("หลักฐานจากกติกา:")

@@ -1,0 +1,1283 @@
+{
+  "summary": {
+    "created_at": "2026-08-01T23:09:11",
+    "model": null,
+    "cache_dir": "D:\\AIModels\\huggingface",
+    "case_count": 20,
+    "model_load_sec": 0.0,
+    "baseline_accuracy": 0.9,
+    "reranker_accuracy": null,
+    "baseline_avg_sec": 0.0654,
+    "reranker_avg_sec": 0.0,
+    "reranker_p95_sec": 0.0,
+    "top_k": 6,
+    "margin_threshold": 0.18,
+    "min_score": -10.0
+  },
+  "cases": [
+    {
+      "id": "amb_call_of_gameplay",
+      "question": "Call of เล่นยังไง",
+      "operation": "gameplay",
+      "expected_status": "ambiguous",
+      "expected_title": "",
+      "baseline": {
+        "status": "ambiguous",
+        "title": "Call of Duty: Modern Warfare III",
+        "score": 0.82,
+        "margin": 0.0,
+        "correct": true,
+        "elapsed_sec": 0.5325,
+        "reason": "family_name_has_multiple_current_candidates"
+      },
+      "reranker": {
+        "status": "not_run",
+        "title": "",
+        "score": 0.0,
+        "margin": 0.0,
+        "correct": false,
+        "elapsed_sec": 0.0,
+        "ranked": []
+      },
+      "resolver_candidates": [
+        {
+          "entity_id": "callofdutymodernwarfareiii",
+          "title": "Call of Duty: Modern Warfare III",
+          "score": 0.82,
+          "match_type": "family",
+          "matched_alias": "Call of Duty",
+          "sources": [
+            "availability_ps5_01_02"
+          ],
+          "zones": [
+            "PlayStation 5 Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "family_candidate"
+          ]
+        },
+        {
+          "entity_id": "callofdutywarzone",
+          "title": "Call of Duty: Warzone",
+          "score": 0.82,
+          "match_type": "family",
+          "matched_alias": "Call of Duty",
+          "sources": [
+            "availability_pc_03_10"
+          ],
+          "zones": [
+            "PC Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "family_candidate"
+          ]
+        }
+      ],
+      "note": "incomplete Call of family"
+    },
+    {
+      "id": "amb_call_of_controls",
+      "question": "Call of Duty ปุ่มทั้งหมดมีอะไรบ้าง",
+      "operation": "controls",
+      "expected_status": "ambiguous",
+      "expected_title": "",
+      "baseline": {
+        "status": "ambiguous",
+        "title": "Call of Duty: Modern Warfare III",
+        "score": 0.82,
+        "margin": 0.0,
+        "correct": true,
+        "elapsed_sec": 0.0523,
+        "reason": "family_name_has_multiple_current_candidates"
+      },
+      "reranker": {
+        "status": "not_run",
+        "title": "",
+        "score": 0.0,
+        "margin": 0.0,
+        "correct": false,
+        "elapsed_sec": 0.0,
+        "ranked": []
+      },
+      "resolver_candidates": [
+        {
+          "entity_id": "callofdutymodernwarfareiii",
+          "title": "Call of Duty: Modern Warfare III",
+          "score": 0.82,
+          "match_type": "family",
+          "matched_alias": "Call of Duty",
+          "sources": [
+            "availability_ps5_01_02"
+          ],
+          "zones": [
+            "PlayStation 5 Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "family_candidate"
+          ]
+        },
+        {
+          "entity_id": "callofdutywarzone",
+          "title": "Call of Duty: Warzone",
+          "score": 0.82,
+          "match_type": "family",
+          "matched_alias": "Call of Duty",
+          "sources": [
+            "availability_pc_03_10"
+          ],
+          "zones": [
+            "PC Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "family_candidate"
+          ]
+        }
+      ],
+      "note": "generic Call of controls"
+    },
+    {
+      "id": "exact_call_of_action",
+      "question": "ปุ่มกระโดดใน Call of Duty กดอะไร",
+      "operation": "controls",
+      "expected_status": "exact",
+      "expected_title": "Call of Duty: Modern Warfare III",
+      "baseline": {
+        "status": "ambiguous",
+        "title": "Call of Duty: Modern Warfare III",
+        "score": 0.82,
+        "margin": 0.0,
+        "correct": false,
+        "elapsed_sec": 0.0469,
+        "reason": "family_name_has_multiple_current_candidates"
+      },
+      "reranker": {
+        "status": "not_run",
+        "title": "",
+        "score": 0.0,
+        "margin": 0.0,
+        "correct": false,
+        "elapsed_sec": 0.0,
+        "ranked": []
+      },
+      "resolver_candidates": [
+        {
+          "entity_id": "callofdutymodernwarfareiii",
+          "title": "Call of Duty: Modern Warfare III",
+          "score": 0.82,
+          "match_type": "family",
+          "matched_alias": "Call of Duty",
+          "sources": [
+            "availability_ps5_01_02"
+          ],
+          "zones": [
+            "PlayStation 5 Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "family_candidate"
+          ]
+        },
+        {
+          "entity_id": "callofdutywarzone",
+          "title": "Call of Duty: Warzone",
+          "score": 0.82,
+          "match_type": "family",
+          "matched_alias": "Call of Duty",
+          "sources": [
+            "availability_pc_03_10"
+          ],
+          "zones": [
+            "PC Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "family_candidate"
+          ]
+        }
+      ],
+      "note": "action-specific control"
+    },
+    {
+      "id": "exact_warzone",
+      "question": "Call of Duty Warzone ปุ่มอะไร",
+      "operation": "controls",
+      "expected_status": "exact",
+      "expected_title": "Call of Duty: Warzone",
+      "baseline": {
+        "status": "exact",
+        "title": "Call of Duty: Warzone",
+        "score": 1.0,
+        "margin": 0.26,
+        "correct": true,
+        "elapsed_sec": 0.0479,
+        "reason": "top_exact_alias_overrides_parent_match"
+      },
+      "reranker": {
+        "status": "not_run",
+        "title": "",
+        "score": 0.0,
+        "margin": 0.0,
+        "correct": false,
+        "elapsed_sec": 0.0,
+        "ranked": []
+      },
+      "resolver_candidates": [
+        {
+          "entity_id": "callofdutywarzone",
+          "title": "Call of Duty: Warzone",
+          "score": 1.0,
+          "match_type": "exact_alias",
+          "matched_alias": "Warzone",
+          "sources": [
+            "availability_pc_03_10"
+          ],
+          "zones": [
+            "PC Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "operation_has_controls"
+          ]
+        },
+        {
+          "entity_id": "callofdutymodernwarfareiii",
+          "title": "Call of Duty: Modern Warfare III",
+          "score": 0.74,
+          "match_type": "token_overlap",
+          "matched_alias": "Call of Duty: Modern Warfare III",
+          "sources": [
+            "availability_ps5_01_02"
+          ],
+          "zones": [
+            "PlayStation 5 Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "operation_has_controls"
+          ]
+        },
+        {
+          "entity_id": "horizoncallofthemountain",
+          "title": "Horizon Call of the Mountain",
+          "score": 0.74,
+          "match_type": "token_overlap",
+          "matched_alias": "Horizon Call of mountain",
+          "sources": [
+            "availability_vr_30",
+            "availability_vr_60"
+          ],
+          "zones": [
+            "VR Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "operation_has_controls"
+          ]
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "exact_mw3",
+      "question": "Modern Warfare III ปุ่มอะไร",
+      "operation": "controls",
+      "expected_status": "exact",
+      "expected_title": "Call of Duty: Modern Warfare III",
+      "baseline": {
+        "status": "unknown",
+        "title": "Call of Duty: Modern Warfare III",
+        "score": 0.74,
+        "margin": 1.0,
+        "correct": false,
+        "elapsed_sec": 0.0418,
+        "reason": "top_candidate_below_threshold"
+      },
+      "reranker": {
+        "status": "not_run",
+        "title": "",
+        "score": 0.0,
+        "margin": 0.0,
+        "correct": false,
+        "elapsed_sec": 0.0,
+        "ranked": []
+      },
+      "resolver_candidates": [
+        {
+          "entity_id": "callofdutymodernwarfareiii",
+          "title": "Call of Duty: Modern Warfare III",
+          "score": 0.74,
+          "match_type": "token_overlap",
+          "matched_alias": "Call of Duty: Modern Warfare III",
+          "sources": [
+            "availability_ps5_01_02"
+          ],
+          "zones": [
+            "PlayStation 5 Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "operation_has_controls"
+          ]
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "amb_mario_controls",
+      "question": "Mario ปุ่มอะไร",
+      "operation": "controls",
+      "expected_status": "ambiguous",
+      "expected_title": "",
+      "baseline": {
+        "status": "ambiguous",
+        "title": "Mario Kart 8 Deluxe",
+        "score": 0.82,
+        "margin": 0.0,
+        "correct": true,
+        "elapsed_sec": 0.0299,
+        "reason": "family_name_has_multiple_current_candidates"
+      },
+      "reranker": {
+        "status": "not_run",
+        "title": "",
+        "score": 0.0,
+        "margin": 0.0,
+        "correct": false,
+        "elapsed_sec": 0.0,
+        "ranked": []
+      },
+      "resolver_candidates": [
+        {
+          "entity_id": "mariokart8deluxe",
+          "title": "Mario Kart 8 Deluxe",
+          "score": 0.82,
+          "match_type": "family",
+          "matched_alias": "Mario",
+          "sources": [
+            "availability_nintendo_1_2",
+            "availability_nintendo_1_4"
+          ],
+          "zones": [
+            "Nintendo Switch Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "family_candidate"
+          ]
+        },
+        {
+          "entity_id": "mariopartysuperstars",
+          "title": "Mario Party Superstars",
+          "score": 0.82,
+          "match_type": "family",
+          "matched_alias": "Mario",
+          "sources": [
+            "availability_nintendo_1_2",
+            "availability_nintendo_1_4"
+          ],
+          "zones": [
+            "Nintendo Switch Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "family_candidate"
+          ]
+        },
+        {
+          "entity_id": "newsupermariobrosudeluxe",
+          "title": "New Super Mario Bros. U Deluxe",
+          "score": 0.82,
+          "match_type": "family",
+          "matched_alias": "Mario",
+          "sources": [
+            "availability_nintendo_1_2",
+            "availability_nintendo_1_4"
+          ],
+          "zones": [
+            "Nintendo Switch Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "family_candidate"
+          ]
+        },
+        {
+          "entity_id": "supermarioodyssey",
+          "title": "Super Mario Odyssey",
+          "score": 0.82,
+          "match_type": "family",
+          "matched_alias": "Mario",
+          "sources": [
+            "availability_nintendo_1_2",
+            "availability_nintendo_1_4"
+          ],
+          "zones": [
+            "Nintendo Switch Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "family_candidate"
+          ]
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "amb_mario_gameplay",
+      "question": "Mario เล่นยังไง",
+      "operation": "gameplay",
+      "expected_status": "ambiguous",
+      "expected_title": "",
+      "baseline": {
+        "status": "ambiguous",
+        "title": "Mario Kart 8 Deluxe",
+        "score": 0.82,
+        "margin": 0.0,
+        "correct": true,
+        "elapsed_sec": 0.0269,
+        "reason": "family_name_has_multiple_current_candidates"
+      },
+      "reranker": {
+        "status": "not_run",
+        "title": "",
+        "score": 0.0,
+        "margin": 0.0,
+        "correct": false,
+        "elapsed_sec": 0.0,
+        "ranked": []
+      },
+      "resolver_candidates": [
+        {
+          "entity_id": "mariokart8deluxe",
+          "title": "Mario Kart 8 Deluxe",
+          "score": 0.82,
+          "match_type": "family",
+          "matched_alias": "Mario",
+          "sources": [
+            "availability_nintendo_1_2",
+            "availability_nintendo_1_4"
+          ],
+          "zones": [
+            "Nintendo Switch Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "family_candidate"
+          ]
+        },
+        {
+          "entity_id": "mariopartysuperstars",
+          "title": "Mario Party Superstars",
+          "score": 0.82,
+          "match_type": "family",
+          "matched_alias": "Mario",
+          "sources": [
+            "availability_nintendo_1_2",
+            "availability_nintendo_1_4"
+          ],
+          "zones": [
+            "Nintendo Switch Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "family_candidate"
+          ]
+        },
+        {
+          "entity_id": "newsupermariobrosudeluxe",
+          "title": "New Super Mario Bros. U Deluxe",
+          "score": 0.82,
+          "match_type": "family",
+          "matched_alias": "Mario",
+          "sources": [
+            "availability_nintendo_1_2",
+            "availability_nintendo_1_4"
+          ],
+          "zones": [
+            "Nintendo Switch Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "family_candidate"
+          ]
+        },
+        {
+          "entity_id": "supermarioodyssey",
+          "title": "Super Mario Odyssey",
+          "score": 0.82,
+          "match_type": "family",
+          "matched_alias": "Mario",
+          "sources": [
+            "availability_nintendo_1_2",
+            "availability_nintendo_1_4"
+          ],
+          "zones": [
+            "Nintendo Switch Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "family_candidate"
+          ]
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "exact_mario_kart",
+      "question": "Mario Kart 8 Deluxe ปุ่มอะไร",
+      "operation": "controls",
+      "expected_status": "exact",
+      "expected_title": "Mario Kart 8 Deluxe",
+      "baseline": {
+        "status": "exact",
+        "title": "Mario Kart 8 Deluxe",
+        "score": 1.0,
+        "margin": 0.14,
+        "correct": true,
+        "elapsed_sec": 0.035,
+        "reason": "top_exact_alias_overrides_parent_match"
+      },
+      "reranker": {
+        "status": "not_run",
+        "title": "",
+        "score": 0.0,
+        "margin": 0.0,
+        "correct": false,
+        "elapsed_sec": 0.0,
+        "ranked": []
+      },
+      "resolver_candidates": [
+        {
+          "entity_id": "mariokart8deluxe",
+          "title": "Mario Kart 8 Deluxe",
+          "score": 1.0,
+          "match_type": "exact_alias",
+          "matched_alias": "Mario Kart 8 Deluxe",
+          "sources": [
+            "availability_nintendo_1_2",
+            "availability_nintendo_1_4"
+          ],
+          "zones": [
+            "Nintendo Switch Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "operation_has_controls"
+          ]
+        },
+        {
+          "entity_id": "newsupermariobrosudeluxe",
+          "title": "New Super Mario Bros. U Deluxe",
+          "score": 0.86,
+          "match_type": "token_overlap",
+          "matched_alias": "Mario u deluxe",
+          "sources": [
+            "availability_nintendo_1_2",
+            "availability_nintendo_1_4"
+          ],
+          "zones": [
+            "Nintendo Switch Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "operation_has_controls"
+          ]
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "exact_mario_party",
+      "question": "Mario Party Superstars เล่นยังไง",
+      "operation": "gameplay",
+      "expected_status": "exact",
+      "expected_title": "Mario Party Superstars",
+      "baseline": {
+        "status": "exact",
+        "title": "Mario Party Superstars",
+        "score": 1.0,
+        "margin": 0.14,
+        "correct": true,
+        "elapsed_sec": 0.0402,
+        "reason": "top_exact_alias_overrides_parent_match"
+      },
+      "reranker": {
+        "status": "not_run",
+        "title": "",
+        "score": 0.0,
+        "margin": 0.0,
+        "correct": false,
+        "elapsed_sec": 0.0,
+        "ranked": []
+      },
+      "resolver_candidates": [
+        {
+          "entity_id": "mariopartysuperstars",
+          "title": "Mario Party Superstars",
+          "score": 1.0,
+          "match_type": "exact_alias",
+          "matched_alias": "Mario Party Superstars",
+          "sources": [
+            "availability_nintendo_1_2",
+            "availability_nintendo_1_4"
+          ],
+          "zones": [
+            "Nintendo Switch Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "operation_has_controls"
+          ]
+        },
+        {
+          "entity_id": "newsupermariobrosudeluxe",
+          "title": "New Super Mario Bros. U Deluxe",
+          "score": 0.86,
+          "match_type": "token_overlap",
+          "matched_alias": "Mario U",
+          "sources": [
+            "availability_nintendo_1_2",
+            "availability_nintendo_1_4"
+          ],
+          "zones": [
+            "Nintendo Switch Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "operation_has_controls"
+          ]
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "exact_mario_odyssey",
+      "question": "Super Mario Odyssey ปุ่มอะไร",
+      "operation": "controls",
+      "expected_status": "exact",
+      "expected_title": "Super Mario Odyssey",
+      "baseline": {
+        "status": "exact",
+        "title": "Super Mario Odyssey",
+        "score": 1.0,
+        "margin": 0.14,
+        "correct": true,
+        "elapsed_sec": 0.0359,
+        "reason": "top_exact_alias_overrides_parent_match"
+      },
+      "reranker": {
+        "status": "not_run",
+        "title": "",
+        "score": 0.0,
+        "margin": 0.0,
+        "correct": false,
+        "elapsed_sec": 0.0,
+        "ranked": []
+      },
+      "resolver_candidates": [
+        {
+          "entity_id": "supermarioodyssey",
+          "title": "Super Mario Odyssey",
+          "score": 1.0,
+          "match_type": "exact_alias",
+          "matched_alias": "Super Mario Odyssey",
+          "sources": [
+            "availability_nintendo_1_2",
+            "availability_nintendo_1_4"
+          ],
+          "zones": [
+            "Nintendo Switch Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "operation_has_controls"
+          ]
+        },
+        {
+          "entity_id": "newsupermariobrosudeluxe",
+          "title": "New Super Mario Bros. U Deluxe",
+          "score": 0.86,
+          "match_type": "token_overlap",
+          "matched_alias": "Mario U",
+          "sources": [
+            "availability_nintendo_1_2",
+            "availability_nintendo_1_4"
+          ],
+          "zones": [
+            "Nintendo Switch Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "operation_has_controls"
+          ]
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "amb_resident_gameplay",
+      "question": "Resident เล่นยังไง",
+      "operation": "gameplay",
+      "expected_status": "ambiguous",
+      "expected_title": "",
+      "baseline": {
+        "status": "ambiguous",
+        "title": "Resident Evil 4",
+        "score": 0.82,
+        "margin": 0.0,
+        "correct": true,
+        "elapsed_sec": 0.0359,
+        "reason": "family_name_has_multiple_current_candidates"
+      },
+      "reranker": {
+        "status": "not_run",
+        "title": "",
+        "score": 0.0,
+        "margin": 0.0,
+        "correct": false,
+        "elapsed_sec": 0.0,
+        "ranked": []
+      },
+      "resolver_candidates": [
+        {
+          "entity_id": "residentevil4",
+          "title": "Resident Evil 4",
+          "score": 0.82,
+          "match_type": "family",
+          "matched_alias": "Resident Evil",
+          "sources": [
+            "availability_ps5_01_02",
+            "availability_vr_30",
+            "availability_vr_60"
+          ],
+          "zones": [
+            "PlayStation 5 Zone",
+            "VR Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "family_candidate"
+          ]
+        },
+        {
+          "entity_id": "residentevilvillage",
+          "title": "Resident Evil Village",
+          "score": 0.82,
+          "match_type": "family",
+          "matched_alias": "Resident Evil",
+          "sources": [
+            "availability_ps5_01_02",
+            "availability_vr_30",
+            "availability_vr_60"
+          ],
+          "zones": [
+            "PlayStation 5 Zone",
+            "VR Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "family_candidate"
+          ]
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "exact_re4",
+      "question": "Resident Evil 4 ปุ่มอะไร",
+      "operation": "controls",
+      "expected_status": "exact",
+      "expected_title": "Resident Evil 4",
+      "baseline": {
+        "status": "exact",
+        "title": "Resident Evil 4",
+        "score": 1.0,
+        "margin": 0.14,
+        "correct": true,
+        "elapsed_sec": 0.0357,
+        "reason": "top_exact_alias_overrides_parent_match"
+      },
+      "reranker": {
+        "status": "not_run",
+        "title": "",
+        "score": 0.0,
+        "margin": 0.0,
+        "correct": false,
+        "elapsed_sec": 0.0,
+        "ranked": []
+      },
+      "resolver_candidates": [
+        {
+          "entity_id": "residentevil4",
+          "title": "Resident Evil 4",
+          "score": 1.0,
+          "match_type": "exact_alias",
+          "matched_alias": "Resident Evil 4",
+          "sources": [
+            "availability_ps5_01_02",
+            "availability_vr_30",
+            "availability_vr_60"
+          ],
+          "zones": [
+            "PlayStation 5 Zone",
+            "VR Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "operation_has_controls"
+          ]
+        },
+        {
+          "entity_id": "residentevilvillage",
+          "title": "Resident Evil Village",
+          "score": 0.86,
+          "match_type": "token_overlap",
+          "matched_alias": "Resident evil 8",
+          "sources": [
+            "availability_ps5_01_02",
+            "availability_vr_30",
+            "availability_vr_60"
+          ],
+          "zones": [
+            "PlayStation 5 Zone",
+            "VR Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "operation_has_controls"
+          ]
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "exact_revillage",
+      "question": "Resident Evil Village เล่นยังไง",
+      "operation": "gameplay",
+      "expected_status": "exact",
+      "expected_title": "Resident Evil Village",
+      "baseline": {
+        "status": "exact",
+        "title": "Resident Evil Village",
+        "score": 1.0,
+        "margin": 0.14,
+        "correct": true,
+        "elapsed_sec": 0.0409,
+        "reason": "top_exact_alias_overrides_parent_match"
+      },
+      "reranker": {
+        "status": "not_run",
+        "title": "",
+        "score": 0.0,
+        "margin": 0.0,
+        "correct": false,
+        "elapsed_sec": 0.0,
+        "ranked": []
+      },
+      "resolver_candidates": [
+        {
+          "entity_id": "residentevilvillage",
+          "title": "Resident Evil Village",
+          "score": 1.0,
+          "match_type": "exact_alias",
+          "matched_alias": "Resident Evil Village",
+          "sources": [
+            "availability_ps5_01_02",
+            "availability_vr_30",
+            "availability_vr_60"
+          ],
+          "zones": [
+            "PlayStation 5 Zone",
+            "VR Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "operation_has_controls"
+          ]
+        },
+        {
+          "entity_id": "residentevil4",
+          "title": "Resident Evil 4",
+          "score": 0.86,
+          "match_type": "token_overlap",
+          "matched_alias": "Resident Evil 4",
+          "sources": [
+            "availability_ps5_01_02",
+            "availability_vr_30",
+            "availability_vr_60"
+          ],
+          "zones": [
+            "PlayStation 5 Zone",
+            "VR Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "operation_has_controls"
+          ]
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "amb_overcook_gameplay",
+      "question": "Over cook เล่นยังไง",
+      "operation": "gameplay",
+      "expected_status": "ambiguous",
+      "expected_title": "",
+      "baseline": {
+        "status": "ambiguous",
+        "title": "Overcooked!",
+        "score": 0.82,
+        "margin": 0.0,
+        "correct": true,
+        "elapsed_sec": 0.0299,
+        "reason": "family_name_has_multiple_current_candidates"
+      },
+      "reranker": {
+        "status": "not_run",
+        "title": "",
+        "score": 0.0,
+        "margin": 0.0,
+        "correct": false,
+        "elapsed_sec": 0.0,
+        "ranked": []
+      },
+      "resolver_candidates": [
+        {
+          "entity_id": "overcooked",
+          "title": "Overcooked!",
+          "score": 0.82,
+          "match_type": "family",
+          "matched_alias": "Overcooked",
+          "sources": [
+            "availability_nintendo_1_2",
+            "availability_nintendo_1_4"
+          ],
+          "zones": [
+            "Nintendo Switch Zone"
+          ],
+          "has_controls": false,
+          "reasons": [
+            "family_candidate"
+          ]
+        },
+        {
+          "entity_id": "overcooked2",
+          "title": "Overcooked! 2",
+          "score": 0.82,
+          "match_type": "family",
+          "matched_alias": "Overcooked",
+          "sources": [
+            "availability_nintendo_1_2",
+            "availability_nintendo_1_4"
+          ],
+          "zones": [
+            "Nintendo Switch Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "family_candidate"
+          ]
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "exact_overcooked2",
+      "question": "Overcooked 2 มีปุ่มอะไรบ้าง",
+      "operation": "controls",
+      "expected_status": "exact",
+      "expected_title": "Overcooked! 2",
+      "baseline": {
+        "status": "exact",
+        "title": "Overcooked! 2",
+        "score": 1.0,
+        "margin": 0.09,
+        "correct": true,
+        "elapsed_sec": 0.0442,
+        "reason": "top_exact_alias_overrides_parent_match"
+      },
+      "reranker": {
+        "status": "not_run",
+        "title": "",
+        "score": 0.0,
+        "margin": 0.0,
+        "correct": false,
+        "elapsed_sec": 0.0,
+        "ranked": []
+      },
+      "resolver_candidates": [
+        {
+          "entity_id": "overcooked2",
+          "title": "Overcooked! 2",
+          "score": 1.0,
+          "match_type": "exact_alias",
+          "matched_alias": "Overcooked 2",
+          "sources": [
+            "availability_nintendo_1_2",
+            "availability_nintendo_1_4"
+          ],
+          "zones": [
+            "Nintendo Switch Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "operation_has_controls"
+          ]
+        },
+        {
+          "entity_id": "overcooked",
+          "title": "Overcooked!",
+          "score": 0.91,
+          "match_type": "compact_alias",
+          "matched_alias": "Overcooked!",
+          "sources": [
+            "availability_nintendo_1_2",
+            "availability_nintendo_1_4"
+          ],
+          "zones": [
+            "Nintendo Switch Zone"
+          ],
+          "has_controls": false,
+          "reasons": [
+            "operation_missing_controls"
+          ]
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "exact_gran_turismo",
+      "question": "Gran Turismo 7 ปุ่ม",
+      "operation": "controls",
+      "expected_status": "exact",
+      "expected_title": "Gran Turismo 7",
+      "baseline": {
+        "status": "exact",
+        "title": "Gran Turismo 7",
+        "score": 1.0,
+        "margin": 1.0,
+        "correct": true,
+        "elapsed_sec": 0.0403,
+        "reason": "top_exact_alias_overrides_parent_match"
+      },
+      "reranker": {
+        "status": "not_run",
+        "title": "",
+        "score": 0.0,
+        "margin": 0.0,
+        "correct": false,
+        "elapsed_sec": 0.0,
+        "ranked": []
+      },
+      "resolver_candidates": [
+        {
+          "entity_id": "granturismo7",
+          "title": "Gran Turismo 7",
+          "score": 1.0,
+          "match_type": "exact_alias",
+          "matched_alias": "Gran Turismo 7",
+          "sources": [
+            "availability_cockpit_01_02"
+          ],
+          "zones": [
+            "Cockpit Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "operation_has_controls"
+          ]
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "exact_gt7_thai_typo",
+      "question": "แกรนทูริสโม่ 7 ปุ่ม",
+      "operation": "controls",
+      "expected_status": "exact",
+      "expected_title": "Gran Turismo 7",
+      "baseline": {
+        "status": "exact",
+        "title": "Gran Turismo 7",
+        "score": 1.0,
+        "margin": 1.0,
+        "correct": true,
+        "elapsed_sec": 0.0421,
+        "reason": "top_exact_alias_overrides_parent_match"
+      },
+      "reranker": {
+        "status": "not_run",
+        "title": "",
+        "score": 0.0,
+        "margin": 0.0,
+        "correct": false,
+        "elapsed_sec": 0.0,
+        "ranked": []
+      },
+      "resolver_candidates": [
+        {
+          "entity_id": "granturismo7",
+          "title": "Gran Turismo 7",
+          "score": 1.0,
+          "match_type": "exact_alias",
+          "matched_alias": "แกรนทูริสโม่ 7",
+          "sources": [
+            "availability_cockpit_01_02"
+          ],
+          "zones": [
+            "Cockpit Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "operation_has_controls"
+          ]
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "exact_tekken",
+      "question": "เทคเคน 8 ปุ่มเตะขวากดอะไร",
+      "operation": "controls",
+      "expected_status": "exact",
+      "expected_title": "TEKKEN 8",
+      "baseline": {
+        "status": "exact",
+        "title": "TEKKEN 8",
+        "score": 1.0,
+        "margin": 1.0,
+        "correct": true,
+        "elapsed_sec": 0.0566,
+        "reason": "top_exact_alias_overrides_parent_match"
+      },
+      "reranker": {
+        "status": "not_run",
+        "title": "",
+        "score": 0.0,
+        "margin": 0.0,
+        "correct": false,
+        "elapsed_sec": 0.0,
+        "ranked": []
+      },
+      "resolver_candidates": [
+        {
+          "entity_id": "tekken8",
+          "title": "TEKKEN 8",
+          "score": 1.0,
+          "match_type": "exact_alias",
+          "matched_alias": "เทคเคน 8",
+          "sources": [
+            "availability_pc_01_02",
+            "availability_ps5_01_02"
+          ],
+          "zones": [
+            "PC Zone",
+            "PlayStation 5 Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "operation_has_controls"
+          ]
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "exact_valorant",
+      "question": "วาโล ปุ่มอะไร",
+      "operation": "controls",
+      "expected_status": "exact",
+      "expected_title": "VALORANT",
+      "baseline": {
+        "status": "exact",
+        "title": "VALORANT",
+        "score": 1.0,
+        "margin": 1.0,
+        "correct": true,
+        "elapsed_sec": 0.04,
+        "reason": "top_exact_alias_overrides_parent_match"
+      },
+      "reranker": {
+        "status": "not_run",
+        "title": "",
+        "score": 0.0,
+        "margin": 0.0,
+        "correct": false,
+        "elapsed_sec": 0.0,
+        "ranked": []
+      },
+      "resolver_candidates": [
+        {
+          "entity_id": "valorant",
+          "title": "VALORANT",
+          "score": 1.0,
+          "match_type": "exact_alias",
+          "matched_alias": "วาโร",
+          "sources": [
+            "availability_pc_01_02",
+            "availability_pc_03_10"
+          ],
+          "zones": [
+            "PC Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "operation_has_controls"
+          ]
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "exact_little_nightmares",
+      "question": "ลิตเติลไนท์แม ปุ่มวิ่งกดอะไร",
+      "operation": "controls",
+      "expected_status": "exact",
+      "expected_title": "Little Nightmares II",
+      "baseline": {
+        "status": "exact",
+        "title": "Little Nightmares II",
+        "score": 1.0,
+        "margin": 1.0,
+        "correct": true,
+        "elapsed_sec": 0.053,
+        "reason": "top_exact_alias_overrides_parent_match"
+      },
+      "reranker": {
+        "status": "not_run",
+        "title": "",
+        "score": 0.0,
+        "margin": 0.0,
+        "correct": false,
+        "elapsed_sec": 0.0,
+        "ranked": []
+      },
+      "resolver_candidates": [
+        {
+          "entity_id": "littlenightmaresii",
+          "title": "Little Nightmares II",
+          "score": 1.0,
+          "match_type": "exact_alias",
+          "matched_alias": "ลิตเติลไนท์แม",
+          "sources": [
+            "availability_nintendo_1_2",
+            "availability_nintendo_1_4"
+          ],
+          "zones": [
+            "Nintendo Switch Zone"
+          ],
+          "has_controls": true,
+          "reasons": [
+            "operation_has_controls"
+          ]
+        }
+      ],
+      "note": ""
+    }
+  ]
+}

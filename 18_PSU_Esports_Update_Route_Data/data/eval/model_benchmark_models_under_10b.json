@@ -1,0 +1,75 @@
+{
+  "version": "2026-07-31",
+  "purpose": "Compare No-LLM baseline and local Ollama models under 10B parameters for PSU Esports Chatbot.",
+  "ollama_model_dir": "D:\\OllamaModels",
+  "ollama_host": "http://127.0.0.1:11434",
+  "timeout_sec": 20,
+  "num_predict": 256,
+  "models": [
+    {
+      "name": "qwen3:4b",
+      "params_b": 4,
+      "family": "Qwen3",
+      "notes": "Fast Thai-capable reasoning/instruct model. Disable thinking for chatbot latency tests."
+    },
+    {
+      "name": "qwen2.5:3b",
+      "params_b": 3,
+      "family": "Qwen2.5",
+      "notes": "Small baseline already used by the project; useful for speed comparison."
+    },
+    {
+      "name": "qwen2.5:7b",
+      "params_b": 7,
+      "family": "Qwen2.5",
+      "notes": "Stronger than 3B while still below 10B."
+    },
+    {
+      "name": "qwen3:8b",
+      "params_b": 8,
+      "family": "Qwen3",
+      "notes": "Higher quality candidate under 10B; may be slower than 4B."
+    },
+    {
+      "name": "scb10x/llama3.2-typhoon2-3b-instruct",
+      "params_b": 3,
+      "family": "Typhoon 2",
+      "notes": "Thai-focused 3B model from SCB10X/Typhoon."
+    },
+    {
+      "name": "scb10x/llama3.1-typhoon2-8b-instruct",
+      "params_b": 8,
+      "family": "Typhoon 2",
+      "notes": "Thai-focused 8B model; likely higher Thai quality but slower."
+    },
+    {
+      "name": "scb10x/typhoon2.5-qwen3-4b",
+      "params_b": 4,
+      "family": "Typhoon 2.5 / Qwen3",
+      "notes": "Thai-focused Qwen3 4B candidate."
+    },
+    {
+      "name": "scb10x/typhoon2.1-gemma3-4b",
+      "params_b": 4,
+      "family": "Typhoon 2.1 / Gemma3",
+      "notes": "Thai-focused Gemma3 4B candidate."
+    },
+    {
+      "name": "llama3.1:8b",
+      "params_b": 8,
+      "family": "Llama 3.1",
+      "notes": "General multilingual 8B baseline."
+    },
+    {
+      "name": "sailor2:8b",
+      "params_b": 8,
+      "family": "Sailor2",
+      "notes": "Southeast Asia multilingual candidate; useful as non-Typhoon Thai comparison."
+    }
+  ],
+  "fallback_models_if_pull_fails": [
+    "gemma3:4b",
+    "gemma2:9b",
+    "mistral:7b"
+  ]
+}

@@ -1,0 +1,3113 @@
+[
+  {
+    "case_id": "CR-001",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "VALORANT กติกาการแข่งขันคืออะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_fact_card",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "rag/retrieval",
+    "confidence": 0.96,
+    "latency_sec": 0.6586,
+    "wall_sec": 0.6903,
+    "answer": "คำตอบ: VALORANT จำกัดคอนเทนต์ใหม่: Agent ใหม่ต้องรอประมาณ 2 สัปดาห์ และแผนที่ใหม่ต้องรอประมาณ 4 สัปดาห์ก่อนใช้แข่ง\n\nหลักฐานจากกติกา:\n•    เอกสารระบุข้อจำกัด Agent ใหม่ประมาณ 2 สัปดาห์ และแผนที่ใหม่ประมาณ 4 สัปดาห์\n\nอ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament\nแหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "sources": [
+      "valorant_agent_map_restriction: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; rule terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-002",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "VALORANT ใช้ผู้เล่นกี่คน",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0448,
+    "wall_sec": 0.0449,
+    "answer": "VALORANT ใช้ผู้เล่นตัวจริงทีมละ 5 คนครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; count terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-003",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "VALORANT มาสายจะโดนอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0421,
+    "wall_sec": 0.0422,
+    "answer": "VALORANT ต้องรายงานตัวก่อนแข่งครับ\n•    ข้อมูลที่พบ: ต้องมาถึงสนามแข่งไม่น้อยกว่า 30 นาทีก่อนเวลาแข่ง\nแหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; no clear operation terms; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-004",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "VALORANT pause ได้ไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0309,
+    "wall_sec": 0.0309,
+    "answer": "VALORANT มี Pause หลัก 3 ประเภทครับ\n•    Tactical Timeout\n•    Technical Pause\n•    Emergency Pause\nแหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; named game availability terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-005",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "VALORANT ถ้าเกมหลุดทำยังไง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0554,
+    "wall_sec": 0.0555,
+    "answer": "VALORANT หากเกิดปัญหาหลุดหรืออุปกรณ์ขัดข้องให้ใช้ Technical/Emergency Pause ตามกติกาและแจ้งเจ้าหน้าที่ครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; how-to terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-006",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "VALORANT ขอ restart ได้ไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.045,
+    "wall_sec": 0.0451,
+    "answer": "VALORANT มีข้อมูลเรื่อง bug/challenge/rollback ครับ\n•    ถ้าเกิดปัญหาต้องแจ้งเจ้าหน้าที่ และการย้อนรอบขึ้นกับเงื่อนไขในกติกา\nแหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; named game availability terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-007",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "VALORANT รูปแบบการแข่งขันเป็นยังไง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0787,
+    "wall_sec": 0.0788,
+    "answer": "VALORANT มีรูปแบบการแข่งขันตามเอกสารกติกาครับ\n•    ถ้าต้องการรูปแบบรอบใดรอบหนึ่ง ควรถามระบุรอบเพิ่มเติม\nแหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; how-to terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-008",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "VALORANT รอบชิงเล่นกี่เกม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0534,
+    "wall_sec": 0.0534,
+    "answer": "VALORANT ยังไม่พบข้อมูลรอบชิงแบบฟันธงจากคำถามนี้ครับ\n•    ควรดูประกาศ bracket/format ของรายการประกอบ\nแหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "game catalog/count terms override zone/equipment domain; competition route overrides game/count ambiguity; count terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-009",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "VALORANT มีตัวสำรองได้ไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0535,
+    "wall_sec": 0.0536,
+    "answer": "VALORANT มีข้อมูลช่วงเตรียมตัวว่าในพื้นที่ Match Prep มีผู้เล่นได้ไม่เกิน 6 คนครับ\n•    ตีความได้ว่ามีพื้นที่สำหรับตัวสำรอง/บุคลากรจำกัด แต่การเปลี่ยนตัวต้องยึดกติกาผู้จัด\nแหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; named game availability terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-010",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "VALORANT มีข้อห้ามอะไรบ้าง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_fact_card",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "rag/retrieval",
+    "confidence": 0.96,
+    "latency_sec": 0.0585,
+    "wall_sec": 0.0585,
+    "answer": "คำตอบ: VALORANT ใช้แผนที่ Abyss, Ascent, Bind, Corrode, Haven, Lotus และ Sunset\n\nหลักฐานจากกติกา:\n•    เอกสารระบุ map pool ของ VALORANT ได้แก่ Abyss, Ascent, Bind, Corrode, Haven, Lotus และ Sunset\n\nอ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament\nแหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "sources": [
+      "valorant_map_pool: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; rule terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-011",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "VALORANT ถ้าใช้ bug จะโดนอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.047,
+    "wall_sec": 0.0471,
+    "answer": "VALORANT มีบทลงโทษหลายระดับครับ\n•    ตัวอย่าง: Round Loss, Map Forfeit, Match Forfeit และโทษกรณี Cheating/Match fixing\nแหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; no clear operation terms; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-012",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "VALORANT ต้องเช็คอินก่อนแข่งไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0653,
+    "wall_sec": 0.0653,
+    "answer": "VALORANT ต้องรายงานตัวก่อนแข่งครับ\n•    ข้อมูลที่พบ: ต้องมาถึงสนามแข่งไม่น้อยกว่า 30 นาทีก่อนเวลาแข่ง\nแหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; named game availability terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-013",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "VALORANT ใช้บัญชีอะไรแข่ง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0583,
+    "wall_sec": 0.0584,
+    "answer": "VALORANT ยังไม่พบข้อมูลชัดเจนว่าใช้บัญชีส่วนตัวหรือบัญชีที่ผู้จัดเตรียมให้ครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; no clear operation terms; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-014",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "VALORANT แผนที่มีอะไรบ้าง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0537,
+    "wall_sec": 0.0537,
+    "answer": "VALORANT มีข้อมูลเรื่อง map pool และการแบนแผนที่ครับ\n•    map pool ที่พบ: Abyss, Ascent, Bind, Corrode, Haven, Lotus และ Sunset\nแหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; list terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-015",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "VALORANT สรุปกติกาสั้นๆ",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_fact_card",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "rag/retrieval",
+    "confidence": 0.96,
+    "latency_sec": 0.0714,
+    "wall_sec": 0.0714,
+    "answer": "คำตอบ: VALORANT ขอ Tactical Timeout ได้ทีมละ 2 ครั้งต่อแผนที่ ครั้งละ 60 วินาที และถ้าเข้า Overtime จะได้เพิ่มอีก 1 ครั้ง\nแหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "sources": [
+      "valorant_tactical_timeout: local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; rule terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-016",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "CS2 กติกาการแข่งขันคืออะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_fact_card",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "rag/retrieval",
+    "confidence": 0.96,
+    "latency_sec": 0.7539,
+    "wall_sec": 0.7539,
+    "answer": "คำตอบของ Counter-Strike 2: CS2 ใช้แผนที่ Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train\n\nหลักฐานจากกติกา:\n•    เอกสารระบุ map pool สำหรับการแข่งขัน CS2 ได้แก่ Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train\n\nอ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "cs2_map_pool: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=4; competition route overrides game/count ambiguity; rule terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-017",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "CS2 ใช้ผู้เล่นกี่คน",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0709,
+    "wall_sec": 0.071,
+    "answer": "Counter-Strike 2: CS2 ใช้ผู้เล่นทีมละ 5 คนครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; competition route overrides game/count ambiguity; count terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-018",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "CS2 มาสายจะโดนอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.072,
+    "wall_sec": 0.072,
+    "answer": "Counter-Strike 2: CS2 ถ้ามาสายหรือไม่ยืนยันเข้าแข่งขันก่อนแมตช์ ทีมเสี่ยงถูกตัดสิทธิ์ครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; competition route overrides game/count ambiguity; no clear operation terms; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-019",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "CS2 pause ได้ไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0384,
+    "wall_sec": 0.0385,
+    "answer": "Counter-Strike 2: CS2 มีทั้ง Technical Pause และ Tactical Timeout ครับ\n•    Technical Pause ใช้กรณีปัญหาขัดข้อง\n•    Tactical Timeout ใช้ตามเงื่อนไขช่วง Freeze time\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; competition route overrides game/count ambiguity; no clear operation terms; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-020",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "CS2 ถ้าเกมหลุดทำยังไง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0813,
+    "wall_sec": 0.0813,
+    "answer": "Counter-Strike 2: CS2 ถ้าเกิดปัญหาเครื่อง/การเชื่อมต่อ ให้ใช้ Technical Pause ตามกติกาและแจ้งเจ้าหน้าที่ครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; competition route overrides game/count ambiguity; how-to terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-021",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "CS2 ขอ restart ได้ไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0532,
+    "wall_sec": 0.0532,
+    "answer": "Counter-Strike 2: CS2 ยังไม่พบข้อมูล remake/restart แบบฟันธงจากคำถามนี้ครับ\n•    หากเกิดปัญหาให้แจ้งผู้ตัดสินและยึด Technical Pause/คำตัดสินกรรมการ\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; competition route overrides game/count ambiguity; no clear operation terms; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-022",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "CS2 รูปแบบการแข่งขันเป็นยังไง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.1091,
+    "wall_sec": 0.1092,
+    "answer": "Counter-Strike 2: CS2 มีรูปแบบการแข่งขันตามเอกสารกติกาครับ\n•    ถ้าต้องการรอบเฉพาะ ให้ถามระบุรอบหรือ bracket เพิ่ม\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; competition route overrides game/count ambiguity; how-to terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-023",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "CS2 รอบชิงเล่นกี่เกม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0715,
+    "wall_sec": 0.0716,
+    "answer": "Counter-Strike 2: CS2 ยังไม่พบข้อมูลรอบชิงแบบฟันธงจากคำถามนี้ครับ\n•    ควรดูประกาศ bracket/format ของรายการประกอบ\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "game catalog/count terms override zone/equipment domain; competition route overrides game/count ambiguity; count terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-024",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "CS2 มีตัวสำรองได้ไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.084,
+    "wall_sec": 0.0841,
+    "answer": "Counter-Strike 2: CS2 ยังไม่พบข้อมูลตัวสำรองแบบแยกชัดเจนจากคำถามนี้ครับ\n•    ข้อมูลที่ยืนยันได้คือทีมละ 5 คน\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; competition route overrides game/count ambiguity; no clear operation terms; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-025",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "CS2 มีข้อห้ามอะไรบ้าง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_fact_card",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "rag/retrieval",
+    "confidence": 0.96,
+    "latency_sec": 0.081,
+    "wall_sec": 0.0811,
+    "answer": "คำตอบของ Counter-Strike 2: CS2 ใช้แผนที่ Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train\n\nหลักฐานจากกติกา:\n•    เอกสารระบุ map pool สำหรับการแข่งขัน CS2 ได้แก่ Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train\n\nอ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "cs2_map_pool: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; competition route overrides game/count ambiguity; rule terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-026",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "CS2 ถ้าใช้ bug จะโดนอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0666,
+    "wall_sec": 0.0666,
+    "answer": "Counter-Strike 2: CS2 มีบทลงโทษครับ\n•    ตัวอย่าง: ใช้บัค/โกง/พฤติกรรมไม่เหมาะสม อาจถูกปรับแพ้เป็นรอบ แมตช์ หรือตัดสิทธิ์ตามความรุนแรง\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; competition route overrides game/count ambiguity; no clear operation terms; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-027",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "CS2 ต้องเช็คอินก่อนแข่งไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0897,
+    "wall_sec": 0.0897,
+    "answer": "Counter-Strike 2: CS2 ต้องยืนยัน/รายงานตัวตามเวลาที่ผู้จัดกำหนดครับ\n•    หากไม่ยืนยันก่อนแมตช์มีความเสี่ยงถูกตัดสิทธิ์\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; competition route overrides game/count ambiguity; no clear operation terms; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-028",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "CS2 ใช้บัญชีอะไรแข่ง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0631,
+    "wall_sec": 0.0631,
+    "answer": "Counter-Strike 2: CS2 ยังไม่พบข้อมูลชัดเจนว่าใช้บัญชีส่วนตัวหรือบัญชีที่ผู้จัดเตรียมให้ครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; competition route overrides game/count ambiguity; no clear operation terms; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-029",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "CS2 แผนที่มีอะไรบ้าง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0783,
+    "wall_sec": 0.0784,
+    "answer": "Counter-Strike 2: CS2 มีข้อมูล map pool ครับ\n•    แผนที่ที่พบ: Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; competition route overrides game/count ambiguity; list terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-030",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "CS2 สรุปกติกาสั้นๆ",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_fact_card",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "rag/retrieval",
+    "confidence": 0.96,
+    "latency_sec": 0.0728,
+    "wall_sec": 0.0729,
+    "answer": "คำตอบของ Counter-Strike 2: ต่างกันคือ CS2 Technical Pause ขอได้ทีมละ 2 ครั้ง รวมไม่เกิน 10 นาที ส่วน Tactical Timeout ขอได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "cs2_pause_policy: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; competition route overrides game/count ambiguity; rule terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-031",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "Counter-Strike 2 กติกาการแข่งขันคืออะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_fact_card",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "rag/retrieval",
+    "confidence": 0.96,
+    "latency_sec": 0.0942,
+    "wall_sec": 0.0942,
+    "answer": "คำตอบของ Counter-Strike 2: CS2 ใช้แผนที่ Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train\n\nหลักฐานจากกติกา:\n•    เอกสารระบุ map pool สำหรับการแข่งขัน CS2 ได้แก่ Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train\n\nอ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "cs2_map_pool: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; rule terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-032",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "Counter-Strike 2 ใช้ผู้เล่นกี่คน",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0526,
+    "wall_sec": 0.0527,
+    "answer": "Counter-Strike 2: CS2 ใช้ผู้เล่นทีมละ 5 คนครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; count terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-033",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "Counter-Strike 2 มาสายจะโดนอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0654,
+    "wall_sec": 0.0654,
+    "answer": "Counter-Strike 2: CS2 ถ้ามาสายหรือไม่ยืนยันเข้าแข่งขันก่อนแมตช์ ทีมเสี่ยงถูกตัดสิทธิ์ครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; count terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-034",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "Counter-Strike 2 pause ได้ไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0438,
+    "wall_sec": 0.0439,
+    "answer": "Counter-Strike 2: CS2 มีทั้ง Technical Pause และ Tactical Timeout ครับ\n•    Technical Pause ใช้กรณีปัญหาขัดข้อง\n•    Tactical Timeout ใช้ตามเงื่อนไขช่วง Freeze time\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; count terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-035",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "Counter-Strike 2 ถ้าเกมหลุดทำยังไง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0647,
+    "wall_sec": 0.0648,
+    "answer": "Counter-Strike 2: CS2 ถ้าเกิดปัญหาเครื่อง/การเชื่อมต่อ ให้ใช้ Technical Pause ตามกติกาและแจ้งเจ้าหน้าที่ครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; how-to terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-036",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "Counter-Strike 2 ขอ restart ได้ไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0549,
+    "wall_sec": 0.0549,
+    "answer": "Counter-Strike 2: CS2 ยังไม่พบข้อมูล remake/restart แบบฟันธงจากคำถามนี้ครับ\n•    หากเกิดปัญหาให้แจ้งผู้ตัดสินและยึด Technical Pause/คำตัดสินกรรมการ\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; count terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-037",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "Counter-Strike 2 รูปแบบการแข่งขันเป็นยังไง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0943,
+    "wall_sec": 0.0944,
+    "answer": "Counter-Strike 2: CS2 มีรูปแบบการแข่งขันตามเอกสารกติกาครับ\n•    ถ้าต้องการรอบเฉพาะ ให้ถามระบุรอบหรือ bracket เพิ่ม\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; how-to terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-038",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "Counter-Strike 2 รอบชิงเล่นกี่เกม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0709,
+    "wall_sec": 0.071,
+    "answer": "Counter-Strike 2: CS2 ยังไม่พบข้อมูลรอบชิงแบบฟันธงจากคำถามนี้ครับ\n•    ควรดูประกาศ bracket/format ของรายการประกอบ\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "game catalog/count terms override zone/equipment domain; competition route overrides game/count ambiguity; count terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-039",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "Counter-Strike 2 มีตัวสำรองได้ไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0723,
+    "wall_sec": 0.0723,
+    "answer": "Counter-Strike 2: CS2 ยังไม่พบข้อมูลตัวสำรองแบบแยกชัดเจนจากคำถามนี้ครับ\n•    ข้อมูลที่ยืนยันได้คือทีมละ 5 คน\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; count terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-040",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "Counter-Strike 2 มีข้อห้ามอะไรบ้าง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_fact_card",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "rag/retrieval",
+    "confidence": 0.96,
+    "latency_sec": 0.086,
+    "wall_sec": 0.0861,
+    "answer": "คำตอบของ Counter-Strike 2: CS2 ใช้แผนที่ Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train\n\nหลักฐานจากกติกา:\n•    เอกสารระบุ map pool สำหรับการแข่งขัน CS2 ได้แก่ Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train\n\nอ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "cs2_map_pool: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; rule terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-041",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "Counter-Strike 2 ถ้าใช้ bug จะโดนอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0633,
+    "wall_sec": 0.0633,
+    "answer": "Counter-Strike 2: CS2 มีบทลงโทษครับ\n•    ตัวอย่าง: ใช้บัค/โกง/พฤติกรรมไม่เหมาะสม อาจถูกปรับแพ้เป็นรอบ แมตช์ หรือตัดสิทธิ์ตามความรุนแรง\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; count terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-042",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "Counter-Strike 2 ต้องเช็คอินก่อนแข่งไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0859,
+    "wall_sec": 0.086,
+    "answer": "Counter-Strike 2: CS2 ต้องยืนยัน/รายงานตัวตามเวลาที่ผู้จัดกำหนดครับ\n•    หากไม่ยืนยันก่อนแมตช์มีความเสี่ยงถูกตัดสิทธิ์\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; count terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-043",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "Counter-Strike 2 ใช้บัญชีอะไรแข่ง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0587,
+    "wall_sec": 0.0587,
+    "answer": "Counter-Strike 2: CS2 ยังไม่พบข้อมูลชัดเจนว่าใช้บัญชีส่วนตัวหรือบัญชีที่ผู้จัดเตรียมให้ครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; count terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-044",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "Counter-Strike 2 แผนที่มีอะไรบ้าง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0677,
+    "wall_sec": 0.0677,
+    "answer": "Counter-Strike 2: CS2 มีข้อมูล map pool ครับ\n•    แผนที่ที่พบ: Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; count terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-045",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "Counter-Strike 2 สรุปกติกาสั้นๆ",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_fact_card",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "rag/retrieval",
+    "confidence": 0.96,
+    "latency_sec": 0.0627,
+    "wall_sec": 0.0627,
+    "answer": "คำตอบของ Counter-Strike 2: ต่างกันคือ CS2 Technical Pause ขอได้ทีมละ 2 ครั้ง รวมไม่เกิน 10 นาที ส่วน Tactical Timeout ขอได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "sources": [
+      "cs2_pause_policy: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; rule terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-046",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "TEKKEN 8 กติกาการแข่งขันคืออะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_fact_card",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "rag/retrieval",
+    "confidence": 0.96,
+    "latency_sec": 0.3754,
+    "wall_sec": 0.3755,
+    "answer": "คำตอบ: Tekken 8 เป็นการแข่งขันออฟไลน์แบบ 1v1 บน PlayStation 5 ใช้รูปแบบ First to 2 (FT2), Round 3 และเวลา 60 วินาที\n\nหลักฐานจากกติกา:\n•    เอกสารระบุแข่งขันแบบ Offline, Platform PlayStation 5, 1v1, FT2, R3 และตั้งเวลา 60 วินาที\n\nอ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "sources": [
+      "tekken8_format_ps5_1v1: local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; rule terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-047",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "TEKKEN 8 ใช้ผู้เล่นกี่คน",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0676,
+    "wall_sec": 0.0677,
+    "answer": "TEKKEN 8 แข่งขันแบบ 1v1 ครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; count terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-048",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "TEKKEN 8 มาสายจะโดนอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0796,
+    "wall_sec": 0.0796,
+    "answer": "TEKKEN 8 ยังไม่พบข้อมูลมาสายแบบฟันธงจากคำถามนี้ครับ\n•    ควรยึดกำหนดการและคำตัดสินผู้จัด\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; no clear operation terms; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-049",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "TEKKEN 8 pause ได้ไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0495,
+    "wall_sec": 0.0495,
+    "answer": "TEKKEN 8 ห้าม pause เองหลังเริ่มเกมโดยไม่มีเหตุอันควรครับ\n•    อาจถูกปรับแพ้ 1 รอบตามกติกา\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; named game availability terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-050",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "TEKKEN 8 ถ้าเกมหลุดทำยังไง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0943,
+    "wall_sec": 0.0944,
+    "answer": "TEKKEN 8 ถ้าเกิดเหตุขัดข้องหรือฉุกเฉินให้แจ้งผู้จัด/กรรมการครับ\n•    การหยุดเกมต้องอยู่ภายใต้เงื่อนไขที่กติกาอนุญาต\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; how-to terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-051",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "TEKKEN 8 ขอ restart ได้ไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0557,
+    "wall_sec": 0.0558,
+    "answer": "TEKKEN 8 ยังไม่พบข้อมูล remake/restart แบบฟันธงจากคำถามนี้ครับ\n•    ถ้าเกิดเหตุฉุกเฉินหรืออุปกรณ์ขัดข้องต้องให้ผู้จัด/กรรมการตัดสิน\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; named game availability terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-052",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "TEKKEN 8 รูปแบบการแข่งขันเป็นยังไง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.1756,
+    "wall_sec": 0.1757,
+    "answer": "TEKKEN 8 แข่งขันแบบ 1v1 และใช้รูปแบบ First to 2 (FT2) ครับ\n•    ตั้งค่า Round 3\n•    เวลา 60 วินาที\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; how-to terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-053",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "TEKKEN 8 รอบชิงเล่นกี่เกม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.1057,
+    "wall_sec": 0.1057,
+    "answer": "TEKKEN 8 ใช้รูปแบบ FT2 โดยผู้ชนะต้องชนะครบ 2 เกมครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "game catalog/count terms override zone/equipment domain; competition route overrides game/count ambiguity; count terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-054",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "TEKKEN 8 มีตัวสำรองได้ไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.102,
+    "wall_sec": 0.1021,
+    "answer": "TEKKEN 8 ยังไม่พบข้อมูลตัวสำรองจากคำถามนี้ครับ\n•    ข้อมูลที่ยืนยันได้คือแข่งแบบ 1v1\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; named game availability terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-055",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "TEKKEN 8 มีข้อห้ามอะไรบ้าง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_fact_card",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "rag/retrieval",
+    "confidence": 0.96,
+    "latency_sec": 0.1089,
+    "wall_sec": 0.109,
+    "answer": "คำตอบ: Tekken 8 เลือกตัวละครได้ทุกตัว ยกเว้นตัวละคร DLC และห้ามใช้ customization โดยให้ใช้ชุด/สกินมาตรฐาน\n\nหลักฐานจากกติกา:\n•    เอกสารระบุอนุญาตให้ใช้ตัวละครทุกตัว ยกเว้น DLC Character และไม่อนุญาตให้ใช้ Customization\n\nอ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "sources": [
+      "tekken8_character_dlc_rule: local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; rule terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-056",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "TEKKEN 8 ถ้าใช้ bug จะโดนอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0825,
+    "wall_sec": 0.0825,
+    "answer": "TEKKEN 8 มีบทลงโทษเรื่อง pause/ข้อโต้แย้งครับ\n•    ตัวอย่าง: pause เองหลังเริ่มเกมอาจถูกปรับแพ้ 1 รอบ\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; no clear operation terms; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-057",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "TEKKEN 8 ต้องเช็คอินก่อนแข่งไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.1467,
+    "wall_sec": 0.1468,
+    "answer": "TEKKEN 8 ยังไม่พบข้อมูลเช็คอินแบบฟันธงจากคำถามนี้ครับ\n•    ควรยึดกำหนดการและคำสั่งผู้จัด\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; named game availability terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-058",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "TEKKEN 8 ใช้บัญชีอะไรแข่ง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0921,
+    "wall_sec": 0.0922,
+    "answer": "TEKKEN 8 ยังไม่พบข้อมูลชัดเจนว่าใช้บัญชีส่วนตัวหรือบัญชีที่ผู้จัดเตรียมให้ครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; no clear operation terms; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-059",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "TEKKEN 8 แผนที่มีอะไรบ้าง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.095,
+    "wall_sec": 0.095,
+    "answer": "TEKKEN 8 มีข้อมูลเรื่อง Stage Random และข้อจำกัด customization ครับ\n•    ยังไม่ใช่ระบบแบนตัวละครแบบเกมทีม\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; list terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-060",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "TEKKEN 8 สรุปกติกาสั้นๆ",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_fact_card",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "rag/retrieval",
+    "confidence": 0.96,
+    "latency_sec": 0.0861,
+    "wall_sec": 0.0861,
+    "answer": "คำตอบ: Tekken 8 เป็นการแข่งขันออฟไลน์แบบ 1v1 บน PlayStation 5 ใช้รูปแบบ First to 2 (FT2), Round 3 และเวลา 60 วินาที\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "sources": [
+      "tekken8_format_ps5_1v1: local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; competition route overrides game/count ambiguity; rule terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-061",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "ROV กติกาการแข่งขันคืออะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_fact_card",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "rag/retrieval",
+    "confidence": 0.96,
+    "latency_sec": 0.3072,
+    "wall_sec": 0.3073,
+    "answer": "คำตอบของ Arena of Valor (RoV): ไฟล์กติกา RoV ระบุว่าแข่งขันในโหมด 5v5 จึงยืนยันได้ว่าลงแข่งพร้อมกันฝ่ายละ 5 คน แต่ยังไม่พบจำนวนสมาชิกทีมรวมหรือตัวสำรองที่ระบุชัดเจนในไฟล์นี้\n\nหลักฐานจากกติกา:\n•    เอกสารระบุการเข้าแข่งขันในโหมดการแข่งขัน 5v5 แต่ไม่ได้ระบุจำนวน roster รวม/ตัวสำรองแบบชัดเจน\n\nหมายเหตุ: คำตอบนี้เป็นการสรุปจากข้อมูลที่มีในไฟล์กติกา ไม่ใช่ข้อมูล roster/ตัวสำรองที่ระบุเป็นตัวเลขแยกไว้\n\nอ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "sources": [
+      "rov_team_size_active_players: local://competition_rules/competition_rules_rov_blueket_2025_men"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=4; competition route overrides game/count ambiguity; rule terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-062",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "ROV ใช้ผู้เล่นกี่คน",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0592,
+    "wall_sec": 0.0592,
+    "answer": "RoV / Arena of Valor: RoV ลงแข่งพร้อมกันฝ่ายละ 5 คนครับ\n•    หลักฐานที่พบระบุโหมดการแข่งขัน 5v5\n•    ยังไม่พบจำนวน roster รวม/ตัวสำรองที่ระบุเป็นตัวเลขแยกชัดเจน\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; competition route overrides game/count ambiguity; count terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-063",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "ROV มาสายจะโดนอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0747,
+    "wall_sec": 0.0747,
+    "answer": "RoV / Arena of Valor: RoV ถ้าเริ่มแข่งล่าช้าเกิน 15 นาที ทีมที่ทำให้ล่าช้าเสี่ยงถูกปรับแพ้ครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; competition route overrides game/count ambiguity; no clear operation terms; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-064",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "ROV pause ได้ไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.037,
+    "wall_sec": 0.037,
+    "answer": "RoV / Arena of Valor: RoV ขอ pause ได้ครับ\n•    แต่ละทีมขอหยุดเกมได้สูงสุด 5 ครั้ง\n•    ครั้งละไม่เกิน 1 นาที\n•    ใช้กรณีปัญหา เช่น หลุดเกมหรือขัดข้อง\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; competition route overrides game/count ambiguity; named game availability terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-065",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "ROV ถ้าเกมหลุดทำยังไง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0872,
+    "wall_sec": 0.0872,
+    "answer": "RoV / Arena of Valor: RoV ถ้าเกิดปัญหาหลุดเกมให้หยุดเกมตามสิทธิ์ pause และแจ้งผู้ตัดสิน/ทีมงานครับ\n•    ข้อมูลที่พบ: แต่ละทีมขอหยุดเกมได้สูงสุด 5 ครั้ง ครั้งละไม่เกิน 1 นาที\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; competition route overrides game/count ambiguity; how-to terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-066",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "ROV ขอ restart ได้ไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0511,
+    "wall_sec": 0.0512,
+    "answer": "RoV / Arena of Valor: RoV มีเงื่อนไขเริ่มเกมใหม่ครับ\n•    โดยสรุป ขอแข่งใหม่ได้เฉพาะช่วงต้นเกมตามเงื่อนไข First Blood/เวลาเกมที่กติกากำหนด\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; competition route overrides game/count ambiguity; named game availability terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-067",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "ROV รูปแบบการแข่งขันเป็นยังไง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.1156,
+    "wall_sec": 0.1156,
+    "answer": "RoV / Arena of Valor: RoV มีข้อมูลรูปแบบการแข่งขันในกติกาครับ\n•    ข้อมูลที่พบในชุดกติกา: แข่งแบบ BO3 ในรอบที่ระบุของรายการ\n•    ถ้าถามรอบเฉพาะ ควรระบุรอบการแข่งขันเพิ่ม\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; competition route overrides game/count ambiguity; how-to terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-068",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "ROV รอบชิงเล่นกี่เกม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0734,
+    "wall_sec": 0.0735,
+    "answer": "RoV / Arena of Valor: RoV ยังไม่พบข้อมูลรอบชิงแบบครบถ้วนจากคำถามนี้ครับ\n•    ข้อมูลที่พบเด่นคือรูปแบบ BO3 ในกติกาที่มี\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "game catalog/count terms override zone/equipment domain; competition route overrides game/count ambiguity; count terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-069",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "ROV มีตัวสำรองได้ไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0759,
+    "wall_sec": 0.0759,
+    "answer": "RoV / Arena of Valor: RoV ยังไม่พบข้อมูลตัวสำรองที่ระบุชัดเจนครับ\n•    ข้อมูลที่ยืนยันได้คือแข่งแบบ 5v5\n•    ถ้าจะใช้ตัวสำรองควรยึดประกาศผู้จัดหรือสอบถามกรรมการก่อนแข่ง\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; competition route overrides game/count ambiguity; named game availability terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-070",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "ROV มีข้อห้ามอะไรบ้าง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_fact_card",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "rag/retrieval",
+    "confidence": 0.96,
+    "latency_sec": 0.087,
+    "wall_sec": 0.0871,
+    "answer": "คำตอบของ Arena of Valor (RoV): RoV ถ้าเริ่มแข่งล่าช้าเกิน 15 นาที จะถูกปรับแพ้ในรอบนั้น\n\nหลักฐานจากกติกา:\n•    เอกสารระบุว่าหากเริ่มการแข่งขันล่าช้าเกิน 15 นาที ทีมที่ทำให้เกิดความล่าช้าจะถูกปรับแพ้\n\nอ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "sources": [
+      "rov_late_start_forfeit: local://competition_rules/competition_rules_rov_blueket_2025_men"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; competition route overrides game/count ambiguity; rule terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-071",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "ROV ถ้าใช้ bug จะโดนอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0685,
+    "wall_sec": 0.0686,
+    "answer": "RoV / Arena of Valor: RoV มีบทลงโทษตามกติกาครับ\n•    ตัวอย่างที่พบ: กรณีใช้ pause ผิดเจตนาอาจถูกตักเตือน แบนฮีโร่ หรือปรับแพ้ตามดุลยพินิจกรรมการ\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; competition route overrides game/count ambiguity; no clear operation terms; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-072",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "ROV ต้องเช็คอินก่อนแข่งไหม",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0922,
+    "wall_sec": 0.0922,
+    "answer": "RoV / Arena of Valor: RoV มีข้อมูลการลงทะเบียน/รายงานตัวครับ\n•    ข้อมูลที่พบ: ช่วงลงทะเบียนระบุเวลา 8.00-8.30 น. ในกติกาที่มี\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; competition route overrides game/count ambiguity; named game availability terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-073",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "ROV ใช้บัญชีอะไรแข่ง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.0628,
+    "wall_sec": 0.0628,
+    "answer": "RoV / Arena of Valor: RoV ยังไม่พบข้อมูลชัดเจนว่าใช้บัญชีส่วนตัวหรือบัญชีที่ผู้จัดเตรียมให้ครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "high_confidence_route_returned_no_answer"
+      ]
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; competition route overrides game/count ambiguity; no clear operation terms; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-074",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "ROV แผนที่มีอะไรบ้าง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_generic_fast_path",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "fast/rule",
+    "confidence": 0.94,
+    "latency_sec": 0.069,
+    "wall_sec": 0.069,
+    "answer": "RoV / Arena of Valor: RoV มีข้อมูลเรื่อง Global Ban/Pick ในกติกาครับ\n•    ฮีโร่ที่เกี่ยวข้องกับการเลือก/แบนควรยึดตามกติกา Global Ban/Pick ของรายการ\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "sources": [
+      "competition_rules: data/competition_rules"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; competition route overrides game/count ambiguity; list terms found; competition route forces rule lookup"
+    }
+  },
+  {
+    "case_id": "CR-075",
+    "kind": "single",
+    "group": "competition_rules",
+    "turn_index": null,
+    "question": "ROV สรุปกติกาสั้นๆ",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:competition_fact_card",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "strategy": "rag/retrieval",
+    "confidence": 0.96,
+    "latency_sec": 0.0762,
+    "wall_sec": 0.0762,
+    "answer": "คำตอบของ Arena of Valor (RoV): ไฟล์กติกา RoV ระบุว่าแข่งขันในโหมด 5v5 จึงยืนยันได้ว่าลงแข่งพร้อมกันฝ่ายละ 5 คน แต่ยังไม่พบจำนวนสมาชิกทีมรวมหรือตัวสำรองที่ระบุชัดเจนในไฟล์นี้\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "sources": [
+      "rov_team_size_active_players: local://competition_rules/competition_rules_rov_blueket_2025_men"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_competition_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; competition route overrides game/count ambiguity; rule terms found; competition route forces rule lookup"
+    }
+  }
+]

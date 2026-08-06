@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import time
 from typing import Any
 
 from app.core.normalization import normalize_text
@@ -11,6 +12,9 @@ from app.pipeline.retrieval import (
 )
 from app.pipeline.schemas import PipelineRoute, PipelineTrace
 from app.pipeline.vector_retrieval import retrieve_vector_guarded
+from app.pipeline.document_reranker import rerank_documents
+from app.pipeline.model_gateway import retrieval_budget
+from app.pipeline.source_guard import assess_sources
 
 
 HYBRID_CATEGORIES = {"games", "equipment", "knowledge", "events_news"}
@@ -105,8 +109,17 @@ def _hybrid_score(row: dict[str, Any], origin_count: int) -> float:
 
 
 def retrieve_hybrid_guarded(query: str, route: PipelineRoute, limit: int = 4) -> tuple[list[dict[str, Any]], PipelineTrace]:
-    curated_hits, curated_trace = retrieve_curated(query, route.category, limit=8)
-    vector_hits, vector_trace = retrieve_vector_guarded(query, route, limit=8)
+    budget = retrieval_budget(query, route)
+    candidate_limit = max(2, int(budget["candidate_limit"]))
+    final_limit = max(1, min(limit, int(budget["final_limit"])))
+    timings_ms: dict[str, float] = {}
+    started = time.perf_counter()
+    curated_started = time.perf_counter()
+    curated_hits, curated_trace = retrieve_curated(query, route.category, limit=candidate_limit)
+    timings_ms["hybrid_curated_retrieval"] = round((time.perf_counter() - curated_started) * 1000, 2)
+    vector_started = time.perf_counter()
+    vector_hits, vector_trace = retrieve_vector_guarded(query, route, limit=candidate_limit)
+    timings_ms["hybrid_vector_retrieval"] = round((time.perf_counter() - vector_started) * 1000, 2)
 
     merged: dict[tuple[str, str, str], dict[str, Any]] = {}
     origins: dict[tuple[str, str, str], set[str]] = {}
@@ -136,7 +149,18 @@ def retrieve_hybrid_guarded(query: str, route: PipelineRoute, limit: int = 4) ->
         scored.append((score, row))
 
     scored.sort(key=lambda item: item[0], reverse=True)
-    hits = [row for _, row in scored[:limit]]
+    hits = [row for _, row in scored[:candidate_limit]]
+    timings_ms["hybrid_merge_and_score"] = round((time.perf_counter() - started) * 1000 - sum(timings_ms.values()), 2)
+    rerank_started = time.perf_counter()
+    hits, rerank_trace = rerank_documents(query, hits, limit=final_limit)
+    rerank_metadata = rerank_trace.metadata if isinstance(rerank_trace.metadata, dict) else {}
+    timings_ms["hybrid_document_reranker"] = round(
+        float(rerank_metadata.get("elapsed_sec", 0.0) or 0.0) * 1000
+        if rerank_metadata.get("elapsed_sec") is not None
+        else (time.perf_counter() - rerank_started) * 1000,
+        2,
+    )
+    quality = assess_sources(hits)
     confidence = min(0.91, 0.50 + (hits[0]["_hybrid_score"] / 24 if hits else 0.0))
     detail = f"hits={len(hits)} curated={len(curated_hits)} vector={len(vector_hits)}"
     if hits:
@@ -152,8 +176,18 @@ def retrieve_hybrid_guarded(query: str, route: PipelineRoute, limit: int = 4) ->
         {
             "category": route.category,
             "intent": route.intent,
+            "retrieval_budget": budget,
+            "source_quality": quality.as_dict(),
             "curated_trace": curated_trace.detail,
             "vector_trace": vector_trace.detail,
+            "timings_ms": timings_ms,
+            "rerank_trace": {
+                "stage": rerank_trace.stage,
+                "decision": rerank_trace.decision,
+                "confidence": rerank_trace.confidence,
+                "detail": rerank_trace.detail,
+                "metadata": rerank_trace.metadata,
+            },
         },
     )
 

@@ -1,0 +1,8 @@
+﻿question,mode,route,cold_ms,warm_avg_ms,warm_median_ms,warm_p95_ms,top_warm_stage,validation_ok
+PS5 ราคาเท่าไหร่,pipeline:deterministic_calculator_fast,service_fee/service_fee_query,172.3,6.68,7.0,7.6,ambiguity_gate,True
+PC ราคาเท่าไหร่,pipeline:deterministic_calculator_fast,service_fee/service_fee_query,9.0,5.44,5.7,5.7,ambiguity_gate,True
+นักศึกษาเล่น VR 30 นาทีเท่าไหร่,pipeline:deterministic_calculator_fast,service_fee/service_fee_query,7.9,5.74,5.4,6.9,ambiguity_gate,True
+Tekken 8 ราคาเท่าไหร่,pipeline:structured_service_fee_by_game,service_fee/service_fee_query,1419.6,111.94,114.5,132.0,ambiguity_gate,True
+PS5 มีเกมอะไรกับราคาเท่าไหร่,pipeline:multi_question_splitter,multi_question/multi_question_split,49.5,13.96,13.5,16.6,multi_question_children_total,True
+Tekken 8 ปุ่มอะไร แล้ว PC ราคาเท่าไหร่,pipeline:multi_question_splitter,multi_question/multi_question_split,93.1,76.5,82.1,86.7,multi_question_children_total,True
+Naruto เล่นยังไง,pipeline:structured_game_detail,games/game_detail_lookup,85.8,89.02,92.3,99.1,ambiguity_gate,True

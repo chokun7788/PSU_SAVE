@@ -1,0 +1,55 @@
+{
+  "generated_at": "2026-07-30T17:25:57",
+  "case_count": 12,
+  "turn_count": 24,
+  "passed": 23,
+  "failed": 1,
+  "pass_rate": 0.9583,
+  "total_wall_sec": 6.882,
+  "allow_llm": false,
+  "rag_fallback": false,
+  "group_counts": {
+    "session_followup": {
+      "total": 24,
+      "pass": 23,
+      "fail": 1
+    }
+  },
+  "strategy_counts": {
+    "structured": 18,
+    "clarification": 5,
+    "fast/rule": 1
+  },
+  "mode_counts": {
+    "pipeline:structured_game_detail": 3,
+    "pipeline:structured_game_controls": 3,
+    "pipeline:ambiguity_clarification": 5,
+    "pipeline:structured_games_catalog": 3,
+    "pipeline:deterministic_calculator_fast": 1,
+    "pipeline:structured_equipment_catalog": 1,
+    "pipeline:structured_reservation_fact": 4,
+    "pipeline:structured_booking_selection": 1,
+    "pipeline:structured_members_group_count": 1,
+    "pipeline:structured_members_group_list": 1,
+    "pipeline:structured_games_genre_list": 1
+  },
+  "problem_counts": {
+    "missing 'PC'": 1
+  },
+  "top_failures": [
+    {
+      "case_id": "SF-007",
+      "group": "session_followup",
+      "question": "จอง",
+      "resolved_question": "PC จองยังไง",
+      "mode": "pipeline:structured_reservation_fact",
+      "route": "reservation/booking_policy",
+      "problems": [
+        "missing 'PC'"
+      ],
+      "answer_preview": "ขั้นตอนจองโดยสรุป: •    เลือกบริการหรือโซนที่ต้องการใช้ •    เลือกวันและรอบเวลาที่ต้องการ •    กรอก Student ID/Staff ID/National ID, ชื่อ, นามสกุล, อีเมล และเบอร์โทรศัพท์ •    ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง •    แนบสลิปแ"
+    }
+  ],
+  "bank_jsonl": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.jsonl",
+  "bank_json": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.json"
+}

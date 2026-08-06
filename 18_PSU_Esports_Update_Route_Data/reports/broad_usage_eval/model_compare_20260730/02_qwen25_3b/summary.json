@@ -1,0 +1,685 @@
+{
+  "generated_at": "2026-07-30T16:23:57",
+  "case_count": 667,
+  "turn_count": 679,
+  "passed": 613,
+  "failed": 66,
+  "pass_rate": 0.9028,
+  "total_wall_sec": 422.456,
+  "allow_llm": true,
+  "rag_fallback": false,
+  "group_counts": {
+    "service_fee": {
+      "total": 88,
+      "pass": 86,
+      "fail": 2
+    },
+    "games": {
+      "total": 158,
+      "pass": 150,
+      "fail": 8
+    },
+    "game_controls": {
+      "total": 159,
+      "pass": 153,
+      "fail": 6
+    },
+    "equipment": {
+      "total": 58,
+      "pass": 41,
+      "fail": 17
+    },
+    "reservation": {
+      "total": 20,
+      "pass": 10,
+      "fail": 10
+    },
+    "schedule": {
+      "total": 10,
+      "pass": 8,
+      "fail": 2
+    },
+    "members": {
+      "total": 47,
+      "pass": 45,
+      "fail": 2
+    },
+    "competition_rules": {
+      "total": 75,
+      "pass": 66,
+      "fail": 9
+    },
+    "compound": {
+      "total": 15,
+      "pass": 12,
+      "fail": 3
+    },
+    "ambiguity_no_answer": {
+      "total": 25,
+      "pass": 19,
+      "fail": 6
+    },
+    "session_followup": {
+      "total": 24,
+      "pass": 23,
+      "fail": 1
+    }
+  },
+  "strategy_counts": {
+    "fast/rule": 135,
+    "structured": 453,
+    "clarification": 21,
+    "compound": 15,
+    "pipeline": 8,
+    "rag/retrieval": 47
+  },
+  "mode_counts": {
+    "pipeline:deterministic_calculator_fast": 59,
+    "pipeline:structured_equipment_catalog": 12,
+    "pipeline:structured_service_fee_by_game": 29,
+    "pipeline:structured_game_detail": 143,
+    "pipeline:structured_games_catalog": 17,
+    "pipeline:ambiguity_clarification": 21,
+    "pipeline:schedule_fast_path": 2,
+    "pipeline:structured_equipment_item": 31,
+    "pipeline:structured_game_controls": 155,
+    "pipeline:structured_game_zone_ranking": 1,
+    "pipeline:games_genre_list_fast_path": 1,
+    "pipeline:structured_games_family": 1,
+    "pipeline:multi_question_splitter": 15,
+    "pipeline:structured_members_group_list": 6,
+    "pipeline:game_control_missing_game_context": 11,
+    "pipeline:no_answer": 26,
+    "pipeline:chatbot_greeting_fast_path": 3,
+    "pipeline:games_fast_path": 1,
+    "pipeline:equipment_item_location_fast_path": 2,
+    "pipeline:booking_howto_fast_path": 6,
+    "pipeline:structured_booking_selection": 4,
+    "pipeline:structured_reservation_fact": 5,
+    "pipeline:mixed_reservation_fast": 1,
+    "pipeline:structured_schedule": 5,
+    "pipeline:calendar_closure_fast_path": 1,
+    "pipeline:calendar_schedule_fast_path": 1,
+    "pipeline:calendar_upcoming_holidays_fast_path": 1,
+    "pipeline:structured_members_group_count": 3,
+    "pipeline:structured_members_person_lookup": 24,
+    "pipeline:structured_members_role_lookup": 17,
+    "pipeline:competition_fact_card": 15,
+    "pipeline:competition_generic_fast_path": 57,
+    "pipeline:games_known_unsupported_fast_path": 1,
+    "pipeline:hybrid_guarded_rerank": 1,
+    "pipeline:rag_direct_curated": 1
+  },
+  "problem_counts": {
+    "route_category expected ['service_fee'], got equipment": 1,
+    "missing any of ['บาท', 'ต่างกัน', 'ฟรี', '0 บาท']": 1,
+    "missing 'Nintendo Switch Sports'": 1,
+    "route_category expected ['games'], got clarification": 3,
+    "missing 'PUBG'": 1,
+    "route_category expected ['games'], got schedule": 2,
+    "missing any of ['PC', 'เล่นได้ที่']": 1,
+    "route_category expected ['games'], got equipment": 3,
+    "missing any of ['แนวเกม', 'เกมกีฬา Motion Control']": 1,
+    "missing 'Animal Crossing'": 1,
+    "missing any of ['เกม', 'Zone', 'TEKKEN', 'Mario', 'Gran Turismo']": 1,
+    "missing 'God of War Ragnarök'": 1,
+    "route_category expected ['games'], got multi_question": 2,
+    "mode expected prefix ['pipeline": 7,
+    "missing 'Resident Evil 4 (Remake)'": 1,
+    "missing 'Super Smash Bros. Ultimate'": 1,
+    "route_category expected ['games'], got overview": 1,
+    "missing any of ['L3 (Click Left Stick)', 'มาร์กตำแหน่งศัตรู']": 1,
+    "route_category expected ['equipment'], got general": 11,
+    "missing any of ['Gaming', 'PC']": 6,
+    "missing any of ['Logitech', 'Cockpit']": 1,
+    "route_category expected ['equipment'], got knowledge": 2,
+    "missing any of ['Driving', 'Cockpit']": 1,
+    "route_category expected ['equipment', 'games'], got knowledge": 1,
+    "missing any of ['Cockpit', 'Zone']": 1,
+    "missing any of ['Driving', 'ใช้', 'Zone']": 1,
+    "route_category expected ['equipment'], got games": 3,
+    "missing any of ['Pulse', 'Cockpit']": 1,
+    "missing any of ['Sony', 'VR']": 1,
+    "missing any of ['TV', 'Cockpit']": 1,
+    "missing any of ['TV', 'Nintendo Switch']": 1,
+    "missing any of ['Sofa', 'Nintendo Switch']": 1,
+    "route_category expected ['reservation'], got equipment": 5,
+    "route_category expected ['reservation'], got clarification": 2,
+    "missing any of ['จอง', 'เช็คอิน', 'ชำระ', 'session', 'ยกเลิก']": 6,
+    "route_category expected ['reservation'], got general": 2,
+    "route_category expected ['reservation'], got multi_question": 1,
+    "route_category expected ['schedule', 'reservation'], got general": 2,
+    "missing any of ['เปิด', 'ปิด', 'เวลา', 'วัน', 'ไม่เปิด']": 2,
+    "route_category expected ['members', 'overview'], got general": 1,
+    "missing any of ['Members', 'สมาชิก', 'คน', 'หมวด']": 1,
+    "route_category expected ['members', 'overview'], got clarification": 1,
+    "missing any of ['กรรมการ', 'นางสาวชญาภา']": 1,
+    "route_category expected ['competition_rules'], got games": 3,
+    "missing any of ['CS2', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']": 1,
+    "missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']": 6,
+    "route_category expected ['multi_question'], got games": 2,
+    "route_category expected ['multi_question'], got overview": 1,
+    "missing any of ['คำถามที่', 'ราคา', 'ปุ่ม', 'Zone', 'จอง']": 1,
+    "route_category expected ['clarification', 'games', 'equipment', 'service_fee', 'reservation', 'no_answer'], got general": 2,
+    "missing any of ['ยังไม่พบ', 'ไม่มี', 'ไม่ได้อยู่', 'ตอบจากข้อมูล']": 4,
+    "route_category expected ['no_answer', 'games', 'general'], got overview": 1,
+    "route_category expected ['no_answer', 'games', 'general'], got knowledge": 1,
+    "route_category expected ['no_answer', 'games', 'general'], got events_news": 1,
+    "missing 'ขั้นตอนจอง'": 1,
+    "missing 'เลือกบริการ'": 1
+  },
+  "top_failures": [
+    {
+      "case_id": "SF-053",
+      "group": "service_fee",
+      "question": "VR 30 นาทีกับ VR 1 ชั่วโมงต่างกันยังไง",
+      "resolved_question": "",
+      "mode": "pipeline:structured_equipment_catalog",
+      "route": "equipment/list",
+      "problems": [
+        "route_category expected ['service_fee'], got equipment",
+        "missing any of ['บาท', 'ต่างกัน', 'ฟรี', '0 บาท']"
+      ],
+      "answer_preview": "อุปกรณ์ใน VR Zone: PlayStation 5 Zone / VR Zone •    PlayStation 5 Slim With Ultra HD Blu-Ray Disc Drive (2 Units in PlayStation 5 Zone and 1 Unit in VR Zone) VR Zone •    Sony PlayStation VR2 (1 Unit) แหล่งข้อมูล: https://esports.phuket.ps"
+    },
+    {
+      "case_id": "SF-083",
+      "group": "service_fee",
+      "question": "Nintendo Switch Sports ราคาเท่าไหร่",
+      "resolved_question": "",
+      "mode": "pipeline:deterministic_calculator_fast",
+      "route": "service_fee/service_fee_query",
+      "problems": [
+        "missing 'Nintendo Switch Sports'"
+      ],
+      "answer_preview": "Nintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง) •    PSU Student and Staff: 0 บาท •    PSU Alumni and General Student: 50 บาท •    General Adult: 140 บาท  Nintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง) •    PSU Student and Staff: 0 บาท •    PSU Alum"
+    },
+    {
+      "case_id": "G-009",
+      "group": "games",
+      "question": "PUBG: BATTLEGROUNDS คือเกมอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:ambiguity_clarification",
+      "route": "clarification/ambiguity_gate_clarification",
+      "problems": [
+        "route_category expected ['games'], got clarification",
+        "missing 'PUBG'"
+      ],
+      "answer_preview": "คำถามนี้มีได้หลายความหมายครับ ขอระบุเพิ่มนิดหนึ่งว่าต้องการถามเรื่องไหน: รายชื่อเกม/ข้อมูลเกม"
+    },
+    {
+      "case_id": "G-010",
+      "group": "games",
+      "question": "PUBG: BATTLEGROUNDS เล่นได้ที่ไหน",
+      "resolved_question": "",
+      "mode": "pipeline:schedule_fast_path",
+      "route": "schedule/schedule_query",
+      "problems": [
+        "route_category expected ['games'], got schedule",
+        "missing any of ['PC', 'เล่นได้ที่']"
+      ],
+      "answer_preview": "เวลาบริการที่มีในข้อมูลคือ Morning 09:00-12:00 และ Afternoon 13:00-16:00 โดยมีช่วง Maintenance บางวัน  รายละเอียดจากตาราง: •    Morning คือ 09:00-12:00 •    Afternoon คือ 13:00-16:00 •    Monday ช่วง Morning 09:00-12:00 เป็น Maintenance* • "
+    },
+    {
+      "case_id": "G-097",
+      "group": "games",
+      "question": "Nintendo Switch Sports คือเกมอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:structured_equipment_item",
+      "route": "equipment/equipment_item_lookup",
+      "problems": [
+        "route_category expected ['games'], got equipment"
+      ],
+      "answer_preview": "Nintendo Switch OLED: เครื่องเกม Nintendo Switch รุ่น OLED สำหรับเล่นเกมคอนโซลแบบกลุ่มหรือครอบครัว จำนวน: 1 Unit อยู่ที่: Nintendo Switch Zone ใช้สำหรับ: •    เล่น Mario Kart 8 Deluxe •    เล่น Overcooked 2 •    เล่น Super Smash Bros Ultima"
+    },
+    {
+      "case_id": "G-098",
+      "group": "games",
+      "question": "Nintendo Switch Sports เล่นได้ที่ไหน",
+      "resolved_question": "",
+      "mode": "pipeline:structured_equipment_catalog",
+      "route": "equipment/list",
+      "problems": [
+        "route_category expected ['games'], got equipment"
+      ],
+      "answer_preview": "อุปกรณ์ใน Nintendo Switch Zone: Nintendo Switch Zone •    Nintendo Switch OLED (1 Unit) •    TV 86 นิ้ว (1 Unit) •    Sofa 2 seats (2 Sets) แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+    },
+    {
+      "case_id": "G-100",
+      "group": "games",
+      "question": "Nintendo Switch Sports เป็นเกมแนวไหน",
+      "resolved_question": "",
+      "mode": "pipeline:structured_equipment_catalog",
+      "route": "equipment/list",
+      "problems": [
+        "route_category expected ['games'], got equipment",
+        "missing any of ['แนวเกม', 'เกมกีฬา Motion Control']"
+      ],
+      "answer_preview": "อุปกรณ์ใน Nintendo Switch Zone: Nintendo Switch Zone •    Nintendo Switch OLED (1 Unit) •    TV 86 นิ้ว (1 Unit) •    Sofa 2 seats (2 Sets) แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+    },
+    {
+      "case_id": "G-101",
+      "group": "games",
+      "question": "Animal Crossing: New Horizons คือเกมอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:ambiguity_clarification",
+      "route": "clarification/ambiguity_gate_clarification",
+      "problems": [
+        "route_category expected ['games'], got clarification",
+        "missing 'Animal Crossing'"
+      ],
+      "answer_preview": "คำถามนี้มีได้หลายความหมายครับ ขอระบุเพิ่มนิดหนึ่งว่าต้องการถามเรื่องไหน: รายชื่อเกม/ข้อมูลเกม"
+    },
+    {
+      "case_id": "G-153",
+      "group": "games",
+      "question": "เกมไหนเล่นได้หลายโซน",
+      "resolved_question": "",
+      "mode": "pipeline:schedule_fast_path",
+      "route": "schedule/schedule_query",
+      "problems": [
+        "route_category expected ['games'], got schedule",
+        "missing any of ['เกม', 'Zone', 'TEKKEN', 'Mario', 'Gran Turismo']"
+      ],
+      "answer_preview": "เวลาบริการที่มีในข้อมูลคือ Morning 09:00-12:00 และ Afternoon 13:00-16:00 โดยมีช่วง Maintenance บางวัน  รายละเอียดจากตาราง: •    Morning คือ 09:00-12:00 •    Afternoon คือ 13:00-16:00 •    Monday ช่วง Morning 09:00-12:00 เป็น Maintenance* • "
+    },
+    {
+      "case_id": "G-158",
+      "group": "games",
+      "question": "Tekken 8 มีในเครื่องไหน",
+      "resolved_question": "",
+      "mode": "pipeline:ambiguity_clarification",
+      "route": "clarification/ambiguity_gate_clarification",
+      "problems": [
+        "route_category expected ['games'], got clarification"
+      ],
+      "answer_preview": "คำถามนี้มีได้หลายความหมายครับ ขอระบุเพิ่มนิดหนึ่งว่าต้องการถามเรื่องไหน: อุปกรณ์, รายชื่อเกม/ข้อมูลเกม"
+    },
+    {
+      "case_id": "GC-033",
+      "group": "game_controls",
+      "question": "God of War Ragnarök ปุ่มทั้งหมดมีอะไรบ้าง",
+      "resolved_question": "",
+      "mode": "pipeline:structured_game_controls",
+      "route": "games/game_control_lookup",
+      "problems": [
+        "missing 'God of War Ragnarök'"
+      ],
+      "answer_preview": "God of War Ragnarok มีข้อมูลปุ่มควบคุมดังนี้: PlayStation / PS5 •    L: เคลื่อนที่ - บังคับทิศทางการเดิน •    L3: วิ่งสปรินต์ - กดเพื่อวิ่ง •    L3 + R3: พลังสปาร์ตัน - ระเบิดความโกรธของเครโทสเพื่อเพิ่มพลังโจมตีและฟื้นฟูพลังชีวิต •    R: มุ"
+    },
+    {
+      "case_id": "GC-075",
+      "group": "game_controls",
+      "question": "Mario Party Superstars ปุ่มเล่นบอร์ดและมินิเกมด้วยปุ่มกดอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:multi_question_splitter",
+      "route": "multi_question/multi_question_split",
+      "problems": [
+        "route_category expected ['games'], got multi_question",
+        "mode expected prefix ['pipeline:structured_game_controls'], got pipeline:multi_question_splitter"
+      ],
+      "answer_preview": "คำถามนี้มีหลายเรื่อง ขอแยกตอบเป็นข้อ ๆ:  •    Mario Party Superstars ปุ่มเล่นบอร์ด กดอะไร Mario Party Superstars มีข้อมูลปุ่มควบคุมดังนี้: Nintendo Switch •    Button controls: เล่นบอร์ดและมินิเกมด้วยปุ่ม - แหล่งทางการยืนยันว่า 100 มินิเกมร"
+    },
+    {
+      "case_id": "GC-096",
+      "group": "game_controls",
+      "question": "New Super Mario Bros. U Deluxe ปุ่มวิ่ง กระโดด และเหยียบศัตรูกดอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:multi_question_splitter",
+      "route": "multi_question/multi_question_split",
+      "problems": [
+        "route_category expected ['games'], got multi_question",
+        "mode expected prefix ['pipeline:structured_game_controls'], got pipeline:multi_question_splitter"
+      ],
+      "answer_preview": "คำถามนี้มีหลายเรื่อง ขอแยกตอบเป็นข้อ ๆ:  •    New Super Mario Bros. U Deluxe ปุ่มวิ่ง กระโดด กดอะไร New Super Mario Bros. U Deluxe ปุ่มที่ตรงกับคำถาม: Nintendo Switch •    Simple controls: วิ่ง กระโดด และเหยียบศัตรู - หน้า Nintendo อธิบายกา"
+    },
+    {
+      "case_id": "GC-109",
+      "group": "game_controls",
+      "question": "Resident Evil 4 (Remake) ปุ่มทั้งหมดมีอะไรบ้าง",
+      "resolved_question": "",
+      "mode": "pipeline:structured_game_controls",
+      "route": "games/game_control_lookup",
+      "problems": [
+        "missing 'Resident Evil 4 (Remake)'"
+      ],
+      "answer_preview": "Resident Evil 4 มีข้อมูลปุ่มควบคุมดังนี้: PlayStation / PS5 •    L (Left Stick): เคลื่อนที่ •    L3: วิ่งสปรินต์ •    R (Right Stick): มุมกล้อง •    L2 (Hold): เล็ง •    L1: ปัดป้อง •    R1: วิ่ง / กลับหลังหัน •    R2: ยิง / โจมตีด้วยมีด • "
+    },
+    {
+      "case_id": "GC-125",
+      "group": "game_controls",
+      "question": "Super Smash Bros. Ultimate ปุ่มทั้งหมดมีอะไรบ้าง",
+      "resolved_question": "",
+      "mode": "pipeline:structured_game_controls",
+      "route": "games/game_control_lookup",
+      "problems": [
+        "missing 'Super Smash Bros. Ultimate'"
+      ],
+      "answer_preview": "Super Smash Bros Ultimate มีข้อมูลปุ่มควบคุมดังนี้: Nintendo Switch •    L (Left Stick): เคลื่อนที่ - ใช้เดิน วิ่ง หรือย่อตัว รวมถึงกำหนดทิศทางการโจมตีท่าต่าง ๆ •    R (Right Stick): โจมตีสแมช - ก้านอนาล็อกขวาใช้สำหรับปล่อยท่า Smash Attack "
+    },
+    {
+      "case_id": "GC-148",
+      "group": "game_controls",
+      "question": "Uncharted: Legacy of Thieves Collection ปุ่มมาร์กตำแหน่งศัตรูกดอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:structured_members_group_list",
+      "route": "overview/list",
+      "problems": [
+        "route_category expected ['games'], got overview",
+        "mode expected prefix ['pipeline:structured_game_controls'], got pipeline:structured_members_group_list",
+        "missing any of ['L3 (Click Left Stick)', 'มาร์กตำแหน่งศัตรู']"
+      ],
+      "answer_preview": "สมาชิกจากหน้า Members แยกตามหมวด รวม 25 คน: Members (7 คน): •    ผศ.ดร.นิวัติ แก้วประดับ: อธิการบดี •    รศ.ดร.พันธ์ ทองชุมนุม: รองอธิการบดี •    รศ.ดร.อซีส นันทอมรพงศ์: คณบดี •    ผศ.ดร.ณัฐพงศ์ ทองเทพ: ผู้ช่วยอธิการบดีฝ่ายวิชาการ •    นายพ"
+    },
+    {
+      "case_id": "E-011",
+      "group": "equipment",
+      "question": "Gaming PC รุ่น MSI MAG Infinite S3 14th คืออะไร",
+      "resolved_question": "",
+      "mode": "pipeline:no_answer",
+      "route": "general/general_knowledge_query",
+      "problems": [
+        "route_category expected ['equipment'], got general",
+        "missing any of ['Gaming', 'PC']"
+      ],
+      "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "E-014",
+      "group": "equipment",
+      "question": "Gaming Monitor คืออะไร",
+      "resolved_question": "",
+      "mode": "pipeline:no_answer",
+      "route": "general/general_knowledge_query",
+      "problems": [
+        "route_category expected ['equipment'], got general",
+        "missing any of ['Gaming', 'PC']"
+      ],
+      "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "E-017",
+      "group": "equipment",
+      "question": "Gaming Keyboard คืออะไร",
+      "resolved_question": "",
+      "mode": "pipeline:no_answer",
+      "route": "general/general_knowledge_query",
+      "problems": [
+        "route_category expected ['equipment'], got general",
+        "missing any of ['Gaming', 'PC']"
+      ],
+      "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "E-020",
+      "group": "equipment",
+      "question": "Gaming Mouse คืออะไร",
+      "resolved_question": "",
+      "mode": "pipeline:no_answer",
+      "route": "general/general_knowledge_query",
+      "problems": [
+        "route_category expected ['equipment'], got general",
+        "missing any of ['Gaming', 'PC']"
+      ],
+      "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "E-023",
+      "group": "equipment",
+      "question": "Gaming Headset คืออะไร",
+      "resolved_question": "",
+      "mode": "pipeline:no_answer",
+      "route": "general/general_knowledge_query",
+      "problems": [
+        "route_category expected ['equipment'], got general",
+        "missing any of ['Gaming', 'PC']"
+      ],
+      "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "E-026",
+      "group": "equipment",
+      "question": "Gaming Chair คืออะไร",
+      "resolved_question": "",
+      "mode": "pipeline:no_answer",
+      "route": "general/general_knowledge_query",
+      "problems": [
+        "route_category expected ['equipment'], got general",
+        "missing any of ['Gaming', 'PC']"
+      ],
+      "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "E-029",
+      "group": "equipment",
+      "question": "Logitech G923 TRUEFORCE Racing Wheel คืออะไร",
+      "resolved_question": "",
+      "mode": "pipeline:no_answer",
+      "route": "general/detail",
+      "problems": [
+        "route_category expected ['equipment'], got general",
+        "missing any of ['Logitech', 'Cockpit']"
+      ],
+      "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "E-032",
+      "group": "equipment",
+      "question": "Driving Force Shifter คืออะไร",
+      "resolved_question": "",
+      "mode": "pipeline:chatbot_greeting_fast_path",
+      "route": "knowledge/detail",
+      "problems": [
+        "route_category expected ['equipment'], got knowledge",
+        "missing any of ['Driving', 'Cockpit']"
+      ],
+      "answer_preview": "สวัสดีครับ ผมคือ PSU Esports Assistant ผู้ช่วยของ PSU Esports Studio - Phuket ถามเรื่องเกม อุปกรณ์ วิธีจอง เวลาเปิด-ปิด ค่าบริการ ปุ่มควบคุม กติกา หรือสมาชิกทีมได้เลยครับ แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+    },
+    {
+      "case_id": "E-033",
+      "group": "equipment",
+      "question": "Driving Force Shifter อยู่โซนไหน",
+      "resolved_question": "",
+      "mode": "pipeline:chatbot_greeting_fast_path",
+      "route": "knowledge/detail",
+      "problems": [
+        "route_category expected ['equipment', 'games'], got knowledge",
+        "mode expected prefix ['pipeline:structured_equipment_item', 'pipeline:equipment_item_location_fast_path'], got pipeline:chatbot_greeting_fast_path",
+        "missing any of ['Cockpit', 'Zone']"
+      ],
+      "answer_preview": "สวัสดีครับ ผมคือ PSU Esports Assistant ผู้ช่วยของ PSU Esports Studio - Phuket ถามเรื่องเกม อุปกรณ์ วิธีจอง เวลาเปิด-ปิด ค่าบริการ ปุ่มควบคุม กติกา หรือสมาชิกทีมได้เลยครับ แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+    },
+    {
+      "case_id": "E-034",
+      "group": "equipment",
+      "question": "Driving Force Shifter ใช้ทำอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:chatbot_greeting_fast_path",
+      "route": "knowledge/detail",
+      "problems": [
+        "route_category expected ['equipment'], got knowledge",
+        "missing any of ['Driving', 'ใช้', 'Zone']"
+      ],
+      "answer_preview": "สวัสดีครับ ผมคือ PSU Esports Assistant ผู้ช่วยของ PSU Esports Studio - Phuket ถามเรื่องเกม อุปกรณ์ วิธีจอง เวลาเปิด-ปิด ค่าบริการ ปุ่มควบคุม กติกา หรือสมาชิกทีมได้เลยครับ แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+    },
+    {
+      "case_id": "E-035",
+      "group": "equipment",
+      "question": "Racezone Full Cockpit V3 คืออะไร",
+      "resolved_question": "",
+      "mode": "pipeline:games_fast_path",
+      "route": "games/games_lookup",
+      "problems": [
+        "route_category expected ['equipment'], got games"
+      ],
+      "answer_preview": "Cockpit Zone มีเกมที่ยืนยันได้ดังนี้  Cockpit Zone (1 เกม) •    Gran Turismo 7 แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+    },
+    {
+      "case_id": "E-038",
+      "group": "equipment",
+      "question": "Pulse Elite Wireless Headset คืออะไร",
+      "resolved_question": "",
+      "mode": "pipeline:no_answer",
+      "route": "general/general_knowledge_query",
+      "problems": [
+        "route_category expected ['equipment'], got general",
+        "missing any of ['Pulse', 'Cockpit']"
+      ],
+      "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "E-047",
+      "group": "equipment",
+      "question": "Sony PlayStation VR2 คืออะไร",
+      "resolved_question": "",
+      "mode": "pipeline:game_control_missing_game_context",
+      "route": "games/game_control_lookup",
+      "problems": [
+        "route_category expected ['equipment'], got games",
+        "missing any of ['Sony', 'VR']"
+      ],
+      "answer_preview": "ยังไม่แน่ใจว่าหมายถึงเกมไหนครับ จึงไม่ขอดึงปุ่มหรือวิธีเล่นของเกมอื่นมาตอบแทน ตัวอย่างเกมที่มีข้อมูลปุ่มแล้ว: TEKKEN 8, Mario Kart 8 Deluxe, Call of Duty: Modern Warfare III ให้พิมพ์ชื่อเกมมาด้วย เช่น `TEKKEN 8 มีปุ่มอะไรบ้าง`, `Mario Kart "
+    },
+    {
+      "case_id": "E-049",
+      "group": "equipment",
+      "question": "Sony PlayStation VR2 ใช้ทำอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:game_control_missing_game_context",
+      "route": "games/game_control_lookup",
+      "problems": [
+        "route_category expected ['equipment'], got games"
+      ],
+      "answer_preview": "ยังไม่แน่ใจว่าหมายถึงเกมไหนครับ จึงไม่ขอดึงปุ่มหรือวิธีเล่นของเกมอื่นมาตอบแทน ตัวอย่างเกมที่มีข้อมูลปุ่มแล้ว: TEKKEN 8, Mario Kart 8 Deluxe, Call of Duty: Modern Warfare III ให้พิมพ์ชื่อเกมมาด้วย เช่น `TEKKEN 8 มีปุ่มอะไรบ้าง`, `Mario Kart "
+    },
+    {
+      "case_id": "E-050",
+      "group": "equipment",
+      "question": "TV 65 นิ้ว คืออะไร",
+      "resolved_question": "",
+      "mode": "pipeline:no_answer",
+      "route": "general/general_knowledge_query",
+      "problems": [
+        "route_category expected ['equipment'], got general",
+        "missing any of ['TV', 'Cockpit']"
+      ],
+      "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "E-053",
+      "group": "equipment",
+      "question": "TV 86 นิ้ว คืออะไร",
+      "resolved_question": "",
+      "mode": "pipeline:no_answer",
+      "route": "general/general_knowledge_query",
+      "problems": [
+        "route_category expected ['equipment'], got general",
+        "missing any of ['TV', 'Nintendo Switch']"
+      ],
+      "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "E-056",
+      "group": "equipment",
+      "question": "Sofa 2 seats คืออะไร",
+      "resolved_question": "",
+      "mode": "pipeline:no_answer",
+      "route": "general/general_knowledge_query",
+      "problems": [
+        "route_category expected ['equipment'], got general",
+        "missing any of ['Sofa', 'Nintendo Switch']"
+      ],
+      "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "R-001",
+      "group": "reservation",
+      "question": "จองยังไง",
+      "resolved_question": "",
+      "mode": "pipeline:booking_howto_fast_path",
+      "route": "equipment/how_to",
+      "problems": [
+        "route_category expected ['reservation'], got equipment"
+      ],
+      "answer_preview": "จองคิวเล่นเกม/ใช้อุปกรณ์ได้ผ่านระบบจองออนไลน์ครับ ขั้นตอนโดยสรุปคือ 1) เลือกบริการหรือโซนที่ต้องการใช้ 2) เลือกวันและรอบเวลา 3) กรอก Student ID/Staff ID/National ID ชื่อ นามสกุล อีเมล และเบอร์โทรศัพท์ 4) ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบั"
+    },
+    {
+      "case_id": "R-005",
+      "group": "reservation",
+      "question": "จอง VR ต้องทำยังไง",
+      "resolved_question": "",
+      "mode": "pipeline:booking_howto_fast_path",
+      "route": "equipment/how_to",
+      "problems": [
+        "route_category expected ['reservation'], got equipment"
+      ],
+      "answer_preview": "จองคิวเล่นเกม/ใช้อุปกรณ์ได้ผ่านระบบจองออนไลน์ครับ ถ้าต้องการจอง VR ให้เลือกบริการ VR Station และเลือกรอบ 30 นาทีหรือ 1 ชั่วโมงตามที่ระบบมีให้เลือก ขั้นตอนโดยสรุปคือ 1) เลือกบริการหรือโซนที่ต้องการใช้ 2) เลือกวันและรอบเวลา 3) กรอก Student ID"
+    },
+    {
+      "case_id": "R-007",
+      "group": "reservation",
+      "question": "จอง PC ต้องทำยังไง",
+      "resolved_question": "",
+      "mode": "pipeline:booking_howto_fast_path",
+      "route": "equipment/how_to",
+      "problems": [
+        "route_category expected ['reservation'], got equipment"
+      ],
+      "answer_preview": "จองคิวเล่นเกม/ใช้อุปกรณ์ได้ผ่านระบบจองออนไลน์ครับ ถ้าต้องการจอง PC ให้เลือกเครื่อง PC/บริการ PC ที่ต้องการและเลือกรอบเวลา ขั้นตอนโดยสรุปคือ 1) เลือกบริการหรือโซนที่ต้องการใช้ 2) เลือกวันและรอบเวลา 3) กรอก Student ID/Staff ID/National ID ชื่"
+    },
+    {
+      "case_id": "R-010",
+      "group": "reservation",
+      "question": "หลังจองต้องจ่ายภายในกี่นาที",
+      "resolved_question": "",
+      "mode": "pipeline:ambiguity_clarification",
+      "route": "clarification/ambiguity_gate_clarification",
+      "problems": [
+        "route_category expected ['reservation'], got clarification",
+        "missing any of ['จอง', 'เช็คอิน', 'ชำระ', 'session', 'ยกเลิก']"
+      ],
+      "answer_preview": "ขอรู้บริการหรือโซนก่อนครับ จะได้ตอบราคาให้ตรง เช่น `PS5 ราคาเท่าไหร่`, `Nintendo 3-4 คนกี่บาท`, `VR 30 นาทีราคาเท่าไหร่` หรือ `Tekken 8 ราคาเท่าไหร่`"
+    },
+    {
+      "case_id": "R-011",
+      "group": "reservation",
+      "question": "จองแล้วแก้ไขได้ไหม",
+      "resolved_question": "",
+      "mode": "pipeline:no_answer",
+      "route": "equipment/how_to",
+      "problems": [
+        "route_category expected ['reservation'], got equipment",
+        "missing any of ['จอง', 'เช็คอิน', 'ชำระ', 'session', 'ยกเลิก']"
+      ],
+      "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับหมวด equipment ตอนนี้ครับ"
+    },
+    {
+      "case_id": "R-012",
+      "group": "reservation",
+      "question": "จองแล้วโอนสิทธิ์ให้เพื่อนได้ไหม",
+      "resolved_question": "",
+      "mode": "pipeline:no_answer",
+      "route": "equipment/how_to",
+      "problems": [
+        "route_category expected ['reservation'], got equipment",
+        "missing any of ['จอง', 'เช็คอิน', 'ชำระ', 'session', 'ยกเลิก']"
+      ],
+      "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับหมวด equipment ตอนนี้ครับ"
+    },
+    {
+      "case_id": "R-015",
+      "group": "reservation",
+      "question": "ถ้าไปช้าจะเป็นอะไรไหม",
+      "resolved_question": "",
+      "mode": "pipeline:no_answer",
+      "route": "general/general_knowledge_query",
+      "problems": [
+        "route_category expected ['reservation'], got general",
+        "missing any of ['จอง', 'เช็คอิน', 'ชำระ', 'session', 'ยกเลิก']"
+      ],
+      "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    }
+  ],
+  "bank_jsonl": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.jsonl",
+  "bank_json": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.json"
+}

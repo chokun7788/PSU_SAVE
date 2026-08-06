@@ -1,0 +1,1315 @@
+[
+  {
+    "id": "GR-001",
+    "category": "game_rules",
+    "question_no": 1,
+    "question": "ROV คือเกมอะไร",
+    "expected_support": "competition_rules",
+    "note": "มีข้อมูลกติกาการแข่งขัน แต่ไม่ใช่เกมใน catalog เล่นของศูนย์",
+    "answer": "ตอนนี้มีเกมที่ยืนยันได้ทั้งหมด 44 เกมครับ\n\nPC Zone (6 เกม)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\n\nPlayStation 5 Zone (23 เกม)\n•    Beat Saber\n•    Call of Duty: Modern Warfare III\n•    EA Sports FC 24\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Gran Turismo 7\n•    Hogwarts Legacy\n•    It Takes Two\n•    Little Nightmares II\n•    Marvel's Spider-Man 2\n•    Monster Hunter Rise\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Overcooked!\n•    Resident Evil 4\n•    Resident Evil 4 (Remake)\n•    Resident Evil Village\n•    TEKKEN 8\n•    The Last of Us Part I\n•    The Last of Us Part I / Part II\n•    The Last of Us Part II\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (18 เกม)\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    Little Nightmares II\n•    Luigi's Mansion 3\n•    Mario Kart 8 Deluxe\n•    Mario Kart Live: Home Circuit\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Nintendo Switch Sports\n•    Overcooked + Overcooked! 2\n•    Overcooked 2\n•    Ring Fit Adventure\n•    Super Mario Odyssey\n•    Super Smash Bros Ultimate\n•    The Legend of Zelda: Breath of the Wild\n\nCockpit Zone (1 เกม)\n•    Gran Turismo 7\n\nVR Zone (2 เกม)\n•    Beat Saber\n•    Horizon Call of the Mountain\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "mode": "pipeline:structured_games_catalog",
+    "strategy": "structured",
+    "route_category": "games",
+    "route_intent": "game_availability_lookup",
+    "route_confidence": 0.94,
+    "confidence": 0.95,
+    "elapsed_sec": 2.0837,
+    "wall_sec": 2.1179,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [
+      "fact_answer_may_be_too_verbose"
+    ],
+    "universal_intent": {
+      "domain": "games",
+      "operation": "unknown",
+      "target": "",
+      "filters": {},
+      "needs": [],
+      "answer_style": "direct",
+      "confidence": 0.45,
+      "method": "heuristic",
+      "reason": "game catalog/count terms override zone/equipment domain; no clear operation terms"
+    },
+    "selected_candidate_id": "structured.games",
+    "selected_candidate_action": "structured",
+    "selected_candidate_score": 0.99,
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "our_games"
+    ],
+    "sources": [
+      {
+        "id": "our_games",
+        "title": "Our Games",
+        "category": "games",
+        "source_url": "https://esports.phuket.psu.ac.th/Services/our-games"
+      }
+    ],
+    "decision_artifact": {
+      "intent": {
+        "domain": "games",
+        "operation": "unknown",
+        "target": "",
+        "confidence": 0.45,
+        "method": "heuristic"
+      },
+      "route": {
+        "category": "games",
+        "intent": "game_availability_lookup",
+        "confidence": 0.94,
+        "answer_type": "fact",
+        "risk": "low",
+        "reason": "game availability terms found"
+      },
+      "tool_router": {
+        "stage": "tool_router",
+        "decision": "heuristic:fast_path",
+        "confidence": 0.55,
+        "detail": "experimental_allow_llm is false",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      "selected_candidate": {
+        "capability_id": "structured.games",
+        "action": "structured",
+        "domain": "games",
+        "score": 0.99,
+        "status": "accepted",
+        "reason": "base=0.88; domain_match; answer_type_match; tool_router_domain=games",
+        "requires_evidence": true,
+        "risk": "low"
+      },
+      "candidates": [
+        {
+          "capability_id": "structured.games",
+          "action": "structured",
+          "domain": "games",
+          "score": 0.99,
+          "status": "accepted",
+          "reason": "base=0.88; domain_match; answer_type_match; tool_router_domain=games",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "fast.price_calculator",
+          "action": "fast_path",
+          "domain": "service_fee",
+          "score": 0.985,
+          "status": "accepted",
+          "reason": "base=0.93; tool_router_action=fast_path",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "structured.game_controls",
+          "action": "structured",
+          "domain": "game_controls",
+          "score": 0.96,
+          "status": "accepted",
+          "reason": "base=0.90; answer_type_match",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "structured.members",
+          "action": "structured",
+          "domain": "members",
+          "score": 0.94,
+          "status": "accepted",
+          "reason": "base=0.88; answer_type_match",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "structured.equipment",
+          "action": "structured",
+          "domain": "equipment",
+          "score": 0.94,
+          "status": "accepted",
+          "reason": "base=0.88; answer_type_match",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "fast.domain_handlers",
+          "action": "fast_path",
+          "domain": "multi",
+          "score": 0.935,
+          "status": "accepted",
+          "reason": "base=0.78; multi_domain; answer_type_match; tool_router_action=fast_path",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "structured.reservation",
+          "action": "structured",
+          "domain": "reservation",
+          "score": 0.92,
+          "status": "accepted",
+          "reason": "base=0.86; answer_type_match",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "structured.schedule",
+          "action": "structured",
+          "domain": "schedule",
+          "score": 0.92,
+          "status": "accepted",
+          "reason": "base=0.86; answer_type_match",
+          "requires_evidence": true,
+          "risk": "medium"
+        }
+      ],
+      "rejected": [
+        {
+          "capability_id": "llm.general_answer",
+          "action": "general_llm",
+          "domain": "general",
+          "score": 0.25,
+          "status": "rejected",
+          "reason": "policy_veto: PSU-specific or medium/high-risk route cannot use general LLM",
+          "requires_evidence": false,
+          "risk": "low"
+        }
+      ],
+      "policy": {
+        "psu_specific": true,
+        "route_risk": "low",
+        "general_llm_requires_non_psu": true
+      },
+      "execution_plan": [
+        "normalize_and_extract_entities",
+        "route_and_resolve_universal_intent",
+        "generate_capability_candidates",
+        "apply_policy_and_rank",
+        "execute_structured_tool",
+        "format_validate_and_record"
+      ],
+      "final": {
+        "mode": "pipeline:structured_games_catalog",
+        "confidence": 0.95,
+        "execution_step": "execute_structured_tool",
+        "validation_ok": true,
+        "validation_errors": [],
+        "validation_warnings": [
+          "fact_answer_may_be_too_verbose"
+        ],
+        "evidence_count": 1,
+        "source_ids": [
+          "our_games"
+        ]
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": "psu",
+        "duration": null,
+        "price_intent": false
+      },
+      "structured_tool": {
+        "stage": "structured_tool",
+        "decision": "structured_games_catalog",
+        "confidence": 0.95,
+        "detail": "get_games_by_zone",
+        "metadata": {
+          "tool": "get_games_by_zone",
+          "zone": "all",
+          "counts": {
+            "PC Zone": 6,
+            "PlayStation 5 Zone": 23,
+            "Nintendo Switch Zone": 18,
+            "Cockpit Zone": 1,
+            "VR Zone": 2
+          },
+          "elapsed": 2.0798,
+          "facts_composer_used": false
+        }
+      },
+      "validation": {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "fact_answer_may_be_too_verbose",
+        "metadata": {}
+      }
+    },
+    "trace": [
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "rov คือเกมอะไร",
+        "metadata": {
+          "language_hint": "mixed_th_en",
+          "query_variants": [
+            "ROV คือเกมอะไร"
+          ]
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": "psu",
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "guard",
+        "decision": "domain_ok",
+        "confidence": 0.9,
+        "detail": "domain hints found",
+        "metadata": {}
+      },
+      {
+        "stage": "router",
+        "decision": "games",
+        "confidence": 0.94,
+        "detail": "game availability terms found",
+        "metadata": {
+          "intent": "game_availability_lookup",
+          "answer_type": "fact"
+        }
+      },
+      {
+        "stage": "universal_intent",
+        "decision": "games/unknown",
+        "confidence": 0.45,
+        "detail": "game catalog/count terms override zone/equipment domain; no clear operation terms",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "target": "",
+          "filters": {},
+          "needs": [],
+          "answer_style": "direct",
+          "heuristic": {
+            "domain": "games",
+            "operation": "unknown",
+            "confidence": 0.45,
+            "reason": "game catalog/count terms override zone/equipment domain; no clear operation terms"
+          }
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:fast_path",
+        "confidence": 0.55,
+        "detail": "experimental_allow_llm is false",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "structured.games",
+        "confidence": 0.99,
+        "detail": "base=0.88; domain_match; answer_type_match; tool_router_domain=games",
+        "metadata": {
+          "selected": {
+            "capability_id": "structured.games",
+            "action": "structured",
+            "domain": "games",
+            "score": 0.99,
+            "status": "accepted",
+            "reason": "base=0.88; domain_match; answer_type_match; tool_router_domain=games",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          "candidates": [
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.99,
+              "status": "accepted",
+              "reason": "base=0.88; domain_match; answer_type_match; tool_router_domain=games",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.985,
+              "status": "accepted",
+              "reason": "base=0.93; tool_router_action=fast_path",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.96,
+              "status": "accepted",
+              "reason": "base=0.90; answer_type_match",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.94,
+              "status": "accepted",
+              "reason": "base=0.88; answer_type_match",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.94,
+              "status": "accepted",
+              "reason": "base=0.88; answer_type_match",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.935,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; tool_router_action=fast_path",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.92,
+              "status": "accepted",
+              "reason": "base=0.86; answer_type_match",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.92,
+              "status": "accepted",
+              "reason": "base=0.86; answer_type_match",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "llm.general_answer",
+              "action": "general_llm",
+              "domain": "general",
+              "score": 0.25,
+              "status": "rejected",
+              "reason": "policy_veto: PSU-specific or medium/high-risk route cannot use general LLM",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "low",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "structured_tool",
+        "decision": "structured_games_catalog",
+        "confidence": 0.95,
+        "detail": "get_games_by_zone",
+        "metadata": {
+          "tool": "get_games_by_zone",
+          "zone": "all",
+          "counts": {
+            "PC Zone": 6,
+            "PlayStation 5 Zone": 23,
+            "Nintendo Switch Zone": 18,
+            "Cockpit Zone": 1,
+            "VR Zone": 2
+          },
+          "elapsed": 2.0798,
+          "facts_composer_used": false
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "fact_answer_may_be_too_verbose",
+        "metadata": {}
+      }
+    ]
+  },
+  {
+    "id": "GR-002",
+    "category": "game_rules",
+    "question_no": 2,
+    "question": "ROV เป็นเกมแนวไหน",
+    "expected_support": "competition_rules",
+    "note": "มีข้อมูลกติกาการแข่งขัน แต่ไม่ใช่เกมใน catalog เล่นของศูนย์",
+    "answer": "RoV / Arena of Valor: RoV หรือ Arena of Valor คือเกม MOBA บนมือถือที่ผู้เล่นแบ่งเป็นทีม เลือกฮีโร่ และร่วมกันทำลายป้อม/ฐานของฝ่ายตรงข้าม\nแนวเกม: เกม MOBA แบบทีม\nวิธีเล่นโดยสรุป: โดยทั่วไปผู้เล่นต้องเลือกตำแหน่งและฮีโร่ให้เหมาะกับทีม เก็บเลเวล คุมแผนที่ ช่วยทีมไฟต์ และดันเลนเพื่อทำลายฐานคู่แข่ง ในฐานข้อมูลของศูนย์มีข้อมูลฝั่งกติกาการแข่งขัน แต่ยังไม่พบว่าอยู่ในรายการเกมให้เล่นของศูนย์\nเล่นได้ที่: มีข้อมูลกติกาการแข่งขัน แต่ยังไม่พบในรายการเกมให้เล่นของศูนย์\nแหล่งข้อมูล: data/competition_rules",
+    "mode": "pipeline:game_name_mention_detail_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route_category": "games",
+    "route_intent": "game_detail_lookup",
+    "route_confidence": 0.95,
+    "confidence": 0.94,
+    "elapsed_sec": 2.4598,
+    "wall_sec": 2.4608,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "universal_intent": {
+      "domain": "games",
+      "operation": "unknown",
+      "target": "",
+      "filters": {},
+      "needs": [],
+      "answer_style": "direct",
+      "confidence": 0.45,
+      "method": "heuristic",
+      "reason": "domain_terms=4; no clear operation terms"
+    },
+    "selected_candidate_id": "structured.games",
+    "selected_candidate_action": "structured",
+    "selected_candidate_score": 0.99,
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "sources": [
+      {
+        "id": "competition_rules",
+        "title": "Competition Rules",
+        "category": "competition_rules",
+        "source_url": "data/competition_rules"
+      }
+    ],
+    "decision_artifact": {
+      "intent": {
+        "domain": "games",
+        "operation": "unknown",
+        "target": "",
+        "confidence": 0.45,
+        "method": "heuristic"
+      },
+      "route": {
+        "category": "games",
+        "intent": "game_detail_lookup",
+        "confidence": 0.95,
+        "answer_type": "fact",
+        "risk": "low",
+        "reason": "specific game detail terms found"
+      },
+      "tool_router": {
+        "stage": "tool_router",
+        "decision": "heuristic:fast_path",
+        "confidence": 0.55,
+        "detail": "experimental_allow_llm is false",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      "selected_candidate": {
+        "capability_id": "structured.games",
+        "action": "structured",
+        "domain": "games",
+        "score": 0.99,
+        "status": "accepted",
+        "reason": "base=0.88; domain_match; answer_type_match; tool_router_domain=games",
+        "requires_evidence": true,
+        "risk": "low"
+      },
+      "candidates": [
+        {
+          "capability_id": "structured.games",
+          "action": "structured",
+          "domain": "games",
+          "score": 0.99,
+          "status": "accepted",
+          "reason": "base=0.88; domain_match; answer_type_match; tool_router_domain=games",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "fast.price_calculator",
+          "action": "fast_path",
+          "domain": "service_fee",
+          "score": 0.985,
+          "status": "accepted",
+          "reason": "base=0.93; tool_router_action=fast_path",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "structured.game_controls",
+          "action": "structured",
+          "domain": "game_controls",
+          "score": 0.96,
+          "status": "accepted",
+          "reason": "base=0.90; answer_type_match",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "structured.members",
+          "action": "structured",
+          "domain": "members",
+          "score": 0.94,
+          "status": "accepted",
+          "reason": "base=0.88; answer_type_match",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "structured.equipment",
+          "action": "structured",
+          "domain": "equipment",
+          "score": 0.94,
+          "status": "accepted",
+          "reason": "base=0.88; answer_type_match",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "fast.domain_handlers",
+          "action": "fast_path",
+          "domain": "multi",
+          "score": 0.935,
+          "status": "accepted",
+          "reason": "base=0.78; multi_domain; answer_type_match; tool_router_action=fast_path",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "structured.reservation",
+          "action": "structured",
+          "domain": "reservation",
+          "score": 0.92,
+          "status": "accepted",
+          "reason": "base=0.86; answer_type_match",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "structured.schedule",
+          "action": "structured",
+          "domain": "schedule",
+          "score": 0.92,
+          "status": "accepted",
+          "reason": "base=0.86; answer_type_match",
+          "requires_evidence": true,
+          "risk": "medium"
+        }
+      ],
+      "rejected": [
+        {
+          "capability_id": "llm.general_answer",
+          "action": "general_llm",
+          "domain": "general",
+          "score": 0.25,
+          "status": "rejected",
+          "reason": "policy_veto: PSU-specific or medium/high-risk route cannot use general LLM",
+          "requires_evidence": false,
+          "risk": "low"
+        }
+      ],
+      "policy": {
+        "psu_specific": true,
+        "route_risk": "low",
+        "general_llm_requires_non_psu": true
+      },
+      "execution_plan": [
+        "normalize_and_extract_entities",
+        "route_and_resolve_universal_intent",
+        "generate_capability_candidates",
+        "apply_policy_and_rank",
+        "execute_fast_path",
+        "format_validate_and_record"
+      ],
+      "final": {
+        "mode": "pipeline:game_name_mention_detail_fast_path",
+        "confidence": 0.94,
+        "execution_step": "execute_fast_path",
+        "validation_ok": true,
+        "validation_errors": [],
+        "validation_warnings": [],
+        "evidence_count": 1,
+        "source_ids": [
+          "competition_rules"
+        ]
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": null,
+        "duration": null,
+        "price_intent": false
+      },
+      "structured_tool": null,
+      "validation": {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      }
+    },
+    "trace": [
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "rov เป็นเกมแนวไหน",
+        "metadata": {
+          "language_hint": "mixed_th_en",
+          "query_variants": [
+            "ROV เป็นเกมแนวไหน"
+          ]
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "guard",
+        "decision": "domain_ok",
+        "confidence": 0.9,
+        "detail": "domain hints found",
+        "metadata": {}
+      },
+      {
+        "stage": "router",
+        "decision": "games",
+        "confidence": 0.95,
+        "detail": "specific game detail terms found",
+        "metadata": {
+          "intent": "game_detail_lookup",
+          "answer_type": "fact"
+        }
+      },
+      {
+        "stage": "universal_intent",
+        "decision": "games/unknown",
+        "confidence": 0.45,
+        "detail": "domain_terms=4; no clear operation terms",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "target": "",
+          "filters": {},
+          "needs": [],
+          "answer_style": "direct",
+          "heuristic": {
+            "domain": "games",
+            "operation": "unknown",
+            "confidence": 0.45,
+            "reason": "domain_terms=4; no clear operation terms"
+          }
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:fast_path",
+        "confidence": 0.55,
+        "detail": "experimental_allow_llm is false",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "structured.games",
+        "confidence": 0.99,
+        "detail": "base=0.88; domain_match; answer_type_match; tool_router_domain=games",
+        "metadata": {
+          "selected": {
+            "capability_id": "structured.games",
+            "action": "structured",
+            "domain": "games",
+            "score": 0.99,
+            "status": "accepted",
+            "reason": "base=0.88; domain_match; answer_type_match; tool_router_domain=games",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          "candidates": [
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.99,
+              "status": "accepted",
+              "reason": "base=0.88; domain_match; answer_type_match; tool_router_domain=games",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.985,
+              "status": "accepted",
+              "reason": "base=0.93; tool_router_action=fast_path",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.96,
+              "status": "accepted",
+              "reason": "base=0.90; answer_type_match",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.94,
+              "status": "accepted",
+              "reason": "base=0.88; answer_type_match",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.94,
+              "status": "accepted",
+              "reason": "base=0.88; answer_type_match",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.935,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; tool_router_action=fast_path",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.92,
+              "status": "accepted",
+              "reason": "base=0.86; answer_type_match",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.92,
+              "status": "accepted",
+              "reason": "base=0.86; answer_type_match",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "llm.general_answer",
+              "action": "general_llm",
+              "domain": "general",
+              "score": 0.25,
+              "status": "rejected",
+              "reason": "policy_veto: PSU-specific or medium/high-risk route cannot use general LLM",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "low",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_games",
+        "confidence": 0.94,
+        "detail": "game_name_mention_detail_fast_path",
+        "metadata": {}
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      }
+    ]
+  },
+  {
+    "id": "GR-003",
+    "category": "game_rules",
+    "question_no": 3,
+    "question": "ROV มีข้อมูลกติกาการแข่งขันไหม",
+    "expected_support": "competition_rules",
+    "note": "มีข้อมูลกติกาการแข่งขัน แต่ไม่ใช่เกมใน catalog เล่นของศูนย์",
+    "answer": "มีข้อมูลกติกาการแข่งขัน RoV ครับ\n•    ข้อมูลที่ยืนยันได้: แข่งขันแบบ 5v5 และมีรายละเอียดเรื่องการมาสาย การหยุดเกม อุปกรณ์มือถือ และการเริ่มเกมใหม่\n•    หมายเหตุ: เป็นข้อมูลกติกาการแข่งขัน ไม่ใช่รายการเกมให้เล่นในโซนของศูนย์\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "route_confidence": 0.94,
+    "confidence": 0.94,
+    "elapsed_sec": 0.4033,
+    "wall_sec": 0.4045,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "universal_intent": {
+      "domain": "competition_rules",
+      "operation": "rule_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_rule"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.89,
+      "method": "heuristic",
+      "reason": "domain_terms=4; rule terms found"
+    },
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "selected_candidate_score": 0.99,
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "sources": [
+      {
+        "id": "competition_rules",
+        "title": "Competition Rules",
+        "category": "competition_rules",
+        "source_url": "data/competition_rules"
+      }
+    ],
+    "decision_artifact": {
+      "intent": {
+        "domain": "competition_rules",
+        "operation": "rule_lookup",
+        "target": "",
+        "confidence": 0.89,
+        "method": "heuristic"
+      },
+      "route": {
+        "category": "competition_rules",
+        "intent": "competition_rules_lookup",
+        "confidence": 0.94,
+        "answer_type": "fact",
+        "risk": "medium",
+        "reason": "competition rule terms found"
+      },
+      "tool_router": {
+        "stage": "tool_router",
+        "decision": "heuristic:retrieval",
+        "confidence": 0.89,
+        "detail": "experimental_allow_llm is false",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      "selected_candidate": {
+        "capability_id": "retrieval.competition_fact_cards",
+        "action": "retrieval",
+        "domain": "competition_rules",
+        "score": 0.99,
+        "status": "accepted",
+        "reason": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority",
+        "requires_evidence": true,
+        "risk": "medium"
+      },
+      "candidates": [
+        {
+          "capability_id": "retrieval.competition_fact_cards",
+          "action": "retrieval",
+          "domain": "competition_rules",
+          "score": 0.99,
+          "status": "accepted",
+          "reason": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "structured.game_controls",
+          "action": "structured",
+          "domain": "game_controls",
+          "score": 0.96,
+          "status": "accepted",
+          "reason": "base=0.90; answer_type_match",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "structured.members",
+          "action": "structured",
+          "domain": "members",
+          "score": 0.94,
+          "status": "accepted",
+          "reason": "base=0.88; answer_type_match",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "structured.games",
+          "action": "structured",
+          "domain": "games",
+          "score": 0.94,
+          "status": "accepted",
+          "reason": "base=0.88; answer_type_match",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "structured.equipment",
+          "action": "structured",
+          "domain": "equipment",
+          "score": 0.94,
+          "status": "accepted",
+          "reason": "base=0.88; answer_type_match",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "fast.price_calculator",
+          "action": "fast_path",
+          "domain": "service_fee",
+          "score": 0.93,
+          "status": "accepted",
+          "reason": "base=0.93",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "structured.reservation",
+          "action": "structured",
+          "domain": "reservation",
+          "score": 0.92,
+          "status": "accepted",
+          "reason": "base=0.86; answer_type_match",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "structured.schedule",
+          "action": "structured",
+          "domain": "schedule",
+          "score": 0.92,
+          "status": "accepted",
+          "reason": "base=0.86; answer_type_match",
+          "requires_evidence": true,
+          "risk": "medium"
+        }
+      ],
+      "rejected": [
+        {
+          "capability_id": "llm.general_answer",
+          "action": "general_llm",
+          "domain": "general",
+          "score": 0.25,
+          "status": "rejected",
+          "reason": "policy_veto: PSU-specific or medium/high-risk route cannot use general LLM",
+          "requires_evidence": false,
+          "risk": "low"
+        }
+      ],
+      "policy": {
+        "psu_specific": true,
+        "route_risk": "medium",
+        "general_llm_requires_non_psu": true
+      },
+      "execution_plan": [
+        "normalize_and_extract_entities",
+        "route_and_resolve_universal_intent",
+        "generate_capability_candidates",
+        "apply_policy_and_rank",
+        "execute_fast_path",
+        "format_validate_and_record"
+      ],
+      "final": {
+        "mode": "pipeline:competition_generic_fast_path",
+        "confidence": 0.94,
+        "execution_step": "execute_fast_path",
+        "validation_ok": true,
+        "validation_errors": [],
+        "validation_warnings": [],
+        "evidence_count": 1,
+        "source_ids": [
+          "competition_rules"
+        ]
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": null,
+        "duration": null,
+        "price_intent": false
+      },
+      "structured_tool": null,
+      "validation": {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      }
+    },
+    "trace": [
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "rov มีข้อมูลกติกาการแข่งขันไหม",
+        "metadata": {
+          "language_hint": "mixed_th_en",
+          "query_variants": [
+            "ROV มีข้อมูลกติกาการแข่งขันไหม"
+          ]
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "guard",
+        "decision": "weak_domain_signal",
+        "confidence": 0.35,
+        "detail": "no clear PSU Esports domain hint",
+        "metadata": {}
+      },
+      {
+        "stage": "router",
+        "decision": "competition_rules",
+        "confidence": 0.94,
+        "detail": "competition rule terms found",
+        "metadata": {
+          "intent": "competition_rules_lookup",
+          "answer_type": "fact"
+        }
+      },
+      {
+        "stage": "universal_intent",
+        "decision": "competition_rules/rule_lookup",
+        "confidence": 0.89,
+        "detail": "domain_terms=4; rule terms found",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "target": "",
+          "filters": {},
+          "needs": [
+            "lookup_rule"
+          ],
+          "answer_style": "direct",
+          "heuristic": {
+            "domain": "competition_rules",
+            "operation": "rule_lookup",
+            "confidence": 0.89,
+            "reason": "domain_terms=4; rule terms found"
+          }
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:retrieval",
+        "confidence": 0.89,
+        "detail": "experimental_allow_llm is false",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "retrieval.competition_fact_cards",
+        "confidence": 0.99,
+        "detail": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority",
+        "metadata": {
+          "selected": {
+            "capability_id": "retrieval.competition_fact_cards",
+            "action": "retrieval",
+            "domain": "competition_rules",
+            "score": 0.99,
+            "status": "accepted",
+            "reason": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          "candidates": [
+            {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.99,
+              "status": "accepted",
+              "reason": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.96,
+              "status": "accepted",
+              "reason": "base=0.90; answer_type_match",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.94,
+              "status": "accepted",
+              "reason": "base=0.88; answer_type_match",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.94,
+              "status": "accepted",
+              "reason": "base=0.88; answer_type_match",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.94,
+              "status": "accepted",
+              "reason": "base=0.88; answer_type_match",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.93,
+              "status": "accepted",
+              "reason": "base=0.93",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.92,
+              "status": "accepted",
+              "reason": "base=0.86; answer_type_match",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.92,
+              "status": "accepted",
+              "reason": "base=0.86; answer_type_match",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "llm.general_answer",
+              "action": "general_llm",
+              "domain": "general",
+              "score": 0.25,
+              "status": "rejected",
+              "reason": "policy_veto: PSU-specific or medium/high-risk route cannot use general LLM",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "medium",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_competition_rules",
+        "confidence": 0.94,
+        "detail": "competition_generic_fast_path",
+        "metadata": {}
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      }
+    ]
+  }
+]

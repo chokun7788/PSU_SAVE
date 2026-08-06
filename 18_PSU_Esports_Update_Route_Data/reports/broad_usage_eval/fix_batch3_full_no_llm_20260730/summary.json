@@ -1,0 +1,493 @@
+{
+  "generated_at": "2026-07-30T17:13:50",
+  "case_count": 667,
+  "turn_count": 679,
+  "passed": 651,
+  "failed": 28,
+  "pass_rate": 0.9588,
+  "total_wall_sec": 91.325,
+  "allow_llm": false,
+  "rag_fallback": false,
+  "group_counts": {
+    "service_fee": {
+      "total": 88,
+      "pass": 88,
+      "fail": 0
+    },
+    "games": {
+      "total": 158,
+      "pass": 158,
+      "fail": 0
+    },
+    "game_controls": {
+      "total": 159,
+      "pass": 153,
+      "fail": 6
+    },
+    "equipment": {
+      "total": 58,
+      "pass": 58,
+      "fail": 0
+    },
+    "reservation": {
+      "total": 20,
+      "pass": 20,
+      "fail": 0
+    },
+    "schedule": {
+      "total": 10,
+      "pass": 10,
+      "fail": 0
+    },
+    "members": {
+      "total": 47,
+      "pass": 47,
+      "fail": 0
+    },
+    "competition_rules": {
+      "total": 75,
+      "pass": 64,
+      "fail": 11
+    },
+    "compound": {
+      "total": 15,
+      "pass": 12,
+      "fail": 3
+    },
+    "ambiguity_no_answer": {
+      "total": 25,
+      "pass": 18,
+      "fail": 7
+    },
+    "session_followup": {
+      "total": 24,
+      "pass": 23,
+      "fail": 1
+    }
+  },
+  "strategy_counts": {
+    "fast/rule": 120,
+    "structured": 496,
+    "compound": 14,
+    "pipeline": 9,
+    "clarification": 15,
+    "rag/retrieval": 25
+  },
+  "mode_counts": {
+    "pipeline:deterministic_calculator_fast": 58,
+    "pipeline:structured_service_fee": 1,
+    "pipeline:structured_service_fee_by_game": 30,
+    "pipeline:structured_game_detail": 139,
+    "pipeline:structured_games_genre_list": 13,
+    "pipeline:structured_game_controls": 157,
+    "pipeline:structured_games_catalog": 11,
+    "pipeline:structured_game_zone_ranking": 1,
+    "pipeline:structured_games_cross_zone": 1,
+    "pipeline:structured_games_family": 1,
+    "pipeline:multi_question_splitter": 14,
+    "pipeline:structured_members_group_list": 7,
+    "pipeline:game_control_missing_game_context": 9,
+    "pipeline:structured_equipment_catalog": 8,
+    "pipeline:ambiguity_clarification": 15,
+    "pipeline:structured_equipment_item": 49,
+    "pipeline:structured_reservation_fact": 22,
+    "pipeline:structured_booking_selection": 4,
+    "pipeline:booking_howto_fast_path": 1,
+    "pipeline:booking_fast_path": 1,
+    "pipeline:mixed_reservation_fast": 1,
+    "pipeline:booking_cancel_fast_path": 1,
+    "pipeline:structured_schedule": 7,
+    "pipeline:calendar_closure_fast_path": 1,
+    "pipeline:calendar_schedule_fast_path": 1,
+    "pipeline:calendar_upcoming_holidays_fast_path": 1,
+    "pipeline:structured_members_group_count": 3,
+    "pipeline:structured_members_person_lookup": 25,
+    "pipeline:structured_members_role_lookup": 17,
+    "pipeline:competition_fact_card": 15,
+    "pipeline:competition_generic_fast_path": 55,
+    "pipeline:no_answer": 6,
+    "pipeline:rag_direct_curated": 2,
+    "pipeline:games_known_unsupported_fast_path": 1,
+    "pipeline:hybrid_guarded_rerank": 1
+  },
+  "problem_counts": {
+    "missing 'God of War Ragnarök'": 1,
+    "route_category expected ['games'], got multi_question": 2,
+    "mode expected prefix ['pipeline": 6,
+    "missing 'Resident Evil 4 (Remake)'": 1,
+    "missing 'Super Smash Bros. Ultimate'": 1,
+    "route_category expected ['games'], got overview": 1,
+    "missing any of ['L3 (Click Left Stick)', 'มาร์กตำแหน่งศัตรู']": 1,
+    "route_category expected ['competition_rules'], got reservation": 5,
+    "missing any of ['VALORANT', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']": 1,
+    "missing any of ['CS2', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']": 1,
+    "missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']": 7,
+    "missing any of ['TEKKEN', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']": 1,
+    "missing any of ['ROV', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']": 1,
+    "route_category expected ['multi_question'], got games": 2,
+    "route_category expected ['multi_question'], got overview": 1,
+    "missing any of ['คำถามที่', 'ราคา', 'ปุ่ม', 'Zone', 'จอง']": 1,
+    "route_category expected ['clarification', 'games', 'equipment', 'service_fee', 'reservation', 'no_answer'], got general": 3,
+    "missing any of ['ยังไม่พบ', 'ไม่มี', 'ไม่ได้อยู่', 'ตอบจากข้อมูล']": 4,
+    "route_category expected ['no_answer', 'games', 'general'], got overview": 1,
+    "route_category expected ['no_answer', 'games', 'general'], got knowledge": 1,
+    "route_category expected ['no_answer', 'games', 'general'], got events_news": 1,
+    "missing 'PC'": 1
+  },
+  "top_failures": [
+    {
+      "case_id": "GC-033",
+      "group": "game_controls",
+      "question": "God of War Ragnarök ปุ่มทั้งหมดมีอะไรบ้าง",
+      "resolved_question": "",
+      "mode": "pipeline:structured_game_controls",
+      "route": "games/game_control_lookup",
+      "problems": [
+        "missing 'God of War Ragnarök'"
+      ],
+      "answer_preview": "God of War Ragnarok มีข้อมูลปุ่มควบคุมดังนี้: PlayStation / PS5 •    L: เคลื่อนที่ - บังคับทิศทางการเดิน •    L3: วิ่งสปรินต์ - กดเพื่อวิ่ง •    L3 + R3: พลังสปาร์ตัน - ระเบิดความโกรธของเครโทสเพื่อเพิ่มพลังโจมตีและฟื้นฟูพลังชีวิต •    R: มุ"
+    },
+    {
+      "case_id": "GC-075",
+      "group": "game_controls",
+      "question": "Mario Party Superstars ปุ่มเล่นบอร์ดและมินิเกมด้วยปุ่มกดอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:multi_question_splitter",
+      "route": "multi_question/multi_question_split",
+      "problems": [
+        "route_category expected ['games'], got multi_question",
+        "mode expected prefix ['pipeline:structured_game_controls'], got pipeline:multi_question_splitter"
+      ],
+      "answer_preview": "คำถามนี้มีหลายเรื่อง ขอแยกตอบเป็นข้อ ๆ:  •    Mario Party Superstars ปุ่มเล่นบอร์ด กดอะไร Mario Party Superstars มีข้อมูลปุ่มควบคุมดังนี้: Nintendo Switch •    Button controls: เล่นบอร์ดและมินิเกมด้วยปุ่ม - แหล่งทางการยืนยันว่า 100 มินิเกมร"
+    },
+    {
+      "case_id": "GC-096",
+      "group": "game_controls",
+      "question": "New Super Mario Bros. U Deluxe ปุ่มวิ่ง กระโดด และเหยียบศัตรูกดอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:multi_question_splitter",
+      "route": "multi_question/multi_question_split",
+      "problems": [
+        "route_category expected ['games'], got multi_question",
+        "mode expected prefix ['pipeline:structured_game_controls'], got pipeline:multi_question_splitter"
+      ],
+      "answer_preview": "คำถามนี้มีหลายเรื่อง ขอแยกตอบเป็นข้อ ๆ:  •    New Super Mario Bros. U Deluxe ปุ่มวิ่ง กระโดด กดอะไร New Super Mario Bros. U Deluxe ปุ่มที่ตรงกับคำถาม: Nintendo Switch •    Simple controls: วิ่ง กระโดด และเหยียบศัตรู - หน้า Nintendo อธิบายกา"
+    },
+    {
+      "case_id": "GC-109",
+      "group": "game_controls",
+      "question": "Resident Evil 4 (Remake) ปุ่มทั้งหมดมีอะไรบ้าง",
+      "resolved_question": "",
+      "mode": "pipeline:structured_game_controls",
+      "route": "games/game_control_lookup",
+      "problems": [
+        "missing 'Resident Evil 4 (Remake)'"
+      ],
+      "answer_preview": "Resident Evil 4 มีข้อมูลปุ่มควบคุมดังนี้: PlayStation / PS5 •    L (Left Stick): เคลื่อนที่ •    L3: วิ่งสปรินต์ •    R (Right Stick): มุมกล้อง •    L2 (Hold): เล็ง •    L1: ปัดป้อง •    R1: วิ่ง / กลับหลังหัน •    R2: ยิง / โจมตีด้วยมีด • "
+    },
+    {
+      "case_id": "GC-125",
+      "group": "game_controls",
+      "question": "Super Smash Bros. Ultimate ปุ่มทั้งหมดมีอะไรบ้าง",
+      "resolved_question": "",
+      "mode": "pipeline:structured_game_controls",
+      "route": "games/game_control_lookup",
+      "problems": [
+        "missing 'Super Smash Bros. Ultimate'"
+      ],
+      "answer_preview": "Super Smash Bros Ultimate มีข้อมูลปุ่มควบคุมดังนี้: Nintendo Switch •    L (Left Stick): เคลื่อนที่ - ใช้เดิน วิ่ง หรือย่อตัว รวมถึงกำหนดทิศทางการโจมตีท่าต่าง ๆ •    R (Right Stick): โจมตีสแมช - ก้านอนาล็อกขวาใช้สำหรับปล่อยท่า Smash Attack "
+    },
+    {
+      "case_id": "GC-148",
+      "group": "game_controls",
+      "question": "Uncharted: Legacy of Thieves Collection ปุ่มมาร์กตำแหน่งศัตรูกดอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:structured_members_group_list",
+      "route": "overview/list",
+      "problems": [
+        "route_category expected ['games'], got overview",
+        "mode expected prefix ['pipeline:structured_game_controls'], got pipeline:structured_members_group_list",
+        "missing any of ['L3 (Click Left Stick)', 'มาร์กตำแหน่งศัตรู']"
+      ],
+      "answer_preview": "สมาชิกจากหน้า Members แยกตามหมวด รวม 25 คน: Members (7 คน): •    ผศ.ดร.นิวัติ แก้วประดับ: อธิการบดี •    รศ.ดร.พันธ์ ทองชุมนุม: รองอธิการบดี •    รศ.ดร.อซีส นันทอมรพงศ์: คณบดี •    ผศ.ดร.ณัฐพงศ์ ทองเทพ: ผู้ช่วยอธิการบดีฝ่ายวิชาการ •    นายพ"
+    },
+    {
+      "case_id": "CR-003",
+      "group": "competition_rules",
+      "question": "VALORANT มาสายจะโดนอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:structured_reservation_fact",
+      "route": "reservation/booking_policy",
+      "problems": [
+        "route_category expected ['competition_rules'], got reservation",
+        "missing any of ['VALORANT', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "ถ้าไม่เช็คอินก่อนเวลาเริ่มต้นของรอบ ระบบจะยกเลิกการจองทันที และไม่มีการคืนเงิน แหล่งข้อมูล: https://esports.computing.psu.ac.th/"
+    },
+    {
+      "case_id": "CR-018",
+      "group": "competition_rules",
+      "question": "CS2 มาสายจะโดนอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:structured_reservation_fact",
+      "route": "reservation/booking_policy",
+      "problems": [
+        "route_category expected ['competition_rules'], got reservation",
+        "missing any of ['CS2', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "ถ้าไม่เช็คอินก่อนเวลาเริ่มต้นของรอบ ระบบจะยกเลิกการจองทันที และไม่มีการคืนเงิน แหล่งข้อมูล: https://esports.computing.psu.ac.th/"
+    },
+    {
+      "case_id": "CR-032",
+      "group": "competition_rules",
+      "question": "Counter-Strike 2 ใช้ผู้เล่นกี่คน",
+      "resolved_question": "",
+      "mode": "pipeline:competition_generic_fast_path",
+      "route": "competition_rules/competition_rules_lookup",
+      "problems": [
+        "missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "CS2 ใช้ผู้เล่นทีมละ 5 คนครับ แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    },
+    {
+      "case_id": "CR-033",
+      "group": "competition_rules",
+      "question": "Counter-Strike 2 มาสายจะโดนอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:structured_reservation_fact",
+      "route": "reservation/booking_policy",
+      "problems": [
+        "route_category expected ['competition_rules'], got reservation",
+        "missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "ถ้าไม่เช็คอินก่อนเวลาเริ่มต้นของรอบ ระบบจะยกเลิกการจองทันที และไม่มีการคืนเงิน แหล่งข้อมูล: https://esports.computing.psu.ac.th/"
+    },
+    {
+      "case_id": "CR-034",
+      "group": "competition_rules",
+      "question": "Counter-Strike 2 pause ได้ไหม",
+      "resolved_question": "",
+      "mode": "pipeline:competition_generic_fast_path",
+      "route": "competition_rules/competition_rules_lookup",
+      "problems": [
+        "missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "CS2 มีทั้ง Technical Pause และ Tactical Timeout ครับ •    Technical Pause ใช้กรณีปัญหาขัดข้อง •    Tactical Timeout ใช้ตามเงื่อนไขช่วง Freeze time แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    },
+    {
+      "case_id": "CR-041",
+      "group": "competition_rules",
+      "question": "Counter-Strike 2 ถ้าใช้ bug จะโดนอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:competition_generic_fast_path",
+      "route": "competition_rules/competition_rules_lookup",
+      "problems": [
+        "missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "CS2 มีบทลงโทษครับ •    ตัวอย่าง: ใช้บัค/โกง/พฤติกรรมไม่เหมาะสม อาจถูกปรับแพ้เป็นรอบ แมตช์ หรือตัดสิทธิ์ตามความรุนแรง แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    },
+    {
+      "case_id": "CR-042",
+      "group": "competition_rules",
+      "question": "Counter-Strike 2 ต้องเช็คอินก่อนแข่งไหม",
+      "resolved_question": "",
+      "mode": "pipeline:competition_generic_fast_path",
+      "route": "competition_rules/competition_rules_lookup",
+      "problems": [
+        "missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "CS2 ต้องยืนยัน/รายงานตัวตามเวลาที่ผู้จัดกำหนดครับ •    หากไม่ยืนยันก่อนแมตช์มีความเสี่ยงถูกตัดสิทธิ์ แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    },
+    {
+      "case_id": "CR-044",
+      "group": "competition_rules",
+      "question": "Counter-Strike 2 แผนที่มีอะไรบ้าง",
+      "resolved_question": "",
+      "mode": "pipeline:competition_generic_fast_path",
+      "route": "competition_rules/competition_rules_lookup",
+      "problems": [
+        "missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "CS2 มีข้อมูล map pool ครับ •    แผนที่ที่พบ: Ancient, Anubis, Dust 2, Inferno, Mirage, Nuke และ Train แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    },
+    {
+      "case_id": "CR-045",
+      "group": "competition_rules",
+      "question": "Counter-Strike 2 สรุปกติกาสั้นๆ",
+      "resolved_question": "",
+      "mode": "pipeline:competition_fact_card",
+      "route": "competition_rules/competition_rules_lookup",
+      "problems": [
+        "missing any of ['Counter-Strike', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "คำตอบ: ต่างกันคือ CS2 Technical Pause ขอได้ทีมละ 2 ครั้ง รวมไม่เกิน 10 นาที ส่วน Tactical Timeout ขอได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที แหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    },
+    {
+      "case_id": "CR-048",
+      "group": "competition_rules",
+      "question": "TEKKEN 8 มาสายจะโดนอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:structured_reservation_fact",
+      "route": "reservation/booking_policy",
+      "problems": [
+        "route_category expected ['competition_rules'], got reservation",
+        "missing any of ['TEKKEN', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "ถ้าไม่เช็คอินก่อนเวลาเริ่มต้นของรอบ ระบบจะยกเลิกการจองทันที และไม่มีการคืนเงิน แหล่งข้อมูล: https://esports.computing.psu.ac.th/"
+    },
+    {
+      "case_id": "CR-063",
+      "group": "competition_rules",
+      "question": "ROV มาสายจะโดนอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:structured_reservation_fact",
+      "route": "reservation/booking_policy",
+      "problems": [
+        "route_category expected ['competition_rules'], got reservation",
+        "missing any of ['ROV', 'กติกา', 'แข่งขัน', 'ยังไม่พบ']"
+      ],
+      "answer_preview": "ถ้าไม่เช็คอินก่อนเวลาเริ่มต้นของรอบ ระบบจะยกเลิกการจองทันที และไม่มีการคืนเงิน แหล่งข้อมูล: https://esports.computing.psu.ac.th/"
+    },
+    {
+      "case_id": "C-004",
+      "group": "compound",
+      "question": "Gran Turismo 7 เล่นยังไง แล้วปุ่มเร่งกดอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:structured_game_controls",
+      "route": "games/game_control_lookup",
+      "problems": [
+        "route_category expected ['multi_question'], got games",
+        "mode expected prefix ['pipeline:multi_question_splitter'], got pipeline:structured_game_controls"
+      ],
+      "answer_preview": "Gran Turismo 7 ปุ่มที่ตรงกับคำถาม: PlayStation / PS5 •    R2: คันเร่ง - กดเพื่อเร่งเครื่อง •    R3: ไนตรัส / เร่งแซง - ใช้งานระบบเพิ่มความเร็วพิเศษที่มีติดตั้งในรถบางรุ่น แหล่งข้อมูล: https://gameinputdatabase.com/game/135"
+    },
+    {
+      "case_id": "C-007",
+      "group": "compound",
+      "question": "สมาชิกมีกี่คน แล้วใครเป็นอธิการบดี",
+      "resolved_question": "",
+      "mode": "pipeline:structured_members_role_lookup",
+      "route": "overview/members_lookup",
+      "problems": [
+        "route_category expected ['multi_question'], got overview",
+        "mode expected prefix ['pipeline:multi_question_splitter'], got pipeline:structured_members_role_lookup",
+        "missing any of ['คำถามที่', 'ราคา', 'ปุ่ม', 'Zone', 'จอง']"
+      ],
+      "answer_preview": "ตำแหน่ง อธิการบดี มี 1 คนครับ •    ผศ.ดร.นิวัติ แก้วประดับ: อธิการบดี (มหาวิทยาลัยสงขลานครินทร์)   ◦    หมวด: Members แหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members"
+    },
+    {
+      "case_id": "C-011",
+      "group": "compound",
+      "question": "Call of Duty ปุ่มยิงอะไร แล้วเล่นได้ที่ไหน",
+      "resolved_question": "",
+      "mode": "pipeline:structured_game_controls",
+      "route": "games/game_control_lookup",
+      "problems": [
+        "route_category expected ['multi_question'], got games",
+        "mode expected prefix ['pipeline:multi_question_splitter'], got pipeline:structured_game_controls"
+      ],
+      "answer_preview": "Call of Duty: Modern Warfare III ปุ่มที่ตรงกับคำถาม: PlayStation / PS5 •    R2: ยิงอาวุธ - กดยิงปืน แหล่งข้อมูล: https://www.gamepur.com/guides/best-modern-warfare-3-controller-settings-aim-assist-deadzones-button-layout"
+    },
+    {
+      "case_id": "ANA-006",
+      "group": "ambiguity_no_answer",
+      "question": "เครื่องไหนดีที่สุด",
+      "resolved_question": "",
+      "mode": "pipeline:no_answer",
+      "route": "general/unknown_domain_query",
+      "problems": [
+        "route_category expected ['clarification', 'games', 'equipment', 'service_fee', 'reservation', 'no_answer'], got general"
+      ],
+      "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "ANA-008",
+      "group": "ambiguity_no_answer",
+      "question": "มีอะไรแนะนำไหม",
+      "resolved_question": "",
+      "mode": "pipeline:no_answer",
+      "route": "general/general_knowledge_query",
+      "problems": [
+        "route_category expected ['clarification', 'games', 'equipment', 'service_fee', 'reservation', 'no_answer'], got general"
+      ],
+      "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "ANA-015",
+      "group": "ambiguity_no_answer",
+      "question": "สรุปคือทำยังไง",
+      "resolved_question": "",
+      "mode": "pipeline:no_answer",
+      "route": "general/unknown_domain_query",
+      "problems": [
+        "route_category expected ['clarification', 'games', 'equipment', 'service_fee', 'reservation', 'no_answer'], got general"
+      ],
+      "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "ANA-020",
+      "group": "ambiguity_no_answer",
+      "question": "เกม Valorant Mobile มีไหม",
+      "resolved_question": "",
+      "mode": "pipeline:structured_game_detail",
+      "route": "games/game_availability_lookup",
+      "problems": [
+        "missing any of ['ยังไม่พบ', 'ไม่มี', 'ไม่ได้อยู่', 'ตอบจากข้อมูล']"
+      ],
+      "answer_preview": "VALORANT: VALORANT คือเกมยิงเชิงกลยุทธ์ที่ผู้เล่นเลือก Agent ที่มีสกิลเฉพาะ แล้วเล่นเป็นฝ่ายบุก/รับในแต่ละรอบ แนวเกม: เกมยิง Tactical FPS แบบทีม 5v5 วิธีเล่นโดยสรุป: ฝ่ายบุกต้องวาง Spike ส่วนฝ่ายรับต้องป้องกันพื้นที่หรือกู้ Spike การเล่นเน้"
+    },
+    {
+      "case_id": "ANA-021",
+      "group": "ambiguity_no_answer",
+      "question": "ขอเบอร์โทรส่วนตัวเจ้าหน้าที่",
+      "resolved_question": "",
+      "mode": "pipeline:structured_members_group_list",
+      "route": "overview/list",
+      "problems": [
+        "route_category expected ['no_answer', 'games', 'general'], got overview",
+        "missing any of ['ยังไม่พบ', 'ไม่มี', 'ไม่ได้อยู่', 'ตอบจากข้อมูล']"
+      ],
+      "answer_preview": "สมาชิกจากหน้า Members แยกตามหมวด รวม 25 คน: Members (7 คน): •    ผศ.ดร.นิวัติ แก้วประดับ: อธิการบดี •    รศ.ดร.พันธ์ ทองชุมนุม: รองอธิการบดี •    รศ.ดร.อซีส นันทอมรพงศ์: คณบดี •    ผศ.ดร.ณัฐพงศ์ ทองเทพ: ผู้ช่วยอธิการบดีฝ่ายวิชาการ •    นายพ"
+    },
+    {
+      "case_id": "ANA-022",
+      "group": "ambiguity_no_answer",
+      "question": "ขอข้อมูลที่ไม่ได้อยู่ในเว็บ PSU Esports",
+      "resolved_question": "",
+      "mode": "pipeline:hybrid_guarded_rerank",
+      "route": "knowledge/knowledge_lookup",
+      "problems": [
+        "route_category expected ['no_answer', 'games', 'general'], got knowledge",
+        "missing any of ['ยังไม่พบ', 'ไม่มี', 'ไม่ได้อยู่', 'ตอบจากข้อมูล']"
+      ],
+      "answer_preview": "บทความ Overcooked! 2 เกมสุดมันส์ที่ได้มากกว่าความสนุก ระบุว่าเกมนี้ไม่ได้มีแค่ความสนุก แต่ช่วยพัฒนาทักษะชีวิตหลายด้าน เช่น การสื่อสาร การทำงานเป็นทีม การวางแผน และการจัดการสถานการณ์กดดัน แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Knowled"
+    },
+    {
+      "case_id": "ANA-023",
+      "group": "ambiguity_no_answer",
+      "question": "วันนี้มีข่าว esports อะไรล่าสุด",
+      "resolved_question": "",
+      "mode": "pipeline:rag_direct_curated",
+      "route": "events_news/news_lookup",
+      "problems": [
+        "route_category expected ['no_answer', 'games', 'general'], got events_news",
+        "missing any of ['ยังไม่พบ', 'ไม่มี', 'ไม่ได้อยู่', 'ตอบจากข้อมูล']"
+      ],
+      "answer_preview": "เมื่อวันที่ 25 เมษายน 2569 PSU Esports Studio - Phuket จัดการแข่งขัน PSU Phuket CS 2 2026 Tournament ในเกม Counter-Strike 2 แหล่งข้อมูล: https://esports.phuket.psu.ac.th/events-news/news"
+    },
+    {
+      "case_id": "SF-007",
+      "group": "session_followup",
+      "question": "จอง",
+      "resolved_question": "PC จองยังไง",
+      "mode": "pipeline:structured_reservation_fact",
+      "route": "reservation/booking_policy",
+      "problems": [
+        "missing 'PC'"
+      ],
+      "answer_preview": "ขั้นตอนจองโดยสรุป: •    เลือกบริการหรือโซนที่ต้องการใช้ •    เลือกวันและรอบเวลาที่ต้องการ •    กรอก Student ID/Staff ID/National ID, ชื่อ, นามสกุล, อีเมล และเบอร์โทรศัพท์ •    ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง •    แนบสลิปแ"
+    }
+  ],
+  "bank_jsonl": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.jsonl",
+  "bank_json": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.json"
+}

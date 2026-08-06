@@ -1,0 +1,99 @@
+﻿id,group,passed,question,expected_category,expected_intent,actual_category,actual_intent,actual_domain,actual_operation,mode,confidence,elapsed,validation_ok,failures,missing,forbidden,missing_sources,notes,answer
+RG-GM-001,games,True,พิมพ์ Tekken 8,games,game_detail_lookup,games,game_detail_lookup,games,detail,pipeline:structured_game_detail,0.94,1.2532,True,[],[],[],[],"bare game title should answer game detail, not full catalog","TEKKEN 8: TEKKEN 8 คือเกมต่อสู้แบบตัวต่อตัว ผู้เล่นเลือกตัวละครแล้วใช้คอมโบ การป้องกัน และจังหวะสวนกลับเพื่อชนะคู่แข่ง
+แนวเกม: เกมต่อสู้ 1v1
+วิธีเล่นโดยสรุป: เล่นเป็นรอบ เลือกตัวละคร ฝึกท่าพื้นฐาน/คอมโบ อ่านจังหวะคู่ต่อสู้ และทำให้พลังชีวิตอีกฝ่ายหมดก่อน
+เล่นได้ที่: PC Zone และ PlayStation 5 Zone
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+RG-GM-002,games,True,Over cook,games,list,games,list,games,detail,pipeline:structured_games_family,0.94,0.0204,True,[],[],[],[],spaced typo should resolve to Overcooked family,"พบเกมที่เกี่ยวข้องกับ Overcooked ในรายการที่ยืนยันได้ครับ
+•    Overcooked + Overcooked! 2: เล่นได้ที่ Nintendo Switch Zone
+•    Overcooked 2: เล่นได้ที่ Nintendo Switch Zone และ PlayStation 5 Zone
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+RG-GM-003,games,True,อุปกรณ์ไหนเกมเยอะสุด,games,list,games,list,equipment,list,pipeline:structured_game_zone_ranking,0.96,0.0465,True,[],[],[],[],ranking question must calculate game counts by zone,"ถ้านับตามโซน/บริการที่มีรายชื่อเกมยืนยันได้ PlayStation 5 Zone มีเกมเยอะสุดครับ (23 เกม)
+
+จำนวนเกมตามโซน:
+•    PlayStation 5 Zone: 23 เกม
+•    Nintendo Switch Zone: 17 เกม
+•    PC Zone: 6 เกม
+•    VR Zone: 2 เกม
+•    Cockpit Zone: 1 เกม
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+RG-GM-004,games,True,PC Zone มีอุปกรณ์อะไรและมีเกมอะไรบ้าง,multi_question,multi_question_split,multi_question,multi_question_split,,,pipeline:multi_question_splitter,0.95,0.0467,True,[],[],[],[],equipment + games in one question must split,"คำถามนี้มีหลายเรื่อง ขอแยกตอบเป็นข้อ ๆ:
+
+•    PC Zone มีอุปกรณ์อะไร
+อุปกรณ์ใน PC Zone:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (10 Units)
+•    Gaming Monitor (10 Units)
+•    Gaming Keyboard
+•    Gaming Mouse
+•    Gaming Headset
+•    Gaming Chair (10 Units)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home
+
+•    มีเกมอะไรบ้าง
+ตอนนี้มีเกมที่ยืนยันได้ทั้งหมด 41 เกมครับ
+
+PC Zone (6 เกม)
+•    Call of Duty: Warzone
+•    Counter-Strike 2
+•    League of Legends
+•    PUBG: BATTLEGROUNDS
+•    TEKKEN 8
+•    VALORANT
+
+PlayStation 5 Zone (23 เกม)
+•    Beat Saber
+•    Call of Duty: Modern Warfare III
+•    Call of Duty: Warzone
+•    EA Sports FC 24
+•    FINAL FANTASY XVI
+•    Fortnite
+•    God of War Ragnarok
+•    Gran Turismo 7
+•    Hogwarts Legacy
+•    It Takes Two
+•    Little Nightmares II
+•    Marvel's Spider-Man 2
+•    Monster Hunter Rise
+•    NARUTO X BORUTO Ultimate Ninja Storm Connections
+•    Overcooked 2
+•    Resident Evil 4
+•    Resident Evil Village
+•    TEKKEN 8
+•    The Last of Us Part I
+•    The Last of Us Part I / Part II
+•    The Last of Us Part II
+•    The Last of Us Part II (Remastered)
+•    Uncharted: Legacy of Thieves Collection
+
+Nintendo Switch Zone (17 เกม)
+•    Animal Crossing: New Horizons
+•    It Takes Two
+•    Little Nightmares II
+•    Luigi's Mansion 3
+•    Mario Kart 8 Deluxe
+•    Mario Kart Live: Home Circuit
+•    Mario Party Superstars
+•    Monster Hunter Rise
+•    Moving Out 2
+•    New Super Mario Bros. U Deluxe
+•    Nintendo Switch Sports
+•    Overcooked + Overcooked! 2
+•    Overcooked 2
+•    Ring Fit Adventure
+•    Super Mario Odyssey
+•    Super Smash Bros Ultimate
+•    The Legend of Zelda: Breath of the Wild
+
+Cockpit Zone (1 เกม)
+•    Gran Turismo 7
+
+VR Zone (2 เกม)
+•    Beat Saber
+•    Horizon Call of the Mountain
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+RG-GM-005,games,True,Naruto เล่นยังไง,games,game_detail_lookup,games,game_detail_lookup,games,how_to,pipeline:structured_game_detail,0.94,0.055,True,[],[],[],[],"play-how for known game should be game detail, not unrelated controls","NARUTO X BORUTO Ultimate Ninja Storm Connections: NARUTO X BORUTO Ultimate Ninja Storm Connections คือเกมต่อสู้ที่ใช้ตัวละครจากจักรวาล Naruto/Boruto
+แนวเกม: เกมต่อสู้จากอนิเมะ
+วิธีเล่นโดยสรุป: เลือกตัวละคร ใช้คอมโบ สกิลนินจา และจังหวะหลบ/สวนกลับเพื่อเอาชนะคู่ต่อสู้
+เล่นได้ที่: PlayStation 5 Zone
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"

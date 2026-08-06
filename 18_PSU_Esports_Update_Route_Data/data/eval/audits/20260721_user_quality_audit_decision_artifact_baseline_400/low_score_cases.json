@@ -1,0 +1,2356 @@
+[
+  {
+    "id": "GR-001",
+    "category": "game_rules",
+    "question_no": 1,
+    "question": "ROV คือเกมอะไร",
+    "answer": "ตอนนี้มีเกมที่ยืนยันได้ทั้งหมด 44 เกมครับ\n\nPC Zone (6 เกม)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\n\nPlayStation 5 Zone (23 เกม)\n•    Beat Saber\n•    Call of Duty: Modern Warfare III\n•    EA Sports FC 24\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Gran Turismo 7\n•    Hogwarts Legacy\n•    It Takes Two\n•    Little Nightmares II\n•    Marvel's Spider-Man 2\n•    Monster Hunter Rise\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Overcooked!\n•    Resident Evil 4\n•    Resident Evil 4 (Remake)\n•    Resident Evil Village\n•    TEKKEN 8\n•    The Last of Us Part I\n•    The Last of Us Part I / Part II\n•    The Last of Us Part II\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (18 เกม)\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    Little Nightmares II\n•    Luigi's Mansion 3\n•    Mario Kart 8 Deluxe\n•    Mario Kart Live: Home Circuit\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Nintendo Switch Sports\n•    Overcooked + Overcooked! 2\n•    Overcooked 2\n•    Ring Fit Adventure\n•    Super Mario Odyssey\n•    Super Smash Bros Ultimate\n•    The Legend of Zelda: Breath of the Wild\n\nCockpit Zone (1 เกม)\n•    Gran Turismo 7\n\nVR Zone (2 เกม)\n•    Beat Saber\n•    Horizon Call of the Mountain\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "mode": "pipeline:structured_games_catalog",
+    "strategy": "structured",
+    "route": "games/game_availability_lookup",
+    "confidence": 0.95,
+    "wall_sec": 2.0783,
+    "selected_candidate_id": "structured.games",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "our_games"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 1.7,
+    "score_level": "bad",
+    "score_correctness": 0.0,
+    "score_relevance": 0.0,
+    "score_evidence": 0.3,
+    "score_completeness": 0.7,
+    "score_clarity": 0.7,
+    "issue_tags": [
+      "wrong_domain_or_source",
+      "specific_question_answered_with_full_catalog",
+      "source_not_specific_enough"
+    ],
+    "user_problem": [
+      "คำตอบใช้ฐานข้อมูล/หมวดผิดจากสิ่งที่ควรตอบ",
+      "ผู้ใช้ถามเกมเฉพาะ แต่ระบบตอบ catalog เกมทั้งหมด ทำให้ไม่ตอบคำถาม",
+      "แหล่งข้อมูลไม่ชี้ไปกติกาการแข่งขันโดยตรง"
+    ]
+  },
+  {
+    "id": "GR-005",
+    "category": "game_rules",
+    "question_no": 5,
+    "question": "ROV มีตัวสำรองได้ไหม",
+    "answer": "RoV ยังไม่พบข้อมูลตัวสำรองที่ระบุชัดเจนครับ\n•    ข้อมูลที่ยืนยันได้คือแข่งแบบ 5v5\n•    ถ้าจะใช้ตัวสำรองควรยึดประกาศผู้จัดหรือสอบถามกรรมการก่อนแข่ง\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.2013,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "GR-010",
+    "category": "game_rules",
+    "question_no": 10,
+    "question": "ROV ใช้โปรแกรมช่วยเล่นได้ไหม",
+    "answer": "RoV ยังไม่พบข้อมูลชัดเจนเรื่องโปรแกรมช่วยเล่นในไฟล์กติกาที่มีครับ\n•    ข้อมูลอุปกรณ์ที่ยืนยันได้: ใช้โทรศัพท์มือถือในการแข่งขัน และไม่อนุญาต Tablet/iPad\n•    ถ้าเป็นโปรแกรมช่วยเล่นควรถือว่าเสี่ยงผิดกติกาและถามกรรมการก่อนแข่ง\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.1138,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "GR-013",
+    "category": "game_rules",
+    "question_no": 13,
+    "question": "ROV รอบชิงเล่นกี่เกม",
+    "answer": "ตอนนี้มีเกมที่ยืนยันได้ทั้งหมด 44 เกมครับ\n\nPC Zone (6 เกม)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\n\nPlayStation 5 Zone (23 เกม)\n•    Beat Saber\n•    Call of Duty: Modern Warfare III\n•    EA Sports FC 24\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Gran Turismo 7\n•    Hogwarts Legacy\n•    It Takes Two\n•    Little Nightmares II\n•    Marvel's Spider-Man 2\n•    Monster Hunter Rise\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Overcooked!\n•    Resident Evil 4\n•    Resident Evil 4 (Remake)\n•    Resident Evil Village\n•    TEKKEN 8\n•    The Last of Us Part I\n•    The Last of Us Part I / Part II\n•    The Last of Us Part II\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (18 เกม)\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    Little Nightmares II\n•    Luigi's Mansion 3\n•    Mario Kart 8 Deluxe\n•    Mario Kart Live: Home Circuit\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Nintendo Switch Sports\n•    Overcooked + Overcooked! 2\n•    Overcooked 2\n•    Ring Fit Adventure\n•    Super Mario Odyssey\n•    Super Smash Bros Ultimate\n•    The Legend of Zelda: Breath of the Wild\n\nCockpit Zone (1 เกม)\n•    Gran Turismo 7\n\nVR Zone (2 เกม)\n•    Beat Saber\n•    Horizon Call of the Mountain\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "mode": "pipeline:structured_games_catalog",
+    "strategy": "structured",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.95,
+    "wall_sec": 1.8526,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "our_games"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 4.8,
+    "score_level": "bad",
+    "score_correctness": 2.2,
+    "score_relevance": 0.4,
+    "score_evidence": 1.0,
+    "score_completeness": 0.7,
+    "score_clarity": 0.5,
+    "issue_tags": [
+      "specific_question_answered_with_full_catalog",
+      "number_answer_too_verbose",
+      "source_not_specific_enough"
+    ],
+    "user_problem": [
+      "ผู้ใช้ถามเกมเฉพาะ แต่ระบบตอบ catalog เกมทั้งหมด ทำให้ไม่ตอบคำถาม",
+      "มีตัวเลขอยู่ แต่คำตอบยาวเกินและไม่ได้ตอบตัวเลขก่อน",
+      "แหล่งข้อมูลไม่ชี้ไปกติกาการแข่งขันโดยตรง"
+    ]
+  },
+  {
+    "id": "GR-015",
+    "category": "game_rules",
+    "question_no": 15,
+    "question": "ROV ใช้บัญชีส่วนตัวหรือบัญชีที่จัดให้",
+    "answer": "RoV ยังไม่พบข้อมูลชัดเจนว่าใช้บัญชีส่วนตัวหรือบัญชีที่ผู้จัดเตรียมให้ครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.4965,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "GR-016",
+    "category": "game_rules",
+    "question_no": 16,
+    "question": "ROV เปลี่ยนสมาชิกทีมได้ไหม",
+    "answer": "RoV ยังไม่พบข้อมูลชัดเจนเรื่องเปลี่ยนสมาชิกทีมจากคำถามนี้ครับ\n•    ควรยืนยันกับผู้จัดก่อนแข่ง\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.2766,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "GR-018",
+    "category": "game_rules",
+    "question_no": 18,
+    "question": "ROV ใช้ voice chat ได้ไหม",
+    "answer": "RoV ยังไม่พบข้อมูลชัดเจนเรื่อง voice chat ในไฟล์กติกาที่มีครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.135,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "GR-019",
+    "category": "game_rules",
+    "question_no": 19,
+    "question": "ROV ถ้าคู่แข่งไม่มาต้องทำยังไง",
+    "answer": "RoV ยังไม่พบข้อมูลชัดเจนว่าถ้าคู่แข่งไม่มาต้องดำเนินการอย่างไรครับ\n•    ควรแจ้งกรรมการหรือผู้จัดการแข่งขัน\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.3174,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "GR-026",
+    "category": "game_rules",
+    "question_no": 26,
+    "question": "VALORANT คือเกมอะไร",
+    "answer": "ตอนนี้มีเกมที่ยืนยันได้ทั้งหมด 44 เกมครับ\n\nPC Zone (6 เกม)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\n\nPlayStation 5 Zone (23 เกม)\n•    Beat Saber\n•    Call of Duty: Modern Warfare III\n•    EA Sports FC 24\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Gran Turismo 7\n•    Hogwarts Legacy\n•    It Takes Two\n•    Little Nightmares II\n•    Marvel's Spider-Man 2\n•    Monster Hunter Rise\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Overcooked!\n•    Resident Evil 4\n•    Resident Evil 4 (Remake)\n•    Resident Evil Village\n•    TEKKEN 8\n•    The Last of Us Part I\n•    The Last of Us Part I / Part II\n•    The Last of Us Part II\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (18 เกม)\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    Little Nightmares II\n•    Luigi's Mansion 3\n•    Mario Kart 8 Deluxe\n•    Mario Kart Live: Home Circuit\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Nintendo Switch Sports\n•    Overcooked + Overcooked! 2\n•    Overcooked 2\n•    Ring Fit Adventure\n•    Super Mario Odyssey\n•    Super Smash Bros Ultimate\n•    The Legend of Zelda: Breath of the Wild\n\nCockpit Zone (1 เกม)\n•    Gran Turismo 7\n\nVR Zone (2 เกม)\n•    Beat Saber\n•    Horizon Call of the Mountain\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "mode": "pipeline:structured_games_catalog",
+    "strategy": "structured",
+    "route": "games/game_availability_lookup",
+    "confidence": 0.95,
+    "wall_sec": 0.181,
+    "selected_candidate_id": "structured.games",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "our_games"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 1.7,
+    "score_level": "bad",
+    "score_correctness": 0.0,
+    "score_relevance": 0.0,
+    "score_evidence": 0.3,
+    "score_completeness": 0.7,
+    "score_clarity": 0.7,
+    "issue_tags": [
+      "wrong_domain_or_source",
+      "specific_question_answered_with_full_catalog",
+      "source_not_specific_enough"
+    ],
+    "user_problem": [
+      "คำตอบใช้ฐานข้อมูล/หมวดผิดจากสิ่งที่ควรตอบ",
+      "ผู้ใช้ถามเกมเฉพาะ แต่ระบบตอบ catalog เกมทั้งหมด ทำให้ไม่ตอบคำถาม",
+      "แหล่งข้อมูลไม่ชี้ไปกติกาการแข่งขันโดยตรง"
+    ]
+  },
+  {
+    "id": "GR-027",
+    "category": "game_rules",
+    "question_no": 27,
+    "question": "VALORANT เป็นเกมแนวไหน",
+    "answer": "VALORANT: VALORANT คือเกมยิงเชิงกลยุทธ์ที่ผู้เล่นเลือก Agent ที่มีสกิลเฉพาะ แล้วเล่นเป็นฝ่ายบุก/รับในแต่ละรอบ\nแนวเกม: เกมยิง Tactical FPS แบบทีม 5v5\nวิธีเล่นโดยสรุป: ฝ่ายบุกต้องวาง Spike ส่วนฝ่ายรับต้องป้องกันพื้นที่หรือกู้ Spike การเล่นเน้นการเล็ง การสื่อสาร การใช้สกิล และการเล่นเป็นทีม\nเล่นได้ที่: PC Zone\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "mode": "pipeline:game_name_mention_detail_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "games/game_detail_lookup",
+    "confidence": 0.94,
+    "wall_sec": 1.8727,
+    "selected_candidate_id": "structured.games",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "Reservation"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 5.8,
+    "score_level": "needs_review",
+    "score_correctness": 1.8,
+    "score_relevance": 1.2,
+    "score_evidence": 0.3,
+    "score_completeness": 1.5,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_domain_or_source",
+      "source_not_specific_enough",
+      "candidate_execution_mismatch"
+    ],
+    "user_problem": [
+      "คำตอบใช้ฐานข้อมูล/หมวดผิดจากสิ่งที่ควรตอบ",
+      "แหล่งข้อมูลไม่ชี้ไปกติกาการแข่งขันโดยตรง",
+      "ระบบเลือก candidate แบบหนึ่ง แต่ execution จริงไปอีกทางหนึ่ง ทำให้ debug สับสน"
+    ]
+  },
+  {
+    "id": "GR-038",
+    "category": "game_rules",
+    "question_no": 38,
+    "question": "VALORANT รอบชิงเล่นกี่เกม",
+    "answer": "ตอนนี้มีเกมที่ยืนยันได้ทั้งหมด 44 เกมครับ\n\nPC Zone (6 เกม)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\n\nPlayStation 5 Zone (23 เกม)\n•    Beat Saber\n•    Call of Duty: Modern Warfare III\n•    EA Sports FC 24\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Gran Turismo 7\n•    Hogwarts Legacy\n•    It Takes Two\n•    Little Nightmares II\n•    Marvel's Spider-Man 2\n•    Monster Hunter Rise\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Overcooked!\n•    Resident Evil 4\n•    Resident Evil 4 (Remake)\n•    Resident Evil Village\n•    TEKKEN 8\n•    The Last of Us Part I\n•    The Last of Us Part I / Part II\n•    The Last of Us Part II\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (18 เกม)\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    Little Nightmares II\n•    Luigi's Mansion 3\n•    Mario Kart 8 Deluxe\n•    Mario Kart Live: Home Circuit\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Nintendo Switch Sports\n•    Overcooked + Overcooked! 2\n•    Overcooked 2\n•    Ring Fit Adventure\n•    Super Mario Odyssey\n•    Super Smash Bros Ultimate\n•    The Legend of Zelda: Breath of the Wild\n\nCockpit Zone (1 เกม)\n•    Gran Turismo 7\n\nVR Zone (2 เกม)\n•    Beat Saber\n•    Horizon Call of the Mountain\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "mode": "pipeline:structured_games_catalog",
+    "strategy": "structured",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.95,
+    "wall_sec": 0.3001,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "our_games"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 4.8,
+    "score_level": "bad",
+    "score_correctness": 2.2,
+    "score_relevance": 0.4,
+    "score_evidence": 1.0,
+    "score_completeness": 0.7,
+    "score_clarity": 0.5,
+    "issue_tags": [
+      "specific_question_answered_with_full_catalog",
+      "number_answer_too_verbose",
+      "source_not_specific_enough"
+    ],
+    "user_problem": [
+      "ผู้ใช้ถามเกมเฉพาะ แต่ระบบตอบ catalog เกมทั้งหมด ทำให้ไม่ตอบคำถาม",
+      "มีตัวเลขอยู่ แต่คำตอบยาวเกินและไม่ได้ตอบตัวเลขก่อน",
+      "แหล่งข้อมูลไม่ชี้ไปกติกาการแข่งขันโดยตรง"
+    ]
+  },
+  {
+    "id": "GR-040",
+    "category": "game_rules",
+    "question_no": 40,
+    "question": "VALORANT ใช้บัญชีส่วนตัวหรือบัญชีที่จัดให้",
+    "answer": "VALORANT ยังไม่พบข้อมูลชัดเจนว่าใช้บัญชีส่วนตัวหรือบัญชีที่ผู้จัดเตรียมให้ครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.5519,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "GR-041",
+    "category": "game_rules",
+    "question_no": 41,
+    "question": "VALORANT เปลี่ยนสมาชิกทีมได้ไหม",
+    "answer": "VALORANT ยังไม่พบข้อมูลชัดเจนเรื่องเปลี่ยนสมาชิกทีมจากคำถามนี้ครับ\n•    ควรยืนยันกับผู้จัดก่อนแข่ง\nแหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.4028,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "GR-044",
+    "category": "game_rules",
+    "question_no": 44,
+    "question": "VALORANT ถ้าคู่แข่งไม่มาต้องทำยังไง",
+    "answer": "VALORANT ยังไม่พบข้อมูลชัดเจนว่าถ้าคู่แข่งไม่มาต้องดำเนินการอย่างไรครับ\n•    ควรแจ้งกรรมการหรือผู้จัดการแข่งขัน\nแหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.4039,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "GR-051",
+    "category": "game_rules",
+    "question_no": 51,
+    "question": "CS2 คือเกมอะไร",
+    "answer": "ตอนนี้มีเกมที่ยืนยันได้ทั้งหมด 44 เกมครับ\n\nPC Zone (6 เกม)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\n\nPlayStation 5 Zone (23 เกม)\n•    Beat Saber\n•    Call of Duty: Modern Warfare III\n•    EA Sports FC 24\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Gran Turismo 7\n•    Hogwarts Legacy\n•    It Takes Two\n•    Little Nightmares II\n•    Marvel's Spider-Man 2\n•    Monster Hunter Rise\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Overcooked!\n•    Resident Evil 4\n•    Resident Evil 4 (Remake)\n•    Resident Evil Village\n•    TEKKEN 8\n•    The Last of Us Part I\n•    The Last of Us Part I / Part II\n•    The Last of Us Part II\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (18 เกม)\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    Little Nightmares II\n•    Luigi's Mansion 3\n•    Mario Kart 8 Deluxe\n•    Mario Kart Live: Home Circuit\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Nintendo Switch Sports\n•    Overcooked + Overcooked! 2\n•    Overcooked 2\n•    Ring Fit Adventure\n•    Super Mario Odyssey\n•    Super Smash Bros Ultimate\n•    The Legend of Zelda: Breath of the Wild\n\nCockpit Zone (1 เกม)\n•    Gran Turismo 7\n\nVR Zone (2 เกม)\n•    Beat Saber\n•    Horizon Call of the Mountain\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "mode": "pipeline:structured_games_catalog",
+    "strategy": "structured",
+    "route": "games/game_availability_lookup",
+    "confidence": 0.95,
+    "wall_sec": 0.1066,
+    "selected_candidate_id": "structured.games",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "our_games"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 1.7,
+    "score_level": "bad",
+    "score_correctness": 0.0,
+    "score_relevance": 0.0,
+    "score_evidence": 0.3,
+    "score_completeness": 0.7,
+    "score_clarity": 0.7,
+    "issue_tags": [
+      "wrong_domain_or_source",
+      "specific_question_answered_with_full_catalog",
+      "source_not_specific_enough"
+    ],
+    "user_problem": [
+      "คำตอบใช้ฐานข้อมูล/หมวดผิดจากสิ่งที่ควรตอบ",
+      "ผู้ใช้ถามเกมเฉพาะ แต่ระบบตอบ catalog เกมทั้งหมด ทำให้ไม่ตอบคำถาม",
+      "แหล่งข้อมูลไม่ชี้ไปกติกาการแข่งขันโดยตรง"
+    ]
+  },
+  {
+    "id": "GR-052",
+    "category": "game_rules",
+    "question_no": 52,
+    "question": "CS2 เป็นเกมแนวไหน",
+    "answer": "Counter-Strike 2: Counter-Strike 2 คือเกมยิงแข่งขันแบบทีมที่แบ่งเป็นฝ่ายบุกและฝ่ายรับ โดยมีเป้าหมายหลักเกี่ยวกับการวาง/กู้ระเบิดหรือจัดการฝ่ายตรงข้าม\nแนวเกม: เกมยิง Tactical FPS\nวิธีเล่นโดยสรุป: เล่นเป็นรอบ ๆ ต้องซื้ออาวุธ วางแผนกับทีม คุมพื้นที่ และใช้การเล็งกับการสื่อสารเพื่อชนะรอบ\nเล่นได้ที่: PC Zone\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "mode": "pipeline:game_name_mention_detail_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "games/game_detail_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.9975,
+    "selected_candidate_id": "structured.games",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "Reservation"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 5.8,
+    "score_level": "needs_review",
+    "score_correctness": 1.8,
+    "score_relevance": 1.2,
+    "score_evidence": 0.3,
+    "score_completeness": 1.5,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_domain_or_source",
+      "source_not_specific_enough",
+      "candidate_execution_mismatch"
+    ],
+    "user_problem": [
+      "คำตอบใช้ฐานข้อมูล/หมวดผิดจากสิ่งที่ควรตอบ",
+      "แหล่งข้อมูลไม่ชี้ไปกติกาการแข่งขันโดยตรง",
+      "ระบบเลือก candidate แบบหนึ่ง แต่ execution จริงไปอีกทางหนึ่ง ทำให้ debug สับสน"
+    ]
+  },
+  {
+    "id": "GR-055",
+    "category": "game_rules",
+    "question_no": 55,
+    "question": "CS2 มีตัวสำรองได้ไหม",
+    "answer": "CS2 ยังไม่พบข้อมูลตัวสำรองแบบแยกชัดเจนจากคำถามนี้ครับ\n•    ข้อมูลที่ยืนยันได้คือทีมละ 5 คน\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.1934,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "GR-063",
+    "category": "game_rules",
+    "question_no": 63,
+    "question": "CS2 รอบชิงเล่นกี่เกม",
+    "answer": "ตอนนี้มีเกมที่ยืนยันได้ทั้งหมด 44 เกมครับ\n\nPC Zone (6 เกม)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\n\nPlayStation 5 Zone (23 เกม)\n•    Beat Saber\n•    Call of Duty: Modern Warfare III\n•    EA Sports FC 24\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Gran Turismo 7\n•    Hogwarts Legacy\n•    It Takes Two\n•    Little Nightmares II\n•    Marvel's Spider-Man 2\n•    Monster Hunter Rise\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Overcooked!\n•    Resident Evil 4\n•    Resident Evil 4 (Remake)\n•    Resident Evil Village\n•    TEKKEN 8\n•    The Last of Us Part I\n•    The Last of Us Part I / Part II\n•    The Last of Us Part II\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (18 เกม)\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    Little Nightmares II\n•    Luigi's Mansion 3\n•    Mario Kart 8 Deluxe\n•    Mario Kart Live: Home Circuit\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Nintendo Switch Sports\n•    Overcooked + Overcooked! 2\n•    Overcooked 2\n•    Ring Fit Adventure\n•    Super Mario Odyssey\n•    Super Smash Bros Ultimate\n•    The Legend of Zelda: Breath of the Wild\n\nCockpit Zone (1 เกม)\n•    Gran Turismo 7\n\nVR Zone (2 เกม)\n•    Beat Saber\n•    Horizon Call of the Mountain\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "mode": "pipeline:structured_games_catalog",
+    "strategy": "structured",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.95,
+    "wall_sec": 0.185,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "our_games"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 4.8,
+    "score_level": "bad",
+    "score_correctness": 2.2,
+    "score_relevance": 0.4,
+    "score_evidence": 1.0,
+    "score_completeness": 0.7,
+    "score_clarity": 0.5,
+    "issue_tags": [
+      "specific_question_answered_with_full_catalog",
+      "number_answer_too_verbose",
+      "source_not_specific_enough"
+    ],
+    "user_problem": [
+      "ผู้ใช้ถามเกมเฉพาะ แต่ระบบตอบ catalog เกมทั้งหมด ทำให้ไม่ตอบคำถาม",
+      "มีตัวเลขอยู่ แต่คำตอบยาวเกินและไม่ได้ตอบตัวเลขก่อน",
+      "แหล่งข้อมูลไม่ชี้ไปกติกาการแข่งขันโดยตรง"
+    ]
+  },
+  {
+    "id": "GR-065",
+    "category": "game_rules",
+    "question_no": 65,
+    "question": "CS2 ใช้บัญชีส่วนตัวหรือบัญชีที่จัดให้",
+    "answer": "CS2 ยังไม่พบข้อมูลชัดเจนว่าใช้บัญชีส่วนตัวหรือบัญชีที่ผู้จัดเตรียมให้ครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.4648,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "GR-068",
+    "category": "game_rules",
+    "question_no": 68,
+    "question": "CS2 ใช้ voice chat ได้ไหม",
+    "answer": "CS2 ยังไม่พบข้อมูลชัดเจนเรื่อง voice chat จากคำถามนี้ครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.1474,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "GR-069",
+    "category": "game_rules",
+    "question_no": 69,
+    "question": "CS2 ถ้าคู่แข่งไม่มาต้องทำยังไง",
+    "answer": "CS2 ยังไม่พบข้อมูลชัดเจนว่าถ้าคู่แข่งไม่มาต้องดำเนินการอย่างไรครับ\n•    ควรแจ้งกรรมการหรือผู้จัดการแข่งขัน\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.2868,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "GR-076",
+    "category": "game_rules",
+    "question_no": 76,
+    "question": "TEKKEN 8 คือเกมอะไร",
+    "answer": "ตอนนี้มีเกมที่ยืนยันได้ทั้งหมด 44 เกมครับ\n\nPC Zone (6 เกม)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\n\nPlayStation 5 Zone (23 เกม)\n•    Beat Saber\n•    Call of Duty: Modern Warfare III\n•    EA Sports FC 24\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Gran Turismo 7\n•    Hogwarts Legacy\n•    It Takes Two\n•    Little Nightmares II\n•    Marvel's Spider-Man 2\n•    Monster Hunter Rise\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Overcooked!\n•    Resident Evil 4\n•    Resident Evil 4 (Remake)\n•    Resident Evil Village\n•    TEKKEN 8\n•    The Last of Us Part I\n•    The Last of Us Part I / Part II\n•    The Last of Us Part II\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (18 เกม)\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    Little Nightmares II\n•    Luigi's Mansion 3\n•    Mario Kart 8 Deluxe\n•    Mario Kart Live: Home Circuit\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Nintendo Switch Sports\n•    Overcooked + Overcooked! 2\n•    Overcooked 2\n•    Ring Fit Adventure\n•    Super Mario Odyssey\n•    Super Smash Bros Ultimate\n•    The Legend of Zelda: Breath of the Wild\n\nCockpit Zone (1 เกม)\n•    Gran Turismo 7\n\nVR Zone (2 เกม)\n•    Beat Saber\n•    Horizon Call of the Mountain\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "mode": "pipeline:structured_games_catalog",
+    "strategy": "structured",
+    "route": "games/game_availability_lookup",
+    "confidence": 0.95,
+    "wall_sec": 0.1611,
+    "selected_candidate_id": "structured.games",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "our_games"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 1.7,
+    "score_level": "bad",
+    "score_correctness": 0.0,
+    "score_relevance": 0.0,
+    "score_evidence": 0.3,
+    "score_completeness": 0.7,
+    "score_clarity": 0.7,
+    "issue_tags": [
+      "wrong_domain_or_source",
+      "specific_question_answered_with_full_catalog",
+      "source_not_specific_enough"
+    ],
+    "user_problem": [
+      "คำตอบใช้ฐานข้อมูล/หมวดผิดจากสิ่งที่ควรตอบ",
+      "ผู้ใช้ถามเกมเฉพาะ แต่ระบบตอบ catalog เกมทั้งหมด ทำให้ไม่ตอบคำถาม",
+      "แหล่งข้อมูลไม่ชี้ไปกติกาการแข่งขันโดยตรง"
+    ]
+  },
+  {
+    "id": "GR-077",
+    "category": "game_rules",
+    "question_no": 77,
+    "question": "TEKKEN 8 เป็นเกมแนวไหน",
+    "answer": "TEKKEN 8: TEKKEN 8 คือเกมต่อสู้แบบตัวต่อตัว ผู้เล่นเลือกตัวละครแล้วใช้คอมโบ การป้องกัน และจังหวะสวนกลับเพื่อชนะคู่แข่ง\nแนวเกม: เกมต่อสู้ 1v1\nวิธีเล่นโดยสรุป: เล่นเป็นรอบ เลือกตัวละคร ฝึกท่าพื้นฐาน/คอมโบ อ่านจังหวะคู่ต่อสู้ และทำให้พลังชีวิตอีกฝ่ายหมดก่อน\nเล่นได้ที่: PC Zone และ PlayStation 5 Zone\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "mode": "pipeline:game_name_mention_detail_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "games/game_detail_lookup",
+    "confidence": 0.94,
+    "wall_sec": 1.624,
+    "selected_candidate_id": "structured.games",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 2,
+    "source_ids": [
+      "our_games",
+      "Reservation"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 5.8,
+    "score_level": "needs_review",
+    "score_correctness": 1.8,
+    "score_relevance": 1.2,
+    "score_evidence": 0.3,
+    "score_completeness": 1.5,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_domain_or_source",
+      "source_not_specific_enough",
+      "candidate_execution_mismatch"
+    ],
+    "user_problem": [
+      "คำตอบใช้ฐานข้อมูล/หมวดผิดจากสิ่งที่ควรตอบ",
+      "แหล่งข้อมูลไม่ชี้ไปกติกาการแข่งขันโดยตรง",
+      "ระบบเลือก candidate แบบหนึ่ง แต่ execution จริงไปอีกทางหนึ่ง ทำให้ debug สับสน"
+    ]
+  },
+  {
+    "id": "GR-080",
+    "category": "game_rules",
+    "question_no": 80,
+    "question": "TEKKEN 8 มีตัวสำรองได้ไหม",
+    "answer": "TEKKEN 8 ยังไม่พบข้อมูลตัวสำรองจากคำถามนี้ครับ\n•    ข้อมูลที่ยืนยันได้คือแข่งแบบ 1v1\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.2551,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "GR-081",
+    "category": "game_rules",
+    "question_no": 81,
+    "question": "TEKKEN 8 ถ้ามาสายจะเกิดอะไรขึ้น",
+    "answer": "TEKKEN 8 ยังไม่พบข้อมูลมาสายแบบฟันธงจากคำถามนี้ครับ\n•    ควรยึดกำหนดการและคำตัดสินผู้จัด\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.3706,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "GR-085",
+    "category": "game_rules",
+    "question_no": 85,
+    "question": "TEKKEN 8 ใช้โปรแกรมช่วยเล่นได้ไหม",
+    "answer": "TEKKEN 8 ยังไม่พบข้อมูลชัดเจนเรื่องโปรแกรมช่วยเล่นในไฟล์กติกาที่มีครับ\n•    ข้อมูลที่ยืนยันได้คือแข่งขันบน PlayStation 5 และห้าม customization บางประเภท\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.1506,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "GR-088",
+    "category": "game_rules",
+    "question_no": 88,
+    "question": "TEKKEN 8 รอบชิงเล่นกี่เกม",
+    "answer": "ตอนนี้มีเกมที่ยืนยันได้ทั้งหมด 44 เกมครับ\n\nPC Zone (6 เกม)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\n\nPlayStation 5 Zone (23 เกม)\n•    Beat Saber\n•    Call of Duty: Modern Warfare III\n•    EA Sports FC 24\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Gran Turismo 7\n•    Hogwarts Legacy\n•    It Takes Two\n•    Little Nightmares II\n•    Marvel's Spider-Man 2\n•    Monster Hunter Rise\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Overcooked!\n•    Resident Evil 4\n•    Resident Evil 4 (Remake)\n•    Resident Evil Village\n•    TEKKEN 8\n•    The Last of Us Part I\n•    The Last of Us Part I / Part II\n•    The Last of Us Part II\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (18 เกม)\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    Little Nightmares II\n•    Luigi's Mansion 3\n•    Mario Kart 8 Deluxe\n•    Mario Kart Live: Home Circuit\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Nintendo Switch Sports\n•    Overcooked + Overcooked! 2\n•    Overcooked 2\n•    Ring Fit Adventure\n•    Super Mario Odyssey\n•    Super Smash Bros Ultimate\n•    The Legend of Zelda: Breath of the Wild\n\nCockpit Zone (1 เกม)\n•    Gran Turismo 7\n\nVR Zone (2 เกม)\n•    Beat Saber\n•    Horizon Call of the Mountain\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "mode": "pipeline:structured_games_catalog",
+    "strategy": "structured",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.95,
+    "wall_sec": 0.2433,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "our_games"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 4.8,
+    "score_level": "bad",
+    "score_correctness": 2.2,
+    "score_relevance": 0.4,
+    "score_evidence": 1.0,
+    "score_completeness": 0.7,
+    "score_clarity": 0.5,
+    "issue_tags": [
+      "specific_question_answered_with_full_catalog",
+      "number_answer_too_verbose",
+      "source_not_specific_enough"
+    ],
+    "user_problem": [
+      "ผู้ใช้ถามเกมเฉพาะ แต่ระบบตอบ catalog เกมทั้งหมด ทำให้ไม่ตอบคำถาม",
+      "มีตัวเลขอยู่ แต่คำตอบยาวเกินและไม่ได้ตอบตัวเลขก่อน",
+      "แหล่งข้อมูลไม่ชี้ไปกติกาการแข่งขันโดยตรง"
+    ]
+  },
+  {
+    "id": "GR-090",
+    "category": "game_rules",
+    "question_no": 90,
+    "question": "TEKKEN 8 ใช้บัญชีส่วนตัวหรือบัญชีที่จัดให้",
+    "answer": "TEKKEN 8 ยังไม่พบข้อมูลชัดเจนว่าใช้บัญชีส่วนตัวหรือบัญชีที่ผู้จัดเตรียมให้ครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.4998,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "GR-091",
+    "category": "game_rules",
+    "question_no": 91,
+    "question": "TEKKEN 8 เปลี่ยนสมาชิกทีมได้ไหม",
+    "answer": "TEKKEN 8 ยังไม่พบข้อมูลเปลี่ยนสมาชิกทีมจากคำถามนี้ครับ\n•    เพราะข้อมูลหลักเป็นการแข่งขัน 1v1\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.3293,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "GR-093",
+    "category": "game_rules",
+    "question_no": 93,
+    "question": "TEKKEN 8 ใช้ voice chat ได้ไหม",
+    "answer": "TEKKEN 8 ยังไม่พบข้อมูลชัดเจนเรื่อง voice chat จากคำถามนี้ครับ\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.1799,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "GR-094",
+    "category": "game_rules",
+    "question_no": 94,
+    "question": "TEKKEN 8 ถ้าคู่แข่งไม่มาต้องทำยังไง",
+    "answer": "TEKKEN 8 ยังไม่พบข้อมูลชัดเจนว่าถ้าคู่แข่งไม่มาต้องดำเนินการอย่างไรครับ\n•    ควรแจ้งกรรมการหรือผู้จัดการแข่งขัน\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.3806,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "GR-095",
+    "category": "game_rules",
+    "question_no": 95,
+    "question": "TEKKEN 8 ต้องเช็คอินก่อนแข่งไหม",
+    "answer": "TEKKEN 8 ยังไม่พบข้อมูลเช็คอินแบบฟันธงจากคำถามนี้ครับ\n•    ควรยึดกำหนดการและคำสั่งผู้จัด\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.3215,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "GR-099",
+    "category": "game_rules",
+    "question_no": 99,
+    "question": "TEKKEN 8 ถ้าเน็ตล่มระหว่างแข่งนับผลยังไง",
+    "answer": "TEKKEN 8 ยังไม่พบข้อมูลเน็ตล่มแบบฟันธงจากคำถามนี้ครับ\n•    หากเกิดปัญหาระหว่างแข่งให้แจ้งผู้จัด/กรรมการ\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "mode": "pipeline:competition_generic_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "competition_rules/competition_rules_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.4971,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "competition_rules"
+    ],
+    "expected_support": "competition_rules",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล"
+    ]
+  },
+  {
+    "id": "PBC-002",
+    "category": "play_booking_controls",
+    "question_no": 2,
+    "question": "จอง Nintendo Switch ต้องเลือกอะไรบ้าง",
+    "answer": "Nintendo Switch OLED: เครื่องเกม Nintendo Switch รุ่น OLED สำหรับเล่นเกมคอนโซลแบบกลุ่มหรือครอบครัว\nจำนวน: 1 Unit\nอยู่ที่: Nintendo Switch Zone\nใช้สำหรับ:\n•    เล่น Mario Kart 8 Deluxe\n•    เล่น Overcooked 2\n•    เล่น Super Smash Bros Ultimate\n•    เล่น Nintendo Switch Sports\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",
+    "mode": "pipeline:structured_equipment_item",
+    "strategy": "structured",
+    "route": "reservation/booking_policy",
+    "confidence": 0.95,
+    "wall_sec": 0.7443,
+    "selected_candidate_id": "structured.equipment",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "equipment_nintendo_switch_oled"
+    ],
+    "expected_support": "in_kb",
+    "score_total": 3.2,
+    "score_level": "bad",
+    "score_correctness": 0.2,
+    "score_relevance": 0.1,
+    "score_evidence": 1.5,
+    "score_completeness": 0.4,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "reservation_question_answered_as_equipment",
+      "wrong_equipment_focus"
+    ],
+    "user_problem": [
+      "ผู้ใช้ถามวิธีจอง/เงื่อนไขจอง แต่ระบบตอบรายละเอียดอุปกรณ์แทน",
+      "คำถามเจาะอุปกรณ์ชิ้นหนึ่ง แต่ระบบโฟกัสอุปกรณ์อีกชิ้น"
+    ]
+  },
+  {
+    "id": "PBC-005",
+    "category": "play_booking_controls",
+    "question_no": 5,
+    "question": "จอง PC ต้องกรอกข้อมูลอะไรบ้าง",
+    "answer": "ตอนจองต้องกรอก Student ID/Staff ID/National ID ชื่อ นามสกุล อีเมล เบอร์โทรศัพท์ และชำระโดยโอนเงินพร้อมแนบสลิป\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "mode": "pipeline:mixed_reservation_fast",
+    "strategy": "fastpath/rulebase",
+    "route": "reservation/booking_policy",
+    "confidence": 0.9,
+    "wall_sec": 0.4376,
+    "selected_candidate_id": "structured.reservation",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_pipeline_fallback",
+    "evidence_count": 1,
+    "source_ids": [
+      "Reservation"
+    ],
+    "expected_support": "in_kb",
+    "score_total": 6.8,
+    "score_level": "needs_review",
+    "score_correctness": 2.2,
+    "score_relevance": 1.1,
+    "score_evidence": 1.5,
+    "score_completeness": 1.0,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_equipment_focus"
+    ],
+    "user_problem": [
+      "คำถามเจาะอุปกรณ์ชิ้นหนึ่ง แต่ระบบโฟกัสอุปกรณ์อีกชิ้น"
+    ]
+  },
+  {
+    "id": "PBC-007",
+    "category": "play_booking_controls",
+    "question_no": 7,
+    "question": "ถ้าจองผิดเวลาต้องแก้ยังไง",
+    "answer": "เวลาบริการตามตารางคือ Morning 09:00-12:00 และ Afternoon 13:00-16:00\n\nรายละเอียดจากตาราง:\n•    วันจันทร์: Morning 09:00-12:00 = maintenance, Afternoon 13:00-16:00 = open\n•    วันอังคาร: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open\n•    วันพุธ: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open\n•    วันพฤหัสบดี: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open\n•    วันศุกร์: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = maintenance\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "mode": "pipeline:structured_schedule",
+    "strategy": "structured",
+    "route": "reservation/schedule_query",
+    "confidence": 0.96,
+    "wall_sec": 0.2545,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "reservation_schedule"
+    ],
+    "expected_support": "in_kb",
+    "score_total": 6.8,
+    "score_level": "needs_review",
+    "score_correctness": 2.2,
+    "score_relevance": 1.1,
+    "score_evidence": 1.5,
+    "score_completeness": 1.0,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_equipment_focus"
+    ],
+    "user_problem": [
+      "คำถามเจาะอุปกรณ์ชิ้นหนึ่ง แต่ระบบโฟกัสอุปกรณ์อีกชิ้น"
+    ]
+  },
+  {
+    "id": "PBC-019",
+    "category": "play_booking_controls",
+    "question_no": 19,
+    "question": "อยากเล่นพวงมาลัยต้องจองโซนอะไร",
+    "answer": "อุปกรณ์ใน Cockpit Zone:\nCockpit Zone\n•    Logitech G923 TRUEFORCE Racing Wheel (2 Units with Driving Force Shifter)\n•    Driving Force Shifter (2 Units with Logitech G923)\n•    Racezone Full Cockpit V3 (2 Units)\n•    Pulse Elite Wireless Headset (2 Units)\n•    TV 65 นิ้ว (2 Units)\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",
+    "mode": "pipeline:structured_equipment_catalog",
+    "strategy": "structured",
+    "route": "reservation/booking_policy",
+    "confidence": 0.95,
+    "wall_sec": 0.4844,
+    "selected_candidate_id": "structured.equipment",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "home_equipment"
+    ],
+    "expected_support": "in_kb",
+    "score_total": 3.2,
+    "score_level": "bad",
+    "score_correctness": 0.2,
+    "score_relevance": 0.1,
+    "score_evidence": 1.5,
+    "score_completeness": 0.4,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "reservation_question_answered_as_equipment",
+      "wrong_equipment_focus"
+    ],
+    "user_problem": [
+      "ผู้ใช้ถามวิธีจอง/เงื่อนไขจอง แต่ระบบตอบรายละเอียดอุปกรณ์แทน",
+      "คำถามเจาะอุปกรณ์ชิ้นหนึ่ง แต่ระบบโฟกัสอุปกรณ์อีกชิ้น"
+    ]
+  },
+  {
+    "id": "PBC-020",
+    "category": "play_booking_controls",
+    "question_no": 20,
+    "question": "ถ้าไปถึงช้ากว่าเวลาจองจะยังเล่นได้ไหม",
+    "answer": "เวลาบริการตามตารางคือ Morning 09:00-12:00 และ Afternoon 13:00-16:00\n\nรายละเอียดจากตาราง:\n•    วันจันทร์: Morning 09:00-12:00 = maintenance, Afternoon 13:00-16:00 = open\n•    วันอังคาร: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open\n•    วันพุธ: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open\n•    วันพฤหัสบดี: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open\n•    วันศุกร์: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = maintenance\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "mode": "pipeline:structured_schedule",
+    "strategy": "structured",
+    "route": "reservation/schedule_query",
+    "confidence": 0.96,
+    "wall_sec": 0.4785,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "reservation_schedule"
+    ],
+    "expected_support": "in_kb",
+    "score_total": 6.8,
+    "score_level": "needs_review",
+    "score_correctness": 2.2,
+    "score_relevance": 1.1,
+    "score_evidence": 1.5,
+    "score_completeness": 1.0,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_equipment_focus"
+    ],
+    "user_problem": [
+      "คำถามเจาะอุปกรณ์ชิ้นหนึ่ง แต่ระบบโฟกัสอุปกรณ์อีกชิ้น"
+    ]
+  },
+  {
+    "id": "PBC-026",
+    "category": "play_booking_controls",
+    "question_no": 26,
+    "question": "จอง PlayStation 5 ใช้เวลารอบละกี่นาที",
+    "answer": "เวลาบริการตามตารางคือ Morning 09:00-12:00 และ Afternoon 13:00-16:00\n\nรายละเอียดจากตาราง:\n•    วันจันทร์: Morning 09:00-12:00 = maintenance, Afternoon 13:00-16:00 = open\n•    วันอังคาร: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open\n•    วันพุธ: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open\n•    วันพฤหัสบดี: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open\n•    วันศุกร์: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = maintenance\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "mode": "pipeline:structured_schedule",
+    "strategy": "structured",
+    "route": "reservation/schedule_query",
+    "confidence": 0.96,
+    "wall_sec": 0.4402,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "reservation_schedule"
+    ],
+    "expected_support": "in_kb",
+    "score_total": 6.8,
+    "score_level": "needs_review",
+    "score_correctness": 2.2,
+    "score_relevance": 1.1,
+    "score_evidence": 1.5,
+    "score_completeness": 1.0,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_equipment_focus"
+    ],
+    "user_problem": [
+      "คำถามเจาะอุปกรณ์ชิ้นหนึ่ง แต่ระบบโฟกัสอุปกรณ์อีกชิ้น"
+    ]
+  },
+  {
+    "id": "PBC-027",
+    "category": "play_booking_controls",
+    "question_no": 27,
+    "question": "จอง Nintendo Switch ต้องระบุจำนวนผู้เล่นไหม",
+    "answer": "Nintendo Switch OLED: เครื่องเกม Nintendo Switch รุ่น OLED สำหรับเล่นเกมคอนโซลแบบกลุ่มหรือครอบครัว\nจำนวน: 1 Unit\nอยู่ที่: Nintendo Switch Zone\nใช้สำหรับ:\n•    เล่น Mario Kart 8 Deluxe\n•    เล่น Overcooked 2\n•    เล่น Super Smash Bros Ultimate\n•    เล่น Nintendo Switch Sports\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",
+    "mode": "pipeline:structured_equipment_item",
+    "strategy": "structured",
+    "route": "equipment/count",
+    "confidence": 0.95,
+    "wall_sec": 0.6538,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "equipment_nintendo_switch_oled"
+    ],
+    "expected_support": "in_kb",
+    "score_total": 3.2,
+    "score_level": "bad",
+    "score_correctness": 0.2,
+    "score_relevance": 0.1,
+    "score_evidence": 1.5,
+    "score_completeness": 0.4,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "reservation_question_answered_as_equipment",
+      "wrong_equipment_focus"
+    ],
+    "user_problem": [
+      "ผู้ใช้ถามวิธีจอง/เงื่อนไขจอง แต่ระบบตอบรายละเอียดอุปกรณ์แทน",
+      "คำถามเจาะอุปกรณ์ชิ้นหนึ่ง แต่ระบบโฟกัสอุปกรณ์อีกชิ้น"
+    ]
+  },
+  {
+    "id": "PBC-062",
+    "category": "play_booking_controls",
+    "question_no": 62,
+    "question": "Overcooked 2 ปุ่มหยิบของคืออะไร",
+    "answer": "ยังไม่พบข้อมูลปุ่มควบคุมของ Overcooked 2 ที่ยืนยันได้ในฐานข้อมูลตอนนี้ครับ",
+    "mode": "pipeline:structured_game_controls_no_data",
+    "strategy": "structured",
+    "route": "games/game_control_lookup",
+    "confidence": 0.82,
+    "wall_sec": 0.3255,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 0,
+    "source_ids": [],
+    "expected_support": "game_controls_or_clarification",
+    "score_total": 5.6,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 0.7,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question",
+      "missing_source_id"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล",
+      "ไม่มี source id ให้ตรวจสอบย้อนกลับ"
+    ]
+  },
+  {
+    "id": "PBC-063",
+    "category": "play_booking_controls",
+    "question_no": 63,
+    "question": "Overcooked 2 ปุ่มหั่นของคืออะไร",
+    "answer": "ยังไม่พบข้อมูลปุ่มควบคุมของ Overcooked 2 ที่ยืนยันได้ในฐานข้อมูลตอนนี้ครับ",
+    "mode": "pipeline:structured_game_controls_no_data",
+    "strategy": "structured",
+    "route": "games/game_control_lookup",
+    "confidence": 0.82,
+    "wall_sec": 0.2942,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 0,
+    "source_ids": [],
+    "expected_support": "game_controls_or_clarification",
+    "score_total": 5.6,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 0.7,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question",
+      "missing_source_id"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล",
+      "ไม่มี source id ให้ตรวจสอบย้อนกลับ"
+    ]
+  },
+  {
+    "id": "PBC-066",
+    "category": "play_booking_controls",
+    "question_no": 66,
+    "question": "Nintendo Switch Sports ใช้จอยยังไง",
+    "answer": "ยังไม่พบข้อมูลปุ่มควบคุมของ Nintendo Switch Sports ที่ยืนยันได้ในฐานข้อมูลตอนนี้ครับ",
+    "mode": "pipeline:structured_game_controls_no_data",
+    "strategy": "structured",
+    "route": "games/game_control_lookup",
+    "confidence": 0.82,
+    "wall_sec": 0.2625,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 0,
+    "source_ids": [],
+    "expected_support": "game_controls_or_clarification",
+    "score_total": 2.4,
+    "score_level": "bad",
+    "score_correctness": 0.2,
+    "score_relevance": 0.3,
+    "score_evidence": 0.7,
+    "score_completeness": 0.2,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_equipment_focus",
+      "no_answer_for_supported_question",
+      "missing_source_id"
+    ],
+    "user_problem": [
+      "คำถามเจาะอุปกรณ์ชิ้นหนึ่ง แต่ระบบโฟกัสอุปกรณ์อีกชิ้น",
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล",
+      "ไม่มี source id ให้ตรวจสอบย้อนกลับ"
+    ]
+  },
+  {
+    "id": "PBC-067",
+    "category": "play_booking_controls",
+    "question_no": 67,
+    "question": "Beat Saber เล่นยังไง",
+    "answer": "Beat Saber: Beat Saber คือเกม VR จังหวะดนตรีที่ผู้เล่นใช้ดาบแสงฟันบล็อกตามจังหวะเพลง\nแนวเกม: เกม VR Rhythm\nวิธีเล่นโดยสรุป: สวมแว่น VR ถือคอนโทรลเลอร์ แล้วฟันบล็อกตามทิศทาง หลบสิ่งกีดขวาง และพยายามทำคะแนนตามจังหวะเพลง\nเล่นได้ที่: PlayStation 5 Zone และ VR Zone\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "mode": "pipeline:structured_game_detail",
+    "strategy": "structured",
+    "route": "games/game_detail_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.1632,
+    "selected_candidate_id": "structured.games",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "Beat Saber"
+    ],
+    "expected_support": "game_controls_or_clarification",
+    "score_total": 6.3,
+    "score_level": "needs_review",
+    "score_correctness": 1.8,
+    "score_relevance": 1.2,
+    "score_evidence": 0.8,
+    "score_completeness": 1.5,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_domain_or_source"
+    ],
+    "user_problem": [
+      "คำตอบใช้ฐานข้อมูล/หมวดผิดจากสิ่งที่ควรตอบ"
+    ]
+  },
+  {
+    "id": "PBC-068",
+    "category": "play_booking_controls",
+    "question_no": 68,
+    "question": "Gran Turismo 7 ใช้พวงมาลัยยังไง",
+    "answer": "Gran Turismo 7: Gran Turismo 7 คือเกมแข่งรถที่เน้นการขับรถสมจริง การเลือกสนาม รถ และการควบคุมจังหวะเข้าโค้ง\nแนวเกม: เกมแข่งรถ / Driving Simulator\nวิธีเล่นโดยสรุป: ใน Cockpit Zone เล่นโดยใช้พวงมาลัย คันเร่ง เบรก และชุดเบาะจำลองการขับรถ เป้าหมายคือขับให้เร็วและควบคุมรถให้แม่นในแต่ละสนาม\nเล่นได้ที่: Cockpit Zone และ PlayStation 5 Zone\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "mode": "pipeline:structured_game_detail",
+    "strategy": "structured",
+    "route": "games/games_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.1395,
+    "selected_candidate_id": "structured.games",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "Gran Turismo 7"
+    ],
+    "expected_support": "game_controls_or_clarification",
+    "score_total": 6.3,
+    "score_level": "needs_review",
+    "score_correctness": 1.8,
+    "score_relevance": 1.2,
+    "score_evidence": 0.8,
+    "score_completeness": 1.5,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_domain_or_source"
+    ],
+    "user_problem": [
+      "คำตอบใช้ฐานข้อมูล/หมวดผิดจากสิ่งที่ควรตอบ"
+    ]
+  },
+  {
+    "id": "PBC-074",
+    "category": "play_booking_controls",
+    "question_no": 74,
+    "question": "ถ้าถามต่อว่าใช้จอยยังไงระบบจำเกมเดิมไหม",
+    "answer": "ถามเรื่องเกมได้ครับ แต่คำถามนี้ยังกว้างเกินไป เลยไม่ขอดึงเกมใดเกมหนึ่งมาตอบแทน\n\nตัวอย่างที่ถามได้:\n•    `มีเกมอะไรบ้าง`\n•    `PS5 มีเกมอะไรบ้าง`\n•    `TEKKEN 8 คือเกมอะไร`\n•    `TEKKEN 8 มีปุ่มอะไรบ้าง`\n•    `Nintendo Switch มีเกมแนวปาร์ตี้ไหม`",
+    "mode": "pipeline:game_meta_clarification",
+    "strategy": "clarification",
+    "route": "games/game_meta_clarification",
+    "confidence": 0.74,
+    "wall_sec": 6.1486,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "ask_clarification",
+    "evidence_count": 2,
+    "source_ids": [
+      "our_games",
+      "Reservation"
+    ],
+    "expected_support": "game_controls_or_clarification",
+    "score_total": 6.8,
+    "score_level": "needs_review",
+    "score_correctness": 2.2,
+    "score_relevance": 1.1,
+    "score_evidence": 1.5,
+    "score_completeness": 1.0,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_equipment_focus"
+    ],
+    "user_problem": [
+      "คำถามเจาะอุปกรณ์ชิ้นหนึ่ง แต่ระบบโฟกัสอุปกรณ์อีกชิ้น"
+    ]
+  },
+  {
+    "id": "PBC-076",
+    "category": "play_booking_controls",
+    "question_no": 76,
+    "question": "Minecraft มีปุ่มอะไรบ้างในศูนย์",
+    "answer": "ยังไม่พบข้อมูลปุ่มควบคุมของ Minecraft ที่ยืนยันได้ในฐานข้อมูลของศูนย์ตอนนี้ครับ\nถ้าต้องการถามว่าเกมนี้มีให้เล่นในศูนย์ไหม หรือเป็นเกมแนวไหน สามารถถามต่อได้เลย",
+    "mode": "pipeline:game_control_named_no_data",
+    "strategy": "pipeline",
+    "route": "games/game_control_lookup",
+    "confidence": 0.78,
+    "wall_sec": 4.0702,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_pipeline_fallback",
+    "evidence_count": 0,
+    "source_ids": [],
+    "expected_support": "game_controls_or_clarification",
+    "score_total": 5.6,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 0.7,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question",
+      "missing_source_id"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล",
+      "ไม่มี source id ให้ตรวจสอบย้อนกลับ"
+    ]
+  },
+  {
+    "id": "PBC-077",
+    "category": "play_booking_controls",
+    "question_no": 77,
+    "question": "ROV มีปุ่มในเครื่องศูนย์ไหม",
+    "answer": "ยังไม่พบข้อมูลปุ่มควบคุมของ RoV / Arena of Valor ที่ยืนยันได้ในฐานข้อมูลของศูนย์ตอนนี้ครับ\nถ้าต้องการถามว่าเกมนี้มีให้เล่นในศูนย์ไหม หรือเป็นเกมแนวไหน สามารถถามต่อได้เลย",
+    "mode": "pipeline:game_control_named_no_data",
+    "strategy": "pipeline",
+    "route": "games/game_control_lookup",
+    "confidence": 0.78,
+    "wall_sec": 3.1821,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_pipeline_fallback",
+    "evidence_count": 0,
+    "source_ids": [],
+    "expected_support": "game_controls_or_clarification",
+    "score_total": 5.6,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 0.7,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question",
+      "missing_source_id"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล",
+      "ไม่มี source id ให้ตรวจสอบย้อนกลับ"
+    ]
+  },
+  {
+    "id": "PBC-095",
+    "category": "play_booking_controls",
+    "question_no": 95,
+    "question": "Overcooked 2 ปุ่มทั้งหมดมีอะไรบ้าง",
+    "answer": "ยังไม่พบข้อมูลปุ่มควบคุมของ Overcooked 2 ที่ยืนยันได้ในฐานข้อมูลตอนนี้ครับ",
+    "mode": "pipeline:structured_game_controls_no_data",
+    "strategy": "structured",
+    "route": "games/game_control_lookup",
+    "confidence": 0.82,
+    "wall_sec": 0.3651,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 0,
+    "source_ids": [],
+    "expected_support": "game_controls_or_clarification",
+    "score_total": 5.6,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 0.7,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question",
+      "missing_source_id"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล",
+      "ไม่มี source id ให้ตรวจสอบย้อนกลับ"
+    ]
+  },
+  {
+    "id": "EGI-003",
+    "category": "equipment_game_inside",
+    "question_no": 3,
+    "question": "PC Zone ใช้จออะไร",
+    "answer": "Gaming PC รุ่น MSI MAG Infinite S3 14th: เครื่องคอมพิวเตอร์เกมมิ่งของ PC Zone สำหรับเล่นเกมบนคอมและฝึกซ้อมอีสปอร์ต\nจำนวน: 10 Units\nอยู่ที่: PC Zone\nใช้สำหรับ:\n•    เล่น VALORANT\n•    เล่น Counter-Strike 2\n•    เล่น PUBG: BATTLEGROUNDS\n•    เล่น Call of Duty: Warzone\n•    เล่น TEKKEN 8\n•    เล่น League of Legends\nหมายเหตุ: สเปกที่บันทึกไว้ในโปรเจกต์: Intel Core i5-14400, RAM DDR5 32GB, NVIDIA GeForce RTX 5060 8GB\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",
+    "mode": "pipeline:structured_equipment_item",
+    "strategy": "structured",
+    "route": "equipment/zone_equipment_lookup",
+    "confidence": 0.95,
+    "wall_sec": 0.106,
+    "selected_candidate_id": "structured.equipment",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "equipment_gaming_pc"
+    ],
+    "expected_support": "in_kb_or_catalog",
+    "score_total": 6.8,
+    "score_level": "needs_review",
+    "score_correctness": 2.2,
+    "score_relevance": 1.1,
+    "score_evidence": 1.5,
+    "score_completeness": 1.0,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_equipment_focus"
+    ],
+    "user_problem": [
+      "คำถามเจาะอุปกรณ์ชิ้นหนึ่ง แต่ระบบโฟกัสอุปกรณ์อีกชิ้น"
+    ]
+  },
+  {
+    "id": "EGI-008",
+    "category": "equipment_game_inside",
+    "question_no": 8,
+    "question": "Cockpit Zone มีทีวีกี่เครื่อง",
+    "answer": "Logitech G923 TRUEFORCE Racing Wheel: ชุดพวงมาลัยแข่งรถสำหรับเล่นเกมขับรถใน Cockpit Zone\nจำนวน: 2 Units with Driving Force Shifter\nอยู่ที่: Cockpit Zone\nใช้สำหรับ:\n•    เล่น Gran Turismo 7 ร่วมกับชุด Cockpit และ TV 65 นิ้ว\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",
+    "mode": "pipeline:structured_equipment_item",
+    "strategy": "structured",
+    "route": "equipment/count",
+    "confidence": 0.95,
+    "wall_sec": 0.4091,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "equipment_logitech_g923"
+    ],
+    "expected_support": "in_kb_or_catalog",
+    "score_total": 6.8,
+    "score_level": "needs_review",
+    "score_correctness": 2.2,
+    "score_relevance": 1.1,
+    "score_evidence": 1.5,
+    "score_completeness": 1.0,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_equipment_focus"
+    ],
+    "user_problem": [
+      "คำถามเจาะอุปกรณ์ชิ้นหนึ่ง แต่ระบบโฟกัสอุปกรณ์อีกชิ้น"
+    ]
+  },
+  {
+    "id": "EGI-028",
+    "category": "equipment_game_inside",
+    "question_no": 28,
+    "question": "โซนไหนมีทีวีขนาด 86 นิ้ว",
+    "answer": "อุปกรณ์ในศูนย์แยกตามโซน:\nPC Zone\n•    Gaming PC รุ่น MSI MAG Infinite S3 14th (10 Units)\n•    Gaming Monitor (10 Units)\n•    Gaming Keyboard\n•    Gaming Mouse\n•    Gaming Headset\n•    Gaming Chair (10 Units)\nCockpit Zone\n•    Logitech G923 TRUEFORCE Racing Wheel (2 Units with Driving Force Shifter)\n•    Driving Force Shifter (2 Units with Logitech G923)\n•    Racezone Full Cockpit V3 (2 Units)\n•    Pulse Elite Wireless Headset (2 Units)\n•    TV 65 นิ้ว (2 Units)\nNintendo Switch Zone\n•    Nintendo Switch OLED (1 Unit)\n•    TV 86 นิ้ว (1 Unit)\n•    Sofa 2 seats (2 Sets)\nPlayStation 5 Zone / VR Zone\n•    PlayStation 5 Slim With Ultra HD Blu-Ray Disc Drive (2 Units in PlayStation 5 Zone and 1 Unit in VR Zone)\nVR Zone\n•    Sony PlayStation VR2 (1 Unit)\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",
+    "mode": "pipeline:structured_equipment_catalog",
+    "strategy": "structured",
+    "route": "equipment/equipment_item_lookup",
+    "confidence": 0.95,
+    "wall_sec": 0.3618,
+    "selected_candidate_id": "structured.equipment",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "home_equipment"
+    ],
+    "expected_support": "in_kb_or_catalog",
+    "score_total": 6.8,
+    "score_level": "needs_review",
+    "score_correctness": 2.2,
+    "score_relevance": 1.1,
+    "score_evidence": 1.5,
+    "score_completeness": 1.0,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_equipment_focus"
+    ],
+    "user_problem": [
+      "คำถามเจาะอุปกรณ์ชิ้นหนึ่ง แต่ระบบโฟกัสอุปกรณ์อีกชิ้น"
+    ]
+  },
+  {
+    "id": "EGI-029",
+    "category": "equipment_game_inside",
+    "question_no": 29,
+    "question": "โซนไหนมีทีวี 65 นิ้ว",
+    "answer": "อุปกรณ์ในศูนย์แยกตามโซน:\nPC Zone\n•    Gaming PC รุ่น MSI MAG Infinite S3 14th (10 Units)\n•    Gaming Monitor (10 Units)\n•    Gaming Keyboard\n•    Gaming Mouse\n•    Gaming Headset\n•    Gaming Chair (10 Units)\nCockpit Zone\n•    Logitech G923 TRUEFORCE Racing Wheel (2 Units with Driving Force Shifter)\n•    Driving Force Shifter (2 Units with Logitech G923)\n•    Racezone Full Cockpit V3 (2 Units)\n•    Pulse Elite Wireless Headset (2 Units)\n•    TV 65 นิ้ว (2 Units)\nNintendo Switch Zone\n•    Nintendo Switch OLED (1 Unit)\n•    TV 86 นิ้ว (1 Unit)\n•    Sofa 2 seats (2 Sets)\nPlayStation 5 Zone / VR Zone\n•    PlayStation 5 Slim With Ultra HD Blu-Ray Disc Drive (2 Units in PlayStation 5 Zone and 1 Unit in VR Zone)\nVR Zone\n•    Sony PlayStation VR2 (1 Unit)\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",
+    "mode": "pipeline:structured_equipment_catalog",
+    "strategy": "structured",
+    "route": "equipment/equipment_item_lookup",
+    "confidence": 0.95,
+    "wall_sec": 0.2347,
+    "selected_candidate_id": "structured.equipment",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "home_equipment"
+    ],
+    "expected_support": "in_kb_or_catalog",
+    "score_total": 6.8,
+    "score_level": "needs_review",
+    "score_correctness": 2.2,
+    "score_relevance": 1.1,
+    "score_evidence": 1.5,
+    "score_completeness": 1.0,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_equipment_focus"
+    ],
+    "user_problem": [
+      "คำถามเจาะอุปกรณ์ชิ้นหนึ่ง แต่ระบบโฟกัสอุปกรณ์อีกชิ้น"
+    ]
+  },
+  {
+    "id": "EGI-043",
+    "category": "equipment_game_inside",
+    "question_no": 43,
+    "question": "PC มีเกมอะไรบ้าง",
+    "answer": "PC Zone มีเกมที่ยืนยันได้ดังนี้\n\nPC Zone (6 เกม)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "mode": "pipeline:structured_games_catalog",
+    "strategy": "structured",
+    "route": "games/list",
+    "confidence": 0.97,
+    "wall_sec": 1.0074,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "our_games"
+    ],
+    "expected_support": "in_kb_or_catalog",
+    "score_total": 6.8,
+    "score_level": "needs_review",
+    "score_correctness": 2.2,
+    "score_relevance": 1.1,
+    "score_evidence": 1.5,
+    "score_completeness": 1.0,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_equipment_focus"
+    ],
+    "user_problem": [
+      "คำถามเจาะอุปกรณ์ชิ้นหนึ่ง แต่ระบบโฟกัสอุปกรณ์อีกชิ้น"
+    ]
+  },
+  {
+    "id": "EGI-089",
+    "category": "equipment_game_inside",
+    "question_no": 89,
+    "question": "Minecraft มีไหม",
+    "answer": "ยังไม่พบ Minecraft ในรายการเกมที่ยืนยันได้ของ PSU Esports Studio - Phuket ครับ\nถ้าต้องการเล่นเกมนี้ ควรสอบถามเจ้าหน้าที่ก่อนจองหรือก่อนเข้าใช้บริการ\n\nเกมที่มีข้อมูลยืนยันตอนนี้ทั้งหมด 36 เกม:\n\nPC Zone (6 เกม)\n•    VALORANT\n•    Counter-Strike 2\n•    PUBG: BATTLEGROUNDS\n•    Call of Duty: Warzone\n•    TEKKEN 8\n•    League of Legends\n\nPlayStation 5 Zone (18 เกม)\n•    TEKKEN 8\n•    Marvel's Spider-Man 2\n•    Fortnite\n•    God of War Ragnarok\n•    Overcooked 2\n•    Gran Turismo 7\n•    Beat Saber\n•    It Takes Two\n•    LITTLE NIGHTMARES II\n•    Monster Hunter Rise\n•    EA Sports FC 24\n•    FINAL FANTASY XVI\n•    Hogwarts Legacy\n•    NARUTO X BORUTO Ultimate Ninja STORM CONNECTIONS\n•    Resident Evil 4\n•    Resident Evil Village\n•    The Last of Us Part I / Part II\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (16 เกม)\n•    Mario Kart 8 Deluxe\n•    Mario Kart Live: Home Circuit\n•    Overcooked 2\n•    Super Smash Bros Ultimate\n•    Nintendo Switch Sports\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    LITTLE NIGHTMARES II\n•    Luigi's Mansion 3\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Super Mario Odyssey\n•    The Legend of Zelda: Breath of the Wild\n•    Ring Fit Adventure\n\nCockpit Zone (1 เกม)\n•    Gran Turismo 7\n\nVR Zone (2 เกม)\n•    Beat Saber\n•    Horizon Call of the Mountain\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "mode": "pipeline:games_known_unsupported_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "games/availability_lookup",
+    "confidence": 0.94,
+    "wall_sec": 0.8533,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 2,
+    "source_ids": [
+      "our_games",
+      "Reservation"
+    ],
+    "expected_support": "in_kb_or_catalog",
+    "score_total": 5.9,
+    "score_level": "needs_review",
+    "score_correctness": 2.2,
+    "score_relevance": 0.8,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 0.7,
+    "issue_tags": [
+      "specific_question_answered_with_full_catalog",
+      "candidate_execution_mismatch"
+    ],
+    "user_problem": [
+      "ผู้ใช้ถามเกมเฉพาะ แต่ระบบตอบ catalog เกมทั้งหมด ทำให้ไม่ตอบคำถาม",
+      "ระบบเลือก candidate แบบหนึ่ง แต่ execution จริงไปอีกทางหนึ่ง ทำให้ debug สับสน"
+    ]
+  },
+  {
+    "id": "EGI-091",
+    "category": "equipment_game_inside",
+    "question_no": 91,
+    "question": "ROV มีให้เล่นในศูนย์ไหม",
+    "answer": "ยังไม่พบ RoV / Arena of Valor ในรายการเกมที่ยืนยันได้ของ PSU Esports Studio - Phuket ครับ\nในฐานข้อมูลมีข้อมูลกติกาการแข่งขันของเกมนี้ แต่ยังไม่พบว่าอยู่ในรายการเกมให้เล่นของศูนย์\nถ้าต้องการเล่นเกมนี้ ควรสอบถามเจ้าหน้าที่ก่อนจองหรือก่อนเข้าใช้บริการ\n\nเกมที่มีข้อมูลยืนยันตอนนี้ทั้งหมด 36 เกม:\n\nPC Zone (6 เกม)\n•    VALORANT\n•    Counter-Strike 2\n•    PUBG: BATTLEGROUNDS\n•    Call of Duty: Warzone\n•    TEKKEN 8\n•    League of Legends\n\nPlayStation 5 Zone (18 เกม)\n•    TEKKEN 8\n•    Marvel's Spider-Man 2\n•    Fortnite\n•    God of War Ragnarok\n•    Overcooked 2\n•    Gran Turismo 7\n•    Beat Saber\n•    It Takes Two\n•    LITTLE NIGHTMARES II\n•    Monster Hunter Rise\n•    EA Sports FC 24\n•    FINAL FANTASY XVI\n•    Hogwarts Legacy\n•    NARUTO X BORUTO Ultimate Ninja STORM CONNECTIONS\n•    Resident Evil 4\n•    Resident Evil Village\n•    The Last of Us Part I / Part II\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (16 เกม)\n•    Mario Kart 8 Deluxe\n•    Mario Kart Live: Home Circuit\n•    Overcooked 2\n•    Super Smash Bros Ultimate\n•    Nintendo Switch Sports\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    LITTLE NIGHTMARES II\n•    Luigi's Mansion 3\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Super Mario Odyssey\n•    The Legend of Zelda: Breath of the Wild\n•    Ring Fit Adventure\n\nCockpit Zone (1 เกม)\n•    Gran Turismo 7\n\nVR Zone (2 เกม)\n•    Beat Saber\n•    Horizon Call of the Mountain\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "mode": "pipeline:games_known_unsupported_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "games/game_availability_lookup",
+    "confidence": 0.94,
+    "wall_sec": 2.1406,
+    "selected_candidate_id": "structured.games",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 2,
+    "source_ids": [
+      "our_games",
+      "Reservation"
+    ],
+    "expected_support": "in_kb_or_catalog",
+    "score_total": 5.9,
+    "score_level": "needs_review",
+    "score_correctness": 2.2,
+    "score_relevance": 0.8,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 0.7,
+    "issue_tags": [
+      "specific_question_answered_with_full_catalog",
+      "candidate_execution_mismatch"
+    ],
+    "user_problem": [
+      "ผู้ใช้ถามเกมเฉพาะ แต่ระบบตอบ catalog เกมทั้งหมด ทำให้ไม่ตอบคำถาม",
+      "ระบบเลือก candidate แบบหนึ่ง แต่ execution จริงไปอีกทางหนึ่ง ทำให้ debug สับสน"
+    ]
+  },
+  {
+    "id": "EGI-092",
+    "category": "equipment_game_inside",
+    "question_no": 92,
+    "question": "เกมไหนยังไม่มีข้อมูลบ้าง",
+    "answer": "ตอนนี้ระบบยังไม่สามารถสรุปรายชื่อเกมที่ไม่มีข้อมูลทั้งหมดได้แบบครบถ้วนครับ\nเพราะฐานข้อมูลยืนยันได้เฉพาะเกม/รายการที่มีข้อมูลอยู่แล้ว ไม่ได้มี master list ของทุกเกมที่ควรมีแต่ยังขาดข้อมูล\n\nสิ่งที่ยืนยันได้ตอนนี้คือรายการเกมที่มีข้อมูลแล้ว:\nPC Zone (6 เกม)\n•    VALORANT\n•    Counter-Strike 2\n•    PUBG: BATTLEGROUNDS\n•    Call of Duty: Warzone\n•    TEKKEN 8\n•    League of Legends\n\nPlayStation 5 Zone (18 เกม)\n•    TEKKEN 8\n•    Marvel's Spider-Man 2\n•    Fortnite\n•    God of War Ragnarok\n•    Overcooked 2\n•    Gran Turismo 7\n•    Beat Saber\n•    It Takes Two\n•    LITTLE NIGHTMARES II\n•    Monster Hunter Rise\n•    EA Sports FC 24\n•    FINAL FANTASY XVI\n•    Hogwarts Legacy\n•    NARUTO X BORUTO Ultimate Ninja STORM CONNECTIONS\n•    Resident Evil 4\n•    Resident Evil Village\n•    The Last of Us Part I / Part II\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (16 เกม)\n•    Mario Kart 8 Deluxe\n•    Mario Kart Live: Home Circuit\n•    Overcooked 2\n•    Super Smash Bros Ultimate\n•    Nintendo Switch Sports\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    LITTLE NIGHTMARES II\n•    Luigi's Mansion 3\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Super Mario Odyssey\n•    The Legend of Zelda: Breath of the Wild\n•    Ring Fit Adventure\n\nCockpit Zone (1 เกม)\n•    Gran Turismo 7\n\nVR Zone (2 เกม)\n•    Beat Saber\n•    Horizon Call of the Mountain\n\nถ้าต้องการเช็กเกมที่สงสัย ให้ถามชื่อเกมนั้นตรง ๆ ได้ เช่น “Minecraft มีไหม” หรือ “RoV มีข้อมูลไหม” ระบบจะตอบว่าอยู่ในรายการยืนยันได้หรือยังไม่พบข้อมูล\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "mode": "pipeline:games_missing_data_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "games/games_lookup",
+    "confidence": 0.96,
+    "wall_sec": 2.5141,
+    "selected_candidate_id": "structured.games",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 2,
+    "source_ids": [
+      "our_games",
+      "Reservation"
+    ],
+    "expected_support": "in_kb_or_catalog",
+    "score_total": 6.4,
+    "score_level": "needs_review",
+    "score_correctness": 2.0,
+    "score_relevance": 1.2,
+    "score_evidence": 1.5,
+    "score_completeness": 0.7,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "no_answer_for_supported_question",
+      "candidate_execution_mismatch"
+    ],
+    "user_problem": [
+      "คำถามควรมีข้อมูลรองรับ แต่ระบบตอบว่าไม่มีข้อมูล",
+      "ระบบเลือก candidate แบบหนึ่ง แต่ execution จริงไปอีกทางหนึ่ง ทำให้ debug สับสน"
+    ]
+  },
+  {
+    "id": "EGI-093",
+    "category": "equipment_game_inside",
+    "question_no": 93,
+    "question": "เกมไหนมีข้อมูลปุ่มครบ",
+    "answer": "ยังไม่แน่ใจว่าหมายถึงเกมไหนครับ จึงไม่ขอดึงปุ่มหรือวิธีเล่นของเกมอื่นมาตอบแทน\nให้พิมพ์ชื่อเกมมาด้วย เช่น `TEKKEN 8 มีปุ่มอะไรบ้าง`, `Mario Kart 8 Deluxe ใช้จอยยังไง` หรือถ้าเพิ่งถามชื่อเกมไปก่อนหน้า ให้ถามต่อใน session เดิมได้ครับ",
+    "mode": "pipeline:game_control_missing_game_context",
+    "strategy": "pipeline",
+    "route": "games/game_control_lookup",
+    "confidence": 0.72,
+    "wall_sec": 2.1172,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_pipeline_fallback",
+    "evidence_count": 0,
+    "source_ids": [],
+    "expected_support": "in_kb_or_catalog",
+    "score_total": 5.5,
+    "score_level": "needs_review",
+    "score_correctness": 1.8,
+    "score_relevance": 1.2,
+    "score_evidence": 0.0,
+    "score_completeness": 1.5,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_domain_or_source",
+      "missing_source_id"
+    ],
+    "user_problem": [
+      "คำตอบใช้ฐานข้อมูล/หมวดผิดจากสิ่งที่ควรตอบ",
+      "ไม่มี source id ให้ตรวจสอบย้อนกลับ"
+    ]
+  },
+  {
+    "id": "EGI-100",
+    "category": "equipment_game_inside",
+    "question_no": 100,
+    "question": "เกมที่ใช้จอย PS5 มีอะไร",
+    "answer": "ยังไม่แน่ใจว่าหมายถึงเกมไหนครับ จึงไม่ขอดึงปุ่มหรือวิธีเล่นของเกมอื่นมาตอบแทน\nให้พิมพ์ชื่อเกมมาด้วย เช่น `TEKKEN 8 มีปุ่มอะไรบ้าง`, `Mario Kart 8 Deluxe ใช้จอยยังไง` หรือถ้าเพิ่งถามชื่อเกมไปก่อนหน้า ให้ถามต่อใน session เดิมได้ครับ",
+    "mode": "pipeline:game_control_missing_game_context",
+    "strategy": "pipeline",
+    "route": "games/game_control_lookup",
+    "confidence": 0.72,
+    "wall_sec": 1.9857,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_pipeline_fallback",
+    "evidence_count": 0,
+    "source_ids": [],
+    "expected_support": "in_kb_or_catalog",
+    "score_total": 5.5,
+    "score_level": "needs_review",
+    "score_correctness": 1.8,
+    "score_relevance": 1.2,
+    "score_evidence": 0.0,
+    "score_completeness": 1.5,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_domain_or_source",
+      "missing_source_id"
+    ],
+    "user_problem": [
+      "คำตอบใช้ฐานข้อมูล/หมวดผิดจากสิ่งที่ควรตอบ",
+      "ไม่มี source id ให้ตรวจสอบย้อนกลับ"
+    ]
+  },
+  {
+    "id": "OOS-010",
+    "category": "out_of_scope",
+    "question_no": 10,
+    "question": "ราคาทองวันนี้เท่าไหร่",
+    "answer": "ตอนนี้โหมดตอบจากความรู้ทั่วไปของ Local LLM ยังไม่ได้เปิดในสภาพแวดล้อมนี้ครับ\nให้เปิด `experimental_allow_llm=True` หรือใช้ notebook local hybrid chat เพื่อให้โมเดลตอบคำถามทั่วไป",
+    "mode": "pipeline:general_llm_disabled",
+    "strategy": "llm",
+    "route": "general/general_knowledge_query",
+    "confidence": 0.42,
+    "wall_sec": 0.2466,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_general_llm",
+    "evidence_count": 0,
+    "source_ids": [],
+    "expected_support": "general_llm_or_decline",
+    "score_total": 4.7,
+    "score_level": "bad",
+    "score_correctness": 1.8,
+    "score_relevance": 1.0,
+    "score_evidence": 0.7,
+    "score_completeness": 0.2,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "missing_direct_number",
+      "safe_decline_but_not_useful",
+      "missing_source_id"
+    ],
+    "user_problem": [
+      "คำถามต้องการตัวเลข/จำนวน แต่คำตอบไม่มีตัวเลขตรง ๆ",
+      "เป็นคำถามนอกเรื่องที่ควรให้ Local LLM ช่วยได้ แต่รอบนี้ปิด LLM จึงตอบไม่ได้",
+      "ไม่มี source id ให้ตรวจสอบย้อนกลับ"
+    ]
+  },
+  {
+    "id": "OOS-042",
+    "category": "out_of_scope",
+    "question_no": 42,
+    "question": "ควรดื่มน้ำวันละเท่าไหร่",
+    "answer": "บริการ PC ในระบบจองมีระยะเวลา 60 min แต่ในข้อมูลที่ดึงมาและในรูป Service Fee 2026 ยังไม่พบราคาค่าบริการ PC ที่ยืนยันได้ จึงยังไม่ควรคำนวณยอดเงิน PC แบบฟันธง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:rag_direct_curated",
+    "strategy": "rag/vector",
+    "route": "service_fee/service_fee_query",
+    "confidence": 0.84,
+    "wall_sec": 0.4073,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_retrieval",
+    "evidence_count": 3,
+    "source_ids": [
+      "service_fee_image",
+      "reservation-service-pc",
+      "service_fee_image_2026"
+    ],
+    "expected_support": "general_llm_or_decline",
+    "score_total": 6.3,
+    "score_level": "needs_review",
+    "score_correctness": 1.8,
+    "score_relevance": 1.2,
+    "score_evidence": 0.8,
+    "score_completeness": 1.5,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_domain_or_source"
+    ],
+    "user_problem": [
+      "คำตอบใช้ฐานข้อมูล/หมวดผิดจากสิ่งที่ควรตอบ"
+    ]
+  },
+  {
+    "id": "OOS-043",
+    "category": "out_of_scope",
+    "question_no": 43,
+    "question": "อาหารเช้าควรกินอะไร",
+    "answer": "อนุญาตให้รับประทานอาหารและเครื่องดื่มเฉพาะในพื้นที่ที่กำหนดเท่านั้น\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "mode": "pipeline:rules_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "rules/studio_rules",
+    "confidence": 0.9,
+    "wall_sec": 0.174,
+    "selected_candidate_id": "fast.price_calculator",
+    "selected_candidate_action": "fast_path",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "Reservation"
+    ],
+    "expected_support": "general_llm_or_decline",
+    "score_total": 6.3,
+    "score_level": "needs_review",
+    "score_correctness": 1.8,
+    "score_relevance": 1.2,
+    "score_evidence": 0.8,
+    "score_completeness": 1.5,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_domain_or_source"
+    ],
+    "user_problem": [
+      "คำตอบใช้ฐานข้อมูล/หมวดผิดจากสิ่งที่ควรตอบ"
+    ]
+  },
+  {
+    "id": "OOS-046",
+    "category": "out_of_scope",
+    "question_no": 46,
+    "question": "วิธีดูแลคอมไม่ให้ช้า",
+    "answer": "ตอนนี้โหมดตอบจากความรู้ทั่วไปของ Local LLM ยังไม่ได้เปิดในสภาพแวดล้อมนี้ครับ\nให้เปิด `experimental_allow_llm=True` หรือใช้ notebook local hybrid chat เพื่อให้โมเดลตอบคำถามทั่วไป",
+    "mode": "pipeline:general_llm_disabled",
+    "strategy": "llm",
+    "route": "general/general_knowledge_query",
+    "confidence": 0.42,
+    "wall_sec": 0.1048,
+    "selected_candidate_id": "llm.general_answer",
+    "selected_candidate_action": "general_llm",
+    "final_execution_step": "execute_general_llm",
+    "evidence_count": 0,
+    "source_ids": [],
+    "expected_support": "general_llm_or_decline",
+    "score_total": 3.8,
+    "score_level": "bad",
+    "score_correctness": 1.2,
+    "score_relevance": 0.7,
+    "score_evidence": 0.7,
+    "score_completeness": 0.2,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_equipment_focus",
+      "safe_decline_but_not_useful",
+      "missing_source_id"
+    ],
+    "user_problem": [
+      "คำถามเจาะอุปกรณ์ชิ้นหนึ่ง แต่ระบบโฟกัสอุปกรณ์อีกชิ้น",
+      "เป็นคำถามนอกเรื่องที่ควรให้ Local LLM ช่วยได้ แต่รอบนี้ปิด LLM จึงตอบไม่ได้",
+      "ไม่มี source id ให้ตรวจสอบย้อนกลับ"
+    ]
+  },
+  {
+    "id": "OOS-060",
+    "category": "out_of_scope",
+    "question_no": 60,
+    "question": "ค่าเงิน USD เป็น THB เท่าไหร่",
+    "answer": "ตอนนี้โหมดตอบจากความรู้ทั่วไปของ Local LLM ยังไม่ได้เปิดในสภาพแวดล้อมนี้ครับ\nให้เปิด `experimental_allow_llm=True` หรือใช้ notebook local hybrid chat เพื่อให้โมเดลตอบคำถามทั่วไป",
+    "mode": "pipeline:general_llm_disabled",
+    "strategy": "llm",
+    "route": "general/general_knowledge_query",
+    "confidence": 0.42,
+    "wall_sec": 0.2295,
+    "selected_candidate_id": "llm.general_answer",
+    "selected_candidate_action": "general_llm",
+    "final_execution_step": "execute_general_llm",
+    "evidence_count": 0,
+    "source_ids": [],
+    "expected_support": "general_llm_or_decline",
+    "score_total": 4.7,
+    "score_level": "bad",
+    "score_correctness": 1.8,
+    "score_relevance": 1.0,
+    "score_evidence": 0.7,
+    "score_completeness": 0.2,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "missing_direct_number",
+      "safe_decline_but_not_useful",
+      "missing_source_id"
+    ],
+    "user_problem": [
+      "คำถามต้องการตัวเลข/จำนวน แต่คำตอบไม่มีตัวเลขตรง ๆ",
+      "เป็นคำถามนอกเรื่องที่ควรให้ Local LLM ช่วยได้ แต่รอบนี้ปิด LLM จึงตอบไม่ได้",
+      "ไม่มี source id ให้ตรวจสอบย้อนกลับ"
+    ]
+  },
+  {
+    "id": "OOS-061",
+    "category": "out_of_scope",
+    "question_no": 61,
+    "question": "Bitcoin ราคาเท่าไหร่",
+    "answer": "ตอนนี้โหมดตอบจากความรู้ทั่วไปของ Local LLM ยังไม่ได้เปิดในสภาพแวดล้อมนี้ครับ\nให้เปิด `experimental_allow_llm=True` หรือใช้ notebook local hybrid chat เพื่อให้โมเดลตอบคำถามทั่วไป",
+    "mode": "pipeline:general_llm_disabled",
+    "strategy": "llm",
+    "route": "general/general_knowledge_query",
+    "confidence": 0.42,
+    "wall_sec": 0.1726,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_general_llm",
+    "evidence_count": 0,
+    "source_ids": [],
+    "expected_support": "general_llm_or_decline",
+    "score_total": 4.7,
+    "score_level": "bad",
+    "score_correctness": 1.8,
+    "score_relevance": 1.0,
+    "score_evidence": 0.7,
+    "score_completeness": 0.2,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "missing_direct_number",
+      "safe_decline_but_not_useful",
+      "missing_source_id"
+    ],
+    "user_problem": [
+      "คำถามต้องการตัวเลข/จำนวน แต่คำตอบไม่มีตัวเลขตรง ๆ",
+      "เป็นคำถามนอกเรื่องที่ควรให้ Local LLM ช่วยได้ แต่รอบนี้ปิด LLM จึงตอบไม่ได้",
+      "ไม่มี source id ให้ตรวจสอบย้อนกลับ"
+    ]
+  },
+  {
+    "id": "OOS-064",
+    "category": "out_of_scope",
+    "question_no": 64,
+    "question": "วิธีจองตั๋วเครื่องบินราคาถูก",
+    "answer": "ราคา PC: ยังไม่พบราคาที่ตรวจยืนยันได้ใน Service Fee 2026 ครับ\nข้อมูลราคาที่พบในภาพมี PlayStation 5, Nintendo Switch, Cockpit และ VR\nดังนั้นยังไม่ควรคำนวณยอดเงิน PC แบบฟันธง ควรถามเจ้าหน้าที่หรืออัปเดตตารางราคา PC เพิ่มก่อน\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:structured_service_fee",
+    "strategy": "structured",
+    "route": "service_fee/service_fee_query",
+    "confidence": 0.88,
+    "wall_sec": 0.6773,
+    "selected_candidate_id": "structured.members",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "service_fee_image_2026"
+    ],
+    "expected_support": "general_llm_or_decline",
+    "score_total": 3.1,
+    "score_level": "bad",
+    "score_correctness": 0.0,
+    "score_relevance": 0.3,
+    "score_evidence": 0.8,
+    "score_completeness": 1.0,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_domain_or_source",
+      "wrong_equipment_focus"
+    ],
+    "user_problem": [
+      "คำตอบใช้ฐานข้อมูล/หมวดผิดจากสิ่งที่ควรตอบ",
+      "คำถามเจาะอุปกรณ์ชิ้นหนึ่ง แต่ระบบโฟกัสอุปกรณ์อีกชิ้น"
+    ]
+  },
+  {
+    "id": "OOS-076",
+    "category": "out_of_scope",
+    "question_no": 76,
+    "question": "ประวัติศาสตร์สงครามโลกครั้งที่สอง",
+    "answer": "หากละเมิดกฎอาจถูกระงับสิทธิ์ชั่วคราว 1-7 วันหรือถาวร มีการบันทึกประวัติ และสามารถอุทธรณ์ได้ภายใน 7 วัน\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "mode": "pipeline:penalty_fast_path",
+    "strategy": "fastpath/rulebase",
+    "route": "knowledge/knowledge_lookup",
+    "confidence": 0.9,
+    "wall_sec": 0.4985,
+    "selected_candidate_id": "fast.price_calculator",
+    "selected_candidate_action": "fast_path",
+    "final_execution_step": "execute_fast_path",
+    "evidence_count": 1,
+    "source_ids": [
+      "Reservation"
+    ],
+    "expected_support": "general_llm_or_decline",
+    "score_total": 6.3,
+    "score_level": "needs_review",
+    "score_correctness": 1.8,
+    "score_relevance": 1.2,
+    "score_evidence": 0.8,
+    "score_completeness": 1.5,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_domain_or_source"
+    ],
+    "user_problem": [
+      "คำตอบใช้ฐานข้อมูล/หมวดผิดจากสิ่งที่ควรตอบ"
+    ]
+  },
+  {
+    "id": "OOS-085",
+    "category": "out_of_scope",
+    "question_no": 85,
+    "question": "ทำไมคอมเปิดไม่ติด",
+    "answer": "เวลาบริการตามตารางคือ Morning 09:00-12:00 และ Afternoon 13:00-16:00\n\nรายละเอียดจากตาราง:\n•    วันจันทร์: Morning 09:00-12:00 = maintenance, Afternoon 13:00-16:00 = open\n•    วันอังคาร: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open\n•    วันพุธ: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open\n•    วันพฤหัสบดี: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = open\n•    วันศุกร์: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = maintenance\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "mode": "pipeline:structured_schedule",
+    "strategy": "structured",
+    "route": "schedule/schedule_query",
+    "confidence": 0.96,
+    "wall_sec": 0.2485,
+    "selected_candidate_id": "retrieval.competition_fact_cards",
+    "selected_candidate_action": "retrieval",
+    "final_execution_step": "execute_structured_tool",
+    "evidence_count": 1,
+    "source_ids": [
+      "reservation_schedule"
+    ],
+    "expected_support": "general_llm_or_decline",
+    "score_total": 3.1,
+    "score_level": "bad",
+    "score_correctness": 0.0,
+    "score_relevance": 0.3,
+    "score_evidence": 0.8,
+    "score_completeness": 1.0,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_domain_or_source",
+      "wrong_equipment_focus"
+    ],
+    "user_problem": [
+      "คำตอบใช้ฐานข้อมูล/หมวดผิดจากสิ่งที่ควรตอบ",
+      "คำถามเจาะอุปกรณ์ชิ้นหนึ่ง แต่ระบบโฟกัสอุปกรณ์อีกชิ้น"
+    ]
+  },
+  {
+    "id": "OOS-097",
+    "category": "out_of_scope",
+    "question_no": 97,
+    "question": "เพลงฮิตตอนนี้มีอะไรบ้าง",
+    "answer": "โหมดทดลอง RAG: ยังไม่มี context ที่โยงกับคำถามนี้ได้ชัดในฐานข้อมูลหมวด schedule\nถ้าต้องการให้ตอบได้ ควรเพิ่ม fact/card หรือข้อมูลจริงของเรื่องนั้นเข้า knowledge base ก่อน",
+    "mode": "pipeline:experimental_rag_no_context",
+    "strategy": "rag/vector",
+    "route": "schedule/schedule_query",
+    "confidence": 0.42,
+    "wall_sec": 0.4769,
+    "selected_candidate_id": "structured.schedule",
+    "selected_candidate_action": "structured",
+    "final_execution_step": "execute_retrieval",
+    "evidence_count": 1,
+    "source_ids": [
+      "Reservation"
+    ],
+    "expected_support": "general_llm_or_decline",
+    "score_total": 6.3,
+    "score_level": "needs_review",
+    "score_correctness": 1.8,
+    "score_relevance": 1.2,
+    "score_evidence": 0.8,
+    "score_completeness": 1.5,
+    "score_clarity": 1.0,
+    "issue_tags": [
+      "wrong_domain_or_source"
+    ],
+    "user_problem": [
+      "คำตอบใช้ฐานข้อมูล/หมวดผิดจากสิ่งที่ควรตอบ"
+    ]
+  }
+]

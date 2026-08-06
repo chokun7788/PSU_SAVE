@@ -1,0 +1,1939 @@
+[
+  {
+    "case_id": "M-001",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "สมาชิกมีใครบ้าง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_group_list",
+    "route_category": "overview",
+    "route_intent": "list",
+    "strategy": "structured",
+    "confidence": 0.96,
+    "latency_sec": 0.3679,
+    "wall_sec": 0.4124,
+    "answer": "สมาชิกจากหน้า Members แยกตามหมวด รวม 25 คน:\nMembers (7 คน):\n•    ผศ.ดร.นิวัติ แก้วประดับ: อธิการบดี\n•    รศ.ดร.พันธ์ ทองชุมนุม: รองอธิการบดี\n•    รศ.ดร.อซีส นันทอมรพงศ์: คณบดี\n•    ผศ.ดร.ณัฐพงศ์ ทองเทพ: ผู้ช่วยอธิการบดีฝ่ายวิชาการ\n•    นายพฤทธิ์ เกษตรสมบูรณ์: นักวิชาการคอมพิวเตอร์\n•    นายณัฐวัฒน์ นิธิคุณานนต์: นักวิชาการคอมพิวเตอร์\n•    นายชนะชัย สิริพันธ์วราภรณ์: ผู้จัดการ\n\ncooperative education and Internship student (5 คน):\n•    นายณภัทร เชื้อเหล่าวานิช: นักศึกษาสหกิจ Game and 3D Developer\n•    Mr. Amine Abidellaoui: Internship Student\n•    นายสุพศิน อะนะฝรั่ง: นักศึกษาสหกิจ Web & AI Developer\n•    Mr. Yanis Igoudjil: Internship Student\n•    นายภาสวุฒิ ชูติประชากิจ: นักศึกษาฝึกงานโครงการ Super AI SS6 ตำแหน่ง AI Chat Bot Developer\n\nPSU Phuket Esports Club - PSU Phuket (13 คน):\n•    นายษุภากรณ์ จิราจินดากุล: ประธาน\n•    นายนพัทธ์ ฝอยทอง: รองประธาน\n•    นายปัณณวิชญ์ หนูเรือง: เลขานุการ\n•    นายภูจิตร จิรวิริยาภรณ์: เหรัญญิก\n•    นายธนชาติ เอ่งฉ้วน: ประชาสัมพันธ์\n•    นางสาวกมลวรรณ นวลสาย: กรรมการ\n•    นางสาวชญาภา จันทร์เอิบ: กรรมการ\n•    นางสาวณัฐธิดา คำทะเนตร์: กรรมการ\n•    นางสาวสุภาสินี ธนภพ: กรรมการ\n•    นางสาวอาทิตยา แดงประดับ: กรรมการ\n•    นายณัฐพนธ์ อินทรสังขนาวิน: กรรมการ\n•    นายอภิวิชญ์ เลิศกมลรักษ์: กรรมการ\n•    นายอรรถนนท์ สุขแก้ว: กรรมการ\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "fact_answer_may_be_too_verbose"
+      ]
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "list",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "list_items"
+      ],
+      "answer_style": "summary_bullets",
+      "confidence": 0.82,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; list terms found"
+    }
+  },
+  {
+    "case_id": "M-002",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "สมาชิก PSU Esports มีกี่คน",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_group_count",
+    "route_category": "overview",
+    "route_intent": "group_count",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.9975,
+    "wall_sec": 0.9975,
+    "answer": "สมาชิกในหน้า Members แบ่งเป็น 3 หมวดครับ\n•    Members: 7 คน\n•    cooperative education and Internship student: 5 คน\n•    PSU Phuket Esports Club - PSU Phuket: 13 คน\nรวมทั้งหมด 25 คน\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "count",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "count_items"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.84,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; count terms found"
+    }
+  },
+  {
+    "case_id": "M-003",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "สมาชิกแบ่งเป็นกี่หมวด",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_group_count",
+    "route_category": "overview",
+    "route_intent": "group_count",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.0443,
+    "wall_sec": 0.0443,
+    "answer": "สมาชิกในหน้า Members แบ่งเป็น 3 หมวดครับ\n•    Members: 7 คน\n•    cooperative education and Internship student: 5 คน\n•    PSU Phuket Esports Club - PSU Phuket: 13 คน\nรวมทั้งหมด 25 คน\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "group_count",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "count_groups",
+        "list_group_names",
+        "count_items_per_group"
+      ],
+      "answer_style": "summary_bullets",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; group count terms found"
+    }
+  },
+  {
+    "case_id": "M-004",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "แต่ละหมวดมีใครบ้าง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_group_list",
+    "route_category": "overview",
+    "route_intent": "list",
+    "strategy": "structured",
+    "confidence": 0.96,
+    "latency_sec": 0.0422,
+    "wall_sec": 0.0423,
+    "answer": "สมาชิกจากหน้า Members แยกตามหมวด รวม 25 คน:\nMembers (7 คน):\n•    ผศ.ดร.นิวัติ แก้วประดับ: อธิการบดี\n•    รศ.ดร.พันธ์ ทองชุมนุม: รองอธิการบดี\n•    รศ.ดร.อซีส นันทอมรพงศ์: คณบดี\n•    ผศ.ดร.ณัฐพงศ์ ทองเทพ: ผู้ช่วยอธิการบดีฝ่ายวิชาการ\n•    นายพฤทธิ์ เกษตรสมบูรณ์: นักวิชาการคอมพิวเตอร์\n•    นายณัฐวัฒน์ นิธิคุณานนต์: นักวิชาการคอมพิวเตอร์\n•    นายชนะชัย สิริพันธ์วราภรณ์: ผู้จัดการ\n\ncooperative education and Internship student (5 คน):\n•    นายณภัทร เชื้อเหล่าวานิช: นักศึกษาสหกิจ Game and 3D Developer\n•    Mr. Amine Abidellaoui: Internship Student\n•    นายสุพศิน อะนะฝรั่ง: นักศึกษาสหกิจ Web & AI Developer\n•    Mr. Yanis Igoudjil: Internship Student\n•    นายภาสวุฒิ ชูติประชากิจ: นักศึกษาฝึกงานโครงการ Super AI SS6 ตำแหน่ง AI Chat Bot Developer\n\nPSU Phuket Esports Club - PSU Phuket (13 คน):\n•    นายษุภากรณ์ จิราจินดากุล: ประธาน\n•    นายนพัทธ์ ฝอยทอง: รองประธาน\n•    นายปัณณวิชญ์ หนูเรือง: เลขานุการ\n•    นายภูจิตร จิรวิริยาภรณ์: เหรัญญิก\n•    นายธนชาติ เอ่งฉ้วน: ประชาสัมพันธ์\n•    นางสาวกมลวรรณ นวลสาย: กรรมการ\n•    นางสาวชญาภา จันทร์เอิบ: กรรมการ\n•    นางสาวณัฐธิดา คำทะเนตร์: กรรมการ\n•    นางสาวสุภาสินี ธนภพ: กรรมการ\n•    นางสาวอาทิตยา แดงประดับ: กรรมการ\n•    นายณัฐพนธ์ อินทรสังขนาวิน: กรรมการ\n•    นายอภิวิชญ์ เลิศกมลรักษ์: กรรมการ\n•    นายอรรถนนท์ สุขแก้ว: กรรมการ\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "fact_answer_may_be_too_verbose"
+      ]
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "list",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "list_items"
+      ],
+      "answer_style": "summary_bullets",
+      "confidence": 0.82,
+      "method": "heuristic",
+      "reason": "domain_terms=2; member route keeps members domain; list terms found"
+    }
+  },
+  {
+    "case_id": "M-005",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "cooperative education มีใครบ้าง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_group_list",
+    "route_category": "overview",
+    "route_intent": "list",
+    "strategy": "structured",
+    "confidence": 0.96,
+    "latency_sec": 0.1244,
+    "wall_sec": 0.1245,
+    "answer": "สมาชิกในหมวด cooperative education and Internship student:\ncooperative education and Internship student (5 คน):\n•    นายณภัทร เชื้อเหล่าวานิช: นักศึกษาสหกิจ Game and 3D Developer (วิทยาลัยการคอมพิวเตอร์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต; ระยะเวลา: 6/1/2025 - 30/4/2025)\n•    Mr. Amine Abidellaoui: Internship Student (High School Bristol Cannes, France; ระยะเวลา: 10/11/2025 - 19/12/2025)\n•    นายสุพศิน อะนะฝรั่ง: นักศึกษาสหกิจ Web & AI Developer (วิทยาลัยการคอมพิวเตอร์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต; ระยะเวลา: 12/1/2026 - 8/5/2026)\n•    Mr. Yanis Igoudjil: Internship Student (Industrial Engineering and Information Systems, EPF Graduate School of Engineering, Cachan Val-De-Marne, France; ระยะเวลา: 29/06/2026 - 18/09/2026)\n•    นายภาสวุฒิ ชูติประชากิจ: นักศึกษาฝึกงานโครงการ Super AI SS6 ตำแหน่ง AI Chat Bot Developer (วิศวกรรมระบบไอโอทีและสารสนเทศ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง; ระยะเวลา: 07/2026 - 08/2026)\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "list",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "list_items"
+      ],
+      "answer_style": "summary_bullets",
+      "confidence": 0.82,
+      "method": "heuristic",
+      "reason": "domain_terms=2; member route keeps members domain; list terms found"
+    }
+  },
+  {
+    "case_id": "M-006",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "PSU Phuket Esports Club มีใครบ้าง",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_group_list",
+    "route_category": "overview",
+    "route_intent": "list",
+    "strategy": "structured",
+    "confidence": 0.96,
+    "latency_sec": 0.1171,
+    "wall_sec": 0.1171,
+    "answer": "สมาชิกในหมวด PSU Phuket Esports Club - PSU Phuket:\nPSU Phuket Esports Club - PSU Phuket (13 คน):\n•    นายษุภากรณ์ จิราจินดากุล: ประธาน\n•    นายนพัทธ์ ฝอยทอง: รองประธาน\n•    นายปัณณวิชญ์ หนูเรือง: เลขานุการ\n•    นายภูจิตร จิรวิริยาภรณ์: เหรัญญิก\n•    นายธนชาติ เอ่งฉ้วน: ประชาสัมพันธ์\n•    นางสาวกมลวรรณ นวลสาย: กรรมการ\n•    นางสาวชญาภา จันทร์เอิบ: กรรมการ\n•    นางสาวณัฐธิดา คำทะเนตร์: กรรมการ\n•    นางสาวสุภาสินี ธนภพ: กรรมการ\n•    นางสาวอาทิตยา แดงประดับ: กรรมการ\n•    นายณัฐพนธ์ อินทรสังขนาวิน: กรรมการ\n•    นายอภิวิชญ์ เลิศกมลรักษ์: กรรมการ\n•    นายอรรถนนท์ สุขแก้ว: กรรมการ\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "fact_answer_may_be_too_verbose"
+      ]
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "list",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "list_items"
+      ],
+      "answer_style": "summary_bullets",
+      "confidence": 0.82,
+      "method": "heuristic",
+      "reason": "domain_terms=2; member route keeps members domain; list terms found"
+    }
+  },
+  {
+    "case_id": "M-007",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "ผศ.ดร.นิวัติ แก้วประดับ ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.0956,
+    "wall_sec": 0.0957,
+    "answer": "ผศ.ดร.นิวัติ แก้วประดับ: อธิการบดี\nหมวด: Members\nสังกัด/รายละเอียด: มหาวิทยาลัยสงขลานครินทร์\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-008",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "ใครเป็นอธิการบดี",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_role_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.97,
+    "latency_sec": 0.0463,
+    "wall_sec": 0.0463,
+    "answer": "ตำแหน่ง อธิการบดี มี 1 คนครับ\n•    ผศ.ดร.นิวัติ แก้วประดับ: อธิการบดี (มหาวิทยาลัยสงขลานครินทร์)\n  ◦    หมวด: Members\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-009",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "รศ.ดร.พันธ์ ทองชุมนุม ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.0969,
+    "wall_sec": 0.0969,
+    "answer": "รศ.ดร.พันธ์ ทองชุมนุม: รองอธิการบดี\nหมวด: Members\nสังกัด/รายละเอียด: มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-010",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "ใครเป็นรองอธิการบดี",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_role_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.97,
+    "latency_sec": 0.0521,
+    "wall_sec": 0.0522,
+    "answer": "ตำแหน่ง รองอธิการบดี มี 1 คนครับ\n•    รศ.ดร.พันธ์ ทองชุมนุม: รองอธิการบดี (มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต)\n  ◦    หมวด: Members\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-011",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "รศ.ดร.อซีส นันทอมรพงศ์ ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.1178,
+    "wall_sec": 0.1179,
+    "answer": "รศ.ดร.อซีส นันทอมรพงศ์: คณบดี\nหมวด: Members\nสังกัด/รายละเอียด: วิทยาลัยการคอมพิวเตอร์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-012",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "ใครเป็นคณบดี",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_role_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.97,
+    "latency_sec": 0.0353,
+    "wall_sec": 0.0354,
+    "answer": "ตำแหน่ง คณบดี มี 1 คนครับ\n•    รศ.ดร.อซีส นันทอมรพงศ์: คณบดี (วิทยาลัยการคอมพิวเตอร์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต)\n  ◦    หมวด: Members\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-013",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "ผศ.ดร.ณัฐพงศ์ ทองเทพ ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.0956,
+    "wall_sec": 0.0956,
+    "answer": "ผศ.ดร.ณัฐพงศ์ ทองเทพ: ผู้ช่วยอธิการบดีฝ่ายวิชาการ\nหมวด: Members\nสังกัด/รายละเอียด: มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-014",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "ใครเป็นผู้ช่วยอธิการบดีฝ่ายวิชาการ",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_role_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.97,
+    "latency_sec": 0.0952,
+    "wall_sec": 0.0952,
+    "answer": "ตำแหน่ง ผู้ช่วยอธิการบดีฝ่ายวิชาการ มี 1 คนครับ\n•    ผศ.ดร.ณัฐพงศ์ ทองเทพ: ผู้ช่วยอธิการบดีฝ่ายวิชาการ (มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต)\n  ◦    หมวด: Members\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-015",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "นายพฤทธิ์ เกษตรสมบูรณ์ ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.094,
+    "wall_sec": 0.094,
+    "answer": "นายพฤทธิ์ เกษตรสมบูรณ์: นักวิชาการคอมพิวเตอร์\nหมวด: Members\nสังกัด/รายละเอียด: วิทยาลัยการคอมพิวเตอร์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-016",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "ใครเป็นนักวิชาการคอมพิวเตอร์",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_role_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.97,
+    "latency_sec": 0.0113,
+    "wall_sec": 0.0113,
+    "answer": "ตำแหน่ง นักวิชาการคอมพิวเตอร์ มี 2 คนครับ\n•    นายพฤทธิ์ เกษตรสมบูรณ์: นักวิชาการคอมพิวเตอร์ (วิทยาลัยการคอมพิวเตอร์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต)\n  ◦    หมวด: Members\n•    นายณัฐวัฒน์ นิธิคุณานนต์: นักวิชาการคอมพิวเตอร์ (วิทยาลัยการคอมพิวเตอร์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต)\n  ◦    หมวด: Members\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-017",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "นายณัฐวัฒน์ นิธิคุณานนต์ ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.0876,
+    "wall_sec": 0.0877,
+    "answer": "นายณัฐวัฒน์ นิธิคุณานนต์: นักวิชาการคอมพิวเตอร์\nหมวด: Members\nสังกัด/รายละเอียด: วิทยาลัยการคอมพิวเตอร์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-018",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "นายชนะชัย สิริพันธ์วราภรณ์ ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.1035,
+    "wall_sec": 0.1035,
+    "answer": "นายชนะชัย สิริพันธ์วราภรณ์: ผู้จัดการ\nหมวด: Members\nสังกัด/รายละเอียด: PSU Esports Studio - Phuket วิทยาลัยการคอมพิวเตอร์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-019",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "ใครเป็นผู้จัดการ",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_role_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.97,
+    "latency_sec": 0.0391,
+    "wall_sec": 0.0392,
+    "answer": "ตำแหน่ง ผู้จัดการ มี 1 คนครับ\n•    นายชนะชัย สิริพันธ์วราภรณ์: ผู้จัดการ (PSU Esports Studio - Phuket วิทยาลัยการคอมพิวเตอร์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต)\n  ◦    หมวด: Members\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-020",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "นายณภัทร เชื้อเหล่าวานิช ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.096,
+    "wall_sec": 0.0961,
+    "answer": "นายณภัทร เชื้อเหล่าวานิช: นักศึกษาสหกิจ Game and 3D Developer\nหมวด: cooperative education and Internship student\nสังกัด/รายละเอียด: วิทยาลัยการคอมพิวเตอร์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต\nระยะเวลา: 6/1/2025 - 30/4/2025\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-021",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "ใครเป็นนักศึกษาสหกิจ Game and 3D Developer",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_role_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.97,
+    "latency_sec": 0.1505,
+    "wall_sec": 0.1506,
+    "answer": "ตำแหน่ง นักศึกษาสหกิจ Game and 3D Developer มี 1 คนครับ\n•    นายณภัทร เชื้อเหล่าวานิช: นักศึกษาสหกิจ Game and 3D Developer (วิทยาลัยการคอมพิวเตอร์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต; ระยะเวลา: 6/1/2025 - 30/4/2025)\n  ◦    หมวด: cooperative education and Internship student\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-022",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "Mr. Amine Abidellaoui ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.1749,
+    "wall_sec": 0.1749,
+    "answer": "Mr. Amine Abidellaoui: Internship Student\nหมวด: cooperative education and Internship student\nสังกัด/รายละเอียด: High School Bristol Cannes, France\nระยะเวลา: 10/11/2025 - 19/12/2025\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-023",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "ใครเป็นInternship Student",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_role_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.97,
+    "latency_sec": 0.0755,
+    "wall_sec": 0.0756,
+    "answer": "ตำแหน่ง Internship Student มี 2 คนครับ\n•    Mr. Amine Abidellaoui: Internship Student (High School Bristol Cannes, France; ระยะเวลา: 10/11/2025 - 19/12/2025)\n  ◦    หมวด: cooperative education and Internship student\n•    Mr. Yanis Igoudjil: Internship Student (Industrial Engineering and Information Systems, EPF Graduate School of Engineering, Cachan Val-De-Marne, France; ระยะเวลา: 29/06/2026 - 18/09/2026)\n  ◦    หมวด: cooperative education and Internship student\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-024",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "นายสุพศิน อะนะฝรั่ง ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.0918,
+    "wall_sec": 0.0919,
+    "answer": "นายสุพศิน อะนะฝรั่ง: นักศึกษาสหกิจ Web & AI Developer\nหมวด: cooperative education and Internship student\nสังกัด/รายละเอียด: วิทยาลัยการคอมพิวเตอร์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต\nระยะเวลา: 12/1/2026 - 8/5/2026\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-025",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "ใครเป็นนักศึกษาสหกิจ Web & AI Developer",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_role_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.97,
+    "latency_sec": 0.1254,
+    "wall_sec": 0.1254,
+    "answer": "ตำแหน่ง นักศึกษาสหกิจ Web & AI Developer มี 1 คนครับ\n•    นายสุพศิน อะนะฝรั่ง: นักศึกษาสหกิจ Web & AI Developer (วิทยาลัยการคอมพิวเตอร์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต; ระยะเวลา: 12/1/2026 - 8/5/2026)\n  ◦    หมวด: cooperative education and Internship student\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-026",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "Mr. Yanis Igoudjil ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.1195,
+    "wall_sec": 0.1196,
+    "answer": "Mr. Yanis Igoudjil: Internship Student\nหมวด: cooperative education and Internship student\nสังกัด/รายละเอียด: Industrial Engineering and Information Systems, EPF Graduate School of Engineering, Cachan Val-De-Marne, France\nระยะเวลา: 29/06/2026 - 18/09/2026\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-027",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "นายภาสวุฒิ ชูติประชากิจ ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.0972,
+    "wall_sec": 0.0972,
+    "answer": "นายภาสวุฒิ ชูติประชากิจ: นักศึกษาฝึกงานโครงการ Super AI SS6 ตำแหน่ง AI Chat Bot Developer\nหมวด: cooperative education and Internship student\nสังกัด/รายละเอียด: วิศวกรรมระบบไอโอทีและสารสนเทศ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง\nระยะเวลา: 07/2026 - 08/2026\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-028",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "ใครเป็นนักศึกษาฝึกงานโครงการ Super AI SS6 ตำแหน่ง AI Chat Bot Developer",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_role_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.97,
+    "latency_sec": 1.3964,
+    "wall_sec": 1.3965,
+    "answer": "ตำแหน่ง นักศึกษาฝึกงานโครงการ Super AI SS6 ตำแหน่ง AI Chat Bot Developer มี 1 คนครับ\n•    นายภาสวุฒิ ชูติประชากิจ: นักศึกษาฝึกงานโครงการ Super AI SS6 ตำแหน่ง AI Chat Bot Developer (วิศวกรรมระบบไอโอทีและสารสนเทศ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง; ระยะเวลา: 07/2026 - 08/2026)\n  ◦    หมวด: cooperative education and Internship student\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=4; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-029",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "นายษุภากรณ์ จิราจินดากุล ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.1164,
+    "wall_sec": 0.1165,
+    "answer": "นายษุภากรณ์ จิราจินดากุล: ประธาน\nหมวด: PSU Phuket Esports Club - PSU Phuket\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-030",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "ใครเป็นประธาน",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_role_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.97,
+    "latency_sec": 0.1904,
+    "wall_sec": 0.1905,
+    "answer": "ตำแหน่ง ประธาน มี 1 คนครับ\n•    นายษุภากรณ์ จิราจินดากุล: ประธาน\n  ◦    หมวด: PSU Phuket Esports Club - PSU Phuket\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-031",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "นายนพัทธ์ ฝอยทอง ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.0824,
+    "wall_sec": 0.0825,
+    "answer": "นายนพัทธ์ ฝอยทอง: รองประธาน\nหมวด: PSU Phuket Esports Club - PSU Phuket\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-032",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "ใครเป็นรองประธาน",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_role_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.97,
+    "latency_sec": 0.042,
+    "wall_sec": 0.042,
+    "answer": "ตำแหน่ง รองประธาน มี 1 คนครับ\n•    นายนพัทธ์ ฝอยทอง: รองประธาน\n  ◦    หมวด: PSU Phuket Esports Club - PSU Phuket\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-033",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "นายปัณณวิชญ์ หนูเรือง ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.0898,
+    "wall_sec": 0.0899,
+    "answer": "นายปัณณวิชญ์ หนูเรือง: เลขานุการ\nหมวด: PSU Phuket Esports Club - PSU Phuket\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-034",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "ใครเป็นเลขานุการ",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_role_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.97,
+    "latency_sec": 0.0386,
+    "wall_sec": 0.0386,
+    "answer": "ตำแหน่ง เลขานุการ มี 1 คนครับ\n•    นายปัณณวิชญ์ หนูเรือง: เลขานุการ\n  ◦    หมวด: PSU Phuket Esports Club - PSU Phuket\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-035",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "นายภูจิตร จิรวิริยาภรณ์ ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.1062,
+    "wall_sec": 0.1062,
+    "answer": "นายภูจิตร จิรวิริยาภรณ์: เหรัญญิก\nหมวด: PSU Phuket Esports Club - PSU Phuket\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-036",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "ใครเป็นเหรัญญิก",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_role_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.97,
+    "latency_sec": 0.0413,
+    "wall_sec": 0.0414,
+    "answer": "ตำแหน่ง เหรัญญิก มี 1 คนครับ\n•    นายภูจิตร จิรวิริยาภรณ์: เหรัญญิก\n  ◦    หมวด: PSU Phuket Esports Club - PSU Phuket\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-037",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "นายธนชาติ เอ่งฉ้วน ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.0976,
+    "wall_sec": 0.0977,
+    "answer": "นายธนชาติ เอ่งฉ้วน: ประชาสัมพันธ์\nหมวด: PSU Phuket Esports Club - PSU Phuket\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-038",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "ใครเป็นประชาสัมพันธ์",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_role_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.97,
+    "latency_sec": 0.0538,
+    "wall_sec": 0.0539,
+    "answer": "ตำแหน่ง ประชาสัมพันธ์ มี 1 คนครับ\n•    นายธนชาติ เอ่งฉ้วน: ประชาสัมพันธ์\n  ◦    หมวด: PSU Phuket Esports Club - PSU Phuket\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=2; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-039",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "นางสาวกมลวรรณ นวลสาย ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.1146,
+    "wall_sec": 0.1146,
+    "answer": "นางสาวกมลวรรณ นวลสาย: กรรมการ\nหมวด: PSU Phuket Esports Club - PSU Phuket\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-040",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "ใครเป็นกรรมการ",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_role_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.97,
+    "latency_sec": 0.0402,
+    "wall_sec": 0.0403,
+    "answer": "ตำแหน่ง กรรมการ มี 8 คนครับ\n•    นางสาวกมลวรรณ นวลสาย: กรรมการ\n  ◦    หมวด: PSU Phuket Esports Club - PSU Phuket\n•    นางสาวชญาภา จันทร์เอิบ: กรรมการ\n  ◦    หมวด: PSU Phuket Esports Club - PSU Phuket\n•    นางสาวณัฐธิดา คำทะเนตร์: กรรมการ\n  ◦    หมวด: PSU Phuket Esports Club - PSU Phuket\n•    นางสาวสุภาสินี ธนภพ: กรรมการ\n  ◦    หมวด: PSU Phuket Esports Club - PSU Phuket\n•    นางสาวอาทิตยา แดงประดับ: กรรมการ\n  ◦    หมวด: PSU Phuket Esports Club - PSU Phuket\n•    นายณัฐพนธ์ อินทรสังขนาวิน: กรรมการ\n  ◦    หมวด: PSU Phuket Esports Club - PSU Phuket\n•    นายอภิวิชญ์ เลิศกมลรักษ์: กรรมการ\n  ◦    หมวด: PSU Phuket Esports Club - PSU Phuket\n•    นายอรรถนนท์ สุขแก้ว: กรรมการ\n  ◦    หมวด: PSU Phuket Esports Club - PSU Phuket\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "fact_answer_may_be_too_verbose"
+      ]
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-041",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "นางสาวชญาภา จันทร์เอิบ ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.1004,
+    "wall_sec": 0.1005,
+    "answer": "นางสาวชญาภา จันทร์เอิบ: กรรมการ\nหมวด: PSU Phuket Esports Club - PSU Phuket\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-042",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "นางสาวณัฐธิดา คำทะเนตร์ ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.1059,
+    "wall_sec": 0.106,
+    "answer": "นางสาวณัฐธิดา คำทะเนตร์: กรรมการ\nหมวด: PSU Phuket Esports Club - PSU Phuket\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-043",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "นางสาวสุภาสินี ธนภพ ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.0859,
+    "wall_sec": 0.086,
+    "answer": "นางสาวสุภาสินี ธนภพ: กรรมการ\nหมวด: PSU Phuket Esports Club - PSU Phuket\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-044",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "นางสาวอาทิตยา แดงประดับ ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.1297,
+    "wall_sec": 0.1298,
+    "answer": "นางสาวอาทิตยา แดงประดับ: กรรมการ\nหมวด: PSU Phuket Esports Club - PSU Phuket\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-045",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "นายณัฐพนธ์ อินทรสังขนาวิน ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.1272,
+    "wall_sec": 0.1273,
+    "answer": "นายณัฐพนธ์ อินทรสังขนาวิน: กรรมการ\nหมวด: PSU Phuket Esports Club - PSU Phuket\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-046",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "นายอภิวิชญ์ เลิศกมลรักษ์ ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.1209,
+    "wall_sec": 0.121,
+    "answer": "นายอภิวิชญ์ เลิศกมลรักษ์: กรรมการ\nหมวด: PSU Phuket Esports Club - PSU Phuket\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  },
+  {
+    "case_id": "M-047",
+    "kind": "single",
+    "group": "members",
+    "turn_index": null,
+    "question": "นายอรรถนนท์ สุขแก้ว ทำตำแหน่งอะไร",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:structured_members_person_lookup",
+    "route_category": "overview",
+    "route_intent": "members_lookup",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.1112,
+    "wall_sec": 0.1113,
+    "answer": "นายอรรถนนท์ สุขแก้ว: กรรมการ\nหมวด: PSU Phuket Esports Club - PSU Phuket\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "role_lookup",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "lookup_people_by_role"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; role/position lookup terms found"
+    }
+  }
+]

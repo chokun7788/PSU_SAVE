@@ -107,16 +107,21 @@ def _apply_configured_rules(text: str) -> str:
     return text
 
 
+def _normalize_bullet_prefix(line: str) -> tuple[str, str]:
+    match = re.match(r"^(\s*)([-*•◦]|\d+[.)])\s+(.*)$", line)
+    if not match:
+        return "", line
+    indent, marker, body = match.groups()
+    is_nested = bool(indent) or marker == "◦"
+    prefix = "  ◦    " if is_nested else "•    "
+    return prefix, body
+
+
 def _style_line(line: str) -> str:
     if not line.strip():
         return ""
 
-    prefix = ""
-    body = line
-    match = re.match(r"^(\s*(?:[-*]|\d+[.)])\s+)(.*)$", line)
-    if match:
-        prefix = match.group(1)
-        body = match.group(2)
+    prefix, body = _normalize_bullet_prefix(line)
 
     body = _apply_configured_rules(body)
     body = re.sub(r"\s+([,.:;!?%>\)\]\}])", r"\1", body)

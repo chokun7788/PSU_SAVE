@@ -1,0 +1,353 @@
+﻿id,group,passed,question,expected_category,expected_intent,actual_category,actual_intent,actual_domain,actual_operation,mode,confidence,elapsed,validation_ok,failures,missing,forbidden,missing_sources,notes,answer
+RG-SF-001,service_fee,True,ราคา PC ต่อชั่วโมงเท่าไหร่,service_fee,service_fee_query,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,3.7221,True,[],[],[],[],PC price added from local service fee update,"ราคา PC 1 ชั่วโมง (1 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน: 25 บาท
+•    General Adult / บุคคลทั่วไป: 70 บาท
+หมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RG-SF-002,service_fee,True,นักศึกษา สจล อยากเล่น PC เสียเท่าไหร่,service_fee,service_fee_query,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,6.3005,True,[],[],[],[],external student must map to General Student,"ราคา PC 1 ชั่วโมง สำหรับ PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน: 25 บาท
+กลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น
+หมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RG-SF-003,service_fee,True,เล่น PC 2 ชั่วโมง บุคคลทั่วไปกี่บาท,service_fee,service_fee_query,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,4.8016,True,[],[],[],[],duration calculation must run before PC direct table,"ระยะเวลาที่ถามคือ 2 ชั่วโมง ใช้ 2 session ตามแพ็กเกจ PC 1 ชั่วโมง
+คำตอบราคา: 140 บาท สำหรับกลุ่ม General Adult / บุคคลทั่วไป
+•    คำนวณจาก 70 บาท/session x 2 session = 140 บาท
+กลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป
+
+รายละเอียดจากตาราง:
+PC 1 ชั่วโมง (1 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 25 บาท
+•    General Adult: 70 บาท
+หมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RG-SF-004,service_fee,True,ราคา PC กับ PS5 ต่างกันเท่าไหร่,service_fee,service_fee_query,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,3.7131,True,[],[],[],[],"comparison question must answer the difference, not only list tables","ราคา PC 1 ชั่วโมง กับ PlayStation 5 60 นาที ต่างกันดังนี้:
+•    PSU Student and Staff: ราคาเท่ากันที่ 0 บาท (PC 1 ชั่วโมง 0 บาท / PlayStation 5 60 นาที 0 บาท)
+•    PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน: PlayStation 5 60 นาที แพงกว่า 25 บาท (PC 1 ชั่วโมง 25 บาท / PlayStation 5 60 นาที 50 บาท)
+•    General Adult / บุคคลทั่วไป: PlayStation 5 60 นาที แพงกว่า 80 บาท (PC 1 ชั่วโมง 70 บาท / PlayStation 5 60 นาที 150 บาท)
+
+รายละเอียดจากตาราง:
+PC 1 ชั่วโมง (1 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 25 บาท
+•    General Adult: 70 บาท
+หมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27
+
+PlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 50 บาท
+•    General Adult: 150 บาท
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RG-SF-005,service_fee,True,Tekken 8 ราคาเท่าไหร่,service_fee,service_fee_query,service_fee,service_fee_query,service_fee,price_calculate,pipeline:structured_service_fee_by_game,0.86,1.0111,True,[],[],[],[],game price must map game to playable zones,"TEKKEN 8 ไม่มีราคาแยกตามชื่อเกมครับ ต้องดูราคาตามโซน/บริการที่ใช้เล่นเกมนี้
+
+PC Zone
+ยังไม่ทราบกลุ่มผู้ใช้ จึงแสดงราคาทุกกลุ่มให้เทียบก่อน
+PC 1 ชั่วโมง (1 คน)
+•    นักศึกษา/นักเรียน/บุคลากร PSU: 0 บาท/1 ชั่วโมง
+•    ศิษย์เก่า PSU / นักศึกษา-นักเรียนต่างสถาบัน (General Student): 25 บาท/1 ชั่วโมง
+•    บุคคลทั่วไป (General Adult): 70 บาท/1 ชั่วโมง
+หมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png
+
+PlayStation 5 Zone
+ยังไม่ทราบกลุ่มผู้ใช้ จึงแสดงราคาทุกกลุ่มให้เทียบก่อน
+PlayStation 5 1 ชั่วโมง (1-2 คน)
+•    นักศึกษา/นักเรียน/บุคลากร PSU: 0 บาท/1 ชั่วโมง
+•    ศิษย์เก่า PSU / นักศึกษา-นักเรียนต่างสถาบัน (General Student): 50 บาท/1 ชั่วโมง
+•    บุคคลทั่วไป (General Adult): 150 บาท/1 ชั่วโมง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RG-SF-006,service_fee,True,PS5 มีเกมอะไรกับราคาเท่าไหร่,multi_question,multi_question_split,multi_question,multi_question_split,,,pipeline:multi_question_splitter,0.97,0.9295,True,[],[],[],[],mixed games + price must split,"คำถามนี้มีหลายเรื่อง ขอแยกตอบเป็นข้อ ๆ:
+
+•    PS5 มีเกมอะไร
+PlayStation 5 Zone มีเกมที่ยืนยันได้ดังนี้
+
+PlayStation 5 Zone (23 เกม)
+•    Beat Saber
+•    Call of Duty: Modern Warfare III
+•    EA Sports FC 24
+•    FINAL FANTASY XVI
+•    Fortnite
+•    God of War Ragnarok
+•    Gran Turismo 7
+•    Hogwarts Legacy
+•    It Takes Two
+•    Little Nightmares II
+•    Marvel's Spider-Man 2
+•    Monster Hunter Rise
+•    NARUTO X BORUTO Ultimate Ninja Storm Connections
+•    Overcooked!
+•    Resident Evil 4
+•    Resident Evil 4 (Remake)
+•    Resident Evil Village
+•    TEKKEN 8
+•    The Last of Us Part I
+•    The Last of Us Part I / Part II
+•    The Last of Us Part II
+•    The Last of Us Part II (Remastered)
+•    Uncharted: Legacy of Thieves Collection
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games
+
+•    PS5 ราคาเท่าไหร่
+PlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 50 บาท
+•    General Adult: 150 บาท
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RG-GM-001,games,True,พิมพ์ Tekken 8,games,game_detail_lookup,games,game_detail_lookup,games,detail,pipeline:structured_game_detail,0.94,0.0483,True,[],[],[],[],"bare game title should answer game detail, not full catalog","TEKKEN 8: TEKKEN 8 คือเกมต่อสู้แบบตัวต่อตัว ผู้เล่นเลือกตัวละครแล้วใช้คอมโบ การป้องกัน และจังหวะสวนกลับเพื่อชนะคู่แข่ง
+แนวเกม: เกมต่อสู้ 1v1
+วิธีเล่นโดยสรุป: เล่นเป็นรอบ เลือกตัวละคร ฝึกท่าพื้นฐาน/คอมโบ อ่านจังหวะคู่ต่อสู้ และทำให้พลังชีวิตอีกฝ่ายหมดก่อน
+เล่นได้ที่: PC Zone และ PlayStation 5 Zone
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+RG-GM-002,games,True,Over cook,games,list,games,list,games,detail,pipeline:structured_games_family,0.94,0.0255,True,[],[],[],[],spaced typo should resolve to Overcooked family,"พบเกมที่เกี่ยวข้องกับ Overcooked ในรายการที่ยืนยันได้ครับ
+•    Overcooked + Overcooked! 2: เล่นได้ที่ Nintendo Switch Zone
+•    Overcooked 2: เล่นได้ที่ Nintendo Switch Zone
+•    Overcooked!: เล่นได้ที่ PlayStation 5 Zone
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+RG-GM-003,games,True,อุปกรณ์ไหนเกมเยอะสุด,games,list,games,list,equipment,list,pipeline:structured_game_zone_ranking,0.96,0.0566,True,[],[],[],[],ranking question must calculate game counts by zone,"ถ้านับตามโซน/บริการที่มีรายชื่อเกมยืนยันได้ PlayStation 5 Zone มีเกมเยอะสุดครับ (23 เกม)
+
+จำนวนเกมตามโซน:
+•    PlayStation 5 Zone: 23 เกม
+•    Nintendo Switch Zone: 18 เกม
+•    PC Zone: 6 เกม
+•    VR Zone: 2 เกม
+•    Cockpit Zone: 1 เกม
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+RG-GM-004,games,True,PC Zone มีอุปกรณ์อะไรและมีเกมอะไรบ้าง,multi_question,multi_question_split,multi_question,multi_question_split,,,pipeline:multi_question_splitter,0.95,0.0589,True,[],[],[],[],equipment + games in one question must split,"คำถามนี้มีหลายเรื่อง ขอแยกตอบเป็นข้อ ๆ:
+
+•    PC Zone มีอุปกรณ์อะไร
+อุปกรณ์ใน PC Zone:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (10 Units)
+•    Gaming Monitor (10 Units)
+•    Gaming Keyboard
+•    Gaming Mouse
+•    Gaming Headset
+•    Gaming Chair (10 Units)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home
+
+•    มีเกมอะไรบ้าง
+ตอนนี้มีเกมที่ยืนยันได้ทั้งหมด 44 เกมครับ
+
+PC Zone (6 เกม)
+•    Call of Duty: Warzone
+•    Counter-Strike 2
+•    League of Legends
+•    PUBG: BATTLEGROUNDS
+•    TEKKEN 8
+•    VALORANT
+
+PlayStation 5 Zone (23 เกม)
+•    Beat Saber
+•    Call of Duty: Modern Warfare III
+•    EA Sports FC 24
+•    FINAL FANTASY XVI
+•    Fortnite
+•    God of War Ragnarok
+•    Gran Turismo 7
+•    Hogwarts Legacy
+•    It Takes Two
+•    Little Nightmares II
+•    Marvel's Spider-Man 2
+•    Monster Hunter Rise
+•    NARUTO X BORUTO Ultimate Ninja Storm Connections
+•    Overcooked!
+•    Resident Evil 4
+•    Resident Evil 4 (Remake)
+•    Resident Evil Village
+•    TEKKEN 8
+•    The Last of Us Part I
+•    The Last of Us Part I / Part II
+•    The Last of Us Part II
+•    The Last of Us Part II (Remastered)
+•    Uncharted: Legacy of Thieves Collection
+
+Nintendo Switch Zone (18 เกม)
+•    Animal Crossing: New Horizons
+•    It Takes Two
+•    Little Nightmares II
+•    Luigi's Mansion 3
+•    Mario Kart 8 Deluxe
+•    Mario Kart Live: Home Circuit
+•    Mario Party Superstars
+•    Monster Hunter Rise
+•    Moving Out
+•    Moving Out 2
+•    New Super Mario Bros. U Deluxe
+•    Nintendo Switch Sports
+•    Overcooked + Overcooked! 2
+•    Overcooked 2
+•    Ring Fit Adventure
+•    Super Mario Odyssey
+•    Super Smash Bros Ultimate
+•    The Legend of Zelda: Breath of the Wild
+
+Cockpit Zone (1 เกม)
+•    Gran Turismo 7
+
+VR Zone (2 เกม)
+•    Beat Saber
+•    Horizon Call of the Mountain
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+RG-GM-005,games,True,Naruto เล่นยังไง,games,game_detail_lookup,games,game_detail_lookup,games,how_to,pipeline:structured_game_detail,0.94,0.0816,True,[],[],[],[],"play-how for known game should be game detail, not unrelated controls","NARUTO X BORUTO Ultimate Ninja Storm Connections: NARUTO X BORUTO Ultimate Ninja Storm Connections คือเกมต่อสู้ที่ใช้ตัวละครจากจักรวาล Naruto/Boruto
+แนวเกม: เกมต่อสู้จากอนิเมะ
+วิธีเล่นโดยสรุป: เลือกตัวละคร ใช้คอมโบ สกิลนินจา และจังหวะหลบ/สวนกลับเพื่อเอาชนะคู่ต่อสู้
+เล่นได้ที่: PlayStation 5 Zone
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+RG-CTRL-001,game_controls,True,ถ้าเล่น Tekken 8 กับ Mario มีปุ่มอะไรบ้าง,multi_question,multi_question_split,multi_question,multi_question_split,,,pipeline:multi_question_splitter,0.9,0.4015,True,[],[],[],[],shared-tail multi-game controls must produce two answer sections,"คำถามนี้มีหลายเรื่อง ขอแยกตอบเป็นข้อ ๆ:
+
+•    Tekken 8 มีปุ่มอะไรบ้าง
+TEKKEN 8 มีข้อมูลปุ่มควบคุมดังนี้:
+PlayStation / PS5
+•    Square: หมัดซ้าย / ต่อยซ้าย - ออกหมัดแย็บหรือโจมตีด้วยมือซ้าย เป็นปุ่มหลักในการเริ่มต้นเฟรมคอมโบที่รวดเร็ว
+•    Triangle: หมัดขวา / ต่อยขวา - ออกหมัดหนักหรือโจมตีด้วยมือขวา มักใช้ทำดาเมจแรงหรือสวนกลับ (Counter)
+•    Cross: ลูกเตะซ้าย - ใช้ขาซ้ายเตะสกัดหรือโจมตีเพื่อเปิดช่องว่างของศัตรู
+•    Circle: ลูกเตะขวา - ใช้ขาขวาหวดเตะอย่างรุนแรง มักเป็นท่าเคลียร์ระยะหรือตัดขาที่ทำดาเมจสูง
+•    D-Pad Up: กระโดด - ควบคุมให้ตัวละครกระโดดขึ้นด้านบนเพื่อหลบการโจมตีล่าง หรือใช้กดร่วมกับปุ่มโจมตีกลางอากาศ
+•    D-Pad Left: ถอยหลัง / บล็อก - บังคับตัวละครให้เดินถอยหลังเพื่อรักษาระยะ หรือใช้กดค้างเพื่อ ""บล็อก (Guard)"" การโจมตีระดับสูงและระดับกลางของศัตรู
+•    D-Pad Down: ย่อตัว / ก้มหลบ - สั่งให้ตัวละครย่อตัวต่ำ ใช้ก้มหลบหมัดหรือการโจมตีระดับสูง (High) และใช้บล็อกการโจมตีระดับต่ำ (Low)
+•    L (Left Stick): เคลื่อนที่ - ขยับทิศทางของตัวละคร بشكلทั่วไป หรือใช้โยกทิศทางในการเคลื่อนที่และเดินหน้าถอยหลัง
+•    L1: สเปเชียลสไตล์ - กดเพื่อเปิด/ปิดโหมดช่วยเหลืออัจฉริยะ ช่วยให้กดคอมโบและท่าไม้ตายของตัวละครนั้น ๆ ได้ง่ายด้วยปุ่มเดียว
+•    R1: เปิดใช้งาน Heat - ระเบิดพลัง Heat System เข้าสู่สถานะโอเวอร์ไดรฟ์เพื่อบัฟการโจมตีและเพิ่มคุณสมบัติพิเศษให้ตัวละคร
+•    R1 (While in Heat): ฮีทสแมช - ปลดปล่อยท่าโจมตีเผด็จศึกอันทรงพลังปิดฉากคอมโบ โดยจะใช้เกจ Heat ที่เหลืออยู่ทั้งหมดทิ้งทันที
+•    Options: หยุดเกม - หยุดเกมชั่วคราวเพื่อเข้าสู่หน้าต่างเมนู เช่น การเช็ก Move List (รายการท่า) หรือการตั้งค่าอื่น ๆ
+แหล่งข้อมูล: local://control_game/TEKKEN 8 Standard Edition.json
+
+•    Mario มีปุ่มอะไรบ้าง
+Mario มีหลายเกมในรายการที่ยืนยันได้ครับ ถ้าต้องการปุ่มแบบละเอียดควรระบุชื่อภาค/ชื่อเกมให้ชัดเจน
+เกมที่มีข้อมูลปุ่มแล้ว:
+•    Mario Kart 8 Deluxe: มีข้อมูลปุ่ม 7 รายการ (Nintendo Switch Zone)
+•    Mario Kart Live: Home Circuit: มีข้อมูลปุ่ม 11 รายการ (Nintendo Switch Zone)
+•    Super Mario Odyssey: มีข้อมูลปุ่ม 11 รายการ (Nintendo Switch Zone)
+เกมที่ยังไม่มีข้อมูลปุ่มในฐานข้อมูล:
+•    Mario Party Superstars
+•    New Super Mario Bros. U Deluxe
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+RG-CTRL-002,game_controls,True,Tekken 8 เล่นที่ไหนและมีปุ่มอะไร,multi_question,multi_question_split,multi_question,multi_question_split,,,pipeline:multi_question_splitter,0.94,0.2948,True,[],[],[],[],same-subject location + controls must split,"คำถามนี้มีหลายเรื่อง ขอแยกตอบเป็นข้อ ๆ:
+
+•    Tekken 8 เล่นที่ไหน
+TEKKEN 8: TEKKEN 8 คือเกมต่อสู้แบบตัวต่อตัว ผู้เล่นเลือกตัวละครแล้วใช้คอมโบ การป้องกัน และจังหวะสวนกลับเพื่อชนะคู่แข่ง
+แนวเกม: เกมต่อสู้ 1v1
+วิธีเล่นโดยสรุป: เล่นเป็นรอบ เลือกตัวละคร ฝึกท่าพื้นฐาน/คอมโบ อ่านจังหวะคู่ต่อสู้ และทำให้พลังชีวิตอีกฝ่ายหมดก่อน
+เล่นได้ที่: PC Zone และ PlayStation 5 Zone
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games
+
+•    Tekken 8 มีปุ่มอะไร
+TEKKEN 8 มีข้อมูลปุ่มควบคุมดังนี้:
+PlayStation / PS5
+•    Square: หมัดซ้าย / ต่อยซ้าย - ออกหมัดแย็บหรือโจมตีด้วยมือซ้าย เป็นปุ่มหลักในการเริ่มต้นเฟรมคอมโบที่รวดเร็ว
+•    Triangle: หมัดขวา / ต่อยขวา - ออกหมัดหนักหรือโจมตีด้วยมือขวา มักใช้ทำดาเมจแรงหรือสวนกลับ (Counter)
+•    Cross: ลูกเตะซ้าย - ใช้ขาซ้ายเตะสกัดหรือโจมตีเพื่อเปิดช่องว่างของศัตรู
+•    Circle: ลูกเตะขวา - ใช้ขาขวาหวดเตะอย่างรุนแรง มักเป็นท่าเคลียร์ระยะหรือตัดขาที่ทำดาเมจสูง
+•    D-Pad Up: กระโดด - ควบคุมให้ตัวละครกระโดดขึ้นด้านบนเพื่อหลบการโจมตีล่าง หรือใช้กดร่วมกับปุ่มโจมตีกลางอากาศ
+•    D-Pad Left: ถอยหลัง / บล็อก - บังคับตัวละครให้เดินถอยหลังเพื่อรักษาระยะ หรือใช้กดค้างเพื่อ ""บล็อก (Guard)"" การโจมตีระดับสูงและระดับกลางของศัตรู
+•    D-Pad Down: ย่อตัว / ก้มหลบ - สั่งให้ตัวละครย่อตัวต่ำ ใช้ก้มหลบหมัดหรือการโจมตีระดับสูง (High) และใช้บล็อกการโจมตีระดับต่ำ (Low)
+•    L (Left Stick): เคลื่อนที่ - ขยับทิศทางของตัวละคร بشكلทั่วไป หรือใช้โยกทิศทางในการเคลื่อนที่และเดินหน้าถอยหลัง
+•    L1: สเปเชียลสไตล์ - กดเพื่อเปิด/ปิดโหมดช่วยเหลืออัจฉริยะ ช่วยให้กดคอมโบและท่าไม้ตายของตัวละครนั้น ๆ ได้ง่ายด้วยปุ่มเดียว
+•    R1: เปิดใช้งาน Heat - ระเบิดพลัง Heat System เข้าสู่สถานะโอเวอร์ไดรฟ์เพื่อบัฟการโจมตีและเพิ่มคุณสมบัติพิเศษให้ตัวละคร
+•    R1 (While in Heat): ฮีทสแมช - ปลดปล่อยท่าโจมตีเผด็จศึกอันทรงพลังปิดฉากคอมโบ โดยจะใช้เกจ Heat ที่เหลืออยู่ทั้งหมดทิ้งทันที
+•    Options: หยุดเกม - หยุดเกมชั่วคราวเพื่อเข้าสู่หน้าต่างเมนู เช่น การเช็ก Move List (รายการท่า) หรือการตั้งค่าอื่น ๆ
+แหล่งข้อมูล: local://control_game/TEKKEN 8 Standard Edition.json"
+RG-RSV-001,reservation,True,แล้วจะเล่นต้องทำไง,reservation,booking_policy,reservation,booking_policy,general,unknown,pipeline:structured_booking_selection,0.96,0.8289,True,[],[],[],[],generic play access should answer booking flow,"ถ้าจะเข้าใช้บริการเพื่อเล่นเกมที่ PSU Esports Studio - Phuket ต้องจองผ่านระบบก่อนครับ
+•    เลือกบริการหรือโซนที่ต้องการใช้
+•    เลือกวันและรอบเวลา กรอกข้อมูลผู้ใช้บริการ ชำระเงิน และแนบสลิปเพื่อยืนยันการจอง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/"
+RG-RSV-002,reservation,True,Tekken 8 จองยังไง,reservation,booking_policy,reservation,booking_policy,reservation,how_to,pipeline:structured_booking_selection,0.96,0.0512,True,[],[],[],[],game booking must map to playable zones,"ถ้าจะเล่น TEKKEN 8 ให้เลือกบริการหรือโซนที่ตรงกับเกมนี้: PC Zone และ PlayStation 5 Zone ครับ
+•    จากนั้นเลือกวัน รอบเวลา กรอกข้อมูลผู้ใช้บริการ ชำระเงิน และแนบสลิปเพื่อยืนยันการจอง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/"
+RG-MULTI-001,multi_question,True,จองยังไง แล้ว PS5 มีเกมอะไรบ้าง,multi_question,multi_question_split,multi_question,multi_question_split,,,pipeline:multi_question_splitter,0.94,0.1927,True,[],[],[],[],different-domain compound should split,"คำถามนี้มีหลายเรื่อง ขอแยกตอบเป็นข้อ ๆ:
+
+•    จองยังไง
+ขั้นตอนจองโดยสรุป:
+•    เลือกบริการหรือโซนที่ต้องการใช้
+•    เลือกวันและรอบเวลาที่ต้องการ
+•    กรอก Student ID/Staff ID/National ID, ชื่อ, นามสกุล, อีเมล และเบอร์โทรศัพท์
+•    ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง
+•    แนบสลิปและยืนยันการจอง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/
+
+•    PS5 มีเกมอะไรบ้าง
+PlayStation 5 Zone มีเกมที่ยืนยันได้ดังนี้
+
+PlayStation 5 Zone (23 เกม)
+•    Beat Saber
+•    Call of Duty: Modern Warfare III
+•    EA Sports FC 24
+•    FINAL FANTASY XVI
+•    Fortnite
+•    God of War Ragnarok
+•    Gran Turismo 7
+•    Hogwarts Legacy
+•    It Takes Two
+•    Little Nightmares II
+•    Marvel's Spider-Man 2
+•    Monster Hunter Rise
+•    NARUTO X BORUTO Ultimate Ninja Storm Connections
+•    Overcooked!
+•    Resident Evil 4
+•    Resident Evil 4 (Remake)
+•    Resident Evil Village
+•    TEKKEN 8
+•    The Last of Us Part I
+•    The Last of Us Part I / Part II
+•    The Last of Us Part II
+•    The Last of Us Part II (Remastered)
+•    Uncharted: Legacy of Thieves Collection
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+RG-MULTI-002,multi_question,True,ถ้าเล่น Tekken 8 ต้องจองยังไงและราคาเท่าไหร่,multi_question,multi_question_split,multi_question,multi_question_split,,,pipeline:multi_question_splitter,0.86,0.8978,True,[],[],[],[],game booking + game price must split,"คำถามนี้มีหลายเรื่อง ขอแยกตอบเป็นข้อ ๆ:
+
+•    จะเล่น Tekken 8 ต้องจองยังไง
+ถ้าจะเล่น TEKKEN 8 ให้เลือกบริการหรือโซนที่ตรงกับเกมนี้: PC Zone และ PlayStation 5 Zone ครับ
+•    จากนั้นเลือกวัน รอบเวลา กรอกข้อมูลผู้ใช้บริการ ชำระเงิน และแนบสลิปเพื่อยืนยันการจอง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/
+
+•    Tekken 8 ราคาเท่าไหร่
+TEKKEN 8 ไม่มีราคาแยกตามชื่อเกมครับ ต้องดูราคาตามโซน/บริการที่ใช้เล่นเกมนี้
+
+PC Zone
+ยังไม่ทราบกลุ่มผู้ใช้ จึงแสดงราคาทุกกลุ่มให้เทียบก่อน
+PC 1 ชั่วโมง (1 คน)
+•    นักศึกษา/นักเรียน/บุคลากร PSU: 0 บาท/1 ชั่วโมง
+•    ศิษย์เก่า PSU / นักศึกษา-นักเรียนต่างสถาบัน (General Student): 25 บาท/1 ชั่วโมง
+•    บุคคลทั่วไป (General Adult): 70 บาท/1 ชั่วโมง
+หมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png
+
+PlayStation 5 Zone
+ยังไม่ทราบกลุ่มผู้ใช้ จึงแสดงราคาทุกกลุ่มให้เทียบก่อน
+PlayStation 5 1 ชั่วโมง (1-2 คน)
+•    นักศึกษา/นักเรียน/บุคลากร PSU: 0 บาท/1 ชั่วโมง
+•    ศิษย์เก่า PSU / นักศึกษา-นักเรียนต่างสถาบัน (General Student): 50 บาท/1 ชั่วโมง
+•    บุคคลทั่วไป (General Adult): 150 บาท/1 ชั่วโมง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RG-AMB-001,ambiguity,True,ราคาเท่าไหร่,clarification,ambiguity_gate_clarification,clarification,ambiguity_gate_clarification,service_fee,price_calculate,pipeline:ambiguity_clarification,0.88,0.0466,True,[],[],[],[],bare price must clarify,"ขอรู้บริการหรือโซนก่อนครับ จะได้ตอบราคาให้ตรง
+เช่น `PS5 ราคาเท่าไหร่`, `Nintendo 3-4 คนกี่บาท`, `VR 30 นาทีราคาเท่าไหร่` หรือ `Tekken 8 ราคาเท่าไหร่`"
+RG-AMB-002,ambiguity,True,มีอะไรบ้าง,clarification,ambiguity_gate_clarification,clarification,ambiguity_gate_clarification,equipment,list,pipeline:ambiguity_clarification,0.82,0.0132,True,[],[],[],[],bare broad query must clarify,"คำถามนี้ยังกว้างเกินไปครับ ยังไม่แน่ใจว่าต้องการถามเรื่องไหนของ PSU Esports Studio - Phuket
+ถามให้เจาะจงได้ เช่น `มีเกมอะไรบ้าง`, `มีอุปกรณ์อะไรบ้าง`, `จองยังไง`, `ราคา PS5 เท่าไหร่` หรือ `TEKKEN 8 มีปุ่มอะไรบ้าง`"
+RG-NO-001,no_answer,True,มีให้เช่าจอไปบ้านไหม,no_answer,guard_no_answer,no_answer,guard_no_answer,,,pipeline:guard_no_answer,0.96,0.0149,True,[],[],[],[],unsupported rental-home request must not borrow equipment facts,ไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ
+RG-SCH-001,schedule,True,วันจันทร์เปิดให้เล่นกี่โมง ปิดกี่โมง,schedule,schedule_query,schedule,schedule_query,schedule,schedule_lookup,pipeline:structured_schedule,0.96,0.1013,True,[],[],[],[],Monday schedule must distinguish maintenance/open slots,"วันจันทร์: เปิดให้เล่นช่วง 13:00-16:00 ส่วน 09:00-12:00 เป็น Maintenance*
+
+รายละเอียดจากตาราง:
+•    วันจันทร์: Morning 09:00-12:00 = maintenance, Afternoon 13:00-16:00 = open
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/"
+RG-EQ-001,equipment,True,สเป็ค PC เป็นยังไง,equipment,equipment_item_lookup,equipment,equipment_item_lookup,equipment,how_to,pipeline:structured_equipment_item,0.95,0.0143,True,[],[],[],[],PC specs should not become PC price,"Gaming PC รุ่น MSI MAG Infinite S3 14th: เครื่องคอมพิวเตอร์เกมมิ่งของ PC Zone สำหรับเล่นเกมบนคอมและฝึกซ้อมอีสปอร์ต
+จำนวน: 10 Units
+อยู่ที่: PC Zone
+ใช้สำหรับ:
+•    เล่น VALORANT
+•    เล่น Counter-Strike 2
+•    เล่น PUBG: BATTLEGROUNDS
+•    เล่น Call of Duty: Warzone
+•    เล่น TEKKEN 8
+•    เล่น League of Legends
+หมายเหตุ: สเปกที่บันทึกไว้ในโปรเจกต์: Intel Core i5-14400, RAM DDR5 32GB, NVIDIA GeForce RTX 5060 8GB
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+RG-COMP-001,competition_rules,True,ROV รอบชิงเล่นกี่เกม,competition_rules,competition_rules_lookup,competition_rules,competition_rules_lookup,competition_rules,rule_lookup,pipeline:competition_generic_fast_path,0.94,0.0836,True,[],[],[],[],competition rule must not become game catalog,"RoV ยังไม่พบข้อมูลรอบชิงแบบครบถ้วนจากคำถามนี้ครับ
+•    ข้อมูลที่พบเด่นคือรูปแบบ BO3 ในกติกาที่มี
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+RG-COMP-002,competition_rules,True,Tekken 8 ใช้เครื่องอะไรแข่ง,competition_rules,competition_rules_lookup,competition_rules,competition_rules_lookup,competition_rules,rule_lookup,pipeline:competition_fact_card,0.96,0.3162,True,[],[],[],[],"competition equipment answer is competition fact, not playable zone answer","คำตอบ: Tekken 8 ใช้เครื่อง PlayStation 5 เป็นแพลตฟอร์มการแข่งขัน
+
+หลักฐานจากกติกา:
+•    เอกสารกติกาพื้นฐานระบุ Platform เป็น PlayStation 5
+
+อ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ
+แหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports"

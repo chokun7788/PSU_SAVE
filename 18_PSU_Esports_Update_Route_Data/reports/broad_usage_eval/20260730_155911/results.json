@@ -1,0 +1,1721 @@
+[
+  {
+    "case_id": "SF-001",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "PC ราคาเท่าไหร่",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.1591,
+    "wall_sec": 0.191,
+    "answer": "ราคา PC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน: 25 บาท\n•    General Adult / บุคคลทั่วไป: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+      "pc_service_fee_local_update_20260727: local://service_fee/pc_price_update_20260727"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=4; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-002",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษา PSU เล่น PC 30 นาที เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0377,
+    "wall_sec": 0.0377,
+    "answer": "ระยะเวลาที่ถามคือ 30 นาที ใช้ 1 session ตามแพ็กเกจ PC 1 ชั่วโมง\nคำตอบราคา: 0 บาท สำหรับกลุ่ม PSU Student and Staff\n•    คำนวณจาก 0 บาท/session x 1 session = 0 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff\n\nรายละเอียดจากตาราง:\nPC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 25 บาท\n•    General Adult: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+      "pc_service_fee_local_update_20260727: local://service_fee/pc_price_update_20260727"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-003",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษา PSU เล่น PC 1 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0108,
+    "wall_sec": 0.0109,
+    "answer": "ระยะเวลาที่ถามคือ 1 ชั่วโมง ใช้ 1 session ตามแพ็กเกจ PC 1 ชั่วโมง\nคำตอบราคา: 0 บาท สำหรับกลุ่ม PSU Student and Staff\n•    คำนวณจาก 0 บาท/session x 1 session = 0 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff\n\nรายละเอียดจากตาราง:\nPC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 25 บาท\n•    General Adult: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+      "pc_service_fee_local_update_20260727: local://service_fee/pc_price_update_20260727"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-004",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษา PSU เล่น PC 2 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.01,
+    "wall_sec": 0.01,
+    "answer": "ระยะเวลาที่ถามคือ 2 ชั่วโมง ใช้ 2 session ตามแพ็กเกจ PC 1 ชั่วโมง\nคำตอบราคา: 0 บาท สำหรับกลุ่ม PSU Student and Staff\n•    คำนวณจาก 0 บาท/session x 2 session = 0 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff\n\nรายละเอียดจากตาราง:\nPC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 25 บาท\n•    General Adult: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+      "pc_service_fee_local_update_20260727: local://service_fee/pc_price_update_20260727"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-005",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษาต่างมหาลัย เล่น PC 30 นาที เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.015,
+    "wall_sec": 0.0151,
+    "answer": "ระยะเวลาที่ถามคือ 30 นาที ใช้ 1 session ตามแพ็กเกจ PC 1 ชั่วโมง\nคำตอบราคา: 25 บาท สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน\n•    คำนวณจาก 25 บาท/session x 1 session = 25 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น\n\nรายละเอียดจากตาราง:\nPC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 25 บาท\n•    General Adult: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+      "pc_service_fee_local_update_20260727: local://service_fee/pc_price_update_20260727"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-006",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษาต่างมหาลัย เล่น PC 1 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0125,
+    "wall_sec": 0.0126,
+    "answer": "ระยะเวลาที่ถามคือ 1 ชั่วโมง ใช้ 1 session ตามแพ็กเกจ PC 1 ชั่วโมง\nคำตอบราคา: 25 บาท สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน\n•    คำนวณจาก 25 บาท/session x 1 session = 25 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น\n\nรายละเอียดจากตาราง:\nPC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 25 บาท\n•    General Adult: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+      "pc_service_fee_local_update_20260727: local://service_fee/pc_price_update_20260727"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-007",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษาต่างมหาลัย เล่น PC 2 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0106,
+    "wall_sec": 0.0107,
+    "answer": "ระยะเวลาที่ถามคือ 2 ชั่วโมง ใช้ 2 session ตามแพ็กเกจ PC 1 ชั่วโมง\nคำตอบราคา: 50 บาท สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน\n•    คำนวณจาก 25 บาท/session x 2 session = 50 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น\n\nรายละเอียดจากตาราง:\nPC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 25 บาท\n•    General Adult: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+      "pc_service_fee_local_update_20260727: local://service_fee/pc_price_update_20260727"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-008",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "บุคคลทั่วไป เล่น PC 30 นาที เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0114,
+    "wall_sec": 0.0114,
+    "answer": "ระยะเวลาที่ถามคือ 30 นาที ใช้ 1 session ตามแพ็กเกจ PC 1 ชั่วโมง\nคำตอบราคา: 70 บาท สำหรับกลุ่ม General Adult / บุคคลทั่วไป\n•    คำนวณจาก 70 บาท/session x 1 session = 70 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป\n\nรายละเอียดจากตาราง:\nPC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 25 บาท\n•    General Adult: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+      "pc_service_fee_local_update_20260727: local://service_fee/pc_price_update_20260727"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-009",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "บุคคลทั่วไป เล่น PC 1 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0109,
+    "wall_sec": 0.0109,
+    "answer": "ระยะเวลาที่ถามคือ 1 ชั่วโมง ใช้ 1 session ตามแพ็กเกจ PC 1 ชั่วโมง\nคำตอบราคา: 70 บาท สำหรับกลุ่ม General Adult / บุคคลทั่วไป\n•    คำนวณจาก 70 บาท/session x 1 session = 70 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป\n\nรายละเอียดจากตาราง:\nPC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 25 บาท\n•    General Adult: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+      "pc_service_fee_local_update_20260727: local://service_fee/pc_price_update_20260727"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-010",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "บุคคลทั่วไป เล่น PC 2 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0106,
+    "wall_sec": 0.0107,
+    "answer": "ระยะเวลาที่ถามคือ 2 ชั่วโมง ใช้ 2 session ตามแพ็กเกจ PC 1 ชั่วโมง\nคำตอบราคา: 140 บาท สำหรับกลุ่ม General Adult / บุคคลทั่วไป\n•    คำนวณจาก 70 บาท/session x 2 session = 140 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป\n\nรายละเอียดจากตาราง:\nPC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 25 บาท\n•    General Adult: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+      "pc_service_fee_local_update_20260727: local://service_fee/pc_price_update_20260727"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-011",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "PS5 ราคาเท่าไหร่",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": false,
+    "problems": [
+      "missing 'PS5'"
+    ],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.009,
+    "wall_sec": 0.009,
+    "answer": "PlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=4; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-012",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษา PSU เล่น PS5 30 นาที เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0111,
+    "wall_sec": 0.0112,
+    "answer": "ระยะเวลาที่ถามคือ 30 นาที ใช้ 1 session ตามแพ็กเกจ PlayStation 5 60 นาที\nคำตอบราคา: 0 บาท สำหรับกลุ่ม PSU Student and Staff\n•    คำนวณจาก 0 บาท/session x 1 session = 0 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff\n\nรายละเอียดจากตาราง:\nPlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-013",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษา PSU เล่น PS5 1 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0109,
+    "wall_sec": 0.0109,
+    "answer": "ระยะเวลาที่ถามคือ 1 ชั่วโมง ใช้ 1 session ตามแพ็กเกจ PlayStation 5 60 นาที\nคำตอบราคา: 0 บาท สำหรับกลุ่ม PSU Student and Staff\n•    คำนวณจาก 0 บาท/session x 1 session = 0 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff\n\nรายละเอียดจากตาราง:\nPlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-014",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษา PSU เล่น PS5 2 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.01,
+    "wall_sec": 0.0101,
+    "answer": "ระยะเวลาที่ถามคือ 2 ชั่วโมง ใช้ 2 session ตามแพ็กเกจ PlayStation 5 60 นาที\nคำตอบราคา: 0 บาท สำหรับกลุ่ม PSU Student and Staff\n•    คำนวณจาก 0 บาท/session x 2 session = 0 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff\n\nรายละเอียดจากตาราง:\nPlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-015",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษาต่างมหาลัย เล่น PS5 30 นาที เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0106,
+    "wall_sec": 0.0107,
+    "answer": "ระยะเวลาที่ถามคือ 30 นาที ใช้ 1 session ตามแพ็กเกจ PlayStation 5 60 นาที\nคำตอบราคา: 50 บาท สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน\n•    คำนวณจาก 50 บาท/session x 1 session = 50 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น\n\nรายละเอียดจากตาราง:\nPlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-016",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษาต่างมหาลัย เล่น PS5 1 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.011,
+    "wall_sec": 0.011,
+    "answer": "ระยะเวลาที่ถามคือ 1 ชั่วโมง ใช้ 1 session ตามแพ็กเกจ PlayStation 5 60 นาที\nคำตอบราคา: 50 บาท สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน\n•    คำนวณจาก 50 บาท/session x 1 session = 50 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น\n\nรายละเอียดจากตาราง:\nPlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-017",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษาต่างมหาลัย เล่น PS5 2 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0107,
+    "wall_sec": 0.0107,
+    "answer": "ระยะเวลาที่ถามคือ 2 ชั่วโมง ใช้ 2 session ตามแพ็กเกจ PlayStation 5 60 นาที\nคำตอบราคา: 100 บาท สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน\n•    คำนวณจาก 50 บาท/session x 2 session = 100 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น\n\nรายละเอียดจากตาราง:\nPlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-018",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "บุคคลทั่วไป เล่น PS5 30 นาที เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.011,
+    "wall_sec": 0.011,
+    "answer": "ระยะเวลาที่ถามคือ 30 นาที ใช้ 1 session ตามแพ็กเกจ PlayStation 5 60 นาที\nคำตอบราคา: 150 บาท สำหรับกลุ่ม General Adult / บุคคลทั่วไป\n•    คำนวณจาก 150 บาท/session x 1 session = 150 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป\n\nรายละเอียดจากตาราง:\nPlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-019",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "บุคคลทั่วไป เล่น PS5 1 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.016,
+    "wall_sec": 0.016,
+    "answer": "ระยะเวลาที่ถามคือ 1 ชั่วโมง ใช้ 1 session ตามแพ็กเกจ PlayStation 5 60 นาที\nคำตอบราคา: 150 บาท สำหรับกลุ่ม General Adult / บุคคลทั่วไป\n•    คำนวณจาก 150 บาท/session x 1 session = 150 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป\n\nรายละเอียดจากตาราง:\nPlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-020",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "บุคคลทั่วไป เล่น PS5 2 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0146,
+    "wall_sec": 0.0146,
+    "answer": "ระยะเวลาที่ถามคือ 2 ชั่วโมง ใช้ 2 session ตามแพ็กเกจ PlayStation 5 60 นาที\nคำตอบราคา: 300 บาท สำหรับกลุ่ม General Adult / บุคคลทั่วไป\n•    คำนวณจาก 150 บาท/session x 2 session = 300 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป\n\nรายละเอียดจากตาราง:\nPlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-021",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "Nintendo Switch ราคาเท่าไหร่",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0091,
+    "wall_sec": 0.0092,
+    "answer": "Nintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 140 บาท\n\nNintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 100 บาท\n•    General Adult: 280 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=4; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-022",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษา PSU เล่น Nintendo Switch 30 นาที เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0117,
+    "wall_sec": 0.0117,
+    "answer": "ราคา Nintendo Switch สำหรับกลุ่ม PSU Student and Staff\n•    Nintendo Switch 1-2 คน: 0 บาท\n•    Nintendo Switch 3-4 คน: 0 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff\nหมายเหตุ: คำถามยังไม่ระบุจำนวนผู้เล่น จึงแสดงทั้งราคา 1-2 คนและ 3-4 คน\n\nรายละเอียดจากตาราง:\nNintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 140 บาท\n\nNintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 100 บาท\n•    General Adult: 280 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "price_question_should_start_with_price_or_number",
+        "fact_answer_may_be_too_verbose"
+      ]
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-023",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษา PSU เล่น Nintendo Switch 1 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0182,
+    "wall_sec": 0.0182,
+    "answer": "ราคา Nintendo Switch สำหรับกลุ่ม PSU Student and Staff\n•    Nintendo Switch 1-2 คน: 0 บาท\n•    Nintendo Switch 3-4 คน: 0 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff\nหมายเหตุ: คำถามยังไม่ระบุจำนวนผู้เล่น จึงแสดงทั้งราคา 1-2 คนและ 3-4 คน\n\nรายละเอียดจากตาราง:\nNintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 140 บาท\n\nNintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 100 บาท\n•    General Adult: 280 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "price_question_should_start_with_price_or_number",
+        "fact_answer_may_be_too_verbose"
+      ]
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-024",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษา PSU เล่น Nintendo Switch 2 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0134,
+    "wall_sec": 0.0135,
+    "answer": "ราคา Nintendo Switch สำหรับกลุ่ม PSU Student and Staff\n•    Nintendo Switch 1-2 คน: 0 บาท\n•    Nintendo Switch 3-4 คน: 0 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff\nหมายเหตุ: คำถามยังไม่ระบุจำนวนผู้เล่น จึงแสดงทั้งราคา 1-2 คนและ 3-4 คน\n\nรายละเอียดจากตาราง:\nNintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 140 บาท\n\nNintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 100 บาท\n•    General Adult: 280 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "price_question_should_start_with_price_or_number",
+        "fact_answer_may_be_too_verbose"
+      ]
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-025",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษาต่างมหาลัย เล่น Nintendo Switch 30 นาที เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0122,
+    "wall_sec": 0.0123,
+    "answer": "ราคา Nintendo Switch สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน\n•    Nintendo Switch 1-2 คน: 50 บาท\n•    Nintendo Switch 3-4 คน: 100 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น\nหมายเหตุ: คำถามยังไม่ระบุจำนวนผู้เล่น จึงแสดงทั้งราคา 1-2 คนและ 3-4 คน\n\nรายละเอียดจากตาราง:\nNintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 140 บาท\n\nNintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 100 บาท\n•    General Adult: 280 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "price_question_should_start_with_price_or_number",
+        "fact_answer_may_be_too_verbose"
+      ]
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-026",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษาต่างมหาลัย เล่น Nintendo Switch 1 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0154,
+    "wall_sec": 0.0154,
+    "answer": "ราคา Nintendo Switch สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน\n•    Nintendo Switch 1-2 คน: 50 บาท\n•    Nintendo Switch 3-4 คน: 100 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น\nหมายเหตุ: คำถามยังไม่ระบุจำนวนผู้เล่น จึงแสดงทั้งราคา 1-2 คนและ 3-4 คน\n\nรายละเอียดจากตาราง:\nNintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 140 บาท\n\nNintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 100 บาท\n•    General Adult: 280 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "price_question_should_start_with_price_or_number",
+        "fact_answer_may_be_too_verbose"
+      ]
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-027",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษาต่างมหาลัย เล่น Nintendo Switch 2 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0172,
+    "wall_sec": 0.0173,
+    "answer": "ราคา Nintendo Switch สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน\n•    Nintendo Switch 1-2 คน: 50 บาท\n•    Nintendo Switch 3-4 คน: 100 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น\nหมายเหตุ: คำถามยังไม่ระบุจำนวนผู้เล่น จึงแสดงทั้งราคา 1-2 คนและ 3-4 คน\n\nรายละเอียดจากตาราง:\nNintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 140 บาท\n\nNintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 100 บาท\n•    General Adult: 280 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "price_question_should_start_with_price_or_number",
+        "fact_answer_may_be_too_verbose"
+      ]
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-028",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "บุคคลทั่วไป เล่น Nintendo Switch 30 นาที เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0136,
+    "wall_sec": 0.0137,
+    "answer": "ราคา Nintendo Switch สำหรับกลุ่ม General Adult / บุคคลทั่วไป\n•    Nintendo Switch 1-2 คน: 140 บาท\n•    Nintendo Switch 3-4 คน: 280 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป\nหมายเหตุ: คำถามยังไม่ระบุจำนวนผู้เล่น จึงแสดงทั้งราคา 1-2 คนและ 3-4 คน\n\nรายละเอียดจากตาราง:\nNintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 140 บาท\n\nNintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 100 บาท\n•    General Adult: 280 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "price_question_should_start_with_price_or_number",
+        "fact_answer_may_be_too_verbose"
+      ]
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-029",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "บุคคลทั่วไป เล่น Nintendo Switch 1 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0126,
+    "wall_sec": 0.0126,
+    "answer": "ราคา Nintendo Switch สำหรับกลุ่ม General Adult / บุคคลทั่วไป\n•    Nintendo Switch 1-2 คน: 140 บาท\n•    Nintendo Switch 3-4 คน: 280 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป\nหมายเหตุ: คำถามยังไม่ระบุจำนวนผู้เล่น จึงแสดงทั้งราคา 1-2 คนและ 3-4 คน\n\nรายละเอียดจากตาราง:\nNintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 140 บาท\n\nNintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 100 บาท\n•    General Adult: 280 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "price_question_should_start_with_price_or_number",
+        "fact_answer_may_be_too_verbose"
+      ]
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-030",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "บุคคลทั่วไป เล่น Nintendo Switch 2 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0126,
+    "wall_sec": 0.0126,
+    "answer": "ราคา Nintendo Switch สำหรับกลุ่ม General Adult / บุคคลทั่วไป\n•    Nintendo Switch 1-2 คน: 140 บาท\n•    Nintendo Switch 3-4 คน: 280 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป\nหมายเหตุ: คำถามยังไม่ระบุจำนวนผู้เล่น จึงแสดงทั้งราคา 1-2 คนและ 3-4 คน\n\nรายละเอียดจากตาราง:\nNintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 140 บาท\n\nNintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 100 บาท\n•    General Adult: 280 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "price_question_should_start_with_price_or_number",
+        "fact_answer_may_be_too_verbose"
+      ]
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-031",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "Cockpit ราคาเท่าไหร่",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.009,
+    "wall_sec": 0.009,
+    "answer": "Cockpit 60 นาที (1 ชั่วโมง, 1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 65 บาท\n•    General Adult: 200 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=4; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-032",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษา PSU เล่น Cockpit 30 นาที เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0146,
+    "wall_sec": 0.0146,
+    "answer": "ระยะเวลาที่ถามคือ 30 นาที ใช้ 1 session ตามแพ็กเกจ Cockpit 60 นาที\nคำตอบราคา: 0 บาท สำหรับกลุ่ม PSU Student and Staff\n•    คำนวณจาก 0 บาท/session x 1 session = 0 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff\n\nรายละเอียดจากตาราง:\nCockpit 60 นาที (1 ชั่วโมง, 1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 65 บาท\n•    General Adult: 200 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-033",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษา PSU เล่น Cockpit 1 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0119,
+    "wall_sec": 0.0119,
+    "answer": "ระยะเวลาที่ถามคือ 1 ชั่วโมง ใช้ 1 session ตามแพ็กเกจ Cockpit 60 นาที\nคำตอบราคา: 0 บาท สำหรับกลุ่ม PSU Student and Staff\n•    คำนวณจาก 0 บาท/session x 1 session = 0 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff\n\nรายละเอียดจากตาราง:\nCockpit 60 นาที (1 ชั่วโมง, 1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 65 บาท\n•    General Adult: 200 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-034",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษา PSU เล่น Cockpit 2 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0106,
+    "wall_sec": 0.0107,
+    "answer": "ระยะเวลาที่ถามคือ 2 ชั่วโมง ใช้ 2 session ตามแพ็กเกจ Cockpit 60 นาที\nคำตอบราคา: 0 บาท สำหรับกลุ่ม PSU Student and Staff\n•    คำนวณจาก 0 บาท/session x 2 session = 0 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff\n\nรายละเอียดจากตาราง:\nCockpit 60 นาที (1 ชั่วโมง, 1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 65 บาท\n•    General Adult: 200 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-035",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษาต่างมหาลัย เล่น Cockpit 30 นาที เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0123,
+    "wall_sec": 0.0123,
+    "answer": "ระยะเวลาที่ถามคือ 30 นาที ใช้ 1 session ตามแพ็กเกจ Cockpit 60 นาที\nคำตอบราคา: 65 บาท สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน\n•    คำนวณจาก 65 บาท/session x 1 session = 65 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น\n\nรายละเอียดจากตาราง:\nCockpit 60 นาที (1 ชั่วโมง, 1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 65 บาท\n•    General Adult: 200 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-036",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษาต่างมหาลัย เล่น Cockpit 1 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0117,
+    "wall_sec": 0.0117,
+    "answer": "ระยะเวลาที่ถามคือ 1 ชั่วโมง ใช้ 1 session ตามแพ็กเกจ Cockpit 60 นาที\nคำตอบราคา: 65 บาท สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน\n•    คำนวณจาก 65 บาท/session x 1 session = 65 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น\n\nรายละเอียดจากตาราง:\nCockpit 60 นาที (1 ชั่วโมง, 1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 65 บาท\n•    General Adult: 200 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-037",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "นักศึกษาต่างมหาลัย เล่น Cockpit 2 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0113,
+    "wall_sec": 0.0113,
+    "answer": "ระยะเวลาที่ถามคือ 2 ชั่วโมง ใช้ 2 session ตามแพ็กเกจ Cockpit 60 นาที\nคำตอบราคา: 130 บาท สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน\n•    คำนวณจาก 65 บาท/session x 2 session = 130 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น\n\nรายละเอียดจากตาราง:\nCockpit 60 นาที (1 ชั่วโมง, 1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 65 บาท\n•    General Adult: 200 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-038",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "บุคคลทั่วไป เล่น Cockpit 30 นาที เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0107,
+    "wall_sec": 0.0107,
+    "answer": "ระยะเวลาที่ถามคือ 30 นาที ใช้ 1 session ตามแพ็กเกจ Cockpit 60 นาที\nคำตอบราคา: 200 บาท สำหรับกลุ่ม General Adult / บุคคลทั่วไป\n•    คำนวณจาก 200 บาท/session x 1 session = 200 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป\n\nรายละเอียดจากตาราง:\nCockpit 60 นาที (1 ชั่วโมง, 1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 65 บาท\n•    General Adult: 200 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-039",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "บุคคลทั่วไป เล่น Cockpit 1 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0112,
+    "wall_sec": 0.0112,
+    "answer": "ระยะเวลาที่ถามคือ 1 ชั่วโมง ใช้ 1 session ตามแพ็กเกจ Cockpit 60 นาที\nคำตอบราคา: 200 บาท สำหรับกลุ่ม General Adult / บุคคลทั่วไป\n•    คำนวณจาก 200 บาท/session x 1 session = 200 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป\n\nรายละเอียดจากตาราง:\nCockpit 60 นาที (1 ชั่วโมง, 1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 65 บาท\n•    General Adult: 200 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  },
+  {
+    "case_id": "SF-040",
+    "kind": "single",
+    "group": "service_fee",
+    "turn_index": null,
+    "question": "บุคคลทั่วไป เล่น Cockpit 2 ชั่วโมง เสียกี่บาท",
+    "resolved_question": "",
+    "used_context": null,
+    "passed": true,
+    "problems": [],
+    "risk": "medium",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "compound",
+    "confidence": 0.97,
+    "latency_sec": 0.0115,
+    "wall_sec": 0.0115,
+    "answer": "ระยะเวลาที่ถามคือ 2 ชั่วโมง ใช้ 2 session ตามแพ็กเกจ Cockpit 60 นาที\nคำตอบราคา: 400 บาท สำหรับกลุ่ม General Adult / บุคคลทั่วไป\n•    คำนวณจาก 200 บาท/session x 2 session = 400 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป\n\nรายละเอียดจากตาราง:\nCockpit 60 นาที (1 ชั่วโมง, 1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 65 บาท\n•    General Adult: 200 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.92,
+      "method": "heuristic",
+      "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+    }
+  }
+]

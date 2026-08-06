@@ -1,0 +1,79 @@
+{
+  "generated_at": "2026-07-30T17:16:40",
+  "case_count": 159,
+  "turn_count": 159,
+  "passed": 156,
+  "failed": 3,
+  "pass_rate": 0.9811,
+  "total_wall_sec": 16.029,
+  "allow_llm": false,
+  "rag_fallback": false,
+  "group_counts": {
+    "game_controls": {
+      "total": 159,
+      "pass": 156,
+      "fail": 3
+    }
+  },
+  "strategy_counts": {
+    "structured": 150,
+    "compound": 2,
+    "pipeline": 7
+  },
+  "mode_counts": {
+    "pipeline:structured_game_controls": 149,
+    "pipeline:multi_question_splitter": 2,
+    "pipeline:structured_members_group_list": 1,
+    "pipeline:game_control_missing_game_context": 7
+  },
+  "problem_counts": {
+    "route_category expected ['games'], got multi_question": 2,
+    "mode expected prefix ['pipeline": 3,
+    "route_category expected ['games'], got overview": 1,
+    "missing any of ['L3 (Click Left Stick)', 'มาร์กตำแหน่งศัตรู']": 1
+  },
+  "top_failures": [
+    {
+      "case_id": "GC-075",
+      "group": "game_controls",
+      "question": "Mario Party Superstars ปุ่มเล่นบอร์ดและมินิเกมด้วยปุ่มกดอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:multi_question_splitter",
+      "route": "multi_question/multi_question_split",
+      "problems": [
+        "route_category expected ['games'], got multi_question",
+        "mode expected prefix ['pipeline:structured_game_controls'], got pipeline:multi_question_splitter"
+      ],
+      "answer_preview": "คำถามนี้มีหลายเรื่อง ขอแยกตอบเป็นข้อ ๆ:  •    Mario Party Superstars ปุ่มเล่นบอร์ด กดอะไร Mario Party Superstars มีข้อมูลปุ่มควบคุมดังนี้: Nintendo Switch •    Button controls: เล่นบอร์ดและมินิเกมด้วยปุ่ม - แหล่งทางการยืนยันว่า 100 มินิเกมร"
+    },
+    {
+      "case_id": "GC-096",
+      "group": "game_controls",
+      "question": "New Super Mario Bros. U Deluxe ปุ่มวิ่ง กระโดด และเหยียบศัตรูกดอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:multi_question_splitter",
+      "route": "multi_question/multi_question_split",
+      "problems": [
+        "route_category expected ['games'], got multi_question",
+        "mode expected prefix ['pipeline:structured_game_controls'], got pipeline:multi_question_splitter"
+      ],
+      "answer_preview": "คำถามนี้มีหลายเรื่อง ขอแยกตอบเป็นข้อ ๆ:  •    New Super Mario Bros. U Deluxe ปุ่มวิ่ง กระโดด กดอะไร New Super Mario Bros. U Deluxe ปุ่มที่ตรงกับคำถาม: Nintendo Switch •    Simple controls: วิ่ง กระโดด และเหยียบศัตรู - หน้า Nintendo อธิบายกา"
+    },
+    {
+      "case_id": "GC-148",
+      "group": "game_controls",
+      "question": "Uncharted: Legacy of Thieves Collection ปุ่มมาร์กตำแหน่งศัตรูกดอะไร",
+      "resolved_question": "",
+      "mode": "pipeline:structured_members_group_list",
+      "route": "overview/list",
+      "problems": [
+        "route_category expected ['games'], got overview",
+        "mode expected prefix ['pipeline:structured_game_controls'], got pipeline:structured_members_group_list",
+        "missing any of ['L3 (Click Left Stick)', 'มาร์กตำแหน่งศัตรู']"
+      ],
+      "answer_preview": "สมาชิกจากหน้า Members แยกตามหมวด รวม 25 คน: Members (7 คน): •    ผศ.ดร.นิวัติ แก้วประดับ: อธิการบดี •    รศ.ดร.พันธ์ ทองชุมนุม: รองอธิการบดี •    รศ.ดร.อซีส นันทอมรพงศ์: คณบดี •    ผศ.ดร.ณัฐพงศ์ ทองเทพ: ผู้ช่วยอธิการบดีฝ่ายวิชาการ •    นายพ"
+    }
+  ],
+  "bank_jsonl": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.jsonl",
+  "bank_json": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.json"
+}

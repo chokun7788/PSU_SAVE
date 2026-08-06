@@ -1,0 +1,95 @@
+﻿id,group,passed,question,expected_category,expected_intent,actual_category,actual_intent,actual_domain,actual_operation,mode,confidence,elapsed,validation_ok,failures,missing,forbidden,missing_sources,notes,answer
+RG-SF-001,service_fee,True,ราคา PC ต่อชั่วโมงเท่าไหร่,service_fee,service_fee_query,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,0.1607,True,[],[],[],[],PC price added from local service fee update,"ราคา PC 1 ชั่วโมง (1 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน: 25 บาท
+•    General Adult / บุคคลทั่วไป: 70 บาท
+หมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RG-SF-002,service_fee,True,นักศึกษา สจล อยากเล่น PC เสียเท่าไหร่,service_fee,service_fee_query,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,0.0415,True,[],[],[],[],external student must map to General Student,"ราคา PC 1 ชั่วโมง สำหรับ PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน: 25 บาท
+กลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น
+หมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RG-SF-003,service_fee,True,เล่น PC 2 ชั่วโมง บุคคลทั่วไปกี่บาท,service_fee,service_fee_query,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,0.0226,True,[],[],[],[],duration calculation must run before PC direct table,"ระยะเวลาที่ถามคือ 2 ชั่วโมง ใช้ 2 session ตามแพ็กเกจ PC 1 ชั่วโมง
+คำตอบราคา: 140 บาท สำหรับกลุ่ม General Adult / บุคคลทั่วไป
+•    คำนวณจาก 70 บาท/session x 2 session = 140 บาท
+กลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป
+
+รายละเอียดจากตาราง:
+PC 1 ชั่วโมง (1 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 25 บาท
+•    General Adult: 70 บาท
+หมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RG-SF-004,service_fee,True,ราคา PC กับ PS5 ต่างกันเท่าไหร่,service_fee,service_fee_query,service_fee,service_fee_query,service_fee,price_calculate,pipeline:deterministic_calculator_fast,0.97,0.0104,True,[],[],[],[],"comparison question must answer the difference, not only list tables","ราคา PC 1 ชั่วโมง กับ PlayStation 5 60 นาที ต่างกันดังนี้:
+•    PSU Student and Staff: ราคาเท่ากันที่ 0 บาท (PC 1 ชั่วโมง 0 บาท / PlayStation 5 60 นาที 0 บาท)
+•    PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน: PlayStation 5 60 นาที แพงกว่า 25 บาท (PC 1 ชั่วโมง 25 บาท / PlayStation 5 60 นาที 50 บาท)
+•    General Adult / บุคคลทั่วไป: PlayStation 5 60 นาที แพงกว่า 80 บาท (PC 1 ชั่วโมง 70 บาท / PlayStation 5 60 นาที 150 บาท)
+
+รายละเอียดจากตาราง:
+PC 1 ชั่วโมง (1 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 25 บาท
+•    General Adult: 70 บาท
+หมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27
+
+PlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 50 บาท
+•    General Adult: 150 บาท
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RG-SF-005,service_fee,True,Tekken 8 ราคาเท่าไหร่,service_fee,service_fee_query,service_fee,service_fee_query,service_fee,price_calculate,pipeline:structured_service_fee_by_game,0.86,1.2063,True,[],[],[],[],game price must map game to playable zones,"TEKKEN 8 ไม่มีราคาแยกตามชื่อเกมครับ ต้องดูราคาตามโซน/บริการที่ใช้เล่นเกมนี้
+
+PC Zone
+ยังไม่ทราบกลุ่มผู้ใช้ จึงแสดงราคาทุกกลุ่มให้เทียบก่อน
+PC 1 ชั่วโมง (1 คน)
+•    นักศึกษา/นักเรียน/บุคลากร PSU: 0 บาท/1 ชั่วโมง
+•    ศิษย์เก่า PSU / นักศึกษา-นักเรียนต่างสถาบัน (General Student): 25 บาท/1 ชั่วโมง
+•    บุคคลทั่วไป (General Adult): 70 บาท/1 ชั่วโมง
+หมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png
+
+PlayStation 5 Zone
+ยังไม่ทราบกลุ่มผู้ใช้ จึงแสดงราคาทุกกลุ่มให้เทียบก่อน
+PlayStation 5 1 ชั่วโมง (1-2 คน)
+•    นักศึกษา/นักเรียน/บุคลากร PSU: 0 บาท/1 ชั่วโมง
+•    ศิษย์เก่า PSU / นักศึกษา-นักเรียนต่างสถาบัน (General Student): 50 บาท/1 ชั่วโมง
+•    บุคคลทั่วไป (General Adult): 150 บาท/1 ชั่วโมง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+RG-SF-006,service_fee,True,PS5 มีเกมอะไรกับราคาเท่าไหร่,multi_question,multi_question_split,multi_question,multi_question_split,,,pipeline:multi_question_splitter,0.97,0.0612,True,[],[],[],[],mixed games + price must split,"คำถามนี้มีหลายเรื่อง ขอแยกตอบเป็นข้อ ๆ:
+
+•    PS5 มีเกมอะไร
+PlayStation 5 Zone มีเกมที่ยืนยันได้ดังนี้
+
+PlayStation 5 Zone (23 เกม)
+•    Beat Saber
+•    Call of Duty: Modern Warfare III
+•    Call of Duty: Warzone
+•    EA Sports FC 24
+•    FINAL FANTASY XVI
+•    Fortnite
+•    God of War Ragnarok
+•    Gran Turismo 7
+•    Hogwarts Legacy
+•    It Takes Two
+•    Little Nightmares II
+•    Marvel's Spider-Man 2
+•    Monster Hunter Rise
+•    NARUTO X BORUTO Ultimate Ninja Storm Connections
+•    Overcooked 2
+•    Resident Evil 4
+•    Resident Evil Village
+•    TEKKEN 8
+•    The Last of Us Part I
+•    The Last of Us Part I / Part II
+•    The Last of Us Part II
+•    The Last of Us Part II (Remastered)
+•    Uncharted: Legacy of Thieves Collection
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games
+
+•    PS5 ราคาเท่าไหร่
+PlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 50 บาท
+•    General Adult: 150 บาท
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"

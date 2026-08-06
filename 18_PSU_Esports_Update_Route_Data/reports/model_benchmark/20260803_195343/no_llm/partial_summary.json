@@ -1,0 +1,107 @@
+{
+  "run_label": "no_llm",
+  "run_kind": "no_llm",
+  "model": "",
+  "partial": true,
+  "total_requested": 1600,
+  "completed": 450,
+  "total_wall_sec": 674.533,
+  "generated_at": "2026-08-03T20:04:58",
+  "total": 450,
+  "passed": 440,
+  "pass_rate": 97.78,
+  "avg_score": 99.44,
+  "avg_wall_sec": 1.4957,
+  "median_wall_sec": 0.5607,
+  "p95_wall_sec": 4.9264,
+  "max_wall_sec": 29.8617,
+  "llm_call_total": 0,
+  "mode_counts": {
+    "pipeline:deterministic_calculator_fast": 57,
+    "pipeline:answer_contract_no_answer": 1,
+    "pipeline:structured_service_fee_by_game": 30,
+    "pipeline:structured_game_detail": 105,
+    "pipeline:structured_service_game_availability": 43,
+    "pipeline:structured_game_controls": 143,
+    "pipeline:structured_games_catalog": 2,
+    "pipeline:structured_game_zone_ranking": 1,
+    "pipeline:no_answer": 7,
+    "pipeline:structured_games_genre_list": 1,
+    "pipeline:structured_games_family": 1,
+    "pipeline:structured_game_controls_no_data": 4,
+    "pipeline:game_control_missing_game_context": 7,
+    "pipeline:structured_equipment_catalog": 5,
+    "pipeline:ambiguity_clarification": 4,
+    "pipeline:structured_equipment_item": 38,
+    "pipeline:equipment_item_location_fast_path": 1
+  },
+  "route_counts": {
+    "service_fee/service_fee_query": 87,
+    "no_answer/answer_contract_rejected": 1,
+    "games/game_availability_lookup": 71,
+    "games/game_detail_lookup": 71,
+    "games/game_control_lookup": 160,
+    "games/list": 13,
+    "equipment/list": 5,
+    "clarification/ambiguity_gate_clarification": 4,
+    "equipment/equipment_item_lookup": 38
+  },
+  "group_counts": {
+    "service_fee": 88,
+    "games": 158,
+    "game_controls": 155,
+    "equipment": 49
+  },
+  "quality_bucket_counts": {
+    "psu_fact": 450
+  },
+  "top_errors": {
+    "mode_mismatch:pipeline:no_answer": 3,
+    "missing_any:เกม|Zone|TEKKEN|Mario|Gran Turismo": 2,
+    "category_mismatch:no_answer": 1,
+    "missing_any:บาท|ต่างกัน|ฟรี|0 บาท": 1,
+    "missing:God of War Ragnarök": 1,
+    "missing:ปุ่ม": 1,
+    "missing_any:God of War Ragnarök|ปุ่ม|จอย|คอนโทรล": 1,
+    "missing_any:L|เคลื่อนที่": 1,
+    "missing_any:L3|วิ่งสปรินต์": 1,
+    "missing_any:L (Left Stick) / R (Right Stick)|เคลื่อนที่": 1,
+    "missing_any:Cross / Square / L1 / R1|หยิบ / วาง": 1,
+    "category_mismatch:games": 1,
+    "missing_any:Sony|ใช้|Zone": 1
+  },
+  "by_group": {
+    "equipment": {
+      "total": 49,
+      "passed": 48,
+      "pass_rate": 97.96,
+      "avg_score": 99.1,
+      "avg_wall_sec": 5.623,
+      "p95_wall_sec": 11.2885
+    },
+    "game_controls": {
+      "total": 155,
+      "passed": 149,
+      "pass_rate": 96.13,
+      "avg_score": 99.1,
+      "avg_wall_sec": 0.5176,
+      "p95_wall_sec": 0.8568
+    },
+    "games": {
+      "total": 158,
+      "passed": 156,
+      "pass_rate": 98.73,
+      "avg_score": 99.8,
+      "avg_wall_sec": 0.6334,
+      "p95_wall_sec": 0.975
+    },
+    "service_fee": {
+      "total": 88,
+      "passed": 87,
+      "pass_rate": 98.86,
+      "avg_score": 99.61,
+      "avg_wall_sec": 2.4685,
+      "p95_wall_sec": 4.7225
+    }
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "generated_at": "2026-07-30T17:25:14",
+  "case_count": 25,
+  "turn_count": 25,
+  "passed": 18,
+  "failed": 7,
+  "pass_rate": 0.72,
+  "total_wall_sec": 10.937,
+  "allow_llm": false,
+  "rag_fallback": false,
+  "group_counts": {
+    "ambiguity_no_answer": {
+      "total": 25,
+      "pass": 18,
+      "fail": 7
+    }
+  },
+  "strategy_counts": {
+    "clarification": 6,
+    "no_answer": 7,
+    "structured": 5,
+    "rag/retrieval": 4,
+    "pipeline": 2,
+    "fast/rule": 1
+  },
+  "mode_counts": {
+    "pipeline:ambiguity_clarification": 6,
+    "pipeline:guard_no_answer": 7,
+    "pipeline:structured_equipment_catalog": 2,
+    "pipeline:rag_direct_curated": 1,
+    "pipeline:structured_games_catalog": 1,
+    "pipeline:game_control_missing_game_context": 2,
+    "pipeline:structured_game_detail": 2,
+    "pipeline:no_answer": 3,
+    "pipeline:games_known_unsupported_fast_path": 1
+  },
+  "problem_counts": {
+    "missing any of ['หมายถึง', 'พิมพ์', 'ยังไม่', 'เกม', 'อุปกรณ์', 'ราคา', 'จอง']": 3,
+    "missing any of ['ยังไม่พบ', 'ไม่มี', 'ไม่ได้อยู่', 'ตอบจากข้อมูล']": 4
+  },
+  "top_failures": [
+    {
+      "case_id": "ANA-006",
+      "group": "ambiguity_no_answer",
+      "question": "เครื่องไหนดีที่สุด",
+      "resolved_question": "",
+      "mode": "pipeline:guard_no_answer",
+      "route": "no_answer/guard_no_answer",
+      "problems": [
+        "missing any of ['หมายถึง', 'พิมพ์', 'ยังไม่', 'เกม', 'อุปกรณ์', 'ราคา', 'จอง']"
+      ],
+      "answer_preview": "ไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "ANA-008",
+      "group": "ambiguity_no_answer",
+      "question": "มีอะไรแนะนำไหม",
+      "resolved_question": "",
+      "mode": "pipeline:guard_no_answer",
+      "route": "no_answer/guard_no_answer",
+      "problems": [
+        "missing any of ['หมายถึง', 'พิมพ์', 'ยังไม่', 'เกม', 'อุปกรณ์', 'ราคา', 'จอง']"
+      ],
+      "answer_preview": "ไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "ANA-015",
+      "group": "ambiguity_no_answer",
+      "question": "สรุปคือทำยังไง",
+      "resolved_question": "",
+      "mode": "pipeline:guard_no_answer",
+      "route": "no_answer/guard_no_answer",
+      "problems": [
+        "missing any of ['หมายถึง', 'พิมพ์', 'ยังไม่', 'เกม', 'อุปกรณ์', 'ราคา', 'จอง']"
+      ],
+      "answer_preview": "ไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "ANA-020",
+      "group": "ambiguity_no_answer",
+      "question": "เกม Valorant Mobile มีไหม",
+      "resolved_question": "",
+      "mode": "pipeline:guard_no_answer",
+      "route": "no_answer/guard_no_answer",
+      "problems": [
+        "missing any of ['ยังไม่พบ', 'ไม่มี', 'ไม่ได้อยู่', 'ตอบจากข้อมูล']"
+      ],
+      "answer_preview": "ไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "ANA-021",
+      "group": "ambiguity_no_answer",
+      "question": "ขอเบอร์โทรส่วนตัวเจ้าหน้าที่",
+      "resolved_question": "",
+      "mode": "pipeline:guard_no_answer",
+      "route": "no_answer/guard_no_answer",
+      "problems": [
+        "missing any of ['ยังไม่พบ', 'ไม่มี', 'ไม่ได้อยู่', 'ตอบจากข้อมูล']"
+      ],
+      "answer_preview": "ไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "ANA-022",
+      "group": "ambiguity_no_answer",
+      "question": "ขอข้อมูลที่ไม่ได้อยู่ในเว็บ PSU Esports",
+      "resolved_question": "",
+      "mode": "pipeline:guard_no_answer",
+      "route": "no_answer/guard_no_answer",
+      "problems": [
+        "missing any of ['ยังไม่พบ', 'ไม่มี', 'ไม่ได้อยู่', 'ตอบจากข้อมูล']"
+      ],
+      "answer_preview": "ไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "ANA-023",
+      "group": "ambiguity_no_answer",
+      "question": "วันนี้มีข่าว esports อะไรล่าสุด",
+      "resolved_question": "",
+      "mode": "pipeline:guard_no_answer",
+      "route": "no_answer/guard_no_answer",
+      "problems": [
+        "missing any of ['ยังไม่พบ', 'ไม่มี', 'ไม่ได้อยู่', 'ตอบจากข้อมูล']"
+      ],
+      "answer_preview": "ไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    }
+  ],
+  "bank_jsonl": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.jsonl",
+  "bank_json": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.json"
+}

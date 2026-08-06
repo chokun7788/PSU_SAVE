@@ -20,7 +20,7 @@ from app.pipeline.retrieval import (
 from app.pipeline.router import route_intent
 
 
-DEFAULT_MODEL = os.getenv("PSU_CHATBOT_OLLAMA_MODEL", "qwen2.5:3b")
+DEFAULT_MODEL = os.getenv("PSU_CHATBOT_OLLAMA_MODEL", "scb10x/typhoon2.5-qwen3-4b")
 DEFAULT_OLLAMA_URL = os.getenv("OLLAMA_URL", "http://127.0.0.1:11434")
 DEFAULT_LLM_TIMEOUT_SEC = float(os.getenv("PSU_CHATBOT_LLM_TIMEOUT_SEC", "8.0"))
 
@@ -288,6 +288,8 @@ def ask_rulebase(question: str) -> dict[str, Any]:
         "confidence": result.confidence,
         "route": asdict(result.route),
         "entities": asdict(result.entities),
+        "universal_intent": asdict(result.universal_intent) if result.universal_intent else None,
+        "decision_artifact": result.decision_artifact,
         "sources": _sources_from_hits(result.hits),
         "trace": _compact_trace(result.trace),
         "ok": True,

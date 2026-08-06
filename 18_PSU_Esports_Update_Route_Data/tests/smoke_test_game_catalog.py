@@ -30,25 +30,45 @@ def main() -> int:
     assert_contains(
         result.answer,
         [
-            "36 เกม",
-            "Mario Kart Live: Home Circuit",
+            "42 เกม",
+            "Call of Duty: Warzone",
+            "Delta Force",
             "EA Sports FC 24",
+            "eFootball",
             "FINAL FANTASY XVI",
             "Hogwarts Legacy",
+            "THE FINALS",
+            "Pokémon Champions",
+            "Resident Evil Village",
             "Uncharted: Legacy of Thieves Collection",
         ],
         "full game catalog",
     )
+    assert_not_contains(result.answer, ["Mario Kart Live: Home Circuit"], "full game catalog should use current reservation catalog")
     print("OK game catalog: all games")
+
+    for question in ("เกมตอนนี้มีเกมอะไรบ้าง", "เกมทั้งหมดมีกี่เกม"):
+        result = answer_question_pipeline_debug(question)
+        assert_contains(
+            result.answer,
+            ["42 เกม", "PC Zone", "PlayStation 5 Zone", "Nintendo Switch Zone", "VR Zone", "Cockpit Zone"],
+            question,
+        )
+        assert_not_contains(result.answer, ["Mario Kart Live: Home Circuit"], question)
+        if "PlayStation 5 Zone มีเกมที่ยืนยันได้" in result.answer:
+            raise AssertionError(f"{question}: should answer all games, not only PS5\n{result.answer}")
+    print("OK game catalog: explicit all/current games")
 
     result = answer_question_pipeline_debug("PS5 มีเกมอะไรบ้าง")
     assert_contains(
         result.answer,
         [
             "PlayStation 5 Zone",
+            "Delta Force",
             "EA Sports FC 24",
+            "eFootball",
             "Resident Evil Village",
-            "The Last of Us Part I / Part II",
+            "The Last of Us Part II (Remastered)",
             "Uncharted: Legacy of Thieves Collection",
         ],
         "ps5 game catalog",
@@ -60,13 +80,15 @@ def main() -> int:
         result.answer,
         [
             "Nintendo Switch Zone",
-            "Mario Kart Live: Home Circuit",
+            "Pokémon Champions",
+            "Mario Kart 8 Deluxe",
             "Mario Party Superstars",
             "Ring Fit Adventure",
-            "The Legend of Zelda: Breath of the Wild",
+            "The Legend of Zelda: Breath of The Wild",
         ],
         "nintendo game catalog",
     )
+    assert_not_contains(result.answer, ["Mario Kart Live: Home Circuit"], "nintendo current game catalog")
     print("OK game catalog: Nintendo")
 
     result = answer_question_pipeline_debug("เกมแนวแข่งรถมีอะไรบ้าง")
@@ -82,9 +104,9 @@ def main() -> int:
 
     result = answer_question_pipeline_debug("เกม TEKKEN 8 มีข้อมูลไหม", experimental_rag_fallback=True, experimental_allow_llm=True)
     assert_contains(result.answer, ["TEKKEN 8", "ได้ครับ"], "tekken data availability")
-    if result.mode != "pipeline:games_availability_fast_path":
-        raise AssertionError(f"tekken data availability: expected availability fast path, got {result.mode}")
-    print("OK game catalog: TEKKEN availability fast path")
+    if result.mode not in {"pipeline:games_availability_fast_path", "pipeline:structured_service_game_availability"}:
+        raise AssertionError(f"tekken data availability: expected availability path, got {result.mode}")
+    print("OK game catalog: TEKKEN availability path")
 
     result = answer_question_pipeline_debug("TEKKEN 8 มีปุ่มอะไรบ้าง")
     assert_contains(
@@ -92,7 +114,7 @@ def main() -> int:
         ["Square", "Triangle", "Cross", "Circle", "D-Pad Up", "L1", "R1", "R1 (While in Heat)", "Options"],
         "tekken full controls",
     )
-    if result.answer.count("\n- ") < 12:
+    if result.answer.count("\n•    ") < 12:
         raise AssertionError(f"tekken full controls: expected all control rows\n{result.answer}")
     print("OK game controls: TEKKEN full list")
 

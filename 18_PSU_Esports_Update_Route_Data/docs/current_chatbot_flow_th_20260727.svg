@@ -1,0 +1,244 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="2700" viewBox="0 0 1800 2700">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#1f2937"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#dc2626"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font-family: "Segoe UI", Tahoma, "Noto Sans Thai", sans-serif; font-size: 48px; font-weight: 700; fill: #0f172a; }
+      .subtitle { font-family: "Segoe UI", Tahoma, "Noto Sans Thai", sans-serif; font-size: 24px; fill: #475569; }
+      .box-title { font-family: "Segoe UI", Tahoma, "Noto Sans Thai", sans-serif; font-size: 25px; font-weight: 700; fill: #111827; }
+      .box-text { font-family: "Segoe UI", Tahoma, "Noto Sans Thai", sans-serif; font-size: 20px; fill: #1f2937; }
+      .small { font-family: "Segoe UI", Tahoma, "Noto Sans Thai", sans-serif; font-size: 18px; fill: #334155; }
+      .tiny { font-family: "Segoe UI", Tahoma, "Noto Sans Thai", sans-serif; font-size: 16px; fill: #475569; }
+      .note { font-family: "Segoe UI", Tahoma, "Noto Sans Thai", sans-serif; font-size: 18px; fill: #0f172a; }
+      .box { fill: #ffffff; stroke: #94a3b8; stroke-width: 2.5; rx: 18; }
+      .blue { fill: #eff6ff; stroke: #2563eb; }
+      .green { fill: #ecfdf5; stroke: #16a34a; }
+      .orange { fill: #fff7ed; stroke: #ea580c; }
+      .purple { fill: #f5f3ff; stroke: #7c3aed; }
+      .red { fill: #fef2f2; stroke: #dc2626; }
+      .yellow { fill: #fefce8; stroke: #ca8a04; }
+      .gray { fill: #f8fafc; stroke: #64748b; }
+      .line { stroke: #1f2937; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .line-blue { stroke: #2563eb; stroke-width: 3; fill: none; marker-end: url(#arrowBlue); }
+      .line-red { stroke: #dc2626; stroke-width: 3; fill: none; marker-end: url(#arrowRed); }
+      .dash { stroke-dasharray: 8 8; }
+      .section { font-family: "Segoe UI", Tahoma, "Noto Sans Thai", sans-serif; font-size: 28px; font-weight: 700; fill: #0f172a; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1800" height="2700"/>
+  <text class="title" x="900" y="70" text-anchor="middle">Flow ปัจจุบันของ PSU Esports Chatbot</text>
+  <text class="subtitle" x="900" y="112" text-anchor="middle">Local-first pipeline: rule / structured / fast ก่อน, LLM ใช้เฉพาะจุดที่จำเป็น</text>
+
+  <rect class="box blue" x="70" y="160" width="380" height="150"/>
+  <text class="box-title" x="95" y="200">1) User Input</text>
+  <text class="box-text" x="95" y="236">รับคำถามจาก CLI / Notebook / Web</text>
+  <text class="box-text" x="95" y="266">เช่น “PC มีอะไรบ้าง”, “เกม”,</text>
+  <text class="box-text" x="95" y="296">“Tekken 8 ราคาเท่าไหร่”</text>
+
+  <rect class="box green" x="520" y="150" width="540" height="205"/>
+  <text class="box-title" x="545" y="190">2) Session Context Resolver</text>
+  <text class="box-text" x="545" y="226">IF มี pending clarification ล่าสุด + user ตอบสั้น</text>
+  <text class="box-text" x="545" y="256">→ rewrite เช่น “เกม” เป็น “PC มีเกมอะไรบ้าง”</text>
+  <text class="box-text" x="545" y="286">ELSE IF มี target ใหม่ เช่น “ราคา Nintendo”</text>
+  <text class="box-text" x="545" y="316">→ ไม่ใช้ context เดิม</text>
+  <text class="box-text" x="545" y="346">ELSE ใช้ follow-up context ของเกม/สมาชิก/จองเท่าที่ปลอดภัย</text>
+
+  <rect class="box gray" x="1130" y="160" width="420" height="155"/>
+  <text class="box-title" x="1155" y="200">Safety ของ Context</text>
+  <text class="box-text" x="1155" y="236">• pending ใช้ได้แค่ turn ถัดไป</text>
+  <text class="box-text" x="1155" y="266">• allowed choices: เกม/อุปกรณ์/ราคา/จอง</text>
+  <text class="box-text" x="1155" y="296">• คำกำกวม เช่น “ปุ่ม”, “เครื่อง” ไม่เดา</text>
+
+  <path class="line" d="M450 235 L520 235"/>
+  <path class="line" d="M1060 235 L1130 235"/>
+
+  <rect class="box blue" x="70" y="430" width="420" height="190"/>
+  <text class="box-title" x="95" y="470">3) Preprocess / Normalize</text>
+  <text class="box-text" x="95" y="506">• normalize ภาษาไทย/อังกฤษ</text>
+  <text class="box-text" x="95" y="536">• alias service: คอม → PC, เพลย์ → PS5</text>
+  <text class="box-text" x="95" y="566">• typo/game correction เช่น Over cook</text>
+  <text class="box-text" x="95" y="596">• สร้าง query variants ถ้าจำเป็น</text>
+
+  <rect class="box yellow" x="560" y="430" width="430" height="190"/>
+  <text class="box-title" x="585" y="470">4) Multi-question Check</text>
+  <text class="box-text" x="585" y="506">IF คำถามมีหลายเรื่อง</text>
+  <text class="box-text" x="585" y="536">→ split เป็น child questions</text>
+  <text class="box-text" x="585" y="566">→ run pipeline ทีละข้อ</text>
+  <text class="box-text" x="585" y="596">→ รวมคำตอบเป็นข้อ ๆ แล้ว output</text>
+
+  <rect class="box gray" x="1060" y="430" width="520" height="190"/>
+  <text class="box-title" x="1085" y="470">ELSE: Single Question</text>
+  <text class="box-text" x="1085" y="506">ไปต่อที่ entity extraction + routing</text>
+  <text class="box-text" x="1085" y="536">ตัวอย่าง multi:</text>
+  <text class="box-text" x="1085" y="566">“Tekken 8 กับ Mario มีปุ่มอะไรบ้าง”</text>
+  <text class="box-text" x="1085" y="596">จะไม่ตอบแค่เกมแรก</text>
+
+  <path class="line" d="M790 355 L790 430"/>
+  <path class="line" d="M490 525 L560 525"/>
+  <path class="line" d="M990 525 L1060 525"/>
+
+  <text class="section" x="90" y="710">Single-question pipeline</text>
+
+  <rect class="box blue" x="70" y="750" width="380" height="165"/>
+  <text class="box-title" x="95" y="790">5) Entity Extraction</text>
+  <text class="box-text" x="95" y="826">ดึง service / zone / game</text>
+  <text class="box-text" x="95" y="856">day / time / user group / duration</text>
+  <text class="box-text" x="95" y="886">price intent / comparison intent</text>
+
+  <rect class="box red" x="515" y="750" width="390" height="165"/>
+  <text class="box-title" x="540" y="790">6) Scope Guard</text>
+  <text class="box-text" x="540" y="826">IF ไม่ใช่ข้อมูล PSU หรือไม่มีข้อมูลจริง</text>
+  <text class="box-text" x="540" y="856">→ no-answer สุภาพ</text>
+  <text class="box-text" x="540" y="886">ELSE → routing ต่อ</text>
+
+  <rect class="box purple" x="970" y="750" width="390" height="165"/>
+  <text class="box-title" x="995" y="790">7) Heuristic Router</text>
+  <text class="box-text" x="995" y="826">เลือก category เบื้องต้น</text>
+  <text class="box-text" x="995" y="856">เช่น games / equipment / price</text>
+  <text class="box-text" x="995" y="886">reservation / schedule / controls</text>
+
+  <path class="line" d="M260 620 L260 750"/>
+  <path class="line" d="M450 832 L515 832"/>
+  <path class="line" d="M905 832 L970 832"/>
+
+  <rect class="box purple" x="70" y="1010" width="410" height="180"/>
+  <text class="box-title" x="95" y="1050">8) Universal Intent</text>
+  <text class="box-text" x="95" y="1086">ระบุ domain + operation</text>
+  <text class="box-text" x="95" y="1116">เช่น service_fee / price_calculate</text>
+  <text class="box-text" x="95" y="1146">games / list, game_controls / control</text>
+  <text class="box-text" x="95" y="1176">ส่วนมากใช้ heuristic</text>
+
+  <rect class="box red" x="545" y="1010" width="420" height="180"/>
+  <text class="box-title" x="570" y="1050">9) Adaptive Intent LLM</text>
+  <text class="box-text" x="570" y="1086">ใช้เฉพาะเมื่อ allow LLM และ route ไม่ชัด</text>
+  <text class="box-text" x="570" y="1116">Exact / strong route จะข้าม LLM</text>
+  <text class="box-text" x="570" y="1146">หน้าที่: review intent ไม่ใช่ตอบทุกเคส</text>
+  <text class="box-text" x="570" y="1176">โมเดลหลัก: scb10x/typhoon2.5-qwen3-4b</text>
+
+  <rect class="box purple" x="1030" y="1010" width="430" height="180"/>
+  <text class="box-title" x="1055" y="1050">10) Tool Router / Refinement</text>
+  <text class="box-text" x="1055" y="1086">เลือก action: structured / fast / retrieval</text>
+  <text class="box-text" x="1055" y="1116">หรือ clarification / general_llm</text>
+  <text class="box-text" x="1055" y="1146">ถ้าใช้ LLM router ต้อง allow LLM</text>
+  <text class="box-text" x="1055" y="1176">ถ้าไม่ allow จะใช้ heuristic fast path</text>
+
+  <path class="line" d="M1165 915 L1165 960 L275 960 L275 1010"/>
+  <path class="line" d="M480 1100 L545 1100"/>
+  <path class="line" d="M965 1100 L1030 1100"/>
+
+  <rect class="box orange" x="70" y="1290" width="560" height="245"/>
+  <text class="box-title" x="95" y="1330">11) Ambiguity Gate v2</text>
+  <text class="box-text" x="95" y="1366">คำนวณ candidate score หลายโดเมน + margin threshold</text>
+  <text class="box-text" x="95" y="1396">IF คำถามกว้าง/ขาด target/คะแนนสูสี</text>
+  <text class="box-text" x="95" y="1426">→ clarification หรือ hybrid preview</text>
+  <text class="box-text" x="95" y="1456">ตัวอย่าง: “PC มีอะไรบ้าง” → ให้เลือกเกม/อุปกรณ์/ราคา/จอง</text>
+  <text class="box-text" x="95" y="1486">ELSE → ปล่อยไป candidate policy</text>
+  <text class="box-text" x="95" y="1516">ไม่ใช้ LLM เป็นตัวหลักใน gate นี้</text>
+
+  <rect class="box yellow" x="700" y="1290" width="430" height="245"/>
+  <text class="box-title" x="725" y="1330">12) Candidate Policy</text>
+  <text class="box-text" x="725" y="1366">จัดอันดับ capability candidates</text>
+  <text class="box-text" x="725" y="1396">structured / fast / retrieval / vector</text>
+  <text class="box-text" x="725" y="1426">facts_composer / clarification / no_answer</text>
+  <text class="box-text" x="725" y="1456">จาก route + intent + policy</text>
+  <text class="box-text" x="725" y="1486">ส่งต่อ precondition check</text>
+
+  <rect class="box yellow" x="1200" y="1290" width="430" height="245"/>
+  <text class="box-title" x="1225" y="1330">13) Tool Preconditions</text>
+  <text class="box-text" x="1225" y="1366">IF tool ไม่เหมาะ → reject</text>
+  <text class="box-text" x="1225" y="1396">เช่น ถามปุ่มแต่ไม่มีชื่อเกม</text>
+  <text class="box-text" x="1225" y="1426">หรือถามราคาแต่ไม่มี service/game</text>
+  <text class="box-text" x="1225" y="1456">IF ผ่าน → execute answer path</text>
+  <text class="box-text" x="1225" y="1486">ช่วยกัน structured/fast ตอบผิดหมวด</text>
+
+  <path class="line" d="M1245 1190 L1245 1245 L350 1245 L350 1290"/>
+  <path class="line" d="M630 1412 L700 1412"/>
+  <path class="line" d="M1130 1412 L1200 1412"/>
+
+  <text class="section" x="90" y="1635">Answer paths: เลือกทางตอบตามความเหมาะสม</text>
+
+  <rect class="box green" x="70" y="1680" width="470" height="180"/>
+  <text class="box-title" x="95" y="1720">A) Structured Tools</text>
+  <text class="box-text" x="95" y="1756">ใช้กับข้อมูลที่มี schema / curated facts</text>
+  <text class="box-text" x="95" y="1786">เกม, อุปกรณ์, ราคา by game, จอง</text>
+  <text class="box-text" x="95" y="1816">ตาราง, สมาชิก, กติกา, ปุ่มควบคุม</text>
+  <text class="box-text" x="95" y="1846">เป็น path หลักที่ต้องการให้ชนะก่อน</text>
+
+  <rect class="box green" x="610" y="1680" width="470" height="180"/>
+  <text class="box-title" x="635" y="1720">B) Fast / Rule Path</text>
+  <text class="box-text" x="635" y="1756">ใช้กับคำตอบ deterministic</text>
+  <text class="box-text" x="635" y="1786">ราคา PC/PS5/VR, schedule, static facts</text>
+  <text class="box-text" x="635" y="1816">เร็วและไม่บอกว่าเป็น LLM</text>
+  <text class="box-text" x="635" y="1846">เหมาะกับคำถาม exact</text>
+
+  <rect class="box green" x="1150" y="1680" width="470" height="180"/>
+  <text class="box-title" x="1175" y="1720">C) RAG / Vector / Hybrid</text>
+  <text class="box-text" x="1175" y="1756">ใช้ค้น curated data เมื่อ structured/fast ไม่พอ</text>
+  <text class="box-text" x="1175" y="1786">ต้องมี evidence/source</text>
+  <text class="box-text" x="1175" y="1816">ถ้าไม่พบข้อมูลจริง → no-answer</text>
+  <text class="box-text" x="1175" y="1846">vector ตอนนี้ยังไม่ใช่ semantic เต็มรูปแบบ</text>
+
+  <rect class="box orange" x="330" y="1930" width="470" height="180"/>
+  <text class="box-title" x="355" y="1970">D) Optional Facts Composer</text>
+  <text class="box-text" x="355" y="2006">LLM อาจใช้เรียบเรียงจาก facts เท่านั้น</text>
+  <text class="box-text" x="355" y="2036">ไม่ควรเปิดกว้างทุกเคส</text>
+  <text class="box-text" x="355" y="2066">เพราะอาจยาวหรือไม่ตรงกว่า structured</text>
+  <text class="box-text" x="355" y="2096">ต้องผ่าน validation/source ต่อ</text>
+
+  <rect class="box red" x="980" y="1930" width="470" height="180"/>
+  <text class="box-title" x="1005" y="1970">E) General Local LLM Fallback</text>
+  <text class="box-text" x="1005" y="2006">ใช้ท้าย ๆ เมื่อเป็นคำถามทั่วไป/นอกโดเมน</text>
+  <text class="box-text" x="1005" y="2036">หรือไม่มี PSU facts ที่ตอบได้</text>
+  <text class="box-text" x="1005" y="2066">อาจช้า จึงมี health/circuit breaker</text>
+  <text class="box-text" x="1005" y="2096">ไม่ใช้ตอบข้อมูล PSU ที่ไม่มีหลักฐาน</text>
+
+  <path class="line" d="M1415 1535 L1415 1605 L305 1605 L305 1680"/>
+  <path class="line" d="M1415 1605 L845 1605 L845 1680"/>
+  <path class="line" d="M1415 1605 L1385 1605 L1385 1680"/>
+  <path class="line-red dash" d="M1415 1535 L1415 1890 L1215 1890 L1215 1930"/>
+  <path class="line-red dash" d="M1415 1890 L565 1890 L565 1930"/>
+
+  <rect class="box blue" x="70" y="2220" width="470" height="190"/>
+  <text class="box-title" x="95" y="2260">14) Validate Answer</text>
+  <text class="box-text" x="95" y="2296">Answer contract: คำตอบตรงชนิดคำถามไหม</text>
+  <text class="box-text" x="95" y="2326">Source contract: source id ครบไหม</text>
+  <text class="box-text" x="95" y="2356">เช่น ราคา PC ต้องมี local source</text>
+  <text class="box-text" x="95" y="2386">กันถามราคาแต่ตอบ catalog เกม</text>
+
+  <rect class="box blue" x="610" y="2220" width="470" height="190"/>
+  <text class="box-title" x="635" y="2260">15) Format Thai Answer</text>
+  <text class="box-text" x="635" y="2296">จัด answer-first</text>
+  <text class="box-text" x="635" y="2326">bullet / section / source</text>
+  <text class="box-text" x="635" y="2356">ถ้ามาจาก rule/fast/structured/RAG</text>
+  <text class="box-text" x="635" y="2386">ห้ามบอกว่าเป็น LLM</text>
+
+  <rect class="box gray" x="1150" y="2220" width="470" height="190"/>
+  <text class="box-title" x="1175" y="2260">16) Trace / Log / Output</text>
+  <text class="box-text" x="1175" y="2296">สร้าง decision artifact + trace</text>
+  <text class="box-text" x="1175" y="2326">บันทึก chat log / daily log เมื่อมีงานสาระ</text>
+  <text class="box-text" x="1175" y="2356">ส่ง final answer + hits + mode</text>
+  <text class="box-text" x="1175" y="2386">ให้ local CLI / notebook / web</text>
+
+  <path class="line" d="M305 1860 L305 2165 L305 2220"/>
+  <path class="line" d="M845 1860 L845 2165 L305 2165"/>
+  <path class="line" d="M1385 1860 L1385 2165 L305 2165"/>
+  <path class="line" d="M565 2110 L565 2165 L305 2165"/>
+  <path class="line" d="M1215 2110 L1215 2165 L305 2165"/>
+  <path class="line" d="M540 2315 L610 2315"/>
+  <path class="line" d="M1080 2315 L1150 2315"/>
+
+  <rect class="box red" x="70" y="2500" width="1550" height="130"/>
+  <text class="box-title" x="95" y="2540">ตำแหน่งที่ใช้ LLM ในระบบนี้</text>
+  <text class="box-text" x="95" y="2576">1) Adaptive Intent LLM: ใช้ review intent เฉพาะ broad/ambiguous เมื่อ allow LLM</text>
+  <text class="box-text" x="95" y="2606">2) Optional Tool Router / Facts Composer: ใช้เมื่อเปิดทดลองหรือจำเป็นต้องเรียบเรียงจาก facts</text>
+  <text class="box-text" x="95" y="2636">3) General Local LLM fallback: ใช้ท้ายสุดสำหรับคำถามทั่วไป/นอกโดเมน ไม่ใช้เดาข้อมูล PSU ที่ไม่มี source</text>
+</svg>

@@ -3,8 +3,11 @@ from __future__ import annotations
 import argparse
 import json
 import mimetypes
+import os
 import sys
+import threading
 import time
+import uuid
 from dataclasses import asdict, is_dataclass
 from datetime import UTC, datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -13,6 +16,9 @@ from typing import Any
 from urllib.parse import unquote, urlparse
 
 from app.calendar.service_calendar import calendar_context
+from app.pipeline.llm_health import llm_health_snapshot, llm_preflight_enabled, preflight_ollama
+from app.pipeline.request_deadline import deadline_metadata, request_deadline
+from app.pipeline.warmup import WarmupResult, pipeline_warmup_enabled, warm_pipeline_caches
 from app.runtime.pipeline_answer import answer_question_pipeline_debug
 from app.session.context_resolver import resolve_question_with_context
 from app.session.chat_logger import write_chat_log
@@ -22,6 +28,54 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 WEB_ROOT = PROJECT_ROOT / "web_chat"
 LOG_DIR = PROJECT_ROOT / "data" / "logs"
 MAX_BODY_BYTES = 128 * 1024
+MAX_QUESTION_CHARS = 4000
+
+
+def _env_int(name: str, default: int, *, minimum: int = 0) -> int:
+    try:
+        return max(minimum, int(os.getenv(name, str(default))))
+    except ValueError:
+        return default
+
+
+def _env_float(name: str, default: float, *, minimum: float = 0.0) -> float:
+    try:
+        return max(minimum, float(os.getenv(name, str(default))))
+    except ValueError:
+        return default
+
+
+MAX_ACTIVE_REQUESTS = _env_int("PSU_MAX_ACTIVE_REQUESTS", 16, minimum=1)
+SESSION_LOCK_WAIT_SEC = _env_float("PSU_SESSION_LOCK_WAIT_SEC", 0.10)
+STARTUP_WARMUP: WarmupResult | None = None
+STARTUP_LLM_PREFLIGHT: dict[str, Any] | None = None
+_ACTIVE_REQUESTS = threading.BoundedSemaphore(MAX_ACTIVE_REQUESTS)
+_SESSION_LOCKS: dict[str, threading.Lock] = {}
+_SESSION_LOCKS_GUARD = threading.Lock()
+
+
+def _product_backend_timeout_sec() -> float:
+    try:
+        return max(1.0, float(os.getenv("PSU_PRODUCT_BACKEND_TIMEOUT_SEC", "9.0")))
+    except ValueError:
+        return 9.0
+
+
+def _session_lock(session_id: str) -> threading.Lock | None:
+    if not session_id:
+        return None
+    with _SESSION_LOCKS_GUARD:
+        return _SESSION_LOCKS.setdefault(session_id, threading.Lock())
+
+
+def _write_chat_log_async(record: dict[str, Any]) -> None:
+    def write() -> None:
+        try:
+            write_chat_log(record)
+        except Exception as exc:  # pragma: no cover - logging must not break responses.
+            print(f"Async chat log warning: {exc!r}", file=sys.stderr)
+
+    threading.Thread(target=write, name="psu-chat-log", daemon=True).start()
 
 
 def _json_default(value: Any) -> Any:
@@ -110,7 +164,14 @@ class ChatHandler(BaseHTTPRequestHandler):
         parsed = urlparse(self.path)
         path = unquote(parsed.path)
         if path == "/health":
-            self._send_json({"ok": True, "service": "psu-esports-chat-web", "time": datetime.now(UTC).isoformat()})
+            self._send_json({
+                "ok": True,
+                "service": "psu-esports-chat-web",
+                "time": datetime.now(UTC).isoformat(),
+                "warmup": STARTUP_WARMUP,
+                "llm_preflight": STARTUP_LLM_PREFLIGHT,
+                "llm_health": llm_health_snapshot(),
+            })
             return
         if path == "/api/calendar":
             self._send_json({"ok": True, "calendar": calendar_context()})
@@ -145,84 +206,125 @@ class ChatHandler(BaseHTTPRequestHandler):
         if not question:
             self._send_json({"ok": False, "error": "question_required"}, 400)
             return
+        if len(question) > MAX_QUESTION_CHARS:
+            self._send_json({"ok": False, "error": "question_too_long", "max_chars": MAX_QUESTION_CHARS}, 413)
+            return
 
         started = time.perf_counter()
-        try:
-            resolved = resolve_question_with_context(question, recent_history)
-            result = answer_question_pipeline_debug(
-                resolved.resolved_question,
-                experimental_rag_fallback=experimental_rag_fallback,
-                experimental_allow_llm=experimental_allow_llm,
-            )
-            sources = _source_list(result.hits)
-            query_debug = _trace_query_debug(result, question, resolved.resolved_question)
-            calendar = calendar_context()
-            response: dict[str, Any] = {
-                "ok": True,
-                "answer": result.answer,
-                "mode": result.mode,
-                "route_category": result.route.category,
-                "route_intent": result.route.intent,
-                "confidence": result.confidence,
-                "latency_sec": result.elapsed,
-                "sources": sources,
-                "validation_ok": result.validation.ok,
-                "experimental_rag_fallback": experimental_rag_fallback,
-                "experimental_allow_llm": experimental_allow_llm,
-                "server_date": {
-                    "iso": calendar["date"],
-                    "label": calendar["label"],
-                    "time": calendar["time"],
-                    "datetime_iso": calendar["datetime_iso"],
-                    "timezone": calendar["timezone"],
-                    "service_slot": calendar["service_slot"],
-                    "thai_holidays": calendar["thai_holidays"],
-                    "upcoming_thai_holidays": calendar["upcoming_thai_holidays"],
-                },
-                "calendar": calendar,
-            }
-            if debug:
-                response["context_resolution"] = resolved.to_dict()
-                response["query_debug"] = query_debug
-                response["entities"] = result.entities
-                response["validation"] = result.validation
-                response["trace"] = result.trace
+        request_id = uuid.uuid4().hex
+        with request_deadline(_product_backend_timeout_sec()):
+            if not _ACTIVE_REQUESTS.acquire(blocking=False):
+                self._send_json({
+                    "ok": False,
+                    "error": "server_busy",
+                    "request_id": request_id,
+                    "retry_after_ms": 250,
+                }, 503)
+                return
 
-            log_sinks = write_chat_log({
-                "channel": "web",
-                "client_session_id": client_session_id,
-                "question": question,
-                "resolved_question": resolved.resolved_question,
-                "context_resolution": resolved.to_dict(),
-                "query_debug": query_debug,
-                "recent_history_count": len(recent_history) if isinstance(recent_history, list) else 0,
-                "experimental": {
-                    "rag_fallback": experimental_rag_fallback,
-                    "allow_llm": experimental_allow_llm,
-                },
-                "answer": result.answer,
-                "mode": result.mode,
-                "route_category": result.route.category,
-                "route_intent": result.route.intent,
-                "confidence": result.confidence,
-                "latency_sec": result.elapsed,
-                "wall_sec": round(time.perf_counter() - started, 4),
-                "sources": sources,
-                "validation_ok": result.validation.ok,
-            })
-            if debug:
-                response["log_sinks"] = log_sinks
-            self._send_json(response)
-        except Exception as exc:
-            write_chat_log({
-                "channel": "web",
-                "client_session_id": client_session_id,
-                "question": question,
-                "resolved_question": resolved.resolved_question if "resolved" in locals() else question,
-                "error": repr(exc),
-                "wall_sec": round(time.perf_counter() - started, 4),
-            })
-            self._send_json({"ok": False, "error": "server_error", "detail": repr(exc)}, 500)
+            session_lock = _session_lock(client_session_id)
+            session_acquired = session_lock is None or session_lock.acquire(timeout=SESSION_LOCK_WAIT_SEC)
+            if not session_acquired:
+                _ACTIVE_REQUESTS.release()
+                self._send_json({
+                    "ok": False,
+                    "error": "session_busy",
+                    "request_id": request_id,
+                    "retry_after_ms": 150,
+                }, 409)
+                return
+
+            try:
+                resolved = resolve_question_with_context(question, recent_history)
+                result = answer_question_pipeline_debug(
+                    resolved.resolved_question,
+                    experimental_rag_fallback=experimental_rag_fallback,
+                    experimental_allow_llm=experimental_allow_llm,
+                )
+                sources = _source_list(result.hits)
+                query_debug = _trace_query_debug(result, question, resolved.resolved_question)
+                calendar = calendar_context()
+                response: dict[str, Any] = {
+                    "ok": True,
+                    "request_id": request_id,
+                    "answer": result.answer,
+                    "mode": result.mode,
+                    "route_category": result.route.category,
+                    "route_intent": result.route.intent,
+                    "universal_intent": result.universal_intent,
+                    "confidence": result.confidence,
+                    "latency_sec": result.elapsed,
+                    "wall_sec": round(time.perf_counter() - started, 4),
+                    "deadline": deadline_metadata(),
+                    "sources": sources,
+                    "validation_ok": result.validation.ok,
+                    "experimental_rag_fallback": experimental_rag_fallback,
+                    "experimental_allow_llm": experimental_allow_llm,
+                    "server_date": {
+                        "iso": calendar["date"],
+                        "label": calendar["label"],
+                        "time": calendar["time"],
+                        "datetime_iso": calendar["datetime_iso"],
+                        "timezone": calendar["timezone"],
+                        "service_slot": calendar["service_slot"],
+                        "thai_holidays": calendar["thai_holidays"],
+                        "upcoming_thai_holidays": calendar["upcoming_thai_holidays"],
+                    },
+                    "calendar": calendar,
+                }
+                if debug:
+                    response["context_resolution"] = resolved.to_dict()
+                    response["query_debug"] = query_debug
+                    response["decision_artifact"] = result.decision_artifact
+                    response["entities"] = result.entities
+                    response["validation"] = result.validation
+                    response["trace"] = result.trace
+
+                log_record = {
+                    "channel": "web",
+                    "request_id": request_id,
+                    "client_session_id": client_session_id,
+                    "question": question,
+                    "resolved_question": resolved.resolved_question,
+                    "context_resolution": resolved.to_dict(),
+                    "query_debug": query_debug,
+                    "recent_history_count": len(recent_history) if isinstance(recent_history, list) else 0,
+                    "experimental": {
+                        "rag_fallback": experimental_rag_fallback,
+                        "allow_llm": experimental_allow_llm,
+                    },
+                    "answer": result.answer,
+                    "mode": result.mode,
+                    "route_category": result.route.category,
+                    "route_intent": result.route.intent,
+                    "universal_intent": result.universal_intent,
+                    "decision_artifact": result.decision_artifact,
+                    "confidence": result.confidence,
+                    "latency_sec": result.elapsed,
+                    "wall_sec": round(time.perf_counter() - started, 4),
+                    "deadline": deadline_metadata(),
+                    "sources": sources,
+                    "validation_ok": result.validation.ok,
+                }
+                if debug:
+                    response["log_sinks"] = {"status": "queued"}
+                self._send_json(response)
+                _write_chat_log_async(log_record)
+            except Exception as exc:
+                _write_chat_log_async({
+                    "channel": "web",
+                    "request_id": request_id,
+                    "client_session_id": client_session_id,
+                    "question": question,
+                    "resolved_question": resolved.resolved_question if "resolved" in locals() else question,
+                    "error": repr(exc),
+                    "wall_sec": round(time.perf_counter() - started, 4),
+                })
+                self._send_json({"ok": False, "request_id": request_id, "error": "server_error", "detail": repr(exc)}, 500)
+            finally:
+                if session_lock is not None and session_acquired:
+                    session_lock.release()
+                _ACTIVE_REQUESTS.release()
 
     def _serve_static(self, path: str) -> None:
         if path in {"", "/", "/chat"}:
@@ -254,6 +356,38 @@ def main() -> int:
 
     if not WEB_ROOT.exists():
         raise SystemExit(f"Web folder not found: {WEB_ROOT}")
+
+    global STARTUP_WARMUP
+    if pipeline_warmup_enabled():
+        print("Warming PSU Esports chatbot caches...")
+        STARTUP_WARMUP = warm_pipeline_caches()
+        status = "ok" if STARTUP_WARMUP.ok else "partial"
+        print(f"Warmup {status} in {STARTUP_WARMUP.elapsed_sec:.4f}s: {', '.join(STARTUP_WARMUP.warmed)}")
+        if STARTUP_WARMUP.errors:
+            for error in STARTUP_WARMUP.errors:
+                print(f"Warmup warning: {error}", file=sys.stderr)
+    else:
+        print("Pipeline warmup disabled by PSU_PIPELINE_WARMUP.")
+
+    global STARTUP_LLM_PREFLIGHT
+    if llm_preflight_enabled():
+        model = os.getenv("PSU_CHATBOT_OLLAMA_MODEL", "scb10x/typhoon2.5-qwen3-4b")
+        print("Checking Local LLM health...")
+        STARTUP_LLM_PREFLIGHT = preflight_ollama(
+            model=model,
+            kind="preflight",
+            timeout_sec=float(os.getenv("PSU_LLM_PREFLIGHT_TIMEOUT_SEC", "5")),
+            num_predict=int(os.getenv("PSU_LLM_PREFLIGHT_NUM_PREDICT", "1")),
+        )
+        status = "ok" if STARTUP_LLM_PREFLIGHT.get("ok") else "unhealthy"
+        print(f"LLM preflight {status} in {float(STARTUP_LLM_PREFLIGHT.get('elapsed_ms', 0.0)) / 1000:.3f}s")
+        if not STARTUP_LLM_PREFLIGHT.get("ok"):
+            print(
+                f"LLM warning: {STARTUP_LLM_PREFLIGHT.get('error_type')}: {STARTUP_LLM_PREFLIGHT.get('error')}",
+                file=sys.stderr,
+            )
+    else:
+        print("LLM preflight disabled by PSU_LLM_PREFLIGHT.")
 
     server = ThreadingHTTPServer((args.host, args.port), ChatHandler)
     print(f"PSU Esports Chat Web is running at http://{args.host}:{args.port}/")

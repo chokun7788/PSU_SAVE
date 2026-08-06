@@ -1,0 +1,4606 @@
+[
+  {
+    "id": "MB-0001-SF-001",
+    "group": "service_fee",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "PC ราคาเท่าไหร่",
+    "llm_required": false,
+    "answer": "ราคา PC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน: 25 บาท\n•    General Adult / บุคคลทั่วไป: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "confidence": 0.97,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 1.0284,
+    "elapsed_sec": 0.9971,
+    "llm_call_count": 1,
+    "llm_elapsed_ms_total": 0.0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.93,
+        "detail": "domain_terms=4; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "specific exact operation skips LLM-first",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "competing_domain_signals"
+          ],
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "equipment",
+              "operation": "price_calculate",
+              "confidence": 0.66,
+              "reason": "domain keyword score=1"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.93,
+            "reason": "domain_terms=4; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/service_fee",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.93
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.93,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 26.45,
+          "elapsed_sec": 0.0265,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "service_fee/service_fee_query",
+          "intent": "service_fee/price_calculate",
+          "has_known_game": false,
+          "has_service_or_zone": true,
+          "intent_candidates": [
+            {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "score": 0.99,
+              "reasons": [
+                "price_terms",
+                "service_or_zone_target",
+                "route_prior",
+                "intent_domain_prior",
+                "intent_operation_prior"
+              ]
+            },
+            {
+              "domain": "equipment",
+              "operation": "list",
+              "score": 0.16,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            },
+            {
+              "domain": "games",
+              "operation": "list",
+              "score": 0.15,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "early_price_deterministic",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.88,
+          "elapsed_sec": 0.0009,
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 23.33,
+          "elapsed_sec": 0.0233,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "early_price_fast_path",
+        "confidence": 0.97,
+        "detail": "clear service fee query bypasses candidate scoring",
+        "metadata": {
+          "service": "pc",
+          "mode": "deterministic_calculator_fast"
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 5.88,
+          "elapsed_sec": 0.0059,
+          "format_thai_style_ms": 2.83,
+          "total_elapsed_ms": 997.11,
+          "total_elapsed_sec": 0.9971
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-0002-SF-002",
+    "group": "service_fee",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "นักศึกษา PSU เล่น PC 30 นาที เสียกี่บาท",
+    "llm_required": false,
+    "answer": "ระยะเวลาที่ถามคือ 30 นาที ใช้ 1 session ตามแพ็กเกจ PC 1 ชั่วโมง\nคำตอบราคา: 0 บาท สำหรับกลุ่ม PSU Student and Staff\n•    คำนวณจาก 0 บาท/session x 1 session = 0 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff\n\nรายละเอียดจากตาราง:\nPC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 25 บาท\n•    General Adult: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "confidence": 0.97,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.0413,
+    "elapsed_sec": 0.0412,
+    "llm_call_count": 1,
+    "llm_elapsed_ms_total": 0.0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.93,
+        "detail": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "specific exact operation skips LLM-first",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "competing_domain_signals"
+          ],
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "equipment",
+              "operation": "price_calculate",
+              "confidence": 0.66,
+              "reason": "domain keyword score=1"
+            },
+            {
+              "id": "c3",
+              "domain": "service_fee",
+              "operation": "count",
+              "confidence": 0.66,
+              "reason": "operation keyword score=1"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.93,
+            "reason": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/service_fee",
+        "metadata": {
+          "elapsed_ms": 0.03,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.93
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.93,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 4.83,
+          "elapsed_sec": 0.0048,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "service_fee/service_fee_query",
+          "intent": "service_fee/price_calculate",
+          "has_known_game": false,
+          "has_service_or_zone": true,
+          "intent_candidates": [
+            {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "score": 0.99,
+              "reasons": [
+                "price_terms",
+                "service_or_zone_target",
+                "price_filters",
+                "route_prior",
+                "intent_domain_prior",
+                "intent_operation_prior"
+              ]
+            },
+            {
+              "domain": "equipment",
+              "operation": "list",
+              "score": 0.16,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            },
+            {
+              "domain": "games",
+              "operation": "list",
+              "score": 0.15,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "early_price_deterministic",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.15,
+          "elapsed_sec": 0.0001,
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 0.35,
+          "elapsed_sec": 0.0004,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "early_price_fast_path",
+        "confidence": 0.97,
+        "detail": "clear service fee query bypasses candidate scoring",
+        "metadata": {
+          "service": "pc",
+          "mode": "deterministic_calculator_fast"
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.84,
+          "elapsed_sec": 0.0008,
+          "format_thai_style_ms": 0.26,
+          "total_elapsed_ms": 41.2,
+          "total_elapsed_sec": 0.0412
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-0003-SF-003",
+    "group": "service_fee",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "นักศึกษา PSU เล่น PC 1 ชั่วโมง เสียกี่บาท",
+    "llm_required": false,
+    "answer": "ระยะเวลาที่ถามคือ 1 ชั่วโมง ใช้ 1 session ตามแพ็กเกจ PC 1 ชั่วโมง\nคำตอบราคา: 0 บาท สำหรับกลุ่ม PSU Student and Staff\n•    คำนวณจาก 0 บาท/session x 1 session = 0 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff\n\nรายละเอียดจากตาราง:\nPC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 25 บาท\n•    General Adult: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "confidence": 0.97,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.0113,
+    "elapsed_sec": 0.0113,
+    "llm_call_count": 1,
+    "llm_elapsed_ms_total": 0.0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.93,
+        "detail": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "specific exact operation skips LLM-first",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "competing_domain_signals"
+          ],
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "equipment",
+              "operation": "price_calculate",
+              "confidence": 0.66,
+              "reason": "domain keyword score=1"
+            },
+            {
+              "id": "c3",
+              "domain": "service_fee",
+              "operation": "count",
+              "confidence": 0.66,
+              "reason": "operation keyword score=1"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.93,
+            "reason": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/service_fee",
+        "metadata": {
+          "elapsed_ms": 0.03,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.93
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.93,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 3.85,
+          "elapsed_sec": 0.0038,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "service_fee/service_fee_query",
+          "intent": "service_fee/price_calculate",
+          "has_known_game": false,
+          "has_service_or_zone": true,
+          "intent_candidates": [
+            {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "score": 0.99,
+              "reasons": [
+                "price_terms",
+                "service_or_zone_target",
+                "price_filters",
+                "route_prior",
+                "intent_domain_prior",
+                "intent_operation_prior"
+              ]
+            },
+            {
+              "domain": "equipment",
+              "operation": "list",
+              "score": 0.16,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            },
+            {
+              "domain": "games",
+              "operation": "list",
+              "score": 0.15,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "early_price_deterministic",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001,
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 0.34,
+          "elapsed_sec": 0.0003,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "early_price_fast_path",
+        "confidence": 0.97,
+        "detail": "clear service fee query bypasses candidate scoring",
+        "metadata": {
+          "service": "pc",
+          "mode": "deterministic_calculator_fast"
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.59,
+          "elapsed_sec": 0.0006,
+          "format_thai_style_ms": 0.23,
+          "total_elapsed_ms": 11.26,
+          "total_elapsed_sec": 0.0113
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-0004-SF-004",
+    "group": "service_fee",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "นักศึกษา PSU เล่น PC 2 ชั่วโมง เสียกี่บาท",
+    "llm_required": false,
+    "answer": "ระยะเวลาที่ถามคือ 2 ชั่วโมง ใช้ 2 session ตามแพ็กเกจ PC 1 ชั่วโมง\nคำตอบราคา: 0 บาท สำหรับกลุ่ม PSU Student and Staff\n•    คำนวณจาก 0 บาท/session x 2 session = 0 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff\n\nรายละเอียดจากตาราง:\nPC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 25 บาท\n•    General Adult: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "confidence": 0.97,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.0124,
+    "elapsed_sec": 0.0124,
+    "llm_call_count": 1,
+    "llm_elapsed_ms_total": 0.0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.93,
+        "detail": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "specific exact operation skips LLM-first",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "competing_domain_signals"
+          ],
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "equipment",
+              "operation": "price_calculate",
+              "confidence": 0.66,
+              "reason": "domain keyword score=1"
+            },
+            {
+              "id": "c3",
+              "domain": "service_fee",
+              "operation": "count",
+              "confidence": 0.66,
+              "reason": "operation keyword score=1"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.93,
+            "reason": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/service_fee",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.93
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.93,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 4.85,
+          "elapsed_sec": 0.0049,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "service_fee/service_fee_query",
+          "intent": "service_fee/price_calculate",
+          "has_known_game": false,
+          "has_service_or_zone": true,
+          "intent_candidates": [
+            {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "score": 0.99,
+              "reasons": [
+                "price_terms",
+                "service_or_zone_target",
+                "price_filters",
+                "route_prior",
+                "intent_domain_prior",
+                "intent_operation_prior"
+              ]
+            },
+            {
+              "domain": "equipment",
+              "operation": "list",
+              "score": 0.16,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            },
+            {
+              "domain": "games",
+              "operation": "list",
+              "score": 0.15,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "early_price_deterministic",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.13,
+          "elapsed_sec": 0.0001,
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 0.35,
+          "elapsed_sec": 0.0003,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "early_price_fast_path",
+        "confidence": 0.97,
+        "detail": "clear service fee query bypasses candidate scoring",
+        "metadata": {
+          "service": "pc",
+          "mode": "deterministic_calculator_fast"
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.65,
+          "elapsed_sec": 0.0006,
+          "format_thai_style_ms": 0.28,
+          "total_elapsed_ms": 12.34,
+          "total_elapsed_sec": 0.0123
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-0005-SF-005",
+    "group": "service_fee",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "นักศึกษาต่างมหาลัย เล่น PC 30 นาที เสียกี่บาท",
+    "llm_required": false,
+    "answer": "ระยะเวลาที่ถามคือ 30 นาที ใช้ 1 session ตามแพ็กเกจ PC 1 ชั่วโมง\nคำตอบราคา: 25 บาท สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน\n•    คำนวณจาก 25 บาท/session x 1 session = 25 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น\n\nรายละเอียดจากตาราง:\nPC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 25 บาท\n•    General Adult: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "confidence": 0.97,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.0196,
+    "elapsed_sec": 0.0196,
+    "llm_call_count": 1,
+    "llm_elapsed_ms_total": 0.0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.93,
+        "detail": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "specific exact operation skips LLM-first",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "competing_domain_signals"
+          ],
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "equipment",
+              "operation": "price_calculate",
+              "confidence": 0.66,
+              "reason": "domain keyword score=1"
+            },
+            {
+              "id": "c3",
+              "domain": "service_fee",
+              "operation": "count",
+              "confidence": 0.66,
+              "reason": "operation keyword score=1"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.93,
+            "reason": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/service_fee",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.93
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.93,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 4.38,
+          "elapsed_sec": 0.0044,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "service_fee/service_fee_query",
+          "intent": "service_fee/price_calculate",
+          "has_known_game": false,
+          "has_service_or_zone": true,
+          "intent_candidates": [
+            {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "score": 0.99,
+              "reasons": [
+                "price_terms",
+                "service_or_zone_target",
+                "price_filters",
+                "route_prior",
+                "intent_domain_prior",
+                "intent_operation_prior"
+              ]
+            },
+            {
+              "domain": "equipment",
+              "operation": "list",
+              "score": 0.16,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            },
+            {
+              "domain": "games",
+              "operation": "list",
+              "score": 0.15,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "early_price_deterministic",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.9,
+          "elapsed_sec": 0.0009,
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 0.59,
+          "elapsed_sec": 0.0006,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "early_price_fast_path",
+        "confidence": 0.97,
+        "detail": "clear service fee query bypasses candidate scoring",
+        "metadata": {
+          "service": "pc",
+          "mode": "deterministic_calculator_fast"
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 1.11,
+          "elapsed_sec": 0.0011,
+          "format_thai_style_ms": 0.46,
+          "total_elapsed_ms": 19.58,
+          "total_elapsed_sec": 0.0196
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-0006-SF-006",
+    "group": "service_fee",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "นักศึกษาต่างมหาลัย เล่น PC 1 ชั่วโมง เสียกี่บาท",
+    "llm_required": false,
+    "answer": "ระยะเวลาที่ถามคือ 1 ชั่วโมง ใช้ 1 session ตามแพ็กเกจ PC 1 ชั่วโมง\nคำตอบราคา: 25 บาท สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน\n•    คำนวณจาก 25 บาท/session x 1 session = 25 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น\n\nรายละเอียดจากตาราง:\nPC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 25 บาท\n•    General Adult: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "confidence": 0.97,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.0188,
+    "elapsed_sec": 0.0188,
+    "llm_call_count": 1,
+    "llm_elapsed_ms_total": 0.0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.93,
+        "detail": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "specific exact operation skips LLM-first",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "competing_domain_signals"
+          ],
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "equipment",
+              "operation": "price_calculate",
+              "confidence": 0.66,
+              "reason": "domain keyword score=1"
+            },
+            {
+              "id": "c3",
+              "domain": "service_fee",
+              "operation": "count",
+              "confidence": 0.66,
+              "reason": "operation keyword score=1"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.93,
+            "reason": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/service_fee",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.93
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.93,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 5.88,
+          "elapsed_sec": 0.0059,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "service_fee/service_fee_query",
+          "intent": "service_fee/price_calculate",
+          "has_known_game": false,
+          "has_service_or_zone": true,
+          "intent_candidates": [
+            {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "score": 0.99,
+              "reasons": [
+                "price_terms",
+                "service_or_zone_target",
+                "price_filters",
+                "route_prior",
+                "intent_domain_prior",
+                "intent_operation_prior"
+              ]
+            },
+            {
+              "domain": "equipment",
+              "operation": "list",
+              "score": 0.16,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            },
+            {
+              "domain": "games",
+              "operation": "list",
+              "score": 0.15,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "early_price_deterministic",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.81,
+          "elapsed_sec": 0.0008,
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 0.54,
+          "elapsed_sec": 0.0005,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "early_price_fast_path",
+        "confidence": 0.97,
+        "detail": "clear service fee query bypasses candidate scoring",
+        "metadata": {
+          "service": "pc",
+          "mode": "deterministic_calculator_fast"
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.73,
+          "elapsed_sec": 0.0007,
+          "format_thai_style_ms": 0.28,
+          "total_elapsed_ms": 18.77,
+          "total_elapsed_sec": 0.0188
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-0007-SF-007",
+    "group": "service_fee",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "นักศึกษาต่างมหาลัย เล่น PC 2 ชั่วโมง เสียกี่บาท",
+    "llm_required": false,
+    "answer": "ระยะเวลาที่ถามคือ 2 ชั่วโมง ใช้ 2 session ตามแพ็กเกจ PC 1 ชั่วโมง\nคำตอบราคา: 50 บาท สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน\n•    คำนวณจาก 25 บาท/session x 2 session = 50 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น\n\nรายละเอียดจากตาราง:\nPC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 25 บาท\n•    General Adult: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "confidence": 0.97,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.0152,
+    "elapsed_sec": 0.0152,
+    "llm_call_count": 1,
+    "llm_elapsed_ms_total": 0.0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.93,
+        "detail": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "specific exact operation skips LLM-first",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "competing_domain_signals"
+          ],
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "equipment",
+              "operation": "price_calculate",
+              "confidence": 0.66,
+              "reason": "domain keyword score=1"
+            },
+            {
+              "id": "c3",
+              "domain": "service_fee",
+              "operation": "count",
+              "confidence": 0.66,
+              "reason": "operation keyword score=1"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.93,
+            "reason": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/service_fee",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.93
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.93,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 4.72,
+          "elapsed_sec": 0.0047,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "service_fee/service_fee_query",
+          "intent": "service_fee/price_calculate",
+          "has_known_game": false,
+          "has_service_or_zone": true,
+          "intent_candidates": [
+            {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "score": 0.99,
+              "reasons": [
+                "price_terms",
+                "service_or_zone_target",
+                "price_filters",
+                "route_prior",
+                "intent_domain_prior",
+                "intent_operation_prior"
+              ]
+            },
+            {
+              "domain": "equipment",
+              "operation": "list",
+              "score": 0.16,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            },
+            {
+              "domain": "games",
+              "operation": "list",
+              "score": 0.15,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "early_price_deterministic",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.54,
+          "elapsed_sec": 0.0005,
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 0.37,
+          "elapsed_sec": 0.0004,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "early_price_fast_path",
+        "confidence": 0.97,
+        "detail": "clear service fee query bypasses candidate scoring",
+        "metadata": {
+          "service": "pc",
+          "mode": "deterministic_calculator_fast"
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.69,
+          "elapsed_sec": 0.0007,
+          "format_thai_style_ms": 0.27,
+          "total_elapsed_ms": 15.15,
+          "total_elapsed_sec": 0.0151
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-0008-SF-008",
+    "group": "service_fee",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "บุคคลทั่วไป เล่น PC 30 นาที เสียกี่บาท",
+    "llm_required": false,
+    "answer": "ระยะเวลาที่ถามคือ 30 นาที ใช้ 1 session ตามแพ็กเกจ PC 1 ชั่วโมง\nคำตอบราคา: 70 บาท สำหรับกลุ่ม General Adult / บุคคลทั่วไป\n•    คำนวณจาก 70 บาท/session x 1 session = 70 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป\n\nรายละเอียดจากตาราง:\nPC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 25 บาท\n•    General Adult: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "confidence": 0.97,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.015,
+    "elapsed_sec": 0.015,
+    "llm_call_count": 1,
+    "llm_elapsed_ms_total": 0.0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.93,
+        "detail": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "specific exact operation skips LLM-first",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "competing_domain_signals"
+          ],
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "equipment",
+              "operation": "price_calculate",
+              "confidence": 0.66,
+              "reason": "domain keyword score=1"
+            },
+            {
+              "id": "c3",
+              "domain": "service_fee",
+              "operation": "count",
+              "confidence": 0.66,
+              "reason": "operation keyword score=1"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.93,
+            "reason": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/service_fee",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.93
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.93,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 5.17,
+          "elapsed_sec": 0.0052,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "service_fee/service_fee_query",
+          "intent": "service_fee/price_calculate",
+          "has_known_game": false,
+          "has_service_or_zone": true,
+          "intent_candidates": [
+            {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "score": 0.99,
+              "reasons": [
+                "price_terms",
+                "service_or_zone_target",
+                "price_filters",
+                "route_prior",
+                "intent_domain_prior",
+                "intent_operation_prior"
+              ]
+            },
+            {
+              "domain": "equipment",
+              "operation": "list",
+              "score": 0.16,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            },
+            {
+              "domain": "games",
+              "operation": "list",
+              "score": 0.15,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "early_price_deterministic",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 1.22,
+          "elapsed_sec": 0.0012,
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 0.44,
+          "elapsed_sec": 0.0004,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "early_price_fast_path",
+        "confidence": 0.97,
+        "detail": "clear service fee query bypasses candidate scoring",
+        "metadata": {
+          "service": "pc",
+          "mode": "deterministic_calculator_fast"
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.61,
+          "elapsed_sec": 0.0006,
+          "format_thai_style_ms": 0.24,
+          "total_elapsed_ms": 15.01,
+          "total_elapsed_sec": 0.015
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-0009-SF-009",
+    "group": "service_fee",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "บุคคลทั่วไป เล่น PC 1 ชั่วโมง เสียกี่บาท",
+    "llm_required": false,
+    "answer": "ระยะเวลาที่ถามคือ 1 ชั่วโมง ใช้ 1 session ตามแพ็กเกจ PC 1 ชั่วโมง\nคำตอบราคา: 70 บาท สำหรับกลุ่ม General Adult / บุคคลทั่วไป\n•    คำนวณจาก 70 บาท/session x 1 session = 70 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป\n\nรายละเอียดจากตาราง:\nPC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 25 บาท\n•    General Adult: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "confidence": 0.97,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.0142,
+    "elapsed_sec": 0.0141,
+    "llm_call_count": 1,
+    "llm_elapsed_ms_total": 0.0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.93,
+        "detail": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "specific exact operation skips LLM-first",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "competing_domain_signals"
+          ],
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "equipment",
+              "operation": "price_calculate",
+              "confidence": 0.66,
+              "reason": "domain keyword score=1"
+            },
+            {
+              "id": "c3",
+              "domain": "service_fee",
+              "operation": "count",
+              "confidence": 0.66,
+              "reason": "operation keyword score=1"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.93,
+            "reason": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/service_fee",
+        "metadata": {
+          "elapsed_ms": 0.04,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.93
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.93,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 3.63,
+          "elapsed_sec": 0.0036,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "service_fee/service_fee_query",
+          "intent": "service_fee/price_calculate",
+          "has_known_game": false,
+          "has_service_or_zone": true,
+          "intent_candidates": [
+            {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "score": 0.99,
+              "reasons": [
+                "price_terms",
+                "service_or_zone_target",
+                "price_filters",
+                "route_prior",
+                "intent_domain_prior",
+                "intent_operation_prior"
+              ]
+            },
+            {
+              "domain": "equipment",
+              "operation": "list",
+              "score": 0.16,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            },
+            {
+              "domain": "games",
+              "operation": "list",
+              "score": 0.15,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "early_price_deterministic",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 1.94,
+          "elapsed_sec": 0.0019,
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 0.52,
+          "elapsed_sec": 0.0005,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "early_price_fast_path",
+        "confidence": 0.97,
+        "detail": "clear service fee query bypasses candidate scoring",
+        "metadata": {
+          "service": "pc",
+          "mode": "deterministic_calculator_fast"
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 1.03,
+          "elapsed_sec": 0.001,
+          "format_thai_style_ms": 0.43,
+          "total_elapsed_ms": 14.13,
+          "total_elapsed_sec": 0.0141
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-0010-SF-010",
+    "group": "service_fee",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "บุคคลทั่วไป เล่น PC 2 ชั่วโมง เสียกี่บาท",
+    "llm_required": false,
+    "answer": "ระยะเวลาที่ถามคือ 2 ชั่วโมง ใช้ 2 session ตามแพ็กเกจ PC 1 ชั่วโมง\nคำตอบราคา: 140 บาท สำหรับกลุ่ม General Adult / บุคคลทั่วไป\n•    คำนวณจาก 70 บาท/session x 2 session = 140 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป\n\nรายละเอียดจากตาราง:\nPC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 25 บาท\n•    General Adult: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "confidence": 0.97,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.015,
+    "elapsed_sec": 0.015,
+    "llm_call_count": 1,
+    "llm_elapsed_ms_total": 0.0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.93,
+        "detail": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "specific exact operation skips LLM-first",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "competing_domain_signals"
+          ],
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "equipment",
+              "operation": "price_calculate",
+              "confidence": 0.66,
+              "reason": "domain keyword score=1"
+            },
+            {
+              "id": "c3",
+              "domain": "service_fee",
+              "operation": "count",
+              "confidence": 0.66,
+              "reason": "operation keyword score=1"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.93,
+            "reason": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/service_fee",
+        "metadata": {
+          "elapsed_ms": 0.03,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.93
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.93,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 6.63,
+          "elapsed_sec": 0.0066,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "service_fee/service_fee_query",
+          "intent": "service_fee/price_calculate",
+          "has_known_game": false,
+          "has_service_or_zone": true,
+          "intent_candidates": [
+            {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "score": 0.99,
+              "reasons": [
+                "price_terms",
+                "service_or_zone_target",
+                "price_filters",
+                "route_prior",
+                "intent_domain_prior",
+                "intent_operation_prior"
+              ]
+            },
+            {
+              "domain": "equipment",
+              "operation": "list",
+              "score": 0.16,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            },
+            {
+              "domain": "games",
+              "operation": "list",
+              "score": 0.15,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "early_price_deterministic",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 1.14,
+          "elapsed_sec": 0.0011,
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 0.35,
+          "elapsed_sec": 0.0003,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "early_price_fast_path",
+        "confidence": 0.97,
+        "detail": "clear service fee query bypasses candidate scoring",
+        "metadata": {
+          "service": "pc",
+          "mode": "deterministic_calculator_fast"
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.6,
+          "elapsed_sec": 0.0006,
+          "format_thai_style_ms": 0.24,
+          "total_elapsed_ms": 14.94,
+          "total_elapsed_sec": 0.0149
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-0011-SF-011",
+    "group": "service_fee",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "PS5 ราคาเท่าไหร่",
+    "llm_required": false,
+    "answer": "PlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "confidence": 0.97,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.008,
+    "elapsed_sec": 0.008,
+    "llm_call_count": 1,
+    "llm_elapsed_ms_total": 0.0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.93,
+        "detail": "domain_terms=4; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "specific exact operation skips LLM-first",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "competing_domain_signals"
+          ],
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "equipment",
+              "operation": "price_calculate",
+              "confidence": 0.66,
+              "reason": "domain keyword score=1"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.93,
+            "reason": "domain_terms=4; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/service_fee",
+        "metadata": {
+          "elapsed_ms": 0.01,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.93
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.93,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 2.89,
+          "elapsed_sec": 0.0029,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "service_fee/service_fee_query",
+          "intent": "service_fee/price_calculate",
+          "has_known_game": false,
+          "has_service_or_zone": true,
+          "intent_candidates": [
+            {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "score": 0.99,
+              "reasons": [
+                "price_terms",
+                "service_or_zone_target",
+                "route_prior",
+                "intent_domain_prior",
+                "intent_operation_prior"
+              ]
+            },
+            {
+              "domain": "equipment",
+              "operation": "list",
+              "score": 0.16,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            },
+            {
+              "domain": "games",
+              "operation": "list",
+              "score": 0.15,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "early_price_deterministic",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001,
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 0.25,
+          "elapsed_sec": 0.0003,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "early_price_fast_path",
+        "confidence": 0.97,
+        "detail": "clear service fee query bypasses candidate scoring",
+        "metadata": {
+          "service": "ps5",
+          "mode": "deterministic_calculator_fast"
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.23,
+          "elapsed_sec": 0.0002,
+          "format_thai_style_ms": 0.12,
+          "total_elapsed_ms": 7.97,
+          "total_elapsed_sec": 0.008
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-0012-SF-012",
+    "group": "service_fee",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "นักศึกษา PSU เล่น PS5 30 นาที เสียกี่บาท",
+    "llm_required": false,
+    "answer": "ระยะเวลาที่ถามคือ 30 นาที ใช้ 1 session ตามแพ็กเกจ PlayStation 5 60 นาที\nคำตอบราคา: 0 บาท สำหรับกลุ่ม PSU Student and Staff\n•    คำนวณจาก 0 บาท/session x 1 session = 0 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff\n\nรายละเอียดจากตาราง:\nPlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "confidence": 0.97,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.0162,
+    "elapsed_sec": 0.0161,
+    "llm_call_count": 1,
+    "llm_elapsed_ms_total": 0.0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.93,
+        "detail": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "specific exact operation skips LLM-first",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "competing_domain_signals"
+          ],
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "equipment",
+              "operation": "price_calculate",
+              "confidence": 0.66,
+              "reason": "domain keyword score=1"
+            },
+            {
+              "id": "c3",
+              "domain": "service_fee",
+              "operation": "count",
+              "confidence": 0.66,
+              "reason": "operation keyword score=1"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.93,
+            "reason": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/service_fee",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.93
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.93,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 6.43,
+          "elapsed_sec": 0.0064,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "service_fee/service_fee_query",
+          "intent": "service_fee/price_calculate",
+          "has_known_game": false,
+          "has_service_or_zone": true,
+          "intent_candidates": [
+            {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "score": 0.99,
+              "reasons": [
+                "price_terms",
+                "service_or_zone_target",
+                "price_filters",
+                "route_prior",
+                "intent_domain_prior",
+                "intent_operation_prior"
+              ]
+            },
+            {
+              "domain": "equipment",
+              "operation": "list",
+              "score": 0.16,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            },
+            {
+              "domain": "games",
+              "operation": "list",
+              "score": 0.15,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "early_price_deterministic",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.24,
+          "elapsed_sec": 0.0002,
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 0.52,
+          "elapsed_sec": 0.0005,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "early_price_fast_path",
+        "confidence": 0.97,
+        "detail": "clear service fee query bypasses candidate scoring",
+        "metadata": {
+          "service": "ps5",
+          "mode": "deterministic_calculator_fast"
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.67,
+          "elapsed_sec": 0.0007,
+          "format_thai_style_ms": 0.48,
+          "total_elapsed_ms": 16.13,
+          "total_elapsed_sec": 0.0161
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-0013-SF-013",
+    "group": "service_fee",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "นักศึกษา PSU เล่น PS5 1 ชั่วโมง เสียกี่บาท",
+    "llm_required": false,
+    "answer": "ระยะเวลาที่ถามคือ 1 ชั่วโมง ใช้ 1 session ตามแพ็กเกจ PlayStation 5 60 นาที\nคำตอบราคา: 0 บาท สำหรับกลุ่ม PSU Student and Staff\n•    คำนวณจาก 0 บาท/session x 1 session = 0 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff\n\nรายละเอียดจากตาราง:\nPlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "confidence": 0.97,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.017,
+    "elapsed_sec": 0.017,
+    "llm_call_count": 1,
+    "llm_elapsed_ms_total": 0.0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.93,
+        "detail": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "specific exact operation skips LLM-first",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "competing_domain_signals"
+          ],
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "equipment",
+              "operation": "price_calculate",
+              "confidence": 0.66,
+              "reason": "domain keyword score=1"
+            },
+            {
+              "id": "c3",
+              "domain": "service_fee",
+              "operation": "count",
+              "confidence": 0.66,
+              "reason": "operation keyword score=1"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.93,
+            "reason": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/service_fee",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.93
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.93,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 5.13,
+          "elapsed_sec": 0.0051,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "service_fee/service_fee_query",
+          "intent": "service_fee/price_calculate",
+          "has_known_game": false,
+          "has_service_or_zone": true,
+          "intent_candidates": [
+            {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "score": 0.99,
+              "reasons": [
+                "price_terms",
+                "service_or_zone_target",
+                "price_filters",
+                "route_prior",
+                "intent_domain_prior",
+                "intent_operation_prior"
+              ]
+            },
+            {
+              "domain": "equipment",
+              "operation": "list",
+              "score": 0.16,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            },
+            {
+              "domain": "games",
+              "operation": "list",
+              "score": 0.15,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "early_price_deterministic",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.17,
+          "elapsed_sec": 0.0002,
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 0.69,
+          "elapsed_sec": 0.0007,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "early_price_fast_path",
+        "confidence": 0.97,
+        "detail": "clear service fee query bypasses candidate scoring",
+        "metadata": {
+          "service": "ps5",
+          "mode": "deterministic_calculator_fast"
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.76,
+          "elapsed_sec": 0.0008,
+          "format_thai_style_ms": 0.53,
+          "total_elapsed_ms": 16.93,
+          "total_elapsed_sec": 0.0169
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-0014-SF-014",
+    "group": "service_fee",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "นักศึกษา PSU เล่น PS5 2 ชั่วโมง เสียกี่บาท",
+    "llm_required": false,
+    "answer": "ระยะเวลาที่ถามคือ 2 ชั่วโมง ใช้ 2 session ตามแพ็กเกจ PlayStation 5 60 นาที\nคำตอบราคา: 0 บาท สำหรับกลุ่ม PSU Student and Staff\n•    คำนวณจาก 0 บาท/session x 2 session = 0 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff\n\nรายละเอียดจากตาราง:\nPlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "confidence": 0.97,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.0101,
+    "elapsed_sec": 0.01,
+    "llm_call_count": 1,
+    "llm_elapsed_ms_total": 0.0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.93,
+        "detail": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "specific exact operation skips LLM-first",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "competing_domain_signals"
+          ],
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "equipment",
+              "operation": "price_calculate",
+              "confidence": 0.66,
+              "reason": "domain keyword score=1"
+            },
+            {
+              "id": "c3",
+              "domain": "service_fee",
+              "operation": "count",
+              "confidence": 0.66,
+              "reason": "operation keyword score=1"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.93,
+            "reason": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/service_fee",
+        "metadata": {
+          "elapsed_ms": 0.01,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.93
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.93,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 2.9,
+          "elapsed_sec": 0.0029,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "service_fee/service_fee_query",
+          "intent": "service_fee/price_calculate",
+          "has_known_game": false,
+          "has_service_or_zone": true,
+          "intent_candidates": [
+            {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "score": 0.99,
+              "reasons": [
+                "price_terms",
+                "service_or_zone_target",
+                "price_filters",
+                "route_prior",
+                "intent_domain_prior",
+                "intent_operation_prior"
+              ]
+            },
+            {
+              "domain": "equipment",
+              "operation": "list",
+              "score": 0.16,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            },
+            {
+              "domain": "games",
+              "operation": "list",
+              "score": 0.15,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "early_price_deterministic",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001,
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 0.38,
+          "elapsed_sec": 0.0004,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "early_price_fast_path",
+        "confidence": 0.97,
+        "detail": "clear service fee query bypasses candidate scoring",
+        "metadata": {
+          "service": "ps5",
+          "mode": "deterministic_calculator_fast"
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.39,
+          "elapsed_sec": 0.0004,
+          "format_thai_style_ms": 0.23,
+          "total_elapsed_ms": 10.03,
+          "total_elapsed_sec": 0.01
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-0015-SF-015",
+    "group": "service_fee",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "นักศึกษาต่างมหาลัย เล่น PS5 30 นาที เสียกี่บาท",
+    "llm_required": false,
+    "answer": "ระยะเวลาที่ถามคือ 30 นาที ใช้ 1 session ตามแพ็กเกจ PlayStation 5 60 นาที\nคำตอบราคา: 50 บาท สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน\n•    คำนวณจาก 50 บาท/session x 1 session = 50 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น\n\nรายละเอียดจากตาราง:\nPlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "confidence": 0.97,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.0107,
+    "elapsed_sec": 0.0106,
+    "llm_call_count": 1,
+    "llm_elapsed_ms_total": 0.0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.93,
+        "detail": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "specific exact operation skips LLM-first",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "competing_domain_signals"
+          ],
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "equipment",
+              "operation": "price_calculate",
+              "confidence": 0.66,
+              "reason": "domain keyword score=1"
+            },
+            {
+              "id": "c3",
+              "domain": "service_fee",
+              "operation": "count",
+              "confidence": 0.66,
+              "reason": "operation keyword score=1"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.93,
+            "reason": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/service_fee",
+        "metadata": {
+          "elapsed_ms": 0.01,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.93
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.93,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 3.02,
+          "elapsed_sec": 0.003,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "service_fee/service_fee_query",
+          "intent": "service_fee/price_calculate",
+          "has_known_game": false,
+          "has_service_or_zone": true,
+          "intent_candidates": [
+            {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "score": 0.99,
+              "reasons": [
+                "price_terms",
+                "service_or_zone_target",
+                "price_filters",
+                "route_prior",
+                "intent_domain_prior",
+                "intent_operation_prior"
+              ]
+            },
+            {
+              "domain": "equipment",
+              "operation": "list",
+              "score": 0.16,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            },
+            {
+              "domain": "games",
+              "operation": "list",
+              "score": 0.15,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "early_price_deterministic",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.64,
+          "elapsed_sec": 0.0006,
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 0.47,
+          "elapsed_sec": 0.0005,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "early_price_fast_path",
+        "confidence": 0.97,
+        "detail": "clear service fee query bypasses candidate scoring",
+        "metadata": {
+          "service": "ps5",
+          "mode": "deterministic_calculator_fast"
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.49,
+          "elapsed_sec": 0.0005,
+          "format_thai_style_ms": 0.3,
+          "total_elapsed_ms": 10.61,
+          "total_elapsed_sec": 0.0106
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-0016-SF-016",
+    "group": "service_fee",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "นักศึกษาต่างมหาลัย เล่น PS5 1 ชั่วโมง เสียกี่บาท",
+    "llm_required": false,
+    "answer": "ระยะเวลาที่ถามคือ 1 ชั่วโมง ใช้ 1 session ตามแพ็กเกจ PlayStation 5 60 นาที\nคำตอบราคา: 50 บาท สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน\n•    คำนวณจาก 50 บาท/session x 1 session = 50 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น\n\nรายละเอียดจากตาราง:\nPlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "confidence": 0.97,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.0114,
+    "elapsed_sec": 0.0114,
+    "llm_call_count": 1,
+    "llm_elapsed_ms_total": 0.0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.93,
+        "detail": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "specific exact operation skips LLM-first",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "competing_domain_signals"
+          ],
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "equipment",
+              "operation": "price_calculate",
+              "confidence": 0.66,
+              "reason": "domain keyword score=1"
+            },
+            {
+              "id": "c3",
+              "domain": "service_fee",
+              "operation": "count",
+              "confidence": 0.66,
+              "reason": "operation keyword score=1"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.93,
+            "reason": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/service_fee",
+        "metadata": {
+          "elapsed_ms": 0.01,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.93
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.93,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 3.18,
+          "elapsed_sec": 0.0032,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "service_fee/service_fee_query",
+          "intent": "service_fee/price_calculate",
+          "has_known_game": false,
+          "has_service_or_zone": true,
+          "intent_candidates": [
+            {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "score": 0.99,
+              "reasons": [
+                "price_terms",
+                "service_or_zone_target",
+                "price_filters",
+                "route_prior",
+                "intent_domain_prior",
+                "intent_operation_prior"
+              ]
+            },
+            {
+              "domain": "equipment",
+              "operation": "list",
+              "score": 0.16,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            },
+            {
+              "domain": "games",
+              "operation": "list",
+              "score": 0.15,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "early_price_deterministic",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.83,
+          "elapsed_sec": 0.0008,
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 0.4,
+          "elapsed_sec": 0.0004,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "early_price_fast_path",
+        "confidence": 0.97,
+        "detail": "clear service fee query bypasses candidate scoring",
+        "metadata": {
+          "service": "ps5",
+          "mode": "deterministic_calculator_fast"
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.37,
+          "elapsed_sec": 0.0004,
+          "format_thai_style_ms": 0.25,
+          "total_elapsed_ms": 11.34,
+          "total_elapsed_sec": 0.0113
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-0017-SF-017",
+    "group": "service_fee",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "นักศึกษาต่างมหาลัย เล่น PS5 2 ชั่วโมง เสียกี่บาท",
+    "llm_required": false,
+    "answer": "ระยะเวลาที่ถามคือ 2 ชั่วโมง ใช้ 2 session ตามแพ็กเกจ PlayStation 5 60 นาที\nคำตอบราคา: 100 บาท สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน\n•    คำนวณจาก 50 บาท/session x 2 session = 100 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น\n\nรายละเอียดจากตาราง:\nPlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "confidence": 0.97,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.0141,
+    "elapsed_sec": 0.014,
+    "llm_call_count": 1,
+    "llm_elapsed_ms_total": 0.0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.93,
+        "detail": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "specific exact operation skips LLM-first",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "competing_domain_signals"
+          ],
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "equipment",
+              "operation": "price_calculate",
+              "confidence": 0.66,
+              "reason": "domain keyword score=1"
+            },
+            {
+              "id": "c3",
+              "domain": "service_fee",
+              "operation": "count",
+              "confidence": 0.66,
+              "reason": "operation keyword score=1"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.93,
+            "reason": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/service_fee",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.93
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.93,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 3.95,
+          "elapsed_sec": 0.0039,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "service_fee/service_fee_query",
+          "intent": "service_fee/price_calculate",
+          "has_known_game": false,
+          "has_service_or_zone": true,
+          "intent_candidates": [
+            {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "score": 0.99,
+              "reasons": [
+                "price_terms",
+                "service_or_zone_target",
+                "price_filters",
+                "route_prior",
+                "intent_domain_prior",
+                "intent_operation_prior"
+              ]
+            },
+            {
+              "domain": "equipment",
+              "operation": "list",
+              "score": 0.16,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            },
+            {
+              "domain": "games",
+              "operation": "list",
+              "score": 0.15,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "early_price_deterministic",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.59,
+          "elapsed_sec": 0.0006,
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 0.56,
+          "elapsed_sec": 0.0006,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "early_price_fast_path",
+        "confidence": 0.97,
+        "detail": "clear service fee query bypasses candidate scoring",
+        "metadata": {
+          "service": "ps5",
+          "mode": "deterministic_calculator_fast"
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.57,
+          "elapsed_sec": 0.0006,
+          "format_thai_style_ms": 0.4,
+          "total_elapsed_ms": 14.0,
+          "total_elapsed_sec": 0.014
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-0018-SF-018",
+    "group": "service_fee",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "บุคคลทั่วไป เล่น PS5 30 นาที เสียกี่บาท",
+    "llm_required": false,
+    "answer": "ระยะเวลาที่ถามคือ 30 นาที ใช้ 1 session ตามแพ็กเกจ PlayStation 5 60 นาที\nคำตอบราคา: 150 บาท สำหรับกลุ่ม General Adult / บุคคลทั่วไป\n•    คำนวณจาก 150 บาท/session x 1 session = 150 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป\n\nรายละเอียดจากตาราง:\nPlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "confidence": 0.97,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.015,
+    "elapsed_sec": 0.015,
+    "llm_call_count": 1,
+    "llm_elapsed_ms_total": 0.0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.93,
+        "detail": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "specific exact operation skips LLM-first",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "competing_domain_signals"
+          ],
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "equipment",
+              "operation": "price_calculate",
+              "confidence": 0.66,
+              "reason": "domain keyword score=1"
+            },
+            {
+              "id": "c3",
+              "domain": "service_fee",
+              "operation": "count",
+              "confidence": 0.66,
+              "reason": "operation keyword score=1"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.93,
+            "reason": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/service_fee",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.93
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.93,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 5.51,
+          "elapsed_sec": 0.0055,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "service_fee/service_fee_query",
+          "intent": "service_fee/price_calculate",
+          "has_known_game": false,
+          "has_service_or_zone": true,
+          "intent_candidates": [
+            {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "score": 0.99,
+              "reasons": [
+                "price_terms",
+                "service_or_zone_target",
+                "price_filters",
+                "route_prior",
+                "intent_domain_prior",
+                "intent_operation_prior"
+              ]
+            },
+            {
+              "domain": "equipment",
+              "operation": "list",
+              "score": 0.16,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            },
+            {
+              "domain": "games",
+              "operation": "list",
+              "score": 0.15,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "early_price_deterministic",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 1.34,
+          "elapsed_sec": 0.0013,
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 0.34,
+          "elapsed_sec": 0.0003,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "early_price_fast_path",
+        "confidence": 0.97,
+        "detail": "clear service fee query bypasses candidate scoring",
+        "metadata": {
+          "service": "ps5",
+          "mode": "deterministic_calculator_fast"
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.41,
+          "elapsed_sec": 0.0004,
+          "format_thai_style_ms": 0.29,
+          "total_elapsed_ms": 14.94,
+          "total_elapsed_sec": 0.0149
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-0019-SF-019",
+    "group": "service_fee",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "บุคคลทั่วไป เล่น PS5 1 ชั่วโมง เสียกี่บาท",
+    "llm_required": false,
+    "answer": "ระยะเวลาที่ถามคือ 1 ชั่วโมง ใช้ 1 session ตามแพ็กเกจ PlayStation 5 60 นาที\nคำตอบราคา: 150 บาท สำหรับกลุ่ม General Adult / บุคคลทั่วไป\n•    คำนวณจาก 150 บาท/session x 1 session = 150 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป\n\nรายละเอียดจากตาราง:\nPlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "confidence": 0.97,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.0137,
+    "elapsed_sec": 0.0137,
+    "llm_call_count": 1,
+    "llm_elapsed_ms_total": 0.0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.93,
+        "detail": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "specific exact operation skips LLM-first",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "competing_domain_signals"
+          ],
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "equipment",
+              "operation": "price_calculate",
+              "confidence": 0.66,
+              "reason": "domain keyword score=1"
+            },
+            {
+              "id": "c3",
+              "domain": "service_fee",
+              "operation": "count",
+              "confidence": 0.66,
+              "reason": "operation keyword score=1"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.93,
+            "reason": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/service_fee",
+        "metadata": {
+          "elapsed_ms": 0.01,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.93
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.93,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 5.06,
+          "elapsed_sec": 0.0051,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "service_fee/service_fee_query",
+          "intent": "service_fee/price_calculate",
+          "has_known_game": false,
+          "has_service_or_zone": true,
+          "intent_candidates": [
+            {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "score": 0.99,
+              "reasons": [
+                "price_terms",
+                "service_or_zone_target",
+                "price_filters",
+                "route_prior",
+                "intent_domain_prior",
+                "intent_operation_prior"
+              ]
+            },
+            {
+              "domain": "equipment",
+              "operation": "list",
+              "score": 0.16,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            },
+            {
+              "domain": "games",
+              "operation": "list",
+              "score": 0.15,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "early_price_deterministic",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 1.16,
+          "elapsed_sec": 0.0012,
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 0.35,
+          "elapsed_sec": 0.0004,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "early_price_fast_path",
+        "confidence": 0.97,
+        "detail": "clear service fee query bypasses candidate scoring",
+        "metadata": {
+          "service": "ps5",
+          "mode": "deterministic_calculator_fast"
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.35,
+          "elapsed_sec": 0.0003,
+          "format_thai_style_ms": 0.23,
+          "total_elapsed_ms": 13.68,
+          "total_elapsed_sec": 0.0137
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-0020-SF-020",
+    "group": "service_fee",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "บุคคลทั่วไป เล่น PS5 2 ชั่วโมง เสียกี่บาท",
+    "llm_required": false,
+    "answer": "ระยะเวลาที่ถามคือ 2 ชั่วโมง ใช้ 2 session ตามแพ็กเกจ PlayStation 5 60 นาที\nคำตอบราคา: 300 บาท สำหรับกลุ่ม General Adult / บุคคลทั่วไป\n•    คำนวณจาก 150 บาท/session x 2 session = 300 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป\n\nรายละเอียดจากตาราง:\nPlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "confidence": 0.97,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.0158,
+    "elapsed_sec": 0.0158,
+    "llm_call_count": 1,
+    "llm_elapsed_ms_total": 0.0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.93,
+        "detail": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "specific exact operation skips LLM-first",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "competing_domain_signals"
+          ],
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "equipment",
+              "operation": "price_calculate",
+              "confidence": 0.66,
+              "reason": "domain keyword score=1"
+            },
+            {
+              "id": "c3",
+              "domain": "service_fee",
+              "operation": "count",
+              "confidence": 0.66,
+              "reason": "operation keyword score=1"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.93,
+            "reason": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/service_fee",
+        "metadata": {
+          "elapsed_ms": 0.01,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.93
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.93,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 5.49,
+          "elapsed_sec": 0.0055,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "service_fee/service_fee_query",
+          "intent": "service_fee/price_calculate",
+          "has_known_game": false,
+          "has_service_or_zone": true,
+          "intent_candidates": [
+            {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "score": 0.99,
+              "reasons": [
+                "price_terms",
+                "service_or_zone_target",
+                "price_filters",
+                "route_prior",
+                "intent_domain_prior",
+                "intent_operation_prior"
+              ]
+            },
+            {
+              "domain": "equipment",
+              "operation": "list",
+              "score": 0.16,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            },
+            {
+              "domain": "games",
+              "operation": "list",
+              "score": 0.15,
+              "reasons": [
+                "service_or_zone_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "early_price_deterministic",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 1.3,
+          "elapsed_sec": 0.0013,
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 0.41,
+          "elapsed_sec": 0.0004,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "early_price_fast_path",
+        "confidence": 0.97,
+        "detail": "clear service fee query bypasses candidate scoring",
+        "metadata": {
+          "service": "ps5",
+          "mode": "deterministic_calculator_fast"
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:deterministic_calculator_fast",
+        "metadata": {
+          "elapsed_ms": 0.5,
+          "elapsed_sec": 0.0005,
+          "format_thai_style_ms": 0.34,
+          "total_elapsed_ms": 15.81,
+          "total_elapsed_sec": 0.0158
+        }
+      }
+    ]
+  }
+]

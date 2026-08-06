@@ -1,0 +1,708 @@
+[
+  {
+    "question": "อาชีพที่เกี่ยวข้องกับกีฬาอีสปอร์ตมีอะไรบ้าง",
+    "runs": [
+      {
+        "index": 0,
+        "elapsed_ms": 5123.0,
+        "mode": "pipeline:no_answer",
+        "route_category": "knowledge",
+        "route_intent": "count",
+        "validation_ok": true,
+        "stage_ms": {
+          "split_multi_question": 2.94,
+          "preprocess": 113.63,
+          "active_route_selection": 148.55,
+          "guard_scope": 0.03,
+          "universal_intent": 1.1,
+          "tool_router": 0.02,
+          "ambiguity_gate": 562.35,
+          "question_frame": 161.15,
+          "candidate_decisions": 63.11,
+          "tool_precondition": 0.03,
+          "structured_tool_execution": 0.0,
+          "deterministic": 0.0,
+          "hybrid_retrieval": 3940.86,
+          "hybrid_curated_retrieval": 26.96,
+          "hybrid_vector_retrieval": 3913.55,
+          "hybrid_merge_and_score": 0.06,
+          "hybrid_document_reranker": 0.03,
+          "hybrid_answer": 0.01,
+          "evidence_packer": 0.22,
+          "curated_retrieval": 1.02,
+          "curated_answer": 0.0,
+          "vector_retrieval": 0.0,
+          "vector_answer": 0.02,
+          "build_result": 7.03
+        },
+        "slowest_stages": [
+          [
+            "hybrid_retrieval",
+            3940.86
+          ],
+          [
+            "hybrid_vector_retrieval",
+            3913.55
+          ],
+          [
+            "ambiguity_gate",
+            562.35
+          ],
+          [
+            "question_frame",
+            161.15
+          ],
+          [
+            "active_route_selection",
+            148.55
+          ],
+          [
+            "preprocess",
+            113.63
+          ],
+          [
+            "candidate_decisions",
+            63.11
+          ],
+          [
+            "hybrid_curated_retrieval",
+            26.96
+          ]
+        ]
+      },
+      {
+        "index": 1,
+        "elapsed_ms": 2366.3,
+        "mode": "pipeline:hybrid_guarded_rerank",
+        "route_category": "knowledge",
+        "route_intent": "count",
+        "validation_ok": true,
+        "stage_ms": {
+          "split_multi_question": 0.1,
+          "preprocess": 0.16,
+          "active_route_selection": 4.16,
+          "guard_scope": 0.02,
+          "universal_intent": 0.81,
+          "tool_router": 0.01,
+          "ambiguity_gate": 135.61,
+          "question_frame": 52.33,
+          "candidate_decisions": 52.24,
+          "tool_precondition": 0.03,
+          "structured_tool_execution": 0.0,
+          "deterministic": 0.0,
+          "hybrid_retrieval": 145.98,
+          "hybrid_curated_retrieval": 1.39,
+          "hybrid_vector_retrieval": 144.41,
+          "hybrid_merge_and_score": 0.06,
+          "hybrid_document_reranker": 0.02,
+          "hybrid_answer": 0.02,
+          "evidence_packer": 0.04,
+          "rag_llm_composer": 1916.72,
+          "build_result": 0.34
+        },
+        "slowest_stages": [
+          [
+            "rag_llm_composer",
+            1916.72
+          ],
+          [
+            "hybrid_retrieval",
+            145.98
+          ],
+          [
+            "hybrid_vector_retrieval",
+            144.41
+          ],
+          [
+            "ambiguity_gate",
+            135.61
+          ],
+          [
+            "question_frame",
+            52.33
+          ],
+          [
+            "candidate_decisions",
+            52.24
+          ],
+          [
+            "active_route_selection",
+            4.16
+          ],
+          [
+            "hybrid_curated_retrieval",
+            1.39
+          ]
+        ]
+      }
+    ],
+    "cold_ms": 5123.0,
+    "warm_avg_ms": 2366.3,
+    "warm_median_ms": 2366.3,
+    "warm_p95_ms": 2366.3,
+    "mode": "pipeline:hybrid_guarded_rerank",
+    "route": "knowledge/count",
+    "validation_ok": true,
+    "top_warm_stage": "rag_llm_composer"
+  },
+  {
+    "question": "ประวัติอีสปอร์ตเริ่มต้นอย่างไร",
+    "runs": [
+      {
+        "index": 0,
+        "elapsed_ms": 2533.7,
+        "mode": "pipeline:hybrid_guarded_rerank",
+        "route_category": "knowledge",
+        "route_intent": "how_to",
+        "validation_ok": true,
+        "stage_ms": {
+          "split_multi_question": 1.15,
+          "preprocess": 0.13,
+          "active_route_selection": 2.85,
+          "guard_scope": 0.01,
+          "universal_intent": 0.72,
+          "tool_router": 0.01,
+          "ambiguity_gate": 104.16,
+          "question_frame": 47.27,
+          "candidate_decisions": 49.21,
+          "tool_precondition": 0.03,
+          "structured_tool_execution": 0.0,
+          "deterministic": 0.0,
+          "hybrid_retrieval": 136.38,
+          "hybrid_curated_retrieval": 1.71,
+          "hybrid_vector_retrieval": 134.46,
+          "hybrid_merge_and_score": 0.08,
+          "hybrid_document_reranker": 0.02,
+          "hybrid_answer": 0.01,
+          "evidence_packer": 6.92,
+          "rag_llm_composer": 2126.92,
+          "build_result": 0.46
+        },
+        "slowest_stages": [
+          [
+            "rag_llm_composer",
+            2126.92
+          ],
+          [
+            "hybrid_retrieval",
+            136.38
+          ],
+          [
+            "hybrid_vector_retrieval",
+            134.46
+          ],
+          [
+            "ambiguity_gate",
+            104.16
+          ],
+          [
+            "candidate_decisions",
+            49.21
+          ],
+          [
+            "question_frame",
+            47.27
+          ],
+          [
+            "evidence_packer",
+            6.92
+          ],
+          [
+            "active_route_selection",
+            2.85
+          ]
+        ]
+      },
+      {
+        "index": 1,
+        "elapsed_ms": 2057.5,
+        "mode": "pipeline:hybrid_guarded_rerank",
+        "route_category": "knowledge",
+        "route_intent": "how_to",
+        "validation_ok": true,
+        "stage_ms": {
+          "split_multi_question": 0.14,
+          "preprocess": 0.19,
+          "active_route_selection": 2.87,
+          "guard_scope": 0.02,
+          "universal_intent": 0.83,
+          "tool_router": 0.01,
+          "ambiguity_gate": 110.46,
+          "question_frame": 41.12,
+          "candidate_decisions": 44.45,
+          "tool_precondition": 0.04,
+          "structured_tool_execution": 0.0,
+          "deterministic": 0.0,
+          "hybrid_retrieval": 135.12,
+          "hybrid_curated_retrieval": 1.3,
+          "hybrid_vector_retrieval": 133.59,
+          "hybrid_merge_and_score": 0.1,
+          "hybrid_document_reranker": 0.02,
+          "hybrid_answer": 0.01,
+          "evidence_packer": 0.03,
+          "rag_llm_composer": 1670.24,
+          "build_result": 0.29
+        },
+        "slowest_stages": [
+          [
+            "rag_llm_composer",
+            1670.24
+          ],
+          [
+            "hybrid_retrieval",
+            135.12
+          ],
+          [
+            "hybrid_vector_retrieval",
+            133.59
+          ],
+          [
+            "ambiguity_gate",
+            110.46
+          ],
+          [
+            "candidate_decisions",
+            44.45
+          ],
+          [
+            "question_frame",
+            41.12
+          ],
+          [
+            "active_route_selection",
+            2.87
+          ],
+          [
+            "hybrid_curated_retrieval",
+            1.3
+          ]
+        ]
+      }
+    ],
+    "cold_ms": 2533.7,
+    "warm_avg_ms": 2057.5,
+    "warm_median_ms": 2057.5,
+    "warm_p95_ms": 2057.5,
+    "mode": "pipeline:hybrid_guarded_rerank",
+    "route": "knowledge/how_to",
+    "validation_ok": true,
+    "top_warm_stage": "rag_llm_composer"
+  },
+  {
+    "question": "ข่าวกิจกรรมล่าสุดของ PSU Esports Studio มีอะไรบ้าง",
+    "runs": [
+      {
+        "index": 0,
+        "elapsed_ms": 3160.9,
+        "mode": "pipeline:hybrid_guarded_rerank",
+        "route_category": "events_news",
+        "route_intent": "news_lookup",
+        "validation_ok": true,
+        "stage_ms": {
+          "split_multi_question": 2.06,
+          "preprocess": 523.73,
+          "active_route_selection": 32.22,
+          "guard_scope": 0.01,
+          "universal_intent": 0.78,
+          "tool_router": 0.02,
+          "ambiguity_gate": 138.03,
+          "question_frame": 57.49,
+          "candidate_decisions": 58.84,
+          "tool_precondition": 0.03,
+          "structured_tool_execution": 0.0,
+          "deterministic": 0.47,
+          "hybrid_retrieval": 160.23,
+          "hybrid_curated_retrieval": 1.32,
+          "hybrid_vector_retrieval": 158.69,
+          "hybrid_merge_and_score": 0.08,
+          "hybrid_document_reranker": 0.02,
+          "hybrid_answer": 0.01,
+          "evidence_packer": 16.9,
+          "rag_llm_composer": 2097.8,
+          "build_result": 0.51
+        },
+        "slowest_stages": [
+          [
+            "rag_llm_composer",
+            2097.8
+          ],
+          [
+            "preprocess",
+            523.73
+          ],
+          [
+            "hybrid_retrieval",
+            160.23
+          ],
+          [
+            "hybrid_vector_retrieval",
+            158.69
+          ],
+          [
+            "ambiguity_gate",
+            138.03
+          ],
+          [
+            "candidate_decisions",
+            58.84
+          ],
+          [
+            "question_frame",
+            57.49
+          ],
+          [
+            "active_route_selection",
+            32.22
+          ]
+        ]
+      },
+      {
+        "index": 1,
+        "elapsed_ms": 2272.1,
+        "mode": "pipeline:hybrid_guarded_rerank",
+        "route_category": "events_news",
+        "route_intent": "news_lookup",
+        "validation_ok": true,
+        "stage_ms": {
+          "split_multi_question": 0.1,
+          "preprocess": 61.89,
+          "active_route_selection": 5.13,
+          "guard_scope": 0.01,
+          "universal_intent": 0.74,
+          "tool_router": 0.01,
+          "ambiguity_gate": 139.06,
+          "question_frame": 60.56,
+          "candidate_decisions": 65.88,
+          "tool_precondition": 0.03,
+          "structured_tool_execution": 0.0,
+          "deterministic": 0.47,
+          "hybrid_retrieval": 181.03,
+          "hybrid_curated_retrieval": 0.71,
+          "hybrid_vector_retrieval": 180.13,
+          "hybrid_merge_and_score": 0.07,
+          "hybrid_document_reranker": 0.02,
+          "hybrid_answer": 0.01,
+          "evidence_packer": 0.03,
+          "rag_llm_composer": 1689.16,
+          "build_result": 0.3
+        },
+        "slowest_stages": [
+          [
+            "rag_llm_composer",
+            1689.16
+          ],
+          [
+            "hybrid_retrieval",
+            181.03
+          ],
+          [
+            "hybrid_vector_retrieval",
+            180.13
+          ],
+          [
+            "ambiguity_gate",
+            139.06
+          ],
+          [
+            "candidate_decisions",
+            65.88
+          ],
+          [
+            "preprocess",
+            61.89
+          ],
+          [
+            "question_frame",
+            60.56
+          ],
+          [
+            "active_route_selection",
+            5.13
+          ]
+        ]
+      }
+    ],
+    "cold_ms": 3160.9,
+    "warm_avg_ms": 2272.1,
+    "warm_median_ms": 2272.1,
+    "warm_p95_ms": 2272.1,
+    "mode": "pipeline:hybrid_guarded_rerank",
+    "route": "events_news/news_lookup",
+    "validation_ok": true,
+    "top_warm_stage": "rag_llm_composer"
+  },
+  {
+    "question": "Overcooked 2 ช่วยพัฒนาทักษะอะไรบ้าง",
+    "runs": [
+      {
+        "index": 0,
+        "elapsed_ms": 698.5,
+        "mode": "pipeline:structured_game_detail",
+        "route_category": "games",
+        "route_intent": "game_detail_lookup",
+        "validation_ok": true,
+        "stage_ms": {
+          "split_multi_question": 2.19,
+          "preprocess": 0.24,
+          "active_route_selection": 6.11,
+          "guard_scope": 0.05,
+          "universal_intent": 1.23,
+          "tool_router": 0.01,
+          "ambiguity_gate": 98.04,
+          "question_frame": 83.43,
+          "candidate_decisions": 90.83,
+          "tool_precondition": 0.06,
+          "structured_tool_execution": 319.01,
+          "facts_composer": 0.02,
+          "format_answer": 0.0,
+          "validation": 96.63,
+          "build_result": 0.32
+        },
+        "slowest_stages": [
+          [
+            "structured_tool_execution",
+            319.01
+          ],
+          [
+            "ambiguity_gate",
+            98.04
+          ],
+          [
+            "validation",
+            96.63
+          ],
+          [
+            "candidate_decisions",
+            90.83
+          ],
+          [
+            "question_frame",
+            83.43
+          ],
+          [
+            "active_route_selection",
+            6.11
+          ],
+          [
+            "split_multi_question",
+            2.19
+          ],
+          [
+            "universal_intent",
+            1.23
+          ]
+        ]
+      },
+      {
+        "index": 1,
+        "elapsed_ms": 658.9,
+        "mode": "pipeline:structured_game_detail",
+        "route_category": "games",
+        "route_intent": "game_detail_lookup",
+        "validation_ok": true,
+        "stage_ms": {
+          "split_multi_question": 0.09,
+          "preprocess": 0.24,
+          "active_route_selection": 3.23,
+          "guard_scope": 0.02,
+          "universal_intent": 1.52,
+          "tool_router": 0.01,
+          "ambiguity_gate": 101.74,
+          "question_frame": 89.02,
+          "candidate_decisions": 93.36,
+          "tool_precondition": 0.06,
+          "structured_tool_execution": 272.84,
+          "facts_composer": 0.02,
+          "format_answer": 0.0,
+          "validation": 96.15,
+          "build_result": 0.34
+        },
+        "slowest_stages": [
+          [
+            "structured_tool_execution",
+            272.84
+          ],
+          [
+            "ambiguity_gate",
+            101.74
+          ],
+          [
+            "validation",
+            96.15
+          ],
+          [
+            "candidate_decisions",
+            93.36
+          ],
+          [
+            "question_frame",
+            89.02
+          ],
+          [
+            "active_route_selection",
+            3.23
+          ],
+          [
+            "universal_intent",
+            1.52
+          ],
+          [
+            "build_result",
+            0.34
+          ]
+        ]
+      }
+    ],
+    "cold_ms": 698.5,
+    "warm_avg_ms": 658.9,
+    "warm_median_ms": 658.9,
+    "warm_p95_ms": 658.9,
+    "mode": "pipeline:structured_game_detail",
+    "route": "games/game_detail_lookup",
+    "validation_ok": true,
+    "top_warm_stage": "structured_tool_execution"
+  },
+  {
+    "question": "สรุปข้อมูลเกี่ยวกับ PSU Esports Studio ทั้งหมด",
+    "runs": [
+      {
+        "index": 0,
+        "elapsed_ms": 3044.6,
+        "mode": "pipeline:hybrid_guarded_rerank",
+        "route_category": "knowledge",
+        "route_intent": "knowledge_lookup",
+        "validation_ok": true,
+        "stage_ms": {
+          "split_multi_question": 1.99,
+          "preprocess": 49.14,
+          "active_route_selection": 6.52,
+          "guard_scope": 0.01,
+          "universal_intent": 0.73,
+          "tool_router": 0.01,
+          "ambiguity_gate": 121.2,
+          "question_frame": 59.22,
+          "candidate_decisions": 59.3,
+          "tool_precondition": 0.03,
+          "structured_tool_execution": 0.0,
+          "deterministic": 0.0,
+          "hybrid_retrieval": 160.19,
+          "hybrid_curated_retrieval": 1.15,
+          "hybrid_vector_retrieval": 158.8,
+          "hybrid_merge_and_score": 0.09,
+          "hybrid_document_reranker": 0.02,
+          "hybrid_answer": 0.01,
+          "evidence_packer": 0.18,
+          "rag_llm_composer": 2523.91,
+          "build_result": 0.29
+        },
+        "slowest_stages": [
+          [
+            "rag_llm_composer",
+            2523.91
+          ],
+          [
+            "hybrid_retrieval",
+            160.19
+          ],
+          [
+            "hybrid_vector_retrieval",
+            158.8
+          ],
+          [
+            "ambiguity_gate",
+            121.2
+          ],
+          [
+            "candidate_decisions",
+            59.3
+          ],
+          [
+            "question_frame",
+            59.22
+          ],
+          [
+            "preprocess",
+            49.14
+          ],
+          [
+            "active_route_selection",
+            6.52
+          ]
+        ]
+      },
+      {
+        "index": 1,
+        "elapsed_ms": 2246.9,
+        "mode": "pipeline:hybrid_guarded_rerank",
+        "route_category": "knowledge",
+        "route_intent": "knowledge_lookup",
+        "validation_ok": true,
+        "stage_ms": {
+          "split_multi_question": 0.09,
+          "preprocess": 48.27,
+          "active_route_selection": 4.79,
+          "guard_scope": 0.01,
+          "universal_intent": 0.64,
+          "tool_router": 0.01,
+          "ambiguity_gate": 125.96,
+          "question_frame": 58.0,
+          "candidate_decisions": 61.0,
+          "tool_precondition": 0.03,
+          "structured_tool_execution": 0.0,
+          "deterministic": 0.0,
+          "hybrid_retrieval": 151.07,
+          "hybrid_curated_retrieval": 1.16,
+          "hybrid_vector_retrieval": 149.7,
+          "hybrid_merge_and_score": 0.09,
+          "hybrid_document_reranker": 0.02,
+          "hybrid_answer": 0.01,
+          "evidence_packer": 0.03,
+          "rag_llm_composer": 1708.44,
+          "build_result": 0.62
+        },
+        "slowest_stages": [
+          [
+            "rag_llm_composer",
+            1708.44
+          ],
+          [
+            "hybrid_retrieval",
+            151.07
+          ],
+          [
+            "hybrid_vector_retrieval",
+            149.7
+          ],
+          [
+            "ambiguity_gate",
+            125.96
+          ],
+          [
+            "candidate_decisions",
+            61.0
+          ],
+          [
+            "question_frame",
+            58.0
+          ],
+          [
+            "preprocess",
+            48.27
+          ],
+          [
+            "active_route_selection",
+            4.79
+          ]
+        ]
+      }
+    ],
+    "cold_ms": 3044.6,
+    "warm_avg_ms": 2246.9,
+    "warm_median_ms": 2246.9,
+    "warm_p95_ms": 2246.9,
+    "mode": "pipeline:hybrid_guarded_rerank",
+    "route": "knowledge/knowledge_lookup",
+    "validation_ok": true,
+    "top_warm_stage": "rag_llm_composer"
+  }
+]

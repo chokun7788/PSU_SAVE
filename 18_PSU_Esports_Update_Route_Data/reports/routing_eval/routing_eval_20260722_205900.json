@@ -1,0 +1,3330 @@
+[
+  {
+    "id": "RT-SF-001",
+    "question": "นักศึกษา PSU เล่น Nintendo Switch ราคาเท่าไหร่",
+    "passed": true,
+    "route_ok": true,
+    "intent_ok": true,
+    "not_forbidden": true,
+    "expected_category": "service_fee",
+    "expected_intent": "service_fee_query",
+    "expected_domain": "service_fee",
+    "expected_operation": "price_calculate",
+    "actual_category": "service_fee",
+    "actual_intent": "service_fee_query",
+    "actual_domain": "service_fee",
+    "actual_operation": "price_calculate",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "confidence": 0.97,
+    "route_confidence": 0.97,
+    "intent_confidence": 0.92,
+    "elapsed": 3.5938,
+    "answer": "ราคา Nintendo Switch สำหรับกลุ่ม PSU Student and Staff\n•    Nintendo Switch 1-2 คน: 0 บาท\n•    Nintendo Switch 3-4 คน: 0 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff\nหมายเหตุ: คำถามยังไม่ระบุจำนวนผู้เล่น จึงแสดงทั้งราคา 1-2 คนและ 3-4 คน\n\nรายละเอียดจากตาราง:\nNintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 140 บาท\n\nNintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 100 บาท\n•    General Adult: 280 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "notes": "price must win over Nintendo game catalog",
+    "trace": [
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "นักศึกษา psu เล่น nintendo switch sports ราคาเท่าไหร่",
+        "metadata": {
+          "language_hint": "mixed_th_en",
+          "query_variants": [
+            "นักศึกษา PSU เล่น Nintendo Switch Sports ราคาเท่าไหร่",
+            "นักศึกษา PSU เล่น Nintendo Switch ราคาเท่าไหร่",
+            "นักศึกษา PSU เล่น Nintendo Switch ราคาเท่าไหร่ Nintendo Switch Sports"
+          ]
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "kept_original_query",
+        "confidence": 0.97,
+        "detail": "นักศึกษา PSU เล่น Nintendo Switch Sports ราคาเท่าไหร่",
+        "metadata": {
+          "candidates": [
+            {
+              "query": "นักศึกษา PSU เล่น Nintendo Switch ราคาเท่าไหร่",
+              "category": "service_fee",
+              "intent": "service_fee_query",
+              "confidence": 0.97
+            },
+            {
+              "query": "นักศึกษา PSU เล่น Nintendo Switch ราคาเท่าไหร่ Nintendo Switch Sports",
+              "category": "service_fee",
+              "intent": "service_fee_query",
+              "confidence": 0.97
+            }
+          ]
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": "nintendo_switch",
+          "user_group": "psu",
+          "duration": null,
+          "price_intent": true
+        }
+      },
+      {
+        "stage": "guard",
+        "decision": "domain_ok",
+        "confidence": 0.9,
+        "detail": "domain hints found",
+        "metadata": {}
+      },
+      {
+        "stage": "router",
+        "decision": "service_fee",
+        "confidence": 0.97,
+        "detail": "service fee terms found before reservation/schedule",
+        "metadata": {
+          "intent": "service_fee_query",
+          "answer_type": "fact"
+        }
+      },
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.92,
+        "detail": "known game alias found; price operation overrides entity/game domain; price terms found",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "",
+          "llm_first_review_reason": "",
+          "llm_rejected_reason": "",
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.92,
+            "reason": "known game alias found; price operation overrides entity/game domain; price terms found"
+          }
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.92,
+        "detail": "experimental_allow_llm is false",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "fast.price_calculator",
+        "confidence": 0.99,
+        "detail": "base=0.93; domain_match; tool_router_domain=service_fee; price_calculation_priority; precondition=price_calculator_applicable",
+        "metadata": {
+          "selected": {
+            "capability_id": "fast.price_calculator",
+            "action": "fast_path",
+            "domain": "service_fee",
+            "score": 0.99,
+            "status": "accepted",
+            "reason": "base=0.93; domain_match; tool_router_domain=service_fee; price_calculation_priority; precondition=price_calculator_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          "candidates": [
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.99,
+              "status": "accepted",
+              "reason": "base=0.93; domain_match; tool_router_domain=service_fee; price_calculation_priority; precondition=price_calculator_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.88,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.84,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.82,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.8,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.72,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.58,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.5,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_member_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_must_not_use_game_tool",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_control_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_must_not_use_equipment_tool",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_should_use_calculator_or_service_fee",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_must_not_use_schedule_tool",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_calculation_should_use_fast_calculator",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_competition_rule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "medium",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "reject_structured",
+        "confidence": 0.2,
+        "detail": "price_calculation_should_use_fast_calculator",
+        "metadata": {
+          "capability_id": "structured.service_fee",
+          "ok": false,
+          "reason": "price_calculation_should_use_fast_calculator",
+          "severity": "policy"
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "price_question_should_start_with_price_or_number; fact_answer_may_be_too_verbose",
+        "metadata": {}
+      }
+    ]
+  },
+  {
+    "id": "RT-SF-002",
+    "question": "คนนอกเล่น VR กี่บาท",
+    "passed": true,
+    "route_ok": true,
+    "intent_ok": true,
+    "not_forbidden": true,
+    "expected_category": "service_fee",
+    "expected_intent": "service_fee_query",
+    "expected_domain": "service_fee",
+    "expected_operation": "price_calculate",
+    "actual_category": "service_fee",
+    "actual_intent": "service_fee_query",
+    "actual_domain": "service_fee",
+    "actual_operation": "price_calculate",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "confidence": 0.97,
+    "route_confidence": 0.97,
+    "intent_confidence": 0.92,
+    "elapsed": 0.4104,
+    "answer": "ราคา VR สำหรับกลุ่ม General Adult / บุคคลทั่วไป\n•    VR 30 นาที: 525 บาท\n•    VR 1 ชั่วโมง: 1,050 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป\nหมายเหตุ: คำถามยังไม่ระบุระยะเวลา จึงแสดงทั้งราคา 30 นาทีและ 1 ชั่วโมง\n\nรายละเอียดจากตาราง:\nVR 30 นาที (1-5 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 190 บาท\n•    General Adult: 525 บาท\n\nVR 1 ชั่วโมง (60 นาที, 1-5 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 375 บาท\n•    General Adult: 1,050 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "notes": "general adult price",
+    "trace": [
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "คนนอกเล่น vr กี่บาท",
+        "metadata": {
+          "language_hint": "mixed_th_en",
+          "query_variants": [
+            "คนนอกเล่น VR กี่บาท"
+          ]
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": "vr",
+          "user_group": "adult",
+          "duration": null,
+          "price_intent": true
+        }
+      },
+      {
+        "stage": "guard",
+        "decision": "domain_ok",
+        "confidence": 0.9,
+        "detail": "domain hints found",
+        "metadata": {}
+      },
+      {
+        "stage": "router",
+        "decision": "service_fee",
+        "confidence": 0.97,
+        "detail": "service fee terms found before reservation/schedule",
+        "metadata": {
+          "intent": "service_fee_query",
+          "answer_type": "fact"
+        }
+      },
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.92,
+        "detail": "domain_terms=3; price operation overrides entity/game domain; price terms found",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "",
+          "llm_first_review_reason": "",
+          "llm_rejected_reason": "",
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.92,
+            "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+          }
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.92,
+        "detail": "experimental_allow_llm is false",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "fast.price_calculator",
+        "confidence": 0.99,
+        "detail": "base=0.93; domain_match; tool_router_domain=service_fee; price_calculation_priority; precondition=price_calculator_applicable",
+        "metadata": {
+          "selected": {
+            "capability_id": "fast.price_calculator",
+            "action": "fast_path",
+            "domain": "service_fee",
+            "score": 0.99,
+            "status": "accepted",
+            "reason": "base=0.93; domain_match; tool_router_domain=service_fee; price_calculation_priority; precondition=price_calculator_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          "candidates": [
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.99,
+              "status": "accepted",
+              "reason": "base=0.93; domain_match; tool_router_domain=service_fee; price_calculation_priority; precondition=price_calculator_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.88,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.84,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.82,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.8,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.72,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.58,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.5,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_member_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_must_not_use_game_tool",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_control_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_must_not_use_equipment_tool",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_should_use_calculator_or_service_fee",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_must_not_use_schedule_tool",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_calculation_should_use_fast_calculator",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_competition_rule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "medium",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "reject_structured",
+        "confidence": 0.2,
+        "detail": "price_calculation_should_use_fast_calculator",
+        "metadata": {
+          "capability_id": "structured.service_fee",
+          "ok": false,
+          "reason": "price_calculation_should_use_fast_calculator",
+          "severity": "policy"
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "price_question_should_start_with_price_or_number; fact_answer_may_be_too_verbose",
+        "metadata": {}
+      }
+    ]
+  },
+  {
+    "id": "RT-SF-003",
+    "question": "PS5 ราคาเท่าไหร่",
+    "passed": true,
+    "route_ok": true,
+    "intent_ok": true,
+    "not_forbidden": true,
+    "expected_category": "service_fee",
+    "expected_intent": "service_fee_query",
+    "expected_domain": "service_fee",
+    "expected_operation": "price_calculate",
+    "actual_category": "service_fee",
+    "actual_intent": "service_fee_query",
+    "actual_domain": "service_fee",
+    "actual_operation": "price_calculate",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "confidence": 0.97,
+    "route_confidence": 0.97,
+    "intent_confidence": 0.92,
+    "elapsed": 0.3947,
+    "answer": "PlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "notes": "simple PS5 price",
+    "trace": [
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "ps5 ราคาเท่าไหร่",
+        "metadata": {
+          "language_hint": "mixed_th_en",
+          "query_variants": [
+            "PS5 ราคาเท่าไหร่"
+          ]
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": "ps5",
+          "user_group": null,
+          "duration": null,
+          "price_intent": true
+        }
+      },
+      {
+        "stage": "guard",
+        "decision": "domain_ok",
+        "confidence": 0.9,
+        "detail": "domain hints found",
+        "metadata": {}
+      },
+      {
+        "stage": "semantic_intent_router",
+        "decision": "service_fee",
+        "confidence": 0.97,
+        "detail": "service fee terms found before reservation/schedule",
+        "metadata": {
+          "intent": "service_fee_query",
+          "answer_type": "fact",
+          "method": "local_char_ngram_semantic_intent",
+          "best_raw_score": 0.669,
+          "runner_up": "schedule_query",
+          "runner_up_score": 0.3342,
+          "min_confidence": 0.58,
+          "min_margin": 0.04,
+          "matched_example": "เล่น VR ราคาเท่าไหร่",
+          "margin": 0.3097
+        }
+      },
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.92,
+        "detail": "domain_terms=4; price operation overrides entity/game domain; price terms found",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "",
+          "llm_first_review_reason": "",
+          "llm_rejected_reason": "",
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.92,
+            "reason": "domain_terms=4; price operation overrides entity/game domain; price terms found"
+          }
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.92,
+        "detail": "experimental_allow_llm is false",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "fast.price_calculator",
+        "confidence": 0.99,
+        "detail": "base=0.93; domain_match; tool_router_domain=service_fee; price_calculation_priority; precondition=price_calculator_applicable",
+        "metadata": {
+          "selected": {
+            "capability_id": "fast.price_calculator",
+            "action": "fast_path",
+            "domain": "service_fee",
+            "score": 0.99,
+            "status": "accepted",
+            "reason": "base=0.93; domain_match; tool_router_domain=service_fee; price_calculation_priority; precondition=price_calculator_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          "candidates": [
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.99,
+              "status": "accepted",
+              "reason": "base=0.93; domain_match; tool_router_domain=service_fee; price_calculation_priority; precondition=price_calculator_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.88,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.84,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.82,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.8,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.72,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.58,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.5,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_member_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_must_not_use_game_tool",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_control_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_must_not_use_equipment_tool",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_should_use_calculator_or_service_fee",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_must_not_use_schedule_tool",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_calculation_should_use_fast_calculator",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_competition_rule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "medium",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "reject_structured",
+        "confidence": 0.2,
+        "detail": "price_calculation_should_use_fast_calculator",
+        "metadata": {
+          "capability_id": "structured.service_fee",
+          "ok": false,
+          "reason": "price_calculation_should_use_fast_calculator",
+          "severity": "policy"
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      }
+    ]
+  },
+  {
+    "id": "RT-SF-004",
+    "question": "Cockpit ค่าบริการเท่าไร",
+    "passed": true,
+    "route_ok": true,
+    "intent_ok": true,
+    "not_forbidden": true,
+    "expected_category": "service_fee",
+    "expected_intent": "service_fee_query",
+    "expected_domain": "service_fee",
+    "expected_operation": "price_calculate",
+    "actual_category": "service_fee",
+    "actual_intent": "service_fee_query",
+    "actual_domain": "service_fee",
+    "actual_operation": "price_calculate",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "confidence": 0.97,
+    "route_confidence": 0.97,
+    "intent_confidence": 0.92,
+    "elapsed": 0.9511,
+    "answer": "Cockpit 60 นาที (1 ชั่วโมง, 1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 65 บาท\n•    General Adult: 200 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "notes": "cockpit price",
+    "trace": [
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "cockpit ค่าบริการเท่าไร",
+        "metadata": {
+          "language_hint": "mixed_th_en",
+          "query_variants": [
+            "Cockpit ค่าบริการเท่าไร"
+          ]
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": "cockpit",
+          "user_group": null,
+          "duration": null,
+          "price_intent": true
+        }
+      },
+      {
+        "stage": "guard",
+        "decision": "domain_ok",
+        "confidence": 0.9,
+        "detail": "domain hints found",
+        "metadata": {}
+      },
+      {
+        "stage": "router",
+        "decision": "service_fee",
+        "confidence": 0.97,
+        "detail": "service fee terms found before reservation/schedule",
+        "metadata": {
+          "intent": "service_fee_query",
+          "answer_type": "fact"
+        }
+      },
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.92,
+        "detail": "domain_terms=4; price operation overrides entity/game domain; price terms found",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "",
+          "llm_first_review_reason": "",
+          "llm_rejected_reason": "",
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.92,
+            "reason": "domain_terms=4; price operation overrides entity/game domain; price terms found"
+          }
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.92,
+        "detail": "experimental_allow_llm is false",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "fast.price_calculator",
+        "confidence": 0.99,
+        "detail": "base=0.93; domain_match; tool_router_domain=service_fee; price_calculation_priority; precondition=price_calculator_applicable",
+        "metadata": {
+          "selected": {
+            "capability_id": "fast.price_calculator",
+            "action": "fast_path",
+            "domain": "service_fee",
+            "score": 0.99,
+            "status": "accepted",
+            "reason": "base=0.93; domain_match; tool_router_domain=service_fee; price_calculation_priority; precondition=price_calculator_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          "candidates": [
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.99,
+              "status": "accepted",
+              "reason": "base=0.93; domain_match; tool_router_domain=service_fee; price_calculation_priority; precondition=price_calculator_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.88,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.84,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.82,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.8,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.72,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.58,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.5,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_member_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_must_not_use_game_tool",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_control_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_must_not_use_equipment_tool",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_should_use_calculator_or_service_fee",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_must_not_use_schedule_tool",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_calculation_should_use_fast_calculator",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_competition_rule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "medium",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "reject_structured",
+        "confidence": 0.2,
+        "detail": "price_calculation_should_use_fast_calculator",
+        "metadata": {
+          "capability_id": "structured.service_fee",
+          "ok": false,
+          "reason": "price_calculation_should_use_fast_calculator",
+          "severity": "policy"
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      }
+    ]
+  },
+  {
+    "id": "RT-SF-005",
+    "question": "ถ้าเป็นบุคคลทั่วไป จอง Cockpit ราคาเท่าไหร่",
+    "passed": true,
+    "route_ok": true,
+    "intent_ok": true,
+    "not_forbidden": true,
+    "expected_category": "service_fee",
+    "expected_intent": "service_fee_query",
+    "expected_domain": "service_fee",
+    "expected_operation": "price_calculate",
+    "actual_category": "service_fee",
+    "actual_intent": "service_fee_query",
+    "actual_domain": "service_fee",
+    "actual_operation": "price_calculate",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "confidence": 0.97,
+    "route_confidence": 0.97,
+    "intent_confidence": 0.92,
+    "elapsed": 1.8832,
+    "answer": "ราคา 200 บาท สำหรับกลุ่ม General Adult / บุคคลทั่วไป\n•    Cockpit 60 นาที: 200 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: General Adult / บุคคลทั่วไป\n\nรายละเอียดจากตาราง:\nCockpit 60 นาที (1 ชั่วโมง, 1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 65 บาท\n•    General Adult: 200 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "notes": "price wins even with booking word",
+    "trace": [
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "ถ้าเป็นบุคคลทั่วไป จอง cockpit ราคาเท่าไหร่",
+        "metadata": {
+          "language_hint": "mixed_th_en",
+          "query_variants": [
+            "ถ้าเป็นบุคคลทั่วไป จอง Cockpit ราคาเท่าไหร่"
+          ]
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": "cockpit",
+          "user_group": "adult",
+          "duration": null,
+          "price_intent": true
+        }
+      },
+      {
+        "stage": "guard",
+        "decision": "domain_ok",
+        "confidence": 0.9,
+        "detail": "domain hints found",
+        "metadata": {}
+      },
+      {
+        "stage": "semantic_intent_router",
+        "decision": "service_fee",
+        "confidence": 0.97,
+        "detail": "service fee terms found before reservation/schedule",
+        "metadata": {
+          "intent": "service_fee_query",
+          "answer_type": "fact",
+          "method": "local_char_ngram_semantic_intent",
+          "best_raw_score": 0.6332,
+          "runner_up": "equipment_lookup",
+          "runner_up_score": 0.2121,
+          "min_confidence": 0.58,
+          "min_margin": 0.04,
+          "matched_example": "Cockpit ราคาเท่าไร",
+          "margin": 0.3863
+        }
+      },
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.92,
+        "detail": "domain_terms=4; price operation overrides entity/game domain; price terms found",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "",
+          "llm_first_review_reason": "",
+          "llm_rejected_reason": "",
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.92,
+            "reason": "domain_terms=4; price operation overrides entity/game domain; price terms found"
+          }
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.92,
+        "detail": "experimental_allow_llm is false",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "fast.price_calculator",
+        "confidence": 0.99,
+        "detail": "base=0.93; domain_match; tool_router_domain=service_fee; price_calculation_priority; precondition=price_calculator_applicable",
+        "metadata": {
+          "selected": {
+            "capability_id": "fast.price_calculator",
+            "action": "fast_path",
+            "domain": "service_fee",
+            "score": 0.99,
+            "status": "accepted",
+            "reason": "base=0.93; domain_match; tool_router_domain=service_fee; price_calculation_priority; precondition=price_calculator_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          "candidates": [
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.99,
+              "status": "accepted",
+              "reason": "base=0.93; domain_match; tool_router_domain=service_fee; price_calculation_priority; precondition=price_calculator_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.88,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.84,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.82,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.8,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.72,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.58,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.5,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_member_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: booking_query_must_not_use_game_tool",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_control_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: booking_query_must_not_use_equipment_tool",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_should_use_calculator_or_service_fee",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_must_not_use_schedule_tool",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_calculation_should_use_fast_calculator",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_competition_rule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "medium",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "reject_structured",
+        "confidence": 0.2,
+        "detail": "price_calculation_should_use_fast_calculator",
+        "metadata": {
+          "capability_id": "structured.service_fee",
+          "ok": false,
+          "reason": "price_calculation_should_use_fast_calculator",
+          "severity": "policy"
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      }
+    ]
+  },
+  {
+    "id": "RT-SF-006",
+    "question": "ถ้าจอง PS5 ตั้งแต่ 9โมงถึง11โมงเสียกี่บาท",
+    "passed": true,
+    "route_ok": true,
+    "intent_ok": true,
+    "not_forbidden": true,
+    "expected_category": "service_fee",
+    "expected_intent": "service_fee_query",
+    "expected_domain": "service_fee",
+    "expected_operation": "price_calculate",
+    "actual_category": "service_fee",
+    "actual_intent": "service_fee_query",
+    "actual_domain": "service_fee",
+    "actual_operation": "price_calculate",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "confidence": 0.97,
+    "route_confidence": 0.97,
+    "intent_confidence": 0.92,
+    "elapsed": 2.0298,
+    "answer": "ระยะเวลาที่ถามคือ 2 ชั่วโมง ใช้ 2 session ตามแพ็กเกจ PlayStation 5 60 นาที\nแบ่งช่วงเวลาเป็น: 09:00-10:00, 10:00-11:00\nยังไม่ทราบกลุ่มผู้ใช้ จึงแสดงราคาทุกกลุ่มให้เทียบก่อน:\n•    PSU Student and Staff: 0 บาท/session x 2 = 0 บาท\n•    PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน: 50 บาท/session x 2 = 100 บาท\n•    General Adult / บุคคลทั่วไป: 150 บาท/session x 2 = 300 บาท\n\nรายละเอียดจากตาราง:\nPlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "notes": "time range with price",
+    "trace": [
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "ถ้าจอง ps5 ตั้งแต่ 9โมงถึง11โมงเสียกี่บาท",
+        "metadata": {
+          "language_hint": "mixed_th_en",
+          "query_variants": [
+            "ถ้าจอง PS5 ตั้งแต่ 9โมงถึง11โมงเสียกี่บาท"
+          ]
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": "ps5",
+          "user_group": null,
+          "duration": null,
+          "price_intent": true
+        }
+      },
+      {
+        "stage": "guard",
+        "decision": "domain_ok",
+        "confidence": 0.9,
+        "detail": "domain hints found",
+        "metadata": {}
+      },
+      {
+        "stage": "router",
+        "decision": "service_fee",
+        "confidence": 0.97,
+        "detail": "service fee terms found before reservation/schedule",
+        "metadata": {
+          "intent": "service_fee_query",
+          "answer_type": "calculation"
+        }
+      },
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.92,
+        "detail": "domain_terms=3; price operation overrides entity/game domain; price terms found",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "",
+          "llm_first_review_reason": "",
+          "llm_rejected_reason": "",
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.92,
+            "reason": "domain_terms=3; price operation overrides entity/game domain; price terms found"
+          }
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.92,
+        "detail": "experimental_allow_llm is false",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "fast.price_calculator",
+        "confidence": 0.99,
+        "detail": "base=0.93; domain_match; answer_type_match; tool_router_domain=service_fee; price_calculation_priority; precondition=price_calculator_applicable",
+        "metadata": {
+          "selected": {
+            "capability_id": "fast.price_calculator",
+            "action": "fast_path",
+            "domain": "service_fee",
+            "score": 0.99,
+            "status": "accepted",
+            "reason": "base=0.93; domain_match; answer_type_match; tool_router_domain=service_fee; price_calculation_priority; precondition=price_calculator_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          "candidates": [
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.99,
+              "status": "accepted",
+              "reason": "base=0.93; domain_match; answer_type_match; tool_router_domain=service_fee; price_calculation_priority; precondition=price_calculator_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.82,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.78,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.76,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.74,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.66,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.58,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.5,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_member_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: booking_query_must_not_use_game_tool",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_control_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: booking_query_must_not_use_equipment_tool",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_should_use_calculator_or_service_fee",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_must_not_use_schedule_tool",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_calculation_should_use_fast_calculator",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_competition_rule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "medium",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "reject_structured",
+        "confidence": 0.2,
+        "detail": "price_calculation_should_use_fast_calculator",
+        "metadata": {
+          "capability_id": "structured.service_fee",
+          "ok": false,
+          "reason": "price_calculation_should_use_fast_calculator",
+          "severity": "policy"
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      }
+    ]
+  },
+  {
+    "id": "RT-SF-007",
+    "question": "นักศึกษาต่างมหาลัยเล่น Nintendo Switch 3 คน 2 ชั่วโมงเสียเท่าไหร่",
+    "passed": true,
+    "route_ok": true,
+    "intent_ok": true,
+    "not_forbidden": true,
+    "expected_category": "service_fee",
+    "expected_intent": "service_fee_query",
+    "expected_domain": "service_fee",
+    "expected_operation": "price_calculate",
+    "actual_category": "service_fee",
+    "actual_intent": "service_fee_query",
+    "actual_domain": "service_fee",
+    "actual_operation": "price_calculate",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "confidence": 0.97,
+    "route_confidence": 0.97,
+    "intent_confidence": 0.92,
+    "elapsed": 2.2068,
+    "answer": "ราคา Nintendo Switch สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน\n•    Nintendo Switch 1-2 คน: 50 บาท\n•    Nintendo Switch 3-4 คน: 100 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น\nหมายเหตุ: คำถามยังไม่ระบุจำนวนผู้เล่น จึงแสดงทั้งราคา 1-2 คนและ 3-4 คน\n\nรายละเอียดจากตาราง:\nNintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 140 บาท\n\nNintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 100 บาท\n•    General Adult: 280 บาท\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "notes": "multi parameter price",
+    "trace": [
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "นักศึกษาต่างมหาลัยเล่น nintendo switch sports คน 2 ชั่วโมงเสียเท่าไหร่",
+        "metadata": {
+          "language_hint": "mixed_th_en",
+          "query_variants": [
+            "นักศึกษาต่างมหาลัยเล่น Nintendo Switch Sports คน 2 ชั่วโมงเสียเท่าไหร่",
+            "นักศึกษาต่างมหาลัยเล่น Nintendo Switch 3 คน 2 ชั่วโมงเสียเท่าไหร่",
+            "นักศึกษาต่างมหาลัยเล่น Nintendo Switch 3 คน 2 ชั่วโมงเสียเท่าไหร่ Nintendo Switch Sports"
+          ]
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "kept_original_query",
+        "confidence": 0.97,
+        "detail": "นักศึกษาต่างมหาลัยเล่น Nintendo Switch Sports คน 2 ชั่วโมงเสียเท่าไหร่",
+        "metadata": {
+          "candidates": [
+            {
+              "query": "นักศึกษาต่างมหาลัยเล่น Nintendo Switch 3 คน 2 ชั่วโมงเสียเท่าไหร่",
+              "category": "service_fee",
+              "intent": "service_fee_query",
+              "confidence": 0.97
+            },
+            {
+              "query": "นักศึกษาต่างมหาลัยเล่น Nintendo Switch 3 คน 2 ชั่วโมงเสียเท่าไหร่ Nintendo Switch Sports",
+              "category": "service_fee",
+              "intent": "service_fee_query",
+              "confidence": 0.97
+            }
+          ]
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": "nintendo_switch",
+          "user_group": "general_student",
+          "duration": null,
+          "price_intent": true
+        }
+      },
+      {
+        "stage": "guard",
+        "decision": "domain_ok",
+        "confidence": 0.9,
+        "detail": "domain hints found",
+        "metadata": {}
+      },
+      {
+        "stage": "router",
+        "decision": "service_fee",
+        "confidence": 0.97,
+        "detail": "service fee terms found before reservation/schedule",
+        "metadata": {
+          "intent": "service_fee_query",
+          "answer_type": "calculation"
+        }
+      },
+      {
+        "stage": "universal_intent",
+        "decision": "service_fee/price_calculate",
+        "confidence": 0.92,
+        "detail": "known game alias found; price operation overrides entity/game domain; price terms found",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "",
+          "llm_first_review_reason": "",
+          "llm_rejected_reason": "",
+          "target": "",
+          "filters": {},
+          "needs": [
+            "calculate_price",
+            "show_price_breakdown"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "service_fee",
+            "operation": "price_calculate",
+            "confidence": 0.92,
+            "reason": "known game alias found; price operation overrides entity/game domain; price terms found"
+          }
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.92,
+        "detail": "experimental_allow_llm is false",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "fast.price_calculator",
+        "confidence": 0.99,
+        "detail": "base=0.93; domain_match; answer_type_match; tool_router_domain=service_fee; price_calculation_priority; precondition=price_calculator_applicable",
+        "metadata": {
+          "selected": {
+            "capability_id": "fast.price_calculator",
+            "action": "fast_path",
+            "domain": "service_fee",
+            "score": 0.99,
+            "status": "accepted",
+            "reason": "base=0.93; domain_match; answer_type_match; tool_router_domain=service_fee; price_calculation_priority; precondition=price_calculator_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          "candidates": [
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.99,
+              "status": "accepted",
+              "reason": "base=0.93; domain_match; answer_type_match; tool_router_domain=service_fee; price_calculation_priority; precondition=price_calculator_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.82,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.78,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.76,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.74,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.66,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.58,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.5,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_member_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_must_not_use_game_tool",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_control_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_must_not_use_equipment_tool",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_should_use_calculator_or_service_fee",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_query_must_not_use_schedule_tool",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: price_calculation_should_use_fast_calculator",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_competition_rule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "medium",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "reject_structured",
+        "confidence": 0.2,
+        "detail": "price_calculation_should_use_fast_calculator",
+        "metadata": {
+          "capability_id": "structured.service_fee",
+          "ok": false,
+          "reason": "price_calculation_should_use_fast_calculator",
+          "severity": "policy"
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_price",
+        "confidence": 0.97,
+        "detail": "deterministic_calculator_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "price_question_should_start_with_price_or_number; fact_answer_may_be_too_verbose",
+        "metadata": {}
+      }
+    ]
+  },
+  {
+    "id": "RT-SF-008",
+    "question": "ค่าเล่นแต่ละเครื่องมีอะไรบ้าง",
+    "passed": false,
+    "route_ok": false,
+    "intent_ok": false,
+    "not_forbidden": false,
+    "expected_category": "service_fee",
+    "expected_intent": "service_fee_query",
+    "expected_domain": "service_fee",
+    "expected_operation": "price_calculate",
+    "actual_category": "equipment",
+    "actual_intent": "list",
+    "actual_domain": "equipment",
+    "actual_operation": "list",
+    "mode": "pipeline:structured_equipment_catalog",
+    "confidence": 0.95,
+    "route_confidence": 0.96,
+    "intent_confidence": 0.82,
+    "elapsed": 0.3316,
+    "answer": "อุปกรณ์ในศูนย์แยกตามโซน:\nPC Zone\n•    Gaming PC รุ่น MSI MAG Infinite S3 14th (10 Units)\n•    Gaming Monitor (10 Units)\n•    Gaming Keyboard\n•    Gaming Mouse\n•    Gaming Headset\n•    Gaming Chair (10 Units)\nCockpit Zone\n•    Logitech G923 TRUEFORCE Racing Wheel (2 Units with Driving Force Shifter)\n•    Driving Force Shifter (2 Units with Logitech G923)\n•    Racezone Full Cockpit V3 (2 Units)\n•    Pulse Elite Wireless Headset (2 Units)\n•    TV 65 นิ้ว (2 Units)\nNintendo Switch Zone\n•    Nintendo Switch OLED (1 Unit)\n•    TV 86 นิ้ว (1 Unit)\n•    Sofa 2 seats (2 Sets)\nPlayStation 5 Zone / VR Zone\n•    PlayStation 5 Slim With Ultra HD Blu-Ray Disc Drive (2 Units in PlayStation 5 Zone and 1 Unit in VR Zone)\nVR Zone\n•    Sony PlayStation VR2 (1 Unit)\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",
+    "notes": "full fee table",
+    "trace": [
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "ค่าเล่นแต่ละเครื่องมีอะไรบ้าง",
+        "metadata": {
+          "language_hint": "th",
+          "query_variants": [
+            "ค่าเล่นแต่ละเครื่องมีอะไรบ้าง"
+          ]
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": "pc",
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "guard",
+        "decision": "domain_ok",
+        "confidence": 0.9,
+        "detail": "domain hints found",
+        "metadata": {}
+      },
+      {
+        "stage": "router",
+        "decision": "equipment",
+        "confidence": 0.96,
+        "detail": "equipment game catalog terms found",
+        "metadata": {
+          "intent": "equipment_game_catalog",
+          "answer_type": "list"
+        }
+      },
+      {
+        "stage": "universal_intent",
+        "decision": "equipment/list",
+        "confidence": 0.82,
+        "detail": "domain_terms=3; list terms found",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "",
+          "llm_first_review_reason": "",
+          "llm_rejected_reason": "",
+          "target": "",
+          "filters": {},
+          "needs": [
+            "list_items"
+          ],
+          "answer_style": "summary_bullets",
+          "heuristic": {
+            "domain": "equipment",
+            "operation": "list",
+            "confidence": 0.82,
+            "reason": "domain_terms=3; list terms found"
+          }
+        }
+      },
+      {
+        "stage": "universal_route_refine",
+        "decision": "equipment/equipment_game_catalog -> equipment/list",
+        "confidence": 0.82,
+        "detail": "route refined by universal intent",
+        "metadata": {
+          "domain": "equipment",
+          "operation": "list",
+          "method": "heuristic"
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.82,
+        "detail": "experimental_allow_llm is false",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "structured.equipment",
+        "confidence": 0.99,
+        "detail": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=equipment; structured_operation_priority; precondition=equipment_preconditions_passed",
+        "metadata": {
+          "selected": {
+            "capability_id": "structured.equipment",
+            "action": "structured",
+            "domain": "equipment",
+            "score": 0.99,
+            "status": "accepted",
+            "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=equipment; structured_operation_priority; precondition=equipment_preconditions_passed",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          "candidates": [
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.99,
+              "status": "accepted",
+              "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=equipment; structured_operation_priority; precondition=equipment_preconditions_passed",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.88,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.8,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.78,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.76,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.72,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.58,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.5,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_member_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_control_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_reservation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_schedule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_or_calculation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_competition_rule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "low",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "allow_structured",
+        "confidence": 0.9,
+        "detail": "equipment_preconditions_passed",
+        "metadata": {
+          "capability_id": "structured.equipment",
+          "ok": true,
+          "reason": "equipment_preconditions_passed",
+          "severity": "policy"
+        }
+      },
+      {
+        "stage": "structured_tool",
+        "decision": "structured_equipment_catalog",
+        "confidence": 0.95,
+        "detail": "get_equipment_by_zone",
+        "metadata": {
+          "tool": "get_equipment_by_zone",
+          "zone": "all",
+          "equipment_count": 16,
+          "elapsed": 0.3307,
+          "facts_composer_used": false
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      }
+    ]
+  },
+  {
+    "id": "RT-GM-001",
+    "question": "Nintendo Switch มีเกมอะไรบ้าง",
+    "passed": false,
+    "route_ok": false,
+    "intent_ok": true,
+    "not_forbidden": true,
+    "expected_category": "equipment",
+    "expected_intent": "equipment_game_catalog",
+    "expected_domain": "games",
+    "expected_operation": "list",
+    "actual_category": "games",
+    "actual_intent": "list",
+    "actual_domain": "games",
+    "actual_operation": "list",
+    "mode": "pipeline:structured_games_catalog",
+    "confidence": 0.97,
+    "route_confidence": 0.96,
+    "intent_confidence": 0.82,
+    "elapsed": 1.2522,
+    "answer": "Nintendo Switch Zone มีเกมที่ยืนยันได้ดังนี้\n\nNintendo Switch Zone (18 เกม)\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    Little Nightmares II\n•    Luigi's Mansion 3\n•    Mario Kart 8 Deluxe\n•    Mario Kart Live: Home Circuit\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Nintendo Switch Sports\n•    Overcooked + Overcooked! 2\n•    Overcooked 2\n•    Ring Fit Adventure\n•    Super Mario Odyssey\n•    Super Smash Bros Ultimate\n•    The Legend of Zelda: Breath of the Wild\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "notes": "game catalog not price",
+    "trace": [
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "nintendo switch sports มีเกมอะไรบ้าง",
+        "metadata": {
+          "language_hint": "mixed_th_en",
+          "query_variants": [
+            "Nintendo Switch Sports มีเกมอะไรบ้าง",
+            "Nintendo Switch มีเกมอะไรบ้าง",
+            "Nintendo Switch มีเกมอะไรบ้าง Nintendo Switch Sports"
+          ]
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "kept_original_query",
+        "confidence": 0.96,
+        "detail": "Nintendo Switch Sports มีเกมอะไรบ้าง",
+        "metadata": {
+          "candidates": [
+            {
+              "query": "Nintendo Switch มีเกมอะไรบ้าง",
+              "category": "equipment",
+              "intent": "equipment_game_catalog",
+              "confidence": 0.96
+            },
+            {
+              "query": "Nintendo Switch มีเกมอะไรบ้าง Nintendo Switch Sports",
+              "category": "equipment",
+              "intent": "equipment_game_catalog",
+              "confidence": 0.96
+            }
+          ]
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": "nintendo_switch",
+          "user_group": "psu",
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "guard",
+        "decision": "domain_ok",
+        "confidence": 0.9,
+        "detail": "domain hints found",
+        "metadata": {}
+      },
+      {
+        "stage": "semantic_intent_router",
+        "decision": "equipment",
+        "confidence": 0.96,
+        "detail": "equipment game catalog terms found",
+        "metadata": {
+          "intent": "equipment_game_catalog",
+          "answer_type": "list",
+          "method": "local_char_ngram_semantic_intent",
+          "best_raw_score": 0.6433,
+          "runner_up": "equipment_lookup",
+          "runner_up_score": 0.5174,
+          "min_confidence": 0.58,
+          "min_margin": 0.04,
+          "matched_example": "Nintendo Switch เล่นเกมอะไรได้บ้าง",
+          "margin": 0.1049
+        }
+      },
+      {
+        "stage": "universal_intent",
+        "decision": "games/list",
+        "confidence": 0.82,
+        "detail": "game catalog/count terms override zone/equipment domain; list terms found",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "",
+          "llm_first_review_reason": "",
+          "llm_rejected_reason": "",
+          "target": "",
+          "filters": {},
+          "needs": [
+            "list_items"
+          ],
+          "answer_style": "summary_bullets",
+          "heuristic": {
+            "domain": "games",
+            "operation": "list",
+            "confidence": 0.82,
+            "reason": "game catalog/count terms override zone/equipment domain; list terms found"
+          }
+        }
+      },
+      {
+        "stage": "universal_route_refine",
+        "decision": "equipment/equipment_game_catalog -> games/list",
+        "confidence": 0.82,
+        "detail": "route refined by universal intent",
+        "metadata": {
+          "domain": "games",
+          "operation": "list",
+          "method": "heuristic"
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.82,
+        "detail": "experimental_allow_llm is false",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "structured.games",
+        "confidence": 0.99,
+        "detail": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; structured_operation_priority; precondition=game_domain_or_catalog_query",
+        "metadata": {
+          "selected": {
+            "capability_id": "structured.games",
+            "action": "structured",
+            "domain": "games",
+            "score": 0.99,
+            "status": "accepted",
+            "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; structured_operation_priority; precondition=game_domain_or_catalog_query",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          "candidates": [
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.99,
+              "status": "accepted",
+              "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; structured_operation_priority; precondition=game_domain_or_catalog_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.88,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.8,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.78,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.76,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.72,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.58,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.5,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_member_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_control_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_an_equipment_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_reservation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_schedule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_or_calculation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_competition_rule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "low",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "allow_structured",
+        "confidence": 0.9,
+        "detail": "game_domain_or_catalog_query",
+        "metadata": {
+          "capability_id": "structured.games",
+          "ok": true,
+          "reason": "game_domain_or_catalog_query",
+          "severity": "policy"
+        }
+      },
+      {
+        "stage": "structured_tool",
+        "decision": "structured_games_catalog",
+        "confidence": 0.97,
+        "detail": "get_games_by_zone",
+        "metadata": {
+          "tool": "get_games_by_zone",
+          "zone": "Nintendo Switch Zone",
+          "counts": {
+            "Nintendo Switch Zone": 18
+          },
+          "elapsed": 1.2517,
+          "facts_composer_used": false
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      }
+    ]
+  },
+  {
+    "id": "RT-GM-002",
+    "question": "เกมใน PS5 มีอะไรบ้าง",
+    "passed": false,
+    "route_ok": false,
+    "intent_ok": true,
+    "not_forbidden": true,
+    "expected_category": "games",
+    "expected_intent": "game_catalog_lookup",
+    "expected_domain": "games",
+    "expected_operation": "list",
+    "actual_category": "games",
+    "actual_intent": "list",
+    "actual_domain": "games",
+    "actual_operation": "list",
+    "mode": "pipeline:structured_games_catalog",
+    "confidence": 0.97,
+    "route_confidence": 0.96,
+    "intent_confidence": 0.82,
+    "elapsed": 1.2497,
+    "answer": "PlayStation 5 Zone มีเกมที่ยืนยันได้ดังนี้\n\nPlayStation 5 Zone (23 เกม)\n•    Beat Saber\n•    Call of Duty: Modern Warfare III\n•    EA Sports FC 24\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Gran Turismo 7\n•    Hogwarts Legacy\n•    It Takes Two\n•    Little Nightmares II\n•    Marvel's Spider-Man 2\n•    Monster Hunter Rise\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Overcooked!\n•    Resident Evil 4\n•    Resident Evil 4 (Remake)\n•    Resident Evil Village\n•    TEKKEN 8\n•    The Last of Us Part I\n•    The Last of Us Part I / Part II\n•    The Last of Us Part II\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "notes": "PS5 game list",
+    "trace": [
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "เกมใน ps5 มีอะไรบ้าง",
+        "metadata": {
+          "language_hint": "mixed_th_en",
+          "query_variants": [
+            "เกมใน PS5 มีอะไรบ้าง"
+          ]
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": "ps5",
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "guard",
+        "decision": "domain_ok",
+        "confidence": 0.9,
+        "detail": "domain hints found",
+        "metadata": {}
+      },
+      {
+        "stage": "router",
+        "decision": "games",
+        "confidence": 0.96,
+        "detail": "explicit game catalog terms found before schedule",
+        "metadata": {
+          "intent": "game_catalog_lookup",
+          "answer_type": "list"
+        }
+      },
+      {
+        "stage": "universal_intent",
+        "decision": "games/list",
+        "confidence": 0.82,
+        "detail": "game catalog/count terms override zone/equipment domain; list terms found",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "",
+          "llm_first_review_reason": "",
+          "llm_rejected_reason": "",
+          "target": "",
+          "filters": {},
+          "needs": [
+            "list_items"
+          ],
+          "answer_style": "summary_bullets",
+          "heuristic": {
+            "domain": "games",
+            "operation": "list",
+            "confidence": 0.82,
+            "reason": "game catalog/count terms override zone/equipment domain; list terms found"
+          }
+        }
+      },
+      {
+        "stage": "universal_route_refine",
+        "decision": "games/game_catalog_lookup -> games/list",
+        "confidence": 0.82,
+        "detail": "route refined by universal intent",
+        "metadata": {
+          "domain": "games",
+          "operation": "list",
+          "method": "heuristic"
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.82,
+        "detail": "experimental_allow_llm is false",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "structured.games",
+        "confidence": 0.99,
+        "detail": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; structured_operation_priority; precondition=game_domain_or_catalog_query",
+        "metadata": {
+          "selected": {
+            "capability_id": "structured.games",
+            "action": "structured",
+            "domain": "games",
+            "score": 0.99,
+            "status": "accepted",
+            "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; structured_operation_priority; precondition=game_domain_or_catalog_query",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          "candidates": [
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.99,
+              "status": "accepted",
+              "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; structured_operation_priority; precondition=game_domain_or_catalog_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.88,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.8,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.78,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.76,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.72,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.58,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.5,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_member_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_control_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_an_equipment_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_reservation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_schedule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_or_calculation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.28,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_competition_rule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "low",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "allow_structured",
+        "confidence": 0.9,
+        "detail": "game_domain_or_catalog_query",
+        "metadata": {
+          "capability_id": "structured.games",
+          "ok": true,
+          "reason": "game_domain_or_catalog_query",
+          "severity": "policy"
+        }
+      },
+      {
+        "stage": "structured_tool",
+        "decision": "structured_games_catalog",
+        "confidence": 0.97,
+        "detail": "get_games_by_zone",
+        "metadata": {
+          "tool": "get_games_by_zone",
+          "zone": "PlayStation 5 Zone",
+          "counts": {
+            "PlayStation 5 Zone": 23
+          },
+          "elapsed": 1.2487,
+          "facts_composer_used": false
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      }
+    ]
+  }
+]

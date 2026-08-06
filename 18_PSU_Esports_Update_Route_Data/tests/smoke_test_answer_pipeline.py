@@ -205,13 +205,13 @@ def main() -> int:
     )
     check(
         "เป็นนักศึกษา สจล อยากเล่น PC เสียเท่าไหร่",
-        ["General Student", "PC", "ยังไม่พบราคา"],
+        ["General Student", "PC", "25 บาท"],
         must_not_contain=["ไม่พบข้อมูล"],
         route_category="service_fee",
     )
     check(
         "เด็กจุฬา เล่น PC กี่บาท",
-        ["ราคา PC", "ยังไม่พบราคา", "General Student", "มหาลัยอื่น"],
+        ["ราคา PC", "25 บาท", "General Student", "มหาลัยอื่น"],
         must_not_contain=["จากคำว่า", "สจล", "ไม่พบข้อมูล"],
         route_category="service_fee",
     )

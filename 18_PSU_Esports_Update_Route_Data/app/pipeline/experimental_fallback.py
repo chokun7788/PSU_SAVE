@@ -8,6 +8,9 @@ import urllib.request
 from dataclasses import dataclass
 from typing import Any
 
+from app.pipeline.chatbot_role import CHATBOT_ROLE_TH
+from app.pipeline.llm_health import llm_call_allowed, record_llm_failure, record_llm_success, release_llm_slot
+from app.pipeline.request_deadline import deadline_metadata, timeout_for_call
 from app.pipeline.retrieval import (
     hit_from_curated,
     retrieve_competition_fact_cards,
@@ -19,10 +22,10 @@ from app.pipeline.vector_retrieval import retrieve_vector_guarded
 
 
 DEFAULT_OLLAMA_URL = os.getenv("OLLAMA_URL", "http://127.0.0.1:11434")
-DEFAULT_MODEL = os.getenv("PSU_CHATBOT_OLLAMA_MODEL", "qwen2.5:3b")
+DEFAULT_MODEL = os.getenv("PSU_CHATBOT_OLLAMA_MODEL", "scb10x/typhoon2.5-qwen3-4b")
 DEFAULT_TIMEOUT_SEC = float(os.getenv("PSU_EXPERIMENTAL_LLM_TIMEOUT_SEC", "1.5"))
-DEFAULT_GENERAL_NUM_PREDICT = int(os.getenv("PSU_GENERAL_LLM_NUM_PREDICT", "256"))
-DEFAULT_RAG_NUM_PREDICT = int(os.getenv("PSU_RAG_LLM_NUM_PREDICT", "180"))
+DEFAULT_GENERAL_NUM_PREDICT = int(os.getenv("PSU_GENERAL_LLM_NUM_PREDICT", "128"))
+DEFAULT_RAG_NUM_PREDICT = int(os.getenv("PSU_RAG_LLM_NUM_PREDICT", "96"))
 
 
 class OllamaEmptyResponseError(RuntimeError):
@@ -40,6 +43,15 @@ class ExperimentalFallback:
 
 def _truthy(value: str | None) -> bool:
     return (value or "").strip().lower() in {"1", "true", "yes", "y", "on"}
+
+
+def _ollama_think_value() -> bool | str:
+    raw = os.getenv("PSU_OLLAMA_THINK", "false").strip().lower()
+    if raw in {"1", "true", "yes", "y", "on"}:
+        return True
+    if raw in {"low", "medium", "high", "max"}:
+        return raw
+    return False
 
 
 def env_experimental_rag_fallback_default() -> bool:
@@ -245,7 +257,9 @@ def _context_block(rows: list[dict[str, Any]], max_chars: int = 2600) -> str:
 
 
 def _build_prompt(question: str, rows: list[dict[str, Any]]) -> str:
-    return f"""ตอบเป็นภาษาไทยแบบสั้น ตรงคำถาม และสุภาพ
+    return f"""{CHATBOT_ROLE_TH}
+
+ตอบเป็นภาษาไทยแบบสั้น ตรงคำถาม และสุภาพ
 ใช้เฉพาะ CONTEXT ของ PSU Esports Studio - Phuket เท่านั้น
 ห้ามแต่งราคา เวลา กติกา เกม หรือบริการที่ไม่มีใน CONTEXT
 ถ้า CONTEXT ไม่ตรงคำถาม ให้ตอบว่าโยงได้แค่ข้อมูลใกล้เคียงอะไร และอย่าฟันธง
@@ -266,10 +280,15 @@ def _call_ollama(
     timeout_sec: float = DEFAULT_TIMEOUT_SEC,
     num_predict: int = DEFAULT_RAG_NUM_PREDICT,
 ) -> str:
+    timeout_sec = timeout_for_call(timeout_sec)
+    if timeout_sec <= 0:
+        raise TimeoutError("global request deadline exhausted before experimental fallback LLM call")
     payload = {
         "model": DEFAULT_MODEL,
         "prompt": prompt,
-        "stream": False,
+        "stream": True,
+        "keep_alive": os.getenv("PSU_OLLAMA_KEEP_ALIVE", "10m"),
+        "think": _ollama_think_value(),
         "options": {
             "temperature": 0.15,
             "top_p": 0.8,
@@ -283,46 +302,175 @@ def _call_ollama(
         headers={"Content-Type": "application/json; charset=utf-8"},
         method="POST",
     )
-    with urllib.request.urlopen(request, timeout=timeout_sec) as response:
-        data = json.loads(response.read().decode("utf-8"))
-    answer = str(data.get("response", "")).strip()
+    response = None
+    chunks: list[str] = []
+    last_data: dict[str, Any] = {}
+    try:
+        response = urllib.request.urlopen(request, timeout=timeout_sec)
+        for raw_line in response:
+            line = raw_line.decode("utf-8", errors="replace").strip()
+            if not line:
+                continue
+            last_data = json.loads(line)
+            chunks.append(str(last_data.get("response") or ""))
+            if last_data.get("done"):
+                break
+    finally:
+        if response is not None:
+            response.close()
+    answer = "".join(chunks).strip()
     if answer:
         return answer
-    thinking = str(data.get("thinking", "")).strip()
+    thinking = str(last_data.get("thinking", "")).strip()
     if thinking:
         raise OllamaEmptyResponseError(
             "Ollama returned thinking but no final response "
-            f"(thinking_len={len(thinking)}, done_reason={data.get('done_reason') or 'unknown'}, "
+            f"(thinking_len={len(thinking)}, done_reason={last_data.get('done_reason') or 'unknown'}, "
             f"num_predict={num_predict}, model={DEFAULT_MODEL})."
         )
     return ""
 
 
+def _ollama_call_metadata(
+    *,
+    kind: str,
+    prompt: str,
+    timeout_sec: float,
+    num_predict: int,
+    elapsed_ms: float,
+    answer: str = "",
+    error: BaseException | None = None,
+) -> dict[str, Any]:
+    metadata: dict[str, Any] = {
+        "llm_kind": kind,
+        "llm_model": DEFAULT_MODEL,
+        "llm_timeout_sec": timeout_sec,
+        "llm_num_predict": num_predict,
+        "llm_prompt_chars": len(prompt),
+        "llm_elapsed_ms": round(elapsed_ms, 2),
+        "llm_response_chars": len(answer),
+        **deadline_metadata(),
+    }
+    if error is not None:
+        metadata["llm_error_type"] = type(error).__name__
+        metadata["llm_error"] = str(error)
+    return metadata
+
+
 def _build_general_prompt(question: str) -> str:
-    return f"""ตอบเป็นภาษาไทยแบบสั้น กระชับ และเป็นประโยชน์
-คำถามนี้อยู่นอกฐานข้อมูล PSU Esports Studio - Phuket จึงให้ตอบจากความรู้ทั่วไปของโมเดล
-ห้ามอ้างว่าเป็นข้อมูลของ PSU Esports Studio - Phuket
-ห้ามแต่งราคา เวลา ขั้นตอนบริการ หรือกฎของศูนย์
-ถ้าคำถามต้องใช้ข้อมูลล่าสุด/ข้อมูลเฉพาะสถานที่ ให้บอกว่าควรตรวจสอบแหล่งข้อมูลจริงเพิ่มเติม
+    return f"""ตอบภาษาไทยให้สั้น ตรงคำถาม และสุภาพ
+ตอบคำตอบสุดท้ายทันที ไม่ต้องแสดงขั้นตอนคิด
+ถ้าคำถามเป็นความรู้ทั่วไปที่ไม่เกี่ยวกับ PSU Esports Studio - Phuket ให้ตอบจากความรู้ทั่วไปได้
+ถ้าคำถามเกี่ยวกับ PSU Esports Studio - Phuket ให้ตอบว่าไม่มีข้อมูลยืนยันจากฐานข้อมูลศูนย์ ห้ามเดา
 
-QUESTION:
-{question}
-
+QUESTION: {question}
 ANSWER:"""
 
 
 def _general_llm_answer(question: str) -> str:
-    answer = _call_ollama(
-        _build_general_prompt(question),
-        timeout_sec=float(os.getenv("PSU_GENERAL_LLM_TIMEOUT_SEC", "12")),
-        num_predict=int(os.getenv("PSU_GENERAL_LLM_NUM_PREDICT", str(DEFAULT_GENERAL_NUM_PREDICT))),
-    )
+    answer, _metadata = _general_llm_answer_with_metadata(question)
+    return answer
+
+
+def _general_llm_answer_with_metadata(question: str) -> tuple[str, dict[str, Any]]:
+    configured_timeout_sec = float(os.getenv("PSU_GENERAL_LLM_TIMEOUT_SEC", "12"))
+    timeout_sec = timeout_for_call(configured_timeout_sec)
+    num_predict = int(os.getenv("PSU_GENERAL_LLM_NUM_PREDICT", str(DEFAULT_GENERAL_NUM_PREDICT)))
+    prompt = _build_general_prompt(question)
+    allowed, budget_health = llm_call_allowed("general_llm", DEFAULT_MODEL)
+    if not allowed:
+        return "", {
+            **_ollama_call_metadata(
+                kind="general_llm",
+                prompt=prompt,
+                timeout_sec=timeout_sec,
+                num_predict=num_predict,
+                elapsed_ms=0.0,
+                error=RuntimeError("LLM circuit breaker cooldown active"),
+            ),
+            **budget_health,
+            "llm_skipped_by_health": True,
+        }
+    if timeout_sec <= 0:
+        release_llm_slot()
+        return "", {
+            **_ollama_call_metadata(
+                kind="general_llm",
+                prompt=prompt,
+                timeout_sec=timeout_sec,
+                num_predict=num_predict,
+                elapsed_ms=0.0,
+                error=TimeoutError("global request deadline exhausted before general LLM"),
+            ),
+            "llm_configured_timeout_sec": configured_timeout_sec,
+            **budget_health,
+            "llm_skipped_by_deadline": True,
+        }
+    call_started = time.perf_counter()
+    try:
+        answer = _call_ollama(
+            prompt,
+            timeout_sec=timeout_sec,
+            num_predict=num_predict,
+        )
+    except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError, OllamaEmptyResponseError) as exc:
+        elapsed_ms = (time.perf_counter() - call_started) * 1000
+        health = record_llm_failure(
+            "general_llm",
+            DEFAULT_MODEL,
+            error_type=type(exc).__name__,
+            error=str(exc),
+            elapsed_ms=elapsed_ms,
+        )
+        metadata = _ollama_call_metadata(
+            kind="general_llm",
+            prompt=prompt,
+            timeout_sec=timeout_sec,
+            num_predict=num_predict,
+            elapsed_ms=elapsed_ms,
+            error=exc,
+        )
+        metadata.update(budget_health)
+        metadata.update(health)
+        raise
+    elapsed_ms = (time.perf_counter() - call_started) * 1000
+    if answer:
+        health = record_llm_success("general_llm", DEFAULT_MODEL, elapsed_ms=elapsed_ms)
+    else:
+        health = record_llm_failure(
+            "general_llm",
+            DEFAULT_MODEL,
+            error_type="EmptyResponse",
+            error="empty response",
+            elapsed_ms=elapsed_ms,
+        )
     if not answer:
-        return ""
+        metadata = _ollama_call_metadata(
+            kind="general_llm",
+            prompt=prompt,
+            timeout_sec=timeout_sec,
+            num_predict=num_predict,
+            elapsed_ms=elapsed_ms,
+            answer=answer,
+        )
+        metadata.update(budget_health)
+        metadata.update(health)
+        return "", metadata
     note = "หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket"
     if "หมายเหตุ" not in answer:
         answer = answer.rstrip() + f"\n{note}"
-    return answer
+    metadata = _ollama_call_metadata(
+        kind="general_llm",
+        prompt=prompt,
+        timeout_sec=timeout_sec,
+        num_predict=num_predict,
+        elapsed_ms=elapsed_ms,
+        answer=answer,
+    )
+    metadata["llm_configured_timeout_sec"] = configured_timeout_sec
+    metadata.update(budget_health)
+    metadata.update(health)
+    return answer, metadata
 
 
 def _direct_rag_answer(question: str, rows: list[dict[str, Any]]) -> str:
@@ -347,26 +495,35 @@ def _no_context_answer(route: PipelineRoute) -> str:
 
 
 def _general_unavailable_answer(llm_error: str = "") -> str:
-    timeout_sec = os.getenv("PSU_GENERAL_LLM_TIMEOUT_SEC", str(DEFAULT_TIMEOUT_SEC))
-    num_predict = os.getenv("PSU_GENERAL_LLM_NUM_PREDICT", str(DEFAULT_GENERAL_NUM_PREDICT))
-    hint = (
-        f"\nรายละเอียด: {llm_error}"
-        if llm_error and ("thinking but no final response" in llm_error or "OllamaEmptyResponseError" in llm_error)
-        else ""
-    )
     return (
-        "คำถามนี้ถูกจัดเป็นคำถามทั่วไปนอกฐานข้อมูล PSU Esports Studio - Phuket แล้วครับ\n"
-        f"แต่ Local LLM รุ่น `{DEFAULT_MODEL}` ยังไม่ส่งคำตอบสุดท้ายกลับมา จึงยังตอบจากความรู้ทั่วไปไม่ได้\n"
-        f"ค่าปัจจุบัน: timeout={timeout_sec}s, num_predict={num_predict}\n"
-        "ถ้าใช้ `qwen3:4b` แล้วเจออาการนี้ แนะนำให้ลอง `qwen2.5:3b` ก่อน เพราะ Qwen3 เป็น thinking model และอาจใช้ token ไปกับการคิดจน response ว่าง"
-        f"{hint}"
+        "ตอนนี้ยังตอบคำถามความรู้ทั่วไปไม่ได้ชั่วคราวครับ กรุณาลองใหม่อีกครั้ง\n"
+        "สำหรับข้อมูลของ PSU Esports Studio - Phuket ยังถามเรื่องเกม ปุ่ม อุปกรณ์ ราคา การจอง เวลาเปิด และกติกาได้ตามปกติครับ"
     )
 
 
 def _general_disabled_answer() -> str:
     return (
-        "คำถามนี้ถูกจัดเป็นคำถามทั่วไปนอกฐานข้อมูล PSU Esports Studio - Phuket แล้วครับ\n"
-        "ตอนนี้โหมดตอบจากความรู้ทั่วไปของ Local LLM ยังไม่ได้เปิดในสภาพแวดล้อมนี้ จึงไม่ดึงข้อมูลศูนย์มาตอบแทนเพื่อเลี่ยงคำตอบมั่ว"
+        "คำถามนี้ไม่ได้อยู่ในข้อมูลของ PSU Esports Studio - Phuket จึงยังตอบจากข้อมูลที่ยืนยันได้ไม่ได้ครับ\n"
+        "ลองถามเรื่องเกม ปุ่ม อุปกรณ์ ราคา การจอง เวลาเปิด หรือกติกาของศูนย์ได้ครับ"
+    )
+
+
+def _looks_like_psu_specific_question(question: str) -> bool:
+    q = normalize_text(question)
+    strong_signals = (
+        "psu", "สงขลานครินทร์", "psu phuket", "esports", "อีสปอร์ต", "studio",
+        "ภูเก็ต", "ps5", "playstation", "เพลย์", "nintendo", "switch", "vr",
+        "วีอาร์", "pc zone", "cockpit", "ค็อกพิท", "คอกพิท", "พวงมาลัย",
+        "คอนโทรลเลอร์", "สมาชิกทีม", "สตาฟ",
+    )
+    service_or_studio_signals = (
+        "ศูนย์", "จอง", "เช็คอิน", "เชคอิน", "ค่าบริการ", "บริการ", "เวลาเปิด",
+        "เปิดกี่โมง", "ปิดกี่โมง", "เปิดไหม", "อุปกรณ์", "โซน", "ปุ่ม",
+        "กติกา", "การแข่งขัน", "แข่ง", "ทัวร์",
+    )
+    return any(signal in q for signal in strong_signals) or (
+        any(signal in q for signal in service_or_studio_signals)
+        and any(signal in q for signal in ("psu", "esports", "studio", "ศูนย์", "ps5", "playstation", "nintendo", "switch", "vr", "pc zone", "cockpit", "โซน"))
     )
 
 
@@ -399,16 +556,37 @@ def build_experimental_fallback(
         return soft
 
     if allow_llm and route.category == "general":
+        if _looks_like_psu_specific_question(question):
+            trace = PipelineTrace(
+                "experimental_rag_fallback",
+                "blocked_general_llm_for_psu_signal",
+                0.52,
+                "general route contains PSU/service signal; skip model-only answer",
+                {
+                    "allow_llm": allow_llm,
+                    "model": DEFAULT_MODEL,
+                    "llm_attempted": False,
+                    "guard": "psu_specific_general_llm_block",
+                },
+            )
+            return ExperimentalFallback(
+                _no_context_answer(PipelineRoute("no_answer", "psu_specific_general_block", 0.52, "no_answer", "medium", "PSU signal blocked general LLM")),
+                [],
+                "general_psu_scope_no_answer",
+                0.52,
+                trace,
+            )
         llm_error = ""
+        llm_call: dict[str, Any] = {}
         try:
-            answer = _general_llm_answer(question)
+            answer, llm_call = _general_llm_answer_with_metadata(question)
             if answer:
                 trace = PipelineTrace(
                     "experimental_rag_fallback",
                     "general_llm",
                     0.58,
                     "general route uses local LLM without document retrieval",
-                    {"allow_llm": True, "model": DEFAULT_MODEL},
+                    {"allow_llm": True, "model": DEFAULT_MODEL, "llm_attempted": True, "llm_call": llm_call},
                 )
                 return ExperimentalFallback(
                     answer,
@@ -417,14 +595,26 @@ def build_experimental_fallback(
                     0.58,
                     trace,
                 )
+            if llm_call.get("llm_skipped_by_health"):
+                llm_error = "LLM circuit breaker cooldown active"
         except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError, OllamaEmptyResponseError) as exc:
             llm_error = f"{type(exc).__name__}: {exc}"
+            timeout_sec = timeout_for_call(float(os.getenv("PSU_GENERAL_LLM_TIMEOUT_SEC", "12")))
+            num_predict = int(os.getenv("PSU_GENERAL_LLM_NUM_PREDICT", str(DEFAULT_GENERAL_NUM_PREDICT)))
+            llm_call = _ollama_call_metadata(
+                kind="general_llm",
+                prompt=_build_general_prompt(question),
+                timeout_sec=timeout_sec,
+                num_predict=num_predict,
+                elapsed_ms=timeout_sec * 1000 if isinstance(exc, TimeoutError) else 0.0,
+                error=exc,
+            )
         trace = PipelineTrace(
             "experimental_rag_fallback",
             "general_llm_unavailable",
             0.42,
             "general route skips document retrieval to avoid PSU context noise",
-            {"allow_llm": True, "model": DEFAULT_MODEL, "llm_error": llm_error},
+            {"allow_llm": True, "model": DEFAULT_MODEL, "llm_attempted": True, "llm_error": llm_error, "llm_call": llm_call},
         )
         return ExperimentalFallback(
             _general_unavailable_answer(llm_error),
@@ -449,31 +639,101 @@ def build_experimental_fallback(
 
     llm_error = ""
     if allow_llm:
-        try:
-            answer = _call_ollama(
-                _build_prompt(question, rows),
-                num_predict=int(os.getenv("PSU_RAG_LLM_NUM_PREDICT", str(DEFAULT_RAG_NUM_PREDICT))),
-            )
-            if answer:
-                source_line = _source_line(rows)
-                if source_line and "แหล่งข้อมูล" not in answer:
-                    answer = answer.rstrip() + f"\nแหล่งข้อมูล: {source_line}"
-                trace = PipelineTrace(
-                    "experimental_rag_fallback",
+        timeout_sec = timeout_for_call(DEFAULT_TIMEOUT_SEC)
+        num_predict = int(os.getenv("PSU_RAG_LLM_NUM_PREDICT", str(DEFAULT_RAG_NUM_PREDICT)))
+        prompt = _build_prompt(question, rows)
+        allowed, health = llm_call_allowed("rag_llm", DEFAULT_MODEL)
+        if not allowed:
+            llm_error = "LLM circuit breaker cooldown active"
+            llm_call = {
+                **_ollama_call_metadata(
+                    kind="rag_llm",
+                    prompt=prompt,
+                    timeout_sec=timeout_sec,
+                    num_predict=num_predict,
+                    elapsed_ms=0.0,
+                    error=RuntimeError(llm_error),
+                ),
+                **health,
+                "llm_skipped_by_health": True,
+            }
+        elif timeout_sec <= 0:
+            release_llm_slot()
+            allowed = False
+            llm_error = "global request deadline exhausted before RAG LLM"
+            llm_call = {
+                **_ollama_call_metadata(
+                    kind="rag_llm",
+                    prompt=prompt,
+                    timeout_sec=timeout_sec,
+                    num_predict=num_predict,
+                    elapsed_ms=0.0,
+                    error=TimeoutError(llm_error),
+                ),
+                "llm_skipped_by_deadline": True,
+            }
+        else:
+            llm_call = {}
+        call_started = time.perf_counter()
+        if allowed:
+            try:
+                answer = _call_ollama(
+                    prompt,
+                    num_predict=num_predict,
+                )
+                elapsed_ms = (time.perf_counter() - call_started) * 1000
+                if answer:
+                    health = record_llm_success("rag_llm", DEFAULT_MODEL, elapsed_ms=elapsed_ms)
+                else:
+                    health = record_llm_failure("rag_llm", DEFAULT_MODEL, error_type="EmptyResponse", error="empty response", elapsed_ms=elapsed_ms)
+                llm_call = _ollama_call_metadata(
+                    kind="rag_llm",
+                    prompt=prompt,
+                    timeout_sec=timeout_sec,
+                    num_predict=num_predict,
+                    elapsed_ms=elapsed_ms,
+                    answer=answer,
+                )
+                llm_call.update(health)
+                if answer:
+                    source_line = _source_line(rows)
+                    if source_line and "แหล่งข้อมูล" not in answer:
+                        answer = answer.rstrip() + f"\nแหล่งข้อมูล: {source_line}"
+                    trace = PipelineTrace(
+                        "experimental_rag_fallback",
+                        "rag_llm",
+                        0.70,
+                        "; ".join(details),
+                        {"allow_llm": True, "model": DEFAULT_MODEL, "llm_attempted": True, "llm_call": llm_call},
+                    )
+                    return ExperimentalFallback(
+                        answer,
+                        [_hit_from_row(row) for row in rows[:3]],
+                        "experimental_rag_llm_fallback",
+                        0.70,
+                        trace,
+                    )
+            except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError, OllamaEmptyResponseError) as exc:
+                elapsed_ms = (time.perf_counter() - call_started) * 1000
+                llm_error = f"{type(exc).__name__}: {exc}"
+                health = record_llm_failure(
                     "rag_llm",
-                    0.70,
-                    "; ".join(details),
-                    {"allow_llm": True, "model": DEFAULT_MODEL},
+                    DEFAULT_MODEL,
+                    error_type=type(exc).__name__,
+                    error=str(exc),
+                    elapsed_ms=elapsed_ms,
                 )
-                return ExperimentalFallback(
-                    answer,
-                    [_hit_from_row(row) for row in rows[:3]],
-                    "experimental_rag_llm_fallback",
-                    0.70,
-                    trace,
+                llm_call = _ollama_call_metadata(
+                    kind="rag_llm",
+                    prompt=prompt,
+                    timeout_sec=timeout_sec,
+                    num_predict=num_predict,
+                    elapsed_ms=elapsed_ms,
+                    error=exc,
                 )
-        except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError, OllamaEmptyResponseError) as exc:
-            llm_error = f"{type(exc).__name__}: {exc}"
+                llm_call.update(health)
+    else:
+        llm_call = {}
 
     answer = _direct_rag_answer(question, rows)
     source_line = _source_line(rows)
@@ -484,7 +744,13 @@ def build_experimental_fallback(
         "rag_direct",
         0.62,
         "; ".join(details),
-        {"allow_llm": allow_llm, "llm_error": llm_error, "elapsed": round(time.perf_counter() - started, 4)},
+        {
+            "allow_llm": allow_llm,
+            "llm_attempted": bool(allow_llm),
+            "llm_error": llm_error,
+            "llm_call": llm_call,
+            "elapsed": round(time.perf_counter() - started, 4),
+        },
     )
     return ExperimentalFallback(
         answer,

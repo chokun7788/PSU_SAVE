@@ -1,0 +1,2953 @@
+[
+  {
+    "id": "MB-1242-PSR-001",
+    "group": "policy_schedule_rules",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "ศุกร์บ่ายเปิดไหม",
+    "llm_required": false,
+    "answer": "วันศุกร์: เปิดให้เล่นช่วง 09:00-12:00 ส่วน 13:00-16:00 เป็น Maintenance สำหรับ Weekly hardware inspection and cleaning\n\nรายละเอียดจากตาราง:\n•    วันศุกร์: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = maintenance\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "mode": "pipeline:structured_schedule",
+    "route_category": "schedule",
+    "route_intent": "schedule_query",
+    "confidence": 0.96,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 1.1498,
+    "elapsed_sec": 1.1022,
+    "llm_call_count": 0,
+    "llm_elapsed_ms_total": 0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "timing",
+        "decision": "question_frame",
+        "confidence": 0.96,
+        "detail": "schedule/schedule_lookup",
+        "metadata": {
+          "elapsed_ms": 135.69,
+          "elapsed_sec": 0.1357,
+          "operation": "schedule_lookup",
+          "domain": "schedule",
+          "expected_answer_types": [
+            "schedule"
+          ],
+          "targets": [],
+          "target_status": "unknown",
+          "target_margin": 0.0,
+          "target_required": false,
+          "allows_multiple_targets": false,
+          "needs_clarification": false,
+          "confidence": 0.96,
+          "method": "operation_first",
+          "route_category": "schedule",
+          "route_intent": "schedule_query",
+          "intent_operation": "schedule_lookup",
+          "target_reason": "no_target_candidate",
+          "target_candidate_count": 0,
+          "game_family": ""
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "candidate_decisions",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 67.77,
+          "elapsed_sec": 0.0678
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "structured.schedule",
+        "confidence": 0.9277777777777778,
+        "detail": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=schedule; question_frame_domain_match; question_frame_operation=schedule_lookup; precondition=schedule_query_applicable",
+        "metadata": {
+          "selected": {
+            "capability_id": "structured.schedule",
+            "action": "structured",
+            "domain": "schedule",
+            "score": 0.928,
+            "status": "accepted",
+            "reason": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=schedule; question_frame_domain_match; question_frame_operation=schedule_lookup; precondition=schedule_query_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          "selection": {
+            "status": "selected",
+            "execution_allowed": true,
+            "margin": 0.439,
+            "same_action_as_second": false,
+            "second": {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.489,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          },
+          "question_frame": {
+            "operation": "schedule_lookup",
+            "domain": "schedule",
+            "expected_answer_types": [
+              "schedule"
+            ],
+            "targets": [],
+            "target_status": "unknown",
+            "target_margin": 0.0,
+            "target_required": false,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.96,
+            "method": "operation_first",
+            "route_category": "schedule",
+            "route_intent": "schedule_query",
+            "intent_operation": "schedule_lookup",
+            "target_reason": "no_target_candidate",
+            "target_candidate_count": 0,
+            "game_family": ""
+          },
+          "candidates": [
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.928,
+              "status": "accepted",
+              "reason": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=schedule; question_frame_domain_match; question_frame_operation=schedule_lookup; precondition=schedule_query_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.489,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.467,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.456,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.444,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.4,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.322,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.278,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_member_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_control_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_an_equipment_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_reservation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_or_calculation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_competition_rule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "medium",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_precondition",
+        "confidence": 1.0,
+        "detail": "structured.schedule",
+        "metadata": {
+          "elapsed_ms": 0.06,
+          "elapsed_sec": 0.0001,
+          "ok": true
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "allow_structured",
+        "confidence": 0.9,
+        "detail": "schedule_query_applicable",
+        "metadata": {
+          "capability_id": "structured.schedule",
+          "ok": true,
+          "reason": "schedule_query_applicable",
+          "severity": "policy",
+          "selector_allows_structured": true,
+          "selected_capability_id": "structured.schedule"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "structured_tool_execution",
+        "confidence": 1.0,
+        "detail": "structured_schedule",
+        "metadata": {
+          "elapsed_ms": 16.9,
+          "elapsed_sec": 0.0169,
+          "precondition_ok": true,
+          "selector_allows_structured": true,
+          "selected_capability_id": "structured.schedule",
+          "confidence": 0.96
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "facts_composer",
+        "confidence": 1.0,
+        "detail": "disabled",
+        "metadata": {
+          "elapsed_ms": 0.01,
+          "elapsed_sec": 0.0,
+          "used_llm": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "structured_schedule",
+        "metadata": {
+          "elapsed_ms": 0.01,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 60.88,
+          "elapsed_sec": 0.0609,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "structured_tool",
+        "decision": "structured_schedule",
+        "confidence": 0.96,
+        "detail": "get_service_schedule",
+        "metadata": {
+          "tool": "get_service_schedule",
+          "weekday": "friday",
+          "slots": {
+            "friday": {
+              "label": "วันศุกร์",
+              "summary": "เปิดให้เล่นช่วง 09:00-12:00 ส่วน 13:00-16:00 เป็น Maintenance สำหรับ Weekly hardware inspection and cleaning",
+              "slots": [
+                {
+                  "label": "Morning",
+                  "time": "09:00-12:00",
+                  "status": "open"
+                },
+                {
+                  "label": "Afternoon",
+                  "time": "13:00-16:00",
+                  "status": "maintenance"
+                }
+              ]
+            }
+          },
+          "elapsed": 1.0376,
+          "facts_composer_used": false
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:structured_schedule",
+        "metadata": {
+          "elapsed_ms": 3.59,
+          "elapsed_sec": 0.0036,
+          "format_thai_style_ms": 3.08,
+          "total_elapsed_ms": 1102.19,
+          "total_elapsed_sec": 1.1022
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-1243-PSR-002",
+    "group": "policy_schedule_rules",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "ช่วงเช้าวันจันทร์เปิดไหม",
+    "llm_required": false,
+    "answer": "วันจันทร์ Morning เล่นไม่ได้/ปิด/ไม่เปิดให้จองเล่น เพราะ 09:00-12:00 เป็น Maintenance*\n\nรายละเอียดจากตาราง:\n•    วันจันทร์: Morning 09:00-12:00 = maintenance, Afternoon 13:00-16:00 = open\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "mode": "pipeline:structured_schedule",
+    "route_category": "schedule",
+    "route_intent": "schedule_query",
+    "confidence": 0.96,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.3209,
+    "elapsed_sec": 0.3208,
+    "llm_call_count": 0,
+    "llm_elapsed_ms_total": 0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "timing",
+        "decision": "question_frame",
+        "confidence": 0.9,
+        "detail": "schedule/schedule_lookup",
+        "metadata": {
+          "elapsed_ms": 71.82,
+          "elapsed_sec": 0.0718,
+          "operation": "schedule_lookup",
+          "domain": "schedule",
+          "expected_answer_types": [
+            "schedule"
+          ],
+          "targets": [],
+          "target_status": "unknown",
+          "target_margin": 0.0,
+          "target_required": false,
+          "allows_multiple_targets": false,
+          "needs_clarification": false,
+          "confidence": 0.9,
+          "method": "operation_first",
+          "route_category": "schedule",
+          "route_intent": "schedule_query",
+          "intent_operation": "schedule_lookup",
+          "target_reason": "no_target_candidate",
+          "target_candidate_count": 0,
+          "game_family": ""
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "candidate_decisions",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 59.86,
+          "elapsed_sec": 0.0599
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "structured.schedule",
+        "confidence": 0.9277777777777778,
+        "detail": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=schedule; question_frame_domain_match; question_frame_operation=schedule_lookup; precondition=schedule_query_applicable",
+        "metadata": {
+          "selected": {
+            "capability_id": "structured.schedule",
+            "action": "structured",
+            "domain": "schedule",
+            "score": 0.928,
+            "status": "accepted",
+            "reason": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=schedule; question_frame_domain_match; question_frame_operation=schedule_lookup; precondition=schedule_query_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          "selection": {
+            "status": "selected",
+            "execution_allowed": true,
+            "margin": 0.439,
+            "same_action_as_second": false,
+            "second": {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.489,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          },
+          "question_frame": {
+            "operation": "schedule_lookup",
+            "domain": "schedule",
+            "expected_answer_types": [
+              "schedule"
+            ],
+            "targets": [],
+            "target_status": "unknown",
+            "target_margin": 0.0,
+            "target_required": false,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.9,
+            "method": "operation_first",
+            "route_category": "schedule",
+            "route_intent": "schedule_query",
+            "intent_operation": "schedule_lookup",
+            "target_reason": "no_target_candidate",
+            "target_candidate_count": 0,
+            "game_family": ""
+          },
+          "candidates": [
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.928,
+              "status": "accepted",
+              "reason": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=schedule; question_frame_domain_match; question_frame_operation=schedule_lookup; precondition=schedule_query_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.489,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.467,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.456,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.444,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.4,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.322,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.278,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_member_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_control_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_an_equipment_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_reservation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_or_calculation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_competition_rule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "medium",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_precondition",
+        "confidence": 1.0,
+        "detail": "structured.schedule",
+        "metadata": {
+          "elapsed_ms": 0.05,
+          "elapsed_sec": 0.0001,
+          "ok": true
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "allow_structured",
+        "confidence": 0.9,
+        "detail": "schedule_query_applicable",
+        "metadata": {
+          "capability_id": "structured.schedule",
+          "ok": true,
+          "reason": "schedule_query_applicable",
+          "severity": "policy",
+          "selector_allows_structured": true,
+          "selected_capability_id": "structured.schedule"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "structured_tool_execution",
+        "confidence": 1.0,
+        "detail": "structured_schedule",
+        "metadata": {
+          "elapsed_ms": 0.11,
+          "elapsed_sec": 0.0001,
+          "precondition_ok": true,
+          "selector_allows_structured": true,
+          "selected_capability_id": "structured.schedule",
+          "confidence": 0.96
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "facts_composer",
+        "confidence": 1.0,
+        "detail": "disabled",
+        "metadata": {
+          "elapsed_ms": 0.01,
+          "elapsed_sec": 0.0,
+          "used_llm": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "structured_schedule",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 47.41,
+          "elapsed_sec": 0.0474,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "structured_tool",
+        "decision": "structured_schedule",
+        "confidence": 0.96,
+        "detail": "get_service_schedule",
+        "metadata": {
+          "tool": "get_service_schedule",
+          "weekday": "monday",
+          "slots": {
+            "monday": {
+              "label": "วันจันทร์",
+              "summary": "เปิดให้เล่นช่วง 13:00-16:00 ส่วน 09:00-12:00 เป็น Maintenance*",
+              "slots": [
+                {
+                  "label": "Morning",
+                  "time": "09:00-12:00",
+                  "status": "maintenance"
+                },
+                {
+                  "label": "Afternoon",
+                  "time": "13:00-16:00",
+                  "status": "open"
+                }
+              ]
+            }
+          },
+          "elapsed": 0.2729,
+          "facts_composer_used": false
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:structured_schedule",
+        "metadata": {
+          "elapsed_ms": 0.35,
+          "elapsed_sec": 0.0004,
+          "format_thai_style_ms": 0.13,
+          "total_elapsed_ms": 320.76,
+          "total_elapsed_sec": 0.3208
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-1244-PSR-003",
+    "group": "policy_schedule_rules",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "วันศุกร์ช่วงบ่ายปิดใช่ไหม",
+    "llm_required": false,
+    "answer": "วันศุกร์ Afternoon เล่นไม่ได้/ปิด/ไม่เปิดให้จองเล่น เพราะ 13:00-16:00 เป็น Maintenance\n\nรายละเอียดจากตาราง:\n•    วันศุกร์: Morning 09:00-12:00 = open, Afternoon 13:00-16:00 = maintenance\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "mode": "pipeline:structured_schedule",
+    "route_category": "schedule",
+    "route_intent": "schedule_query",
+    "confidence": 0.96,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.2294,
+    "elapsed_sec": 0.2294,
+    "llm_call_count": 0,
+    "llm_elapsed_ms_total": 0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "timing",
+        "decision": "question_frame",
+        "confidence": 0.9,
+        "detail": "schedule/schedule_lookup",
+        "metadata": {
+          "elapsed_ms": 40.42,
+          "elapsed_sec": 0.0404,
+          "operation": "schedule_lookup",
+          "domain": "schedule",
+          "expected_answer_types": [
+            "schedule"
+          ],
+          "targets": [],
+          "target_status": "unknown",
+          "target_margin": 0.0,
+          "target_required": false,
+          "allows_multiple_targets": false,
+          "needs_clarification": false,
+          "confidence": 0.9,
+          "method": "operation_first",
+          "route_category": "schedule",
+          "route_intent": "schedule_query",
+          "intent_operation": "schedule_lookup",
+          "target_reason": "no_target_candidate",
+          "target_candidate_count": 0,
+          "game_family": ""
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "candidate_decisions",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 61.53,
+          "elapsed_sec": 0.0615
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "structured.schedule",
+        "confidence": 0.9277777777777778,
+        "detail": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=schedule; question_frame_domain_match; question_frame_operation=schedule_lookup; precondition=schedule_query_applicable",
+        "metadata": {
+          "selected": {
+            "capability_id": "structured.schedule",
+            "action": "structured",
+            "domain": "schedule",
+            "score": 0.928,
+            "status": "accepted",
+            "reason": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=schedule; question_frame_domain_match; question_frame_operation=schedule_lookup; precondition=schedule_query_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          "selection": {
+            "status": "selected",
+            "execution_allowed": true,
+            "margin": 0.439,
+            "same_action_as_second": false,
+            "second": {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.489,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          },
+          "question_frame": {
+            "operation": "schedule_lookup",
+            "domain": "schedule",
+            "expected_answer_types": [
+              "schedule"
+            ],
+            "targets": [],
+            "target_status": "unknown",
+            "target_margin": 0.0,
+            "target_required": false,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.9,
+            "method": "operation_first",
+            "route_category": "schedule",
+            "route_intent": "schedule_query",
+            "intent_operation": "schedule_lookup",
+            "target_reason": "no_target_candidate",
+            "target_candidate_count": 0,
+            "game_family": ""
+          },
+          "candidates": [
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.928,
+              "status": "accepted",
+              "reason": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=schedule; question_frame_domain_match; question_frame_operation=schedule_lookup; precondition=schedule_query_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.489,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.467,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.456,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.444,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.4,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.322,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.278,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_member_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_control_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_an_equipment_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_reservation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_or_calculation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_competition_rule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "medium",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_precondition",
+        "confidence": 1.0,
+        "detail": "structured.schedule",
+        "metadata": {
+          "elapsed_ms": 0.08,
+          "elapsed_sec": 0.0001,
+          "ok": true
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "allow_structured",
+        "confidence": 0.9,
+        "detail": "schedule_query_applicable",
+        "metadata": {
+          "capability_id": "structured.schedule",
+          "ok": true,
+          "reason": "schedule_query_applicable",
+          "severity": "policy",
+          "selector_allows_structured": true,
+          "selected_capability_id": "structured.schedule"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "structured_tool_execution",
+        "confidence": 1.0,
+        "detail": "structured_schedule",
+        "metadata": {
+          "elapsed_ms": 0.16,
+          "elapsed_sec": 0.0002,
+          "precondition_ok": true,
+          "selector_allows_structured": true,
+          "selected_capability_id": "structured.schedule",
+          "confidence": 0.96
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "facts_composer",
+        "confidence": 1.0,
+        "detail": "disabled",
+        "metadata": {
+          "elapsed_ms": 0.01,
+          "elapsed_sec": 0.0,
+          "used_llm": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "structured_schedule",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 43.15,
+          "elapsed_sec": 0.0432,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "structured_tool",
+        "decision": "structured_schedule",
+        "confidence": 0.96,
+        "detail": "get_service_schedule",
+        "metadata": {
+          "tool": "get_service_schedule",
+          "weekday": "friday",
+          "slots": {
+            "friday": {
+              "label": "วันศุกร์",
+              "summary": "เปิดให้เล่นช่วง 09:00-12:00 ส่วน 13:00-16:00 เป็น Maintenance สำหรับ Weekly hardware inspection and cleaning",
+              "slots": [
+                {
+                  "label": "Morning",
+                  "time": "09:00-12:00",
+                  "status": "open"
+                },
+                {
+                  "label": "Afternoon",
+                  "time": "13:00-16:00",
+                  "status": "maintenance"
+                }
+              ]
+            }
+          },
+          "elapsed": 0.1858,
+          "facts_composer_used": false
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:structured_schedule",
+        "metadata": {
+          "elapsed_ms": 0.31,
+          "elapsed_sec": 0.0003,
+          "format_thai_style_ms": 0.12,
+          "total_elapsed_ms": 229.36,
+          "total_elapsed_sec": 0.2294
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-1245-PSR-004",
+    "group": "policy_schedule_rules",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "ต้องจ่ายภายในกี่นาที",
+    "llm_required": false,
+    "answer": "หลังจองต้องชำระเงินทันที หากไม่ชำระภายใน 10 นาที การจองจะถูกยกเลิก และหากต้องการใช้บริการต้องทำรายการจองใหม่\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "mode": "pipeline:category_rule_fast_path",
+    "route_category": "reservation",
+    "route_intent": "count",
+    "confidence": 0.9,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [
+      "service_fee_answer_missing_service_fee_source"
+    ],
+    "wall_sec": 1.6608,
+    "elapsed_sec": 1.6607,
+    "llm_call_count": 0,
+    "llm_elapsed_ms_total": 0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "structured_reservation_fact",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 0.3,
+        "detail": "failed",
+        "metadata": {
+          "elapsed_ms": 59.13,
+          "elapsed_sec": 0.0591,
+          "error_count": 1,
+          "warning_count": 1
+        }
+      },
+      {
+        "stage": "structured_tool",
+        "decision": "structured_reservation_fact",
+        "confidence": 0.94,
+        "detail": "get_reservation_fact",
+        "metadata": {
+          "tool": "get_reservation_fact",
+          "fact_key": "payment_timeout",
+          "score": 1.0,
+          "elapsed": 1.5471,
+          "facts_composer_used": false
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "failed",
+        "confidence": 0.3,
+        "detail": "answer_contract_type_mismatch:expected=fact,summary;actual=booking,how_to; service_fee_answer_missing_service_fee_source",
+        "metadata": {}
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "structured_rejected_by_validator",
+        "confidence": 0.3,
+        "detail": "answer_contract_type_mismatch:expected=fact,summary;actual=booking,how_to",
+        "metadata": {
+          "mode": "structured_reservation_fact",
+          "capability_id": "structured.reservation",
+          "validation_errors": [
+            "answer_contract_type_mismatch:expected=fact,summary;actual=booking,how_to"
+          ],
+          "validation_warnings": [
+            "service_fee_answer_missing_service_fee_source"
+          ]
+        }
+      },
+      {
+        "stage": "repair_controller",
+        "decision": "retry_next_candidate",
+        "confidence": 0.55,
+        "detail": "structured draft rejected by answer contract",
+        "metadata": {
+          "attempt": 1,
+          "max_attempts": 1,
+          "rejected_capability_id": "structured.reservation",
+          "errors": [
+            "answer_contract_type_mismatch:expected=fact,summary;actual=booking,how_to"
+          ]
+        }
+      },
+      {
+        "stage": "category_rule_base",
+        "decision": "rule_payment_10_minutes",
+        "confidence": 0.9,
+        "detail": "ต้องจ่ายภายในกี่นาที",
+        "metadata": {
+          "category": "reservation"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "deterministic",
+        "confidence": 1.0,
+        "detail": "category_rule_fast_path",
+        "metadata": {
+          "elapsed_ms": 0.36,
+          "elapsed_sec": 0.0004,
+          "confidence": 0.9,
+          "selector_allows_deterministic": true,
+          "selected_capability_id": "structured.reservation"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "category_rule_fast_path",
+        "metadata": {
+          "elapsed_ms": 0.01,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 52.84,
+          "elapsed_sec": 0.0528,
+          "error_count": 0,
+          "warning_count": 1
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "service_fee_answer_missing_service_fee_source",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:category_rule_fast_path",
+        "metadata": {
+          "elapsed_ms": 0.28,
+          "elapsed_sec": 0.0003,
+          "format_thai_style_ms": 0.09,
+          "total_elapsed_ms": 1660.66,
+          "total_elapsed_sec": 1.6607
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-1246-PSR-005",
+    "group": "policy_schedule_rules",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "เอาอาหารเข้าได้ไหม",
+    "llm_required": false,
+    "answer": "อนุญาตให้รับประทานอาหารและเครื่องดื่มเฉพาะในพื้นที่ที่กำหนดเท่านั้น\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "mode": "pipeline:rules_fast_path",
+    "route_category": "rules",
+    "route_intent": "studio_rules",
+    "confidence": 0.9,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.2275,
+    "elapsed_sec": 0.2274,
+    "llm_call_count": 0,
+    "llm_elapsed_ms_total": 0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "timing",
+        "decision": "question_frame",
+        "confidence": 0.94,
+        "detail": "rules/studio_rule_lookup",
+        "metadata": {
+          "elapsed_ms": 45.31,
+          "elapsed_sec": 0.0453,
+          "operation": "studio_rule_lookup",
+          "domain": "rules",
+          "expected_answer_types": [
+            "fact",
+            "list",
+            "summary",
+            "rule"
+          ],
+          "targets": [],
+          "target_status": "unknown",
+          "target_margin": 0.0,
+          "target_required": false,
+          "allows_multiple_targets": false,
+          "needs_clarification": false,
+          "confidence": 0.94,
+          "method": "operation_first",
+          "route_category": "rules",
+          "route_intent": "studio_rules",
+          "intent_operation": "rule_lookup",
+          "target_reason": "no_target_candidate",
+          "target_candidate_count": 0,
+          "game_family": ""
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "candidate_decisions",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 48.93,
+          "elapsed_sec": 0.0489
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "fast.domain_handlers",
+        "confidence": 0.7055555555555556,
+        "detail": "base=0.78; multi_domain; answer_type_match; tool_router_action=fast_path; question_frame_operation=studio_rule_lookup; precondition=domain_fast_handler_applicable",
+        "metadata": {
+          "selected": {
+            "capability_id": "fast.domain_handlers",
+            "action": "fast_path",
+            "domain": "multi",
+            "score": 0.706,
+            "status": "accepted",
+            "reason": "base=0.78; multi_domain; answer_type_match; tool_router_action=fast_path; question_frame_operation=studio_rule_lookup; precondition=domain_fast_handler_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          "selection": {
+            "status": "selected",
+            "execution_allowed": true,
+            "margin": 0.239,
+            "same_action_as_second": false,
+            "second": {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.467,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          },
+          "question_frame": {
+            "operation": "studio_rule_lookup",
+            "domain": "rules",
+            "expected_answer_types": [
+              "fact",
+              "list",
+              "summary",
+              "rule"
+            ],
+            "targets": [],
+            "target_status": "unknown",
+            "target_margin": 0.0,
+            "target_required": false,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.94,
+            "method": "operation_first",
+            "route_category": "rules",
+            "route_intent": "studio_rules",
+            "intent_operation": "rule_lookup",
+            "target_reason": "no_target_candidate",
+            "target_candidate_count": 0,
+            "game_family": ""
+          },
+          "candidates": [
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.706,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; tool_router_action=fast_path; question_frame_operation=studio_rule_lookup; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.467,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.456,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.444,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.4,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.322,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.278,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: competition_query_must_not_use_member_directory",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_control_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_an_equipment_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_reservation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_schedule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_or_calculation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "medium",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_precondition",
+        "confidence": 1.0,
+        "detail": "structured.unknown",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0,
+          "ok": false
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "reject_structured",
+        "confidence": 0.2,
+        "detail": "candidate_selector_preferred_non_structured_action",
+        "metadata": {
+          "capability_id": "structured.unknown",
+          "ok": false,
+          "reason": "no_structured_capability_for_route",
+          "severity": "policy",
+          "selector_allows_structured": false,
+          "selected_capability_id": "fast.domain_handlers"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "structured_tool_execution",
+        "confidence": 1.0,
+        "detail": "no_result",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0,
+          "precondition_ok": false,
+          "selector_allows_structured": false,
+          "selected_capability_id": "fast.domain_handlers",
+          "confidence": 0.0
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_static_domain",
+        "confidence": 0.9,
+        "detail": "rules_fast_path",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "deterministic",
+        "confidence": 1.0,
+        "detail": "rules_fast_path",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001,
+          "confidence": 0.9,
+          "selector_allows_deterministic": true,
+          "selected_capability_id": "fast.domain_handlers"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "rules_fast_path",
+        "metadata": {
+          "elapsed_ms": 0.01,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 61.83,
+          "elapsed_sec": 0.0618,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:rules_fast_path",
+        "metadata": {
+          "elapsed_ms": 0.3,
+          "elapsed_sec": 0.0003,
+          "format_thai_style_ms": 0.12,
+          "total_elapsed_ms": 227.38,
+          "total_elapsed_sec": 0.2274
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-1247-PSR-006",
+    "group": "policy_schedule_rules",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "ทำจอยพังโดนปรับเท่าไหร่",
+    "llm_required": false,
+    "answer": "ต้องรับผิดชอบค่าปรับ/ค่าซ่อมครับ หากทำเมาส์หรืออุปกรณ์ของศูนย์เสียหาย โดยข้อมูลกฎที่มีระบุว่า ความเสียหายเล็กน้อยคิด 100-500 บาท และความเสียหายปานกลางคิด 500-2,000 บาทหรือตามราคาซ่อมจริง หากเสียหายร้ายแรงอาจต้องชดเชยเต็มจำนวนตามราคากลาง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "mode": "pipeline:penalty_fast_path",
+    "route_category": "penalty",
+    "route_intent": "penalty_policy",
+    "confidence": 0.9,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.9997,
+    "elapsed_sec": 0.9996,
+    "llm_call_count": 0,
+    "llm_elapsed_ms_total": 0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "timing",
+        "decision": "question_frame",
+        "confidence": 0.98,
+        "detail": "penalty/penalty_lookup",
+        "metadata": {
+          "elapsed_ms": 50.54,
+          "elapsed_sec": 0.0505,
+          "operation": "penalty_lookup",
+          "domain": "penalty",
+          "expected_answer_types": [
+            "penalty",
+            "rule"
+          ],
+          "targets": [],
+          "target_status": "unknown",
+          "target_margin": 0.0,
+          "target_required": false,
+          "allows_multiple_targets": false,
+          "needs_clarification": false,
+          "confidence": 0.98,
+          "method": "operation_first",
+          "route_category": "penalty",
+          "route_intent": "penalty_policy",
+          "intent_operation": "rule_lookup",
+          "target_reason": "no_target_candidate",
+          "target_candidate_count": 0,
+          "game_family": ""
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "candidate_decisions",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 56.33,
+          "elapsed_sec": 0.0563
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "fast.domain_handlers",
+        "confidence": 0.5405555555555556,
+        "detail": "base=0.78; multi_domain; answer_type_match; tool_router_action=fast_path; precondition=domain_fast_handler_applicable",
+        "metadata": {
+          "selected": {
+            "capability_id": "fast.domain_handlers",
+            "action": "fast_path",
+            "domain": "multi",
+            "score": 0.541,
+            "status": "accepted",
+            "reason": "base=0.78; multi_domain; answer_type_match; tool_router_action=fast_path; precondition=domain_fast_handler_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          "selection": {
+            "status": "selected",
+            "execution_allowed": true,
+            "margin": 0.074,
+            "same_action_as_second": false,
+            "second": {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.467,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          },
+          "question_frame": {
+            "operation": "penalty_lookup",
+            "domain": "penalty",
+            "expected_answer_types": [
+              "penalty",
+              "rule"
+            ],
+            "targets": [],
+            "target_status": "unknown",
+            "target_margin": 0.0,
+            "target_required": false,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.98,
+            "method": "operation_first",
+            "route_category": "penalty",
+            "route_intent": "penalty_policy",
+            "intent_operation": "rule_lookup",
+            "target_reason": "no_target_candidate",
+            "target_candidate_count": 0,
+            "game_family": ""
+          },
+          "candidates": [
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.541,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; tool_router_action=fast_path; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.467,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.456,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.444,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.322,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.278,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.167,
+              "status": "rejected",
+              "reason": "policy_veto: high-risk route cannot be model-only",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_member_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: control_query_must_not_use_game_detail",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: damage_penalty_query_must_not_use_game_controls",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: damage_penalty_query_must_not_use_equipment_tool",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_reservation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_schedule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: damage_penalty_query_must_not_use_service_fee",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "high",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_precondition",
+        "confidence": 1.0,
+        "detail": "structured.game_controls",
+        "metadata": {
+          "elapsed_ms": 0.05,
+          "elapsed_sec": 0.0001,
+          "ok": false
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "reject_structured",
+        "confidence": 0.2,
+        "detail": "candidate_selector_preferred_non_structured_action",
+        "metadata": {
+          "capability_id": "structured.game_controls",
+          "ok": false,
+          "reason": "damage_penalty_query_must_not_use_game_controls",
+          "severity": "policy",
+          "selector_allows_structured": false,
+          "selected_capability_id": "fast.domain_handlers"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "structured_tool_execution",
+        "confidence": 1.0,
+        "detail": "no_result",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0,
+          "precondition_ok": false,
+          "selector_allows_structured": false,
+          "selected_capability_id": "fast.domain_handlers",
+          "confidence": 0.0
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_static_domain",
+        "confidence": 0.9,
+        "detail": "penalty_fast_path",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "deterministic",
+        "confidence": 1.0,
+        "detail": "penalty_fast_path",
+        "metadata": {
+          "elapsed_ms": 0.21,
+          "elapsed_sec": 0.0002,
+          "confidence": 0.9,
+          "selector_allows_deterministic": true,
+          "selected_capability_id": "fast.domain_handlers"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "penalty_fast_path",
+        "metadata": {
+          "elapsed_ms": 0.01,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 59.19,
+          "elapsed_sec": 0.0592,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:penalty_fast_path",
+        "metadata": {
+          "elapsed_ms": 0.48,
+          "elapsed_sec": 0.0005,
+          "format_thai_style_ms": 0.22,
+          "total_elapsed_ms": 999.62,
+          "total_elapsed_sec": 0.9996
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-1248-PSR-007",
+    "group": "policy_schedule_rules",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "ของหายต้องทำยังไง",
+    "llm_required": false,
+    "answer": "ทรัพย์สินสูญหายศูนย์ไม่รับผิดชอบ แต่ถ้าผู้ใช้ทำอุปกรณ์เสียหายหรือเปียก ผู้ใช้ต้องรับผิดชอบค่าปรับ/ค่าซ่อม\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "mode": "pipeline:mixed_rules_fast",
+    "route_category": "rules",
+    "route_intent": "studio_rules",
+    "confidence": 0.9,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.3331,
+    "elapsed_sec": 0.333,
+    "llm_call_count": 0,
+    "llm_elapsed_ms_total": 0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "timing",
+        "decision": "question_frame",
+        "confidence": 0.94,
+        "detail": "rules/studio_rule_lookup",
+        "metadata": {
+          "elapsed_ms": 42.65,
+          "elapsed_sec": 0.0427,
+          "operation": "studio_rule_lookup",
+          "domain": "rules",
+          "expected_answer_types": [
+            "fact",
+            "list",
+            "summary",
+            "rule"
+          ],
+          "targets": [],
+          "target_status": "unknown",
+          "target_margin": 0.0,
+          "target_required": false,
+          "allows_multiple_targets": false,
+          "needs_clarification": false,
+          "confidence": 0.94,
+          "method": "operation_first",
+          "route_category": "rules",
+          "route_intent": "studio_rules",
+          "intent_operation": "rule_lookup",
+          "target_reason": "no_target_candidate",
+          "target_candidate_count": 0,
+          "game_family": ""
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "candidate_decisions",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 46.83,
+          "elapsed_sec": 0.0468
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "fast.domain_handlers",
+        "confidence": 0.7055555555555556,
+        "detail": "base=0.78; multi_domain; answer_type_match; tool_router_action=fast_path; question_frame_operation=studio_rule_lookup; precondition=domain_fast_handler_applicable",
+        "metadata": {
+          "selected": {
+            "capability_id": "fast.domain_handlers",
+            "action": "fast_path",
+            "domain": "multi",
+            "score": 0.706,
+            "status": "accepted",
+            "reason": "base=0.78; multi_domain; answer_type_match; tool_router_action=fast_path; question_frame_operation=studio_rule_lookup; precondition=domain_fast_handler_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          "selection": {
+            "status": "selected",
+            "execution_allowed": true,
+            "margin": 0.239,
+            "same_action_as_second": false,
+            "second": {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.467,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          },
+          "question_frame": {
+            "operation": "studio_rule_lookup",
+            "domain": "rules",
+            "expected_answer_types": [
+              "fact",
+              "list",
+              "summary",
+              "rule"
+            ],
+            "targets": [],
+            "target_status": "unknown",
+            "target_margin": 0.0,
+            "target_required": false,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.94,
+            "method": "operation_first",
+            "route_category": "rules",
+            "route_intent": "studio_rules",
+            "intent_operation": "rule_lookup",
+            "target_reason": "no_target_candidate",
+            "target_candidate_count": 0,
+            "game_family": ""
+          },
+          "candidates": [
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.706,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; tool_router_action=fast_path; question_frame_operation=studio_rule_lookup; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.467,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.456,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.444,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.4,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.322,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.278,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: competition_query_must_not_use_member_directory",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_control_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_an_equipment_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_reservation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_schedule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_or_calculation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "medium",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_precondition",
+        "confidence": 1.0,
+        "detail": "structured.unknown",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0,
+          "ok": false
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "reject_structured",
+        "confidence": 0.2,
+        "detail": "candidate_selector_preferred_non_structured_action",
+        "metadata": {
+          "capability_id": "structured.unknown",
+          "ok": false,
+          "reason": "no_structured_capability_for_route",
+          "severity": "policy",
+          "selector_allows_structured": false,
+          "selected_capability_id": "fast.domain_handlers"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "structured_tool_execution",
+        "confidence": 1.0,
+        "detail": "no_result",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0,
+          "precondition_ok": false,
+          "selector_allows_structured": false,
+          "selected_capability_id": "fast.domain_handlers",
+          "confidence": 0.0
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_static_domain",
+        "confidence": 0.9,
+        "detail": "mixed_rules_fast",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "deterministic",
+        "confidence": 1.0,
+        "detail": "mixed_rules_fast",
+        "metadata": {
+          "elapsed_ms": 0.11,
+          "elapsed_sec": 0.0001,
+          "confidence": 0.9,
+          "selector_allows_deterministic": true,
+          "selected_capability_id": "fast.domain_handlers"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "mixed_rules_fast",
+        "metadata": {
+          "elapsed_ms": 0.01,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 44.62,
+          "elapsed_sec": 0.0446,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:mixed_rules_fast",
+        "metadata": {
+          "elapsed_ms": 0.38,
+          "elapsed_sec": 0.0004,
+          "format_thai_style_ms": 0.11,
+          "total_elapsed_ms": 333.02,
+          "total_elapsed_sec": 0.333
+        }
+      }
+    ]
+  },
+  {
+    "id": "MB-1249-PSR-008",
+    "group": "policy_schedule_rules",
+    "quality_bucket": "psu_fact",
+    "risk": "medium",
+    "question": "กติกาในศูนย์มีอะไรบ้าง",
+    "llm_required": false,
+    "answer": "กติกาการใช้บริการในศูนย์โดยสรุปครับ\n•    ฝากสัมภาระก่อนเข้าใช้บริการ และศูนย์ไม่รับผิดชอบทรัพย์สินสูญหาย\n•    รับประทานอาหารและเครื่องดื่มได้เฉพาะพื้นที่ที่กำหนด\n•    คืนอุปกรณ์และแผ่นเกมหลังใช้งานเสร็จ\n•    งดส่งเสียงดังเกินควร และห้ามพูดจาดูหมิ่นหรือเสียดสีผู้อื่น\n•    ห้ามเคลื่อนย้ายอุปกรณ์/สิ่งของโดยไม่ได้รับอนุญาต และห้ามใช้ปลั๊กไฟส่วนตัวโดยไม่ได้รับอนุญาต\n•    ห้ามสูบบุหรี่ เสพสารเสพติด ดื่มแอลกอฮอล์ พกอาวุธ ทะเลาะวิวาท หรือเล่นการพนัน\n•    หากทำอุปกรณ์เสียหาย อาจมีค่าปรับ/ค่าซ่อมหรือชดเชยตามระดับความเสียหาย\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "mode": "pipeline:studio_rules_overview_fast_path",
+    "route_category": "rules",
+    "route_intent": "studio_rules",
+    "confidence": 0.94,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [],
+    "wall_sec": 0.2324,
+    "elapsed_sec": 0.2323,
+    "llm_call_count": 0,
+    "llm_elapsed_ms_total": 0,
+    "llm_kinds": [],
+    "judge": {
+      "passed": true,
+      "score": 100.0,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "timing",
+        "decision": "question_frame",
+        "confidence": 0.94,
+        "detail": "rules/studio_rule_lookup",
+        "metadata": {
+          "elapsed_ms": 41.75,
+          "elapsed_sec": 0.0417,
+          "operation": "studio_rule_lookup",
+          "domain": "rules",
+          "expected_answer_types": [
+            "fact",
+            "list",
+            "summary",
+            "rule"
+          ],
+          "targets": [],
+          "target_status": "unknown",
+          "target_margin": 0.0,
+          "target_required": false,
+          "allows_multiple_targets": false,
+          "needs_clarification": false,
+          "confidence": 0.94,
+          "method": "operation_first",
+          "route_category": "rules",
+          "route_intent": "studio_rules",
+          "intent_operation": "rule_lookup",
+          "target_reason": "no_target_candidate",
+          "target_candidate_count": 0,
+          "game_family": ""
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "candidate_decisions",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 49.74,
+          "elapsed_sec": 0.0497
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "fast.domain_handlers",
+        "confidence": 0.7055555555555556,
+        "detail": "base=0.78; multi_domain; answer_type_match; tool_router_action=fast_path; question_frame_operation=studio_rule_lookup; precondition=domain_fast_handler_applicable",
+        "metadata": {
+          "selected": {
+            "capability_id": "fast.domain_handlers",
+            "action": "fast_path",
+            "domain": "multi",
+            "score": 0.706,
+            "status": "accepted",
+            "reason": "base=0.78; multi_domain; answer_type_match; tool_router_action=fast_path; question_frame_operation=studio_rule_lookup; precondition=domain_fast_handler_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          "selection": {
+            "status": "selected",
+            "execution_allowed": true,
+            "margin": 0.239,
+            "same_action_as_second": false,
+            "second": {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.467,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          },
+          "question_frame": {
+            "operation": "studio_rule_lookup",
+            "domain": "rules",
+            "expected_answer_types": [
+              "fact",
+              "list",
+              "summary",
+              "rule"
+            ],
+            "targets": [],
+            "target_status": "unknown",
+            "target_margin": 0.0,
+            "target_required": false,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.94,
+            "method": "operation_first",
+            "route_category": "rules",
+            "route_intent": "studio_rules",
+            "intent_operation": "rule_lookup",
+            "target_reason": "no_target_candidate",
+            "target_candidate_count": 0,
+            "game_family": ""
+          },
+          "candidates": [
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.706,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; tool_router_action=fast_path; question_frame_operation=studio_rule_lookup; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.467,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.456,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.444,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.4,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.322,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.278,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: competition_query_must_not_use_member_directory",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_control_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_an_equipment_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_reservation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_schedule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_or_calculation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "medium",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_precondition",
+        "confidence": 1.0,
+        "detail": "structured.unknown",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0,
+          "ok": false
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "reject_structured",
+        "confidence": 0.2,
+        "detail": "candidate_selector_preferred_non_structured_action",
+        "metadata": {
+          "capability_id": "structured.unknown",
+          "ok": false,
+          "reason": "no_structured_capability_for_route",
+          "severity": "policy",
+          "selector_allows_structured": false,
+          "selected_capability_id": "fast.domain_handlers"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "structured_tool_execution",
+        "confidence": 1.0,
+        "detail": "no_result",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0,
+          "precondition_ok": false,
+          "selector_allows_structured": false,
+          "selected_capability_id": "fast.domain_handlers",
+          "confidence": 0.0
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_static_domain",
+        "confidence": 0.94,
+        "detail": "studio_rules_overview_fast_path",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "deterministic",
+        "confidence": 1.0,
+        "detail": "studio_rules_overview_fast_path",
+        "metadata": {
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001,
+          "confidence": 0.94,
+          "selector_allows_deterministic": true,
+          "selected_capability_id": "fast.domain_handlers"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "studio_rules_overview_fast_path",
+        "metadata": {
+          "elapsed_ms": 0.01,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 56.85,
+          "elapsed_sec": 0.0569,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:studio_rules_overview_fast_path",
+        "metadata": {
+          "elapsed_ms": 0.69,
+          "elapsed_sec": 0.0007,
+          "format_thai_style_ms": 0.38,
+          "total_elapsed_ms": 232.31,
+          "total_elapsed_sec": 0.2323
+        }
+      }
+    ]
+  }
+]

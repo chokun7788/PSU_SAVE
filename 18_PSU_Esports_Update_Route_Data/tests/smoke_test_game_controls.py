@@ -18,7 +18,7 @@ def check(
     must_contain: list[str],
     *,
     must_not_contain: list[str] | None = None,
-    mode: str = "pipeline:game_control_vector_first",
+    mode: str | tuple[str, ...] = ("pipeline:structured_game_controls", "pipeline:game_control_vector_first"),
     route_category: str = "games",
 ) -> None:
     result = answer_question_pipeline_debug(question)
@@ -32,7 +32,8 @@ def check(
     if forbidden:
         raise AssertionError(f"{question}: forbidden {forbidden}\n{result.answer}")
 
-    if result.mode != mode:
+    allowed_modes = (mode,) if isinstance(mode, str) else mode
+    if result.mode not in allowed_modes:
         raise AssertionError(f"{question}: expected mode {mode}, got {result.mode}")
 
     if result.route.category != route_category:
@@ -65,25 +66,20 @@ def main() -> int:
     )
     check(
         "มาริโอคาร์ทไลฟ์ปุ่มเร่งเครื่องกดอะไร",
-        ["Mario Kart Live: Home Circuit", "A", "เร่งเครื่อง"],
-        must_not_contain=["Mario Kart 8 Deluxe", "ZR"],
+        ["Mario Kart Live: Home Circuit", "ไม่พบ", "รายการเกมปัจจุบัน", "ไม่ดึงปุ่มของเกมอื่น"],
+        must_not_contain=["ZR", "เร่งเครื่อง"],
+        mode="pipeline:structured_game_controls_no_current_game",
     )
     check(
         "มาริโอคาร์ทไลฟ์ปุ่มทั้งหมดมีอะไรบ้าง",
         [
             "Mario Kart Live: Home Circuit",
-            "Left Stick",
-            "A",
-            "B",
-            "L",
-            "R",
-            "X",
-            "Y",
-            "D-Pad",
-            "ปรับความเร็ว",
-            "จัดการแผนที่",
+            "ไม่พบ",
+            "รายการเกมปัจจุบัน",
+            "ไม่ดึงปุ่มของเกมอื่น",
         ],
-        must_not_contain=["Mario Kart 8 Deluxe", "ZR"],
+        must_not_contain=["Left Stick", "D-Pad", "ZR"],
+        mode="pipeline:structured_game_controls_no_current_game",
     )
     check(
         "Mario Kart 8 Deluxe ปุ่มทั้งหมดมีอะไรบ้าง",
@@ -92,13 +88,17 @@ def main() -> int:
     )
     check(
         "ปุ่มกระโดดใน Call of Duty กดอะไร",
-        ["Call of Duty: Modern Warfare III", "L1", "กระโดด"],
-        must_not_contain=["The Last of Us"],
+        ["ยังไม่ชัด", "Call of Duty: Modern Warfare III", "Call of Duty: Warzone"],
+        must_not_contain=["The Last of Us", "L1: กระโดด"],
+        mode="pipeline:ambiguity_clarification",
+        route_category="clarification",
     )
     check(
         "Call of Duty ปุ่มทั้งหมดมีอะไรบ้าง",
-        ["Call of Duty: Modern Warfare III", "L1", "R3", "Cross", "Circle", "L2", "R2", "R1", "Square", "Triangle", "L3"],
-        must_not_contain=["The Last of Us"],
+        ["ยังไม่ชัด", "Call of Duty: Modern Warfare III", "Call of Duty: Warzone"],
+        must_not_contain=["The Last of Us", "The Finals", "L1: กระโดด"],
+        mode="pipeline:ambiguity_clarification",
+        route_category="clarification",
     )
     check(
         "เทคเคน 8 ปุ่มเตะขวากดอะไร",

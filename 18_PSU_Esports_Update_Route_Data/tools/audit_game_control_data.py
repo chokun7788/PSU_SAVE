@@ -17,7 +17,7 @@ CURATED_PATH = ROOT / "data" / "curated" / "game_control_facts.jsonl"
 VECTOR_INDEX_PATH = ROOT / "data" / "vector" / "psu_hybrid_vector_index.json"
 
 sys.path.insert(0, str(ROOT))
-from tools.build_game_control_facts import GAME_NAME_OVERRIDES, control_mappings, platform_key, slug  # noqa: E402
+from tools.build_game_control_facts import GAME_NAME_OVERRIDES, SUPPORTED_PLATFORM_KEYS, control_mappings, platform_key, slug  # noqa: E402
 
 
 def read_json(path: Path) -> dict[str, Any]:
@@ -54,7 +54,7 @@ def source_summary() -> tuple[list[str], dict[tuple[str, str], int], bool]:
         mappings = control_mappings(controls)
         expected_counts[(game, key)] = len(mappings)
 
-        if key not in {"ps5", "nintendo"}:
+        if key not in SUPPORTED_PLATFORM_KEYS:
             problems.append(f"{path.name}: unsupported platform {platform!r}")
         if not mappings:
             problems.append(f"{path.name}: no control mappings found")
@@ -70,7 +70,13 @@ def source_summary() -> tuple[list[str], dict[tuple[str, str], int], bool]:
             if not isinstance(item, dict):
                 problems.append(f"{path.name}: mapping {index} is not object")
                 continue
-            button = item.get("button") or item.get("button_ps5") or item.get("button_switch")
+            button = (
+                item.get("button")
+                or item.get("button_ps5")
+                or item.get("button_switch")
+                or item.get("button_pc")
+                or item.get("button_vr")
+            )
             action = item.get("action_th") or item.get("action_en")
             if not button:
                 problems.append(f"{path.name}: mapping {index} missing button")

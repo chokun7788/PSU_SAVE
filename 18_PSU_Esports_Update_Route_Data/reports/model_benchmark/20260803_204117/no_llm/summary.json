@@ -1,0 +1,69 @@
+{
+  "run_label": "no_llm",
+  "run_kind": "no_llm",
+  "model": "",
+  "allow_llm": false,
+  "timeout_sec": 20.0,
+  "num_predict": 256,
+  "ollama_url": "",
+  "tool_router": false,
+  "facts_composer": false,
+  "disable_health_manager": false,
+  "cases": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\model_benchmark_1500.jsonl",
+  "limit": 0,
+  "resumed_from": 0,
+  "total_wall_sec": 155.956,
+  "generated_at": "2026-08-03T20:43:53",
+  "total": 345,
+  "passed": 328,
+  "pass_rate": 95.07,
+  "avg_score": 98.57,
+  "avg_wall_sec": 0.4492,
+  "median_wall_sec": 0.4349,
+  "p95_wall_sec": 0.6861,
+  "max_wall_sec": 1.2687,
+  "llm_call_total": 0,
+  "mode_counts": {
+    "pipeline:structured_game_controls": 311,
+    "pipeline:structured_game_controls_no_data": 4,
+    "pipeline:game_control_missing_game_context": 7,
+    "pipeline:ambiguity_clarification": 16,
+    "pipeline:structured_game_controls_no_current_game": 7
+  },
+  "route_counts": {
+    "games/game_control_lookup": 329,
+    "clarification/ambiguity_gate_clarification": 16
+  },
+  "group_counts": {
+    "game_controls": 345
+  },
+  "quality_bucket_counts": {
+    "psu_fact": 345
+  },
+  "top_errors": {
+    "category_mismatch:clarification": 16,
+    "missing_any:L1|กระโดด / ปีนป่าย": 1,
+    "missing_any:R3|เปลี่ยนท่า / สไลด์ / พุ่งหลบ": 1,
+    "missing_any:Cross|ใช้อุปกรณ์ยุทธวิธี": 1,
+    "missing_any:Circle|โจมตีประชิด": 1,
+    "missing_any:Circle|ย่อตัว / หมอบ / สไลด์": 1,
+    "missing_any:Square|โต้ตอบ / รีโหลด": 1,
+    "missing_any:Triangle|สลับอาวุธ": 1,
+    "missing_any:Left Stick|เลี้ยว": 1,
+    "mode_mismatch:pipeline:ambiguity_clarification": 1,
+    "missing_any:L (Left Stick) / R (Right Stick)|เคลื่อนที่": 1,
+    "missing_any:Cross / Square / L1 / R1|หยิบ / วาง": 1,
+    "missing_any:L2 / R2|หั่น / ขว้าง": 1,
+    "missing_any:Circle / D-Pad Right|พุ่งตัว": 1
+  },
+  "by_group": {
+    "game_controls": {
+      "total": 345,
+      "passed": 328,
+      "pass_rate": 95.07,
+      "avg_score": 98.57,
+      "avg_wall_sec": 0.4492,
+      "p95_wall_sec": 0.6861
+    }
+  }
+}

@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import re
 import time
+import unicodedata
 from dataclasses import dataclass
 from datetime import date, timedelta
 from functools import lru_cache
@@ -30,6 +31,12 @@ from app.calendar.service_calendar import (
 )
 from app.calculator.service_fee import SOURCE_URL as SERVICE_FEE_URL
 from app.core.normalization import CUSTOMER_GROUP_ALIASES, contains_alias, detect_from_aliases, normalize_text
+from app.core.source_registry import (
+    PC_SERVICE_FEE_LOCAL_UPDATE_20260727_ID,
+    SERVICE_FEE_IMAGE_2026_ID,
+    make_source_hit,
+)
+from app.pipeline.chatbot_role import CHATBOT_NAME_TH, CHATBOT_ORG_TH
 from app.rules.matcher import RuleMatcher
 
 
@@ -49,6 +56,7 @@ GAME_TITLE_ALIASES_PATH = ROOT_DIR / "data" / "curated" / "game_title_aliases.js
 GAME_ITEM_DETAILS_PATH = ROOT_DIR / "data" / "curated" / "game_item_details.jsonl"
 OUR_GAMES_SCRAPED_DETAILS_PATH = ROOT_DIR / "data" / "curated" / "our_games_scraped_details.jsonl"
 GAME_CONTROL_FACTS_PATH = ROOT_DIR / "data" / "curated" / "game_control_facts.jsonl"
+SERVICE_GAME_AVAILABILITY_PATH = ROOT_DIR / "data" / "curated" / "service_game_availability.jsonl"
 MEMBER_PROFILES_PATH = ROOT_DIR / "data" / "curated" / "member_profiles.jsonl"
 
 
@@ -64,6 +72,17 @@ def _read_jsonl(path: Path) -> list[dict]:
 
 def _compact_key(value: str) -> str:
     return re.sub(r"[^0-9a-z\u0E00-\u0E7F]+", "", normalize_text(value))
+
+
+def _game_control_key(value: str) -> str:
+    clean = (value or "").replace("™", "").replace("®", "")
+    clean = unicodedata.normalize("NFKD", clean).encode("ascii", "ignore").decode("ascii")
+    clean = re.sub(r"\bstandard edition\b", "", clean, flags=re.IGNORECASE)
+    clean = re.sub(r"\(\s*remake\s*\)", "", clean, flags=re.IGNORECASE)
+    clean = re.sub(r"\bremake\b", "", clean, flags=re.IGNORECASE)
+    clean = re.sub(r"\(\s*remastered\s*\)", "", clean, flags=re.IGNORECASE)
+    clean = re.sub(r"\bremastered\b", "", clean, flags=re.IGNORECASE)
+    return _compact_key(clean)
 
 
 def _zone_from_source_section(value: str) -> str:
@@ -101,7 +120,66 @@ def _merge_unique(current: list[str], values: list[str]) -> list[str]:
 
 
 @lru_cache(maxsize=1)
+def _service_game_availability_rows() -> tuple[dict, ...]:
+    return tuple(_read_jsonl(SERVICE_GAME_AVAILABILITY_PATH))
+
+
+@lru_cache(maxsize=1)
 def _verified_game_catalog() -> tuple[dict, ...]:
+    availability_rows = _service_game_availability_rows()
+    if availability_rows:
+        detail_rows = _read_jsonl(GAME_ITEM_DETAILS_PATH) + _read_jsonl(OUR_GAMES_SCRAPED_DETAILS_PATH)
+        details_by_key: dict[str, dict] = {}
+        aliases_by_key: dict[str, list[str]] = {}
+        for row in detail_rows + _read_jsonl(GAME_TITLE_ALIASES_PATH):
+            name = str(row.get("game") or row.get("title") or "").strip()
+            if not name:
+                continue
+            keys = [_compact_key(name)]
+            alias_values = [name, *[str(alias) for alias in row.get("aliases") or []]]
+            for alias in alias_values:
+                key = _compact_key(alias)
+                if key:
+                    keys.append(key)
+            for key in keys:
+                if key:
+                    details_by_key.setdefault(key, row)
+                    aliases_by_key.setdefault(key, [])
+                    _merge_unique(aliases_by_key[key], alias_values)
+
+        current: dict[str, dict] = {}
+        for service in availability_rows:
+            zone = str(service.get("zone") or "").strip()
+            source_url = str(service.get("source_url") or RESERVATION_URL)
+            for game in service.get("games") or []:
+                name = str(game).strip()
+                if not name:
+                    continue
+                key = _compact_key(name)
+                detail = details_by_key.get(key, {})
+                entry = current.setdefault(
+                    key,
+                    {
+                        "name": name,
+                        "zones": [],
+                        "genre": str(detail.get("genre") or ""),
+                        "summary": str(detail.get("summary_th") or detail.get("text") or ""),
+                        "how": str(detail.get("how_to_play_th") or ""),
+                        "source_url": str(detail.get("source_url") or source_url),
+                        "aliases": [],
+                    },
+                )
+                _merge_unique(entry["zones"], [zone])
+                _merge_unique(entry["aliases"], [name, *aliases_by_key.get(key, [])])
+        return tuple(
+            {
+                **entry,
+                "zones": tuple(entry["zones"]),
+                "aliases": tuple(entry["aliases"] or [entry["name"]]),
+            }
+            for entry in sorted(current.values(), key=lambda item: str(item["name"]).lower())
+        )
+
     details_by_alias: dict[str, dict] = {}
     for row in _read_jsonl(GAME_ITEM_DETAILS_PATH):
         aliases = [str(row.get("game") or row.get("title") or "")]
@@ -185,7 +263,12 @@ def _hit(source_id: str, category: str, url: str, title: str = "") -> dict:
 
 HITS = {
     "reservation": [_hit("Reservation", "reservation", RESERVATION_URL, "Reservation")],
-    "service_fee": [_hit("service_fee_image_2026", "service_fee", SERVICE_FEE_URL, "Service Fee 2026")],
+    "penalty": [_hit("Reservation", "penalty", RESERVATION_URL, "Reservation - damage and penalty policy")],
+    "service_fee": [make_source_hit(SERVICE_FEE_IMAGE_2026_ID)],
+    "service_fee_pc": [
+        make_source_hit(SERVICE_FEE_IMAGE_2026_ID),
+        make_source_hit(PC_SERVICE_FEE_LOCAL_UPDATE_20260727_ID),
+    ],
     "home": [_hit("home", "home", HOME_URL, "Home")],
     "contact": [_hit("Contact", "contact", CONTACT_URL, "Contact")],
     "knowledge": [_hit("Knowledge", "knowledge", KNOWLEDGE_URL, "Knowledge")],
@@ -206,26 +289,57 @@ HITS = {
 }
 
 
-SERVICE_FEE_SUMMARY = """ตาราง Service Fee 2026:
-- PlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน): PSU Student and Staff 0 บาท, PSU Alumni and General Student 50 บาท, General Adult 150 บาท
-- Nintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง): PSU Student and Staff 0 บาท, PSU Alumni and General Student 50 บาท, General Adult 140 บาท
-- Nintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง): PSU Student and Staff 0 บาท, PSU Alumni and General Student 100 บาท, General Adult 280 บาท
-- Cockpit 60 นาที (1 ชั่วโมง, 1 คน): PSU Student and Staff 0 บาท, PSU Alumni and General Student 65 บาท, General Adult 200 บาท
-- VR 30 นาที (1-5 คน): PSU Student and Staff 0 บาท, PSU Alumni and General Student 190 บาท, General Adult 525 บาท
-- VR 1 ชั่วโมง (60 นาที, 1-5 คน): PSU Student and Staff 0 บาท, PSU Alumni and General Student 375 บาท, General Adult 1050 บาท
-หมายเหตุ: ใน Service Fee 2026 ที่มีตอนนี้ยังไม่พบราคา PC ที่ยืนยันได้"""
+SERVICE_FEE_SUMMARY = """ตาราง Service Fee 2026
+
+PlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 50 บาท
+•    General Adult: 150 บาท
+
+Nintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 50 บาท
+•    General Adult: 140 บาท
+
+Nintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 100 บาท
+•    General Adult: 280 บาท
+
+Cockpit 60 นาที (1 ชั่วโมง, 1 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 65 บาท
+•    General Adult: 200 บาท
+
+VR 30 นาที (1-5 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 190 บาท
+•    General Adult: 525 บาท
+
+VR 1 ชั่วโมง (60 นาที, 1-5 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 375 บาท
+•    General Adult: 1,050 บาท
+
+PC 1 ชั่วโมง (1 คน)
+•    PSU Student and Staff: 0 บาท
+•    PSU Alumni and General Student: 25 บาท
+•    General Adult: 70 บาท
+หมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27"""
 
 
 PRICE_ROWS = {
-    "ps5": "PlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน): PSU Student and Staff 0 บาท, PSU Alumni and General Student 50 บาท, General Adult 150 บาท",
-    "switch_1_2": "Nintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง): PSU Student and Staff 0 บาท, PSU Alumni and General Student 50 บาท, General Adult 140 บาท",
-    "switch_3_4": "Nintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง): PSU Student and Staff 0 บาท, PSU Alumni and General Student 100 บาท, General Adult 280 บาท",
-    "cockpit": "Cockpit 60 นาที (1 ชั่วโมง, 1 คน): PSU Student and Staff 0 บาท, PSU Alumni and General Student 65 บาท, General Adult 200 บาท",
-    "vr_30": "VR 30 นาที (1-5 คน): PSU Student and Staff 0 บาท, PSU Alumni and General Student 190 บาท, General Adult 525 บาท",
-    "vr_60": "VR 1 ชั่วโมง (60 นาที, 1-5 คน): PSU Student and Staff 0 บาท, PSU Alumni and General Student 375 บาท, General Adult 1050 บาท",
+    "pc": "PC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 25 บาท\n•    General Adult: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27",
+    "ps5": "PlayStation 5 60 นาที (1 ชั่วโมง, 1-2 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 150 บาท",
+    "switch_1_2": "Nintendo Switch 1-2 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 50 บาท\n•    General Adult: 140 บาท",
+    "switch_3_4": "Nintendo Switch 3-4 คน 60 นาที (1 ชั่วโมง)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 100 บาท\n•    General Adult: 280 บาท",
+    "cockpit": "Cockpit 60 นาที (1 ชั่วโมง, 1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 65 บาท\n•    General Adult: 200 บาท",
+    "vr_30": "VR 30 นาที (1-5 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 190 บาท\n•    General Adult: 525 บาท",
+    "vr_60": "VR 1 ชั่วโมง (60 นาที, 1-5 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 375 บาท\n•    General Adult: 1,050 บาท",
 }
 
 PRICE_VALUES = {
+    "pc": {"psu": 0, "general_student": 25, "adult": 70},
     "ps5": {"psu": 0, "general_student": 50, "adult": 150},
     "switch_1_2": {"psu": 0, "general_student": 50, "adult": 140},
     "switch_3_4": {"psu": 0, "general_student": 100, "adult": 280},
@@ -235,6 +349,7 @@ PRICE_VALUES = {
 }
 
 PRICE_LABELS = {
+    "pc": "PC 1 ชั่วโมง",
     "ps5": "PlayStation 5 60 นาที",
     "switch_1_2": "Nintendo Switch 1-2 คน 60 นาที",
     "switch_3_4": "Nintendo Switch 3-4 คน 60 นาที",
@@ -935,6 +1050,8 @@ def _has(q: str, *terms: str) -> bool:
 
 def _game_alias_key(value: str) -> str:
     normalized = normalize_text(str(value or "")).replace("™", "").replace("®", "")
+    normalized = re.sub(r"\(\s*remastered\s*\)", "", normalized, flags=re.IGNORECASE)
+    normalized = re.sub(r"\bremastered\b", "", normalized, flags=re.IGNORECASE)
     return re.sub(r"[^0-9a-z\u0E00-\u0E7F]+", "", normalized)
 
 
@@ -983,6 +1100,11 @@ def _aliases_for_game(name: str, base_aliases: list[str] | tuple[str, ...]) -> t
     aliases = list(base_aliases)
     extras = _external_game_title_aliases().get(_game_alias_key(name), ())
     aliases.extend(extras)
+    if normalize_text(name).startswith("call of duty"):
+        aliases = [
+            alias for alias in aliases
+            if _compact_key(str(alias)) not in {"callofduty", "cod", "คอลออฟ", "ดิวตี้", "ดูตี้"}
+        ]
     return _unique_aliases(tuple(aliases))
 
 
@@ -1027,6 +1149,53 @@ def _no_answer(start: float) -> FastAnswer:
         "no_answer_fast",
         start,
         0.92,
+    )
+
+
+def _chatbot_identity_answer(start: float) -> FastAnswer:
+    return _answer(
+        (
+            f"ผมคือ {CHATBOT_NAME_TH} แชทบอทผู้ช่วยของ {CHATBOT_ORG_TH} ครับ\n\n"
+            "ผมช่วยตอบคำถามเกี่ยวกับ:\n"
+            "•    เกมที่มีให้เล่นและเกมที่เกี่ยวข้องกับการแข่งขัน\n"
+            "•    ปุ่มควบคุมและวิธีเล่นของเกมที่มีข้อมูลยืนยัน\n"
+            "•    อุปกรณ์และโซนบริการ เช่น PC, PS5, Nintendo Switch, VR และ Cockpit\n"
+            "•    วิธีจอง เช็คอิน ค่าบริการ เวลาเปิด-ปิด และกฎการใช้งาน\n"
+            "•    สมาชิกทีม ตำแหน่ง และหมวดสมาชิกของ PSU Esports Studio - Phuket\n\n"
+            "ถ้าเป็นข้อมูลของศูนย์ ผมจะตอบจากฐานข้อมูลที่ยืนยันได้ก่อนเสมอ ถ้ายังไม่มีข้อมูลยืนยัน ผมจะบอกตรง ๆ ครับ"
+        ),
+        "home",
+        "chatbot_identity_fast_path",
+        start,
+        0.98,
+    )
+
+
+def _looks_like_chatbot_greeting_query(q: str) -> bool:
+    clean = q.strip().lower()
+    if not clean:
+        return False
+    greeting_terms = (
+        "สวัสดี", "หวัดดี", "ดีครับ", "ดีค่ะ", "ดีคับ", "ทักครับ", "ทักค่ะ",
+        "hello", "hi", "hey",
+    )
+    if clean in greeting_terms:
+        return True
+    if len(clean) <= 40 and _has(clean, *greeting_terms):
+        return True
+    return False
+
+
+def _chatbot_greeting_answer(start: float) -> FastAnswer:
+    return _answer(
+        (
+            f"สวัสดีครับ ผมคือ {CHATBOT_NAME_TH} ผู้ช่วยของ {CHATBOT_ORG_TH}\n"
+            "ถามเรื่องเกม อุปกรณ์ วิธีจอง เวลาเปิด-ปิด ค่าบริการ ปุ่มควบคุม กติกา หรือสมาชิกทีมได้เลยครับ"
+        ),
+        "home",
+        "chatbot_greeting_fast_path",
+        start,
+        0.99,
     )
 
 
@@ -1559,6 +1728,28 @@ def _detect_group(q: str) -> str | None:
         return "psu"
     if _has(q, "ไม่ใช่มอ", "ไม่ใช่ มอ", "ไม่ได้เรียนมอ", "ไม่ได้เรียน มอ"):
         return "general_student"
+    if not _has(
+        q,
+        "นักศึกษา", "นักเรียน", "นิสิต", "เด็ก", "student", "staff",
+        "psu", "สงขลานครินทร์", "บุคคลทั่วไป", "คนทั่วไป",
+        "ต่างมหาลัย", "มหาลัย", "มหาวิทยาลัย", "สจล", "ลาดกระบัง",
+        "จุฬา", "ธรรมศาสตร์", "เกษตร", "เชียงใหม่", "ขอนแก่น",
+        "kmitl", "chula", "tu", "ku", "cmu", "kku", "mahidol",
+    ):
+        return None
+    if (
+        _has(q, "นักเรียน", "นักศึกษา", "นิสิต", "เด็ก", "student")
+        and not _has(
+            q,
+            "มอ", "psu", "สงขลานครินทร์", "บุคลากร",
+            "ต่างมหาลัย", "ต่างมหาวิทยาลัย", "ต่างสถาบัน", "ศิษย์เก่า",
+            "สจล", "ลาดกระบัง", "จุฬา", "ธรรมศาสตร์", "เกษตร", "เชียงใหม่", "ขอนแก่น",
+            "มหิดล", "ราชภัฏ", "ราชมงคล", "เทคนิค", "อาชีวะ",
+            "kmitl", "chula", "tu", "ku", "cmu", "kku", "mahidol",
+            "บุคคลทั่วไป", "คนทั่วไป", "ผู้ใหญ่", "general adult", "adult", "คนออก", "ประชาชน",
+        )
+    ):
+        return "general_student"
     group = detect_from_aliases(q, CUSTOMER_GROUP_ALIASES)
     if group["key"] == "psu_student_staff" and not group["ambiguous"]:
         return "psu"
@@ -1571,7 +1762,7 @@ def _detect_group(q: str) -> str | None:
     return None
 
 
-def _pc_unknown_price_text(q: str) -> str:
+def _pc_price_text(q: str) -> str:
     group = _detect_group(q)
     if group == "psu":
         group_line = "กลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff"
@@ -1583,17 +1774,22 @@ def _pc_unknown_price_text(q: str) -> str:
         group_line = "กลุ่มผู้ใช้ยังไม่ชัดว่าเป็น PSU หรือต่างสถาบัน"
     else:
         group_line = ""
-    lines = ["ราคา PC: ยังไม่พบราคาค่าบริการ PC ที่ยืนยันได้ใน Service Fee 2026 จึงยังไม่ควรคำนวณยอด PC แบบฟันธง"]
+    if group:
+        lines = [f"ราคา PC 1 ชั่วโมง สำหรับ {GROUP_NAMES[group]}: {PRICE_VALUES['pc'][group]:,} บาท"]
+    else:
+        lines = ["ราคา PC 1 ชั่วโมง (1 คน)"]
+        for group_key in ("psu", "general_student", "adult"):
+            lines.append(f"•    {GROUP_NAMES[group_key]}: {PRICE_VALUES['pc'][group_key]:,} บาท")
     if group_line:
         lines.append(group_line)
-    lines.append("ข้อมูลราคาที่พบในภาพมี PlayStation 5, Nintendo Switch, Cockpit และ VR")
+    lines.append("หมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27")
     return "\n".join(lines)
 
 
 def _service_rows_for_query(q: str) -> list[str]:
     rows: list[str] = []
     if _has(q, "pc", "คอม", "คอมพิวเตอร์"):
-        rows.append("PC: ใน Service Fee 2026 ยังไม่พบราคาที่ตรวจยืนยันได้")
+        rows.append(PRICE_ROWS["pc"])
     if _has(q, "ps5", "playstation", "เพลย์", "เพลย์ห้า"):
         rows.append(PRICE_ROWS["ps5"])
     if _has(q, "nintendo", "switch", "สวิตช์", "สวิทช์", "นินเทนโด"):
@@ -1621,6 +1817,8 @@ def _service_rows_for_query(q: str) -> list[str]:
 
 def _service_keys_for_query(q: str) -> list[str]:
     keys: list[str] = []
+    if _has(q, "pc", "คอม", "คอมพิวเตอร์"):
+        keys.append("pc")
     if _has(q, "ps5", "playstation", "เพลย์", "เพลย์ห้า"):
         keys.append("ps5")
     if _has(q, "nintendo", "switch", "สวิตช์", "สวิทช์", "นินเทนโด"):
@@ -1656,16 +1854,49 @@ def _student_fee_overview_answer(q: str, group: str | None) -> str | None:
 
     return (
         "ไม่ใช่ทุกบัตรนักศึกษาจะเล่นฟรีครับ ต้องดูว่าเป็นกลุ่มผู้ใช้แบบไหน\n"
-        "- PSU Student and Staff: ตาราง Service Fee 2026 ระบุราคา 0 บาทสำหรับ PlayStation 5, Nintendo Switch, Cockpit และ VR\n"
-        "- PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน: ยังมีค่าบริการ เช่น PlayStation 5 50 บาท, Nintendo Switch 50/100 บาท, Cockpit 65 บาท, VR 190/375 บาท\n"
-        "- General Adult: มีค่าบริการตามตารางผู้ใหญ่ทั่วไป\n"
-        "หมายเหตุ: ในตารางที่มีตอนนี้ยังไม่พบราคาค่าบริการ PC ที่ยืนยันได้ จึงไม่ควรสรุปราคา PC เอง"
+        "•    PSU Student and Staff: ตาราง Service Fee 2026 ระบุราคา 0 บาทสำหรับ PlayStation 5, Nintendo Switch, Cockpit และ VR\n"
+        "•    PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน: ยังมีค่าบริการ เช่น PlayStation 5 50 บาท, Nintendo Switch 50/100 บาท, Cockpit 65 บาท, VR 190/375 บาท\n"
+        "•    General Adult: มีค่าบริการตามตารางผู้ใหญ่ทั่วไป\n"
+        "•    PC 1 ชั่วโมง: PSU Student and Staff 0 บาท, PSU Alumni and General Student 25 บาท, General Adult 70 บาท"
     )
 
 
 def _price_answer_focus(q: str, group: str | None) -> str | None:
     selected_group = group or "general_student"
     group_name = GROUP_NAMES[selected_group]
+    service_keys = _service_keys_for_query(q)
+
+    if _has(q, "ต่างกัน", "ต่างกันเท่าไหร่", "ต่างกันเท่าไร", "ห่างกันกี่บาท", "แพงกว่ากี่บาท") and len(service_keys) == 2:
+        first_key, second_key = service_keys
+        first_label = PRICE_LABELS[first_key]
+        second_label = PRICE_LABELS[second_key]
+        if group:
+            first_price = PRICE_VALUES[first_key][group]
+            second_price = PRICE_VALUES[second_key][group]
+            diff = abs(first_price - second_price)
+            if first_price == second_price:
+                verdict = f"{first_label} กับ {second_label} ราคาเท่ากันที่ {first_price:,} บาท"
+            else:
+                higher_label = first_label if first_price > second_price else second_label
+                lower_label = second_label if first_price > second_price else first_label
+                verdict = f"ต่างกัน {diff:,} บาท โดย {higher_label} แพงกว่า {lower_label}"
+            return (
+                f"{verdict} สำหรับกลุ่ม {group_name}\n"
+                f"•    {first_label}: {first_price:,} บาท\n"
+                f"•    {second_label}: {second_price:,} บาท"
+            )
+        lines = [f"ราคา {first_label} กับ {second_label} ต่างกันดังนี้:"]
+        for group_key in ("psu", "general_student", "adult"):
+            first_price = PRICE_VALUES[first_key][group_key]
+            second_price = PRICE_VALUES[second_key][group_key]
+            diff = abs(first_price - second_price)
+            if first_price == second_price:
+                verdict = f"ราคาเท่ากันที่ {first_price:,} บาท"
+            else:
+                higher_label = first_label if first_price > second_price else second_label
+                verdict = f"{higher_label} แพงกว่า {diff:,} บาท"
+            lines.append(f"•    {GROUP_NAMES[group_key]}: {verdict} ({first_label} {first_price:,} บาท / {second_label} {second_price:,} บาท)")
+        return "\n".join(lines)
 
     if _has(q, "vr") and _has(q, "ต่างกัน", "ต่างกันเท่าไหร่", "ต่างกันเท่าไร") and _has(q, "30", "ครึ่ง") and _has(q, "1 ชั่วโมง", "60"):
         short_price = PRICE_VALUES["vr_30"][selected_group]
@@ -1725,6 +1956,134 @@ def _group_context_line(q: str, group: str) -> str:
     return ""
 
 
+def _detect_price_duration_minutes(q: str) -> int | None:
+    range_match = re.search(
+        r"(\d{1,2})(?::(\d{2}))?\s*(?:โมง|น\.?)?\s*(?:ถึง|จนถึง|-|to)\s*(\d{1,2})(?::(\d{2}))?\s*(?:โมง|น\.?)?",
+        q,
+    )
+    if range_match:
+        start_total = int(range_match.group(1)) * 60 + int(range_match.group(2) or 0)
+        end_total = int(range_match.group(3)) * 60 + int(range_match.group(4) or 0)
+        if end_total > start_total:
+            return end_total - start_total
+
+    hour_match = re.search(r"(\d+(?:\.\d+)?)\s*(?:ชั่วโมง|ชม|hour|hr)", q)
+    if hour_match:
+        return int(float(hour_match.group(1)) * 60)
+    minute_match = re.search(r"(\d+)\s*(?:นาที|min|minutes?)", q)
+    if minute_match:
+        return int(minute_match.group(1))
+    return None
+
+
+def _session_count_for_price_key(key: str, minutes: int) -> int:
+    unit_minutes = 30 if key == "vr_30" else 60
+    return max(1, (minutes + unit_minutes - 1) // unit_minutes)
+
+
+def _time_range_overlap(q: str, start_hour: int, end_hour: int) -> bool:
+    range_match = re.search(
+        r"(\d{1,2})(?::(\d{2}))?\s*(?:โมง|น\.?)?\s*(?:ถึง|จนถึง|-|to)\s*(\d{1,2})(?::(\d{2}))?\s*(?:โมง|น\.?)?",
+        q,
+    )
+    if not range_match:
+        return False
+    ask_start = int(range_match.group(1)) * 60 + int(range_match.group(2) or 0)
+    ask_end = int(range_match.group(3)) * 60 + int(range_match.group(4) or 0)
+    return ask_start < end_hour * 60 and ask_end > start_hour * 60
+
+
+def _time_range_session_labels(q: str) -> list[str]:
+    range_match = re.search(
+        r"(\d{1,2})(?::(\d{2}))?\s*(?:โมง|น\.?)?\s*(?:ถึง|จนถึง|-|to)\s*(\d{1,2})(?::(\d{2}))?\s*(?:โมง|น\.?)?",
+        q,
+    )
+    if not range_match:
+        return []
+    start_total = int(range_match.group(1)) * 60 + int(range_match.group(2) or 0)
+    end_total = int(range_match.group(3)) * 60 + int(range_match.group(4) or 0)
+    if end_total <= start_total:
+        return []
+    labels: list[str] = []
+    current = start_total
+    while current < end_total and len(labels) < 12:
+        next_value = min(current + 60, end_total)
+        labels.append(f"{current // 60:02d}:{current % 60:02d}-{next_value // 60:02d}:{next_value % 60:02d}")
+        current = next_value
+    return labels
+
+
+def _booking_window_note(q: str) -> str:
+    monday = _has(q, "วันจัน", "จันทร์", "จัน", "จัทร์", "monday")
+    friday = _has(q, "ศุกร์", "friday")
+    if monday and _time_range_overlap(q, 9, 12):
+        return "ช่วงที่ถามจองไม่ได้ครับ เพราะวันจันทร์ 09:00-12:00 เป็นช่วง Maintenance ไม่ใช่ Open for Service"
+    if friday and _time_range_overlap(q, 13, 16):
+        return "ช่วงที่ถามจองไม่ได้ครับ เพราะวันศุกร์ 13:00-16:00 เป็นช่วง Maintenance สำหรับ Weekly hardware inspection and cleaning"
+    return ""
+
+
+def _duration_price_answer(q: str, group: str | None) -> str | None:
+    minutes = _detect_price_duration_minutes(q)
+    if minutes is None:
+        return None
+    keys = _service_keys_for_query(q)
+    if len(keys) != 1:
+        return None
+
+    key = keys[0]
+    sessions = _session_count_for_price_key(key, minutes)
+    label = PRICE_LABELS[key]
+    window_note = _booking_window_note(q)
+    session_labels = _time_range_session_labels(q)
+    hours_label = f"{minutes // 60} ชั่วโมง" if minutes % 60 == 0 else f"{minutes} นาที"
+    lines: list[str] = []
+
+    lines.append(f"ระยะเวลาที่ถามคือ {hours_label} ใช้ {sessions} session ตามแพ็กเกจ {label}")
+    if session_labels:
+        lines.append("แบ่งช่วงเวลาเป็น: " + ", ".join(session_labels))
+
+    if group:
+        price = PRICE_VALUES[key][group]
+        total = price * sessions
+        lines.append(f"คำตอบราคา: {total} บาท สำหรับกลุ่ม {GROUP_NAMES[group]}")
+        lines.append(f"- คำนวณจาก {price} บาท/session x {sessions} session = {total} บาท")
+        group_context = _group_context_line(q, group)
+        if group_context:
+            lines.append(group_context)
+    else:
+        lines.append("ยังไม่ทราบกลุ่มผู้ใช้ จึงแสดงราคาทุกกลุ่มให้เทียบก่อน:")
+        for group_key in ("psu", "general_student", "adult"):
+            price = PRICE_VALUES[key][group_key]
+            total = price * sessions
+            lines.append(f"- {GROUP_NAMES[group_key]}: {price} บาท/session x {sessions} = {total} บาท")
+
+    if window_note:
+        lines.append(f"หมายเหตุ: {window_note} ราคาด้านบนเป็นยอดเทียบตามแพ็กเกจเท่านั้น")
+    return "\n".join(lines)
+
+
+def _booking_session_limit_answer(q: str, start: float) -> FastAnswer | None:
+    asks_limit = (
+        _has(q, "สูงสุดกี่ session", "กี่ sessions", "จองได้กี่ session", "จองได้กี่รอบ")
+        or (_has(q, "เล่นได้กี่ชั่วโมง", "กี่ชั่วโมงต่อวัน", "เล่นกี่ชั่วโมง") and _has(q, "คน", "คนนึง", "หนึ่งคน", "ต่อวัน", "ps5", "playstation", "เพลย์", "จอง"))
+    )
+    if not asks_limit:
+        return None
+
+    lines = ["การจอง 1 ครั้งสามารถจองได้สูงสุด 3 Sessions"]
+    if _has(q, "ps5", "playstation", "เพลย์"):
+        lines.append("- สำหรับ PlayStation 5: 1 session = 1 ชั่วโมง ดังนั้น 3 sessions = สูงสุด 3 ชั่วโมงต่อการจอง 1 ครั้ง")
+    else:
+        lines.append("- จำนวนชั่วโมงขึ้นกับบริการที่เลือก เช่น PlayStation 5/Nintendo Switch/Cockpit ใช้แพ็กเกจ 1 ชั่วโมงต่อ session")
+        lines.append("- ถ้าหมายถึงบริการแบบ 1 ชั่วโมงต่อ session จะเท่ากับสูงสุด 3 ชั่วโมงต่อการจอง 1 ครั้ง")
+    lines.extend([
+        "- ข้อมูลที่มีระบุ limit เป็น “ต่อการจอง 1 ครั้ง” ยังไม่พบกฎแยกแบบฟันธงว่า 1 คนจำกัดกี่ชั่วโมงต่อวัน",
+        f"แหล่งข้อมูล: {RESERVATION_URL}",
+    ])
+    return _answer("\n".join(lines), "reservation", "booking_session_limit_fast_path", start, 0.98)
+
+
 def _direct_price_answer(q: str, group: str | None) -> str | None:
     if not group:
         return None
@@ -1735,9 +2094,9 @@ def _direct_price_answer(q: str, group: str | None) -> str | None:
             price_30 = PRICE_VALUES["vr_30"][group]
             price_60 = PRICE_VALUES["vr_60"][group]
             return (
-                f"ราคา VR สำหรับกลุ่ม {GROUP_NAMES[group]}: 30 นาที {price_30} บาท, 1 ชั่วโมง {price_60} บาท\n"
-                f"- VR 30 นาที ราคา {price_30} บาท\n"
-                f"- VR 1 ชั่วโมง ราคา {price_60} บาท\n"
+                f"ราคา VR สำหรับกลุ่ม {GROUP_NAMES[group]}\n"
+                f"•    VR 30 นาที: {price_30:,} บาท\n"
+                f"•    VR 1 ชั่วโมง: {price_60:,} บาท\n"
                 f"{group_context}\n"
                 "หมายเหตุ: คำถามยังไม่ระบุระยะเวลา จึงแสดงทั้งราคา 30 นาทีและ 1 ชั่วโมง"
             )
@@ -1745,15 +2104,15 @@ def _direct_price_answer(q: str, group: str | None) -> str | None:
             price_1_2 = PRICE_VALUES["switch_1_2"][group]
             price_3_4 = PRICE_VALUES["switch_3_4"][group]
             return (
-                f"ราคา Nintendo Switch สำหรับกลุ่ม {GROUP_NAMES[group]}: 1-2 คน {price_1_2} บาท, 3-4 คน {price_3_4} บาท\n"
-                f"- Nintendo Switch 1-2 คน ราคา {price_1_2} บาท\n"
-                f"- Nintendo Switch 3-4 คน ราคา {price_3_4} บาท\n"
+                f"ราคา Nintendo Switch สำหรับกลุ่ม {GROUP_NAMES[group]}\n"
+                f"•    Nintendo Switch 1-2 คน: {price_1_2:,} บาท\n"
+                f"•    Nintendo Switch 3-4 คน: {price_3_4:,} บาท\n"
                 f"{group_context}\n"
                 "หมายเหตุ: คำถามยังไม่ระบุจำนวนผู้เล่น จึงแสดงทั้งราคา 1-2 คนและ 3-4 คน"
             )
         lines = [f"ราคาสำหรับกลุ่ม {GROUP_NAMES[group]}:"]
         for key in keys:
-            lines.append(f"- {PRICE_LABELS[key]} ราคา {PRICE_VALUES[key][group]} บาท")
+            lines.append(f"•    {PRICE_LABELS[key]}: {PRICE_VALUES[key][group]:,} บาท")
         if group_context:
             lines.append(group_context)
         return "\n".join(lines)
@@ -1763,7 +2122,7 @@ def _direct_price_answer(q: str, group: str | None) -> str | None:
     price = PRICE_VALUES[key][group]
     answer = (
         f"ราคา {price} บาท สำหรับกลุ่ม {GROUP_NAMES[group]}\n"
-        f"- {PRICE_LABELS[key]} ราคา {price} บาท"
+        f"•    {PRICE_LABELS[key]}: {price:,} บาท"
     )
     if group_context:
         answer += f"\n{group_context}"
@@ -1779,25 +2138,28 @@ def answer_price(query: str, start: float) -> FastAnswer | None:
     )
     service_hint = _has(q, "ps5", "playstation", "เพลย์", "nintendo", "switch", "cockpit", "พวงมาลัย", "vr", "pc", "คอม")
     summary_intent = _has(q, "service fee", "service fee table", "ตารางราคา", "เรทราคา", "ค่าบริการทั้งหมด", "ค่าเล่นแต่ละเครื่อง")
-    student_fee_answer = _student_fee_overview_answer(q, _detect_group(q))
+    group = _detect_group(q)
+    student_fee_answer = _student_fee_overview_answer(q, group)
     if not ((service_hint and price_intent) or summary_intent or student_fee_answer):
         return None
 
     rows = _service_rows_for_query(q)
-    focus_answer = _price_answer_focus(q, _detect_group(q))
-    direct_price_answer = _direct_price_answer(q, _detect_group(q))
+    duration_price_answer = _duration_price_answer(q, group)
+    focus_answer = _price_answer_focus(q, group)
+    direct_price_answer = _direct_price_answer(q, group)
     if student_fee_answer and not rows:
         text = student_fee_answer
     elif not rows:
         text = SERVICE_FEE_SUMMARY
-    elif any(row.startswith("PC:") for row in rows) and len(rows) == 1:
-        text = _pc_unknown_price_text(q)
+    elif duration_price_answer:
+        text = duration_price_answer + "\n\nรายละเอียดจากตาราง:\n" + "\n\n".join(rows)
+    elif rows == [PRICE_ROWS["pc"]]:
+        text = _pc_price_text(q)
     elif focus_answer:
-        text = focus_answer + "\n\nรายละเอียดจากตาราง:\n" + "\n".join(rows)
+        text = focus_answer + "\n\nรายละเอียดจากตาราง:\n" + "\n\n".join(rows)
     elif direct_price_answer:
-        text = direct_price_answer + "\n\nรายละเอียดจากตาราง:\n" + "\n".join(rows)
+        text = direct_price_answer + "\n\nรายละเอียดจากตาราง:\n" + "\n\n".join(rows)
     else:
-        group = _detect_group(q)
         prefix = ""
         if group == "psu":
             prefix = "กลุ่ม PSU Student and Staff ให้ดูราคา 0 บาทในแถวบริการที่เกี่ยวข้อง\n"
@@ -1807,9 +2169,10 @@ def answer_price(query: str, start: float) -> FastAnswer | None:
             prefix = "กลุ่ม General Adult / บุคคลทั่วไป ให้ดูราคา General Adult ในแถวบริการที่เกี่ยวข้อง\n"
         elif "นักเรียน" in q:
             prefix = "คำว่า “นักเรียน” ยังไม่ชัดว่าเป็น PSU หรือต่างสถาบัน จึงแสดงราคาที่เกี่ยวข้องให้เทียบก่อน\n"
-        text = prefix + "\n".join(rows)
+        text = prefix + "\n\n".join(rows)
     text += f"\nแหล่งข้อมูล: {SERVICE_FEE_URL}"
-    return _answer(text, "service_fee", "deterministic_calculator_fast", start, 0.97 if service_hint else 0.88)
+    source_key = "service_fee_pc" if "local service fee update 2026-07-27" in text else "service_fee"
+    return _answer(text, source_key, "deterministic_calculator_fast", start, 0.97 if service_hint else 0.88)
 
 
 def _catalog_summary() -> str:
@@ -1948,15 +2311,27 @@ def _has_likely_named_game_detail(q: str) -> bool:
 
 
 def _match_supported_game(q: str) -> tuple[str, dict] | None:
+    for entry in _verified_game_catalog():
+        aliases = _aliases_for_game(str(entry["name"]), entry.get("aliases") or ())
+        if any(_game_alias_direct_match(q, alias) for alias in aliases):
+            return str(entry["name"]), {"zones": entry["zones"], "aliases": aliases}
     detail = _match_game_detail(q)
     if detail is not None:
         _, meta = detail
         aliases = _aliases_for_game(str(meta["name"]), meta["aliases"])
-        return str(meta["name"]), {"zones": meta["zones"], "aliases": aliases}
+        current_by_name = {str(entry["name"]): entry for entry in _verified_game_catalog()}
+        current = current_by_name.get(str(meta["name"]))
+        zones = current["zones"] if current else meta["zones"]
+        return str(meta["name"]), {"zones": zones, "aliases": aliases}
     for name, meta in SUPPORTED_GAME_CATALOG.items():
         aliases = _aliases_for_game(name, meta["aliases"])
         if any(_game_alias_direct_match(q, alias) for alias in aliases):
             return name, meta
+    for entry in _verified_game_catalog():
+        aliases = _aliases_for_game(str(entry["name"]), entry.get("aliases") or ())
+        fuzzy_aliases = [alias for alias in aliases if len(normalize_text(str(alias)).replace(" ", "")) >= 4]
+        if fuzzy_aliases and contains_alias(q, fuzzy_aliases, fuzzy=True, threshold=0.88)[0]:
+            return str(entry["name"]), {"zones": entry["zones"], "aliases": aliases}
     for name, meta in SUPPORTED_GAME_CATALOG.items():
         aliases = _aliases_for_game(name, meta["aliases"])
         fuzzy_aliases = [alias for alias in aliases if len(normalize_text(str(alias)).replace(" ", "")) >= 4]
@@ -2006,20 +2381,51 @@ def _match_known_unsupported_game(q: str) -> str | None:
 def _match_game_family(q: str) -> dict | None:
     for family in GAME_FAMILY_MATCHES.values():
         if _has(q, *family["aliases"]) or contains_alias(q, list(family["aliases"]), fuzzy=True, threshold=0.88)[0]:
+            current_by_name = {str(entry["name"]): entry for entry in _verified_game_catalog()}
             games: list[dict] = []
             for key in family["game_keys"]:
                 item = GAME_DETAILS.get(key)
-                if item is not None:
-                    games.append(item)
+                if item is None:
+                    continue
+                current_entry = current_by_name.get(str(item["name"]))
+                if current_entry is None:
+                    continue
+                games.append({
+                    "name": current_entry["name"],
+                    "zones": current_entry["zones"],
+                    "genre": item.get("genre") or current_entry.get("genre") or "",
+                    "summary": item.get("summary") or current_entry.get("summary") or "",
+                    "how": item.get("how") or current_entry.get("how") or "",
+                    "source": item.get("source") or "our_games",
+                })
             if games:
                 return {"label": family["label"], "games": games}
     return None
+
+
+def _has_specific_supported_game_alias(q: str, name: str, meta: dict) -> bool:
+    q_key = _compact_key(q)
+    name_key = _compact_key(name)
+    if name_key and name_key in q_key:
+        return True
+    for alias in _aliases_for_game(name, meta.get("aliases") or ()):
+        alias_key = _compact_key(str(alias))
+        if len(alias_key) < 8:
+            continue
+        if alias_key and alias_key in q_key:
+            return True
+    return False
 
 
 def _game_family_availability_answer(q: str, start: float) -> FastAnswer | None:
     family = _match_game_family(q)
     if family is None:
         return None
+    supported = _match_supported_game(q)
+    if supported is not None:
+        supported_name, _supported_meta = supported
+        if _has_specific_supported_game_alias(q, str(supported_name), _supported_meta):
+            return None
 
     example_names = " หรือ ".join(item["name"] for item in family["games"][:2])
     broad_family_list = _has(q, "มีเกม", "เกมอะไรบ้าง", "เกมไรบ้าง", "อะไรบ้าง", "รายชื่อ", "รายการเกม")
@@ -2245,6 +2651,8 @@ def _game_genre_list_answer(q: str, start: float) -> FastAnswer | None:
     group = _genre_group_for_query(q)
     if group is None:
         return None
+    if _has(q, "คือเกมอะไร", "เป็นเกมแนวไหน", "แนวไหน", "แนวอะไร") and _match_supported_game(q):
+        return None
     rows: list[dict] = []
     keywords = tuple(str(item).lower() for item in group["keywords"])
     for meta in _verified_game_catalog():
@@ -2292,6 +2700,18 @@ def _looks_like_game_detail(q: str) -> bool:
     )
 
 
+GAME_CATALOG_TERMS = (
+    "มีเกมอะไร", "มีเกมไร", "เกมอะไรบ้าง", "เกมไรบ้าง", "เกมอะไรให้เล่น",
+    "เกมทั้งหมด", "รายชื่อเกม", "รายการเกม", "list game", "games",
+    "มีอะไรให้เล่น", "เล่นเกมอะไรได้บ้าง", "เล่นเกมไรได้บ้าง",
+    "เล่นอะไรได้บ้าง", "เล่นไรได้บ้าง",
+)
+
+
+def _has_strong_game_catalog_terms(q: str) -> bool:
+    return _has(q, *GAME_CATALOG_TERMS)
+
+
 def _looks_like_game_catalog(q: str) -> bool:
     if _has(q, "ราคา", "ค่าบริการ", "กี่บาท", "เท่าไหร่", "เท่าไร", "เสียเงิน", "service fee"):
         return False
@@ -2301,21 +2721,19 @@ def _looks_like_game_catalog(q: str) -> bool:
         "ทีม", "สมาชิก", "ผู้เล่น", "ตัวจริง", "ตัวสำรอง", "ลงทะเบียน", "สมัคร",
     ):
         return False
+    if _has_strong_game_catalog_terms(q):
+        return True
     if _match_supported_game(q) or _match_game_family(q) or _match_known_unsupported_game(q):
         return False
     if _has_likely_named_game_detail(q):
         return False
-    catalog_terms = (
-        "มีเกมอะไร", "มีเกมไร", "เกมอะไรบ้าง", "เกมไรบ้าง", "เกมอะไรให้เล่น",
-        "เกมทั้งหมด", "รายชื่อเกม", "รายการเกม", "list game", "games",
-        "มีอะไรให้เล่น", "เล่นเกมอะไรได้บ้าง", "เล่นเกมไรได้บ้าง",
-        "เล่นอะไรได้บ้าง", "เล่นไรได้บ้าง",
-    )
-    return _has(q, *catalog_terms)
+    return False
 
 
 def _looks_like_game_availability(q: str) -> bool:
     if _has(q, "ราคา", "ค่าบริการ", "กี่บาท", "เท่าไหร่", "เท่าไร", "เสียเงิน", "service fee"):
+        return False
+    if _has(q, "คือเกมอะไร", "เป็นเกมอะไร", "เกมแนวไหน", "เกมแนวอะไร", "แนวเกม", "เกี่ยวกับอะไร"):
         return False
     if _has(
         q,
@@ -2387,6 +2805,8 @@ def _known_unsupported_game_answer(q: str, start: float) -> FastAnswer | None:
     requested = _match_known_unsupported_game(q)
     if not requested:
         return None
+    if _looks_like_game_detail(q) and not _looks_like_game_availability(q):
+        return None
     if not (_looks_like_game_detail(q) or _looks_like_game_availability(q) or _has(q, "เล่น", "อยาก", "มีไหม", "มีมั้ย")):
         return None
     note = ""
@@ -2402,6 +2822,28 @@ def _known_unsupported_game_answer(q: str, start: float) -> FastAnswer | None:
         "games_known_unsupported_fast_path",
         start,
         0.94,
+    )
+
+
+def _known_non_current_game_answer(q: str, start: float) -> FastAnswer | None:
+    if not _has(q, "mario kart live", "home circuit", "mk live", "มาริโอคาร์ทไลฟ์", "มาริโอคาทไลฟ์"):
+        return None
+    current_names = {str(entry.get("name") or "") for entry in _verified_game_catalog()}
+    if "Mario Kart Live: Home Circuit" in current_names:
+        return None
+    current_mario = [name for name in sorted(current_names) if "mario" in normalize_text(name)]
+    suffix = ""
+    if current_mario:
+        suffix = "\nเกมตระกูล Mario ที่อยู่ในรายการปัจจุบันคือ: " + ", ".join(current_mario)
+    return _answer(
+        "ตอนนี้ยังไม่พบ Mario Kart Live: Home Circuit ในรายการเกมปัจจุบันของ PSU Esports Studio - Phuket ครับ\n"
+        "จึงไม่ดึงปุ่มของเกมอื่น เช่น Mario Kart 8 Deluxe มาตอบแทน"
+        f"{suffix}\n"
+        f"แหล่งข้อมูล: {RESERVATION_URL}",
+        "our_games",
+        "games_non_current_availability_guard_fast_path",
+        start,
+        0.93,
     )
 
 
@@ -2451,14 +2893,64 @@ def _game_missing_data_answer(q: str, start: float) -> FastAnswer | None:
     return _answer("\n".join(lines), "our_games", "games_missing_data_fast_path", start, 0.96)
 
 
-def _game_detail_lines(meta: dict) -> list[str]:
+def _control_rows_for_game_name(game_name: str) -> list[dict]:
+    game_key = _game_control_key(game_name)
+    rows: list[dict] = []
+    for row in _read_jsonl(GAME_CONTROL_FACTS_PATH):
+        if row.get("category") != "game_controls" or not row.get("button"):
+            continue
+        row_game = str(row.get("game") or "").strip()
+        if _game_control_key(row_game) == game_key:
+            rows.append(row)
+    return rows
+
+
+def _game_control_section_lines(game_name: str) -> list[str]:
+    rows = _control_rows_for_game_name(game_name)
+    if not rows:
+        return []
+
+    grouped: dict[str, list[dict]] = {}
+    for row in rows:
+        platform = str(row.get("platform") or "ไม่ระบุแพลตฟอร์ม").strip()
+        grouped.setdefault(platform, []).append(row)
+
+    lines = ["ปุ่มการเล่น:"]
+    for platform, platform_rows in grouped.items():
+        lines.append(f"{platform}")
+        for row in platform_rows:
+            button = str(row.get("button") or "").strip()
+            action = str(row.get("action_th") or row.get("action_en") or "").strip()
+            description = str(row.get("description_th") or "").strip()
+            text = f"{button}: {action}" if action else button
+            if description:
+                text += f" - {description}"
+            lines.append(f"  - {text}")
+    return lines
+
+
+def _looks_like_play_method_query(q: str) -> bool:
+    return _has(
+        q,
+        "วิธีเล่น", "เล่นยังไง", "เล่นอย่างไร", "เล่นแบบไหน", "สอนเล่น",
+        "สอนเล่นเกม", "เล่นยังไงดี", "เล่นเกมยังไง",
+    )
+
+
+def _game_detail_lines(meta: dict, *, include_controls: bool = False) -> list[str]:
     zones = " และ ".join(meta["zones"])
-    return [
+    lines = [
         f"{meta['name']}: {meta['summary']}",
         f"แนวเกม: {meta['genre']}",
         f"วิธีเล่นโดยสรุป: {meta['how']}",
         f"เล่นได้ที่: {zones}",
     ]
+    if include_controls:
+        control_lines = _game_control_section_lines(str(meta["name"]))
+        if control_lines:
+            lines.append("")
+            lines.extend(control_lines)
+    return lines
 
 
 def _source_url_for_game(meta: dict) -> str:
@@ -2655,6 +3147,8 @@ def answer_competition_rules(query: str, start: float) -> FastAnswer | None:
     intent = _competition_rule_generic_intent(q)
     if game_key is None or intent is None:
         return None
+    if intent not in {"data_exists", "source"}:
+        return None
 
     label = COMPETITION_RULE_GAME_LABELS[game_key]
     source = COMPETITION_RULE_SOURCES[game_key]
@@ -2664,6 +3158,8 @@ def answer_competition_rules(query: str, start: float) -> FastAnswer | None:
         answer = COMPETITION_RULE_GENERIC_ANSWERS.get(game_key, {}).get(intent)
         if not answer:
             return None
+        if label not in answer:
+            answer = f"{label}: {answer}"
     answer = f"{answer}\nแหล่งข้อมูล: {source}"
     return _answer(answer, "competition_rules", "competition_generic_fast_path", start, 0.94)
 
@@ -2674,13 +3170,30 @@ def _member_profiles() -> tuple[dict, ...]:
 
 
 def _looks_like_member_query(q: str) -> bool:
+    if _looks_like_text_generation_request(q):
+        return False
     return _has(
         q,
-        "member", "members", "สมาชิก", "สมาชิกทีม", "ทีมงาน", "บุคลากร", "ตำแหน่ง",
+        "member", "members", "staff", "สตาฟ", "เจ้าหน้าที่", "คนดูแล", "สมาชิก", "สมาชิกทีม", "ทีมงาน", "บุคลากร", "ตำแหน่ง",
         "ผู้จัดการ", "อธิการบดี", "รองอธิการบดี", "คณบดี", "ผู้ช่วยอธิการบดี",
         "นักวิชาการคอมพิวเตอร์", "สหกิจ", "ฝึกงาน", "internship", "intern", "cooperative",
         "psu phuket esports club", "esports club", "ชมรม", "ประธาน", "รองประธาน",
         "เลขานุการ", "เหรัญญิก", "ประชาสัมพันธ์", "กรรมการ",
+    )
+
+
+def _looks_like_text_generation_request(q: str) -> bool:
+    if not _has(
+        q,
+        "เขียน", "ช่วยเขียน", "แต่ง", "ช่วยแต่ง", "ร่าง", "ช่วยร่าง",
+        "ประโยค", "แคปชั่น", "caption", "ข้อความ", "คำโปรย",
+        "ประชาสัมพันธ์กิจกรรม", "โปรโมต", "โปรโมท", "ประกาศ", "โพสต์",
+    ):
+        return False
+    return not _has(
+        q,
+        "ใคร", "ใครบ้าง", "ใครเป็น", "ใครทำ", "คนไหน", "รายชื่อ",
+        "สมาชิก", "ทีมงาน", "ตำแหน่ง", "ทำตำแหน่ง", "ผู้รับผิดชอบ",
     )
 
 
@@ -2722,6 +3235,48 @@ def _member_role_for_query(q: str) -> str | None:
     return None
 
 
+def _looks_like_member_group_summary_query(q: str) -> bool:
+    if not _has(q, "สมาชิก", "member", "members", "ทีมงาน", "บุคลากร"):
+        return False
+    return _has(
+        q,
+        "กี่หมวด", "กี่กลุ่ม", "กี่หัวข้อ", "มีกี่หมวด", "มีกี่กลุ่ม", "มีกี่หัวข้อ",
+        "หมวดอะไร", "หมวดอะไรบ้าง", "กลุ่มอะไร", "กลุ่มอะไรบ้าง",
+        "หัวข้ออะไร", "หัวข้ออะไรบ้าง", "แยกหมวด", "แยกกลุ่ม",
+    )
+
+
+def _looks_like_member_game_relation_query(q: str) -> bool:
+    if _has(q, "ตำแหน่ง", "position", "role"):
+        return False
+    has_people = _has(
+        q,
+        "สมาชิก", "member", "members", "staff", "สตาฟ", "เจ้าหน้าที่", "คนดูแล",
+        "ทีมงาน", "บุคลากร", "ใคร", "ใครบ้าง",
+    )
+    has_relation = _has(q, "เล่น", "ดูแล", "รับผิดชอบ", "ประจำ", "คุม")
+    has_game_or_zone = _has(
+        q,
+        "เกม", "game", "games", "ps5", "playstation", "nintendo", "switch",
+        "pc", "vr", "cockpit", "โซน", "เครื่อง",
+    )
+    return has_people and has_relation and has_game_or_zone
+
+
+def _member_group_summary(rows: list[dict]) -> str:
+    grouped: dict[str, list[dict]] = {group: [] for group in MEMBER_GROUP_ORDER}
+    for row in rows:
+        grouped.setdefault(str(row.get("group") or "Members"), []).append(row)
+
+    groups = [(group, grouped.get(group) or []) for group in MEMBER_GROUP_ORDER if grouped.get(group)]
+    lines = [f"สมาชิกในหน้า Members แบ่งเป็น {len(groups)} หมวดครับ"]
+    for group, group_rows in groups:
+        lines.append(f"- {group}: {len(group_rows)} คน")
+    lines.append(f"รวมทั้งหมด {len(rows)} คน")
+    lines.append(f"แหล่งข้อมูล: {MEMBERS_URL}")
+    return "\n".join(lines)
+
+
 def _member_name_match(q: str) -> dict | None:
     q_key = _game_alias_key(q)
     q_norm = normalize_text(q)
@@ -2738,8 +3293,10 @@ def _member_name_match(q: str) -> dict | None:
     return best[1] if best else None
 
 
-def _format_member_row(row: dict) -> str:
+def _format_member_row(row: dict, *, include_details: bool = False) -> str:
     line = f"- {row.get('name')}: {row.get('role')}"
+    if not include_details:
+        return line
     affiliation = str(row.get("affiliation") or "").strip()
     period = str(row.get("period") or "").strip()
     if affiliation:
@@ -2749,7 +3306,7 @@ def _format_member_row(row: dict) -> str:
     return line
 
 
-def _format_member_groups(rows: list[dict]) -> str:
+def _format_member_groups(rows: list[dict], *, include_details: bool = False) -> str:
     grouped: dict[str, list[dict]] = {group: [] for group in MEMBER_GROUP_ORDER}
     for row in rows:
         grouped.setdefault(str(row.get("group") or "Members"), []).append(row)
@@ -2760,19 +3317,32 @@ def _format_member_groups(rows: list[dict]) -> str:
             continue
         if lines:
             lines.append("")
-        lines.append(f"{group}:")
-        lines.extend(_format_member_row(row) for row in group_rows)
+        lines.append(f"{group} ({len(group_rows)} คน):")
+        lines.extend(_format_member_row(row, include_details=include_details) for row in group_rows)
     return "\n".join(lines)
 
 
 def answer_members(query: str, start: float) -> FastAnswer | None:
     q = normalize_text(query)
+    if _looks_like_text_generation_request(q):
+        return None
     if not _looks_like_member_query(q):
         return None
 
     rows = list(_member_profiles())
     if not rows:
         return None
+
+    if _looks_like_member_game_relation_query(q):
+        answer = (
+            "ยังไม่พบข้อมูลที่ยืนยันได้ว่าสมาชิกหรือสตาฟแต่ละคนเล่นเกม/ดูแลเกมหรือโซนไหนครับ\n"
+            "ข้อมูลที่มีตอนนี้ยืนยันได้เฉพาะรายชื่อสมาชิก หมวด และตำแหน่งในหน้า Members\n"
+            f"แหล่งข้อมูล: {MEMBERS_URL}"
+        )
+        return _answer(answer, "members", "members_game_relation_no_data_fast_path", start, 0.90)
+
+    if _looks_like_member_group_summary_query(q):
+        return _answer(_member_group_summary(rows), "members", "members_group_summary_fast_path", start, 0.97)
 
     name_match = _member_name_match(q)
     role = _member_role_for_query(q)
@@ -2815,8 +3385,9 @@ def answer_members(query: str, start: float) -> FastAnswer | None:
     elif group:
         header = f"สมาชิกในหมวด {group}:"
     else:
-        header = "สมาชิกจากหน้า Members แยกตามหมวด:"
-    answer = f"{header}\n{_format_member_groups(filtered)}\nแหล่งข้อมูล: {MEMBERS_URL}"
+        header = f"สมาชิกจากหน้า Members แยกตามหมวด รวม {len(filtered)} คน:"
+    include_details = bool(group and len(filtered) <= 6)
+    answer = f"{header}\n{_format_member_groups(filtered, include_details=include_details)}\nแหล่งข้อมูล: {MEMBERS_URL}"
     return _answer(answer, "members", "members_lookup_fast_path", start, 0.95)
 
 
@@ -2837,7 +3408,7 @@ def _game_detail_answer(q: str, start: float) -> FastAnswer | None:
         return None
 
     _, meta = match
-    lines = _game_detail_lines(meta)
+    lines = _game_detail_lines(meta, include_controls=_looks_like_play_method_query(q))
     source_key = str(meta.get("source") or "our_games")
     lines.append(f"แหล่งข้อมูล: {_source_url_for_game(meta)}")
     return _answer("\n".join(lines), source_key, "game_detail_fast_path", start, 0.96)
@@ -2861,7 +3432,7 @@ def _game_name_mention_answer(q: str, start: float) -> FastAnswer | None:
     if len(matches) == 1:
         _, meta = matches[0]
         source_key = str(meta.get("source") or "our_games")
-        lines = _game_detail_lines(meta)
+        lines = _game_detail_lines(meta, include_controls=_looks_like_play_method_query(q))
         lines.append(f"แหล่งข้อมูล: {_source_url_for_game(meta)}")
         return _answer("\n".join(lines), source_key, "game_name_mention_detail_fast_path", start, 0.94)
 
@@ -2912,6 +3483,217 @@ def _zone_keys_for_query(q: str) -> list[str]:
     if _has(q, "vr", "แว่น"):
         keys.append("vr")
     return list(dict.fromkeys(keys))
+
+
+def _machine_numbers_from_query(q: str) -> list[int]:
+    numbers: list[int] = []
+    for start, end in re.findall(r"(?:#|เครื่อง|pc)\s*0?(\d{1,2})\s*[-–]\s*(?:#|เครื่อง|pc)?\s*0?(\d{1,2})", q):
+        low, high = int(start), int(end)
+        for number in range(min(low, high), max(low, high) + 1):
+            if 1 <= number <= 99:
+                numbers.append(number)
+    for number in re.findall(r"(?:#|เครื่อง|pc)\s*0?(\d{1,2})", q):
+        value = int(number)
+        if 1 <= value <= 99:
+            numbers.append(value)
+    return list(dict.fromkeys(numbers))
+
+
+def _service_rows_for_game_catalog_query(q: str) -> list[dict]:
+    rows = list(_service_game_availability_rows())
+    if not rows:
+        return []
+    keys = _zone_keys_for_query(q)
+    numbers = _machine_numbers_from_query(q)
+    selected: list[dict] = rows
+    if keys:
+        zone_labels = {CATALOG_ZONE_BY_KEY[key] for key in keys if key in CATALOG_ZONE_BY_KEY}
+        selected = [row for row in selected if row.get("zone") in zone_labels]
+    if numbers:
+        selected = [
+            row for row in selected
+            if any(number in [int(value) for value in row.get("machine_numbers") or []] for number in numbers)
+        ]
+    if "nintendo" in keys:
+        people = re.search(r"(\d+)\s*(?:คน|persons?|players?)", q)
+        if people and int(people.group(1)) >= 3:
+            selected = [row for row in selected if row.get("id") == "availability_nintendo_1_4"]
+        elif people:
+            selected = [row for row in selected if row.get("id") == "availability_nintendo_1_2"]
+    if "vr" in keys:
+        if _has(q, "30 นาที", "ครึ่งชั่วโมง", "30 min"):
+            selected = [row for row in selected if row.get("duration_minutes") == 30]
+        elif _has(q, "1 ชั่วโมง", "หนึ่งชั่วโมง", "60 นาที", "1 hour", "1 hr"):
+            selected = [row for row in selected if row.get("duration_minutes") == 60]
+        elif selected:
+            selected = [row for row in selected if row.get("id") == "availability_vr_30"]
+    if "pc" in keys and not numbers:
+        selected = [row for row in rows if row.get("id") in {"availability_pc_01_02", "availability_pc_03_10"}]
+    return selected
+
+
+def _format_service_game_availability(rows: list[dict], intro: str) -> str:
+    lines = [intro]
+    for row in rows:
+        lines.append("")
+        lines.append(f"{row.get('service_label')} ({row.get('duration_minutes')} นาที, {row.get('capacity_persons')})")
+        for game in row.get("games") or []:
+            lines.append(f"•    {game}")
+        for note in (row.get("notes") or [])[:2]:
+            lines.append(f"หมายเหตุ: {note}")
+    lines.append(f"แหล่งข้อมูล: {rows[0].get('source_url') if rows else RESERVATION_URL}")
+    return "\n".join(lines)
+
+
+def _looks_like_service_capacity_query(q: str) -> bool:
+    return _has(
+        q,
+        "เล่นได้กี่คน",
+        "รองรับกี่คน",
+        "รับได้กี่คน",
+        "นั่งได้กี่คน",
+        "ได้กี่คน",
+        "กี่คน",
+        "กี่ player",
+        "กี่ players",
+        "กี่ person",
+        "กี่ persons",
+        "จำนวนผู้เล่น",
+    )
+
+
+def _looks_like_game_presence_or_location_query(q: str) -> bool:
+    return _has(
+        q,
+        "มีไหม",
+        "มีมั้ย",
+        "เล่นได้ไหม",
+        "เล่นได้มั้ย",
+        "เครื่องไหน",
+        "อยู่เครื่องไหน",
+        "เล่นได้ที่ไหน",
+        "มีที่ไหน",
+    ) or (
+        _has(q, "มี", "เล่นได้")
+        and _has(q, "ไหม", "มั้ย", "หรือเปล่า", "รึเปล่า", "ปะ")
+    )
+
+
+def _format_service_capacity_fast(rows: list[dict]) -> str:
+    lines = ["บริการที่ถามรองรับผู้เล่นตามข้อมูลนี้ครับ"]
+    for row in rows:
+        lines.append(f"•    {row.get('service_label')}: {row.get('capacity_persons')} ต่อรอบ {row.get('duration_minutes')} นาที")
+    lines.append(f"แหล่งข้อมูล: {rows[0].get('source_url') if rows else RESERVATION_URL}")
+    return "\n".join(lines)
+
+
+def _service_labels_fast(rows: list[dict]) -> str:
+    return ", ".join(str(row.get("service_label")) for row in rows if row.get("service_label"))
+
+
+def _service_game_availability_fast_answer(q: str, start: float) -> FastAnswer | None:
+    rows = list(_service_game_availability_rows())
+    if not rows:
+        return None
+    catalog_signal = _looks_like_equipment_game_catalog(q) or _looks_like_game_catalog(q) or _looks_like_game_total_count(q)
+    service_scope_related = bool(_zone_keys_for_query(q) or _machine_numbers_from_query(q)) or _has(q, "โซน", "zone", "บริการ", "แต่ละเครื่อง", "แต่ละโซน", "ตามเครื่อง", "ตามโซน")
+    if catalog_signal and not service_scope_related:
+        return None
+    if _has(q, "กี่ชั่วโมง", "ชั่วโมงต่อวัน", "เล่นกี่ชั่วโมง", "session", "sessions") and not _has(q, "กี่เกม", "จำนวนเกม"):
+        return None
+    capacity_signal = _looks_like_service_capacity_query(q) and bool(_zone_keys_for_query(q) or _machine_numbers_from_query(q))
+    if capacity_signal:
+        selected_capacity = _service_rows_for_game_catalog_query(q)
+        if selected_capacity:
+            return _answer(
+                _format_service_capacity_fast(selected_capacity),
+                "our_games",
+                "service_capacity_fast_path",
+                start,
+                0.97,
+            )
+
+    wants_game_location = _looks_like_game_presence_or_location_query(q)
+    game_match = _match_supported_game(q) if wants_game_location or not catalog_signal else None
+    asks_game_location = game_match is not None and wants_game_location
+    if asks_game_location:
+        name, _meta = game_match
+        key = _compact_key(name)
+        zone_keys = _zone_keys_for_query(q)
+        zone_labels = {CATALOG_ZONE_BY_KEY[item] for item in zone_keys if item in CATALOG_ZONE_BY_KEY}
+        machine_numbers = _machine_numbers_from_query(q)
+        matches = [
+            row for row in rows
+            if any(_compact_key(str(game)) == key for game in row.get("games") or [])
+            and (not zone_labels or row.get("zone") in zone_labels)
+            and (
+                not machine_numbers
+                or any(number in [int(value) for value in row.get("machine_numbers") or []] for number in machine_numbers)
+            )
+        ]
+        if matches:
+            services = ", ".join(str(row.get("service_label")) for row in matches)
+            return _answer(
+                f"ได้ครับ {name} เล่นได้ที่ {services}\nแหล่งข้อมูล: {matches[0].get('source_url') or RESERVATION_URL}",
+                "our_games",
+                "service_game_availability_fast_path",
+                start,
+                0.97,
+            )
+        requested_rows = _service_rows_for_game_catalog_query(q)
+        same_zone_available = [
+            row for row in rows
+            if any(_compact_key(str(game)) == key for game in row.get("games") or [])
+            and (not zone_labels or row.get("zone") in zone_labels)
+        ]
+        available_rows = same_zone_available or [
+            row for row in rows
+            if any(_compact_key(str(game)) == key for game in row.get("games") or [])
+        ]
+        if requested_rows or available_rows:
+            requested_label = _service_labels_fast(requested_rows) or "บริการ/เครื่องที่ถาม"
+            lines = [f"{requested_label} ไม่มี {name} ครับ"]
+            if available_rows:
+                lines.append(f"{name} เล่นได้ที่ {_service_labels_fast(available_rows)}")
+            if requested_rows:
+                lines.append("")
+                lines.append(f"เกมที่มีใน {requested_label}:")
+                for row in requested_rows:
+                    for game in row.get("games") or []:
+                        lines.append(f"•    {game}")
+            lines.append(f"แหล่งข้อมูล: {available_rows[0].get('source_url') if available_rows else RESERVATION_URL}")
+            return _answer(
+                "\n".join(lines),
+                "our_games",
+                "service_game_availability_no_match_fast_path",
+                start,
+                0.91,
+            )
+
+    if not catalog_signal:
+        return None
+    selected = _service_rows_for_game_catalog_query(q)
+    if not selected:
+        return None
+    keys = _zone_keys_for_query(q)
+    if _looks_like_game_total_count(q):
+        unique_games = {str(game) for row in selected for game in row.get("games") or []}
+        zone_labels = [CATALOG_ZONE_BY_KEY[key] for key in keys if key in CATALOG_ZONE_BY_KEY]
+        label = zone_labels[0] if len(zone_labels) == 1 else "บริการที่ถาม"
+        intro = f"{label} มีเกมที่ยืนยันได้ {len(unique_games)} เกมครับ"
+    elif keys == ["pc"]:
+        intro = "PC Zone แยกรายการเกมตามเลขเครื่องดังนี้"
+    elif keys == ["vr"] and not _has(q, "30 นาที", "ครึ่งชั่วโมง", "1 ชั่วโมง", "60 นาที"):
+        intro = "VR Station มีเกมที่ยืนยันได้ดังนี้ (รอบ 30 นาทีและ 1 ชั่วโมงใช้รายการเกมเดียวกัน)"
+    else:
+        intro = "เกมที่ยืนยันได้ตามบริการที่ถามมีดังนี้"
+    return _answer(
+        _format_service_game_availability(selected, intro),
+        "our_games",
+        "service_game_availability_fast_path",
+        start,
+        0.97,
+    )
 
 
 def _equipment_game_catalog_answer(q: str, start: float) -> FastAnswer | None:
@@ -2990,7 +3772,7 @@ def _related_guidance_answer(q: str, start: float) -> FastAnswer | None:
             f"- เล่นเป็นกลุ่ม/ครอบครัวหน้าจอเดียว: {nintendo['title']} เพราะมีเกม {nintendo['games']}",
             f"- อยากลอง VR เป็นกลุ่มเล็ก: {vr['title']} มีเกม {vr['games']} และตารางค่าบริการระบุ VR 1-5 คนต่อรอบ",
             f"- อยากเล่นเกม PC/FPS/MOBA แยกเครื่อง: {pc['title']} มี Gaming PC 10 เครื่อง และเกม {pc['games']}",
-            "หมายเหตุ: ในข้อมูล Service Fee 2026 ที่มีตอนนี้ยังไม่พบราคา PC ที่ยืนยันได้ จึงไม่คำนวณราคา PC ให้เอง",
+            "หมายเหตุ: PC 1 ชั่วโมง ราคา PSU Student and Staff 0 บาท, PSU Alumni and General Student 25 บาท, General Adult 70 บาท",
             source_note,
         ])
         return _answer("\n".join(lines), "home_our_games", "related_guidance_fast_path", start, 0.92)
@@ -3442,9 +4224,18 @@ def answer_games(query: str, start: float) -> FastAnswer | None:
     missing_data_answer = _game_missing_data_answer(q, start)
     if missing_data_answer is not None:
         return missing_data_answer
+    non_current_answer = _known_non_current_game_answer(q, start)
+    if non_current_answer is not None:
+        return non_current_answer
+    unsupported_answer = _known_unsupported_game_answer(q, start)
+    if unsupported_answer is not None:
+        return unsupported_answer
     zone_play_answer = _zone_play_request_answer(q, start)
     if zone_play_answer is not None:
         return zone_play_answer
+    service_availability_answer = _service_game_availability_fast_answer(q, start)
+    if service_availability_answer is not None:
+        return service_availability_answer
     equipment_catalog_answer = _equipment_game_catalog_answer(q, start)
     if equipment_catalog_answer is not None:
         return equipment_catalog_answer
@@ -3533,6 +4324,9 @@ def answer_games(query: str, start: float) -> FastAnswer | None:
 
 def answer_equipment(query: str, start: float) -> FastAnswer | None:
     q = normalize_text(query)
+    service_availability_answer = _service_game_availability_fast_answer(q, start)
+    if service_availability_answer is not None:
+        return service_availability_answer
     booking_howto = _booking_howto_answer(q, start)
     if booking_howto is not None:
         return booking_howto
@@ -3635,6 +4429,8 @@ def _looks_like_booking_howto(q: str) -> bool:
 
 
 def _booking_howto_answer(q: str, start: float) -> FastAnswer | None:
+    if _has_strong_game_catalog_terms(q) or _looks_like_game_total_count(q):
+        return None
     if not _looks_like_booking_howto(q):
         return None
     service_hint = ""
@@ -3662,6 +4458,18 @@ def _booking_howto_answer(q: str, start: float) -> FastAnswer | None:
 
 
 def _booking_specific_answer(q: str, start: float) -> FastAnswer | None:
+    if _has_strong_game_catalog_terms(q) or _looks_like_game_total_count(q):
+        return None
+    if _has(q, "จ่ายเงินผ่าน", "ชำระเงินผ่าน", "ช่องทางชำระ", "ช่องทางการชำระ", "ช่องทางไหน", "โอนเงิน", "เลขบัญชี", "บัญชีธนาคาร", "ชื่อบัญชี", "ธนาคารอะไร", "บัญชีไหน"):
+        return _answer(
+            "ชำระเงินโดยโอนเข้าบัญชีธนาคารไทยพาณิชย์ (Siam Commercial Bank) ชื่อบัญชี PSU Esports Studio - Phuket เลขบัญชี 795-276244-1 และแนบสลิปการโอนเงินครับ\n"
+            f"แหล่งข้อมูล: {RESERVATION_URL}",
+            "reservation",
+            "payment_fast_path",
+            start,
+            0.97,
+        )
+
     if _has(q, "จองแล้วลืมเช็คอิน", "ลืมเช็คอิน", "ลืมเชคอิน", "ไปถึงช้า", "ช้ากว่าเวลาจอง"):
         return _answer(
             "ถ้าลืมเช็คอินหรือไปถึงช้ากว่าเวลาเริ่มรอบ มีความเสี่ยงที่การจองจะถูกยกเลิกครับ\n"
@@ -3840,8 +4648,26 @@ def _booking_specific_answer(q: str, start: float) -> FastAnswer | None:
 def answer_static_domain(query: str, start: float) -> FastAnswer | None:
     q = normalize_text(query)
 
+    if _looks_like_chatbot_greeting_query(q):
+        return _chatbot_greeting_answer(start)
+
+    if _has(
+        q,
+        "นายเป็นใคร", "คุณเป็นใคร", "แกเป็นใคร", "เธอเป็นใคร", "ตัวเองเป็นใคร",
+        "เป็น ai อะไร", "เป็น ai จริงหรือเปล่า", "เป็น ai ไหม", "เป็นคนแอบพิมพ์", "คนแอบพิมพ์",
+        "เป็น model อะไร", "เป็นโมเดลอะไร", "ชื่ออะไร",
+        "ทำอะไรได้บ้าง", "ทำไรได้บ้าง", "ช่วยอะไรได้บ้าง", "ช่วยไรได้บ้าง", "ตอบอะไรได้บ้าง", "ตอบไรได้บ้าง", "ถามอะไรได้บ้าง", "ถามไรได้บ้าง",
+        "แชทบอทนี้", "chatbot นี้", "bot นี้", "บอทนี้", "assistant นี้",
+        "who are you", "what are you", "what can you do",
+    ):
+        return _chatbot_identity_answer(start)
+
     if _has(q, *UNKNOWN_TERMS):
         return _no_answer(start)
+
+    booking_limit = _booking_session_limit_answer(q, start)
+    if booking_limit is not None:
+        return booking_limit
 
     booking_specific = _booking_specific_answer(q, start)
     if booking_specific is not None:
@@ -3878,7 +4704,7 @@ def answer_static_domain(query: str, start: float) -> FastAnswer | None:
             start,
             0.96,
         )
-    if _has(q, "ชำระเงินผ่าน", "โอนเงิน", "เลขบัญชี", "ธนาคาร", "ชื่อบัญชี", "บัญชีไหน"):
+    if _has(q, "จ่ายเงินผ่าน", "ชำระเงินผ่าน", "ช่องทางชำระ", "ช่องทางการชำระ", "ช่องทางไหน", "โอนเงิน", "เลขบัญชี", "ธนาคาร", "ชื่อบัญชี", "บัญชีไหน"):
         return _answer("ชำระเงินโดยโอนเข้าบัญชีธนาคารไทยพาณิชย์ (Siam Commercial Bank) ชื่อบัญชี PSU Esports Studio - Phuket เลขบัญชี 795-276244-1 และแนบสลิปการโอนเงิน", "reservation", "payment_fast_path", start)
     if _has(q, "หลังจอง", "ไม่จ่ายใน 10", "ลืมจ่าย", "payment timeout", "ชำระเงินหลัง booking"):
         return _answer("หลังจองต้องชำระเงินภายใน 10 นาที หากไม่ชำระ ระบบจะยกเลิกการจอง และถ้าต้องการใช้บริการต้องจองใหม่", "reservation", "payment_fast_path", start)
@@ -3917,10 +4743,29 @@ def answer_static_domain(query: str, start: float) -> FastAnswer | None:
     if _has(q, "จองผิดเวลา", "แก้เวลา", "แก้ไข"):
         return _answer("หลังจองแล้วแก้ไขข้อมูลไม่ได้ ต้องยกเลิกผ่านอีเมลก่อนเวลาใช้งานอย่างน้อย 1 ชั่วโมง แล้วจองใหม่ พร้อมแนบสลิปเดิม", "reservation", "mixed_reservation_fast", start)
 
+    if (
+        _has(q, "กติกาในศูนย์", "กฎในศูนย์", "กติกาการใช้บริการ", "กฎการใช้บริการ", "ข้อห้ามในศูนย์", "ในศูนย์ห้าม", "ศูนย์ห้าม", "ระเบียบในศูนย์", "กฎของศูนย์")
+        or (_has(q, "กติกา", "กฎ", "ข้อห้าม", "ห้าม", "ระเบียบ") and _has(q, "ศูนย์", "studio", "ใช้บริการ", "มีอะไรบ้าง", "อะไรบ้าง"))
+    ):
+        return _answer(
+            "กติกาการใช้บริการในศูนย์โดยสรุปครับ\n"
+            "•    ฝากสัมภาระก่อนเข้าใช้บริการ และศูนย์ไม่รับผิดชอบทรัพย์สินสูญหาย\n"
+            "•    รับประทานอาหารและเครื่องดื่มได้เฉพาะพื้นที่ที่กำหนด\n"
+            "•    คืนอุปกรณ์และแผ่นเกมหลังใช้งานเสร็จ\n"
+            "•    งดส่งเสียงดังเกินควร และห้ามพูดจาดูหมิ่นหรือเสียดสีผู้อื่น\n"
+            "•    ห้ามเคลื่อนย้ายอุปกรณ์/สิ่งของโดยไม่ได้รับอนุญาต และห้ามใช้ปลั๊กไฟส่วนตัวโดยไม่ได้รับอนุญาต\n"
+            "•    ห้ามสูบบุหรี่ เสพสารเสพติด ดื่มแอลกอฮอล์ พกอาวุธ ทะเลาะวิวาท หรือเล่นการพนัน\n"
+            "•    หากทำอุปกรณ์เสียหาย อาจมีค่าปรับ/ค่าซ่อมหรือชดเชยตามระดับความเสียหาย",
+            "reservation",
+            "studio_rules_overview_fast_path",
+            start,
+            0.94,
+        )
+
     if _has(q, "กินข้าวเสียงดัง"):
         return _answer("เกี่ยวกับกฎอาหารและเสียงดัง: อาหาร/เครื่องดื่มทำได้เฉพาะพื้นที่ที่กำหนด, กรุณางดส่งเสียงดัง และหากทำอุปกรณ์เสียหายต้องรับผิดชอบค่าปรับ", "reservation", "mixed_rules_fast", start)
     if _has(q, "เมาส์", "mouse", "คีย์บอร์ด", "keyboard", "จอย", "หูฟัง") and _has(q, "พัง", "เสีย", "เสียหาย", "ค่าปรับ", "ชดเชย", "ค่าซ่อม"):
-        return _answer("ต้องรับผิดชอบค่าปรับ/ค่าซ่อมครับ หากทำเมาส์หรืออุปกรณ์ของศูนย์เสียหาย โดยข้อมูลกฎที่มีระบุว่า ความเสียหายเล็กน้อยคิด 100-500 บาท และความเสียหายปานกลางคิด 500-2,000 บาทหรือตามราคาซ่อมจริง หากเสียหายร้ายแรงอาจต้องชดเชยเต็มจำนวนตามราคากลาง", "reservation", "penalty_fast_path", start)
+        return _answer("ต้องรับผิดชอบค่าปรับ/ค่าซ่อมครับ หากทำเมาส์หรืออุปกรณ์ของศูนย์เสียหาย โดยข้อมูลกฎที่มีระบุว่า ความเสียหายเล็กน้อยคิด 100-500 บาท และความเสียหายปานกลางคิด 500-2,000 บาทหรือตามราคาซ่อมจริง หากเสียหายร้ายแรงอาจต้องชดเชยเต็มจำนวนตามราคากลาง", "penalty", "penalty_fast_path", start)
     if _has(q, "ของหาย", "อุปกรณ์เปียก"):
         return _answer("ทรัพย์สินสูญหายศูนย์ไม่รับผิดชอบ แต่ถ้าผู้ใช้ทำอุปกรณ์เสียหายหรือเปียก ผู้ใช้ต้องรับผิดชอบค่าปรับ/ค่าซ่อม", "reservation", "mixed_rules_fast", start)
     if _has(q, "สูบบุหรี่", "แอลกอฮอล์", "มีด", "พนัน", "ปลั๊ก", "ย้ายอุปกรณ์"):
@@ -3939,7 +4784,7 @@ def answer_static_domain(query: str, start: float) -> FastAnswer | None:
     if _has(q, "ทิ้งขยะ"):
         return _answer("ห้ามทิ้งขยะหรือสิ่งของใด ๆ ในบริเวณที่ไม่ได้กำหนด", "reservation", "rules_fast_path", start)
     if _has(q, "อุปกรณ์เสียหาย", "อุปกรณ์พัง", "รอยขีดข่วน", "เบาะขาด", "หูฟังสายขาด"):
-        return _answer("ผู้ใช้ต้องรับผิดชอบค่าปรับหากทำอุปกรณ์เสียหาย: ความเสียหายเล็กน้อย 100-500 บาท และปานกลาง 500-2,000 บาทหรือตามราคาซ่อมจริง", "reservation", "penalty_fast_path", start)
+        return _answer("ผู้ใช้ต้องรับผิดชอบค่าปรับหากทำอุปกรณ์เสียหาย: ความเสียหายเล็กน้อย 100-500 บาท และปานกลาง 500-2,000 บาทหรือตามราคาซ่อมจริง", "penalty", "penalty_fast_path", start)
     if _has(q, "จอแตก", "คอมพัง"):
         return _answer("กรณีเสียหายร้ายแรง เช่น จอแตกหรือคอมพัง ต้องชดเชยราคาทรัพย์สินเต็มจำนวนตามราคากลาง", "reservation", "penalty_fast_path", start)
     if _has(q, "ระงับสิทธิ์", "แบน", "ถาวร", "อุทธรณ์", "ประวัติ"):

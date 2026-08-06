@@ -14,9 +14,11 @@ SPLIT_DIR = ROOT / "data" / "control_game_split"
 CURATED_PATH = ROOT / "data" / "curated" / "game_control_facts.jsonl"
 GAME_TITLE_ALIASES_PATH = ROOT / "data" / "curated" / "game_title_aliases.jsonl"
 SOURCE_URL_PREFIX = "local://control_game"
+SUPPORTED_PLATFORM_KEYS = ("ps5", "nintendo", "pc", "vr")
 
 GAME_NAME_OVERRIDES = {
     "FINAL FANTASY XVI.json": "FINAL FANTASY XVI",
+    "Movine_Out_2.json": "Moving Out 2",
 }
 
 
@@ -72,6 +74,10 @@ def aliases_for_game(game: str, filename_stem: str, aliases_by_key: dict[str, li
 
 def platform_key(platform: str) -> str:
     p = (platform or "").lower()
+    if "vr" in p or "psvr" in p or "ps vr" in p:
+        return "vr"
+    if "pc" in p or "windows" in p or "keyboard" in p or "mouse" in p:
+        return "pc"
     if "nintendo" in p or "switch" in p:
         return "nintendo"
     if "playstation" in p or "ps5" in p or p.strip() in {"ps", "ps4"}:
@@ -80,6 +86,10 @@ def platform_key(platform: str) -> str:
 
 
 def platform_label(key: str, original: str) -> str:
+    if key == "vr":
+        return original or "VR"
+    if key == "pc":
+        return "PC"
     if key == "ps5":
         return "PlayStation / PS5"
     if key == "nintendo":
@@ -100,7 +110,24 @@ def buttons_for_platform(item: dict[str, Any], key: str) -> list[str]:
         return as_list(item.get("button_ps5"))
     if key == "nintendo" and item.get("button_switch"):
         return as_list(item.get("button_switch"))
+    if key == "pc" and item.get("button_pc"):
+        return as_list(item.get("button_pc"))
+    if key == "vr" and item.get("button_vr"):
+        return as_list(item.get("button_vr"))
     return as_list(item.get("button"))
+
+
+def source_urls_for_controls(controls: dict[str, Any], path: Path) -> list[str]:
+    raw_values = controls.get("source_urls")
+    urls = as_list(raw_values)
+    primary = str(controls.get("source_url") or "").strip()
+    if primary:
+        urls.insert(0, primary)
+    return unique_values(urls) or [f"{SOURCE_URL_PREFIX}/{path.name}"]
+
+
+def source_url_for_controls(controls: dict[str, Any], path: Path) -> str:
+    return source_urls_for_controls(controls, path)[0]
 
 
 def row_text(game: str, platform: str, button: str, action_th: str, action_en: str, description: str, note: str = "", section: str = "") -> str:
@@ -156,10 +183,13 @@ def build_rows() -> tuple[list[dict[str, Any]], dict[str, list[dict[str, Any]]]]
         original_platform = str(controls.get("platform") or "").strip()
         key = platform_key(original_platform)
         label = platform_label(key, original_platform)
-        if key not in {"ps5", "nintendo"}:
+        if key not in SUPPORTED_PLATFORM_KEYS:
             continue
 
         note = str(controls.get("note") or "").strip()
+        coverage_status = str(controls.get("coverage_status") or "unknown").strip()
+        source_url = source_url_for_controls(controls, path)
+        source_urls = source_urls_for_controls(controls, path)
         mappings = control_mappings(controls)
         game_slug = slug(game)
         game_aliases = aliases_for_game(game, path.stem, aliases_by_key)
@@ -172,7 +202,10 @@ def build_rows() -> tuple[list[dict[str, Any]], dict[str, list[dict[str, Any]]]]
             "platform": label,
             "platform_key": key,
             "source_file": path.name,
-            "source_url": f"{SOURCE_URL_PREFIX}/{path.name}",
+            "source_url": source_url,
+            "source_urls": source_urls,
+            "local_source_url": f"{SOURCE_URL_PREFIX}/{path.name}",
+            "coverage_status": coverage_status,
             "control_count": len(mappings),
             "note": note,
             "text": f"{game} บน {label} มีข้อมูลปุ่มควบคุม {len(mappings)} รายการ" + (f"\nหมายเหตุ: {note}" if note else ""),
@@ -206,7 +239,10 @@ def build_rows() -> tuple[list[dict[str, Any]], dict[str, list[dict[str, Any]]]]
                 "description_th": description,
                 "section": section,
                 "source_file": path.name,
-                "source_url": f"{SOURCE_URL_PREFIX}/{path.name}",
+                "source_url": source_url,
+                "source_urls": source_urls,
+                "local_source_url": f"{SOURCE_URL_PREFIX}/{path.name}",
+                "coverage_status": coverage_status,
                 "text": row_text(game, label, button, action_th, action_en, description, note, section),
                 "aliases": unique_values([*game_aliases, button, *buttons, action_en, action_th]),
                 "tags": ["game_controls", "controls", "button_mapping", key, game, button, action_en, action_th, section],
@@ -223,7 +259,7 @@ def main() -> int:
         shutil.rmtree(SPLIT_DIR)
     all_rows, per_platform = build_rows()
 
-    for key in ("ps5", "nintendo"):
+    for key in SUPPORTED_PLATFORM_KEYS:
         rows = per_platform.get(key, [])
         write_jsonl(SPLIT_DIR / key / f"game_control_facts_{key}.jsonl", rows)
 
@@ -238,7 +274,7 @@ def main() -> int:
     print("GAME CONTROL FACTS OK")
     print(f"- source json files: {len(list(SOURCE_DIR.glob('*.json')))}")
     print(f"- rows total: {len(all_rows)}")
-    for key in ("ps5", "nintendo"):
+    for key in SUPPORTED_PLATFORM_KEYS:
         games = {row["game"] for row in per_platform.get(key, [])}
         print(f"- {key}: {len(games)} games, {len(per_platform.get(key, []))} rows")
     print(f"- curated: {CURATED_PATH}")

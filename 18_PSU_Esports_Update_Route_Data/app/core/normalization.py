@@ -549,6 +549,16 @@ def contains_alias(query: str, aliases: list[str], *, fuzzy: bool = True, thresh
 def detect_from_aliases(query: str, alias_map: dict[str, list[str]], *, threshold: float = 0.84) -> dict:
     matches = []
     for key, aliases in alias_map.items():
+        ok, alias, score = contains_alias(query, aliases, fuzzy=False, threshold=threshold)
+        if ok:
+            matches.append({"key": key, "alias": alias, "score": score})
+    if matches:
+        matches.sort(key=lambda row: row["score"], reverse=True)
+        top_score = matches[0]["score"]
+        tied = [m for m in matches if abs(m["score"] - top_score) < 0.03]
+        return {"key": matches[0]["key"], "ambiguous": len(tied) > 1, "matches": matches}
+
+    for key, aliases in alias_map.items():
         ok, alias, score = contains_alias(query, aliases, fuzzy=True, threshold=threshold)
         if ok:
             matches.append({"key": key, "alias": alias, "score": score})

@@ -1,0 +1,43 @@
+{
+  "generated_at": "2026-08-02T16:14:42",
+  "total": 200,
+  "total_wall_sec": 49.949,
+  "avg_wall_sec": 0.2497,
+  "question_bank": "data\\eval\\model_benchmark_1500.jsonl",
+  "output_dir": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\question_bank_runs\\20260802_161352_no_llm_cross_domain_reranker_sample200_20260802",
+  "allow_llm": false,
+  "rag_fallback": false,
+  "tool_router_env": "0",
+  "entity_reranker_env": "1",
+  "entity_reranker_model": "BAAI/bge-reranker-v2-m3",
+  "entity_reranker_cache_dir": "D:\\AIModels\\huggingface",
+  "category_filter": "",
+  "limit": 200,
+  "category_counts": {
+    "None": 200
+  },
+  "strategy_counts": {
+    "fastpath/rulebase": 57,
+    "structured": 143
+  },
+  "mode_counts": {
+    "pipeline:deterministic_calculator_fast": 57,
+    "pipeline:structured_service_fee": 1,
+    "pipeline:structured_service_fee_by_game": 30,
+    "pipeline:structured_game_detail": 82,
+    "pipeline:structured_service_game_availability": 28,
+    "pipeline:structured_game_controls": 2
+  },
+  "route_counts": {
+    "service_fee/service_fee_query": 88,
+    "games/game_availability_lookup": 54,
+    "games/game_detail_lookup": 56,
+    "games/game_control_lookup": 2
+  },
+  "selected_candidate_counts": {
+    "": 57,
+    "structured.service_fee": 31,
+    "structured.games": 84,
+    "structured.game_controls": 28
+  }
+}

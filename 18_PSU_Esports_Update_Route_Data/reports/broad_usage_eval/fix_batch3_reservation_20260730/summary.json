@@ -1,0 +1,53 @@
+{
+  "generated_at": "2026-07-30T17:06:37",
+  "case_count": 20,
+  "turn_count": 20,
+  "passed": 19,
+  "failed": 1,
+  "pass_rate": 0.95,
+  "total_wall_sec": 21.685,
+  "allow_llm": false,
+  "rag_fallback": false,
+  "group_counts": {
+    "reservation": {
+      "total": 20,
+      "pass": 19,
+      "fail": 1
+    }
+  },
+  "strategy_counts": {
+    "structured": 14,
+    "fast/rule": 3,
+    "rag/retrieval": 2,
+    "compound": 1
+  },
+  "mode_counts": {
+    "pipeline:structured_reservation_fact": 11,
+    "pipeline:structured_booking_selection": 3,
+    "pipeline:booking_howto_fast_path": 1,
+    "pipeline:payment_fast_path": 1,
+    "pipeline:booking_fast_path": 1,
+    "pipeline:mixed_reservation_fast": 1,
+    "pipeline:multi_question_splitter": 1,
+    "pipeline:rag_direct_curated": 1
+  },
+  "problem_counts": {
+    "route_category expected ['reservation'], got multi_question": 1
+  },
+  "top_failures": [
+    {
+      "case_id": "R-018",
+      "group": "reservation",
+      "question": "จองแล้วไม่สามารถยกเลิกได้ใช่ไหม",
+      "resolved_question": "",
+      "mode": "pipeline:multi_question_splitter",
+      "route": "multi_question/multi_question_split",
+      "problems": [
+        "route_category expected ['reservation'], got multi_question"
+      ],
+      "answer_preview": "คำถามนี้มีหลายเรื่อง ขอแยกตอบเป็นข้อ ๆ:  •    จอง ผู้ใช้งานต้องจองล่วงหน้าผ่านระบบออนไลน์ก่อนเวลาใช้งานอย่างน้อย 1 ชั่วโมง แหล่งข้อมูล: https://esports.computing.psu.ac.th/  •    ไม่สามารถยกเลิกได้ใช่ไหม เมื่อกดจองแล้วจะไม่สามารถแก้ไขข้อมูล"
+    }
+  ],
+  "bank_jsonl": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.jsonl",
+  "bank_json": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.json"
+}

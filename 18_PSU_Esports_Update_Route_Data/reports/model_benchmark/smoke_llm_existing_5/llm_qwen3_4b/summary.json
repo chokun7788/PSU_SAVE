@@ -1,0 +1,59 @@
+{
+  "run_label": "llm_qwen3_4b",
+  "run_kind": "llm",
+  "model": "qwen3:4b",
+  "allow_llm": true,
+  "timeout_sec": 20.0,
+  "num_predict": 256,
+  "ollama_url": "http://127.0.0.1:11434",
+  "tool_router": false,
+  "facts_composer": false,
+  "disable_health_manager": true,
+  "cases": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\model_benchmark_1500.jsonl",
+  "limit": 5,
+  "resumed_from": 0,
+  "total_wall_sec": 164.577,
+  "generated_at": "2026-07-31T15:58:06",
+  "total": 5,
+  "passed": 2,
+  "pass_rate": 40.0,
+  "avg_score": 78.8,
+  "avg_wall_sec": 32.914,
+  "median_wall_sec": 17.736,
+  "p95_wall_sec": 93.8844,
+  "max_wall_sec": 93.8844,
+  "llm_call_total": 2,
+  "mode_counts": {
+    "pipeline:hybrid_guarded_rerank": 1,
+    "pipeline:general_llm_fallback": 2,
+    "pipeline:no_answer": 1,
+    "pipeline:structured_games_genre_list": 1
+  },
+  "route_counts": {
+    "games/detail": 2,
+    "general/unknown_domain_query": 1,
+    "games/list": 1,
+    "general/general_knowledge_query": 1
+  },
+  "group_counts": {
+    "general_llm": 5
+  },
+  "quality_bucket_counts": {
+    "general_llm": 5
+  },
+  "top_errors": {
+    "category_mismatch:games": 3,
+    "missing_any:latency|หน่วง": 1,
+    "missing_any:MOBA|ทีม": 1
+  },
+  "by_group": {
+    "general_llm": {
+      "total": 5,
+      "passed": 2,
+      "pass_rate": 40.0,
+      "avg_score": 78.8,
+      "avg_wall_sec": 32.914,
+      "p95_wall_sec": 93.8844
+    }
+  }
+}

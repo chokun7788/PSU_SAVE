@@ -1,0 +1,84 @@
+﻿case_id,kind,group,turn_index,question,resolved_question,used_context,passed,problems,risk,mode,route_category,route_intent,strategy,confidence,latency_sec,wall_sec,answer,sources
+R-001,single,reservation,,จองยังไง,,,True,[],medium,pipeline:structured_reservation_fact,reservation,booking_policy,structured,0.94,1.1278,1.1691,"ขั้นตอนจองโดยสรุป:
+•    เลือกบริการหรือโซนที่ต้องการใช้
+•    เลือกวันและรอบเวลาที่ต้องการ
+•    กรอก Student ID/Staff ID/National ID, ชื่อ, นามสกุล, อีเมล และเบอร์โทรศัพท์
+•    ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง
+•    แนบสลิปและยืนยันการจอง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""booking_steps: https://esports.computing.psu.ac.th/""]"
+R-002,single,reservation,,สรุปขั้นตอนจองให้หน่อย,,,True,[],medium,pipeline:structured_reservation_fact,reservation,booking_policy,structured,0.94,1.5795,1.5796,"ขั้นตอนจองโดยสรุป:
+•    เลือกบริการหรือโซนที่ต้องการใช้
+•    เลือกวันและรอบเวลาที่ต้องการ
+•    กรอก Student ID/Staff ID/National ID, ชื่อ, นามสกุล, อีเมล และเบอร์โทรศัพท์
+•    ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง
+•    แนบสลิปและยืนยันการจอง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""booking_steps: https://esports.computing.psu.ac.th/""]"
+R-003,single,reservation,,จอง PS5 ต้องทำยังไง,,,True,[],medium,pipeline:structured_booking_selection,reservation,booking_policy,structured,0.96,1.6453,1.6454,"จอง PlayStation 5 ต้องเลือกบริการ PlayStation 5 และเลือกรอบเวลาที่ต้องการครับ
+•    ข้อมูลค่าบริการที่มีระบุ PlayStation 5 ต่อ 60 นาที สำหรับ 1-2 คน
+•    จากนั้นกรอกข้อมูลผู้ใช้บริการ ชำระเงิน และแนบสลิปเพื่อยืนยันการจอง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""booking_selection_ps5: https://esports.computing.psu.ac.th/""]"
+R-004,single,reservation,,จอง Nintendo Switch ต้องทำยังไง,,,True,[],medium,pipeline:structured_booking_selection,reservation,booking_policy,structured,0.96,0.1166,0.1167,"ถ้าจะเล่น Nintendo Switch Sports ให้จอง Nintendo Switch Zone ครับ
+จอง Nintendo Switch ต้องเลือกบริการตามจำนวนผู้เล่นครับ
+•    ถ้าเล่น 1-2 คน ให้เลือก Nintendo Switch แบบ 1-2 Persons
+•    ถ้าเล่น 3-4 คน ให้เลือก Nintendo Switch แบบ 3-4 Persons
+•    จากนั้นเลือกวัน รอบเวลา กรอกข้อมูลผู้ใช้บริการ ชำระเงิน และแนบสลิปเพื่อยืนยันการจอง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""booking_selection_nintendo: https://esports.computing.psu.ac.th/""]"
+R-005,single,reservation,,จอง VR ต้องทำยังไง,,,True,[],medium,pipeline:booking_howto_fast_path,reservation,how_to,fast/rule,0.97,0.9341,0.9342,"จองคิวเล่นเกม/ใช้อุปกรณ์ได้ผ่านระบบจองออนไลน์ครับ
+ถ้าต้องการจอง VR ให้เลือกบริการ VR Station และเลือกรอบ 30 นาทีหรือ 1 ชั่วโมงตามที่ระบบมีให้เลือก
+ขั้นตอนโดยสรุปคือ 1) เลือกบริการหรือโซนที่ต้องการใช้ 2) เลือกวันและรอบเวลา 3) กรอก Student ID/Staff ID/National ID ชื่อ นามสกุล อีเมล และเบอร์โทรศัพท์ 4) ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง 5) แนบสลิปและยืนยันการจอง
+ต้องจองล่วงหน้าอย่างน้อย 1 ชั่วโมง และหลังจองต้องชำระเงินภายใน 10 นาทีครับ
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation","[""Reservation: https://esports.computing.psu.ac.th/reservation""]"
+R-006,single,reservation,,จอง Cockpit ต้องทำยังไง,,,True,[],medium,pipeline:structured_booking_selection,reservation,booking_policy,structured,0.96,1.5499,1.5499,"ถ้าอยากเล่นเกมขับรถหรือใช้พวงมาลัย ให้จอง Cockpit Zone / Cockpit ครับ
+•    โซนนี้ใช้กับชุด Racezone Full Cockpit V3 และ Logitech G923 TRUEFORCE Racing Wheel
+•    เกมที่ยืนยันได้คือ Gran Turismo 7
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""booking_selection_cockpit: https://esports.computing.psu.ac.th/""]"
+R-007,single,reservation,,จอง PC ต้องทำยังไง,,,True,[],medium,pipeline:structured_reservation_fact,reservation,booking_policy,structured,0.94,0.8945,0.8945,"ขั้นตอนจองโดยสรุป:
+•    เลือกบริการหรือโซนที่ต้องการใช้
+•    เลือกวันและรอบเวลาที่ต้องการ
+•    กรอก Student ID/Staff ID/National ID, ชื่อ, นามสกุล, อีเมล และเบอร์โทรศัพท์
+•    ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง
+•    แนบสลิปและยืนยันการจอง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""booking_steps: https://esports.computing.psu.ac.th/""]"
+R-008,single,reservation,,ต้องจองล่วงหน้ากี่ชั่วโมง,,,True,[],medium,pipeline:structured_reservation_fact,reservation,booking_policy,structured,0.94,1.6048,1.6049,"ต้องจองล่วงหน้าผ่านระบบออนไลน์ก่อนเวลาใช้งานอย่างน้อย 1 ชั่วโมง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""booking_advance: https://esports.computing.psu.ac.th/""]"
+R-009,single,reservation,,จองได้สูงสุดกี่ session,,,True,[],medium,pipeline:structured_reservation_fact,reservation,booking_policy,structured,0.94,1.4259,1.4259,"การจอง 1 ครั้งสามารถจองได้สูงสุด 3 Sessions สำหรับ PlayStation 5: 1 session = 1 ชั่วโมง ดังนั้น 3 sessions = สูงสุด 3 ชั่วโมงต่อการจอง 1 ครั้ง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""booking_max_sessions: https://esports.computing.psu.ac.th/""]"
+R-010,single,reservation,,หลังจองต้องจ่ายภายในกี่นาที,,,True,[],medium,pipeline:payment_fast_path,reservation,count,fast/rule,0.9,1.8967,1.8968,"หลังจองต้องชำระเงินภายใน 10 นาที หากไม่ชำระ ระบบจะยกเลิกการจอง และถ้าต้องการใช้บริการต้องจองใหม่
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation","[""Reservation: https://esports.computing.psu.ac.th/reservation""]"
+R-011,single,reservation,,จองแล้วแก้ไขได้ไหม,,,True,[],medium,pipeline:booking_fast_path,reservation,how_to,fast/rule,0.9,0.7725,0.7725,"เมื่อกดจองแล้วจะไม่สามารถแก้ไขข้อมูลได้ หากต้องการแก้ไขต้องยกเลิกผ่านอีเมลก่อนเวลาใช้งานอย่างน้อย 1 ชั่วโมง แล้วจองใหม่ พร้อมแนบสลิปการโอนเงินเดิม
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation","[""Reservation: https://esports.computing.psu.ac.th/reservation""]"
+R-012,single,reservation,,จองแล้วโอนสิทธิ์ให้เพื่อนได้ไหม,,,True,[],medium,pipeline:structured_reservation_fact,reservation,booking_policy,structured,0.94,2.9328,2.9329,"ไม่สามารถโอนสิทธิ์การจองให้ผู้อื่นได้
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""transfer_booking: https://esports.computing.psu.ac.th/""]"
+R-013,single,reservation,,เช็คอินล่วงหน้าได้กี่นาที,,,True,[],medium,pipeline:structured_reservation_fact,reservation,booking_policy,structured,0.94,0.2045,0.2045,"เช็คอินได้ล่วงหน้าสูงสุด 30 นาที และต้องเช็คอินก่อนเวลาเริ่มต้นของรอบที่จอง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""checkin_advance: https://esports.computing.psu.ac.th/""]"
+R-014,single,reservation,,ถ้ายกเลิกต้องทำยังไง,,,True,[],medium,pipeline:structured_reservation_fact,reservation,booking_policy,structured,0.94,0.2178,0.2179,"ขั้นตอนจองโดยสรุป:
+•    เลือกบริการหรือโซนที่ต้องการใช้
+•    เลือกวันและรอบเวลาที่ต้องการ
+•    กรอก Student ID/Staff ID/National ID, ชื่อ, นามสกุล, อีเมล และเบอร์โทรศัพท์
+•    ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง
+•    แนบสลิปและยืนยันการจอง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""booking_steps: https://esports.computing.psu.ac.th/""]"
+R-015,single,reservation,,ถ้าไปช้าจะเป็นอะไรไหม,,,True,[],medium,pipeline:structured_reservation_fact,reservation,booking_policy,structured,0.94,0.1665,0.1666,"ถ้าไม่เช็คอินก่อนเวลาเริ่มต้นของรอบ ระบบจะยกเลิกการจองทันที และไม่มีการคืนเงิน
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""late_checkin: https://esports.computing.psu.ac.th/""]"
+R-016,single,reservation,,walk in ได้ไหม,,,True,[],medium,pipeline:structured_reservation_fact,reservation,booking_policy,structured,0.94,0.0666,0.0667,"ผู้ใช้งานต้องจองล่วงหน้าผ่านระบบออนไลน์ก่อนเวลาใช้งานอย่างน้อย 1 ชั่วโมง จึงไม่ควร walk in โดยไม่จองก่อน
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""walk_in_policy: https://esports.computing.psu.ac.th/""]"
+R-017,single,reservation,,ต้องแนบสลิปไหม,,,True,[],medium,pipeline:mixed_reservation_fast,reservation,competition_rules_lookup,rag/retrieval,0.9,0.0841,0.0842,"ตอนจองต้องกรอก Student ID/Staff ID/National ID ชื่อ นามสกุล อีเมล เบอร์โทรศัพท์ และชำระโดยโอนเงินพร้อมแนบสลิป
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation","[""Reservation: https://esports.computing.psu.ac.th/reservation""]"
+R-018,single,reservation,,จองแล้วไม่สามารถยกเลิกได้ใช่ไหม,,,False,"[""route_category expected ['reservation'], got multi_question""]",medium,pipeline:multi_question_splitter,multi_question,multi_question_split,compound,0.7583333333333333,0.4676,0.4677,"คำถามนี้มีหลายเรื่อง ขอแยกตอบเป็นข้อ ๆ:
+
+•    จอง
+ผู้ใช้งานต้องจองล่วงหน้าผ่านระบบออนไลน์ก่อนเวลาใช้งานอย่างน้อย 1 ชั่วโมง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/
+
+•    ไม่สามารถยกเลิกได้ใช่ไหม
+เมื่อกดจองแล้วจะไม่สามารถแก้ไขข้อมูลได้ หากต้องการแก้ไขต้องยกเลิกการจองผ่านทางอีเมลก่อนเวลาใช้งานอย่างน้อย 1 ชั่วโมง แล้วจองใหม่อีกครั้ง พร้อมแนบสลิปการโอนเงินเดิม
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""curated_reservation_advance_time: https://esports.computing.psu.ac.th/"", ""curated_reservation_max_sessions: https://esports.computing.psu.ac.th/"", ""curated_payment_10_minutes: https://esports.computing.psu.ac.th/"", ""curated_booking_no_edit: https://esports.computing.psu.ac.th/"", ""curated_booking_non_transferable: https://esports.computing.psu.ac.th/"", ""curated_time_change_policy: https://esports.computing.psu.ac.th/""]"
+R-019,single,reservation,,ถ้าจองผิดข้อมูลต้องทำยังไง,,,True,[],medium,pipeline:structured_reservation_fact,reservation,booking_policy,structured,0.94,2.22,2.22,"ขั้นตอนจองโดยสรุป:
+•    เลือกบริการหรือโซนที่ต้องการใช้
+•    เลือกวันและรอบเวลาที่ต้องการ
+•    กรอก Student ID/Staff ID/National ID, ชื่อ, นามสกุล, อีเมล และเบอร์โทรศัพท์
+•    ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง
+•    แนบสลิปและยืนยันการจอง
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""booking_steps: https://esports.computing.psu.ac.th/""]"
+R-020,single,reservation,,จ่ายเงินผ่านช่องทางไหน,,,True,[],medium,pipeline:rag_direct_curated,reservation,how_to,rag/retrieval,0.84,1.302,1.302,"เมื่อกดจองแล้วจะไม่สามารถแก้ไขข้อมูลได้ หากต้องการแก้ไขต้องยกเลิกการจองผ่านทางอีเมลก่อนเวลาใช้งานอย่างน้อย 1 ชั่วโมง แล้วจองใหม่อีกครั้ง พร้อมแนบสลิปการโอนเงินเดิม
+แหล่งข้อมูล: https://esports.computing.psu.ac.th/","[""curated_booking_no_edit: https://esports.computing.psu.ac.th/"", ""curated_refund_policy: https://esports.computing.psu.ac.th/"", ""curated_checkin_late_cancel: https://esports.computing.psu.ac.th/""]"

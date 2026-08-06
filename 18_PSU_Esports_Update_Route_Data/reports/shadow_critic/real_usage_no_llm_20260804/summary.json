@@ -1,0 +1,133 @@
+{
+  "total_cases": 24,
+  "verdicts": {
+    "pass": 24
+  },
+  "pass_rate": 1.0,
+  "failure_rate": 0.0,
+  "hard_failure_rate": 0.0,
+  "review_rate": 0.0,
+  "labels": {},
+  "categories": {
+    "service_fee": 6,
+    "games": 5,
+    "game_controls": 2,
+    "reservation": 2,
+    "multi_question": 2,
+    "ambiguity": 2,
+    "no_answer": 1,
+    "schedule": 1,
+    "equipment": 1,
+    "competition_rules": 2
+  },
+  "top_routes": [
+    [
+      "multi_question/multi_question_split",
+      6
+    ],
+    [
+      "service_fee/service_fee_query",
+      5
+    ],
+    [
+      "games/game_detail_lookup",
+      2
+    ],
+    [
+      "games/list",
+      2
+    ],
+    [
+      "reservation/booking_policy",
+      2
+    ],
+    [
+      "clarification/ambiguity_gate_clarification",
+      2
+    ],
+    [
+      "competition_rules/competition_rules_lookup",
+      2
+    ],
+    [
+      "no_answer/guard_no_answer",
+      1
+    ],
+    [
+      "schedule/schedule_query",
+      1
+    ],
+    [
+      "equipment/equipment_item_lookup",
+      1
+    ]
+  ],
+  "top_modes": [
+    [
+      "pipeline:multi_question_splitter",
+      6
+    ],
+    [
+      "pipeline:deterministic_calculator_fast",
+      4
+    ],
+    [
+      "pipeline:structured_game_detail",
+      2
+    ],
+    [
+      "pipeline:ambiguity_clarification",
+      2
+    ],
+    [
+      "pipeline:competition_fact_card",
+      2
+    ],
+    [
+      "pipeline:structured_service_fee_by_game",
+      1
+    ],
+    [
+      "pipeline:structured_games_family",
+      1
+    ],
+    [
+      "pipeline:structured_game_zone_ranking",
+      1
+    ],
+    [
+      "pipeline:structured_booking_selection",
+      1
+    ],
+    [
+      "pipeline:structured_booking_game_service_selection",
+      1
+    ],
+    [
+      "pipeline:guard_no_answer",
+      1
+    ],
+    [
+      "pipeline:structured_schedule",
+      1
+    ],
+    [
+      "pipeline:structured_equipment_item",
+      1
+    ]
+  ],
+  "failures_by_category": {},
+  "latency": {
+    "avg_sec": 0.4565,
+    "p95_sec": 0.9866,
+    "max_sec": 1.227
+  },
+  "llm_call_count_total": 0,
+  "critic_llm_cases": 0,
+  "generated_at": "2026-08-04T20:32:30",
+  "input": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\real_usage_golden_v1.jsonl",
+  "output_dir": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\reports\\shadow_critic\\real_usage_no_llm_20260804",
+  "chatbot_llm": false,
+  "critic_llm": false,
+  "critic_model": "qwen2.5:3b"
+}

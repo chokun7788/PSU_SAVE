@@ -1,0 +1,135 @@
+{
+  "generated_at": "2026-07-30T17:24:11",
+  "case_count": 25,
+  "turn_count": 25,
+  "passed": 18,
+  "failed": 7,
+  "pass_rate": 0.72,
+  "total_wall_sec": 11.768,
+  "allow_llm": false,
+  "rag_fallback": false,
+  "group_counts": {
+    "ambiguity_no_answer": {
+      "total": 25,
+      "pass": 18,
+      "fail": 7
+    }
+  },
+  "strategy_counts": {
+    "clarification": 6,
+    "rag/retrieval": 9,
+    "structured": 7,
+    "pipeline": 2,
+    "fast/rule": 1
+  },
+  "mode_counts": {
+    "pipeline:ambiguity_clarification": 6,
+    "pipeline:no_answer": 6,
+    "pipeline:structured_equipment_catalog": 2,
+    "pipeline:rag_direct_curated": 2,
+    "pipeline:structured_games_catalog": 1,
+    "pipeline:game_control_missing_game_context": 2,
+    "pipeline:structured_game_detail": 3,
+    "pipeline:games_known_unsupported_fast_path": 1,
+    "pipeline:structured_members_group_list": 1,
+    "pipeline:hybrid_guarded_rerank": 1
+  },
+  "problem_counts": {
+    "route_category expected ['clarification', 'games', 'equipment', 'service_fee', 'reservation', 'no_answer'], got general": 3,
+    "missing any of ['ยังไม่พบ', 'ไม่มี', 'ไม่ได้อยู่', 'ตอบจากข้อมูล']": 4,
+    "route_category expected ['no_answer', 'games', 'general'], got overview": 1,
+    "route_category expected ['no_answer', 'games', 'general'], got knowledge": 1,
+    "route_category expected ['no_answer', 'games', 'general'], got events_news": 1
+  },
+  "top_failures": [
+    {
+      "case_id": "ANA-006",
+      "group": "ambiguity_no_answer",
+      "question": "เครื่องไหนดีที่สุด",
+      "resolved_question": "",
+      "mode": "pipeline:no_answer",
+      "route": "general/unknown_domain_query",
+      "problems": [
+        "route_category expected ['clarification', 'games', 'equipment', 'service_fee', 'reservation', 'no_answer'], got general"
+      ],
+      "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "ANA-008",
+      "group": "ambiguity_no_answer",
+      "question": "มีอะไรแนะนำไหม",
+      "resolved_question": "",
+      "mode": "pipeline:no_answer",
+      "route": "general/general_knowledge_query",
+      "problems": [
+        "route_category expected ['clarification', 'games', 'equipment', 'service_fee', 'reservation', 'no_answer'], got general"
+      ],
+      "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "ANA-015",
+      "group": "ambiguity_no_answer",
+      "question": "สรุปคือทำยังไง",
+      "resolved_question": "",
+      "mode": "pipeline:no_answer",
+      "route": "general/unknown_domain_query",
+      "problems": [
+        "route_category expected ['clarification', 'games', 'equipment', 'service_fee', 'reservation', 'no_answer'], got general"
+      ],
+      "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+    },
+    {
+      "case_id": "ANA-020",
+      "group": "ambiguity_no_answer",
+      "question": "เกม Valorant Mobile มีไหม",
+      "resolved_question": "",
+      "mode": "pipeline:structured_game_detail",
+      "route": "games/game_availability_lookup",
+      "problems": [
+        "missing any of ['ยังไม่พบ', 'ไม่มี', 'ไม่ได้อยู่', 'ตอบจากข้อมูล']"
+      ],
+      "answer_preview": "VALORANT: VALORANT คือเกมยิงเชิงกลยุทธ์ที่ผู้เล่นเลือก Agent ที่มีสกิลเฉพาะ แล้วเล่นเป็นฝ่ายบุก/รับในแต่ละรอบ แนวเกม: เกมยิง Tactical FPS แบบทีม 5v5 วิธีเล่นโดยสรุป: ฝ่ายบุกต้องวาง Spike ส่วนฝ่ายรับต้องป้องกันพื้นที่หรือกู้ Spike การเล่นเน้"
+    },
+    {
+      "case_id": "ANA-021",
+      "group": "ambiguity_no_answer",
+      "question": "ขอเบอร์โทรส่วนตัวเจ้าหน้าที่",
+      "resolved_question": "",
+      "mode": "pipeline:structured_members_group_list",
+      "route": "overview/list",
+      "problems": [
+        "route_category expected ['no_answer', 'games', 'general'], got overview",
+        "missing any of ['ยังไม่พบ', 'ไม่มี', 'ไม่ได้อยู่', 'ตอบจากข้อมูล']"
+      ],
+      "answer_preview": "สมาชิกจากหน้า Members แยกตามหมวด รวม 25 คน: Members (7 คน): •    ผศ.ดร.นิวัติ แก้วประดับ: อธิการบดี •    รศ.ดร.พันธ์ ทองชุมนุม: รองอธิการบดี •    รศ.ดร.อซีส นันทอมรพงศ์: คณบดี •    ผศ.ดร.ณัฐพงศ์ ทองเทพ: ผู้ช่วยอธิการบดีฝ่ายวิชาการ •    นายพ"
+    },
+    {
+      "case_id": "ANA-022",
+      "group": "ambiguity_no_answer",
+      "question": "ขอข้อมูลที่ไม่ได้อยู่ในเว็บ PSU Esports",
+      "resolved_question": "",
+      "mode": "pipeline:hybrid_guarded_rerank",
+      "route": "knowledge/knowledge_lookup",
+      "problems": [
+        "route_category expected ['no_answer', 'games', 'general'], got knowledge",
+        "missing any of ['ยังไม่พบ', 'ไม่มี', 'ไม่ได้อยู่', 'ตอบจากข้อมูล']"
+      ],
+      "answer_preview": "บทความ Overcooked! 2 เกมสุดมันส์ที่ได้มากกว่าความสนุก ระบุว่าเกมนี้ไม่ได้มีแค่ความสนุก แต่ช่วยพัฒนาทักษะชีวิตหลายด้าน เช่น การสื่อสาร การทำงานเป็นทีม การวางแผน และการจัดการสถานการณ์กดดัน แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Knowled"
+    },
+    {
+      "case_id": "ANA-023",
+      "group": "ambiguity_no_answer",
+      "question": "วันนี้มีข่าว esports อะไรล่าสุด",
+      "resolved_question": "",
+      "mode": "pipeline:rag_direct_curated",
+      "route": "events_news/news_lookup",
+      "problems": [
+        "route_category expected ['no_answer', 'games', 'general'], got events_news",
+        "missing any of ['ยังไม่พบ', 'ไม่มี', 'ไม่ได้อยู่', 'ตอบจากข้อมูล']"
+      ],
+      "answer_preview": "เมื่อวันที่ 25 เมษายน 2569 PSU Esports Studio - Phuket จัดการแข่งขัน PSU Phuket CS 2 2026 Tournament ในเกม Counter-Strike 2 แหล่งข้อมูล: https://esports.phuket.psu.ac.th/events-news/news"
+    }
+  ],
+  "bank_jsonl": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.jsonl",
+  "bank_json": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\broad_usage_eval_v1.json"
+}

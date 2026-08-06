@@ -43,23 +43,84 @@ def main() -> int:
     )
     check(
         "สมาชิกทีมมีใครบ้าง",
-        ["Members:", "cooperative education and Internship student:", "PSU Phuket Esports Club - PSU Phuket:", "นายชนะชัย", "นายษุภากรณ์"],
-        mode="pipeline:members_lookup_fast_path",
+        ["Members", "cooperative education and Internship student", "PSU Phuket Esports Club - PSU Phuket", "นายชนะชัย", "นายษุภากรณ์"],
+        mode="pipeline:structured_members_group_list",
+    )
+    check(
+        "ตอนนี้สตาฟมีใครบ้าง",
+        ["Members", "cooperative education and Internship student", "PSU Phuket Esports Club - PSU Phuket", "นายชนะชัย"],
+        mode="pipeline:structured_members_group_list",
+    )
+    check(
+        "staff มีใครบ้าง",
+        ["Members", "cooperative education and Internship student", "PSU Phuket Esports Club - PSU Phuket", "นายชนะชัย"],
+        mode="pipeline:structured_members_group_list",
+    )
+    check(
+        "สตาฟเล่นเกมอะไรบ้าง",
+        ["ยังไม่พบข้อมูลที่ยืนยันได้", "เล่นเกม/ดูแลเกมหรือโซนไหน", "หน้า Members"],
+        mode="pipeline:structured_members_game_relation_no_data",
+        must_not_contain=["สมาชิกจากหน้า Members แยกตามหมวด", "PlayStation 5 Zone", "Nintendo Switch Zone"],
+    )
+    check(
+        "ใครดูแลเกม PS5",
+        ["ยังไม่พบข้อมูลที่ยืนยันได้", "เล่นเกม/ดูแลเกมหรือโซนไหน", "หน้า Members"],
+        mode="pipeline:structured_members_game_relation_no_data",
+        must_not_contain=["สมาชิกจากหน้า Members แยกตามหมวด", "PlayStation 5 Zone", "Nintendo Switch Zone"],
     )
     check(
         "cooperative education and Internship student มีใครบ้าง",
         ["นายณภัทร", "Mr. Amine Abidellaoui", "นายสุพศิน", "Mr. Yanis Igoudjil", "นายภาสวุฒิ"],
-        mode="pipeline:members_lookup_fast_path",
+        mode="pipeline:structured_members_group_list",
     )
     check(
         "กรรมการมีใครบ้าง",
-        ["นางสาวกมลวรรณ", "นางสาวชญาภา", "นายอรรถนนท์"],
-        mode="pipeline:members_lookup_fast_path",
+        ["ตำแหน่ง กรรมการ", "8 คน", "นางสาวกมลวรรณ", "นางสาวชญาภา", "นายอรรถนนท์"],
+        mode="pipeline:structured_members_role_lookup",
     )
     check(
         "นายชนะชัยทำตำแหน่งอะไร",
         ["นายชนะชัย สิริพันธ์วราภรณ์", "ผู้จัดการ"],
-        mode="pipeline:members_person_lookup_fast_path",
+        mode="pipeline:structured_members_person_lookup",
+    )
+    check(
+        "ใครเป็นผู้จัดการ",
+        ["ตำแหน่ง ผู้จัดการ", "นายชนะชัย สิริพันธ์วราภรณ์", "Members"],
+        mode="pipeline:structured_members_role_lookup",
+    )
+    check(
+        "ใครเป็นนักวิชาการคอมพิวเตอร์",
+        ["ตำแหน่ง นักวิชาการคอมพิวเตอร์", "นายพฤทธิ์ เกษตรสมบูรณ์", "นายณัฐวัฒน์ นิธิคุณานนต์"],
+        mode="pipeline:structured_members_role_lookup",
+    )
+    check(
+        "ตำแหน่งประธานคือใคร",
+        ["ตำแหน่ง ประธาน", "นายษุภากรณ์ จิราจินดากุล"],
+        mode="pipeline:structured_members_role_lookup",
+        must_not_contain=["รองประธาน"],
+    )
+    check(
+        "ใครทำตำแหน่ง AI Chat Bot Developer",
+        ["นายภาสวุฒิ ชูติประชากิจ", "AI Chat Bot Developer"],
+        mode="pipeline:structured_members_role_lookup",
+    )
+    check(
+        "ใครทำแชทบอท",
+        ["นายภาสวุฒิ ชูติประชากิจ", "AI Chat Bot Developer"],
+        mode="pipeline:structured_members_role_lookup",
+        must_not_contain=["สมาชิกจากหน้า Members แยกตามหมวด รวม 25 คน"],
+    )
+    check(
+        "ใครทำ chatbot",
+        ["นายภาสวุฒิ ชูติประชากิจ", "AI Chat Bot Developer"],
+        mode="pipeline:structured_members_role_lookup",
+        must_not_contain=["สมาชิกจากหน้า Members แยกตามหมวด รวม 25 คน"],
+    )
+    check(
+        "คนทำแชทบอทคือใคร",
+        ["นายภาสวุฒิ ชูติประชากิจ", "AI Chat Bot Developer"],
+        mode="pipeline:structured_members_role_lookup",
+        must_not_contain=["สมาชิกจากหน้า Members แยกตามหมวด รวม 25 คน"],
     )
     print("MEMBERS AND GAME KNOWLEDGE SMOKE TEST OK")
     return 0

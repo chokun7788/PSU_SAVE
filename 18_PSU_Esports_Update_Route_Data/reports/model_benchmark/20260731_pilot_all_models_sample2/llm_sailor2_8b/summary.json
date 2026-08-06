@@ -1,0 +1,232 @@
+{
+  "run_label": "llm_sailor2_8b",
+  "run_kind": "llm",
+  "model": "sailor2:8b",
+  "allow_llm": true,
+  "timeout_sec": 20.0,
+  "num_predict": 128,
+  "ollama_url": "http://127.0.0.1:11435",
+  "tool_router": false,
+  "facts_composer": false,
+  "disable_health_manager": true,
+  "cases": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\model_benchmark_1500.jsonl",
+  "limit": 0,
+  "resumed_from": 0,
+  "total_wall_sec": 145.348,
+  "generated_at": "2026-07-31T17:10:41",
+  "total": 34,
+  "passed": 30,
+  "pass_rate": 88.24,
+  "avg_score": 96.26,
+  "avg_wall_sec": 4.2739,
+  "median_wall_sec": 2.915,
+  "p95_wall_sec": 16.0565,
+  "max_wall_sec": 35.3175,
+  "llm_call_total": 9,
+  "mode_counts": {
+    "pipeline:ambiguity_clarification": 3,
+    "pipeline:game_control_missing_game_context": 2,
+    "pipeline:structured_service_game_availability": 3,
+    "pipeline:structured_game_detail": 6,
+    "pipeline:structured_equipment_item": 1,
+    "pipeline:competition_fact_card": 1,
+    "pipeline:competition_generic_fast_path": 1,
+    "pipeline:multi_question_splitter": 2,
+    "pipeline:structured_equipment_catalog": 1,
+    "pipeline:structured_game_controls": 2,
+    "pipeline:general_llm_fallback": 1,
+    "pipeline:general_llm_unavailable": 1,
+    "pipeline:structured_members_group_list": 1,
+    "pipeline:structured_members_group_count": 1,
+    "pipeline:structured_schedule": 4,
+    "pipeline:structured_reservation_fact": 2,
+    "pipeline:deterministic_calculator_fast": 2
+  },
+  "route_counts": {
+    "clarification/ambiguity_gate_clarification": 3,
+    "games/game_control_lookup": 4,
+    "games/game_availability_lookup": 6,
+    "games/list": 1,
+    "equipment/equipment_item_lookup": 1,
+    "competition_rules/competition_rules_lookup": 2,
+    "multi_question/multi_question_split": 2,
+    "equipment/list": 1,
+    "games/game_detail_lookup": 2,
+    "general/detail": 1,
+    "general/compare": 1,
+    "overview/list": 1,
+    "overview/group_count": 1,
+    "schedule/schedule_query": 4,
+    "reservation/booking_policy": 2,
+    "service_fee/service_fee_query": 2
+  },
+  "group_counts": {
+    "ambiguity_no_answer": 2,
+    "ambiguous_controls": 2,
+    "availability_game": 2,
+    "availability_machine_split": 2,
+    "availability_service": 2,
+    "competition_rules": 2,
+    "compound": 2,
+    "equipment": 2,
+    "game_controls": 2,
+    "game_detail": 2,
+    "games": 2,
+    "general_llm": 2,
+    "members": 2,
+    "policy_schedule_rules": 2,
+    "reservation": 2,
+    "schedule": 2,
+    "service_fee": 2
+  },
+  "quality_bucket_counts": {
+    "psu_fact": 30,
+    "ambiguity": 2,
+    "general_llm": 2
+  },
+  "top_errors": {
+    "missing_any:ไม่มี|PC #03-#10": 2,
+    "category_mismatch:equipment": 1,
+    "missing_any:1 คน|คน": 1,
+    "missing_any:เฟรม|ความละเอียด": 1,
+    "llm_required_but_unavailable": 1
+  },
+  "by_group": {
+    "ambiguity_no_answer": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 9.8008,
+      "p95_wall_sec": 16.0565
+    },
+    "ambiguous_controls": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 1.8559,
+      "p95_wall_sec": 3.4799
+    },
+    "availability_game": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 2.2012,
+      "p95_wall_sec": 4.3045
+    },
+    "availability_machine_split": {
+      "total": 2,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_score": 84.0,
+      "avg_wall_sec": 0.0132,
+      "p95_wall_sec": 0.0144
+    },
+    "availability_service": {
+      "total": 2,
+      "passed": 1,
+      "pass_rate": 50.0,
+      "avg_score": 83.0,
+      "avg_wall_sec": 1.4622,
+      "p95_wall_sec": 2.906
+    },
+    "competition_rules": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 1.9678,
+      "p95_wall_sec": 3.8859
+    },
+    "compound": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 1.994,
+      "p95_wall_sec": 3.3053
+    },
+    "equipment": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 3.3368,
+      "p95_wall_sec": 3.3757
+    },
+    "game_controls": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.1618,
+      "p95_wall_sec": 0.1786
+    },
+    "game_detail": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 3.2631,
+      "p95_wall_sec": 3.2769
+    },
+    "games": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 2.915,
+      "p95_wall_sec": 2.9219
+    },
+    "general_llm": {
+      "total": 2,
+      "passed": 1,
+      "pass_rate": 50.0,
+      "avg_score": 69.5,
+      "avg_wall_sec": 28.9747,
+      "p95_wall_sec": 35.3175
+    },
+    "members": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 9.6383,
+      "p95_wall_sec": 15.6654
+    },
+    "policy_schedule_rules": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.0769,
+      "p95_wall_sec": 0.1008
+    },
+    "reservation": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 4.9604,
+      "p95_wall_sec": 5.4
+    },
+    "schedule": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.017,
+      "p95_wall_sec": 0.0184
+    },
+    "service_fee": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.0163,
+      "p95_wall_sec": 0.0222
+    }
+  }
+}

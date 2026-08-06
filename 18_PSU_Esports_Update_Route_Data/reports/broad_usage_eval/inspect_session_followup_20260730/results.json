@@ -1,0 +1,1038 @@
+[
+  {
+    "case_id": "SF-001",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 1,
+    "question": "Gran Turismo เล่นยังไง",
+    "resolved_question": "Gran Turismo เล่นยังไง",
+    "used_context": false,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:structured_game_detail",
+    "route_category": "games",
+    "route_intent": "game_detail_lookup",
+    "strategy": "structured",
+    "confidence": 0.94,
+    "latency_sec": 0.3161,
+    "wall_sec": 0.345,
+    "answer": "Gran Turismo 7: Gran Turismo 7 คือเกมแข่งรถที่เน้นการขับรถสมจริง การเลือกสนาม รถ และการควบคุมจังหวะเข้าโค้ง\nแนวเกม: เกมแข่งรถ / Driving Simulator\nวิธีเล่นโดยสรุป: ใน Cockpit Zone เล่นโดยใช้พวงมาลัย คันเร่ง เบรก และชุดเบาะจำลองการขับรถ เป้าหมายคือขับให้เร็วและควบคุมรถให้แม่นในแต่ละสนาม\nเล่นได้ที่: Cockpit Zone และ PlayStation 5 Zone\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "sources": [
+      "Gran Turismo 7: https://esports.phuket.psu.ac.th/Services/our-games"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "games",
+      "operation": "how_to",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "steps",
+        "controls_if_game"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.87,
+      "method": "heuristic",
+      "reason": "known game alias found; how-to terms found"
+    }
+  },
+  {
+    "case_id": "SF-001",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 2,
+    "question": "ปุ่ม",
+    "resolved_question": "Gran Turismo 7 ปุ่ม",
+    "used_context": true,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:structured_game_controls",
+    "route_category": "games",
+    "route_intent": "game_control_lookup",
+    "strategy": "structured",
+    "confidence": 0.96,
+    "latency_sec": 0.0835,
+    "wall_sec": 0.0836,
+    "answer": "Gran Turismo 7 มีข้อมูลปุ่มควบคุมดังนี้:\nPlayStation / PS5\n•    L (Left Stick): เลี้ยว / ควบคุมพวงมาลัย - บังคับทิศทางรถ\n•    R2: คันเร่ง - กดเพื่อเร่งเครื่อง\n•    L2: เบรก - กดเพื่อชะลอความเร็วรถ\n•    Cross: เพิ่มเกียร์ - เปลี่ยนเกียร์สูงขึ้น (โหมดเกียร์ธรรมดา)\n•    Square: ลดเกียร์ - เปลี่ยนเกียร์ต่ำลง (โหมดเกียร์ธรรมดา)\n•    Circle: เบรกมือ - ดึงเบรกมือเพื่อสไลด์หรือดริฟต์\n•    Triangle: ถอยหลัง - เข้าเกียร์ถอยรถ\n•    D-Pad: ควบคุมจอ MFD - สลับและปรับค่า Multi-Function Display เช่น Traction Control หรือ Fuel Map\n•    R1: เปลี่ยนมุมมอง - สลับมุมกล้องในการขับขี่\n•    L1: มองหลัง - สลับมุมกล้องไปมองด้านหลังชั่วคราว\n•    R3: ไนตรัส / เร่งแซง - ใช้งานระบบเพิ่มความเร็วพิเศษที่มีติดตั้งในรถบางรุ่น\n•    L3: ไฟหน้า - เปิด/ปิด หรือกะพริบไฟหน้ารถ\n•    Touch Pad: ไฟฉุกเฉิน - เปิดไฟผ่าหมากกะพริบฉุกเฉิน\n•    Options: หยุดเกม - เข้าสู่เมนูหยุดเกม\nแหล่งข้อมูล: https://gameinputdatabase.com/game/135",
+    "sources": [
+      "game_controls_granturismo7: https://gameinputdatabase.com/game/135"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "fact_answer_may_be_too_verbose"
+      ]
+    },
+    "universal_intent": {
+      "domain": "game_controls",
+      "operation": "control",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "list_controls"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; control operation overrides domain; control terms found"
+    }
+  },
+  {
+    "case_id": "SF-002",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 1,
+    "question": "Mario Kart Live เล่นยังไง",
+    "resolved_question": "Mario Kart Live เล่นยังไง",
+    "used_context": false,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:structured_game_controls",
+    "route_category": "games",
+    "route_intent": "game_control_lookup",
+    "strategy": "structured",
+    "confidence": 0.96,
+    "latency_sec": 0.1085,
+    "wall_sec": 0.1086,
+    "answer": "Mario Kart Live: Home Circuit มีข้อมูลปุ่มควบคุมดังนี้:\nNintendo Switch\n•    Left Stick: เลี้ยว - บังคับพวงมาลัยรถคาร์ทซ้ายหรือขวา\n•    A: เร่งเครื่อง - กดค้างเพื่อเร่งความเร็วรถไปข้างหน้า\n•    B: เบรก / ถอยหลัง - ชะลอรถ หรือกดค้างเพื่อถอยหลัง\n•    L: ใช้ไอเทม - ใช้งานไอเทมที่เก็บได้ระหว่างแข่ง\n•    R: ดริฟต์ - กดค้างขณะเลี้ยวเพื่อดริฟต์เข้าโค้ง\n•    X: บีบแตร - บีบแตรส่งเสียงในเกม\n•    X: ปรับความเร็ว (cc)\n•    L: เปลี่ยนสภาพแวดล้อมสนาม\n•    Y: เปิด/ปิดระบบช่วยขับ\n•    R: จัดการแผนที่\n•    D-Pad: ดูใบขับขี่และสถิติ\nแหล่งข้อมูล: https://kotaku.com/mario-kart-live-home-circuit-the-kotaku-review-1845365233",
+    "sources": [
+      "game_controls_mariokartlivehomecircuit: https://kotaku.com/mario-kart-live-home-circuit-the-kotaku-review-1845365233"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "games",
+      "operation": "how_to",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "steps",
+        "controls_if_game"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.87,
+      "method": "heuristic",
+      "reason": "known game alias found; how-to terms found"
+    }
+  },
+  {
+    "case_id": "SF-002",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 2,
+    "question": "ปุ่มเร่งเครื่องกดอะไร",
+    "resolved_question": "Mario Kart Live: Home Circuit ปุ่มเร่งเครื่องกดอะไร",
+    "used_context": true,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:structured_game_controls",
+    "route_category": "games",
+    "route_intent": "game_control_lookup",
+    "strategy": "structured",
+    "confidence": 0.96,
+    "latency_sec": 0.0946,
+    "wall_sec": 0.0947,
+    "answer": "Mario Kart Live: Home Circuit ปุ่มที่ตรงกับคำถาม:\nNintendo Switch\n•    A: เร่งเครื่อง - กดค้างเพื่อเร่งความเร็วรถไปข้างหน้า\nแหล่งข้อมูล: https://kotaku.com/mario-kart-live-home-circuit-the-kotaku-review-1845365233",
+    "sources": [
+      "game_controls_mariokartlivehomecircuit: https://kotaku.com/mario-kart-live-home-circuit-the-kotaku-review-1845365233"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "game_controls",
+      "operation": "control",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "list_controls"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "known game alias found; control operation overrides domain; control terms found"
+    }
+  },
+  {
+    "case_id": "SF-003",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 1,
+    "question": "Tekken 8 คือเกมอะไร",
+    "resolved_question": "Tekken 8 คือเกมอะไร",
+    "used_context": false,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:structured_game_detail",
+    "route_category": "games",
+    "route_intent": "game_availability_lookup",
+    "strategy": "structured",
+    "confidence": 0.94,
+    "latency_sec": 0.5397,
+    "wall_sec": 0.5397,
+    "answer": "TEKKEN 8: TEKKEN 8 คือเกมต่อสู้แบบตัวต่อตัว ผู้เล่นเลือกตัวละครแล้วใช้คอมโบ การป้องกัน และจังหวะสวนกลับเพื่อชนะคู่แข่ง\nแนวเกม: เกมต่อสู้ 1v1\nวิธีเล่นโดยสรุป: เล่นเป็นรอบ เลือกตัวละคร ฝึกท่าพื้นฐาน/คอมโบ อ่านจังหวะคู่ต่อสู้ และทำให้พลังชีวิตอีกฝ่ายหมดก่อน\nเล่นได้ที่: PC Zone และ PlayStation 5 Zone\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "sources": [
+      "TEKKEN 8: https://esports.phuket.psu.ac.th/Services/our-games"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "games",
+      "operation": "availability",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "check_availability"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.84,
+      "method": "heuristic",
+      "reason": "game catalog/count terms override zone/equipment domain; game route keeps games domain; no clear operation terms; game route intent supplies operation"
+    }
+  },
+  {
+    "case_id": "SF-003",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 2,
+    "question": "ราคา",
+    "resolved_question": "ราคา",
+    "used_context": false,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:ambiguity_clarification",
+    "route_category": "clarification",
+    "route_intent": "ambiguity_gate_clarification",
+    "strategy": "clarification",
+    "confidence": 0.88,
+    "latency_sec": 0.1305,
+    "wall_sec": 0.1306,
+    "answer": "ขอรู้บริการหรือโซนก่อนครับ จะได้ตอบราคาให้ตรง\nเช่น `PS5 ราคาเท่าไหร่`, `Nintendo 3-4 คนกี่บาท`, `VR 30 นาทีราคาเท่าไหร่` หรือ `Tekken 8 ราคาเท่าไหร่`",
+    "sources": [],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "price_missing_service_or_game_target",
+        "service_fee_answer_missing_service_fee_source"
+      ]
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.93,
+      "method": "heuristic",
+      "reason": "domain_terms=3; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+    }
+  },
+  {
+    "case_id": "SF-004",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 1,
+    "question": "PC มีอะไรบ้าง",
+    "resolved_question": "PC มีอะไรบ้าง",
+    "used_context": false,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:ambiguity_clarification",
+    "route_category": "clarification",
+    "route_intent": "ambiguity_gate_clarification",
+    "strategy": "clarification",
+    "confidence": 0.78,
+    "latency_sec": 0.0335,
+    "wall_sec": 0.0335,
+    "answer": "คำถามนี้ยังตีได้หลายทางครับ หมายถึงเรื่องไหนของ PC Zone?\n\nข้อมูลย่อที่ยืนยันได้ตอนนี้:\n•    เกม: มี 6 เกม เช่น Call of Duty: Warzone, Counter-Strike 2, League of Legends, PUBG: BATTLEGROUNDS และอื่น ๆ | พิมพ์ `PC มีเกมอะไรบ้าง`\n•    อุปกรณ์: มี 6 รายการ เช่น Gaming PC รุ่น MSI MAG Infinite S3 14th, Gaming Monitor, Gaming Keyboard, Gaming Mouse, Gaming Headset และอื่น ๆ | พิมพ์ `PC มีอุปกรณ์อะไรบ้าง`\n•    ราคา: PC 1 ชั่วโมง (1 คน): PSU 0 บาท, General Student 25 บาท, General Adult 70 บาท | พิมพ์ `PC ราคาเท่าไหร่`\n•    จอง: ต้องจองผ่านระบบก่อนเข้าใช้ | พิมพ์ `PC จองยังไง`\n\nพิมพ์ต่อสั้น ๆ ได้ เช่น `เกม`, `อุปกรณ์`, `ราคา` หรือ `จอง`",
+    "sources": [
+      "our_games: https://esports.phuket.psu.ac.th/Services/our-games",
+      "home_equipment: https://esports.phuket.psu.ac.th/home",
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+      "pc_service_fee_local_update_20260727: local://service_fee/pc_price_update_20260727",
+      "reservation: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "service_target_broad_missing_operation"
+      ]
+    },
+    "universal_intent": {
+      "domain": "equipment",
+      "operation": "list",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "list_items"
+      ],
+      "answer_style": "summary_bullets",
+      "confidence": 0.82,
+      "method": "heuristic",
+      "reason": "domain_terms=3; equipment route keeps equipment domain; list terms found; equipment route supplies equipment operation"
+    }
+  },
+  {
+    "case_id": "SF-004",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 2,
+    "question": "เกม",
+    "resolved_question": "PC มีเกมอะไรบ้าง",
+    "used_context": true,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:structured_games_catalog",
+    "route_category": "games",
+    "route_intent": "list",
+    "strategy": "structured",
+    "confidence": 0.97,
+    "latency_sec": 0.011,
+    "wall_sec": 0.011,
+    "answer": "PC Zone มีเกมที่ยืนยันได้ดังนี้\n\nPC Zone (6 เกม)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "sources": [
+      "our_games: https://esports.phuket.psu.ac.th/Services/our-games"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "games",
+      "operation": "list",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "list_items"
+      ],
+      "answer_style": "summary_bullets",
+      "confidence": 0.82,
+      "method": "heuristic",
+      "reason": "game catalog/count terms override zone/equipment domain; list terms found"
+    }
+  },
+  {
+    "case_id": "SF-005",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 1,
+    "question": "PC มีอะไรบ้าง",
+    "resolved_question": "PC มีอะไรบ้าง",
+    "used_context": false,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:ambiguity_clarification",
+    "route_category": "clarification",
+    "route_intent": "ambiguity_gate_clarification",
+    "strategy": "clarification",
+    "confidence": 0.78,
+    "latency_sec": 0.0051,
+    "wall_sec": 0.0051,
+    "answer": "คำถามนี้ยังตีได้หลายทางครับ หมายถึงเรื่องไหนของ PC Zone?\n\nข้อมูลย่อที่ยืนยันได้ตอนนี้:\n•    เกม: มี 6 เกม เช่น Call of Duty: Warzone, Counter-Strike 2, League of Legends, PUBG: BATTLEGROUNDS และอื่น ๆ | พิมพ์ `PC มีเกมอะไรบ้าง`\n•    อุปกรณ์: มี 6 รายการ เช่น Gaming PC รุ่น MSI MAG Infinite S3 14th, Gaming Monitor, Gaming Keyboard, Gaming Mouse, Gaming Headset และอื่น ๆ | พิมพ์ `PC มีอุปกรณ์อะไรบ้าง`\n•    ราคา: PC 1 ชั่วโมง (1 คน): PSU 0 บาท, General Student 25 บาท, General Adult 70 บาท | พิมพ์ `PC ราคาเท่าไหร่`\n•    จอง: ต้องจองผ่านระบบก่อนเข้าใช้ | พิมพ์ `PC จองยังไง`\n\nพิมพ์ต่อสั้น ๆ ได้ เช่น `เกม`, `อุปกรณ์`, `ราคา` หรือ `จอง`",
+    "sources": [
+      "our_games: https://esports.phuket.psu.ac.th/Services/our-games",
+      "home_equipment: https://esports.phuket.psu.ac.th/home",
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+      "pc_service_fee_local_update_20260727: local://service_fee/pc_price_update_20260727",
+      "reservation: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "service_target_broad_missing_operation"
+      ]
+    },
+    "universal_intent": {
+      "domain": "equipment",
+      "operation": "list",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "list_items"
+      ],
+      "answer_style": "summary_bullets",
+      "confidence": 0.82,
+      "method": "heuristic",
+      "reason": "domain_terms=3; equipment route keeps equipment domain; list terms found; equipment route supplies equipment operation"
+    }
+  },
+  {
+    "case_id": "SF-005",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 2,
+    "question": "ราคา",
+    "resolved_question": "PC ราคาเท่าไหร่",
+    "used_context": true,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:deterministic_calculator_fast",
+    "route_category": "service_fee",
+    "route_intent": "service_fee_query",
+    "strategy": "fast/rule",
+    "confidence": 0.97,
+    "latency_sec": 0.5239,
+    "wall_sec": 0.5239,
+    "answer": "ราคา PC 1 ชั่วโมง (1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน: 25 บาท\n•    General Adult / บุคคลทั่วไป: 70 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "sources": [
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+      "pc_service_fee_local_update_20260727: local://service_fee/pc_price_update_20260727"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "service_fee",
+      "operation": "price_calculate",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "calculate_price",
+        "show_price_breakdown"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.93,
+      "method": "heuristic",
+      "reason": "domain_terms=4; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+    }
+  },
+  {
+    "case_id": "SF-006",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 1,
+    "question": "PC มีอะไรบ้าง",
+    "resolved_question": "PC มีอะไรบ้าง",
+    "used_context": false,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:ambiguity_clarification",
+    "route_category": "clarification",
+    "route_intent": "ambiguity_gate_clarification",
+    "strategy": "clarification",
+    "confidence": 0.78,
+    "latency_sec": 0.0049,
+    "wall_sec": 0.005,
+    "answer": "คำถามนี้ยังตีได้หลายทางครับ หมายถึงเรื่องไหนของ PC Zone?\n\nข้อมูลย่อที่ยืนยันได้ตอนนี้:\n•    เกม: มี 6 เกม เช่น Call of Duty: Warzone, Counter-Strike 2, League of Legends, PUBG: BATTLEGROUNDS และอื่น ๆ | พิมพ์ `PC มีเกมอะไรบ้าง`\n•    อุปกรณ์: มี 6 รายการ เช่น Gaming PC รุ่น MSI MAG Infinite S3 14th, Gaming Monitor, Gaming Keyboard, Gaming Mouse, Gaming Headset และอื่น ๆ | พิมพ์ `PC มีอุปกรณ์อะไรบ้าง`\n•    ราคา: PC 1 ชั่วโมง (1 คน): PSU 0 บาท, General Student 25 บาท, General Adult 70 บาท | พิมพ์ `PC ราคาเท่าไหร่`\n•    จอง: ต้องจองผ่านระบบก่อนเข้าใช้ | พิมพ์ `PC จองยังไง`\n\nพิมพ์ต่อสั้น ๆ ได้ เช่น `เกม`, `อุปกรณ์`, `ราคา` หรือ `จอง`",
+    "sources": [
+      "our_games: https://esports.phuket.psu.ac.th/Services/our-games",
+      "home_equipment: https://esports.phuket.psu.ac.th/home",
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+      "pc_service_fee_local_update_20260727: local://service_fee/pc_price_update_20260727",
+      "reservation: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "service_target_broad_missing_operation"
+      ]
+    },
+    "universal_intent": {
+      "domain": "equipment",
+      "operation": "list",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "list_items"
+      ],
+      "answer_style": "summary_bullets",
+      "confidence": 0.82,
+      "method": "heuristic",
+      "reason": "domain_terms=3; equipment route keeps equipment domain; list terms found; equipment route supplies equipment operation"
+    }
+  },
+  {
+    "case_id": "SF-006",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 2,
+    "question": "อุปกรณ์",
+    "resolved_question": "PC มีอุปกรณ์อะไรบ้าง",
+    "used_context": true,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:structured_equipment_catalog",
+    "route_category": "equipment",
+    "route_intent": "list",
+    "strategy": "structured",
+    "confidence": 0.95,
+    "latency_sec": 0.0101,
+    "wall_sec": 0.0102,
+    "answer": "อุปกรณ์ใน PC Zone:\nPC Zone\n•    Gaming PC รุ่น MSI MAG Infinite S3 14th (10 Units)\n•    Gaming Monitor (10 Units)\n•    Gaming Keyboard\n•    Gaming Mouse\n•    Gaming Headset\n•    Gaming Chair (10 Units)\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",
+    "sources": [
+      "home_equipment: https://esports.phuket.psu.ac.th/home"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "equipment",
+      "operation": "list",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "list_items"
+      ],
+      "answer_style": "summary_bullets",
+      "confidence": 0.82,
+      "method": "heuristic",
+      "reason": "domain_terms=4; equipment route keeps equipment domain; no clear operation terms; equipment route supplies equipment operation"
+    }
+  },
+  {
+    "case_id": "SF-007",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 1,
+    "question": "PC มีอะไรบ้าง",
+    "resolved_question": "PC มีอะไรบ้าง",
+    "used_context": false,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:ambiguity_clarification",
+    "route_category": "clarification",
+    "route_intent": "ambiguity_gate_clarification",
+    "strategy": "clarification",
+    "confidence": 0.78,
+    "latency_sec": 0.0053,
+    "wall_sec": 0.0054,
+    "answer": "คำถามนี้ยังตีได้หลายทางครับ หมายถึงเรื่องไหนของ PC Zone?\n\nข้อมูลย่อที่ยืนยันได้ตอนนี้:\n•    เกม: มี 6 เกม เช่น Call of Duty: Warzone, Counter-Strike 2, League of Legends, PUBG: BATTLEGROUNDS และอื่น ๆ | พิมพ์ `PC มีเกมอะไรบ้าง`\n•    อุปกรณ์: มี 6 รายการ เช่น Gaming PC รุ่น MSI MAG Infinite S3 14th, Gaming Monitor, Gaming Keyboard, Gaming Mouse, Gaming Headset และอื่น ๆ | พิมพ์ `PC มีอุปกรณ์อะไรบ้าง`\n•    ราคา: PC 1 ชั่วโมง (1 คน): PSU 0 บาท, General Student 25 บาท, General Adult 70 บาท | พิมพ์ `PC ราคาเท่าไหร่`\n•    จอง: ต้องจองผ่านระบบก่อนเข้าใช้ | พิมพ์ `PC จองยังไง`\n\nพิมพ์ต่อสั้น ๆ ได้ เช่น `เกม`, `อุปกรณ์`, `ราคา` หรือ `จอง`",
+    "sources": [
+      "our_games: https://esports.phuket.psu.ac.th/Services/our-games",
+      "home_equipment: https://esports.phuket.psu.ac.th/home",
+      "service_fee_image_2026: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+      "pc_service_fee_local_update_20260727: local://service_fee/pc_price_update_20260727",
+      "reservation: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "service_target_broad_missing_operation"
+      ]
+    },
+    "universal_intent": {
+      "domain": "equipment",
+      "operation": "list",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "list_items"
+      ],
+      "answer_style": "summary_bullets",
+      "confidence": 0.82,
+      "method": "heuristic",
+      "reason": "domain_terms=3; equipment route keeps equipment domain; list terms found; equipment route supplies equipment operation"
+    }
+  },
+  {
+    "case_id": "SF-007",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 2,
+    "question": "จอง",
+    "resolved_question": "PC จองยังไง",
+    "used_context": true,
+    "passed": false,
+    "problems": [
+      "missing 'PC'"
+    ],
+    "risk": "high",
+    "mode": "pipeline:structured_reservation_fact",
+    "route_category": "reservation",
+    "route_intent": "booking_policy",
+    "strategy": "structured",
+    "confidence": 0.94,
+    "latency_sec": 0.4302,
+    "wall_sec": 0.4302,
+    "answer": "ขั้นตอนจองโดยสรุป:\n•    เลือกบริการหรือโซนที่ต้องการใช้\n•    เลือกวันและรอบเวลาที่ต้องการ\n•    กรอก Student ID/Staff ID/National ID, ชื่อ, นามสกุล, อีเมล และเบอร์โทรศัพท์\n•    ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง\n•    แนบสลิปและยืนยันการจอง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "sources": [
+      "booking_steps: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "how_to",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "steps",
+        "controls_if_game"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.87,
+      "method": "heuristic",
+      "reason": "domain_terms=3; reservation route overrides entity/game domain; how-to terms found"
+    }
+  },
+  {
+    "case_id": "SF-008",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 1,
+    "question": "เกม Naruto",
+    "resolved_question": "เกม Naruto",
+    "used_context": false,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:structured_game_detail",
+    "route_category": "games",
+    "route_intent": "game_detail_lookup",
+    "strategy": "structured",
+    "confidence": 0.94,
+    "latency_sec": 0.0362,
+    "wall_sec": 0.0362,
+    "answer": "NARUTO X BORUTO Ultimate Ninja Storm Connections: NARUTO X BORUTO Ultimate Ninja Storm Connections คือเกมต่อสู้ที่ใช้ตัวละครจากจักรวาล Naruto/Boruto\nแนวเกม: เกมต่อสู้จากอนิเมะ\nวิธีเล่นโดยสรุป: เลือกตัวละคร ใช้คอมโบ สกิลนินจา และจังหวะหลบ/สวนกลับเพื่อเอาชนะคู่ต่อสู้\nเล่นได้ที่: PlayStation 5 Zone\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "sources": [
+      "NARUTO X BORUTO Ultimate Ninja Storm Connections: https://esports.phuket.psu.ac.th/Services/our-games"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "games",
+      "operation": "detail",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "summarize_detail",
+        "check_availability"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.84,
+      "method": "heuristic",
+      "reason": "known game alias found; known game title keeps games domain; no clear operation terms; bare known game title treated as detail"
+    }
+  },
+  {
+    "case_id": "SF-008",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 2,
+    "question": "แล้วจะเล่นต้องทำไง",
+    "resolved_question": "NARUTO X BORUTO Ultimate Ninja STORM CONNECTIONS แล้วจะเล่นต้องทำไง",
+    "used_context": true,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:structured_booking_selection",
+    "route_category": "reservation",
+    "route_intent": "booking_policy",
+    "strategy": "structured",
+    "confidence": 0.96,
+    "latency_sec": 0.1338,
+    "wall_sec": 0.1338,
+    "answer": "ถ้าจะเล่น NARUTO X BORUTO Ultimate Ninja Storm Connections ให้จอง PlayStation 5 Zone ครับ\nจอง PlayStation 5 ต้องเลือกบริการ PlayStation 5 และเลือกรอบเวลาที่ต้องการครับ\n•    ข้อมูลค่าบริการที่มีระบุ PlayStation 5 ต่อ 60 นาที สำหรับ 1-2 คน\n•    จากนั้นกรอกข้อมูลผู้ใช้บริการ ชำระเงิน และแนบสลิปเพื่อยืนยันการจอง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "sources": [
+      "booking_selection_ps5: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "service_fee_answer_missing_service_fee_source"
+      ]
+    },
+    "universal_intent": {
+      "domain": "games",
+      "operation": "detail",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "summarize_detail",
+        "check_availability"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.84,
+      "method": "heuristic",
+      "reason": "known game alias found; known game title keeps games domain; no clear operation terms; bare known game title treated as detail"
+    }
+  },
+  {
+    "case_id": "SF-009",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 1,
+    "question": "แล้วจองไง",
+    "resolved_question": "แล้วจองไง",
+    "used_context": false,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:structured_reservation_fact",
+    "route_category": "reservation",
+    "route_intent": "booking_policy",
+    "strategy": "structured",
+    "confidence": 0.94,
+    "latency_sec": 0.144,
+    "wall_sec": 0.144,
+    "answer": "ขั้นตอนจองโดยสรุป:\n•    เลือกบริการหรือโซนที่ต้องการใช้\n•    เลือกวันและรอบเวลาที่ต้องการ\n•    กรอก Student ID/Staff ID/National ID, ชื่อ, นามสกุล, อีเมล และเบอร์โทรศัพท์\n•    ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง\n•    แนบสลิปและยืนยันการจอง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "sources": [
+      "booking_steps: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "how_to",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "steps",
+        "policy"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.82,
+      "method": "heuristic",
+      "reason": "domain_terms=3; reservation route overrides entity/game domain; no clear operation terms; reservation unknown treated as how_to/policy"
+    }
+  },
+  {
+    "case_id": "SF-009",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 2,
+    "question": "สรุปคือทำยังไง",
+    "resolved_question": "สรุปขั้นตอนจองทำยังไง",
+    "used_context": true,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:structured_reservation_fact",
+    "route_category": "reservation",
+    "route_intent": "booking_policy",
+    "strategy": "structured",
+    "confidence": 0.94,
+    "latency_sec": 1.5108,
+    "wall_sec": 1.5109,
+    "answer": "ขั้นตอนจองโดยสรุป:\n•    เลือกบริการหรือโซนที่ต้องการใช้\n•    เลือกวันและรอบเวลาที่ต้องการ\n•    กรอก Student ID/Staff ID/National ID, ชื่อ, นามสกุล, อีเมล และเบอร์โทรศัพท์\n•    ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง\n•    แนบสลิปและยืนยันการจอง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "sources": [
+      "booking_steps: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "how_to",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "steps",
+        "controls_if_game"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.87,
+      "method": "heuristic",
+      "reason": "domain_terms=3; reservation route overrides entity/game domain; how-to terms found"
+    }
+  },
+  {
+    "case_id": "SF-010",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 1,
+    "question": "PS5 มีเกมกี่เกม",
+    "resolved_question": "PS5 มีเกมกี่เกม",
+    "used_context": false,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:structured_games_catalog",
+    "route_category": "games",
+    "route_intent": "list",
+    "strategy": "structured",
+    "confidence": 0.97,
+    "latency_sec": 0.0087,
+    "wall_sec": 0.0087,
+    "answer": "PlayStation 5 Zone มีเกมที่ยืนยันได้ 23 เกมครับ\n\nPlayStation 5 Zone (23 เกม)\n•    Beat Saber\n•    Call of Duty: Modern Warfare III\n•    Call of Duty: Warzone\n•    EA Sports FC 24\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Gran Turismo 7\n•    Hogwarts Legacy\n•    It Takes Two\n•    Little Nightmares II\n•    Marvel's Spider-Man 2\n•    Monster Hunter Rise\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Overcooked 2\n•    Resident Evil 4\n•    Resident Evil Village\n•    TEKKEN 8\n•    The Last of Us Part I\n•    The Last of Us Part I / Part II\n•    The Last of Us Part II\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "sources": [
+      "our_games: https://esports.phuket.psu.ac.th/Services/our-games"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "fact_answer_may_be_too_verbose"
+      ]
+    },
+    "universal_intent": {
+      "domain": "games",
+      "operation": "count",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "count_items"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.84,
+      "method": "heuristic",
+      "reason": "game catalog/count terms override zone/equipment domain; count terms found"
+    }
+  },
+  {
+    "case_id": "SF-010",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 2,
+    "question": "แล้วมีเกมอะไรบ้าง",
+    "resolved_question": "PlayStation 5 มีเกมอะไรบ้าง",
+    "used_context": true,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:structured_games_catalog",
+    "route_category": "games",
+    "route_intent": "list",
+    "strategy": "structured",
+    "confidence": 0.97,
+    "latency_sec": 0.0169,
+    "wall_sec": 0.017,
+    "answer": "PlayStation 5 Zone มีเกมที่ยืนยันได้ดังนี้\n\nPlayStation 5 Zone (23 เกม)\n•    Beat Saber\n•    Call of Duty: Modern Warfare III\n•    Call of Duty: Warzone\n•    EA Sports FC 24\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Gran Turismo 7\n•    Hogwarts Legacy\n•    It Takes Two\n•    Little Nightmares II\n•    Marvel's Spider-Man 2\n•    Monster Hunter Rise\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Overcooked 2\n•    Resident Evil 4\n•    Resident Evil Village\n•    TEKKEN 8\n•    The Last of Us Part I\n•    The Last of Us Part I / Part II\n•    The Last of Us Part II\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "sources": [
+      "our_games: https://esports.phuket.psu.ac.th/Services/our-games"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "fact_answer_may_be_too_verbose"
+      ]
+    },
+    "universal_intent": {
+      "domain": "games",
+      "operation": "list",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "list_items"
+      ],
+      "answer_style": "summary_bullets",
+      "confidence": 0.82,
+      "method": "heuristic",
+      "reason": "game catalog/count terms override zone/equipment domain; list terms found"
+    }
+  },
+  {
+    "case_id": "SF-011",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 1,
+    "question": "สมาชิก PSU Esport มีกี่หมวด",
+    "resolved_question": "สมาชิก PSU Esport มีกี่หมวด",
+    "used_context": false,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:structured_members_group_count",
+    "route_category": "overview",
+    "route_intent": "group_count",
+    "strategy": "structured",
+    "confidence": 0.98,
+    "latency_sec": 0.3404,
+    "wall_sec": 0.3404,
+    "answer": "สมาชิกในหน้า Members แบ่งเป็น 3 หมวดครับ\n•    Members: 7 คน\n•    cooperative education and Internship student: 5 คน\n•    PSU Phuket Esports Club - PSU Phuket: 13 คน\nรวมทั้งหมด 25 คน\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "group_count",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "count_groups",
+        "list_group_names",
+        "count_items_per_group"
+      ],
+      "answer_style": "summary_bullets",
+      "confidence": 0.9,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; group count terms found"
+    }
+  },
+  {
+    "case_id": "SF-011",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 2,
+    "question": "แล้วแต่ละหมวดมีใครบ้าง",
+    "resolved_question": "สมาชิกใน PSU Esports แต่ละหมวดมีใครบ้าง",
+    "used_context": true,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:structured_members_group_list",
+    "route_category": "overview",
+    "route_intent": "list",
+    "strategy": "structured",
+    "confidence": 0.96,
+    "latency_sec": 0.4599,
+    "wall_sec": 0.4599,
+    "answer": "สมาชิกจากหน้า Members แยกตามหมวด รวม 25 คน:\nMembers (7 คน):\n•    ผศ.ดร.นิวัติ แก้วประดับ: อธิการบดี\n•    รศ.ดร.พันธ์ ทองชุมนุม: รองอธิการบดี\n•    รศ.ดร.อซีส นันทอมรพงศ์: คณบดี\n•    ผศ.ดร.ณัฐพงศ์ ทองเทพ: ผู้ช่วยอธิการบดีฝ่ายวิชาการ\n•    นายพฤทธิ์ เกษตรสมบูรณ์: นักวิชาการคอมพิวเตอร์\n•    นายณัฐวัฒน์ นิธิคุณานนต์: นักวิชาการคอมพิวเตอร์\n•    นายชนะชัย สิริพันธ์วราภรณ์: ผู้จัดการ\n\ncooperative education and Internship student (5 คน):\n•    นายณภัทร เชื้อเหล่าวานิช: นักศึกษาสหกิจ Game and 3D Developer\n•    Mr. Amine Abidellaoui: Internship Student\n•    นายสุพศิน อะนะฝรั่ง: นักศึกษาสหกิจ Web & AI Developer\n•    Mr. Yanis Igoudjil: Internship Student\n•    นายภาสวุฒิ ชูติประชากิจ: นักศึกษาฝึกงานโครงการ Super AI SS6 ตำแหน่ง AI Chat Bot Developer\n\nPSU Phuket Esports Club - PSU Phuket (13 คน):\n•    นายษุภากรณ์ จิราจินดากุล: ประธาน\n•    นายนพัทธ์ ฝอยทอง: รองประธาน\n•    นายปัณณวิชญ์ หนูเรือง: เลขานุการ\n•    นายภูจิตร จิรวิริยาภรณ์: เหรัญญิก\n•    นายธนชาติ เอ่งฉ้วน: ประชาสัมพันธ์\n•    นางสาวกมลวรรณ นวลสาย: กรรมการ\n•    นางสาวชญาภา จันทร์เอิบ: กรรมการ\n•    นางสาวณัฐธิดา คำทะเนตร์: กรรมการ\n•    นางสาวสุภาสินี ธนภพ: กรรมการ\n•    นางสาวอาทิตยา แดงประดับ: กรรมการ\n•    นายณัฐพนธ์ อินทรสังขนาวิน: กรรมการ\n•    นายอภิวิชญ์ เลิศกมลรักษ์: กรรมการ\n•    นายอรรถนนท์ สุขแก้ว: กรรมการ\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/about-us/Members",
+    "sources": [
+      "Members: https://esports.phuket.psu.ac.th/about-us/Members"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "fact_answer_may_be_too_verbose"
+      ]
+    },
+    "universal_intent": {
+      "domain": "members",
+      "operation": "list",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "list_items"
+      ],
+      "answer_style": "summary_bullets",
+      "confidence": 0.82,
+      "method": "heuristic",
+      "reason": "domain_terms=3; member route keeps members domain; list terms found"
+    }
+  },
+  {
+    "case_id": "SF-012",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 1,
+    "question": "Mario Party คือเกมอะไร",
+    "resolved_question": "Mario Party คือเกมอะไร",
+    "used_context": false,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:structured_games_genre_list",
+    "route_category": "games",
+    "route_intent": "game_availability_lookup",
+    "strategy": "structured",
+    "confidence": 0.95,
+    "latency_sec": 0.3488,
+    "wall_sec": 0.3489,
+    "answer": "เกมแนว Party / Co-op ที่พบในรายการเกมที่ยืนยันได้:\n\nIt Takes Two\n•    แนวเกม: เกม Co-op Adventure\n•    เล่นได้ที่: Nintendo Switch Zone และ PlayStation 5 Zone\n\nMario Kart 8 Deluxe\n•    แนวเกม: เกมแข่งรถ Party Racing\n•    เล่นได้ที่: Nintendo Switch Zone\n\nMario Party Superstars\n•    แนวเกม: เกม Party / Mini-games\n•    เล่นได้ที่: Nintendo Switch Zone\n\nMoving Out 2\n•    แนวเกม: เกม Co-op Puzzle / Party\n•    เล่นได้ที่: Nintendo Switch Zone\n\nOvercooked + Overcooked! 2\n•    เล่นได้ที่: Nintendo Switch Zone\n\nOvercooked 2\n•    แนวเกม: เกม Co-op ทำอาหาร\n•    เล่นได้ที่: Nintendo Switch Zone และ PlayStation 5 Zone\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+    "sources": [
+      "our_games_genre: https://esports.phuket.psu.ac.th/Services/our-games"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "fact_answer_may_be_too_verbose"
+      ]
+    },
+    "universal_intent": {
+      "domain": "games",
+      "operation": "availability",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "check_availability"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.84,
+      "method": "heuristic",
+      "reason": "game catalog/count terms override zone/equipment domain; game route keeps games domain; no clear operation terms; game route intent supplies operation"
+    }
+  },
+  {
+    "case_id": "SF-012",
+    "kind": "session",
+    "group": "session_followup",
+    "turn_index": 2,
+    "question": "จองเครื่องยังไง",
+    "resolved_question": "จองเครื่องยังไง",
+    "used_context": false,
+    "passed": true,
+    "problems": [],
+    "risk": "high",
+    "mode": "pipeline:structured_reservation_fact",
+    "route_category": "reservation",
+    "route_intent": "booking_policy",
+    "strategy": "structured",
+    "confidence": 0.94,
+    "latency_sec": 0.8302,
+    "wall_sec": 0.8303,
+    "answer": "ขั้นตอนจองโดยสรุป:\n•    เลือกบริการหรือโซนที่ต้องการใช้\n•    เลือกวันและรอบเวลาที่ต้องการ\n•    กรอก Student ID/Staff ID/National ID, ชื่อ, นามสกุล, อีเมล และเบอร์โทรศัพท์\n•    ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง\n•    แนบสลิปและยืนยันการจอง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "sources": [
+      "booking_steps: https://esports.computing.psu.ac.th/"
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "universal_intent": {
+      "domain": "reservation",
+      "operation": "how_to",
+      "target": "",
+      "filters": {},
+      "needs": [
+        "steps",
+        "controls_if_game"
+      ],
+      "answer_style": "direct_then_details",
+      "confidence": 0.87,
+      "method": "heuristic",
+      "reason": "domain_terms=3; reservation route overrides entity/game domain; how-to terms found"
+    }
+  }
+]
