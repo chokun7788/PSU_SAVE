@@ -30,6 +30,13 @@ def pipeline_reranker_warmup_enabled() -> bool:
     return _truthy(os.getenv("PSU_PIPELINE_WARMUP_RERANKER"), default=False)
 
 
+def pipeline_embedding_warmup_enabled() -> bool:
+    explicit = os.getenv("PSU_PIPELINE_WARMUP_EMBEDDING")
+    if explicit is not None:
+        return _truthy(explicit, default=False)
+    return _truthy(os.getenv("PSU_SEMANTIC_RETRIEVAL"), default=False)
+
+
 def warm_pipeline_caches(*, include_probe_queries: bool = True) -> WarmupResult:
     """Warm deterministic caches and optionally the document reranker."""
     started = time.perf_counter()
@@ -116,12 +123,19 @@ def warm_pipeline_caches(*, include_probe_queries: bool = True) -> WarmupResult:
             return
         _load_model()
 
+    def warm_semantic_embedding() -> None:
+        from app.pipeline.semantic_embeddings import warm_semantic_embedding_model
+
+        warm_semantic_embedding_model()
+
     run_step("game_title_aliases", warm_game_title_aliases)
     run_step("structured_tools", warm_structured_tools)
     run_step("routing_data", warm_routing_data)
     run_step("retrieval_data", warm_retrieval_data)
     if include_probe_queries:
         run_step("probe_queries", warm_probe_queries)
+    if pipeline_embedding_warmup_enabled():
+        run_step("semantic_embedding", warm_semantic_embedding)
     if pipeline_reranker_warmup_enabled():
         run_step("document_reranker", warm_document_reranker)
 

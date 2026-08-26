@@ -250,8 +250,9 @@ class LocalChat:
             preflight = preflight_ollama(
                 model=model,
                 kind="preflight",
-                timeout_sec=float(os.getenv("PSU_LLM_PREFLIGHT_TIMEOUT_SEC", "5")),
+                timeout_sec=float(os.getenv("PSU_LLM_PREFLIGHT_TIMEOUT_SEC", "90")),
                 num_predict=int(os.getenv("PSU_LLM_PREFLIGHT_NUM_PREDICT", "1")),
+                num_ctx=int(os.getenv("PSU_LLM_PREFLIGHT_NUM_CTX", os.getenv("PSU_GENERAL_LLM_NUM_CTX", "3072"))),
             )
             status = "ok" if preflight.get("ok") else "unhealthy"
             print(f"LLM preflight {status} in {float(preflight.get('elapsed_ms', 0.0)) / 1000:.3f}s")

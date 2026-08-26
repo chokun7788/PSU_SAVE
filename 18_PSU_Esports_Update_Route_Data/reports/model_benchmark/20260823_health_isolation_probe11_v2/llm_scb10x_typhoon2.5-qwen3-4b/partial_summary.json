@@ -1,0 +1,67 @@
+{
+  "run_label": "llm_scb10x_typhoon2.5-qwen3-4b",
+  "run_kind": "llm",
+  "model": "scb10x/typhoon2.5-qwen3-4b",
+  "partial": true,
+  "total_requested": 11,
+  "completed": 11,
+  "total_wall_sec": 13.639,
+  "generated_at": "2026-08-23T19:11:18",
+  "total": 11,
+  "passed": 11,
+  "pass_rate": 100.0,
+  "avg_score": 100.0,
+  "avg_wall_sec": 1.2378,
+  "median_wall_sec": 1.1969,
+  "p95_wall_sec": 2.1803,
+  "max_wall_sec": 2.1803,
+  "llm_call_total": 4,
+  "mode_counts": {
+    "pipeline:structured_game_controls": 3,
+    "pipeline:multi_question_splitter": 4,
+    "pipeline:general_llm_fallback": 4
+  },
+  "route_counts": {
+    "games/game_control_lookup": 3,
+    "multi_question/multi_question_split": 4,
+    "general/detail": 3,
+    "general/general_knowledge_query": 1
+  },
+  "group_counts": {
+    "game_controls": 3,
+    "compound": 4,
+    "general_llm": 4
+  },
+  "quality_bucket_counts": {
+    "psu_fact": 3,
+    "compound": 4,
+    "general_llm": 4
+  },
+  "top_errors": {},
+  "by_group": {
+    "compound": {
+      "total": 4,
+      "passed": 4,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 1.0295,
+      "p95_wall_sec": 1.3422
+    },
+    "game_controls": {
+      "total": 3,
+      "passed": 3,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.4837,
+      "p95_wall_sec": 0.6338
+    },
+    "general_llm": {
+      "total": 4,
+      "passed": 4,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 2.0117,
+      "p95_wall_sec": 2.1803
+    }
+  }
+}

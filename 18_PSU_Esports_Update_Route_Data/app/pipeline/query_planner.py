@@ -12,6 +12,7 @@ from typing import Any
 from app.core.normalization import normalize_text
 from app.pipeline.chatbot_role import CHATBOT_ROLE_TH
 from app.pipeline.llm_health import llm_call_allowed, record_llm_failure, record_llm_success
+from app.pipeline.query_signals import has_any_signal, looks_like_price_amount_query
 from app.pipeline.request_deadline import deadline_metadata, timeout_for_call
 from app.pipeline.schemas import PipelineTrace, UniversalIntent
 
@@ -271,18 +272,31 @@ def should_use_query_planner(
     if not query:
         return False, "empty query"
     operation_groups = (
-        ("price", "ราคา", "ค่าบริการ", "กี่บาท", "เท่าไหร่", "เท่าไร"),
-        ("controls", "ปุ่ม", "คอนโทรล", "จอย", "กดอะไร"),
-        ("games", "มีเกม", "เกมอะไร", "กี่เกม", "รายชื่อเกม"),
-        ("equipment", "อุปกรณ์", "เครื่องอะไร", "มีอะไรบ้าง"),
-        ("booking", "จอง", "เช็คอิน", "booking"),
-        ("schedule", "เปิด", "ปิด", "กี่โมง", "เวลา"),
-        ("members", "สมาชิก", "ทีมงาน", "ใครเป็น", "ตำแหน่ง"),
+        ("price", looks_like_price_amount_query(query)),
+        ("controls", has_any_signal(query, "ปุ่ม", "คอนโทรล", "จอย", "กดอะไร")),
+        ("games", has_any_signal(query, "มีเกม", "เกมอะไร", "กี่เกม", "รายชื่อเกม")),
+        # Generic wording such as "มีอะไรบ้าง" is not an equipment signal by
+        # itself; it previously sent "ปุ่มทั้งหมดมีอะไรบ้าง" to the planner.
+        ("equipment", has_any_signal(query, "อุปกรณ์", "เครื่องอะไร", "อุปกรณ์อะไร", "อุปกรณ์มี")),
+        ("booking", has_any_signal(query, "จอง", "เช็คอิน", "booking")),
+        ("schedule", has_any_signal(query, "เปิด", "ปิด", "กี่โมง", "เวลา")),
+        (
+            "members",
+            has_any_signal(
+                query,
+                "สมาชิก",
+                "ทีมงาน",
+                "ใครเป็น",
+                "ตำแหน่งอะไรในทีม",
+                "ตำแหน่งในทีม",
+                "ตำแหน่งทีมงาน",
+            ),
+        ),
     )
-    matched_groups = sum(1 for _name, *terms in operation_groups if any(term in query for term in terms))
-    bridge = any(term in query for term in ("และ", "แล้ว", "พร้อม", "รวมถึง", "อีกเรื่อง", "ทั้ง", "กับ"))
-    if matched_groups >= 2 and bridge:
-        return True, f"multiple operation groups detected ({matched_groups})"
+    matched_groups = [name for name, matched in operation_groups if matched]
+    bridge = has_any_signal(query, "และ", "แล้ว", "พร้อม", "รวมถึง", "อีกเรื่อง", "ทั้ง", "กับ")
+    if len(matched_groups) >= 2 and bridge:
+        return True, f"multiple operation groups detected ({', '.join(matched_groups)})"
     if route_category in {"general", "unknown", "no_answer"} and route_confidence < 0.62 and len(query) >= 14:
         return True, "weak route needs constrained query planning"
     return False, "single clear operation does not need planner"
@@ -358,12 +372,17 @@ def plan_query(
         configured_timeout = min(configured_timeout, max(0.05, float(timeout_cap_sec)))
     timeout = timeout_for_call(configured_timeout)
     num_predict = max(64, int(os.getenv("PSU_QUERY_PLANNER_NUM_PREDICT", "128")))
+    num_ctx = max(
+        1024,
+        int(os.getenv("PSU_QUERY_PLANNER_NUM_CTX", os.getenv("PSU_GENERAL_LLM_NUM_CTX", "3072"))),
+    )
     call_metadata: dict[str, Any] = {
         "llm_kind": "query_planner",
         "llm_model": model,
         "llm_configured_timeout_sec": configured_timeout,
         "llm_timeout_sec": timeout,
         "llm_num_predict": num_predict,
+        "llm_num_ctx": num_ctx,
         "gate_reason": gate_reason,
         **deadline_metadata(),
     }
@@ -385,7 +404,8 @@ def plan_query(
         "stream": False,
         "think": False,
         "format": "json",
-        "options": {"temperature": 0, "num_predict": num_predict, "num_ctx": 4096},
+        "keep_alive": os.getenv("PSU_OLLAMA_KEEP_ALIVE", "10m"),
+        "options": {"temperature": 0, "num_predict": num_predict, "num_ctx": num_ctx},
     }
     request = urllib.request.Request(
         f"{os.getenv('OLLAMA_URL', 'http://127.0.0.1:11434').rstrip('/')}/api/generate",

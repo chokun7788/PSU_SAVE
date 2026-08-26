@@ -1,12 +1,12 @@
 from __future__ import annotations
 
 import json
-import re
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
 from app.core.normalization import normalize_text
+from app.pipeline.query_signals import contains_ascii_bounded
 from app.pipeline.schemas import EntityBundle, PipelineRoute, PipelineTrace
 
 
@@ -19,10 +19,7 @@ def _has_any(query: str, terms: list[str]) -> list[str]:
         value = normalize_text(str(term))
         if not value:
             continue
-        if re.fullmatch(r"[a-z0-9]+", value) and len(value) <= 3:
-            matched = re.search(rf"(?<![a-z0-9]){re.escape(value)}(?![a-z0-9])", query) is not None
-        else:
-            matched = value in query
+        matched = contains_ascii_bounded(query, value)
         if matched:
             hits.append(str(term))
     return hits

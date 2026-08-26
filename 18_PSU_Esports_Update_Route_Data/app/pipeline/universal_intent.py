@@ -11,6 +11,11 @@ from app.core.normalization import normalize_text
 from app.pipeline.chatbot_role import CHATBOT_ROLE_TH, INTENT_CLASSIFIER_ROLE
 from app.pipeline.game_title_correction import game_alias_entries
 from app.pipeline.llm_health import llm_call_allowed, record_llm_failure, record_llm_success, release_llm_slot
+from app.pipeline.query_signals import (
+    looks_like_clear_general_request,
+    looks_like_game_zone_ranking_query,
+    looks_like_general_concept_definition,
+)
 from app.pipeline.request_deadline import deadline_metadata, timeout_for_call
 from app.pipeline.schemas import PipelineRoute, PipelineTrace, UniversalIntent
 
@@ -349,6 +354,30 @@ def _heuristic_intent(query: str, route: PipelineRoute) -> UniversalIntent:
             reason="chatbot identity route is locked to assistant role",
         )
     q = normalize_text(query)
+    if looks_like_game_zone_ranking_query(q):
+        return UniversalIntent(
+            domain="games",
+            operation="list",
+            target="game_zone_counts",
+            needs=("rank_game_counts_by_zone",),
+            answer_style="summary_bullets",
+            confidence=0.99,
+            method="heuristic",
+            reason="deterministic game-zone ranking operation overrides equipment words",
+        )
+    if route.category == "general" and (
+        looks_like_general_concept_definition(q) or looks_like_clear_general_request(q)
+    ):
+        return UniversalIntent(
+            domain="general",
+            operation="detail",
+            target="general_concept",
+            needs=("answer_general_question",),
+            answer_style="direct",
+            confidence=0.94,
+            method="heuristic",
+            reason="general concept definition overrides equipment entity words",
+        )
     domain, domain_confidence, domain_reason = _score_domain(q, route)
     operation, operation_confidence, operation_reason, needs = _score_operation(q)
     if route.category in {"rules", "penalty"} or route.intent in {"studio_rules", "penalty_policy"}:
@@ -683,6 +712,10 @@ def _llm_intent(query: str, route: PipelineRoute, fallback: UniversalIntent) -> 
     configured_timeout = float(os.getenv("PSU_INTENT_LLM_TIMEOUT_SEC", "8"))
     timeout = timeout_for_call(configured_timeout)
     num_predict = int(os.getenv("PSU_INTENT_LLM_NUM_PREDICT", "50"))
+    num_ctx = max(
+        1024,
+        int(os.getenv("PSU_INTENT_LLM_NUM_CTX", os.getenv("PSU_GENERAL_LLM_NUM_CTX", "3072"))),
+    )
     candidates = _build_intent_candidates(query, route, fallback)
     cache_key = json.dumps(
         {
@@ -702,6 +735,7 @@ def _llm_intent(query: str, route: PipelineRoute, fallback: UniversalIntent) -> 
         "llm_timeout_sec": timeout,
         "llm_configured_timeout_sec": configured_timeout,
         "llm_num_predict": num_predict,
+        "llm_num_ctx": num_ctx,
         "llm_cache_hit": False,
         **deadline_metadata(),
     }
@@ -756,9 +790,11 @@ Return exactly: {{"candidate_id":"c1","confidence":0.9,"reason":"short"}}"""
         "prompt": prompt,
         "stream": False,
         "think": False,
+        "keep_alive": os.getenv("PSU_OLLAMA_KEEP_ALIVE", "10m"),
         "options": {
             "temperature": 0,
             "num_predict": num_predict,
+            "num_ctx": num_ctx,
         },
     }
     request = urllib.request.Request(
@@ -909,6 +945,8 @@ def _needs_llm_intent_review(query: str, route: PipelineRoute, heuristic: Univer
     if not _truthy(os.getenv("PSU_INTENT_REVIEW_BROAD_ROUTES", "1")):
         return False, ""
     q = normalize_text(query)
+    if looks_like_game_zone_ranking_query(q) and heuristic.confidence >= 0.90:
+        return False, ""
     exact_operations = {
         "price_calculate",
         "control",
@@ -964,6 +1002,10 @@ def _skip_llm_first_for_strong_route(route: PipelineRoute, heuristic: UniversalI
         return False, ""
     if route.intent == "booking_session_limit" and heuristic.domain == "reservation":
         return True, "booking session limit skips LLM-first"
+    if looks_like_game_zone_ranking_query(query) and heuristic.confidence >= 0.90:
+        return True, "deterministic game-zone ranking skips LLM intent review"
+    if route.category == "general" and looks_like_clear_general_request(query):
+        return True, "clear general request reserves the single LLM call for answer generation"
     if (
         heuristic.operation == "how_to"
         and heuristic.domain in {"reservation", "service_fee", "schedule", "equipment"}

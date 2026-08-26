@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from app.pipeline.request_deadline import remaining_sec
+from app.pipeline.query_signals import looks_like_clear_general_request
 from app.pipeline.schemas import PipelineRoute
 
 
@@ -18,12 +19,12 @@ def model_first_enabled() -> bool:
     return _truthy(os.getenv("PSU_MODEL_FIRST_FLOW"), default=False)
 
 
-def preflight_llm_allowed(route: PipelineRoute, allow_llm: bool) -> tuple[bool, str]:
+def preflight_llm_allowed(route: PipelineRoute, allow_llm: bool, query: str = "") -> tuple[bool, str]:
     """Gate optional intent/router reviews before they consume the request budget."""
     if not allow_llm:
         return False, "request did not allow LLM"
-    if not model_first_enabled():
-        return True, "model-first flow disabled; preserve existing policy"
+    if route.category == "general" and looks_like_clear_general_request(query):
+        return False, "clear general request reserves one LLM call for final answer generation"
 
     exact_categories = {
         "games",
@@ -49,6 +50,8 @@ def preflight_llm_allowed(route: PipelineRoute, allow_llm: bool) -> tuple[bool, 
         route.category in exact_categories or route.intent in exact_intents
     ):
         return False, "high-confidence deterministic route"
+    if not model_first_enabled():
+        return True, "model-first flow disabled; preserve existing policy for ambiguous routes"
     if route.category in {"knowledge", "events_news"} and route.confidence >= 0.72:
         return False, "model-first RAG reserves budget for evidence and grounded composition"
     return True, "ambiguous route may benefit from model review"
@@ -107,7 +110,7 @@ def plan_rag_model_path(
     # A grounded composer needs enough time to finish generation and leave the
     # finalizer reserve intact; calling it with a nearly exhausted deadline
     # only creates a timeout followed by a deterministic fallback.
-    minimum = max(0.0, float(os.getenv("PSU_MODEL_FIRST_MIN_REMAINING_SEC", "8.0")))
+    minimum = max(0.0, float(os.getenv("PSU_MODEL_FIRST_MIN_REMAINING_SEC", "6.0")))
     if not model_first_enabled():
         return ModelPlan("deterministic_rag", False, True, False, "model-first flow disabled", minimum)
     if not allow_llm:
@@ -118,6 +121,15 @@ def plan_rag_model_path(
         return ModelPlan("deterministic_rag", False, True, False, "source conflict requires deterministic review", minimum)
     if route.category in {"service_fee", "schedule", "competition_rules", "members"} and retrieval_confidence >= 0.82:
         return ModelPlan("structured_first", False, True, False, "exact PSU fact should stay deterministic", minimum)
+    if hit_count <= 1 and retrieval_confidence >= 0.86:
+        return ModelPlan(
+            "deterministic_rag",
+            False,
+            True,
+            False,
+            "single high-confidence evidence item does not need generative rewriting",
+            minimum,
+        )
     return ModelPlan(
         "rag_grounded_composer",
         True,

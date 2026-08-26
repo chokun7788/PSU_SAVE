@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Any
 
 from app.core.normalization import normalize_text
+from app.pipeline.query_signals import looks_like_price_amount_query
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -189,7 +190,7 @@ def _has(text: str, *terms: str) -> bool:
 
 
 def _target_operation_hint(query: str, operation: str) -> str:
-    if _has(query, "ราคา", "กี่บาท", "ค่าบริการ", "เท่าไหร่", "เท่าไร", "จ่าย", "เสีย"):
+    if looks_like_price_amount_query(query):
         return "price"
     if _has(query, "จอง", "booking", "book", "เข้าเล่น", "ใช้บริการ"):
         return "booking"

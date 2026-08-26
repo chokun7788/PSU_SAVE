@@ -1,0 +1,1238 @@
+﻿id,group,quality_bucket,risk,question,judge_passed,semantic_review,diagnosis_cluster,recommended_fix,method_family,mode,route_category,route_intent,confidence,wall_sec,elapsed_sec,latency_band,over_10s,llm_call_count_compact,llm_elapsed_ms_compact,llm_kinds_compact,trace_is_compact_last_12,validation_ok,validation_errors,validation_warnings,quality_flags,judge_errors,judge_warnings,answer,no_llm_passed,no_llm_mode,no_llm_route_category,no_llm_route_intent,no_llm_wall_sec,no_llm_answer
+MB-0189-G-101,games,psu_fact,medium,Animal Crossing: New Horizons คือเกมอะไร,False,confirmed_failure,substring_cross_and_ambiguity_misclassification,Use token-boundary matching for English control terms and let exact game entity plus detail intent override clarification.,clarification,pipeline:ambiguity_clarification,clarification,ambiguity_gate_clarification,0.74,0.7906,0.7905,<=1s,False,1,700.3,"[""universal_intent""]",True,True,[],"[""low_margin_between_intent_candidates""]",[],"[""category_mismatch:clarification"", ""missing:Animal Crossing""]",[],คำถามนี้มีได้หลายความหมายครับ ขอระบุเพิ่มนิดหนึ่งว่าต้องการถามเรื่องไหน: รายชื่อเกม/ข้อมูลเกม,True,pipeline:structured_game_detail,games,game_detail_lookup,0.8667,"Animal Crossing: New Horizons: Animal Crossing: New Horizons คือเกมใช้ชีวิตบนเกาะ ผู้เล่นตกแต่งบ้าน เก็บของ สร้างพื้นที่ และพูดคุยกับชาวเกาะ
+แนวเกม: เกม Life Simulation
+วิธีเล่นโดยสรุป: เล่นแบบสบาย ๆ โดยเก็บทรัพยากร ตกปลา จับแมลง ตกแต่งเกาะ และทำกิจกรรมประจำวัน
+เล่นได้ที่: Nintendo Switch Zone
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+MB-0240-G-152,games,psu_fact,medium,อุปกรณ์ไหนเกมเยอะสุด,False,confirmed_failure,llm_route_override_and_repeated_fuzzy_game_scan,Let high-confidence operation-first game ranking repair an incompatible equipment route; cache one game match per query.,no_answer,pipeline:no_answer,equipment,list,0.56,10.8023,10.8022,10-15s,True,0,0,[],True,True,[],"[""hybrid_guard_no_verified_context"", ""high_confidence_route_returned_no_answer""]",[],"[""category_mismatch:equipment"", ""missing_any:เกม|Zone|TEKKEN|Mario|Gran Turismo""]",[],ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับหมวด equipment ตอนนี้ครับ,True,pipeline:structured_game_zone_ranking,games,list,0.3211,"ถ้านับตามโซน/บริการที่มีรายชื่อเกมยืนยันได้ PlayStation 5 Zone และ Nintendo Switch Zone มีเกมเยอะสุดครับ (17 เกม)
+
+จำนวนเกมตามโซน:
+•    PlayStation 5 Zone: 17 เกม
+•    Nintendo Switch Zone: 17 เกม
+•    PC Zone: 6 เกม
+•    VR Zone: 4 เกม
+•    Cockpit Zone: 1 เกม
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games"
+MB-0607-CR-071,competition_rules,psu_fact,high,ROV ถ้าใช้ bug จะโดนอะไร,False,confirmed_failure,uninitialized_rag_state_exception,Initialize per-request RAG state in _answer_single and add direct regression tests.,exception,exception,,,0.0,0.2438,0.2438,<=1s,False,0,0.0,[],True,False,"[""UnboundLocalError"", ""cannot access local variable 'rag_llm_attempted' where it is not associated with a value""]",[],[],"[""exception:UnboundLocalError""]","[""cannot access local variable 'rag_llm_attempted' where it is not associated with a value""]",,True,pipeline:experimental_rag_direct_fallback,competition_rules,competition_rules_lookup,0.7083,"โหมดทดลอง RAG: ข้อมูลที่ใกล้กับคำถามที่สุดคือ rov_late_start_forfeit
+RoV ถ้าเริ่มแข่งล่าช้าเกิน 15 นาที จะถูกปรับแพ้ในรอบนั้น เอกสารระบุว่าหากเริ่มการแข่งขันล่าช้าเกิน 15 นาที ทีมที่ทำให้เกิดความล่าช้าจะถูกปรับแพ้ Arena of Valor (RoV) Blueket Games 2025 ประเภททีมชาย
+
+หมายเหตุ: คำตอบนี้เป็นการดึงข้อมูลใกล้เคียงแทน no-answer จึงควรตรวจแหล่งข้อมูลประกอบก่อนใช้เป็นคำตอบยืนยัน
+แหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men"
+MB-0636-ANA-010,ambiguity_no_answer,psu_fact,high,จอง,False,confirmed_failure,uninitialized_rag_state_exception,Initialize per-request RAG state in _answer_single and add direct regression tests.,exception,exception,,,0.0,1.3628,1.3628,1-3s,False,0,0.0,[],True,False,"[""UnboundLocalError"", ""cannot access local variable 'rag_llm_attempted' where it is not associated with a value""]",[],[],"[""exception:UnboundLocalError""]","[""cannot access local variable 'rag_llm_attempted' where it is not associated with a value""]",,True,pipeline:answer_contract_no_answer,no_answer,answer_contract_rejected,0.5758,ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับหมวด reservation ตอนนี้ครับ
+MB-0649-ANA-023,ambiguity_no_answer,psu_fact,high,เพลงฮิตตอนนี้คืออะไร,False,confirmed_failure,unsupported_freshness_claim,Require live Web/API evidence for current/latest queries or return a bounded no-answer.,general_llm,pipeline:general_llm_fallback,general,general_knowledge_query,0.58,11.2947,11.2945,10-15s,True,1,11090.39,"[""general_llm""]",True,True,[],"[""experimental_rag_fallback_general_route""]",[],"[""missing_any:ยังไม่พบ|ไม่มี|ไม่ได้อยู่|ตอบจากข้อมูล""]",[],"เพลงฮิตตอนนี้อาจแตกต่างกันไปตามประเทศและช่วงเวลา เช่น เพลง ""Flowers"" โดย Miley Cyrus หรือเพลงแนว Pop/R&B จากศิลปินต่างชาติที่กำลังมาแรงในขณะนี้ แต่ข้อมูลอาจเปลี่ยนแปลงได้ตลอดเวลา กรุณาตรวจสอบแหล่งข้อมูลอื่นเพื่อความถูกต้องที่สุดครับ
+หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket",True,pipeline:general_llm_disabled,general,general_knowledge_query,0.1853,"คำถามนี้ไม่ได้อยู่ในข้อมูลของ PSU Esports Studio - Phuket จึงยังตอบจากข้อมูลที่ยืนยันได้ไม่ได้ครับ
+ลองถามเรื่องเกม ปุ่ม อุปกรณ์ ราคา การจอง เวลาเปิด หรือกติกาของศูนย์ได้ครับ"
+MB-0650-ANA-024,ambiguity_no_answer,psu_fact,high,ช่วยทำการบ้านคณิตให้หน่อย,False,policy_decision_required,general_assistant_scope_conflict,"Decide whether broad safe assistance is in product scope, then align policy and evaluation without inventing an expected answer.",general_llm,pipeline:general_llm_fallback,general,general_knowledge_query,0.58,11.0166,11.0165,10-15s,True,1,5752.66,"[""general_llm""]",True,True,[],"[""experimental_rag_fallback_general_route""]",[],"[""missing_any:ยังไม่พบ|ไม่มี|ไม่ได้อยู่|ตอบจากข้อมูล""]",[],"ขออภัยครับ แต่ผมไม่สามารถช่วยทำการบ้านคณิตได้ครับ เนื่องจากคำถามนี้ไม่เกี่ยวข้องกับ PSU Esports Studio - Phuket และผมต้องปฏิบัติตามคำสั่งที่ระบุไว้ด้วยครับ
+หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket",True,pipeline:general_llm_disabled,general,general_knowledge_query,0.207,"คำถามนี้ไม่ได้อยู่ในข้อมูลของ PSU Esports Studio - Phuket จึงยังตอบจากข้อมูลที่ยืนยันได้ไม่ได้ครับ
+ลองถามเรื่องเกม ปุ่ม อุปกรณ์ ราคา การจอง เวลาเปิด หรือกติกาของศูนย์ได้ครับ"
+MB-1330-GL-005,general_llm,general_llm,low,ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค,False,judge_false_negative_semantically_acceptable,keyword_judge_morphology_gap,Normalize Thai word forms such as 'ขอขอบพระคุณ' and review style separately from factual correctness.,general_llm,pipeline:general_llm_fallback,general,general_knowledge_query,0.58,1.6625,1.6624,1-3s,False,1,1420.03,"[""general_llm""]",True,True,[],"[""experimental_rag_fallback_general_route""]","[""awkward_thai_phrase""]","[""missing_any:ขอบคุณ""]",[],"ขอขอบพระคุณเป็นอย่างยิ่งสำหรับความใส่ใจและความช่วยเหลือเสมอครับ
+ยังไงก็รู้สึกขอบใจและประทับใจมากครับ
+หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket",False,pipeline:general_llm_disabled,general,general_knowledge_query,0.2378,"คำถามนี้ไม่ได้อยู่ในข้อมูลของ PSU Esports Studio - Phuket จึงยังตอบจากข้อมูลที่ยืนยันได้ไม่ได้ครับ
+ลองถามเรื่องเกม ปุ่ม อุปกรณ์ ราคา การจอง เวลาเปิด หรือกติกาของศูนย์ได้ครับ"
+MB-1333-GL-008,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,0.8201,0.8199,<=1s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,0.6635,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1336-GL-011,general_llm,general_llm,low,อธิบายคำว่า latency ในระบบคอมพิวเตอร์แบบสั้น ๆ ตอบสั้น ๆ,False,judge_false_negative_semantically_acceptable,keyword_judge_synonym_gap,Accept semantic equivalents such as 'ความล่าช้า' and add semantic/operation assertions.,general_llm,pipeline:general_llm_fallback,general,general_knowledge_query,0.58,2.1049,2.1047,1-3s,False,1,1731.56,"[""general_llm""]",True,True,[],"[""experimental_rag_fallback_general_route""]",[],"[""missing_any:latency|หน่วง""]",[],"ความล่าช้าในการตอบสนองของระบบคอมพิวเตอร์ระหว่างการส่งข้อมูลจากผู้ใช้ไปยังอุปกรณ์หรือโปรแกรมปลายทาง โดยมักวัดเป็นเวลา เช่น มิลลิวินาที (ms)
+หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket",False,pipeline:general_llm_disabled,general,general_knowledge_query,0.2263,"คำถามนี้ไม่ได้อยู่ในข้อมูลของ PSU Esports Studio - Phuket จึงยังตอบจากข้อมูลที่ยืนยันได้ไม่ได้ครับ
+ลองถามเรื่องเกม ปุ่ม อุปกรณ์ ราคา การจอง เวลาเปิด หรือกติกาของศูนย์ได้ครับ"
+MB-1343-GL-018,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น ตอบสั้น ๆ,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,0.7393,0.7392,<=1s,False,0,0,[],True,True,[],[],[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,0.4844,"อุปกรณ์บนหน้า Home:
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1353-GL-028,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น ขอแบบเข้าใจง่าย,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,0.9568,0.9567,<=1s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,0.5399,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1360-GL-035,general_llm,general_llm,low,ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค ตอบเป็นภาษาไทย,False,judge_false_negative_semantically_acceptable,keyword_judge_morphology_gap,Normalize Thai word forms such as 'ขอขอบพระคุณ' and review style separately from factual correctness.,general_llm,pipeline:general_llm_fallback,general,general_knowledge_query,0.58,1.8521,1.852,1-3s,False,1,1514.45,"[""general_llm""]",True,True,[],"[""experimental_rag_fallback_general_route""]","[""mixed_gender_particles""]","[""missing_any:ขอบคุณ""]",[],"ขอขอบพระคุณอย่างสุดหัวใจสำหรับความช่วยเหลือและความใส่ใจเสมอมา
+ยังคงรู้สึกซาบซึ้งและประทับใจอย่างยิ่งครับ/ค่ะ
+หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket",False,pipeline:general_llm_disabled,general,general_knowledge_query,0.1634,"คำถามนี้ไม่ได้อยู่ในข้อมูลของ PSU Esports Studio - Phuket จึงยังตอบจากข้อมูลที่ยืนยันได้ไม่ได้ครับ
+ลองถามเรื่องเกม ปุ่ม อุปกรณ์ ราคา การจอง เวลาเปิด หรือกติกาของศูนย์ได้ครับ"
+MB-1363-GL-038,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น ตอบเป็นภาษาไทย,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,0.9467,0.9466,<=1s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,0.5015,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1373-GL-048,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น ไม่ต้องยาว,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,0.7867,0.7866,<=1s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,0.4313,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1383-GL-058,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น ขอ 1 ย่อหน้า,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,0.7567,0.7566,<=1s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,0.4536,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1390-GL-065,general_llm,general_llm,low,ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค อธิบายให้มือใหม่เข้าใจ,False,judge_false_negative_semantically_acceptable,keyword_judge_morphology_gap,Normalize Thai word forms such as 'ขอขอบพระคุณ' and review style separately from factual correctness.,general_llm,pipeline:general_llm_fallback,general,general_knowledge_query,0.58,2.1198,2.1197,1-3s,False,1,1747.0,"[""general_llm""]",True,True,[],"[""experimental_rag_fallback_general_route""]",[],"[""missing_any:ขอบคุณ""]",[],"ขอขอบพระคุณเป็นอย่างยิ่งสำหรับความช่วยเหลือและคำแนะนำที่ให้มาครับ
+ขอบใจที่ได้แบ่งปันความรู้ดี ๆ ไว้ให้คนอื่นได้เรียนรู้ครับ
+หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket",False,pipeline:general_llm_disabled,general,general_knowledge_query,0.1806,"คำถามนี้ไม่ได้อยู่ในข้อมูลของ PSU Esports Studio - Phuket จึงยังตอบจากข้อมูลที่ยืนยันได้ไม่ได้ครับ
+ลองถามเรื่องเกม ปุ่ม อุปกรณ์ ราคา การจอง เวลาเปิด หรือกติกาของศูนย์ได้ครับ"
+MB-1393-GL-068,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น อธิบายให้มือใหม่เข้าใจ,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,1.3139,1.3138,1-3s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,0.6937,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1403-GL-078,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น ตอบแบบเด็กปีหนึ่งเข้าใจได้,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,1.3614,1.3612,1-3s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,0.7155,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1406-GL-081,general_llm,general_llm,low,อธิบายคำว่า latency ในระบบคอมพิวเตอร์แบบสั้น ๆ ขอแบบไม่ใช้ศัพท์ยาก,False,judge_false_negative_semantically_acceptable,keyword_judge_synonym_gap,Accept semantic equivalents such as 'ความล่าช้า' and add semantic/operation assertions.,general_llm,pipeline:general_llm_fallback,general,general_knowledge_query,0.58,2.5556,2.5555,1-3s,False,1,2152.97,"[""general_llm""]",True,True,[],"[""experimental_rag_fallback_general_route""]",[],"[""missing_any:latency|หน่วง""]",[],"ความล่าช้าในการตอบสนองของระบบ เช่น เครื่องคอมพิวเตอร์หรืออินเทอร์เน็ต เมื่อเราส่งคำสั่งออกไปแล้วรอผลตอบกลับมาเป็นเวลาหนึ่งช่วงเวลาสั้น ๆ ก่อนจะได้เห็นผลลัพธ์ที่ต้องการ.
+หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket",False,pipeline:general_llm_disabled,general,general_knowledge_query,0.2395,"คำถามนี้ไม่ได้อยู่ในข้อมูลของ PSU Esports Studio - Phuket จึงยังตอบจากข้อมูลที่ยืนยันได้ไม่ได้ครับ
+ลองถามเรื่องเกม ปุ่ม อุปกรณ์ ราคา การจอง เวลาเปิด หรือกติกาของศูนย์ได้ครับ"
+MB-1413-GL-088,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น ขอแบบไม่ใช้ศัพท์ยาก,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,1.0396,1.0395,1-3s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,0.5674,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1423-GL-098,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น ขอสรุปเป็น 2 ข้อ,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,0.9791,0.979,<=1s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,0.5217,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1433-GL-108,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น ขอคำตอบไม่เกิน 3 บรรทัด,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,1.4511,1.4509,1-3s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,0.6866,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1440-GL-115,general_llm,general_llm,low,ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค อธิบายแบบใช้ในงาน chatbot,False,judge_false_negative_semantically_acceptable,keyword_judge_morphology_gap,Normalize Thai word forms such as 'ขอขอบพระคุณ' and review style separately from factual correctness.,general_llm,pipeline:general_llm_fallback,general,general_knowledge_query,0.58,2.146,2.1459,1-3s,False,1,1613.74,"[""general_llm""]",True,True,[],"[""experimental_rag_fallback_general_route""]",[],"[""missing_any:ขอบคุณ""]",[],"ขอขอบพระคุณเป็นอย่างยิ่งสำหรับความใส่ใจและคำแนะนำที่ให้มาครับ
+ยินดีช่วยเหลือเสมอ หากมีอะไรเพิ่มเติมแจ้งได้นะครับ
+หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket",False,pipeline:general_llm_disabled,general,general_knowledge_query,0.2784,"คำถามนี้ไม่ได้อยู่ในข้อมูลของ PSU Esports Studio - Phuket จึงยังตอบจากข้อมูลที่ยืนยันได้ไม่ได้ครับ
+ลองถามเรื่องเกม ปุ่ม อุปกรณ์ ราคา การจอง เวลาเปิด หรือกติกาของศูนย์ได้ครับ"
+MB-1443-GL-118,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น อธิบายแบบใช้ในงาน chatbot,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,1.5369,1.5368,1-3s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,0.6641,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1450-GL-125,general_llm,general_llm,low,ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค อธิบายแบบใช้กับวงการเกม,False,judge_false_negative_semantically_acceptable,keyword_judge_morphology_gap,Normalize Thai word forms such as 'ขอขอบพระคุณ' and review style separately from factual correctness.,general_llm,pipeline:general_llm_fallback,general,general_knowledge_query,0.58,1.8408,1.8407,1-3s,False,1,1476.99,"[""general_llm""]",True,True,[],"[""experimental_rag_fallback_general_route""]",[],"[""missing_any:ขอบคุณ""]",[],"ขอขอบพระคุณสำหรับโอกาสในการแข่งขันครับ
+ขอบใจที่ให้เกียรติแสดงความคิดเห็นและสนับสนุนผลงานของเราอย่างยิ่งครับ
+หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket",False,pipeline:general_llm_disabled,general,general_knowledge_query,0.1953,"คำถามนี้ไม่ได้อยู่ในข้อมูลของ PSU Esports Studio - Phuket จึงยังตอบจากข้อมูลที่ยืนยันได้ไม่ได้ครับ
+ลองถามเรื่องเกม ปุ่ม อุปกรณ์ ราคา การจอง เวลาเปิด หรือกติกาของศูนย์ได้ครับ"
+MB-1453-GL-128,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น อธิบายแบบใช้กับวงการเกม,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,1.2596,1.2595,1-3s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,0.7898,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1463-GL-138,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น ช่วยยกตัวอย่างสั้น ๆ,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,1.2114,1.2113,1-3s,False,0,0,[],True,True,[],[],[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,0.5569,"อุปกรณ์บนหน้า Home:
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1473-GL-148,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น เปรียบเทียบแบบสั้น,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,1.1064,1.1062,1-3s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,0.5411,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1480-GL-155,general_llm,general_llm,low,ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค ตอบแบบสุภาพ,False,judge_false_negative_semantically_acceptable,keyword_judge_morphology_gap,Normalize Thai word forms such as 'ขอขอบพระคุณ' and review style separately from factual correctness.,general_llm,pipeline:general_llm_fallback,general,general_knowledge_query,0.58,1.9382,1.938,1-3s,False,1,1619.11,"[""general_llm""]",True,True,[],"[""experimental_rag_fallback_general_route""]","[""mixed_gender_particles""]","[""missing_any:ขอบคุณ""]",[],"ขอขอบพระคุณเป็นอย่างยิ่งสำหรับความช่วยเหลือและคำแนะนำที่ให้มา
+มีความประทับใจและซาบซึ้งจริง ๆ กับความใส่ใจของท่านครับ/ค่ะ
+หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket",False,pipeline:general_llm_disabled,general,general_knowledge_query,0.1597,"คำถามนี้ไม่ได้อยู่ในข้อมูลของ PSU Esports Studio - Phuket จึงยังตอบจากข้อมูลที่ยืนยันได้ไม่ได้ครับ
+ลองถามเรื่องเกม ปุ่ม อุปกรณ์ ราคา การจอง เวลาเปิด หรือกติกาของศูนย์ได้ครับ"
+MB-1483-GL-158,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น ตอบแบบสุภาพ,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,0.863,0.8629,<=1s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,0.4163,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1490-GL-165,general_llm,general_llm,low,ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค ตอบให้เหมาะกับนักศึกษา,False,judge_false_negative_semantically_acceptable,keyword_judge_morphology_gap,Normalize Thai word forms such as 'ขอขอบพระคุณ' and review style separately from factual correctness.,general_llm,pipeline:general_llm_fallback,general,general_knowledge_query,0.58,2.0869,2.0868,1-3s,False,1,1725.92,"[""general_llm""]",True,True,[],"[""experimental_rag_fallback_general_route""]",[],"[""missing_any:ขอบคุณ""]",[],"ขอขอบพระคุณที่ให้โอกาสและสนับสนุนนักศึกษาอย่างยิ่งครับ
+ความช่วยเหลือเหล่านี้เป็นแรงบันดาลใจให้นักศึกษาพัฒนาตนเองอย่างต่อเนื่องครับ
+หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket",False,pipeline:general_llm_disabled,general,general_knowledge_query,0.1857,"คำถามนี้ไม่ได้อยู่ในข้อมูลของ PSU Esports Studio - Phuket จึงยังตอบจากข้อมูลที่ยืนยันได้ไม่ได้ครับ
+ลองถามเรื่องเกม ปุ่ม อุปกรณ์ ราคา การจอง เวลาเปิด หรือกติกาของศูนย์ได้ครับ"
+MB-1493-GL-168,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น ตอบให้เหมาะกับนักศึกษา,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,1.2682,1.2681,1-3s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,0.6105,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1503-GL-178,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น เขียนเป็นภาษาไทยธรรมชาติ,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,1.3403,1.3402,1-3s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,0.7144,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1506-GL-181,general_llm,general_llm,low,อธิบายคำว่า latency ในระบบคอมพิวเตอร์แบบสั้น ๆ ขอแบบไม่เป็นทางการมาก,False,judge_false_negative_semantically_acceptable,keyword_judge_synonym_gap,Accept semantic equivalents such as 'ความล่าช้า' and add semantic/operation assertions.,general_llm,pipeline:general_llm_fallback,general,general_knowledge_query,0.58,1.9233,1.9232,1-3s,False,1,1463.7,"[""general_llm""]",True,True,[],"[""experimental_rag_fallback_general_route""]",[],"[""missing_any:latency|หน่วง""]",[],"ความล่าช้าระหว่างการกระทำกับผลลัพธ์ในเครื่องคอมฯ เลยนะครับ เช่น กดปุ่มแล้วจอโต้ตอบช้า ๆ เลยครับ
+หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket",False,pipeline:general_llm_disabled,general,general_knowledge_query,0.2652,"คำถามนี้ไม่ได้อยู่ในข้อมูลของ PSU Esports Studio - Phuket จึงยังตอบจากข้อมูลที่ยืนยันได้ไม่ได้ครับ
+ลองถามเรื่องเกม ปุ่ม อุปกรณ์ ราคา การจอง เวลาเปิด หรือกติกาของศูนย์ได้ครับ"
+MB-1513-GL-188,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น ขอแบบไม่เป็นทางการมาก,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,1.2804,1.2803,1-3s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,0.6427,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1523-GL-198,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น ขอแบบเป็นทางการ,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,1.0013,1.0012,1-3s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,1.1783,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1533-GL-208,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น ช่วยสรุปใจความสำคัญ,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,1.1354,1.1353,1-3s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,1.0592,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1536-GL-211,general_llm,general_llm,low,อธิบายคำว่า latency ในระบบคอมพิวเตอร์แบบสั้น ๆ ตอบแบบ bullet สั้น ๆ,False,judge_false_negative_semantically_acceptable,keyword_judge_synonym_gap,Accept semantic equivalents such as 'ความล่าช้า' and add semantic/operation assertions.,general_llm,pipeline:general_llm_fallback,general,general_knowledge_query,0.58,2.2613,2.2611,1-3s,False,1,1876.31,"[""general_llm""]",True,True,[],"[""experimental_rag_fallback_general_route""]",[],"[""missing_any:latency|หน่วง""]",[],"•    เวลาตอบสนองระหว่างอุปกรณ์กับระบบ
+•    เวลาที่ใช้ในการส่งข้อมูลจากหนึ่งจุดไปยังอีกจุดหนึ่ง
+•    ส่งผลต่อความลื่นไหลของเกมและแอปพลิเคชันโดยตรง
+หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket",False,pipeline:general_llm_disabled,general,general_knowledge_query,0.3864,"คำถามนี้ไม่ได้อยู่ในข้อมูลของ PSU Esports Studio - Phuket จึงยังตอบจากข้อมูลที่ยืนยันได้ไม่ได้ครับ
+ลองถามเรื่องเกม ปุ่ม อุปกรณ์ ราคา การจอง เวลาเปิด หรือกติกาของศูนย์ได้ครับ"
+MB-1543-GL-218,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น ตอบแบบ bullet สั้น ๆ,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,1.2312,1.231,1-3s,False,0,0,[],True,True,[],[],[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,1.0444,"อุปกรณ์บนหน้า Home:
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1550-GL-225,general_llm,general_llm,low,ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค ตอบแบบประโยคเดียว,False,judge_false_negative_semantically_acceptable,keyword_judge_morphology_gap,Normalize Thai word forms such as 'ขอขอบพระคุณ' and review style separately from factual correctness.,general_llm,pipeline:general_llm_fallback,general,general_knowledge_query,0.58,1.8106,1.8104,1-3s,False,1,1443.7,"[""general_llm""]",True,True,[],"[""experimental_rag_fallback_general_route""]","[""mixed_gender_particles"", ""awkward_thai_phrase""]","[""missing_any:ขอบคุณ""]",[],"ขอขอบพระคุณเป็นอย่างยิ่งสำหรับความช่วยเหลือและโอกาสที่ได้รับ กรุณาต้อนรับและสนับสนุนต่อไปนะคะครับ/ค่ะ
+หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket",False,pipeline:general_llm_disabled,general,general_knowledge_query,0.3673,"คำถามนี้ไม่ได้อยู่ในข้อมูลของ PSU Esports Studio - Phuket จึงยังตอบจากข้อมูลที่ยืนยันได้ไม่ได้ครับ
+ลองถามเรื่องเกม ปุ่ม อุปกรณ์ ราคา การจอง เวลาเปิด หรือกติกาของศูนย์ได้ครับ"
+MB-1553-GL-228,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น ตอบแบบประโยคเดียว,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,1.0801,1.08,1-3s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,1.01,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1557-GL-232,general_llm,general_llm,low,เฟรมเรตกับความละเอียดต่างกันยังไง อธิบายข้อดีข้อเสียสั้น ๆ,False,confirmed_failure,thai_substring_price_false_positive,Replace raw substring price detection so 'เสีย' inside 'ข้อเสีย' cannot trigger service-fee intent.,clarification,pipeline:ambiguity_clarification,clarification,ambiguity_gate_clarification,0.88,0.2543,0.2542,<=1s,False,0,0,[],True,True,[],"[""price_missing_service_or_game_target"", ""service_fee_answer_missing_service_fee_source""]",[],"[""category_mismatch:clarification"", ""missing_any:เฟรม|ความละเอียด""]",[],"ขอรู้บริการหรือโซนก่อนครับ จะได้ตอบราคาให้ตรง
+เช่น `PS5 ราคาเท่าไหร่`, `Nintendo 3-4 คนกี่บาท`, `VR 30 นาทีราคาเท่าไหร่` หรือ `Tekken 8 ราคาเท่าไหร่`",False,pipeline:ambiguity_clarification,clarification,ambiguity_gate_clarification,0.2269,"ขอรู้บริการหรือโซนก่อนครับ จะได้ตอบราคาให้ตรง
+เช่น `PS5 ราคาเท่าไหร่`, `Nintendo 3-4 คนกี่บาท`, `VR 30 นาทีราคาเท่าไหร่` หรือ `Tekken 8 ราคาเท่าไหร่`"
+MB-1558-GL-233,general_llm,general_llm,low,API คืออะไร อธิบายข้อดีข้อเสียสั้น ๆ,False,confirmed_failure,thai_substring_price_false_positive,Replace raw substring price detection so 'เสีย' inside 'ข้อเสีย' cannot trigger service-fee intent.,clarification,pipeline:ambiguity_clarification,clarification,ambiguity_gate_clarification,0.88,0.2202,0.2201,<=1s,False,0,0,[],True,True,[],"[""price_missing_service_or_game_target"", ""service_fee_answer_missing_service_fee_source""]",[],"[""category_mismatch:clarification"", ""missing_any:API|เชื่อมต่อ""]",[],"ขอรู้บริการหรือโซนก่อนครับ จะได้ตอบราคาให้ตรง
+เช่น `PS5 ราคาเท่าไหร่`, `Nintendo 3-4 คนกี่บาท`, `VR 30 นาทีราคาเท่าไหร่` หรือ `Tekken 8 ราคาเท่าไหร่`",False,pipeline:ambiguity_clarification,clarification,ambiguity_gate_clarification,0.2279,"ขอรู้บริการหรือโซนก่อนครับ จะได้ตอบราคาให้ตรง
+เช่น `PS5 ราคาเท่าไหร่`, `Nintendo 3-4 คนกี่บาท`, `VR 30 นาทีราคาเท่าไหร่` หรือ `Tekken 8 ราคาเท่าไหร่`"
+MB-1559-GL-234,general_llm,general_llm,low,JSON คืออะไร อธิบายข้อดีข้อเสียสั้น ๆ,False,confirmed_failure,thai_substring_price_false_positive,Replace raw substring price detection so 'เสีย' inside 'ข้อเสีย' cannot trigger service-fee intent.,clarification,pipeline:ambiguity_clarification,clarification,ambiguity_gate_clarification,0.88,0.2079,0.2077,<=1s,False,0,0,[],True,True,[],"[""price_missing_service_or_game_target"", ""service_fee_answer_missing_service_fee_source""]",[],"[""category_mismatch:clarification"", ""missing_any:JSON|ข้อมูล""]",[],"ขอรู้บริการหรือโซนก่อนครับ จะได้ตอบราคาให้ตรง
+เช่น `PS5 ราคาเท่าไหร่`, `Nintendo 3-4 คนกี่บาท`, `VR 30 นาทีราคาเท่าไหร่` หรือ `Tekken 8 ราคาเท่าไหร่`",False,pipeline:ambiguity_clarification,clarification,ambiguity_gate_clarification,0.22,"ขอรู้บริการหรือโซนก่อนครับ จะได้ตอบราคาให้ตรง
+เช่น `PS5 ราคาเท่าไหร่`, `Nintendo 3-4 คนกี่บาท`, `VR 30 นาทีราคาเท่าไหร่` หรือ `Tekken 8 ราคาเท่าไหร่`"
+MB-1560-GL-235,general_llm,general_llm,low,ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค อธิบายข้อดีข้อเสียสั้น ๆ,False,confirmed_failure,thai_substring_price_false_positive,Replace raw substring price detection so 'เสีย' inside 'ข้อเสีย' cannot trigger service-fee intent.,clarification,pipeline:ambiguity_clarification,clarification,ambiguity_gate_clarification,0.88,0.2321,0.232,<=1s,False,0,0,[],True,True,[],"[""price_missing_service_or_game_target"", ""service_fee_answer_missing_service_fee_source""]",[],"[""category_mismatch:clarification"", ""missing_any:ขอบคุณ""]",[],"ขอรู้บริการหรือโซนก่อนครับ จะได้ตอบราคาให้ตรง
+เช่น `PS5 ราคาเท่าไหร่`, `Nintendo 3-4 คนกี่บาท`, `VR 30 นาทีราคาเท่าไหร่` หรือ `Tekken 8 ราคาเท่าไหร่`",False,pipeline:ambiguity_clarification,clarification,ambiguity_gate_clarification,0.226,"ขอรู้บริการหรือโซนก่อนครับ จะได้ตอบราคาให้ตรง
+เช่น `PS5 ราคาเท่าไหร่`, `Nintendo 3-4 คนกี่บาท`, `VR 30 นาทีราคาเท่าไหร่` หรือ `Tekken 8 ราคาเท่าไหร่`"
+MB-1561-GL-236,general_llm,general_llm,low,แปลคำว่า reservation เป็นภาษาไทย อธิบายข้อดีข้อเสียสั้น ๆ,False,confirmed_failure,thai_substring_price_false_positive,Replace raw substring price detection so 'เสีย' inside 'ข้อเสีย' cannot trigger service-fee intent.,clarification,pipeline:ambiguity_clarification,clarification,ambiguity_gate_clarification,0.88,0.3239,0.3237,<=1s,False,0,0,[],True,True,[],"[""price_missing_service_or_game_target"", ""service_fee_answer_missing_service_fee_source""]",[],"[""category_mismatch:clarification"", ""missing_any:จอง""]",[],"ขอรู้บริการหรือโซนก่อนครับ จะได้ตอบราคาให้ตรง
+เช่น `PS5 ราคาเท่าไหร่`, `Nintendo 3-4 คนกี่บาท`, `VR 30 นาทีราคาเท่าไหร่` หรือ `Tekken 8 ราคาเท่าไหร่`",False,pipeline:ambiguity_clarification,clarification,ambiguity_gate_clarification,0.3612,"ขอรู้บริการหรือโซนก่อนครับ จะได้ตอบราคาให้ตรง
+เช่น `PS5 ราคาเท่าไหร่`, `Nintendo 3-4 คนกี่บาท`, `VR 30 นาทีราคาเท่าไหร่` หรือ `Tekken 8 ราคาเท่าไหร่`"
+MB-1562-GL-237,general_llm,general_llm,low,เขียนประโยคประชาสัมพันธ์กิจกรรมแบบสุภาพหนึ่งประโยค อธิบายข้อดีข้อเสียสั้น ๆ,False,confirmed_failure,thai_substring_price_false_positive,Replace raw substring price detection so 'เสีย' inside 'ข้อเสีย' cannot trigger service-fee intent.,clarification,pipeline:ambiguity_clarification,clarification,ambiguity_gate_clarification,0.88,0.2794,0.2793,<=1s,False,0,0,[],True,True,[],"[""price_missing_service_or_game_target"", ""service_fee_answer_missing_service_fee_source""]",[],"[""category_mismatch:clarification"", ""missing_any:กิจกรรม""]",[],"ขอรู้บริการหรือโซนก่อนครับ จะได้ตอบราคาให้ตรง
+เช่น `PS5 ราคาเท่าไหร่`, `Nintendo 3-4 คนกี่บาท`, `VR 30 นาทีราคาเท่าไหร่` หรือ `Tekken 8 ราคาเท่าไหร่`",False,pipeline:ambiguity_clarification,clarification,ambiguity_gate_clarification,0.2763,"ขอรู้บริการหรือโซนก่อนครับ จะได้ตอบราคาให้ตรง
+เช่น `PS5 ราคาเท่าไหร่`, `Nintendo 3-4 คนกี่บาท`, `VR 30 นาทีราคาเท่าไหร่` หรือ `Tekken 8 ราคาเท่าไหร่`"
+MB-1563-GL-238,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น อธิบายข้อดีข้อเสียสั้น ๆ,False,confirmed_failure,thai_substring_price_false_positive,Replace raw substring price detection so 'เสีย' inside 'ข้อเสีย' cannot trigger service-fee intent.,clarification,pipeline:ambiguity_clarification,clarification,ambiguity_gate_clarification,0.88,0.3617,0.3616,<=1s,False,0,0,[],True,True,[],"[""price_missing_service_or_game_target"", ""service_fee_answer_missing_service_fee_source""]",[],"[""category_mismatch:clarification"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"ขอรู้บริการหรือโซนก่อนครับ จะได้ตอบราคาให้ตรง
+เช่น `PS5 ราคาเท่าไหร่`, `Nintendo 3-4 คนกี่บาท`, `VR 30 นาทีราคาเท่าไหร่` หรือ `Tekken 8 ราคาเท่าไหร่`",False,pipeline:ambiguity_clarification,clarification,ambiguity_gate_clarification,0.3764,"ขอรู้บริการหรือโซนก่อนครับ จะได้ตอบราคาให้ตรง
+เช่น `PS5 ราคาเท่าไหร่`, `Nintendo 3-4 คนกี่บาท`, `VR 30 นาทีราคาเท่าไหร่` หรือ `Tekken 8 ราคาเท่าไหร่`"
+MB-1564-GL-239,general_llm,general_llm,low,GPU คืออะไรแบบเข้าใจง่าย อธิบายข้อดีข้อเสียสั้น ๆ,False,confirmed_failure,thai_substring_price_false_positive,Replace raw substring price detection so 'เสีย' inside 'ข้อเสีย' cannot trigger service-fee intent.,clarification,pipeline:ambiguity_clarification,clarification,ambiguity_gate_clarification,0.88,0.2816,0.2815,<=1s,False,0,0,[],True,True,[],"[""price_missing_service_or_game_target"", ""service_fee_answer_missing_service_fee_source""]",[],"[""category_mismatch:clarification"", ""missing_any:GPU|กราฟิก""]",[],"ขอรู้บริการหรือโซนก่อนครับ จะได้ตอบราคาให้ตรง
+เช่น `PS5 ราคาเท่าไหร่`, `Nintendo 3-4 คนกี่บาท`, `VR 30 นาทีราคาเท่าไหร่` หรือ `Tekken 8 ราคาเท่าไหร่`",False,pipeline:ambiguity_clarification,clarification,ambiguity_gate_clarification,0.293,"ขอรู้บริการหรือโซนก่อนครับ จะได้ตอบราคาให้ตรง
+เช่น `PS5 ราคาเท่าไหร่`, `Nintendo 3-4 คนกี่บาท`, `VR 30 นาทีราคาเท่าไหร่` หรือ `Tekken 8 ราคาเท่าไหร่`"
+MB-1565-GL-240,general_llm,general_llm,low,server กับ client ต่างกันยังไง อธิบายข้อดีข้อเสียสั้น ๆ,False,confirmed_failure,thai_substring_price_false_positive,Replace raw substring price detection so 'เสีย' inside 'ข้อเสีย' cannot trigger service-fee intent.,clarification,pipeline:ambiguity_clarification,clarification,ambiguity_gate_clarification,0.88,0.2877,0.2877,<=1s,False,0,0,[],True,True,[],"[""price_missing_service_or_game_target"", ""service_fee_answer_missing_service_fee_source""]",[],"[""category_mismatch:clarification"", ""missing_any:server|client""]",[],"ขอรู้บริการหรือโซนก่อนครับ จะได้ตอบราคาให้ตรง
+เช่น `PS5 ราคาเท่าไหร่`, `Nintendo 3-4 คนกี่บาท`, `VR 30 นาทีราคาเท่าไหร่` หรือ `Tekken 8 ราคาเท่าไหร่`",False,pipeline:ambiguity_clarification,clarification,ambiguity_gate_clarification,0.3089,"ขอรู้บริการหรือโซนก่อนครับ จะได้ตอบราคาให้ตรง
+เช่น `PS5 ราคาเท่าไหร่`, `Nintendo 3-4 คนกี่บาท`, `VR 30 นาทีราคาเท่าไหร่` หรือ `Tekken 8 ราคาเท่าไหร่`"
+MB-1573-GL-248,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น ให้คำจำกัดความแบบสั้น,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,1.1227,1.1226,1-3s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,1.183,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1583-GL-258,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น อธิบายด้วยคำง่าย ๆ,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,1.0229,1.0228,1-3s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,1.0495,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"
+MB-1586-GL-261,general_llm,general_llm,low,อธิบายคำว่า latency ในระบบคอมพิวเตอร์แบบสั้น ๆ ตอบแบบไม่ต้องมีตัวอย่างยาว,False,judge_false_negative_semantically_acceptable,keyword_judge_synonym_gap,Accept semantic equivalents such as 'ความล่าช้า' and add semantic/operation assertions.,general_llm,pipeline:general_llm_fallback,general,general_knowledge_query,0.58,2.3955,2.3953,1-3s,False,1,1968.26,"[""general_llm""]",True,True,[],"[""experimental_rag_fallback_general_route""]",[],"[""missing_any:latency|หน่วง""]",[],"ความล่าช้าในการตอบสนองระหว่างอุปกรณ์หรือระบบคอมพิวเตอร์ เช่น เวลาที่ข้อมูลเดินทางจากเครื่องหนึ่งไปยังอีกเครื่องหนึ่งจนได้รับการประมวลผลและตอบกลับมาแล้วครับ
+หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket",False,pipeline:general_llm_disabled,general,general_knowledge_query,0.45,"คำถามนี้ไม่ได้อยู่ในข้อมูลของ PSU Esports Studio - Phuket จึงยังตอบจากข้อมูลที่ยืนยันได้ไม่ได้ครับ
+ลองถามเรื่องเกม ปุ่ม อุปกรณ์ ราคา การจอง เวลาเปิด หรือกติกาของศูนย์ได้ครับ"
+MB-1593-GL-268,general_llm,general_llm,low,คีย์บอร์ด mechanical คืออะไรแบบสั้น ตอบแบบไม่ต้องมีตัวอย่างยาว,False,confirmed_failure,general_concept_misrouted_to_psu_equipment,Require PSU/inventory context for structured equipment; keep definition/comparison questions on the general path.,structured,pipeline:structured_equipment_catalog,equipment,list,0.96,1.3502,1.3501,1-3s,False,0,0,[],True,True,[],"[""fact_answer_may_be_too_verbose""]",[],"[""category_mismatch:equipment"", ""missing_any:คีย์บอร์ด|mechanical""]",[],"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home",False,pipeline:structured_equipment_catalog,equipment,list,1.317,"อุปกรณ์บนหน้า Home:
+PC Zone
+•    Gaming PC รุ่น MSI MAG Infinite S3 14th (จำนวน 10 เครื่อง)
+•    Gaming Monitor (จำนวน 10 จอ)
+•    Gaming Chair (จำนวน 10 ตัว)
+•    Gaming Gear ครบชุด ทั้ง Keyboard, Mouse และ Headset
+
+Cockpit Zone
+•    TV ขนาด 65 นิ้ว (จำนวน 2 เครื่อง)
+•    Racezone Full Cockpit V3 (จำนวน 2 ชุด)
+•    Logitech G923 TRUEFORCE Racing wheel พร้อม Driving Force Shifter (จำนวน 2 ชุด)
+•    Pulse Elite Wireless Headset (จำนวน 2 อัน)
+
+Nintendo Switch Zone
+•    TV ขนาด 86 นิ้ว (จำนวน 1 เครื่อง)
+•    Nintendo Switch OLED (จำนวน 1 เครื่อง)
+•    Sofa ขนาด 2 ที่นั่ง (จำนวน 2 ตัว)
+
+PlayStation 5 Zone
+•    PlayStation 5 Slim รุ่น Ultra HD Blu-Ray Disc Drive (จำนวน 2 เครื่อง)
+
+VR Zone
+•    PlayStation 5 Slim (จำนวน 1 เครื่อง)
+•    Sony PlayStation VR2 (จำนวน 1 ชุด)
+แหล่งข้อมูล: https://esports.phuket.psu.ac.th/home"

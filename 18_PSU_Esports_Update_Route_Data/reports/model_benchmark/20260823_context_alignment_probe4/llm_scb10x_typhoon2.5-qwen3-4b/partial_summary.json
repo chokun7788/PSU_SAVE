@@ -1,0 +1,66 @@
+{
+  "run_label": "llm_scb10x_typhoon2.5-qwen3-4b",
+  "run_kind": "llm",
+  "model": "scb10x/typhoon2.5-qwen3-4b",
+  "partial": true,
+  "total_requested": 4,
+  "completed": 4,
+  "total_wall_sec": 4.15,
+  "generated_at": "2026-08-23T21:42:45",
+  "total": 4,
+  "passed": 4,
+  "pass_rate": 100.0,
+  "avg_score": 100.0,
+  "avg_wall_sec": 1.0326,
+  "median_wall_sec": 1.2938,
+  "p95_wall_sec": 1.5334,
+  "max_wall_sec": 1.5334,
+  "llm_call_total": 3,
+  "mode_counts": {
+    "pipeline:structured_equipment_item": 1,
+    "pipeline:general_input_clarification": 1,
+    "pipeline:general_llm_fallback": 2
+  },
+  "route_counts": {
+    "equipment/equipment_item_lookup": 1,
+    "general/missing_required_input": 1,
+    "general/detail": 1,
+    "general/general_knowledge_query": 1
+  },
+  "group_counts": {
+    "equipment": 1,
+    "ambiguity_no_answer": 1,
+    "general_llm": 2
+  },
+  "quality_bucket_counts": {
+    "psu_fact": 2,
+    "general_llm": 2
+  },
+  "top_errors": {},
+  "by_group": {
+    "ambiguity_no_answer": {
+      "total": 1,
+      "passed": 1,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.0094,
+      "p95_wall_sec": 0.0094
+    },
+    "equipment": {
+      "total": 1,
+      "passed": 1,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 1.2406,
+      "p95_wall_sec": 1.2406
+    },
+    "general_llm": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 1.4402,
+      "p95_wall_sec": 1.5334
+    }
+  }
+}

@@ -22,6 +22,12 @@ from app.pipeline.entity_resolver import (
     resolve_game_entity,
 )
 from app.pipeline.game_title_correction import game_alias_entries
+from app.pipeline.query_signals import (
+    looks_like_explicit_definition_question,
+    looks_like_game_zone_ranking_query,
+    looks_like_general_concept_definition,
+    looks_like_price_amount_query,
+)
 from app.pipeline.schemas import EntityBundle, PipelineRoute, PipelineTrace, UniversalIntent
 
 
@@ -64,7 +70,10 @@ class IntentCandidateScore:
     reasons: tuple[str, ...] = ()
 
 
-_PRICE_TERMS = ("ราคา", "กี่บาท", "ค่าบริการ", "เท่าไหร่", "เท่าไร", "จ่าย", "เสีย")
+_PRICE_TERMS = (
+    "ราคา", "กี่บาท", "ค่าบริการ", "ค่าใช้จ่าย", "เท่าไหร่", "เท่าไร",
+    "เสียเงิน", "เสียกี่บาท", "เสียค่า", "ต้องจ่าย", "จ่ายเท่า", "คิดเงิน",
+)
 _BOOKING_TERMS = ("จอง", "booking", "book", "เข้าใช้", "ใช้บริการ", "เข้าเล่น", "จะเล่นต้องทำไง", "เล่นต้องทำไง")
 _CANCEL_TERMS = ("ยกเลิก", "คืนเงิน", "cancel")
 _GAME_LIST_TERMS = ("มีเกม", "เกมอะไร", "รายชื่อเกม", "รายการเกม", "เกมทั้งหมด", "กี่เกม")
@@ -271,11 +280,15 @@ def _looks_like_price_query(query: str, entities: EntityBundle) -> bool:
         "payment timeout",
     ):
         return False
-    return entities.price_intent or _has(query, *_PRICE_TERMS)
+    return entities.price_intent or looks_like_price_amount_query(query)
 
 
 def _looks_like_booking_query(query: str) -> bool:
     return _has(query, *_BOOKING_TERMS)
+
+
+def _looks_like_bare_booking_query(query: str) -> bool:
+    return normalize_text(query).strip() in {"จอง", "booking", "book"}
 
 
 def _looks_like_control_query(query: str) -> bool:
@@ -383,7 +396,9 @@ def _score_intent_candidates(
     if has_service_or_zone and _looks_like_booking_query(query):
         _add_candidate(scores, "reservation", "booking_policy", 0.20, "booking_target")
 
-    if _has(query, *_GAME_LIST_TERMS):
+    if looks_like_game_zone_ranking_query(query):
+        _add_candidate(scores, "games", "list", 0.80, "game_zone_ranking_terms")
+    elif _has(query, *_GAME_LIST_TERMS):
         _add_candidate(scores, "games", "list", 0.45, "game_list_terms")
     if _has(query, *_GAME_DETAIL_TERMS):
         _add_candidate(scores, "games", "detail", 0.35, "game_detail_terms")
@@ -403,9 +418,19 @@ def _score_intent_candidates(
         _add_candidate(scores, "game_controls", "control", 0.28, "bare_play_howto")
         _add_candidate(scores, "reservation", "booking_policy", 0.28, "bare_play_howto")
 
-    if _has(query, *_EQUIPMENT_TERMS) and not game_location_query:
+    if (
+        _has(query, *_EQUIPMENT_TERMS)
+        and not game_location_query
+        and not looks_like_general_concept_definition(query)
+        and not looks_like_game_zone_ranking_query(query)
+    ):
         _add_candidate(scores, "equipment", "list", 0.45, "equipment_terms")
-    if _has(query, *_EQUIPMENT_TERMS) and has_service_or_zone and not game_location_query:
+    if (
+        _has(query, *_EQUIPMENT_TERMS)
+        and has_service_or_zone
+        and not game_location_query
+        and not looks_like_game_zone_ranking_query(query)
+    ):
         _add_candidate(scores, "equipment", "list", 0.20, "equipment_target")
 
     if _has(query, *_SCHEDULE_TERMS):
@@ -599,6 +624,12 @@ def _should_margin_clarify(
         return False
     if route.category == "multi_question":
         return False
+    if looks_like_game_zone_ranking_query(query):
+        return False
+    if has_known_game and looks_like_explicit_definition_question(query):
+        return False
+    if looks_like_general_concept_definition(query):
+        return False
     if price_query and (has_known_game or has_service_or_zone):
         return False
     if has_known_game and _has(query, "เครื่องไหน", "โซนไหน", "zone ไหน", "เล่นที่ไหน", "เล่นได้ที่ไหน", "อยู่โซน", "อยู่เครื่อง", "มีในเครื่อง"):
@@ -752,6 +783,26 @@ def evaluate_ambiguity_gate(
             "damage/penalty query should use policy facts instead of control/price clarification",
             tuple(flags),
             None,
+            {
+                "route": f"{route.category}/{route.intent}",
+                "intent": f"{intent.domain}/{intent.operation}",
+                **entity_metadata,
+                **candidate_metadata,
+            },
+        )
+
+    if _looks_like_bare_booking_query(q) and not has_target:
+        flags.append("bare_booking_missing_operation_or_target")
+        return AmbiguityGateResult(
+            "clarify",
+            0.90,
+            "bare booking query needs an operation or service target",
+            tuple(flags),
+            (
+                "ต้องการถามเรื่องการจองส่วนไหนครับ เช่น วิธีจอง เงื่อนไขการจอง "
+                "หรือจะจองบริการ/โซนใด\n"
+                "พิมพ์เพิ่มได้ เช่น `จองยังไง`, `จอง PS5 ยังไง` หรือ `หลังจองต้องจ่ายภายในกี่นาที`"
+            ),
             {
                 "route": f"{route.category}/{route.intent}",
                 "intent": f"{intent.domain}/{intent.operation}",

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PSU Esports Dynamic RAG Document",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "text",
+    "category",
+    "source_url",
+    "trust_level",
+    "updated_at",
+    "status"
+  ],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "text": {"type": "string", "minLength": 1},
+    "category": {"enum": ["knowledge", "events_news", "about_us", "games", "equipment"]},
+    "source_url": {"type": "string", "minLength": 1},
+    "trust_level": {"enum": ["official", "internal_verified", "user_confirmed", "secondary"]},
+    "updated_at": {"type": "string", "format": "date"},
+    "status": {"enum": ["draft", "published", "archived"]},
+    "tags": {"type": "array", "items": {"type": "string"}},
+    "aliases": {"type": "array", "items": {"type": "string"}},
+    "priority": {"type": "integer", "minimum": 0, "maximum": 100},
+    "time_sensitive": {"type": "boolean"},
+    "freshness_verified": {"type": "boolean"},
+    "valid_from": {"type": "string"},
+    "valid_until": {"type": "string"},
+    "retrieved_at": {"type": "string"}
+  },
+  "additionalProperties": true
+}
+

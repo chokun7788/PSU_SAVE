@@ -16,6 +16,7 @@ from app.core.source_registry import (
     make_source_hits,
 )
 from app.pipeline.entity_resolver import resolve_game_entity
+from app.pipeline.query_signals import looks_like_game_zone_ranking_query
 from app.pipeline.schemas import PipelineRoute, UniversalIntent
 
 
@@ -685,7 +686,14 @@ def _service_game_availability_answer(query: str, intent: UniversalIntent) -> St
     if catalog_related and not service_scope_related:
         return None
     wants_game_location = _looks_like_game_presence_or_location_query(q)
-    game = _detect_game(query, intent.target) if wants_game_location or not catalog_related else None
+    booking_selection = _looks_like_booking_selection_query(query)
+    # A service catalog request has no game target. Scanning every fuzzy title
+    # here adds seconds and can mistake ordinary request words for a game name.
+    should_detect_game = wants_game_location or booking_selection
+    allow_fuzzy_game = wants_game_location or (
+        booking_selection and _has(q, "เกม", "game")
+    )
+    game = _detect_game(query, intent.target, allow_fuzzy=allow_fuzzy_game) if should_detect_game else None
     game_key = _game_key(str(game.get("game") or "")) if game else ""
     game_related = bool(game and wants_game_location)
     capacity_related = _looks_like_service_capacity_query(query)
@@ -811,7 +819,7 @@ def _detect_zone(query: str, target: str = "") -> str | None:
     return None
 
 
-def _detect_game(query: str, target: str = "") -> dict[str, Any] | None:
+def _detect_game(query: str, target: str = "", *, allow_fuzzy: bool = True) -> dict[str, Any] | None:
     text = _normalize_game_title_roman_typos(f"{query} {target}".strip())
     q_norm = normalize_text(text)
     q_compact = _compact(text)
@@ -826,6 +834,9 @@ def _detect_game(query: str, target: str = "") -> dict[str, Any] | None:
             best = (score, alias_len, row)
     if best is not None:
         return best[2]
+
+    if not allow_fuzzy:
+        return None
 
     for alias_norm, _alias_compact, alias_len, row in _game_alias_entries():
         if alias_len < 5:
@@ -1236,11 +1247,7 @@ def _game_catalog_result(q: str, zone: str | None, intent: UniversalIntent) -> S
 
 def _game_zone_ranking_answer(query: str) -> StructuredToolResult | None:
     q = normalize_text(query)
-    if not _has(q, "เกม"):
-        return None
-    if not _has(q, "เยอะสุด", "มากสุด", "สูงสุด", "น้อยสุด", "น้อยที่สุด", "อันดับ", "จัดอันดับ", "เรียง"):
-        return None
-    if not _has(q, "อุปกรณ์", "เครื่อง", "โซน", "zone", "บริการ", "ที่ไหน", "ไหน"):
+    if not looks_like_game_zone_ranking_query(q):
         return None
 
     grouped = _games_by_zone()
@@ -2313,14 +2320,36 @@ def _reservation_answer(query: str, intent: UniversalIntent) -> StructuredToolRe
     q = normalize_text(query)
     if _has(q, "เปิด", "ปิด", "เวลา", "กี่โมง", "รอบ", "วันนี้", "พรุ่งนี้", "วันจันทร์", "วันศุกร์"):
         return None
-    best: tuple[float, dict[str, Any]] | None = None
+    best: tuple[float, int, dict[str, Any], str] | None = None
     for fact in RESERVATION_FACTS:
-        ok, _alias, score = contains_alias(q, list(fact["aliases"]), fuzzy=True, threshold=0.84)
-        if ok and (best is None or score > best[0]):
-            best = (score, fact)
+        ok, alias, score = contains_alias(q, list(fact["aliases"]), fuzzy=False, threshold=0.84)
+        alias_length = len(normalize_text(alias).replace(" ", ""))
+        if ok and (best is None or (score, alias_length) > (best[0], best[1])):
+            best = (score, alias_length, fact, alias)
+
+    match_method = "exact"
     if best is None:
-        return None
-    fact = best[1]
+        match_method = "fuzzy"
+        flattened_aliases = [
+            str(alias)
+            for fact in RESERVATION_FACTS
+            for alias in fact["aliases"]
+        ]
+        ok, alias, score = contains_alias(q, flattened_aliases, fuzzy=True, threshold=0.84)
+        if not ok:
+            return None
+        owner = next(
+            (
+                fact for fact in RESERVATION_FACTS
+                if alias in fact["aliases"]
+            ),
+            None,
+        )
+        if owner is None:
+            return None
+        best = (score, len(normalize_text(alias).replace(" ", "")), owner, alias)
+
+    fact = best[2]
     fact_answer = str(fact["answer"])
     if fact["key"] == "booking_steps" and _has(q, "pc", "คอม", "computer"):
         fact_answer = "สำหรับ PC ให้เลือกบริการ/โซน PC ในระบบจอง แล้วทำตามขั้นตอนนี้ครับ\n" + fact_answer
@@ -2330,7 +2359,13 @@ def _reservation_answer(query: str, intent: UniversalIntent) -> StructuredToolRe
         [_hit(str(fact["key"]), "reservation", RESERVATION_URL, str(fact["key"]))],
         "structured_reservation_fact",
         0.94,
-        {"tool": "get_reservation_fact", "fact_key": fact["key"], "score": best[0]},
+        {
+            "tool": "get_reservation_fact",
+            "fact_key": fact["key"],
+            "score": best[0],
+            "match_method": match_method,
+            "matched_alias": best[3],
+        },
     )
 
 
@@ -2427,10 +2462,17 @@ def _booking_selection_answer(query: str) -> StructuredToolResult | None:
 
     lines: list[str] | None = None
     key = "booking_selection_general"
-    access_query = _looks_like_play_access_query(query) or (
-        _has(q, "จอง", "booking", "book") and _detect_game(query) is not None
+    play_access_query = _looks_like_play_access_query(query)
+    booking_signal = _has(q, "จอง", "booking", "book")
+    detected_booking_game = (
+        _detect_game(query, allow_fuzzy=_has(q, "เกม", "game"))
+        if play_access_query or booking_signal
+        else None
+    )
+    access_query = play_access_query or (
+        booking_signal and detected_booking_game is not None
     ) or (
-        _has(q, "จอง", "booking", "book") and _has(q, "call of duty", "cod", "คอลออฟดิวตี้", "คอล ออฟ ดิวตี้")
+        booking_signal and _has(q, "call of duty", "cod", "คอลออฟดิวตี้", "คอล ออฟ ดิวตี้")
     )
     if access_query:
         cod_family = _call_of_duty_booking_family_answer(query)
@@ -2446,7 +2488,7 @@ def _booking_selection_answer(query: str) -> StructuredToolResult | None:
             "•    จากนั้นเลือกวัน รอบเวลา กรอกข้อมูลผู้ใช้บริการ ชำระเงิน และแนบสลิปเพื่อยืนยันการจอง",
         ]
         key = "booking_selection_mario_family"
-    access_game = _detect_game(query) if access_query else None
+    access_game = detected_booking_game if access_query else None
     if lines is None and access_game is not None:
         by_game_result = _booking_selection_for_detected_game(query, access_game)
         if by_game_result is not None:
@@ -2679,6 +2721,18 @@ def answer_with_structured_tool(
         if intent.domain not in {"", "unknown", "general"}
         else route.category
     )
+    # Ranking is a narrower operation than a generic zone/game availability
+    # lookup, so it must get first refusal when both signals are present.
+    ranking_result = _game_zone_ranking_answer(query) if structured_scope == "games" else None
+    if ranking_result is not None:
+        return StructuredToolResult(
+            answer=ranking_result.answer,
+            hits=ranking_result.hits,
+            mode=ranking_result.mode,
+            confidence=ranking_result.confidence,
+            evidence={**ranking_result.evidence, "elapsed": round(time.perf_counter() - started, 4)},
+        )
+
     availability_result = (
         _service_game_availability_answer(query, intent)
         if structured_scope in {"games", "reservation"}
@@ -2691,16 +2745,6 @@ def answer_with_structured_tool(
             mode=availability_result.mode,
             confidence=availability_result.confidence,
             evidence={**availability_result.evidence, "elapsed": round(time.perf_counter() - started, 4)},
-        )
-
-    ranking_result = _game_zone_ranking_answer(query) if structured_scope == "games" else None
-    if ranking_result is not None:
-        return StructuredToolResult(
-            answer=ranking_result.answer,
-            hits=ranking_result.hits,
-            mode=ranking_result.mode,
-            confidence=ranking_result.confidence,
-            evidence={**ranking_result.evidence, "elapsed": round(time.perf_counter() - started, 4)},
         )
 
     booking_selection_result = (

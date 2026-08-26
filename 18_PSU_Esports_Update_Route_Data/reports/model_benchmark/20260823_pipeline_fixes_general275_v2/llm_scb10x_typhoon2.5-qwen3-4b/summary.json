@@ -1,0 +1,88 @@
+{
+  "run_label": "llm_scb10x_typhoon2.5-qwen3-4b",
+  "run_kind": "llm",
+  "model": "scb10x/typhoon2.5-qwen3-4b",
+  "allow_llm": true,
+  "timeout_sec": 9.0,
+  "num_predict": 128,
+  "ollama_url": "http://127.0.0.1:11434",
+  "tool_router": false,
+  "facts_composer": false,
+  "disable_health_manager": false,
+  "cases": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\model_benchmark_1500.jsonl",
+  "limit": 0,
+  "source_case_count": 275,
+  "case_ids": "",
+  "selection_strategy": "first_n",
+  "warmup": {
+    "enabled": true,
+    "ok": true,
+    "elapsed_sec": 0.8433,
+    "response_chars": 17,
+    "done_reason": "length",
+    "load_duration": 439676400,
+    "prompt_eval_duration": 59335000,
+    "eval_duration": 240341000,
+    "error": ""
+  },
+  "pipeline_warmup": {
+    "enabled": true,
+    "ok": true,
+    "elapsed_sec": 11.4971,
+    "warmed": [
+      "game_title_aliases",
+      "structured_tools",
+      "routing_data",
+      "retrieval_data",
+      "probe_queries"
+    ],
+    "errors": [],
+    "timings": {
+      "game_title_aliases": 0.8375,
+      "structured_tools": 0.5204,
+      "routing_data": 0.1436,
+      "retrieval_data": 1.2321,
+      "probe_queries": 8.7634
+    }
+  },
+  "resumed_from": 0,
+  "total_wall_sec": 4591.053,
+  "generated_at": "2026-08-23T20:46:27",
+  "total": 275,
+  "passed": 274,
+  "pass_rate": 99.64,
+  "avg_score": 99.81,
+  "avg_wall_sec": 16.6926,
+  "median_wall_sec": 1.4843,
+  "p95_wall_sec": 2.7585,
+  "max_wall_sec": 4148.2628,
+  "llm_call_total": 275,
+  "mode_counts": {
+    "pipeline:general_llm_fallback": 274,
+    "pipeline:general_llm_unavailable": 1
+  },
+  "route_counts": {
+    "general/detail": 168,
+    "general/general_knowledge_query": 107
+  },
+  "group_counts": {
+    "general_llm": 275
+  },
+  "quality_bucket_counts": {
+    "general_llm": 275
+  },
+  "top_errors": {
+    "missing_any:ขอบคุณ": 1,
+    "llm_required_but_unavailable": 1
+  },
+  "by_group": {
+    "general_llm": {
+      "total": 275,
+      "passed": 274,
+      "pass_rate": 99.64,
+      "avg_score": 99.81,
+      "avg_wall_sec": 16.6926,
+      "p95_wall_sec": 2.7585
+    }
+  }
+}

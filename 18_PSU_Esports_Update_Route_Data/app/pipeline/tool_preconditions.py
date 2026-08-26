@@ -3,6 +3,11 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from app.core.normalization import normalize_text
+from app.pipeline.query_signals import (
+    looks_like_game_zone_ranking_query,
+    looks_like_general_concept_definition,
+    looks_like_price_amount_query,
+)
 from app.pipeline.schemas import PipelineRoute, UniversalIntent
 
 
@@ -100,7 +105,7 @@ def looks_like_price_query(question: str) -> bool:
         "payment timeout",
     ):
         return False
-    return _has(question, "กี่บาท", "ราคา", "ค่าบริการ", "เสีย", "จ่าย", "คิดเงิน", "คำนวณ")
+    return looks_like_price_amount_query(question)
 
 
 def looks_like_known_game_price_query(question: str) -> bool:
@@ -207,6 +212,8 @@ def looks_like_explicit_control_query(question: str) -> bool:
 
 
 def looks_like_equipment_query(question: str) -> bool:
+    if looks_like_general_concept_definition(question) or looks_like_game_zone_ranking_query(question):
+        return False
     return _has(
         question,
         "อุปกรณ์",
@@ -277,6 +284,11 @@ def looks_like_people_or_role_query(question: str) -> bool:
 def structured_capability_id_for(question: str, route: PipelineRoute, intent: UniversalIntent | None) -> str | None:
     domain = intent.domain if intent and intent.domain else route.category
 
+    if looks_like_general_concept_definition(question):
+        return None
+    if looks_like_game_zone_ranking_query(question):
+        return "structured.games"
+
     if domain in {"competition_rules", "rules"} or route.category == "competition_rules":
         return None
 
@@ -333,6 +345,8 @@ def evaluate_capability_precondition(
             return ToolPreconditionResult(capability_id, False, "people_or_role_query_must_not_use_game_catalog")
         if route.category == "competition_rules" and looks_like_competition_rule_query(question):
             return ToolPreconditionResult(capability_id, False, "competition_rule_query_must_not_use_game_catalog")
+        if looks_like_game_zone_ranking_query(question):
+            return ToolPreconditionResult(capability_id, True, "game_zone_ranking_requires_game_catalog")
         if looks_like_specific_game_detail_query(question):
             return ToolPreconditionResult(capability_id, True, "specific_game_detail_allowed")
         if looks_like_game_catalog_query(question) or domain == "games":
@@ -347,6 +361,10 @@ def evaluate_capability_precondition(
         return ToolPreconditionResult(capability_id, False, "not_a_game_control_query")
 
     if capability_id == "structured.equipment":
+        if looks_like_general_concept_definition(question):
+            return ToolPreconditionResult(capability_id, False, "general_definition_must_not_use_equipment_inventory")
+        if looks_like_game_zone_ranking_query(question):
+            return ToolPreconditionResult(capability_id, False, "game_zone_ranking_must_not_use_equipment_inventory")
         if looks_like_damage_penalty_query(question):
             return ToolPreconditionResult(capability_id, False, "damage_penalty_query_must_not_use_equipment_tool")
         if looks_like_booking_query(question):

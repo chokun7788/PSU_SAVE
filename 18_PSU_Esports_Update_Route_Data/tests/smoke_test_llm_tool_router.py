@@ -131,7 +131,7 @@ def test_engine_can_refine_general_to_retrieval_route() -> None:
     engine.resolve_tool_routing = fake_resolve
     try:
         result = engine.answer_question_pipeline_debug(
-            "ขอข้อมูลเอกสารกติกาที่เกี่ยวข้อง",
+            "ขอข้อมูลเอกสารที่เกี่ยวข้อง",
             experimental_rag_fallback=False,
             experimental_allow_llm=True,
         )

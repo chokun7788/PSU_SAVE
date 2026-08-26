@@ -1,0 +1,107 @@
+{
+  "run_label": "llm_scb10x_typhoon2.5-qwen3-4b",
+  "run_kind": "llm",
+  "model": "scb10x/typhoon2.5-qwen3-4b",
+  "allow_llm": true,
+  "timeout_sec": 9.0,
+  "num_predict": 128,
+  "ollama_url": "http://127.0.0.1:11434",
+  "tool_router": false,
+  "facts_composer": false,
+  "disable_health_manager": false,
+  "cases": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\model_benchmark_1500.jsonl",
+  "limit": 0,
+  "source_case_count": 4,
+  "case_ids": "MB-0450-E-049,MB-0650-ANA-024,MB-1326-GL-001,MB-1328-GL-003",
+  "selection_strategy": "first_n",
+  "warmup": {
+    "enabled": true,
+    "ok": true,
+    "elapsed_sec": 0.8428,
+    "response_chars": 17,
+    "done_reason": "length",
+    "load_duration": 387584900,
+    "prompt_eval_duration": 228060000,
+    "eval_duration": 136889000,
+    "error": ""
+  },
+  "pipeline_warmup": {
+    "enabled": true,
+    "ok": true,
+    "elapsed_sec": 10.6941,
+    "warmed": [
+      "game_title_aliases",
+      "structured_tools",
+      "routing_data",
+      "retrieval_data",
+      "probe_queries"
+    ],
+    "errors": [],
+    "timings": {
+      "game_title_aliases": 0.647,
+      "structured_tools": 0.4463,
+      "routing_data": 0.1289,
+      "retrieval_data": 1.063,
+      "probe_queries": 8.4088
+    }
+  },
+  "resumed_from": 0,
+  "total_wall_sec": 4.152,
+  "generated_at": "2026-08-23T21:42:45",
+  "total": 4,
+  "passed": 4,
+  "pass_rate": 100.0,
+  "avg_score": 100.0,
+  "avg_wall_sec": 1.0326,
+  "median_wall_sec": 1.2938,
+  "p95_wall_sec": 1.5334,
+  "max_wall_sec": 1.5334,
+  "llm_call_total": 3,
+  "mode_counts": {
+    "pipeline:structured_equipment_item": 1,
+    "pipeline:general_input_clarification": 1,
+    "pipeline:general_llm_fallback": 2
+  },
+  "route_counts": {
+    "equipment/equipment_item_lookup": 1,
+    "general/missing_required_input": 1,
+    "general/detail": 1,
+    "general/general_knowledge_query": 1
+  },
+  "group_counts": {
+    "equipment": 1,
+    "ambiguity_no_answer": 1,
+    "general_llm": 2
+  },
+  "quality_bucket_counts": {
+    "psu_fact": 2,
+    "general_llm": 2
+  },
+  "top_errors": {},
+  "by_group": {
+    "ambiguity_no_answer": {
+      "total": 1,
+      "passed": 1,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.0094,
+      "p95_wall_sec": 0.0094
+    },
+    "equipment": {
+      "total": 1,
+      "passed": 1,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 1.2406,
+      "p95_wall_sec": 1.2406
+    },
+    "general_llm": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 1.4402,
+      "p95_wall_sec": 1.5334
+    }
+  }
+}

@@ -171,14 +171,20 @@ Return JSON:
 def _call_ollama(prompt: str) -> dict[str, Any] | None:
     url = os.getenv("OLLAMA_URL", "http://127.0.0.1:11434").rstrip("/") + "/api/generate"
     model = os.getenv("PSU_TOOL_ROUTER_MODEL") or os.getenv("PSU_CHATBOT_OLLAMA_MODEL", "scb10x/typhoon2.5-qwen3-4b")
+    num_ctx = max(
+        1024,
+        int(os.getenv("PSU_TOOL_ROUTER_NUM_CTX", os.getenv("PSU_GENERAL_LLM_NUM_CTX", "3072"))),
+    )
     payload = {
         "model": model,
         "prompt": prompt,
         "stream": False,
         "think": False,
+        "keep_alive": os.getenv("PSU_OLLAMA_KEEP_ALIVE", "10m"),
         "options": {
             "temperature": 0,
             "num_predict": int(os.getenv("PSU_TOOL_ROUTER_NUM_PREDICT", "160")),
+            "num_ctx": num_ctx,
         },
     }
     request = urllib.request.Request(

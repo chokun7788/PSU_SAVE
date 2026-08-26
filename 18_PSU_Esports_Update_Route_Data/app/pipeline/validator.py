@@ -4,6 +4,7 @@ import re
 
 from app.core.normalization import normalize_text
 from app.pipeline.answer_contracts import validate_answer_contract
+from app.pipeline.query_signals import has_live_evidence, looks_like_dynamic_freshness_query, looks_like_price_amount_query
 from app.core.source_registry import (
     PC_SERVICE_FEE_LOCAL_UPDATE_20260727_ID,
     SERVICE_FEE_IMAGE_2026_ID,
@@ -42,7 +43,7 @@ def _looks_like_booking_query(question: str) -> bool:
 def _looks_like_price_query(question: str) -> bool:
     if _has(question, "ค่าปรับ", "ทำพัง", "เสียหาย", "ชำรุด", "ชดใช้", "รับผิดชอบ"):
         return False
-    return _has(question, "กี่บาท", "ราคา", "ค่าบริการ", "เสีย", "จ่าย", "คิดเงิน", "คำนวณ")
+    return looks_like_price_amount_query(question)
 
 
 def _looks_like_control_query(question: str) -> bool:
@@ -252,6 +253,17 @@ def validate_answer(
     warnings: list[str] = []
     source_ids = _hit_source_ids(hits)
     source_blob = _hit_source_blob(hits).lower()
+
+    if looks_like_dynamic_freshness_query(question) and not has_live_evidence(hits):
+        safe_freshness_abstention = _has(
+            answer,
+            "ยังไม่มีแหล่งข้อมูลสด",
+            "ยืนยันข้อมูลปัจจุบันไม่ได้",
+            "ไม่สามารถยืนยันข้อมูลล่าสุด",
+            "จึงไม่ควรระบุ",
+        )
+        if not safe_freshness_abstention:
+            errors.append("freshness_claim_without_live_evidence")
 
     if route.category == "schedule" and "24" not in q and ("24 ชั่วโมง" in text or "24 hours" in text):
         errors.append("schedule_answer_mentions_24h_without_user_asking")

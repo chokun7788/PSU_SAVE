@@ -35,6 +35,11 @@ _SLOT_SEMAPHORE: threading.BoundedSemaphore | None = None
 _SLOT_LIMIT: int | None = None
 _HELD_SLOT: ContextVar[threading.BoundedSemaphore | None] = ContextVar("psu_llm_slot", default=None)
 
+# Only calls that directly establish model availability may mutate the
+# model-wide circuit. Optional planner/reviewer failures remain isolated to
+# their own kind so they cannot disable the final general-answer path.
+_MODEL_HEALTH_WRITER_KINDS = frozenset({"preflight", "general_llm"})
+
 
 def _truthy(value: str | None, *, default: bool = True) -> bool:
     if value is None or value == "":
@@ -58,6 +63,11 @@ def _cooldown_sec() -> float:
     return max(1.0, float(os.getenv("PSU_LLM_HEALTH_COOLDOWN_SEC", "90")))
 
 
+def _failure_window_sec() -> float:
+    """Maximum gap for failures to count as consecutive."""
+    return max(0.0, float(os.getenv("PSU_LLM_HEALTH_FAILURE_WINDOW_SEC", "30")))
+
+
 def _now() -> float:
     return time.time()
 
@@ -76,6 +86,10 @@ def _state(kind: str, model: str) -> LlmHealthState:
 
 def _model_state(model: str) -> LlmHealthState:
     return _STATES.setdefault(_model_key(model), LlmHealthState())
+
+
+def _updates_model_health(kind: str) -> bool:
+    return str(kind or "").strip().lower() in _MODEL_HEALTH_WRITER_KINDS
 
 
 def _concurrency_limit() -> int:
@@ -167,6 +181,7 @@ def llm_call_allowed(kind: str, model: str) -> tuple[bool, dict[str, Any]]:
         "llm_health_cooldown_remaining_sec": round(remaining, 2),
         "llm_health_last_error_type": model_state.last_error_type or kind_state.last_error_type,
         "llm_health_last_error": model_state.last_error or kind_state.last_error,
+        "llm_health_failure_scope": "model_and_kind" if _updates_model_health(kind) else "kind_only",
     }
     if not allowed:
         metadata["llm_health_reason"] = "circuit breaker cooldown active"
@@ -206,11 +221,13 @@ def record_llm_success(kind: str, model: str, *, elapsed_ms: float, detail: str 
         "at": round(_now(), 3),
     }
     _record_success_for_state(_state(kind, model), elapsed_ms=elapsed_ms, event=event)
-    _record_success_for_state(_model_state(model), elapsed_ms=elapsed_ms, event=event)
+    if _updates_model_health(kind):
+        _record_success_for_state(_model_state(model), elapsed_ms=elapsed_ms, event=event)
     return {
         "llm_health_enabled": True,
         "llm_health_status": "ok",
         "llm_health_failures": 0,
+        "llm_health_failure_scope": "model_and_kind" if _updates_model_health(kind) else "kind_only",
     }
 
 
@@ -222,13 +239,23 @@ def _record_failure_for_state(
     error: str,
     elapsed_ms: float,
 ) -> None:
+    now = _now()
+    failure_window = _failure_window_sec()
+    if (
+        failure_window > 0
+        and state.failures > 0
+        and state.last_checked_at > 0
+        and now - state.last_checked_at > failure_window
+        and state.cooldown_until <= now
+    ):
+        state.failures = 0
     state.failures += 1
     state.last_error_type = error_type
     state.last_error = error[:300]
     state.last_elapsed_ms = round(elapsed_ms, 2)
-    state.last_checked_at = _now()
+    state.last_checked_at = now
     if state.failures >= _failure_threshold():
-        state.cooldown_until = max(state.cooldown_until, _now() + _cooldown_sec())
+        state.cooldown_until = max(state.cooldown_until, now + _cooldown_sec())
     _append_event(
         state,
         {
@@ -239,7 +266,7 @@ def _record_failure_for_state(
             "elapsed_ms": round(elapsed_ms, 2),
             "failures": state.failures,
             "cooldown_until": round(state.cooldown_until, 3) if state.cooldown_until else 0.0,
-            "at": round(_now(), 3),
+            "at": round(now, 3),
         },
     )
 
@@ -258,7 +285,8 @@ def record_llm_failure(
     kind_state = _state(kind, model)
     model_state = _model_state(model)
     _record_failure_for_state(kind_state, kind=kind, error_type=error_type, error=error, elapsed_ms=elapsed_ms)
-    _record_failure_for_state(model_state, kind=kind, error_type=error_type, error=error, elapsed_ms=elapsed_ms)
+    if _updates_model_health(kind):
+        _record_failure_for_state(model_state, kind=kind, error_type=error_type, error=error, elapsed_ms=elapsed_ms)
     cooldown_until = max(kind_state.cooldown_until, model_state.cooldown_until)
     remaining = max(0.0, cooldown_until - _now())
     return {
@@ -268,6 +296,7 @@ def record_llm_failure(
         "llm_health_cooldown_remaining_sec": round(remaining, 2),
         "llm_health_last_error_type": error_type,
         "llm_health_last_error": error[:300],
+        "llm_health_failure_scope": "model_and_kind" if _updates_model_health(kind) else "kind_only",
     }
 
 
@@ -285,7 +314,10 @@ def open_llm_circuit(
         return {"llm_health_enabled": False}
     now = _now()
     cooldown = max(1.0, float(cooldown_sec if cooldown_sec is not None else _cooldown_sec()))
-    for state in (_state(kind, model), _model_state(model)):
+    states = [_state(kind, model)]
+    if _updates_model_health(kind):
+        states.append(_model_state(model))
+    for state in states:
         state.failures = max(state.failures + 1, _failure_threshold())
         state.last_error_type = error_type
         state.last_error = error[:300]
@@ -312,6 +344,7 @@ def open_llm_circuit(
         "llm_health_cooldown_remaining_sec": round(cooldown, 2),
         "llm_health_last_error_type": error_type,
         "llm_health_last_error": error[:300],
+        "llm_health_failure_scope": "model_and_kind" if _updates_model_health(kind) else "kind_only",
     }
 
 
@@ -347,6 +380,7 @@ def llm_health_snapshot() -> dict[str, Any]:
     return {
         "enabled": llm_health_enabled(),
         "failure_threshold": _failure_threshold(),
+        "failure_window_sec": _failure_window_sec(),
         "cooldown_sec": _cooldown_sec(),
         "states": states,
     }
@@ -358,10 +392,16 @@ def preflight_ollama(
     kind: str = "preflight",
     timeout_sec: float | None = None,
     num_predict: int | None = None,
+    num_ctx: int | None = None,
     ollama_url: str | None = None,
 ) -> dict[str, Any]:
-    timeout = float(timeout_sec if timeout_sec is not None else os.getenv("PSU_LLM_PREFLIGHT_TIMEOUT_SEC", "5"))
+    timeout = float(timeout_sec if timeout_sec is not None else os.getenv("PSU_LLM_PREFLIGHT_TIMEOUT_SEC", "90"))
     predict = int(num_predict if num_predict is not None else os.getenv("PSU_LLM_PREFLIGHT_NUM_PREDICT", "1"))
+    context_size = int(
+        num_ctx
+        if num_ctx is not None
+        else os.getenv("PSU_LLM_PREFLIGHT_NUM_CTX", os.getenv("PSU_GENERAL_LLM_NUM_CTX", "3072"))
+    )
     base_url = (ollama_url or os.getenv("OLLAMA_URL", DEFAULT_OLLAMA_URL)).rstrip("/")
     prompt = "ตอบ OK เท่านั้น"
     payload = {
@@ -373,7 +413,7 @@ def preflight_ollama(
         "options": {
             "temperature": 0,
             "num_predict": predict,
-            "num_ctx": 512,
+            "num_ctx": context_size,
         },
     }
     request = urllib.request.Request(
@@ -397,6 +437,10 @@ def preflight_ollama(
                 "elapsed_ms": round(elapsed_ms, 2),
                 "response_chars": len(answer),
                 "done_reason": data.get("done_reason") or "",
+                "num_ctx": context_size,
+                "load_duration": data.get("load_duration") or 0,
+                "prompt_eval_duration": data.get("prompt_eval_duration") or 0,
+                "eval_duration": data.get("eval_duration") or 0,
                 "health": health,
             }
         error = "empty response"

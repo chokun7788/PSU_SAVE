@@ -5,10 +5,10 @@ import os
 import time
 import urllib.error
 import urllib.request
+from contextvars import ContextVar
 from dataclasses import dataclass
 from typing import Any
 
-from app.pipeline.chatbot_role import CHATBOT_ROLE_TH, FACTS_COMPOSER_ROLE
 from app.pipeline.claim_validator import validate_grounded_claims
 from app.pipeline.llm_health import llm_call_allowed, record_llm_failure, record_llm_success, release_llm_slot
 from app.pipeline.request_deadline import deadline_metadata, timeout_for_call
@@ -17,8 +17,8 @@ from app.pipeline.schemas import PipelineRoute, PipelineTrace, UniversalIntent
 
 DEFAULT_OLLAMA_URL = os.getenv("OLLAMA_URL", "http://127.0.0.1:11434")
 DEFAULT_MODEL = os.getenv("PSU_CHATBOT_OLLAMA_MODEL", "scb10x/typhoon2.5-qwen3-4b")
-DEFAULT_TIMEOUT_SEC = float(os.getenv("PSU_FACTS_LLM_TIMEOUT_SEC", "8.0"))
-DEFAULT_NUM_PREDICT = int(os.getenv("PSU_FACTS_LLM_NUM_PREDICT", "64"))
+DEFAULT_TIMEOUT_SEC = float(os.getenv("PSU_FACTS_LLM_TIMEOUT_SEC", "5.0"))
+DEFAULT_NUM_PREDICT = int(os.getenv("PSU_FACTS_LLM_NUM_PREDICT", "192"))
 
 COMPOSABLE_MODES = {
     "structured_members_group_count",
@@ -36,8 +36,10 @@ RAG_COMPOSABLE_MODES = {
     "rag_direct_curated",
     "hybrid_guarded_rerank",
     "guarded_vector_direct",
+    "semantic_rag_dynamic",
 }
 ALL_COMPOSABLE_MODES = COMPOSABLE_MODES | RAG_COMPOSABLE_MODES
+_LAST_CALL_METADATA: ContextVar[dict[str, Any]] = ContextVar("facts_composer_call_metadata", default={})
 
 
 @dataclass(frozen=True)
@@ -78,6 +80,19 @@ def _json_compact(value: Any, max_chars: int = 2600) -> str:
     return text[:max_chars].rstrip() + "\n... truncated"
 
 
+def _composer_evidence(evidence: dict[str, Any]) -> dict[str, Any]:
+    items: list[dict[str, Any]] = []
+    for item in evidence.get("items") or []:
+        if not isinstance(item, dict):
+            continue
+        items.append({
+            "title": str(item.get("title") or ""),
+            "text": str(item.get("text") or ""),
+            "source_url": str(item.get("source_url") or ""),
+        })
+    return {"item_count": len(items), "items": items}
+
+
 def _build_prompt(
     *,
     question: str,
@@ -86,34 +101,27 @@ def _build_prompt(
     route: PipelineRoute,
     intent: UniversalIntent,
 ) -> str:
-    return f"""{CHATBOT_ROLE_TH}
+    compact_evidence = _composer_evidence(evidence)
+    return f"""เรียบเรียงคำตอบภาษาไทยสำหรับ PSU Esports Studio - Phuket จากหลักฐานเท่านั้น
+กฎ: ห้ามเพิ่มข้อเท็จจริง ตัวเลข ชื่อ ราคา เวลา หรือกฎใหม่ รักษาข้อมูลเดิม และตอบคำตอบหลักก่อน
+ถ้ามีหลายหลักฐาน ให้สรุปแต่ละประเด็นเป็น bullet ไม่เกิน 15 คำ ตัดรายละเอียดรอง และไม่ต้องพิมพ์แหล่งข้อมูลเพราะระบบจะเติมให้
 
-{FACTS_COMPOSER_ROLE}
-
-กฎสำคัญ:
-- ใช้เฉพาะ FACTS_JSON และ DRAFT_ANSWER
-- ห้ามเพิ่มชื่อเกม ราคา เวลา จำนวนคน จำนวนเครื่อง กฎ หรือข้อมูลใหม่ที่ไม่มีใน FACTS/DRAFT
-- รักษาตัวเลข ราคา เวลา ชื่อโซน ชื่อเกม ชื่อคน และแหล่งข้อมูลให้ตรงเดิม
-- ตอบคำตอบหลักก่อน แล้วค่อยรายละเอียดเป็น bullet ถ้าเหมาะ
-- ถ้าเป็นรายการหลายข้อให้ใช้ bullet `•    `
-- ห้ามอธิบายว่าคุณเป็น AI หรือกำลัง compose
-
-QUESTION:
+คำถาม:
 {question}
 
-ROUTE:
+เส้นทาง:
 {route.category}/{route.intent}
 
-INTENT:
+เจตนา:
 {intent.domain}/{intent.operation}
 
-FACTS_JSON:
-{_json_compact(evidence)}
+หลักฐาน JSON:
+{_json_compact(compact_evidence, max_chars=3200)}
 
-DRAFT_ANSWER:
+ร่างคำตอบ:
 {draft_answer}
 
-FINAL_ANSWER:"""
+คำตอบสุดท้าย:"""
 
 
 def _call_ollama(prompt: str) -> str:
@@ -143,6 +151,7 @@ def _call_ollama(prompt: str) -> str:
     )
     response = None
     chunks: list[str] = []
+    call_metadata: dict[str, Any] = {}
     try:
         response = urllib.request.urlopen(request, timeout=timeout)
         for raw_line in response:
@@ -152,7 +161,16 @@ def _call_ollama(prompt: str) -> str:
             data = json.loads(line)
             chunks.append(str(data.get("response") or ""))
             if data.get("done"):
+                call_metadata = {
+                    "llm_done_reason": str(data.get("done_reason") or "stop"),
+                    "llm_prompt_eval_count": int(data.get("prompt_eval_count") or 0),
+                    "llm_eval_count": int(data.get("eval_count") or 0),
+                    "llm_load_duration_ms": round(float(data.get("load_duration") or 0) / 1_000_000, 2),
+                    "llm_prompt_eval_duration_ms": round(float(data.get("prompt_eval_duration") or 0) / 1_000_000, 2),
+                    "llm_eval_duration_ms": round(float(data.get("eval_duration") or 0) / 1_000_000, 2),
+                }
                 break
+        _LAST_CALL_METADATA.set(call_metadata)
         return "".join(chunks).strip()
     finally:
         # Closing the streaming response is the strongest cancellation Ollama
@@ -173,6 +191,17 @@ def _looks_unsafe(answer: str, draft_answer: str) -> str:
         if line not in answer:
             return "source_line_changed"
     return ""
+
+
+def _restore_exact_source_markers(answer: str, draft_answer: str) -> tuple[str, int]:
+    source_markers = [line.strip() for line in draft_answer.splitlines() if line.strip().startswith("แหล่งข้อมูล:")]
+    answer_source_markers = [line.strip() for line in answer.splitlines() if line.strip().startswith("แหล่งข้อมูล:")]
+    if any(marker not in source_markers for marker in answer_source_markers):
+        return answer, 0
+    missing = [marker for marker in source_markers if marker not in answer]
+    if not answer.strip() or not missing:
+        return answer, 0
+    return answer.rstrip() + "\n" + "\n".join(missing), len(missing)
 
 
 def compose_structured_answer(
@@ -279,6 +308,7 @@ def compose_structured_answer(
             ),
         )
     try:
+        _LAST_CALL_METADATA.set({})
         answer = _call_ollama(prompt)
     except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError) as exc:
         elapsed_ms = (time.perf_counter() - call_started) * 1000
@@ -316,6 +346,8 @@ def compose_structured_answer(
             ),
         )
 
+    ollama_call_metadata = dict(_LAST_CALL_METADATA.get())
+    answer, restored_source_marker_count = _restore_exact_source_markers(answer, draft_answer)
     elapsed_ms = (time.perf_counter() - call_started) * 1000
     if answer:
         health = record_llm_success("facts_composer", model, elapsed_ms=elapsed_ms)
@@ -336,10 +368,14 @@ def compose_structured_answer(
         "llm_prompt_chars": len(prompt),
         "llm_elapsed_ms": round(elapsed_ms, 2),
         "llm_response_chars": len(answer),
+        "llm_source_markers_restored": restored_source_marker_count,
+        **ollama_call_metadata,
         **deadline_metadata(),
         **health,
     }
     unsafe_reason = _looks_unsafe(answer, draft_answer)
+    if not unsafe_reason and ollama_call_metadata.get("llm_done_reason") in {"length", "timeout_partial"}:
+        unsafe_reason = "incomplete_generation"
     if not unsafe_reason and is_rag_mode:
         grounding = validate_grounded_claims(answer, evidence)
         llm_call["grounding_validation"] = grounding.as_dict()

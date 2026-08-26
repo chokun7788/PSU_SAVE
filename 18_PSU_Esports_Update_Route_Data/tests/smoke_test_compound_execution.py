@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from app.pipeline.compound_execution import build_compound_plan, classify_compound  # noqa: E402
-from app.pipeline.engine import answer_question_pipeline_debug  # noqa: E402
+from app.pipeline.engine import _split_multi_question, answer_question_pipeline_debug  # noqa: E402
 
 
 def _decisions(result, stage: str) -> list[str]:
@@ -34,6 +34,25 @@ def main() -> int:
     )
     assert dependent.can_parallelize is False
     assert dependent.requires_planner is True
+
+    customer_type = classify_compound(
+        "บุคคลทั่วไป เล่น PS5 30 นาที เสียกี่บาท แล้วจองยังไง",
+        ["บุคคลทั่วไป เล่น PS5 30 นาที เสียกี่บาท", "จอง PS5 ยังไง"],
+    )
+    assert customer_type.requires_planner is False
+    assert customer_type.can_parallelize is True
+
+    comparison_parts = _split_multi_question("VR 30 นาทีกับ VR 1 ชั่วโมงต่างกันยังไง แล้วจองยังไง")
+    assert comparison_parts == [
+        "VR 30 นาทีกับ VR 1 ชั่วโมงต่างกันยังไง",
+        "จองยังไง",
+    ], comparison_parts
+    comparison = classify_compound(
+        "VR 30 นาทีกับ VR 1 ชั่วโมงต่างกันยังไง แล้วจองยังไง",
+        comparison_parts,
+    )
+    assert comparison.requires_planner is False
+    assert comparison.can_parallelize is True
     dependent_plan = build_compound_plan(
         "อุปกรณ์ไหนเกมเยอะสุด แล้วราคาเครื่องนั้นเท่าไหร่",
         ["อุปกรณ์ไหนเกมเยอะสุด", "ราคาเครื่องนั้นเท่าไหร่"],
@@ -62,6 +81,18 @@ def main() -> int:
     assert "ordered_sequential" in _decisions(result, "compound_child_execution"), result.trace
     assert "ต้องการให้คำนวณราคาของโซนไหน" in result.answer
     print("OK dependent compound remains ordered")
+
+    result = answer_question_pipeline_debug(
+        "VR 30 นาทีกับ VR 1 ชั่วโมงต่างกันยังไง แล้วจองยังไง",
+        experimental_allow_llm=False,
+        experimental_rag_fallback=False,
+        global_timeout_sec=10,
+    )
+    assert result.mode == "pipeline:multi_question_splitter"
+    assert "VR 1 ชั่วโมง แพงกว่า 185 บาท" in result.answer
+    assert "ขั้นตอนจองโดยสรุป" in result.answer
+    assert "ยังไม่พบข้อมูลที่ยืนยันได้" not in result.answer
+    print("OK comparison plus booking keeps both standalone meanings")
 
     result = answer_question_pipeline_debug(
         "Tekken 8 เล่นที่ไหน แล้วเกมนั้นมีปุ่มอะไร",

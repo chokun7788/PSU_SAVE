@@ -5,6 +5,7 @@ from typing import Any
 
 from app.core.normalization import normalize_text
 from app.pipeline.entity_resolver import resolve_game_entity
+from app.pipeline.query_signals import looks_like_game_zone_ranking_query, looks_like_general_concept_definition
 from app.pipeline.schemas import PipelineRoute, UniversalIntent
 from app.pipeline.target_resolver import resolve_target_candidate
 from app.pipeline.tool_preconditions import (
@@ -71,8 +72,16 @@ def _has(text: str, *terms: str) -> bool:
 
 
 def _operation_from_question(question: str, intent: UniversalIntent | None) -> tuple[str, str, float]:
+    if intent is not None and intent.method == "semantic_evidence":
+        semantic_category = str(intent.filters.get("semantic_route_category") or intent.domain or "knowledge")
+        if semantic_category in {"knowledge", "events_news", "about_us", "overview"}:
+            return "semantic_evidence_lookup", semantic_category, max(0.84, intent.confidence)
     if looks_like_damage_penalty_query(question):
         return "penalty_lookup", "penalty", 0.98
+    if looks_like_game_zone_ranking_query(question):
+        return "game_zone_rank", "games", 0.99
+    if looks_like_general_concept_definition(question):
+        return "detail", "general", 0.98
     if _has(question, "ปุ่ม", "controls", "control", "controller", "กดอะไร", "ใช้จอย", "บังคับยังไง"):
         return "control_lookup", "game_controls", 0.98
     if (
@@ -102,8 +111,8 @@ def _operation_from_question(question: str, intent: UniversalIntent | None) -> t
         or (intent is not None and intent.domain == "reservation" and intent.operation == "booking_session_limit")
     ):
         return "booking_session_limit", "reservation", 0.96
-    if _has(question, "เกมเยอะสุด", "เกมมากสุด", "มีเกมเยอะกว่า", "จำนวนเกมตามโซน", "เกมกี่เกมแต่ละโซน"):
-        return "game_zone_rank", "games", 0.98
+    if looks_like_game_zone_ranking_query(question):
+        return "game_zone_rank", "games", 0.99
     if looks_like_studio_rules_query(question) or (intent is not None and intent.domain == "rules"):
         return "studio_rule_lookup", "rules", max(0.94, intent.confidence if intent is not None else 0.0)
     if (
@@ -225,6 +234,7 @@ def _expected_answer_types(operation: str) -> tuple[str, ...]:
         "studio_rule_lookup": ("fact", "list", "summary", "rule"),
         "competition_rule_lookup": ("competition_rule",),
         "penalty_lookup": ("penalty", "rule"),
+        "semantic_evidence_lookup": ("fact", "summary"),
     }.get(operation, ("fact", "summary"))
 
 

@@ -1,0 +1,84 @@
+{
+  "run_label": "llm_scb10x_typhoon2.5-qwen3-4b",
+  "run_kind": "llm",
+  "model": "scb10x/typhoon2.5-qwen3-4b",
+  "allow_llm": true,
+  "timeout_sec": 9.0,
+  "num_predict": 128,
+  "ollama_url": "http://127.0.0.1:11434",
+  "tool_router": false,
+  "facts_composer": false,
+  "disable_health_manager": false,
+  "cases": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\model_benchmark_1500.jsonl",
+  "limit": 0,
+  "source_case_count": 21,
+  "case_ids": "MB-1328-GL-003,MB-1329-GL-004,MB-1330-GL-005,MB-1332-GL-007,MB-1388-GL-063,MB-1389-GL-064,MB-1390-GL-065,MB-1392-GL-067,MB-1452-GL-127,MB-1558-GL-233,MB-1559-GL-234,MB-1560-GL-235,MB-1561-GL-236,MB-1562-GL-237,MB-1588-GL-263,MB-1589-GL-264,MB-1590-GL-265,MB-1592-GL-267,MB-1598-GL-273,MB-1599-GL-274,MB-1600-GL-275",
+  "selection_strategy": "first_n",
+  "warmup": {
+    "enabled": true,
+    "ok": true,
+    "elapsed_sec": 0.9702,
+    "response_chars": 17,
+    "done_reason": "length",
+    "load_duration": 561746600,
+    "prompt_eval_duration": 58316000,
+    "eval_duration": 244822000,
+    "error": ""
+  },
+  "pipeline_warmup": {
+    "enabled": true,
+    "ok": true,
+    "elapsed_sec": 12.0261,
+    "warmed": [
+      "game_title_aliases",
+      "structured_tools",
+      "routing_data",
+      "retrieval_data",
+      "probe_queries"
+    ],
+    "errors": [],
+    "timings": {
+      "game_title_aliases": 0.8056,
+      "structured_tools": 0.5627,
+      "routing_data": 0.1526,
+      "retrieval_data": 1.3261,
+      "probe_queries": 9.179
+    }
+  },
+  "resumed_from": 0,
+  "total_wall_sec": 42.347,
+  "generated_at": "2026-08-23T19:29:27",
+  "total": 21,
+  "passed": 21,
+  "pass_rate": 100.0,
+  "avg_score": 100.0,
+  "avg_wall_sec": 2.0137,
+  "median_wall_sec": 1.8742,
+  "p95_wall_sec": 2.7652,
+  "max_wall_sec": 3.021,
+  "llm_call_total": 21,
+  "mode_counts": {
+    "pipeline:general_llm_fallback": 21
+  },
+  "route_counts": {
+    "general/general_knowledge_query": 12,
+    "general/detail": 9
+  },
+  "group_counts": {
+    "general_llm": 21
+  },
+  "quality_bucket_counts": {
+    "general_llm": 21
+  },
+  "top_errors": {},
+  "by_group": {
+    "general_llm": {
+      "total": 21,
+      "passed": 21,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 2.0137,
+      "p95_wall_sec": 2.7652
+    }
+  }
+}

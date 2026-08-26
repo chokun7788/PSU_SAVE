@@ -1,0 +1,83 @@
+{
+  "run_label": "llm_scb10x_typhoon2.5-qwen3-4b",
+  "run_kind": "llm",
+  "model": "scb10x/typhoon2.5-qwen3-4b",
+  "allow_llm": true,
+  "timeout_sec": 9.0,
+  "num_predict": 128,
+  "ollama_url": "http://127.0.0.1:11434",
+  "tool_router": false,
+  "facts_composer": false,
+  "disable_health_manager": false,
+  "cases": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\model_benchmark_1500.jsonl",
+  "limit": 0,
+  "source_case_count": 1,
+  "case_ids": "MB-1380-GL-055",
+  "selection_strategy": "first_n",
+  "warmup": {
+    "enabled": true,
+    "ok": true,
+    "elapsed_sec": 0.692,
+    "response_chars": 17,
+    "done_reason": "length",
+    "load_duration": 243346700,
+    "prompt_eval_duration": 218886000,
+    "eval_duration": 131024000,
+    "error": ""
+  },
+  "pipeline_warmup": {
+    "enabled": true,
+    "ok": true,
+    "elapsed_sec": 6.3777,
+    "warmed": [
+      "game_title_aliases",
+      "structured_tools",
+      "routing_data",
+      "retrieval_data",
+      "probe_queries"
+    ],
+    "errors": [],
+    "timings": {
+      "game_title_aliases": 0.4954,
+      "structured_tools": 0.2704,
+      "routing_data": 0.0836,
+      "retrieval_data": 0.6851,
+      "probe_queries": 4.8431
+    }
+  },
+  "resumed_from": 0,
+  "total_wall_sec": 1.303,
+  "generated_at": "2026-08-23T20:47:04",
+  "total": 1,
+  "passed": 1,
+  "pass_rate": 100.0,
+  "avg_score": 100.0,
+  "avg_wall_sec": 1.3001,
+  "median_wall_sec": 1.3001,
+  "p95_wall_sec": 1.3001,
+  "max_wall_sec": 1.3001,
+  "llm_call_total": 1,
+  "mode_counts": {
+    "pipeline:general_llm_fallback": 1
+  },
+  "route_counts": {
+    "general/general_knowledge_query": 1
+  },
+  "group_counts": {
+    "general_llm": 1
+  },
+  "quality_bucket_counts": {
+    "general_llm": 1
+  },
+  "top_errors": {},
+  "by_group": {
+    "general_llm": {
+      "total": 1,
+      "passed": 1,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 1.3001,
+      "p95_wall_sec": 1.3001
+    }
+  }
+}

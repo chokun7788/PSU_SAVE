@@ -86,6 +86,18 @@ def test_gate_is_selective() -> None:
     use, _reason = should_use_query_planner("Tekken 8 มีปุ่มอะไรบ้าง", ["Tekken 8 มีปุ่มอะไรบ้าง"])
     assert use is False
 
+    use, _reason = should_use_query_planner(
+        "Animal Crossing: New Horizons ปุ่มทั้งหมดมีอะไรบ้าง",
+        ["Animal Crossing: New Horizons ปุ่มทั้งหมดมีอะไรบ้าง"],
+    )
+    assert use is False
+
+    use, _reason = should_use_query_planner(
+        "Beat Saber ถ้าจะหลบและจัดตำแหน่งร่างกายต้องกดอะไร",
+        ["Beat Saber ถ้าจะหลบและจัดตำแหน่งร่างกายต้องกดอะไร"],
+    )
+    assert use is False
+
 
 def test_disabled_planner_never_calls_ollama() -> None:
     previous = os.environ.get("PSU_QUERY_PLANNER")

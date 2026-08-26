@@ -154,6 +154,31 @@ def _llm_call_rows(trace: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return calls
 
 
+def _full_llm_call_rows(result: Any) -> list[dict[str, Any]]:
+    artifact = _plain(getattr(result, "decision_artifact", None))
+    if isinstance(artifact, dict):
+        calls = artifact.get("llm_calls")
+        if isinstance(calls, list):
+            return [dict(call) for call in calls if isinstance(call, dict) and call]
+    full_trace = [_plain(item) for item in getattr(result, "trace", [])]
+    return _llm_call_rows(full_trace)
+
+
+def _stage_timing_rows(trace: list[Any]) -> list[dict[str, Any]]:
+    timings: list[dict[str, Any]] = []
+    for item in trace:
+        if getattr(item, "stage", "") != "timing":
+            continue
+        metadata = _plain(getattr(item, "metadata", {}))
+        timings.append({
+            "process": getattr(item, "decision", ""),
+            "elapsed_ms": float(metadata.get("elapsed_ms") or 0.0),
+            "elapsed_sec": float(metadata.get("elapsed_sec") or 0.0),
+            "detail": getattr(item, "detail", ""),
+        })
+    return timings
+
+
 def _trace_compact(trace: list[Any], limit: int = 12) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for item in trace[-limit:]:
@@ -174,8 +199,12 @@ def _warmup_ollama(model: str, ollama_url: str, timeout_sec: float) -> dict[str,
         "prompt": "ตอบคำว่า พร้อมใช้งาน สั้น ๆ",
         "stream": False,
         "think": False,
-        "keep_alive": "10m",
-        "options": {"temperature": 0.0, "num_predict": 8},
+        "keep_alive": os.getenv("PSU_OLLAMA_KEEP_ALIVE", "10m"),
+        "options": {
+            "temperature": 0.0,
+            "num_predict": 8,
+            "num_ctx": int(os.getenv("PSU_GENERAL_LLM_NUM_CTX", "3072")),
+        },
     }
     request = urllib.request.Request(
         f"{ollama_url.rstrip('/')}/api/generate",
@@ -192,6 +221,10 @@ def _warmup_ollama(model: str, ollama_url: str, timeout_sec: float) -> dict[str,
             "ok": bool(answer),
             "elapsed_sec": round(time.perf_counter() - started, 4),
             "response_chars": len(answer),
+            "done_reason": data.get("done_reason") or "",
+            "load_duration": data.get("load_duration") or 0,
+            "prompt_eval_duration": data.get("prompt_eval_duration") or 0,
+            "eval_duration": data.get("eval_duration") or 0,
             "error": "" if answer else "empty response",
         }
     except (OSError, urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
@@ -269,16 +302,30 @@ def _run_worker(args: argparse.Namespace) -> int:
     os.environ["PSU_GENERAL_LLM_TIMEOUT_SEC"] = str(args.timeout_sec)
     os.environ["PSU_PIPELINE_GLOBAL_TIMEOUT_SEC"] = str(args.timeout_sec)
     os.environ["PSU_EXPERIMENTAL_LLM_TIMEOUT_SEC"] = str(args.timeout_sec)
-    os.environ["PSU_FACTS_LLM_TIMEOUT_SEC"] = str(args.timeout_sec)
+    facts_timeout_sec = float(args.facts_timeout_sec or min(float(args.timeout_sec), 5.0))
+    facts_num_predict = int(args.facts_num_predict or max(int(args.num_predict), 192))
+    os.environ["PSU_FACTS_LLM_TIMEOUT_SEC"] = str(facts_timeout_sec)
     os.environ["PSU_INTENT_LLM_TIMEOUT_SEC"] = str(min(float(args.timeout_sec), 20.0))
     os.environ["PSU_TOOL_ROUTER_TIMEOUT_SEC"] = str(min(float(args.timeout_sec), 20.0))
     os.environ["PSU_GENERAL_LLM_NUM_PREDICT"] = str(args.num_predict)
     os.environ["PSU_RAG_LLM_NUM_PREDICT"] = str(args.num_predict)
-    os.environ["PSU_FACTS_LLM_NUM_PREDICT"] = str(args.num_predict)
+    os.environ["PSU_FACTS_LLM_NUM_PREDICT"] = str(facts_num_predict)
     os.environ["PSU_INTENT_LLM_NUM_PREDICT"] = str(min(int(args.num_predict), 160))
     os.environ["PSU_TOOL_ROUTER_NUM_PREDICT"] = str(min(int(args.num_predict), 180))
+    if args.num_ctx:
+        os.environ["PSU_GENERAL_LLM_NUM_CTX"] = str(args.num_ctx)
+        os.environ["PSU_FACTS_LLM_NUM_CTX"] = str(args.facts_num_ctx or args.num_ctx)
+        os.environ["PSU_INTENT_LLM_NUM_CTX"] = str(min(int(args.num_ctx), 2048))
+        os.environ["PSU_TOOL_ROUTER_NUM_CTX"] = str(min(int(args.num_ctx), 2048))
+        os.environ["PSU_QUERY_PLANNER_NUM_CTX"] = str(min(int(args.num_ctx), 2048))
     os.environ["PSU_LLM_TOOL_ROUTER"] = "1" if args.tool_router else "0"
     os.environ["PSU_FACTS_LLM_COMPOSER"] = "1" if args.facts_composer else "0"
+    os.environ["PSU_RAG_LLM_COMPOSER"] = "1" if args.facts_composer and args.semantic_rag else "0"
+    os.environ["PSU_MODEL_FIRST_FLOW"] = "1" if args.allow_llm and args.semantic_rag else "0"
+    os.environ["PSU_MODEL_FIRST_MIN_REMAINING_SEC"] = str(args.model_first_min_remaining_sec or 6.0)
+    os.environ["PSU_SEMANTIC_RETRIEVAL"] = "1" if args.semantic_rag else "0"
+    os.environ["PSU_EMBEDDING_MODEL"] = str(args.embedding_model or "psu-bge-m3:q8_0")
+    os.environ["PSU_EMBEDDING_NUM_CTX"] = str(args.embedding_num_ctx or 1024)
     if args.disable_health_manager:
         os.environ["PSU_LLM_HEALTH_MANAGER"] = "0"
     if args.ollama_url:
@@ -300,7 +347,36 @@ def _run_worker(args: argparse.Namespace) -> int:
 
     from app.pipeline.engine import answer_question_pipeline_debug
 
+    pipeline_warmup = {
+        "enabled": bool(args.warmup),
+        "ok": True,
+        "elapsed_sec": 0.0,
+        "warmed": [],
+        "errors": [],
+        "timings": {},
+    }
+    if args.warmup:
+        from app.pipeline.warmup import warm_pipeline_caches
+
+        warmed = warm_pipeline_caches()
+        pipeline_warmup = {
+            "enabled": True,
+            "ok": warmed.ok,
+            "elapsed_sec": warmed.elapsed_sec,
+            "warmed": list(warmed.warmed),
+            "errors": list(warmed.errors),
+            "timings": dict(warmed.timings),
+        }
+        print(
+            f"pipeline warmup ok={warmed.ok} elapsed={warmed.elapsed_sec}s "
+            f"steps={','.join(warmed.warmed)}",
+            flush=True,
+        )
+
     rows = _read_jsonl(Path(args.cases))
+    if args.case_ids:
+        wanted_ids = {value.strip() for value in str(args.case_ids).split(",") if value.strip()}
+        rows = [row for row in rows if str(row.get("id") or "") in wanted_ids]
     if args.only_llm_required:
         rows = [row for row in rows if row.get("llm_required")]
     if args.group:
@@ -344,7 +420,8 @@ def _run_worker(args: argparse.Namespace) -> int:
             wall_sec = round(time.perf_counter() - started, 4)
             compact_trace = _trace_compact(result.trace)
             judge = _judge(case, result, wall_sec, float(args.timeout_sec), run_kind)
-            llm_calls = _llm_call_rows(compact_trace)
+            llm_calls = _full_llm_call_rows(result)
+            stage_timings = _stage_timing_rows(result.trace)
             results.append({
                 "id": case.get("id"),
                 "group": case.get("group"),
@@ -365,6 +442,8 @@ def _run_worker(args: argparse.Namespace) -> int:
                 "llm_call_count": len(llm_calls),
                 "llm_elapsed_ms_total": round(sum(float(call.get("llm_elapsed_ms") or 0.0) for call in llm_calls), 2),
                 "llm_kinds": sorted(set(str(call.get("llm_kind") or "") for call in llm_calls if call.get("llm_kind"))),
+                "llm_calls": llm_calls,
+                "stage_timings": stage_timings,
                 "judge": judge,
                 "trace": compact_trace,
             })
@@ -417,15 +496,25 @@ def _run_worker(args: argparse.Namespace) -> int:
         "allow_llm": bool(args.allow_llm),
         "timeout_sec": float(args.timeout_sec),
         "num_predict": int(args.num_predict),
+        "num_ctx": int(args.num_ctx or os.getenv("PSU_GENERAL_LLM_NUM_CTX", "3072")),
         "ollama_url": args.ollama_url,
         "tool_router": bool(args.tool_router),
         "facts_composer": bool(args.facts_composer),
+        "semantic_rag": bool(args.semantic_rag),
+        "embedding_model": str(args.embedding_model or "psu-bge-m3:q8_0"),
+        "embedding_num_ctx": int(args.embedding_num_ctx or 1024),
+        "facts_num_ctx": int(args.facts_num_ctx or args.num_ctx or 3072),
+        "facts_timeout_sec": facts_timeout_sec,
+        "facts_num_predict": facts_num_predict,
+        "model_first_min_remaining_sec": float(args.model_first_min_remaining_sec or 6.0),
         "disable_health_manager": bool(args.disable_health_manager),
         "cases": str(args.cases),
         "limit": int(args.limit or 0),
         "source_case_count": source_case_count,
+        "case_ids": str(args.case_ids or ""),
         "selection_strategy": "stratified_by_group" if args.stratified else "first_n",
         "warmup": warmup,
+        "pipeline_warmup": pipeline_warmup,
         "resumed_from": len(done_ids),
         "total_wall_sec": round(time.perf_counter() - started_all, 3),
     })
@@ -571,11 +660,14 @@ def _make_report(root: Path, run_dirs: list[Path], cases_path: Path) -> Path:
                 lines.append(f"- `{error}`: {count}")
         lines.append("")
 
+    lines.extend(["## How To Read", ""])
+    if any(row.get("run_kind") == "no_llm" for row in summaries):
+        lines.extend([
+            "- `No-LLM` คือ baseline ที่ปิด Local LLM และจะรันเฉพาะเมื่อระบุ `--include-no-llm`",
+            "- case ที่เป็น `general_llm` ตั้งใจให้ No-LLM decline ได้ แต่ model run ควรตอบได้",
+        ])
     lines.extend([
-        "## How To Read",
-        "",
-        "- `No-LLM` คือ baseline ที่ปิด Local LLM เพื่อดูว่า rule/structured/RAG ตอบเองได้แค่ไหน",
-        "- case ที่เป็น `general_llm` ตั้งใจให้ No-LLM decline ได้ แต่ model run ควรตอบได้",
+        "- ค่าเริ่มต้นของ benchmark รันเฉพาะ model เพื่อไม่เสียเวลาทำ baseline ซ้ำ",
         "- คะแนนเป็น heuristic judge สำหรับคัดปัญหาเร็ว ยังไม่ใช่ human approval สุดท้าย",
         "- ดูตัวอย่างคำตอบละเอียดได้ใน `results.csv` และ `results.jsonl` ของแต่ละ run",
         "",
@@ -587,6 +679,26 @@ def _make_report(root: Path, run_dirs: list[Path], cases_path: Path) -> Path:
 
 def _run_master(args: argparse.Namespace) -> int:
     config = _load_config(Path(args.config))
+    semantic_rag_enabled = (
+        bool(config.get("semantic_rag", True))
+        if args.semantic_rag is None
+        else bool(args.semantic_rag)
+    )
+    facts_composer_enabled = (
+        bool(config.get("facts_composer", True))
+        if args.facts_composer is None
+        else bool(args.facts_composer)
+    )
+    embedding_model = str(args.embedding_model or config.get("embedding_model") or "psu-bge-m3:q8_0")
+    embedding_num_ctx = int(args.embedding_num_ctx or config.get("embedding_num_ctx") or 1024)
+    facts_num_ctx = int(args.facts_num_ctx or config.get("facts_num_ctx") or 3072)
+    facts_timeout_sec = float(args.facts_timeout_sec or config.get("facts_timeout_sec") or 5.0)
+    facts_num_predict = int(args.facts_num_predict or config.get("facts_num_predict") or 192)
+    model_first_min_remaining_sec = float(
+        args.model_first_min_remaining_sec
+        or config.get("model_first_min_remaining_sec")
+        or 6.0
+    )
     cases_path = Path(args.cases)
     if not cases_path.exists() or args.regenerate_cases:
         command = [sys.executable, str(ROOT / "tools" / "generate_model_benchmark_cases.py"), "--target", str(args.target_cases), "--jsonl", str(cases_path)]
@@ -602,6 +714,9 @@ def _run_master(args: argparse.Namespace) -> int:
     if args.models:
         wanted = {item.strip() for item in args.models.split(",") if item.strip()}
         model_names = [name for name in model_names if name in wanted]
+    elif config.get("default_models"):
+        wanted = {str(item) for item in config.get("default_models", [])}
+        model_names = [name for name in model_names if name in wanted]
     if args.no_models:
         model_names = []
     if args.first_models:
@@ -613,7 +728,7 @@ def _run_master(args: argparse.Namespace) -> int:
     env_base["OLLAMA_HOST"] = str(args.ollama_host or config.get("ollama_host") or "").replace("http://", "").replace("https://", "")
     env_base["OLLAMA_MODELS"] = str(args.ollama_models or config.get("ollama_model_dir") or "")
 
-    if not args.skip_no_llm:
+    if args.include_no_llm and not args.skip_no_llm:
         run_label = "no_llm"
         run_dir = output_root / run_label
         command = [
@@ -623,6 +738,7 @@ def _run_master(args: argparse.Namespace) -> int:
             "--output-dir", str(run_dir),
             "--timeout-sec", str(args.timeout_sec or config.get("timeout_sec", 20)),
             "--num-predict", str(args.num_predict or config.get("num_predict", 256)),
+            "--num-ctx", str(args.num_ctx or config.get("num_ctx", 3072)),
             "--progress", str(args.progress),
         ]
         if args.limit:
@@ -633,8 +749,22 @@ def _run_master(args: argparse.Namespace) -> int:
             command.extend(["--sample-per-group", str(args.sample_per_group)])
         if args.group:
             command.extend(["--group", str(args.group)])
+        if args.case_ids:
+            command.extend(["--case-ids", str(args.case_ids)])
         if args.only_llm_required:
             command.append("--only-llm-required")
+        if args.warmup:
+            command.extend(["--warmup", "--warmup-timeout-sec", str(args.warmup_timeout_sec)])
+        if semantic_rag_enabled:
+            command.append("--semantic-rag")
+        command.extend([
+            "--embedding-model", embedding_model,
+            "--embedding-num-ctx", str(embedding_num_ctx),
+            "--facts-num-ctx", str(facts_num_ctx),
+            "--facts-timeout-sec", str(facts_timeout_sec),
+            "--facts-num-predict", str(facts_num_predict),
+            "--model-first-min-remaining-sec", str(model_first_min_remaining_sec),
+        ])
         command.extend(["--checkpoint-interval", str(args.checkpoint_interval)])
         if args.resume:
             command.append("--resume")
@@ -662,6 +792,7 @@ def _run_master(args: argparse.Namespace) -> int:
             "--output-dir", str(run_dir),
             "--timeout-sec", str(args.timeout_sec or config.get("timeout_sec", 20)),
             "--num-predict", str(args.num_predict or config.get("num_predict", 256)),
+            "--num-ctx", str(args.num_ctx or config.get("num_ctx", 3072)),
             "--ollama-url", str(args.ollama_url or f"http://{str(args.ollama_host or config.get('ollama_host') or '127.0.0.1:11435').replace('http://', '').replace('https://', '')}"),
             "--progress", str(args.progress),
         ]
@@ -673,6 +804,8 @@ def _run_master(args: argparse.Namespace) -> int:
             command.extend(["--sample-per-group", str(args.sample_per_group)])
         if args.group:
             command.extend(["--group", str(args.group)])
+        if args.case_ids:
+            command.extend(["--case-ids", str(args.case_ids)])
         command.extend(["--checkpoint-interval", str(args.checkpoint_interval)])
         if args.resume:
             command.append("--resume")
@@ -680,8 +813,18 @@ def _run_master(args: argparse.Namespace) -> int:
             command.append("--only-llm-required")
         if args.tool_router:
             command.append("--tool-router")
-        if args.facts_composer:
+        if facts_composer_enabled:
             command.append("--facts-composer")
+        if semantic_rag_enabled:
+            command.append("--semantic-rag")
+        command.extend([
+            "--embedding-model", embedding_model,
+            "--embedding-num-ctx", str(embedding_num_ctx),
+            "--facts-num-ctx", str(facts_num_ctx),
+            "--facts-timeout-sec", str(facts_timeout_sec),
+            "--facts-num-predict", str(facts_num_predict),
+            "--model-first-min-remaining-sec", str(model_first_min_remaining_sec),
+        ])
         if args.warmup:
             command.extend(["--warmup", "--warmup-timeout-sec", str(args.warmup_timeout_sec)])
         if args.disable_health_manager:
@@ -698,7 +841,7 @@ def _run_master(args: argparse.Namespace) -> int:
 
 def main() -> int:
     _configure_stdout()
-    parser = argparse.ArgumentParser(description="Run No-LLM and Ollama model benchmark for PSU Esports Chatbot.")
+    parser = argparse.ArgumentParser(description="Run Ollama model benchmark for PSU Esports Chatbot.")
     parser.add_argument("--worker", action="store_true")
     parser.add_argument("--config", default=str(DEFAULT_CONFIG))
     parser.add_argument("--cases", default=str(DEFAULT_CASES))
@@ -709,7 +852,8 @@ def main() -> int:
     parser.add_argument("--first-models", type=int, default=0)
     parser.add_argument("--no-models", action="store_true")
     parser.add_argument("--allow-llm", action="store_true")
-    parser.add_argument("--skip-no-llm", action="store_true")
+    parser.add_argument("--include-no-llm", action="store_true", help="Also run the legacy deterministic baseline.")
+    parser.add_argument("--skip-no-llm", action="store_true", help=argparse.SUPPRESS)
     parser.add_argument("--pull", action="store_true")
     parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--stratified", action="store_true", help="Select a deterministic proportional sample across groups when --limit is used.")
@@ -717,21 +861,33 @@ def main() -> int:
     parser.add_argument("--warmup-timeout-sec", type=float, default=90.0)
     parser.add_argument("--sample-per-group", type=int, default=0)
     parser.add_argument("--group", default="", help="One group or a comma-separated group list.")
+    parser.add_argument("--case-ids", default="", help="Comma-separated case IDs to run without changing the case bank.")
     parser.add_argument("--only-llm-required", action="store_true")
     parser.add_argument("--target-cases", type=int, default=1600)
     parser.add_argument("--regenerate-cases", action="store_true")
     parser.add_argument("--timeout-sec", type=float, default=0.0)
     parser.add_argument("--num-predict", type=int, default=0)
+    parser.add_argument("--num-ctx", type=int, default=0)
     parser.add_argument("--ollama-host", default="")
     parser.add_argument("--ollama-url", default="")
     parser.add_argument("--ollama-models", default="")
     parser.add_argument("--tool-router", action="store_true")
-    parser.add_argument("--facts-composer", action="store_true")
+    parser.add_argument("--facts-composer", dest="facts_composer", action="store_true")
+    parser.add_argument("--no-facts-composer", dest="facts_composer", action="store_false")
+    parser.add_argument("--semantic-rag", dest="semantic_rag", action="store_true")
+    parser.add_argument("--no-semantic-rag", dest="semantic_rag", action="store_false")
+    parser.add_argument("--embedding-model", default="")
+    parser.add_argument("--embedding-num-ctx", type=int, default=0)
+    parser.add_argument("--facts-num-ctx", type=int, default=0)
+    parser.add_argument("--facts-timeout-sec", type=float, default=0.0)
+    parser.add_argument("--facts-num-predict", type=int, default=0)
+    parser.add_argument("--model-first-min-remaining-sec", type=float, default=0.0)
     parser.add_argument("--disable-health-manager", action="store_true")
     parser.add_argument("--progress", type=int, default=100)
     parser.add_argument("--checkpoint-interval", type=int, default=25)
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--stop-on-error", action="store_true")
+    parser.set_defaults(facts_composer=None, semantic_rag=None)
     args = parser.parse_args()
     if args.worker:
         if not args.run_label:

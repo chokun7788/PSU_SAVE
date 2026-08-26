@@ -1,0 +1,115 @@
+{
+  "run_label": "llm_scb10x_typhoon2.5-qwen3-4b",
+  "run_kind": "llm",
+  "model": "scb10x/typhoon2.5-qwen3-4b",
+  "allow_llm": true,
+  "timeout_sec": 9.0,
+  "num_predict": 128,
+  "ollama_url": "http://127.0.0.1:11434",
+  "tool_router": false,
+  "facts_composer": false,
+  "disable_health_manager": false,
+  "cases": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\model_benchmark_1500.jsonl",
+  "limit": 0,
+  "source_case_count": 9,
+  "case_ids": "MB-0816-AS-012,MB-0745-AS-009,MB-0682-AS-008,MB-0836-AS-020,MB-0620-C-009,MB-0239-G-151,MB-0655-AG-002,MB-0671-AG-018,MB-0673-AG-020",
+  "selection_strategy": "first_n",
+  "warmup": {
+    "enabled": true,
+    "ok": true,
+    "elapsed_sec": 0.9949,
+    "response_chars": 17,
+    "done_reason": "length",
+    "load_duration": 408850500,
+    "prompt_eval_duration": 247387000,
+    "eval_duration": 135667000,
+    "error": ""
+  },
+  "pipeline_warmup": {
+    "enabled": true,
+    "ok": true,
+    "elapsed_sec": 12.7065,
+    "warmed": [
+      "game_title_aliases",
+      "structured_tools",
+      "routing_data",
+      "retrieval_data",
+      "probe_queries"
+    ],
+    "errors": [],
+    "timings": {
+      "game_title_aliases": 0.6849,
+      "structured_tools": 0.5136,
+      "routing_data": 0.1196,
+      "retrieval_data": 1.2461,
+      "probe_queries": 10.1422
+    }
+  },
+  "resumed_from": 0,
+  "total_wall_sec": 3.232,
+  "generated_at": "2026-08-23T22:12:11",
+  "total": 9,
+  "passed": 9,
+  "pass_rate": 100.0,
+  "avg_score": 100.0,
+  "avg_wall_sec": 0.353,
+  "median_wall_sec": 0.335,
+  "p95_wall_sec": 0.5085,
+  "max_wall_sec": 0.5085,
+  "llm_call_total": 0,
+  "mode_counts": {
+    "pipeline:structured_service_game_availability": 7,
+    "pipeline:multi_question_splitter": 1,
+    "pipeline:structured_booking_game_service_selection": 1
+  },
+  "route_counts": {
+    "games/list": 5,
+    "multi_question/multi_question_split": 1,
+    "games/game_availability_lookup": 2,
+    "reservation/booking_policy": 1
+  },
+  "group_counts": {
+    "games": 1,
+    "compound": 1,
+    "availability_game": 3,
+    "availability_service": 4
+  },
+  "quality_bucket_counts": {
+    "psu_fact": 9
+  },
+  "top_errors": {},
+  "by_group": {
+    "availability_game": {
+      "total": 3,
+      "passed": 3,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.3406,
+      "p95_wall_sec": 0.4136
+    },
+    "availability_service": {
+      "total": 4,
+      "passed": 4,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.3362,
+      "p95_wall_sec": 0.3478
+    },
+    "compound": {
+      "total": 1,
+      "passed": 1,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.5085,
+      "p95_wall_sec": 0.5085
+    },
+    "games": {
+      "total": 1,
+      "passed": 1,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.3019,
+      "p95_wall_sec": 0.3019
+    }
+  }
+}

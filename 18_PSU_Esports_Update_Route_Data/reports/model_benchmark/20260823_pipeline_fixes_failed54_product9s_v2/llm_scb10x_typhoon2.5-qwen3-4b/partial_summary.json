@@ -1,0 +1,86 @@
+{
+  "run_label": "llm_scb10x_typhoon2.5-qwen3-4b",
+  "run_kind": "llm",
+  "model": "scb10x/typhoon2.5-qwen3-4b",
+  "partial": true,
+  "total_requested": 54,
+  "completed": 54,
+  "total_wall_sec": 115.837,
+  "generated_at": "2026-08-23T18:06:59",
+  "total": 54,
+  "passed": 45,
+  "pass_rate": 83.33,
+  "avg_score": 95.26,
+  "avg_wall_sec": 2.1426,
+  "median_wall_sec": 2.1047,
+  "p95_wall_sec": 2.6486,
+  "max_wall_sec": 9.0498,
+  "llm_call_total": 50,
+  "mode_counts": {
+    "pipeline:structured_game_detail": 1,
+    "pipeline:structured_game_zone_ranking": 1,
+    "pipeline:answer_contract_no_answer": 2,
+    "pipeline:freshness_live_source_required": 1,
+    "pipeline:general_llm_fallback": 45,
+    "pipeline:general_llm_unavailable": 4
+  },
+  "route_counts": {
+    "games/game_availability_lookup": 1,
+    "games/list": 1,
+    "no_answer/answer_contract_rejected": 2,
+    "no_answer/freshness_live_source_required": 1,
+    "general/detail": 41,
+    "general/general_knowledge_query": 8
+  },
+  "group_counts": {
+    "games": 2,
+    "competition_rules": 1,
+    "ambiguity_no_answer": 3,
+    "general_llm": 48
+  },
+  "quality_bucket_counts": {
+    "psu_fact": 6,
+    "general_llm": 48
+  },
+  "top_errors": {
+    "missing_any:ขอบคุณ": 6,
+    "llm_required_but_unavailable": 4,
+    "category_mismatch:no_answer": 1,
+    "missing_any:latency|หน่วง": 1,
+    "missing_any:คีย์บอร์ด|mechanical": 1
+  },
+  "by_group": {
+    "ambiguity_no_answer": {
+      "total": 3,
+      "passed": 3,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 1.546,
+      "p95_wall_sec": 2.5353
+    },
+    "competition_rules": {
+      "total": 1,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_score": 72.0,
+      "avg_wall_sec": 9.0498,
+      "p95_wall_sec": 9.0498
+    },
+    "games": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 1.2572,
+      "p95_wall_sec": 2.1638
+    },
+    "general_llm": {
+      "total": 48,
+      "passed": 40,
+      "pass_rate": 83.33,
+      "avg_score": 95.25,
+      "avg_wall_sec": 2.0729,
+      "p95_wall_sec": 2.6486
+    }
+  }
+}

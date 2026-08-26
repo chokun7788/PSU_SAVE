@@ -1,0 +1,81 @@
+{
+  "run_label": "no_llm",
+  "run_kind": "no_llm",
+  "model": "",
+  "allow_llm": false,
+  "timeout_sec": 9.0,
+  "num_predict": 128,
+  "ollama_url": "",
+  "tool_router": false,
+  "facts_composer": false,
+  "disable_health_manager": false,
+  "cases": "data\\eval\\model_benchmark_1500.jsonl",
+  "limit": 0,
+  "source_case_count": 1,
+  "case_ids": "MB-0607-CR-071",
+  "selection_strategy": "first_n",
+  "warmup": {
+    "enabled": false,
+    "ok": true,
+    "elapsed_sec": 0.0,
+    "response_chars": 0,
+    "error": ""
+  },
+  "pipeline_warmup": {
+    "enabled": true,
+    "ok": true,
+    "elapsed_sec": 12.4134,
+    "warmed": [
+      "game_title_aliases",
+      "structured_tools",
+      "routing_data",
+      "retrieval_data",
+      "probe_queries"
+    ],
+    "errors": [],
+    "timings": {
+      "game_title_aliases": 0.8436,
+      "structured_tools": 0.5365,
+      "routing_data": 0.1428,
+      "retrieval_data": 1.3026,
+      "probe_queries": 9.5878
+    }
+  },
+  "resumed_from": 0,
+  "total_wall_sec": 1.054,
+  "generated_at": "2026-08-23T18:10:41",
+  "total": 1,
+  "passed": 0,
+  "pass_rate": 0.0,
+  "avg_score": 82.0,
+  "avg_wall_sec": 1.0496,
+  "median_wall_sec": 1.0496,
+  "p95_wall_sec": 1.0496,
+  "max_wall_sec": 1.0496,
+  "llm_call_total": 0,
+  "mode_counts": {
+    "pipeline:answer_contract_no_answer": 1
+  },
+  "route_counts": {
+    "no_answer/answer_contract_rejected": 1
+  },
+  "group_counts": {
+    "competition_rules": 1
+  },
+  "quality_bucket_counts": {
+    "psu_fact": 1
+  },
+  "top_errors": {
+    "category_mismatch:no_answer": 1
+  },
+  "by_group": {
+    "competition_rules": {
+      "total": 1,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_score": 82.0,
+      "avg_wall_sec": 1.0496,
+      "p95_wall_sec": 1.0496
+    }
+  }
+}

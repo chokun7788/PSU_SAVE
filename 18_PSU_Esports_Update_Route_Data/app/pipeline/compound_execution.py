@@ -62,15 +62,14 @@ class CompoundPlan:
 
 _DEPENDENCY_TERMS = (
     "แล้วค่อย", "จากนั้น", "ต่อจาก", "ผลลัพธ์", "อันนั้น", "เครื่องนั้น",
-    "เกมนั้น", "โซนนั้น", "รายการนั้น", "ดังกล่าว", "เยอะสุด", "มากที่สุด",
-    "อันดับ", "เรียง", "คำนวณ", "รวมทั้งหมด", "เฉลี่ย", "เปรียบเทียบ",
-    "then", "after that", "the result", "that one", "most", "rank", "calculate",
-    "compare",
+    "เกมนั้น", "โซนนั้น", "รายการนั้น", "ดังกล่าว", "จากข้อแรก", "จากคำตอบแรก",
+    "then", "after that", "the result", "that one", "from the first",
 )
 
 _BROAD_TERMS = (
     "ทำไรได้บ้าง", "ทำอะไรได้บ้าง", "ช่วยอะไรได้บ้าง", "ถามอะไรได้บ้าง",
-    "อธิบาย", "แนะนำ", "ภาพรวม", "ทั้งหมด", "หลายอย่าง", "ทั่วไป",
+    "อธิบาย", "แนะนำ", "ภาพรวม", "ทั้งหมด", "หลายอย่าง",
+    "คำถามทั่วไป", "ข้อมูลทั่วไป", "เรื่องทั่วไป",
     "what can you do", "explain", "recommend", "overview",
 )
 
@@ -115,7 +114,8 @@ def classify_compound(question: str, parts: list[str]) -> CompoundProfile:
         signals.append("three_or_more_parts")
 
     score = min(1.0, 0.18 * len(parts) + 0.30 * len(signals))
-    requires_planner = bool(signals)
+    planner_signals = {"dependency_or_reference", "broad_or_open_ended", "three_or_more_parts"}
+    requires_planner = any(signal in planner_signals for signal in signals)
     can_parallelize = not requires_planner
     if len(parts) >= 3:
         level = "complex"

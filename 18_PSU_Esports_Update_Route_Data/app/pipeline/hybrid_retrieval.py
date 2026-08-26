@@ -14,6 +14,7 @@ from app.pipeline.schemas import PipelineRoute, PipelineTrace
 from app.pipeline.vector_retrieval import retrieve_vector_guarded
 from app.pipeline.document_reranker import rerank_documents
 from app.pipeline.model_gateway import retrieval_budget
+from app.pipeline.semantic_vector_retrieval import retrieve_semantic_guarded
 from app.pipeline.source_guard import assess_sources
 
 
@@ -104,8 +105,17 @@ def _hybrid_score(row: dict[str, Any], origin_count: int) -> float:
     vector_score = float(row.get("_vector_score", 0.0) or 0.0)
     lexical_score = float(row.get("_lexical_score", 0.0) or 0.0)
     entity_score = float(row.get("_entity_score", 0.0) or 0.0)
+    semantic_score = float(row.get("_semantic_score", 0.0) or 0.0)
     priority = float(row.get("priority", 0.0) or 0.0) / 100.0
-    return score + (vector_score * 6.0) + (lexical_score * 3.0) + (entity_score * 5.0) + priority + (origin_count - 1) * 1.5
+    return (
+        score
+        + (vector_score * 6.0)
+        + (lexical_score * 3.0)
+        + (entity_score * 5.0)
+        + (semantic_score * 8.0)
+        + priority
+        + (origin_count - 1) * 1.5
+    )
 
 
 def retrieve_hybrid_guarded(query: str, route: PipelineRoute, limit: int = 4) -> tuple[list[dict[str, Any]], PipelineTrace]:
@@ -120,12 +130,19 @@ def retrieve_hybrid_guarded(query: str, route: PipelineRoute, limit: int = 4) ->
     vector_started = time.perf_counter()
     vector_hits, vector_trace = retrieve_vector_guarded(query, route, limit=candidate_limit)
     timings_ms["hybrid_vector_retrieval"] = round((time.perf_counter() - vector_started) * 1000, 2)
+    semantic_started = time.perf_counter()
+    semantic_hits, semantic_trace = retrieve_semantic_guarded(query, route, limit=candidate_limit)
+    timings_ms["hybrid_semantic_retrieval"] = round((time.perf_counter() - semantic_started) * 1000, 2)
 
     merged: dict[tuple[str, str, str], dict[str, Any]] = {}
     origins: dict[tuple[str, str, str], set[str]] = {}
     blocked: dict[str, int] = {}
 
-    for origin, rows in (("curated", curated_hits), ("vector", vector_hits)):
+    for origin, rows in (
+        ("curated", curated_hits),
+        ("vector", vector_hits),
+        ("semantic", semantic_hits),
+    ):
         for row in rows:
             ok, reason = _guard_candidate(query, route, row)
             if not ok:
@@ -162,7 +179,10 @@ def retrieve_hybrid_guarded(query: str, route: PipelineRoute, limit: int = 4) ->
     )
     quality = assess_sources(hits)
     confidence = min(0.91, 0.50 + (hits[0]["_hybrid_score"] / 24 if hits else 0.0))
-    detail = f"hits={len(hits)} curated={len(curated_hits)} vector={len(vector_hits)}"
+    detail = (
+        f"hits={len(hits)} curated={len(curated_hits)} "
+        f"vector={len(vector_hits)} semantic={len(semantic_hits)}"
+    )
     if hits:
         detail += f" top={hits[0].get('id')} score={hits[0].get('_hybrid_score')} origins={','.join(hits[0].get('_hybrid_origins', []))}"
     elif blocked:
@@ -180,6 +200,13 @@ def retrieve_hybrid_guarded(query: str, route: PipelineRoute, limit: int = 4) ->
             "source_quality": quality.as_dict(),
             "curated_trace": curated_trace.detail,
             "vector_trace": vector_trace.detail,
+            "semantic_trace": {
+                "stage": semantic_trace.stage,
+                "decision": semantic_trace.decision,
+                "confidence": semantic_trace.confidence,
+                "detail": semantic_trace.detail,
+                "metadata": semantic_trace.metadata,
+            },
             "timings_ms": timings_ms,
             "rerank_trace": {
                 "stage": rerank_trace.stage,

@@ -1,0 +1,126 @@
+{
+  "run_label": "no_llm",
+  "run_kind": "no_llm",
+  "model": "",
+  "allow_llm": false,
+  "timeout_sec": 9.0,
+  "num_predict": 128,
+  "ollama_url": "",
+  "tool_router": false,
+  "facts_composer": false,
+  "disable_health_manager": false,
+  "cases": "data\\eval\\model_benchmark_1500.jsonl",
+  "limit": 0,
+  "source_case_count": 54,
+  "case_ids": "MB-0189-G-101,MB-0240-G-152,MB-0607-CR-071,MB-0636-ANA-010,MB-0649-ANA-023,MB-0650-ANA-024,MB-1330-GL-005,MB-1333-GL-008,MB-1336-GL-011,MB-1343-GL-018,MB-1353-GL-028,MB-1360-GL-035,MB-1363-GL-038,MB-1373-GL-048,MB-1383-GL-058,MB-1390-GL-065,MB-1393-GL-068,MB-1403-GL-078,MB-1406-GL-081,MB-1413-GL-088,MB-1423-GL-098,MB-1433-GL-108,MB-1440-GL-115,MB-1443-GL-118,MB-1450-GL-125,MB-1453-GL-128,MB-1463-GL-138,MB-1473-GL-148,MB-1480-GL-155,MB-1483-GL-158,MB-1490-GL-165,MB-1493-GL-168,MB-1503-GL-178,MB-1506-GL-181,MB-1513-GL-188,MB-1523-GL-198,MB-1533-GL-208,MB-1536-GL-211,MB-1543-GL-218,MB-1550-GL-225,MB-1553-GL-228,MB-1557-GL-232,MB-1558-GL-233,MB-1559-GL-234,MB-1560-GL-235,MB-1561-GL-236,MB-1562-GL-237,MB-1563-GL-238,MB-1564-GL-239,MB-1565-GL-240,MB-1573-GL-248,MB-1583-GL-258,MB-1586-GL-261,MB-1593-GL-268",
+  "selection_strategy": "first_n",
+  "warmup": {
+    "enabled": false,
+    "ok": true,
+    "elapsed_sec": 0.0,
+    "response_chars": 0,
+    "error": ""
+  },
+  "pipeline_warmup": {
+    "enabled": true,
+    "ok": true,
+    "elapsed_sec": 12.0756,
+    "warmed": [
+      "game_title_aliases",
+      "structured_tools",
+      "routing_data",
+      "retrieval_data",
+      "probe_queries"
+    ],
+    "errors": [],
+    "timings": {
+      "game_title_aliases": 0.7907,
+      "structured_tools": 0.5646,
+      "routing_data": 0.147,
+      "retrieval_data": 1.2018,
+      "probe_queries": 9.3714
+    }
+  },
+  "resumed_from": 0,
+  "total_wall_sec": 24.701,
+  "generated_at": "2026-08-23T18:11:34",
+  "total": 54,
+  "passed": 7,
+  "pass_rate": 12.96,
+  "avg_score": 86.04,
+  "avg_wall_sec": 0.4554,
+  "median_wall_sec": 0.4632,
+  "p95_wall_sec": 0.6409,
+  "max_wall_sec": 1.0408,
+  "llm_call_total": 0,
+  "mode_counts": {
+    "pipeline:structured_game_detail": 1,
+    "pipeline:structured_game_zone_ranking": 1,
+    "pipeline:answer_contract_no_answer": 2,
+    "pipeline:freshness_live_source_required": 1,
+    "pipeline:general_llm_disabled": 49
+  },
+  "route_counts": {
+    "games/game_availability_lookup": 1,
+    "games/list": 1,
+    "no_answer/answer_contract_rejected": 2,
+    "no_answer/freshness_live_source_required": 1,
+    "general/detail": 41,
+    "general/general_knowledge_query": 8
+  },
+  "group_counts": {
+    "games": 2,
+    "competition_rules": 1,
+    "ambiguity_no_answer": 3,
+    "general_llm": 48
+  },
+  "quality_bucket_counts": {
+    "psu_fact": 6,
+    "general_llm": 48
+  },
+  "top_errors": {
+    "missing_any:คีย์บอร์ด|mechanical": 27,
+    "missing_any:ขอบคุณ": 9,
+    "missing_any:latency|หน่วง": 5,
+    "category_mismatch:no_answer": 1,
+    "missing_any:เฟรม|ความละเอียด": 1,
+    "missing_any:API|เชื่อมต่อ": 1,
+    "missing_any:กิจกรรม": 1,
+    "missing_any:GPU|กราฟิก": 1,
+    "missing_any:server|client": 1
+  },
+  "by_group": {
+    "ambiguity_no_answer": {
+      "total": 3,
+      "passed": 3,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.3015,
+      "p95_wall_sec": 0.7035
+    },
+    "competition_rules": {
+      "total": 1,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_score": 82.0,
+      "avg_wall_sec": 1.0408,
+      "p95_wall_sec": 1.0408
+    },
+    "games": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.5501,
+      "p95_wall_sec": 0.8518
+    },
+    "general_llm": {
+      "total": 48,
+      "passed": 2,
+      "pass_rate": 4.17,
+      "avg_score": 84.67,
+      "avg_wall_sec": 0.4489,
+      "p95_wall_sec": 0.5504
+    }
+  }
+}

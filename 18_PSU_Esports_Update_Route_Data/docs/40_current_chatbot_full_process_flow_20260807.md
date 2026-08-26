@@ -181,7 +181,7 @@ Entry point หลักคือ `POST /api/chat` ใน `app/web_api/server.py
 
 ## 8. Boundary, Ambiguity และ Candidate Decision
 
-### 8.1 Boundary Guard
+### 8.1   
 
 ตรวจคำถามที่อยู่นอกขอบเขต ความเป็นส่วนตัว คำขอที่ไม่มีข้อมูลจริง หรือคำถามที่ห้ามคาดเดา หาก match ชัดจะหยุด flow ก่อนใช้ LLM/RAG
 
@@ -423,11 +423,14 @@ API ส่ง:
 
 ค่าที่วัดได้ล่าสุด:
 
-- Fast price warm ประมาณ 0.16-0.18 วินาที
-- Structured warm ประมาณ 0.3-0.7 วินาทีใน probe หลัก
-- Hybrid/vector หลัง warmupประมาณ 0.14 วินาทีเฉพาะ retrieval
-- Product-like warm RAG + LLM ประมาณ 7.75 วินาที โดย composer ประมาณ 7.27 วินาที
+- Full Typhoon 1,600 cases วันที่ 23/08/2026: average 0.7730 วินาที, median 0.4465 วินาที, P95 2.3135 วินาที, P99 2.9207 วินาที และ max 6.3254 วินาที
+- Full run ไม่มี request เกิน backend deadline 9 วินาที; 1,251 requests ใช้ 0 LLM calls และ 349 requests ใช้ 1 call โดยไม่มี request ที่ใช้ 2 calls
+- General LLM 275 cases: average 1.8534 วินาที และ P95 2.6276 วินาที
+- Post-fix affected scope 460 cases ครอบคลุม games/availability/reservation/compound: ผ่าน 460/460, average 0.6152 วินาที, P95 1.0512 วินาที และ max 1.6804 วินาที
+- Product-like warm RAG + LLM ประมาณ 7.75 วินาที โดย composer ประมาณ 7.27 วินาที เป็นผล probe ของ grounded composer เดิม ไม่ใช่ค่าของ General path รอบล่าสุด
 - BGE cold load เคยประมาณ 93.46 วินาที จึงต้องย้ายออกจาก user request
+
+รายละเอียดผลล่าสุด: `docs/42_pipeline_1_to_8_implementation_detail_20260823.md` และ `reports/model_benchmark/20260823_pipeline_fixes_full1600_final_v3/ANALYSIS_TH.md`
 
 ## 14. Data และ Model Backbones
 
@@ -482,7 +485,7 @@ API ส่ง:
 
 ## 17. ข้อจำกัดที่ยังเหลือ
 
-- ยังไม่ได้รัน full 1,500+/1,600 evaluation หลัง latency/model-first changes ล่าสุด
+- รัน full 1,600 sequential product profile หลัง Pipeline fixes แล้ว แต่ heuristic pass 1,599/1,600 ยังไม่ใช่ human verification ทุกคำตอบ; micro-fixes ล่าสุดยืนยันด้วย affected scope 460/460 แต่ยังไม่ได้รัน full ซ้ำ
 - ยังไม่ได้ทำ multi-user load test อย่างน้อย 5 sessions พร้อมกัน
 - LLM queue และ concurrency guard ยังเป็น in-process ไม่ใช่ shared/distributed queue
 - Ollama streaming close เป็น best-effort ยังไม่ใช่ process-level hard cancellation

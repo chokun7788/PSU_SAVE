@@ -1,0 +1,74 @@
+{
+  "run_label": "llm_scb10x_typhoon2.5-qwen3-4b",
+  "run_kind": "llm",
+  "model": "scb10x/typhoon2.5-qwen3-4b",
+  "partial": true,
+  "total_requested": 9,
+  "completed": 9,
+  "total_wall_sec": 3.23,
+  "generated_at": "2026-08-23T22:12:11",
+  "total": 9,
+  "passed": 9,
+  "pass_rate": 100.0,
+  "avg_score": 100.0,
+  "avg_wall_sec": 0.353,
+  "median_wall_sec": 0.335,
+  "p95_wall_sec": 0.5085,
+  "max_wall_sec": 0.5085,
+  "llm_call_total": 0,
+  "mode_counts": {
+    "pipeline:structured_service_game_availability": 7,
+    "pipeline:multi_question_splitter": 1,
+    "pipeline:structured_booking_game_service_selection": 1
+  },
+  "route_counts": {
+    "games/list": 5,
+    "multi_question/multi_question_split": 1,
+    "games/game_availability_lookup": 2,
+    "reservation/booking_policy": 1
+  },
+  "group_counts": {
+    "games": 1,
+    "compound": 1,
+    "availability_game": 3,
+    "availability_service": 4
+  },
+  "quality_bucket_counts": {
+    "psu_fact": 9
+  },
+  "top_errors": {},
+  "by_group": {
+    "availability_game": {
+      "total": 3,
+      "passed": 3,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.3406,
+      "p95_wall_sec": 0.4136
+    },
+    "availability_service": {
+      "total": 4,
+      "passed": 4,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.3362,
+      "p95_wall_sec": 0.3478
+    },
+    "compound": {
+      "total": 1,
+      "passed": 1,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.5085,
+      "p95_wall_sec": 0.5085
+    },
+    "games": {
+      "total": 1,
+      "passed": 1,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.3019,
+      "p95_wall_sec": 0.3019
+    }
+  }
+}

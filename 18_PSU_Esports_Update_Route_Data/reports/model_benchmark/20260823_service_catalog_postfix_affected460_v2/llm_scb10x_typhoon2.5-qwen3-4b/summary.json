@@ -1,0 +1,158 @@
+{
+  "run_label": "llm_scb10x_typhoon2.5-qwen3-4b",
+  "run_kind": "llm",
+  "model": "scb10x/typhoon2.5-qwen3-4b",
+  "allow_llm": true,
+  "timeout_sec": 9.0,
+  "num_predict": 128,
+  "ollama_url": "http://127.0.0.1:11434",
+  "tool_router": false,
+  "facts_composer": false,
+  "disable_health_manager": false,
+  "cases": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\model_benchmark_1500.jsonl",
+  "limit": 0,
+  "source_case_count": 460,
+  "case_ids": "",
+  "selection_strategy": "first_n",
+  "warmup": {
+    "enabled": true,
+    "ok": true,
+    "elapsed_sec": 8.6168,
+    "response_chars": 17,
+    "done_reason": "length",
+    "load_duration": 8176373600,
+    "prompt_eval_duration": 184332000,
+    "eval_duration": 183116000,
+    "error": ""
+  },
+  "pipeline_warmup": {
+    "enabled": true,
+    "ok": true,
+    "elapsed_sec": 14.1953,
+    "warmed": [
+      "game_title_aliases",
+      "structured_tools",
+      "routing_data",
+      "retrieval_data",
+      "probe_queries"
+    ],
+    "errors": [],
+    "timings": {
+      "game_title_aliases": 0.9303,
+      "structured_tools": 0.6929,
+      "routing_data": 0.1879,
+      "retrieval_data": 1.5213,
+      "probe_queries": 10.8627
+    }
+  },
+  "resumed_from": 0,
+  "total_wall_sec": 284.655,
+  "generated_at": "2026-08-23T22:43:02",
+  "total": 460,
+  "passed": 460,
+  "pass_rate": 100.0,
+  "avg_score": 100.0,
+  "avg_wall_sec": 0.6152,
+  "median_wall_sec": 0.5839,
+  "p95_wall_sec": 1.0512,
+  "max_wall_sec": 1.6804,
+  "llm_call_total": 0,
+  "mode_counts": {
+    "pipeline:structured_game_detail": 105,
+    "pipeline:structured_service_game_availability": 181,
+    "pipeline:structured_game_controls": 4,
+    "pipeline:structured_games_catalog": 2,
+    "pipeline:structured_game_zone_ranking": 1,
+    "pipeline:structured_games_genre_list": 3,
+    "pipeline:structured_games_family": 2,
+    "pipeline:structured_reservation_fact": 12,
+    "pipeline:structured_booking_selection": 3,
+    "pipeline:booking_howto_fast_path": 1,
+    "pipeline:booking_fast_path": 1,
+    "pipeline:checkin_fast_path": 1,
+    "pipeline:mixed_reservation_fast": 1,
+    "pipeline:rag_direct_curated": 1,
+    "pipeline:multi_question_splitter": 88,
+    "pipeline:structured_service_capacity": 8,
+    "pipeline:structured_booking_game_service_selection": 40,
+    "pipeline:service_game_availability_fast_path": 1,
+    "pipeline:structured_booking_game_family_clarification": 1,
+    "pipeline:structured_service_game_availability_no_match": 4
+  },
+  "route_counts": {
+    "games/game_availability_lookup": 173,
+    "games/game_detail_lookup": 70,
+    "games/game_control_lookup": 4,
+    "games/list": 29,
+    "reservation/booking_policy": 57,
+    "reservation/how_to": 2,
+    "reservation/count": 9,
+    "reservation/competition_rules_lookup": 1,
+    "multi_question/multi_question_split": 88,
+    "games/count": 1,
+    "games/detail": 26
+  },
+  "group_counts": {
+    "games": 158,
+    "reservation": 20,
+    "compound": 89,
+    "availability_service": 23,
+    "availability_game": 166,
+    "availability_machine_split": 4
+  },
+  "quality_bucket_counts": {
+    "psu_fact": 386,
+    "compound": 74
+  },
+  "top_errors": {},
+  "by_group": {
+    "availability_game": {
+      "total": 166,
+      "passed": 166,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.5282,
+      "p95_wall_sec": 0.8335
+    },
+    "availability_machine_split": {
+      "total": 4,
+      "passed": 4,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.4139,
+      "p95_wall_sec": 0.4578
+    },
+    "availability_service": {
+      "total": 23,
+      "passed": 23,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.3147,
+      "p95_wall_sec": 0.4344
+    },
+    "compound": {
+      "total": 89,
+      "passed": 89,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.8449,
+      "p95_wall_sec": 1.3794
+    },
+    "games": {
+      "total": 158,
+      "passed": 158,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.6659,
+      "p95_wall_sec": 1.0201
+    },
+    "reservation": {
+      "total": 20,
+      "passed": 20,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.2995,
+      "p95_wall_sec": 0.5044
+    }
+  }
+}

@@ -2,6 +2,11 @@ from __future__ import annotations
 
 import re
 
+from app.pipeline.query_signals import (
+    looks_like_clear_general_request,
+    looks_like_game_zone_ranking_query,
+    looks_like_general_concept_definition,
+)
 from app.pipeline.semantic_intent import match_semantic_intent
 from app.pipeline.schemas import EntityBundle, PipelineRoute, PipelineTrace, PreprocessedInput
 
@@ -135,7 +140,8 @@ def _looks_like_members_lookup_query(q: str) -> bool:
 
 def _looks_like_text_generation_query(q: str) -> bool:
     generation_terms = (
-        "เขียน", "ช่วยเขียน", "แต่ง", "ช่วยแต่ง", "ร่าง", "ช่วยร่าง",
+        "เขียน", "ช่วยเขียน", "แต่ง", "ช่วยแต่ง", "ช่วยร่าง", "ร่างข้อความ",
+        "ร่างประโยค", "ร่างประกาศ", "ร่างแคปชั่น", "ร่างคำโปรย",
         "ประโยค", "แคปชั่น", "caption", "ข้อความ", "คำโปรย", "ประชาสัมพันธ์กิจกรรม",
         "โปรโมต", "โปรโมท", "ประกาศ", "โพสต์",
     )
@@ -485,6 +491,8 @@ def _looks_like_game_detail_query(q: str) -> bool:
 
 
 def _looks_like_game_catalog_query(q: str) -> bool:
+    if str(q or "").strip().lower() in {"เกม", "เกมส์", "game", "games"}:
+        return True
     if _has(q, "ราคา", "ค่าบริการ", "กี่บาท", "เท่าไหร่", "เท่าไร", "เสียเงิน", "service fee"):
         return False
     if _has(
@@ -636,6 +644,10 @@ def route_intent(pre: PreprocessedInput, entities: EntityBundle) -> tuple[Pipeli
         route = PipelineRoute("schedule", "schedule_query", 0.94, "fact", "medium", "schedule overview/slot terms found")
     elif _looks_like_text_generation_query(q):
         route = PipelineRoute("general", "general_knowledge_query", 0.87, "general", "low", "text generation request found before member role terms")
+    elif looks_like_game_zone_ranking_query(q):
+        route = PipelineRoute("games", "game_zone_rank", 0.99, "list", "low", "deterministic game-zone ranking terms found before equipment routing")
+    elif looks_like_general_concept_definition(q) or looks_like_clear_general_request(q):
+        route = PipelineRoute("general", "general_knowledge_query", 0.94, "general", "low", "general concept definition found before equipment inventory routing")
     elif _looks_like_known_equipment_item_query(q):
         route = PipelineRoute("equipment", "equipment_item_lookup", 0.98, "fact", "low", "known equipment item terms found before game/control routing")
     elif _looks_like_game_control_query(q):

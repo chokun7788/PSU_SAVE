@@ -1,0 +1,89 @@
+{
+  "run_label": "no_llm",
+  "run_kind": "no_llm",
+  "model": "",
+  "partial": true,
+  "total_requested": 54,
+  "completed": 54,
+  "total_wall_sec": 27.003,
+  "generated_at": "2026-08-23T17:56:02",
+  "total": 54,
+  "passed": 7,
+  "pass_rate": 12.96,
+  "avg_score": 86.04,
+  "avg_wall_sec": 0.4983,
+  "median_wall_sec": 0.3778,
+  "p95_wall_sec": 0.5071,
+  "max_wall_sec": 6.1968,
+  "llm_call_total": 0,
+  "mode_counts": {
+    "pipeline:structured_game_detail": 1,
+    "pipeline:structured_game_zone_ranking": 1,
+    "pipeline:answer_contract_no_answer": 2,
+    "pipeline:freshness_live_source_required": 1,
+    "pipeline:general_llm_disabled": 49
+  },
+  "route_counts": {
+    "games/game_availability_lookup": 1,
+    "games/list": 1,
+    "no_answer/answer_contract_rejected": 2,
+    "no_answer/freshness_live_source_required": 1,
+    "general/detail": 41,
+    "general/general_knowledge_query": 8
+  },
+  "group_counts": {
+    "games": 2,
+    "competition_rules": 1,
+    "ambiguity_no_answer": 3,
+    "general_llm": 48
+  },
+  "quality_bucket_counts": {
+    "psu_fact": 6,
+    "general_llm": 48
+  },
+  "top_errors": {
+    "missing_any:คีย์บอร์ด|mechanical": 27,
+    "missing_any:ขอบคุณ": 9,
+    "missing_any:latency|หน่วง": 5,
+    "category_mismatch:no_answer": 1,
+    "missing_any:เฟรม|ความละเอียด": 1,
+    "missing_any:API|เชื่อมต่อ": 1,
+    "missing_any:กิจกรรม": 1,
+    "missing_any:GPU|กราฟิก": 1,
+    "missing_any:server|client": 1
+  },
+  "by_group": {
+    "ambiguity_no_answer": {
+      "total": 3,
+      "passed": 3,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.247,
+      "p95_wall_sec": 0.5651
+    },
+    "competition_rules": {
+      "total": 1,
+      "passed": 0,
+      "pass_rate": 0.0,
+      "avg_score": 82.0,
+      "avg_wall_sec": 6.1968,
+      "p95_wall_sec": 6.1968
+    },
+    "games": {
+      "total": 2,
+      "passed": 2,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 0.9734,
+      "p95_wall_sec": 1.7197
+    },
+    "general_llm": {
+      "total": 48,
+      "passed": 2,
+      "pass_rate": 4.17,
+      "avg_score": 84.67,
+      "avg_wall_sec": 0.3755,
+      "p95_wall_sec": 0.4791
+    }
+  }
+}

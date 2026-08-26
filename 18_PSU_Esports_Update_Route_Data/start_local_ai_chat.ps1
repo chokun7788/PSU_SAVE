@@ -1,8 +1,10 @@
 param(
     [string]$Model = "scb10x/typhoon2.5-qwen3-4b",
-    [double]$Timeout = 20,
-    [double]$GlobalTimeout = 20,
+    [double]$Timeout = 8,
+    [double]$GlobalTimeout = 9,
     [int]$NumPredict = 128,
+    [int]$NumCtx = 2048,
+    [int]$FactsNumCtx = 3072,
     [switch]$NoLlm,
     [switch]$NoToolRouter,
     [switch]$NoComposer,
@@ -15,6 +17,11 @@ param(
     [switch]$EntityReranker,
     [string]$EntityRerankerModel = "BAAI/bge-reranker-v2-m3",
     [string]$EntityRerankerCacheDir = "D:\AIModels\huggingface",
+    [switch]$SemanticRag,
+    [string]$EmbeddingModel = "psu-bge-m3:q8_0",
+    [int]$EmbeddingNumCtx = 1024,
+    [string]$EmbeddingKeepAlive = "10m",
+    [switch]$DocumentReranker,
     [switch]$NoRagFallback,
     [switch]$Debug,
     [switch]$NoLog,
@@ -28,6 +35,14 @@ $env:PSU_CHATBOT_OLLAMA_MODEL = $Model
 $env:PSU_GENERAL_LLM_TIMEOUT_SEC = [string]$Timeout
 $env:PSU_PIPELINE_GLOBAL_TIMEOUT_SEC = [string]$GlobalTimeout
 $env:PSU_GENERAL_LLM_NUM_PREDICT = [string]$NumPredict
+$env:PSU_GENERAL_LLM_NUM_CTX = [string]$NumCtx
+$env:PSU_INTENT_LLM_NUM_CTX = [string]([Math]::Min($NumCtx, 2048))
+$env:PSU_TOOL_ROUTER_NUM_CTX = [string]([Math]::Min($NumCtx, 2048))
+$env:PSU_QUERY_PLANNER_NUM_CTX = [string]([Math]::Min($NumCtx, 2048))
+$env:PSU_FACTS_LLM_NUM_CTX = [string]$FactsNumCtx
+$env:PSU_FACTS_LLM_TIMEOUT_SEC = "5.0"
+$env:PSU_FACTS_LLM_NUM_PREDICT = "192"
+$env:PSU_MODEL_FIRST_MIN_REMAINING_SEC = "6.0"
 $env:PSU_OLLAMA_THINK = "false"
 $env:PSU_LLM_TOOL_ROUTER = $(if ($NoToolRouter -or $NoLlm) { "0" } else { "1" })
 $env:PSU_FACTS_LLM_COMPOSER = $(if ($Composer -and -not $NoComposer -and -not $NoLlm) { "1" } else { "0" })
@@ -47,6 +62,13 @@ $env:PSU_INTENT_LLM_NUM_PREDICT = [string]$IntentPredict
 $env:PSU_ENTITY_RERANKER = $(if ($EntityReranker) { "1" } else { "0" })
 $env:PSU_ENTITY_RERANKER_MODEL = $EntityRerankerModel
 $env:PSU_ENTITY_RERANKER_CACHE_DIR = $EntityRerankerCacheDir
+$env:PSU_SEMANTIC_RETRIEVAL = $(if ($SemanticRag) { "1" } else { "0" })
+$env:PSU_EMBEDDING_MODEL = $EmbeddingModel
+$env:PSU_EMBEDDING_NUM_CTX = [string]$EmbeddingNumCtx
+$env:PSU_EMBEDDING_KEEP_ALIVE = $EmbeddingKeepAlive
+$env:PSU_MODEL_FIRST_FLOW = $(if ($SemanticRag -and -not $NoLlm) { "1" } else { "0" })
+$env:PSU_RAG_LLM_COMPOSER = $(if ($SemanticRag -and -not $NoLlm) { "1" } else { "0" })
+$env:PSU_DOCUMENT_RERANKER = $(if ($DocumentReranker) { "1" } else { "0" })
 if ($IntentModel) {
     $env:PSU_INTENT_LLM_MODEL = $IntentModel
 }

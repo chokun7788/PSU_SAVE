@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import date
 import re
 from typing import Any
 
@@ -42,6 +43,7 @@ def assess_sources(hits: list[dict[str, Any]] | None) -> SourceQuality:
     categories: set[str] = set()
     numeric_signatures: dict[tuple[str, str], set[str]] = {}
     authority = 0
+    stale = False
     warnings: list[str] = []
     for hit in hits or []:
         if not isinstance(hit, dict):
@@ -60,10 +62,19 @@ def assess_sources(hits: list[dict[str, Any]] | None) -> SourceQuality:
         numbers = {value for value in re.findall(r"(?<![A-Za-z])\d+(?:[.,]\d+)?", text)}
         if category and numbers:
             numeric_signatures.setdefault((category, _claim_key(hit, metadata)), set()).update(numbers)
+        time_sensitive = bool(hit.get("time_sensitive") or metadata.get("time_sensitive"))
+        valid_until = str(hit.get("valid_until") or metadata.get("valid_until") or "").strip()
+        if time_sensitive and valid_until:
+            try:
+                stale = stale or date.fromisoformat(valid_until[:10]) < date.today()
+            except ValueError:
+                warnings.append("invalid_valid_until_date")
 
     conflict = any(len(values) > 3 for values in numeric_signatures.values())
     if conflict:
         warnings.append("same_claim_has_multiple_numeric_values_need_source_review")
+    if stale:
+        warnings.append("time_sensitive_source_expired")
     if not source_ids:
         warnings.append("missing_source_id")
-    return SourceQuality(tuple(source_ids), authority, conflict, False, tuple(warnings))
+    return SourceQuality(tuple(source_ids), authority, conflict, stale, tuple(warnings))

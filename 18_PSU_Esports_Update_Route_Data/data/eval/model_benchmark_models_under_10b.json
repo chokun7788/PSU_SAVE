@@ -1,10 +1,22 @@
 {
-  "version": "2026-07-31",
-  "purpose": "Compare No-LLM baseline and local Ollama models under 10B parameters for PSU Esports Chatbot.",
+  "version": "2026-08-23",
+  "purpose": "Benchmark selected local Ollama models for PSU Esports Chatbot. The No-LLM baseline is opt-in only.",
   "ollama_model_dir": "D:\\OllamaModels",
   "ollama_host": "http://127.0.0.1:11434",
-  "timeout_sec": 20,
-  "num_predict": 256,
+  "timeout_sec": 9,
+  "num_predict": 128,
+  "num_ctx": 2048,
+  "semantic_rag": true,
+  "embedding_model": "psu-bge-m3:q8_0",
+  "embedding_num_ctx": 1024,
+  "facts_composer": true,
+  "facts_num_ctx": 3072,
+  "facts_timeout_sec": 5.0,
+  "facts_num_predict": 192,
+  "model_first_min_remaining_sec": 6.0,
+  "default_models": [
+    "scb10x/typhoon2.5-qwen3-4b"
+  ],
   "models": [
     {
       "name": "qwen3:4b",

@@ -29,6 +29,7 @@ from app.pipeline.query_planner import (
     planner_skip_trace,
     should_use_query_planner,
 )
+from app.pipeline.query_signals import evaluate_freshness_requirement, looks_like_missing_task_input
 from app.pipeline.question_frame import build_question_frame
 from app.pipeline.request_deadline import deadline_exceeded, deadline_metadata, request_deadline
 from app.pipeline.experimental_fallback import (
@@ -44,6 +45,12 @@ from app.pipeline.retrieval import (
     answer_from_curated_hits,
     retrieve_competition_fact_cards,
     retrieve_curated,
+)
+from app.pipeline.semantic_vector_retrieval import (
+    answer_from_semantic_hits,
+    refine_route_with_semantic_evidence,
+    retrieve_semantic_guarded,
+    semantic_hits_have_current_evidence,
 )
 from app.pipeline.router import route_intent
 from app.pipeline.routing_policy import apply_routing_priority_policy
@@ -486,6 +493,19 @@ def _split_shared_tail_multi_entity_question(query: str) -> list[str]:
         return [clean]
     tail_norm = normalize_text(tail)
     subject_norm = normalize_text(subject)
+    if _has(
+        subject_norm,
+        "ต่างกัน",
+        "เปรียบเทียบ",
+        "เทียบ",
+        "แพงกว่า",
+        "ถูกกว่า",
+        "difference",
+        "compare",
+    ):
+        # The final operation belongs after the comparison; sharing it back to
+        # each comparison operand changes the user's meaning.
+        return [clean]
     if (
         "และ" in subject_norm
         and _has(tail_norm, "กดอะไร", "ปุ่มอะไร", "มีปุ่มอะไร", "ปุ่มทั้งหมดมีอะไรบ้าง", "ปุ่มอะไรบ้าง")
@@ -1017,6 +1037,8 @@ class AnswerQualityPipeline:
     ) -> PipelineAnswer:
         started = pipeline_started if pipeline_started is not None else time.perf_counter()
         trace: list[PipelineTrace] = list(initial_trace or [])
+        rag_llm_attempted = False
+        rag_source_conflict = False
 
         preprocess_started = time.perf_counter()
         original_pre = preprocess_input(question)
@@ -1083,6 +1105,113 @@ class AnswerQualityPipeline:
                 stage="after_route_selection",
                 route=route,
                 entities=entities,
+            )
+
+        semantic_route_started = time.perf_counter()
+        route, semantic_route_trace = refine_route_with_semantic_evidence(pre.clean_query, route)
+        semantic_route_locked = route if bool(semantic_route_trace.metadata.get("route_lock")) else None
+        trace.append(_timing_trace(
+            "semantic_route_refiner",
+            semantic_route_started,
+            detail=semantic_route_trace.decision,
+            metadata={
+                "route_category": route.category,
+                "route_intent": route.intent,
+                "route_locked": semantic_route_locked is not None,
+            },
+        ))
+        trace.append(semantic_route_trace)
+
+        freshness = evaluate_freshness_requirement(pre.clean_query)
+        freshness_semantic_hits: list[dict] = []
+        if freshness.requires_live_evidence:
+            freshness_retrieval_started = time.perf_counter()
+            freshness_semantic_hits, freshness_semantic_trace = retrieve_semantic_guarded(
+                pre.clean_query,
+                route,
+                limit=4,
+                require_current=True,
+            )
+            trace.append(_timing_trace(
+                "freshness_semantic_retrieval",
+                freshness_retrieval_started,
+                metadata={"hit_count": len(freshness_semantic_hits)},
+            ))
+            trace.append(freshness_semantic_trace)
+            current_evidence_available = semantic_hits_have_current_evidence(freshness_semantic_hits)
+            trace.append(PipelineTrace(
+                "freshness_guard",
+                "verified_current_evidence" if current_evidence_available else "requires_live_evidence",
+                0.98,
+                (
+                    "verified time-bounded evidence is available in the published semantic index"
+                    if current_evidence_available
+                    else freshness.reason
+                ),
+                {
+                    "requires_live_evidence": True,
+                    "current_evidence_available": current_evidence_available,
+                    "semantic_hit_count": len(freshness_semantic_hits),
+                },
+            ))
+            if not current_evidence_available:
+                freshness_route = PipelineRoute(
+                    "no_answer",
+                    "freshness_live_source_required",
+                    0.98,
+                    "no_answer",
+                    "medium",
+                    freshness.reason,
+                )
+                return self._build_result(
+                    freshness.answer,
+                    [],
+                    started,
+                    "pipeline:freshness_live_source_required",
+                    0.98,
+                    freshness_route,
+                    entities,
+                    ValidationResult(ok=True, warnings=("live_freshness_evidence_unavailable",)),
+                    trace,
+                )
+        else:
+            trace.append(PipelineTrace(
+                "freshness_guard",
+                "not_required",
+                0.90,
+                freshness.reason,
+                {"requires_live_evidence": False},
+            ))
+
+        if looks_like_missing_task_input(pre.clean_query):
+            missing_input_route = PipelineRoute(
+                "general",
+                "missing_required_input",
+                0.98,
+                "clarification",
+                "low",
+                "the requested task omitted the problem or content to work on",
+            )
+            trace.append(PipelineTrace(
+                "input_completeness",
+                "clarify_missing_task_content",
+                0.98,
+                "general task request is missing required input",
+                {"llm_attempted": False},
+            ))
+            return self._build_result(
+                (
+                    "ตอนนี้ยังไม่มีโจทย์คณิตที่ต้องการให้ช่วยครับ "
+                    "กรุณาส่งโจทย์ ตัวเลข สมการ หรือรูปโจทย์มาเพิ่ม แล้วจะช่วยอธิบายวิธีทำให้ตรงข้อครับ"
+                ),
+                [],
+                started,
+                "pipeline:general_input_clarification",
+                0.98,
+                missing_input_route,
+                entities,
+                ValidationResult(ok=True, warnings=("missing_required_task_input",)),
+                trace,
             )
 
         boundary = evaluate_boundary(pre.normalized_query)
@@ -1154,7 +1283,7 @@ class AnswerQualityPipeline:
                 entities=entities,
             )
         universal_started = time.perf_counter()
-        preflight_allow_llm, preflight_reason = preflight_llm_allowed(route, experimental_allow_llm)
+        preflight_allow_llm, preflight_reason = preflight_llm_allowed(route, experimental_allow_llm, pre.clean_query)
         trace.append(PipelineTrace(
             "model_gateway",
             "allow_preflight_llm" if preflight_allow_llm else "skip_preflight_llm",
@@ -1212,9 +1341,90 @@ class AnswerQualityPipeline:
             },
         ))
         trace.append(universal_trace)
+        route_before_intent_refinement = route
         route, refined_trace = refine_route_with_universal_intent(route, universal_intent)
         if refined_trace is not None:
             trace.append(refined_trace)
+        if semantic_route_locked is not None and (
+            route.category != semantic_route_locked.category
+            or route.intent != semantic_route_locked.intent
+        ):
+            trace.append(PipelineTrace(
+                "semantic_route_veto",
+                "restored_evidence_route",
+                semantic_route_locked.confidence,
+                (
+                    f"universal intent proposed {route.category}/{route.intent}; "
+                    f"restored {semantic_route_locked.category}/{semantic_route_locked.intent}"
+                ),
+                {
+                    "before_intent_refinement": {
+                        "category": route_before_intent_refinement.category,
+                        "intent": route_before_intent_refinement.intent,
+                    },
+                    "proposed_category": route.category,
+                    "proposed_intent": route.intent,
+                    "locked_category": semantic_route_locked.category,
+                    "locked_intent": semantic_route_locked.intent,
+                },
+            ))
+            route = semantic_route_locked
+        if semantic_route_locked is not None:
+            semantic_intent_domain = (
+                semantic_route_locked.category
+                if semantic_route_locked.category in {"knowledge", "general"}
+                else "knowledge"
+            )
+            semantic_intent_operation = (
+                "source_lookup"
+                if semantic_route_locked.category == "events_news"
+                else "detail"
+            )
+            if (
+                universal_intent.domain != semantic_intent_domain
+                or universal_intent.operation != semantic_intent_operation
+            ):
+                trace.append(PipelineTrace(
+                    "semantic_intent_veto",
+                    "aligned_intent_with_evidence_route",
+                    semantic_route_locked.confidence,
+                    (
+                        f"{universal_intent.domain}/{universal_intent.operation} -> "
+                        f"{semantic_intent_domain}/{semantic_intent_operation}"
+                    ),
+                    {
+                        "evidence_route_category": semantic_route_locked.category,
+                        "evidence_route_intent": semantic_route_locked.intent,
+                    },
+                ))
+                universal_intent = UniversalIntent(
+                    domain=semantic_intent_domain,
+                    operation=semantic_intent_operation,
+                    target="",
+                    filters={
+                        **universal_intent.filters,
+                        "semantic_route_category": semantic_route_locked.category,
+                    },
+                    needs=("verified_evidence",),
+                    answer_style="summary_bullets",
+                    confidence=semantic_route_locked.confidence,
+                    method="semantic_evidence",
+                    reason="semantic retrieval supplied a high-margin verified route",
+                )
+                trace.append(PipelineTrace(
+                    "universal_intent",
+                    f"{universal_intent.domain}/{universal_intent.operation}",
+                    universal_intent.confidence,
+                    universal_intent.reason,
+                    {
+                        "method": universal_intent.method,
+                        "target": universal_intent.target,
+                        "filters": universal_intent.filters,
+                        "needs": list(universal_intent.needs),
+                        "answer_style": universal_intent.answer_style,
+                        "semantic_override": True,
+                    },
+                ))
         if self._deadline_is_exceeded(trace, "after_universal_intent"):
             return self._timeout_result(
                 started=started,
@@ -1383,6 +1593,107 @@ class AnswerQualityPipeline:
                 entities=entities,
             )
 
+        if semantic_route_locked is not None:
+            semantic_execution_started = time.perf_counter()
+            semantic_hits, semantic_trace = retrieve_semantic_guarded(
+                pre.clean_query,
+                route,
+                limit=4,
+            )
+            trace.append(_timing_trace(
+                "semantic_grounded_retrieval",
+                semantic_execution_started,
+                metadata={"hit_count": len(semantic_hits)},
+            ))
+            trace.append(semantic_trace)
+            semantic_answer, semantic_raw_hits, semantic_confidence = answer_from_semantic_hits(
+                semantic_hits,
+                query=pre.clean_query,
+            )
+            if semantic_answer and semantic_confidence >= 0.68:
+                source_quality_conflict = False
+                model_plan = plan_rag_model_path(
+                    query=pre.clean_query,
+                    route=route,
+                    allow_llm=experimental_allow_llm,
+                    hit_count=len(semantic_hits),
+                    retrieval_confidence=semantic_confidence,
+                    source_conflict=source_quality_conflict,
+                )
+                trace.append(PipelineTrace(
+                    "model_gateway",
+                    model_plan.path,
+                    0.88 if model_plan.use_llm else 0.76,
+                    model_plan.reason,
+                    model_plan.as_dict(),
+                ))
+                evidence_started = time.perf_counter()
+                evidence = pack_evidence(
+                    pre.clean_query,
+                    semantic_hits,
+                    max_items=max(1, int(os.getenv("PSU_RAG_EVIDENCE_MAX_ITEMS", "4"))),
+                    max_chars=max(1200, int(os.getenv("PSU_RAG_EVIDENCE_MAX_CHARS", "4200"))),
+                )
+                trace.append(_timing_trace(
+                    "semantic_evidence_packer",
+                    evidence_started,
+                    metadata={"item_count": evidence["item_count"]},
+                ))
+                composer = None
+                if model_plan.use_llm:
+                    rag_llm_attempted = True
+                    composer_started = time.perf_counter()
+                    composer = compose_structured_answer(
+                        question=pre.clean_query,
+                        draft_answer=semantic_answer,
+                        evidence=evidence,
+                        route=route,
+                        intent=universal_intent,
+                        mode="semantic_rag_dynamic",
+                        allow_llm=True,
+                    )
+                    trace.append(_timing_trace(
+                        "semantic_rag_llm_composer",
+                        composer_started,
+                        detail=composer.trace.decision,
+                        metadata={"used_llm": composer.used_llm, "model_path": model_plan.path},
+                    ))
+                    trace.append(composer.trace)
+                answer = composer.answer if composer is not None else semantic_answer
+                formatted = format_answer(answer, semantic_raw_hits, route, entities)
+                validation = validate_answer(
+                    pre.clean_query,
+                    formatted,
+                    route,
+                    entities,
+                    hits=semantic_raw_hits,
+                    mode="pipeline:semantic_rag_dynamic",
+                    intent=universal_intent,
+                )
+                trace.append(PipelineTrace(
+                    "semantic_grounded_execution",
+                    "accepted" if validation.ok else "rejected_by_validation",
+                    semantic_confidence,
+                    "high-margin semantic evidence executed before legacy operation routing",
+                    {
+                        "hit_count": len(semantic_hits),
+                        "composer_used": bool(composer is not None and composer.used_llm),
+                        "validation_errors": list(validation.errors),
+                    },
+                ))
+                if validation.ok:
+                    return self._build_result(
+                        formatted,
+                        semantic_raw_hits,
+                        started,
+                        "pipeline:semantic_rag_dynamic",
+                        semantic_confidence,
+                        route,
+                        entities,
+                        validation,
+                        trace,
+                    )
+
         frame_started = time.perf_counter()
         question_frame = build_question_frame(pre.clean_query, route, universal_intent)
         trace.append(_timing_trace(
@@ -1470,6 +1781,7 @@ class AnswerQualityPipeline:
         if (
             selected_capability_id == "retrieval.competition_fact_cards"
             and route.category != "competition_rules"
+            and semantic_route_locked is None
         ):
             old_route = route
             route = PipelineRoute(
@@ -2139,6 +2451,104 @@ class AnswerQualityPipeline:
                     route=route,
                     entities=entities,
                 )
+            semantic_started = time.perf_counter()
+            semantic_hits, semantic_trace = retrieve_semantic_guarded(
+                pre.clean_query,
+                route,
+                limit=4,
+            )
+            trace.append(_timing_trace(
+                "general_semantic_retrieval",
+                semantic_started,
+                metadata={"hit_count": len(semantic_hits)},
+            ))
+            trace.append(semantic_trace)
+            semantic_answer, semantic_raw_hits, semantic_confidence = answer_from_semantic_hits(
+                semantic_hits,
+                query=pre.clean_query,
+            )
+            semantic_acceptance = max(
+                0.0,
+                float(os.getenv("PSU_SEMANTIC_GENERAL_ACCEPT_CONFIDENCE", "0.78")),
+            )
+            if semantic_answer and semantic_confidence >= semantic_acceptance:
+                semantic_category = str(semantic_hits[0].get("category") or "knowledge")
+                semantic_route = PipelineRoute(
+                    semantic_category,
+                    "semantic_dynamic_lookup",
+                    semantic_confidence,
+                    "summary",
+                    "medium",
+                    "high-confidence dynamic semantic evidence refined the general route",
+                )
+                model_plan = plan_rag_model_path(
+                    query=pre.clean_query,
+                    route=semantic_route,
+                    allow_llm=experimental_allow_llm,
+                    hit_count=len(semantic_hits),
+                    retrieval_confidence=semantic_confidence,
+                    source_conflict=False,
+                )
+                trace.append(PipelineTrace(
+                    "model_gateway",
+                    model_plan.path,
+                    0.88 if model_plan.use_llm else 0.76,
+                    model_plan.reason,
+                    model_plan.as_dict(),
+                ))
+                evidence = pack_evidence(
+                    pre.clean_query,
+                    semantic_hits,
+                    max_items=max(1, int(os.getenv("PSU_RAG_EVIDENCE_MAX_ITEMS", "4"))),
+                    max_chars=max(1200, int(os.getenv("PSU_RAG_EVIDENCE_MAX_CHARS", "4200"))),
+                )
+                composer = None
+                if model_plan.use_llm:
+                    rag_llm_attempted = True
+                    composer = compose_structured_answer(
+                        question=pre.clean_query,
+                        draft_answer=semantic_answer,
+                        evidence=evidence,
+                        route=semantic_route,
+                        intent=universal_intent,
+                        mode="semantic_rag_dynamic",
+                        allow_llm=True,
+                    )
+                    trace.append(composer.trace)
+                answer = composer.answer if composer is not None else semantic_answer
+                formatted = format_answer(answer, semantic_raw_hits, semantic_route, entities)
+                validation = validate_answer(
+                    pre.clean_query,
+                    formatted,
+                    semantic_route,
+                    entities,
+                    hits=semantic_raw_hits,
+                    mode="pipeline:semantic_rag_dynamic",
+                    intent=universal_intent,
+                )
+                trace.append(PipelineTrace(
+                    "semantic_route_refinement",
+                    "accepted" if validation.ok else "rejected_by_validation",
+                    semantic_confidence,
+                    f"general -> {semantic_route.category}/{semantic_route.intent}",
+                    {
+                        "hit_count": len(semantic_hits),
+                        "composer_used": bool(composer is not None and composer.used_llm),
+                        "validation_errors": list(validation.errors),
+                    },
+                ))
+                if validation.ok:
+                    return self._build_result(
+                        formatted,
+                        semantic_raw_hits,
+                        started,
+                        "pipeline:semantic_rag_dynamic",
+                        semantic_confidence,
+                        semantic_route,
+                        entities,
+                        validation,
+                        trace,
+                    )
             if experimental_rag_fallback:
                 experimental_started = time.perf_counter()
                 fallback = build_experimental_fallback(

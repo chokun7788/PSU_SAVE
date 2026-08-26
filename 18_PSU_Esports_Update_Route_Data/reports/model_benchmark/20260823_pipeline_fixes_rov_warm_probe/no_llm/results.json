@@ -1,0 +1,299 @@
+[
+  {
+    "id": "MB-0607-CR-071",
+    "group": "competition_rules",
+    "quality_bucket": "psu_fact",
+    "risk": "high",
+    "question": "ROV ถ้าใช้ bug จะโดนอะไร",
+    "llm_required": false,
+    "answer": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับหมวด competition_rules ตอนนี้ครับ",
+    "mode": "pipeline:answer_contract_no_answer",
+    "route_category": "no_answer",
+    "route_intent": "answer_contract_rejected",
+    "confidence": 0.42,
+    "validation_ok": true,
+    "validation_errors": [],
+    "validation_warnings": [
+      "draft_rejected_by_answer_contract",
+      "answer_contract_type_mismatch:expected=competition_rule;actual=fact,summary",
+      "answer_contract_missing_evidence"
+    ],
+    "wall_sec": 1.0496,
+    "elapsed_sec": 1.0494,
+    "llm_call_count": 0,
+    "llm_elapsed_ms_total": 0,
+    "llm_kinds": [],
+    "llm_calls": [],
+    "stage_timings": [
+      {
+        "process": "split_multi_question",
+        "elapsed_ms": 1.2,
+        "elapsed_sec": 0.0012,
+        "detail": "parts=1"
+      },
+      {
+        "process": "preprocess",
+        "elapsed_ms": 59.56,
+        "elapsed_sec": 0.0596,
+        "detail": ""
+      },
+      {
+        "process": "active_route_selection",
+        "elapsed_ms": 1.38,
+        "elapsed_sec": 0.0014,
+        "detail": "competition_rules/competition_rules_lookup"
+      },
+      {
+        "process": "guard_scope",
+        "elapsed_ms": 0.02,
+        "elapsed_sec": 0.0,
+        "detail": ""
+      },
+      {
+        "process": "universal_intent",
+        "elapsed_ms": 0.87,
+        "elapsed_sec": 0.0009,
+        "detail": "competition_rules/rule_lookup"
+      },
+      {
+        "process": "tool_router",
+        "elapsed_ms": 0.01,
+        "elapsed_sec": 0.0,
+        "detail": "retrieval/competition_rules"
+      },
+      {
+        "process": "ambiguity_gate",
+        "elapsed_ms": 84.2,
+        "elapsed_sec": 0.0842,
+        "detail": "allow"
+      },
+      {
+        "process": "question_frame",
+        "elapsed_ms": 56.48,
+        "elapsed_sec": 0.0565,
+        "detail": "competition_rules/competition_rule_lookup"
+      },
+      {
+        "process": "candidate_decisions",
+        "elapsed_ms": 58.78,
+        "elapsed_sec": 0.0588,
+        "detail": ""
+      },
+      {
+        "process": "tool_precondition",
+        "elapsed_ms": 0.06,
+        "elapsed_sec": 0.0001,
+        "detail": "structured.unknown"
+      },
+      {
+        "process": "structured_tool_execution",
+        "elapsed_ms": 0.0,
+        "elapsed_sec": 0.0,
+        "detail": "no_result"
+      },
+      {
+        "process": "deterministic",
+        "elapsed_ms": 0.0,
+        "elapsed_sec": 0.0,
+        "detail": "no_match"
+      },
+      {
+        "process": "competition_fact_retrieval",
+        "elapsed_ms": 338.5,
+        "elapsed_sec": 0.3385,
+        "detail": ""
+      },
+      {
+        "process": "competition_fact_answer",
+        "elapsed_ms": 0.12,
+        "elapsed_sec": 0.0001,
+        "detail": ""
+      },
+      {
+        "process": "curated_retrieval",
+        "elapsed_ms": 51.48,
+        "elapsed_sec": 0.0515,
+        "detail": ""
+      },
+      {
+        "process": "curated_answer",
+        "elapsed_ms": 0.01,
+        "elapsed_sec": 0.0,
+        "detail": ""
+      },
+      {
+        "process": "vector_retrieval",
+        "elapsed_ms": 164.5,
+        "elapsed_sec": 0.1645,
+        "detail": "guarded_vector_direct"
+      },
+      {
+        "process": "vector_answer",
+        "elapsed_ms": 0.0,
+        "elapsed_sec": 0.0,
+        "detail": "guarded_vector_direct"
+      },
+      {
+        "process": "experimental_fallback",
+        "elapsed_ms": 174.37,
+        "elapsed_sec": 0.1744,
+        "detail": "experimental_rag_no_context"
+      },
+      {
+        "process": "build_result",
+        "elapsed_ms": 0.7,
+        "elapsed_sec": 0.0007,
+        "detail": "pipeline:answer_contract_no_answer"
+      }
+    ],
+    "judge": {
+      "passed": false,
+      "score": 82.0,
+      "errors": [
+        "category_mismatch:no_answer"
+      ],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "fact_card_retrieval",
+        "decision": "competition_fact_cards",
+        "confidence": 0.95,
+        "detail": "hits=3 game=Arena of Valor (RoV) intent=bug_rule",
+        "metadata": {
+          "category": "competition_rules",
+          "game": "Arena of Valor (RoV)",
+          "intent": "bug_rule"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "competition_fact_answer",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001,
+          "raw_hit_count": 0,
+          "confidence": 0.6
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "curated_retrieval",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 51.48,
+          "elapsed_sec": 0.0515,
+          "hit_count": 3,
+          "category": "competition_rules"
+        }
+      },
+      {
+        "stage": "rag_retrieval",
+        "decision": "curated_lexical",
+        "confidence": 0.74,
+        "detail": "hits=3 game=Arena of Valor (RoV) intent=bug_rule",
+        "metadata": {
+          "category": "competition_rules",
+          "game": "Arena of Valor (RoV)",
+          "intent": "bug_rule"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "curated_answer",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.01,
+          "elapsed_sec": 0.0,
+          "raw_hit_count": 0,
+          "confidence": 0.58
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "vector_retrieval",
+        "confidence": 1.0,
+        "detail": "guarded_vector_direct",
+        "metadata": {
+          "elapsed_ms": 164.5,
+          "elapsed_sec": 0.1645,
+          "hit_count": 0
+        }
+      },
+      {
+        "stage": "vector_retrieval",
+        "decision": "guarded_hybrid_vector",
+        "confidence": 0.5,
+        "detail": "hits=0 backend=local_hash_char_ngram_v1 blocked=below_threshold:104, category_mismatch:683",
+        "metadata": {
+          "category": "competition_rules",
+          "intent": "competition_rules_lookup",
+          "backend": "local_hash_char_ngram_v1"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "vector_answer",
+        "confidence": 1.0,
+        "detail": "guarded_vector_direct",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0,
+          "raw_hit_count": 0,
+          "confidence": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "experimental_fallback",
+        "confidence": 1.0,
+        "detail": "experimental_rag_no_context",
+        "metadata": {
+          "elapsed_ms": 174.37,
+          "elapsed_sec": 0.1744,
+          "confidence": 0.42
+        }
+      },
+      {
+        "stage": "experimental_rag_fallback",
+        "decision": "no_context",
+        "confidence": 0.42,
+        "detail": "fact_cards:hits=5 game=Arena of Valor (RoV) intent=bug_rule; fact_card_answer_guard:rejected_intent_or_detail_mismatch; vector:hits=0 backend=local_hash_char_ngram_v1 blocked=below_threshold:104, category_mismatch:683; scoped:hits=5 game=Arena of Valor (RoV) intent=bug_rule; scoped_answer_guard:rejected_intent_or_score_mismatch",
+        "metadata": {
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "answer_contract",
+        "decision": "hard_veto_to_no_answer",
+        "confidence": 1.0,
+        "detail": "answer_contract_type_mismatch:expected=competition_rule;actual=fact,summary; answer_contract_missing_evidence",
+        "metadata": {
+          "rejected_mode": "pipeline:experimental_rag_no_context",
+          "rejected_route": "competition_rules/competition_rules_lookup",
+          "errors": [
+            "answer_contract_type_mismatch:expected=competition_rule;actual=fact,summary",
+            "answer_contract_missing_evidence"
+          ]
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:answer_contract_no_answer",
+        "metadata": {
+          "elapsed_ms": 0.7,
+          "elapsed_sec": 0.0007,
+          "format_thai_style_ms": 0.09,
+          "total_elapsed_ms": 1049.34,
+          "total_elapsed_sec": 1.0493
+        }
+      }
+    ]
+  }
+]

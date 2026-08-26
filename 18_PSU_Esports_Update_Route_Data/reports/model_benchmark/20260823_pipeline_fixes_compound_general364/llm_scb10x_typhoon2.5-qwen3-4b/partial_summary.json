@@ -1,0 +1,64 @@
+{
+  "run_label": "llm_scb10x_typhoon2.5-qwen3-4b",
+  "run_kind": "llm",
+  "model": "scb10x/typhoon2.5-qwen3-4b",
+  "partial": true,
+  "total_requested": 364,
+  "completed": 364,
+  "total_wall_sec": 699.281,
+  "generated_at": "2026-08-23T19:24:22",
+  "total": 364,
+  "passed": 359,
+  "pass_rate": 98.63,
+  "avg_score": 99.66,
+  "avg_wall_sec": 1.9182,
+  "median_wall_sec": 1.8746,
+  "p95_wall_sec": 3.0337,
+  "max_wall_sec": 5.6052,
+  "llm_call_total": 276,
+  "mode_counts": {
+    "pipeline:multi_question_splitter": 88,
+    "pipeline:structured_game_controls": 1,
+    "pipeline:general_llm_fallback": 272,
+    "pipeline:general_llm_unavailable": 3
+  },
+  "route_counts": {
+    "multi_question/multi_question_split": 88,
+    "games/game_control_lookup": 1,
+    "general/detail": 168,
+    "general/general_knowledge_query": 107
+  },
+  "group_counts": {
+    "compound": 89,
+    "general_llm": 275
+  },
+  "quality_bucket_counts": {
+    "psu_fact": 15,
+    "compound": 74,
+    "general_llm": 275
+  },
+  "top_errors": {
+    "llm_required_but_unavailable": 3,
+    "missing_any:API|เชื่อมต่อ": 1,
+    "missing_any:กิจกรรม": 1,
+    "missing_any:ขอบคุณ": 1
+  },
+  "by_group": {
+    "compound": {
+      "total": 89,
+      "passed": 89,
+      "pass_rate": 100.0,
+      "avg_score": 100.0,
+      "avg_wall_sec": 1.2007,
+      "p95_wall_sec": 2.6189
+    },
+    "general_llm": {
+      "total": 275,
+      "passed": 270,
+      "pass_rate": 98.18,
+      "avg_score": 99.55,
+      "avg_wall_sec": 2.1504,
+      "p95_wall_sec": 3.0337
+    }
+  }
+}

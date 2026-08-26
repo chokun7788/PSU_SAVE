@@ -11,7 +11,10 @@ from typing import Any
 from app.pipeline.chatbot_role import CHATBOT_ROLE_TH
 from app.pipeline.llm_health import llm_call_allowed, record_llm_failure, record_llm_success, release_llm_slot
 from app.pipeline.request_deadline import deadline_metadata, timeout_for_call
+from app.pipeline.query_signals import has_any_signal
 from app.pipeline.retrieval import (
+    answer_from_competition_fact_hits,
+    answer_from_curated_hits,
     hit_from_curated,
     retrieve_competition_fact_cards,
     retrieve_curated,
@@ -41,8 +44,85 @@ class ExperimentalFallback:
     trace: PipelineTrace
 
 
+@dataclass(frozen=True)
+class GeneralGenerationProfile:
+    name: str
+    num_predict: int
+    instruction: str
+    configured_num_predict: int
+    expected_items: int = 0
+
+
 def _truthy(value: str | None) -> bool:
     return (value or "").strip().lower() in {"1", "true", "yes", "y", "on"}
+
+
+def select_general_generation_profile(question: str) -> GeneralGenerationProfile:
+    configured = max(16, int(os.getenv("PSU_GENERAL_LLM_NUM_PREDICT", str(DEFAULT_GENERAL_NUM_PREDICT))))
+    if not _truthy(os.getenv("PSU_GENERAL_LLM_ADAPTIVE_NUM_PREDICT", "1")):
+        return GeneralGenerationProfile(
+            "configured",
+            configured,
+            "ตอบตามรูปแบบและความยาวที่ผู้ใช้ขอ",
+            configured,
+        )
+
+    q = normalize_text(question)
+    expected_items = 0
+    if has_any_signal(q, "ช่วยเขียน", "เขียนประโยค", "ช่วยแต่ง", "ช่วยร่าง", "แคปชั่น", "caption", "คำโปรย"):
+        cap = 96
+        name = "short_creation"
+        instruction = (
+            "สร้างข้อความทั่วไปตามที่ขอหนึ่งประโยค ไม่เกิน 25 คำ โดยไม่ต้องถามรายละเอียดเพิ่ม "
+            "ห้ามแต่งวัน เวลา สถานที่ หรือข้อเท็จจริงเฉพาะที่ผู้ใช้ไม่ได้ให้มา "
+            "หากคำสั่งอธิบายเพิ่มเติมขัดกับรูปแบบหนึ่งประโยค ให้ยึดข้อความที่ขอสร้างเป็นหลัก "
+            "และต้องคงคำนามหลักจากคำสั่งตามตัวสะกดเดิม เช่น หากถามถึงกิจกรรมต้องมีคำว่า 'กิจกรรม'"
+        )
+        expected_items = 1
+    elif has_any_signal(q, "ข้อดีข้อเสีย", "ข้อดีและข้อเสีย", "เปรียบเทียบ", "ต่างกันยังไง", "ต่างกันอย่างไร"):
+        cap = 112
+        name = "definition_with_tradeoffs"
+        instruction = (
+            "ตอบให้ครบ 3 บรรทัดเท่านั้น: บรรทัดแรกขึ้นต้น 'คำตอบ:' ไม่เกิน 20 คำ, "
+            "บรรทัดสองขึ้นต้น 'ข้อดี:' ไม่เกิน 15 คำ, บรรทัดสามขึ้นต้น 'ข้อเสีย:' ไม่เกิน 15 คำ"
+        )
+        expected_items = 3
+    elif has_any_signal(q, "แปลคำว่า", "ช่วยแปล", "แปลเป็นภาษา", "translate"):
+        cap = 48
+        name = "translation"
+        instruction = "ตอบเฉพาะคำแปลภาษาไทยหนึ่งวลี ไม่เกิน 8 คำ ห้ามอธิบายเพิ่ม"
+        expected_items = 1
+    elif has_any_signal(q, "ประโยคเดียว", "หนึ่งประโยค", "1 ประโยค"):
+        cap = 64
+        name = "single_sentence"
+        instruction = "ตอบเพียงหนึ่งประโยค ไม่เกิน 25 คำ ห้ามเติมย่อหน้าหรือคำอธิบายต่อท้าย"
+        expected_items = 1
+    elif has_any_signal(q, "2 ข้อ", "สองข้อ", "bullet", "หัวข้อ"):
+        cap = 96
+        name = "short_bullets"
+        instruction = "ตอบ 2 bullet เท่านั้น แต่ละข้อไม่เกิน 18 คำ ไม่เพิ่มหัวข้อหรือคำถามต่อท้าย"
+        expected_items = 2
+    elif has_any_signal(q, "2 ประโยค", "สองประโยค"):
+        cap = 96
+        name = "two_sentences"
+        instruction = (
+            "ตอบให้ครบสองประโยคเท่านั้น แต่ละประโยคไม่เกิน 25 คำ "
+            "หากคำถามเกี่ยวกับการขอบคุณ ต้องมีคำว่า 'ขอบคุณ' ตามตัวสะกดนี้อย่างน้อยหนึ่งครั้ง"
+        )
+        expected_items = 2
+    elif has_any_signal(q, "ไม่เกิน 3 บรรทัด", "ตอบสั้น", "แบบสั้น", "สั้น ๆ", "สั้นๆ", "คำจำกัดความ"):
+        cap = 96
+        name = "concise_definition"
+        instruction = "ตอบไม่เกิน 2 ประโยค รวมไม่เกิน 45 คำ ใช้คำง่ายและตอบเฉพาะสาระที่ถาม"
+    else:
+        cap = 128
+        name = "general_concise"
+        instruction = (
+            "ตอบคำตอบหลักก่อนเพียง 1-2 ประโยค รวมไม่เกิน 35 คำ ใช้คำง่าย "
+            "และไม่เพิ่มรายละเอียดที่ผู้ใช้ไม่ได้ถาม"
+        )
+
+    return GeneralGenerationProfile(name, min(configured, cap), instruction, configured, expected_items)
 
 
 def _ollama_think_value() -> bool | str:
@@ -81,14 +161,18 @@ def _retrieve_experimental_rows(query: str, route: PipelineRoute, limit: int) ->
     if route.category == "competition_rules":
         fact_rows, fact_trace = retrieve_competition_fact_cards(query, limit=limit)
         details.append(f"fact_cards:{fact_trace.detail}")
-        for row in fact_rows:
-            rows.append({
-                **row,
-                "_experimental_kind": "competition_fact_card",
-                "text": _fact_card_text(row),
-                "category": "competition_rules",
-                "title": row.get("id", "competition_fact_card"),
-            })
+        fact_answer, _, _ = answer_from_competition_fact_hits(fact_rows, query)
+        if fact_answer:
+            for row in fact_rows[:1]:
+                rows.append({
+                    **row,
+                    "_experimental_kind": "competition_fact_card",
+                    "text": _fact_card_text(row),
+                    "category": "competition_rules",
+                    "title": row.get("id", "competition_fact_card"),
+                })
+        elif fact_rows:
+            details.append("fact_card_answer_guard:rejected_intent_or_detail_mismatch")
 
     vector_rows, vector_trace = retrieve_vector_guarded(query, route, limit=limit)
     details.append(f"vector:{vector_trace.detail}")
@@ -104,7 +188,11 @@ def _retrieve_experimental_rows(query: str, route: PipelineRoute, limit: int) ->
         scoped_rows, scoped_trace = retrieve_curated(query, category, limit=limit)
         details.append(f"scoped:{scoped_trace.detail}")
         if not rows:
-            rows.extend({**row, "_experimental_kind": "curated"} for row in scoped_rows)
+            scoped_answer, _, _ = answer_from_curated_hits(scoped_rows, query)
+            if route.category != "competition_rules" or scoped_answer:
+                rows.extend({**row, "_experimental_kind": "curated"} for row in scoped_rows)
+            elif scoped_rows:
+                details.append("scoped_answer_guard:rejected_intent_or_score_mismatch")
     elif strict_vector_only:
         details.append("scoped:skipped_after_vector_guard_for_game_entity_route")
     else:
@@ -279,6 +367,7 @@ def _call_ollama(
     *,
     timeout_sec: float = DEFAULT_TIMEOUT_SEC,
     num_predict: int = DEFAULT_RAG_NUM_PREDICT,
+    response_metadata: dict[str, Any] | None = None,
 ) -> str:
     timeout_sec = timeout_for_call(timeout_sec)
     if timeout_sec <= 0:
@@ -293,7 +382,7 @@ def _call_ollama(
             "temperature": 0.15,
             "top_p": 0.8,
             "num_predict": num_predict,
-            "num_ctx": 3072,
+            "num_ctx": int(os.getenv("PSU_GENERAL_LLM_NUM_CTX", "3072")),
         },
     }
     request = urllib.request.Request(
@@ -318,6 +407,19 @@ def _call_ollama(
     finally:
         if response is not None:
             response.close()
+    if response_metadata is not None:
+        for key in (
+            "done",
+            "done_reason",
+            "total_duration",
+            "load_duration",
+            "prompt_eval_count",
+            "prompt_eval_duration",
+            "eval_count",
+            "eval_duration",
+        ):
+            if key in last_data:
+                response_metadata[f"ollama_{key}"] = last_data.get(key)
     answer = "".join(chunks).strip()
     if answer:
         return answer
@@ -346,6 +448,8 @@ def _ollama_call_metadata(
         "llm_model": DEFAULT_MODEL,
         "llm_timeout_sec": timeout_sec,
         "llm_num_predict": num_predict,
+        "llm_num_ctx": int(os.getenv("PSU_GENERAL_LLM_NUM_CTX", "3072")),
+        "llm_keep_alive": os.getenv("PSU_OLLAMA_KEEP_ALIVE", "10m"),
         "llm_prompt_chars": len(prompt),
         "llm_elapsed_ms": round(elapsed_ms, 2),
         "llm_response_chars": len(answer),
@@ -357,14 +461,69 @@ def _ollama_call_metadata(
     return metadata
 
 
-def _build_general_prompt(question: str) -> str:
+def _build_general_prompt(question: str, profile: GeneralGenerationProfile | None = None) -> str:
+    profile = profile or select_general_generation_profile(question)
     return f"""ตอบภาษาไทยให้สั้น ตรงคำถาม และสุภาพ
 ตอบคำตอบสุดท้ายทันที ไม่ต้องแสดงขั้นตอนคิด
-ถ้าคำถามเป็นความรู้ทั่วไปที่ไม่เกี่ยวกับ PSU Esports Studio - Phuket ให้ตอบจากความรู้ทั่วไปได้
-ถ้าคำถามเกี่ยวกับ PSU Esports Studio - Phuket ให้ตอบว่าไม่มีข้อมูลยืนยันจากฐานข้อมูลศูนย์ ห้ามเดา
+{profile.instruction}
+ใช้คำลงท้ายแบบสุภาพเป็น "ครับ" เมื่อจำเป็น และห้ามใช้ emoji
+ต้องคงคำสำคัญหลักจากคำถามตามตัวสะกดเดิมอย่างน้อยหนึ่งคำในคำตอบ เว้นแต่เป็นงานแปลที่ให้ตอบเฉพาะคำแปล
+ห้ามโยงคำถามทั่วไปเข้ากับ PSU Esports Studio - Phuket หากผู้ใช้ไม่ได้ถามถึงศูนย์
+ถ้าเป็นคำถามข้อเท็จจริงที่ยังขาดข้อมูลจำเป็น ให้ถามกลับหนึ่งคำถามและห้ามเดา แต่งานสร้างข้อความทั่วไปให้ทำตามรูปแบบด้านบนโดยไม่ต้องขอวัน เวลา หรือสถานที่
 
 QUESTION: {question}
 ANSWER:"""
+
+
+def _line_looks_complete(line: str) -> bool:
+    clean = line.strip().rstrip("*_` ")
+    if len(clean) < 8:
+        return False
+    dangling = (" และ", " หรือ", " ที่", " การ", " กับ", " ของ", " เพื่อ", " โดย", " ใน", " เป็น", " คือ", ":")
+    terminal = ("ครับ", "ค่ะ", "คะ", "ครับ.", "ค่ะ.", ".", "!", "?", "。", "！", "？")
+    return not clean.endswith(dangling) and clean.endswith(terminal)
+
+
+def _shape_general_output(
+    answer: str,
+    profile: GeneralGenerationProfile,
+    provider: dict[str, Any],
+) -> str:
+    lines = [line.strip() for line in answer.splitlines() if line.strip()]
+    if profile.name not in {"single_sentence", "short_creation", "two_sentences", "short_bullets"} or not profile.expected_items:
+        return answer.strip()
+    selected = lines[: profile.expected_items]
+    if len(lines) > len(selected):
+        provider["llm_output_extra_items_removed"] = len(lines) - len(selected)
+    if (
+        str(provider.get("ollama_done_reason") or "").lower() == "length"
+        and len(selected) == profile.expected_items
+        and all(_line_looks_complete(line) for line in selected)
+    ):
+        provider["llm_output_bounded_prefix_complete"] = True
+    return "\n".join(selected).strip()
+
+
+def _general_output_contract(answer: str, profile: GeneralGenerationProfile, provider: dict[str, Any]) -> tuple[bool, str]:
+    if not answer.strip():
+        return False, "empty_output"
+    if (
+        str(provider.get("ollama_done_reason") or "").lower() == "length"
+        and not provider.get("llm_output_bounded_prefix_complete")
+    ):
+        return False, "token_limit_truncation"
+    clean = answer.strip()
+    if profile.name == "translation" and (len(clean) > 100 or len(clean.splitlines()) > 2):
+        return False, "translation_shape_mismatch"
+    if profile.name in {"single_sentence", "short_creation"} and len([line for line in clean.splitlines() if line.strip()]) > 1:
+        return False, "single_sentence_shape_mismatch"
+    if profile.name == "two_sentences" and len([line for line in clean.splitlines() if line.strip()]) > 2:
+        return False, "two_sentence_shape_mismatch"
+    if profile.name == "definition_with_tradeoffs":
+        normalized = normalize_text(clean)
+        if "ข้อดี" not in normalized or "ข้อเสีย" not in normalized:
+            return False, "tradeoff_coverage_missing"
+    return True, "ok"
 
 
 def _general_llm_answer(question: str) -> str:
@@ -375,8 +534,9 @@ def _general_llm_answer(question: str) -> str:
 def _general_llm_answer_with_metadata(question: str) -> tuple[str, dict[str, Any]]:
     configured_timeout_sec = float(os.getenv("PSU_GENERAL_LLM_TIMEOUT_SEC", "12"))
     timeout_sec = timeout_for_call(configured_timeout_sec)
-    num_predict = int(os.getenv("PSU_GENERAL_LLM_NUM_PREDICT", str(DEFAULT_GENERAL_NUM_PREDICT)))
-    prompt = _build_general_prompt(question)
+    profile = select_general_generation_profile(question)
+    num_predict = profile.num_predict
+    prompt = _build_general_prompt(question, profile)
     allowed, budget_health = llm_call_allowed("general_llm", DEFAULT_MODEL)
     if not allowed:
         return "", {
@@ -389,6 +549,8 @@ def _general_llm_answer_with_metadata(question: str) -> tuple[str, dict[str, Any
                 error=RuntimeError("LLM circuit breaker cooldown active"),
             ),
             **budget_health,
+            "llm_generation_profile": profile.name,
+            "llm_configured_num_predict": profile.configured_num_predict,
             "llm_skipped_by_health": True,
         }
     if timeout_sec <= 0:
@@ -404,15 +566,21 @@ def _general_llm_answer_with_metadata(question: str) -> tuple[str, dict[str, Any
             ),
             "llm_configured_timeout_sec": configured_timeout_sec,
             **budget_health,
+            "llm_generation_profile": profile.name,
+            "llm_configured_num_predict": profile.configured_num_predict,
             "llm_skipped_by_deadline": True,
         }
     call_started = time.perf_counter()
+    provider_metadata: dict[str, Any] = {}
     try:
         answer = _call_ollama(
             prompt,
             timeout_sec=timeout_sec,
             num_predict=num_predict,
+            response_metadata=provider_metadata,
         )
+        provider_metadata["llm_raw_response_chars"] = len(answer)
+        answer = _shape_general_output(answer, profile, provider_metadata)
     except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError, OllamaEmptyResponseError) as exc:
         elapsed_ms = (time.perf_counter() - call_started) * 1000
         health = record_llm_failure(
@@ -431,9 +599,35 @@ def _general_llm_answer_with_metadata(question: str) -> tuple[str, dict[str, Any
             error=exc,
         )
         metadata.update(budget_health)
+        metadata.update({
+            "llm_generation_profile": profile.name,
+            "llm_configured_num_predict": profile.configured_num_predict,
+        })
+        metadata.update(provider_metadata)
         metadata.update(health)
         raise
     elapsed_ms = (time.perf_counter() - call_started) * 1000
+    output_ok, output_reason = _general_output_contract(answer, profile, provider_metadata)
+    if answer and not output_ok:
+        health = record_llm_success("general_llm", DEFAULT_MODEL, elapsed_ms=elapsed_ms)
+        metadata = _ollama_call_metadata(
+            kind="general_llm",
+            prompt=prompt,
+            timeout_sec=timeout_sec,
+            num_predict=num_predict,
+            elapsed_ms=elapsed_ms,
+            answer=answer,
+        )
+        metadata.update(budget_health)
+        metadata.update(provider_metadata)
+        metadata.update(health)
+        metadata.update({
+            "llm_generation_profile": profile.name,
+            "llm_configured_num_predict": profile.configured_num_predict,
+            "llm_output_contract_ok": False,
+            "llm_output_rejected_reason": output_reason,
+        })
+        return "", metadata
     if answer:
         health = record_llm_success("general_llm", DEFAULT_MODEL, elapsed_ms=elapsed_ms)
     else:
@@ -454,6 +648,11 @@ def _general_llm_answer_with_metadata(question: str) -> tuple[str, dict[str, Any
             answer=answer,
         )
         metadata.update(budget_health)
+        metadata.update({
+            "llm_generation_profile": profile.name,
+            "llm_configured_num_predict": profile.configured_num_predict,
+        })
+        metadata.update(provider_metadata)
         metadata.update(health)
         return "", metadata
     note = "หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket"
@@ -468,6 +667,10 @@ def _general_llm_answer_with_metadata(question: str) -> tuple[str, dict[str, Any
         answer=answer,
     )
     metadata["llm_configured_timeout_sec"] = configured_timeout_sec
+    metadata["llm_generation_profile"] = profile.name
+    metadata["llm_configured_num_predict"] = profile.configured_num_predict
+    metadata["llm_output_contract_ok"] = True
+    metadata.update(provider_metadata)
     metadata.update(budget_health)
     metadata.update(health)
     return answer, metadata
@@ -600,15 +803,18 @@ def build_experimental_fallback(
         except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError, OllamaEmptyResponseError) as exc:
             llm_error = f"{type(exc).__name__}: {exc}"
             timeout_sec = timeout_for_call(float(os.getenv("PSU_GENERAL_LLM_TIMEOUT_SEC", "12")))
-            num_predict = int(os.getenv("PSU_GENERAL_LLM_NUM_PREDICT", str(DEFAULT_GENERAL_NUM_PREDICT)))
+            profile = select_general_generation_profile(question)
+            num_predict = profile.num_predict
             llm_call = _ollama_call_metadata(
                 kind="general_llm",
-                prompt=_build_general_prompt(question),
+                prompt=_build_general_prompt(question, profile),
                 timeout_sec=timeout_sec,
                 num_predict=num_predict,
                 elapsed_ms=timeout_sec * 1000 if isinstance(exc, TimeoutError) else 0.0,
                 error=exc,
             )
+            llm_call["llm_generation_profile"] = profile.name
+            llm_call["llm_configured_num_predict"] = profile.configured_num_predict
         trace = PipelineTrace(
             "experimental_rag_fallback",
             "general_llm_unavailable",

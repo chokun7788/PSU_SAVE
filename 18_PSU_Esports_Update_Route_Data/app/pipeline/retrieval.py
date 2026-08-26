@@ -526,14 +526,30 @@ def retrieve_curated(query: str, category: str | None = None, limit: int = 3) ->
 
 
 def hit_from_curated(row: dict[str, Any]) -> dict[str, Any]:
+    metadata = {
+        "source_url": row.get("source_url", ""),
+        "category": row.get("category", ""),
+        "title": row.get("title", row.get("id", "curated_hit")),
+        "source_ids": row.get("source_ids", [row.get("id", "curated_hit")]),
+    }
+    for key in (
+        "source_type",
+        "trust_level",
+        "updated_at",
+        "retrieved_at",
+        "valid_from",
+        "valid_until",
+        "time_sensitive",
+        "freshness_verified",
+        "live_evidence",
+        "document_id",
+        "content_hash",
+    ):
+        if row.get(key) not in (None, ""):
+            metadata[key] = row.get(key)
     return {
         "id": row.get("id", "curated_hit"),
-        "metadata": {
-            "source_url": row.get("source_url", ""),
-            "category": row.get("category", ""),
-            "title": row.get("title", row.get("id", "curated_hit")),
-            "source_ids": row.get("source_ids", [row.get("id", "curated_hit")]),
-        },
+        "metadata": metadata,
     }
 
 

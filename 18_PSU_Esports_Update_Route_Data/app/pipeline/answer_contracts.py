@@ -54,6 +54,7 @@ def _answer_types(answer: str, route: PipelineRoute, mode: str = "") -> set[str]
         (("structured_members", "member"), ("member", "list")),
         (("competition_fact_card", "competition_rule"), ("competition_rule",)),
         (("penalty_fast", "penalty_rule"), ("penalty", "rule")),
+        (("semantic_rag_dynamic", "semantic_grounded"), ("fact", "summary")),
     )
     if not safe_control_mode:
         for mode_terms, inferred_types in typed_modes:
@@ -144,6 +145,7 @@ def _allowed_source_categories(operation: str) -> set[str]:
         "studio_rule_lookup": {"rules", "reservation", "penalty"},
         "competition_rule_lookup": {"competition_rules", "rules"},
         "penalty_lookup": {"penalty", "rules"},
+        "semantic_evidence_lookup": {"knowledge", "events_news", "about_us", "overview"},
     }.get(operation, set())
 
 
