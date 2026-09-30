@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_no_answer_own_pc_setup",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "เอาเครื่อง pc",
+      "pc ตัวเอง",
+      "คอมตัวเอง",
+      "เอาคอม.*มาตั้ง"
+    ],
+    "en": [
+      "bring.*pc",
+      "own.*pc"
+    ]
+  },
+  "facts": {
+    "route_category": "no_answer",
+    "intent": "no_answer_own_pc_setup",
+    "patterns": [
+      "เอาเครื่อง pc",
+      "pc ตัวเอง",
+      "คอมตัวเอง",
+      "เอาคอม.*มาตั้ง",
+      "bring.*pc",
+      "own.*pc"
+    ],
+    "priority": 130
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ยังไม่พบข้อมูลว่าสามารถนำ PC หรือคอมพิวเตอร์ส่วนตัวมาตั้งใช้งานในศูนย์ได้ในฐานข้อมูลที่มี ข้อมูลที่มีระบุบริการและอุปกรณ์ของศูนย์สำหรับจองใช้งานภายในสถานที่ จึงควรสอบถามเจ้าหน้าที่ก่อนนำอุปกรณ์ส่วนตัวเข้ามา"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "No information about bringing a personal PC for setup/use in the studio was found in the available knowledge base. The available data describes reserving the center's equipment for on-site use, so personal equipment should be confirmed with staff first."
+      },
+      "source_sha256": "ac0a73b92763d610cb17536dd8a4062b8ca9da7c26590b4d828a7c18e0720efb",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/no_answer_rules.jsonl",
+    "url": "https://esports.phuket.psu.ac.th/home",
+    "source_ids": [
+      "home",
+      "Reservation",
+      "curated_home_equipment_pc_zone"
+    ],
+    "last_verified_at": ""
+  }
+}

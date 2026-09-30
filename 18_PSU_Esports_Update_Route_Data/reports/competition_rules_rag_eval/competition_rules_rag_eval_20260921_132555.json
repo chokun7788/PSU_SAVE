@@ -1,0 +1,951 @@
+[
+  {
+    "id": "COMP-RAG-V2-TH-247",
+    "locale": "th",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Tekken 8 มี setting ที่ผู้เล่นต้องใช้เหมือนกันไหม",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "match_settings",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rules_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_rag",
+    "elapsed_sec": 2.1832,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s02_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s03_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s04_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s06_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s07_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s08_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s03_c01",
+      "competition_rules_tekken8_psu_esports_s04_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01",
+      "competition_rules_tekken8_psu_esports_s07_c01",
+      "competition_rules_tekken8_psu_esports_s08_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s03_c01",
+      "competition_rules_tekken8_psu_esports_s04_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01",
+      "competition_rules_tekken8_psu_esports_s07_c01",
+      "competition_rules_tekken8_psu_esports_s08_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "คำตอบ: * แข่งขันแบบ ออฟไลน์ (Offline)\n\nรายละเอียดที่เกี่ยวข้อง:\n•    FT2: ผู้ชนะคือผู้ที่ชนะครบ 2 เกมก่อน\n•    ในแต่ละเกมใช้กติกา R3 (แข่ง 3 รอบต่อเกม) และ 60S (จำกัดเวลา 60 วินาทีต่อรอบ)\n•    หากเสมอกันที่ 1-1 จะต้องแข่งขัน เกมตัดสิน\n•    ผู้เข้าแข่งขันต้องยอมรับและปฏิบัติตามกฎ กติกา และคำตัดสินของกรรมการโดยไม่มีเงื่อนไข\n•    ใช้เครื่องเกม PlayStation 5\n\nอ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "th",
+        "metadata": {
+          "requested": "th",
+          "detected": "mixed",
+          "effective": "th",
+          "confidence": 1.0,
+          "reason": "toggle_override_th;mixed_thai_function_words"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 32.4,
+          "elapsed_sec": 0.0324,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0325,
+          "global_remaining_sec": 19.9675,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9675,
+          "timing_status": "running",
+          "parts": [
+            "Tekken 8 มี setting ที่ผู้เล่นต้องใช้เหมือนกันไหม"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "mixed_th_en",
+          "query_variants": [
+            "TEKKEN 8 setting ที่ผู้เล่นต้องใช้เหมือนกันไหม",
+            "Tekken 8 มี setting ที่ผู้เล่นต้องใช้เหมือนกันไหม",
+            "Tekken 8 มี setting ที่ผู้เล่นต้องใช้เหมือนกันไหม TEKKEN 8"
+          ],
+          "elapsed_ms": 696.31,
+          "elapsed_sec": 0.6963
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 696.36,
+          "elapsed_sec": 0.6964
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 2.83,
+          "elapsed_sec": 0.0028,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "tekken8",
+              "title": "TEKKEN 8",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "TEKKEN 8",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_ps5_01_02"
+              ],
+              "zones": [
+                "PC Zone",
+                "PlayStation 5 Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "tekken8",
+                "title": "TEKKEN 8",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "TEKKEN 8",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_ps5_01_02"
+                ],
+                "zones": [
+                  "PC Zone",
+                  "PlayStation 5 Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 10.505,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "semantic_route_refiner",
+        "decision": "skipped_exact_target_lock",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "tekken8",
+              "title": "TEKKEN 8",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "TEKKEN 8",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_ps5_01_02"
+              ],
+              "zones": [
+                "PC Zone",
+                "PlayStation 5 Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "tekken8",
+                "title": "TEKKEN 8",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "TEKKEN 8",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_ps5_01_02"
+                ],
+                "zones": [
+                  "PC Zone",
+                  "PlayStation 5 Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 10.505,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "freshness_guard",
+        "decision": "not_required",
+        "metadata": {
+          "requires_live_evidence": false
+        }
+      },
+      {
+        "stage": "boundary_guard",
+        "decision": "allow",
+        "metadata": {
+          "flags": []
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "guard_scope",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "guard",
+        "decision": "domain_ok",
+        "metadata": {}
+      },
+      {
+        "stage": "router",
+        "decision": "competition_rules",
+        "metadata": {
+          "intent": "competition_rules_lookup",
+          "answer_type": "fact"
+        }
+      },
+      {
+        "stage": "model_gateway",
+        "decision": "skip_preflight_llm",
+        "metadata": {
+          "allow_llm": false,
+          "preflight_allow_llm": false,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "universal_intent",
+        "metadata": {
+          "elapsed_ms": 608.14,
+          "elapsed_sec": 0.6081,
+          "method": "heuristic",
+          "confidence": 0.9
+        }
+      },
+      {
+        "stage": "universal_intent",
+        "decision": "competition_rules/rule_lookup",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [],
+          "input_recovery": {
+            "score": 0.0949,
+            "language": "mixed",
+            "language_quality": 0.9051,
+            "should_review_intent": false,
+            "reason": "Thai character n-gram quality=0.905",
+            "action": "continue"
+          },
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "competition_rules",
+              "operation": "rule_lookup",
+              "target": "",
+              "confidence": 0.9,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "games",
+              "operation": "list",
+              "target": "",
+              "confidence": 0.66,
+              "reason": "game-domain catalog alternative"
+            },
+            {
+              "id": "c3",
+              "domain": "games",
+              "operation": "rule_lookup",
+              "target": "",
+              "confidence": 0.66,
+              "reason": "domain keyword score=1"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "lookup_competition_rule"
+          ],
+          "answer_style": "direct",
+          "heuristic": {
+            "domain": "competition_rules",
+            "operation": "rule_lookup",
+            "confidence": 0.9,
+            "reason": "known game alias found; competition route overrides game/count ambiguity; named game availability terms found; competition route forces rule lookup"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.9
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:retrieval",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "metadata": {
+          "elapsed_ms": 110.56,
+          "elapsed_sec": 0.1106,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "metadata": {
+          "flags": [],
+          "route": "competition_rules/competition_rules_lookup",
+          "intent": "competition_rules/rule_lookup",
+          "has_known_game": true,
+          "has_service_or_zone": false,
+          "game_entity_resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "tekken8",
+              "title": "TEKKEN 8",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "TEKKEN 8",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_ps5_01_02"
+              ],
+              "zones": [
+                "PC Zone",
+                "PlayStation 5 Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "tekken8",
+                "title": "TEKKEN 8",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "TEKKEN 8",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_ps5_01_02"
+                ],
+                "zones": [
+                  "PC Zone",
+                  "PlayStation 5 Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 0.923,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          },
+          "intent_candidates": [
+            {
+              "domain": "games",
+              "operation": "detail",
+              "score": 0.3,
+              "reasons": [
+                "known_game_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "question_frame",
+        "metadata": {
+          "elapsed_ms": 4.98,
+          "elapsed_sec": 0.005,
+          "operation": "competition_rule_lookup",
+          "domain": "competition_rules",
+          "expected_answer_types": [
+            "competition_rule"
+          ],
+          "targets": [
+            {
+              "target_id": "tekken8",
+              "target_type": "competition_game",
+              "domain": "competition_rules",
+              "label": "Tekken 8",
+              "score": 1.0
+            }
+          ],
+          "target_status": "exact",
+          "target_margin": 1.0,
+          "target_required": true,
+          "allows_multiple_targets": false,
+          "needs_clarification": false,
+          "confidence": 0.97,
+          "method": "competition_target_first",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "intent_operation": "rule_lookup",
+          "competition_game_ids": [
+            "tekken8"
+          ],
+          "competition_game_labels": [
+            "Tekken 8"
+          ],
+          "competition_rulebook_ids": [
+            "competition_rules_tekken8_psu_esports"
+          ],
+          "competition_facet": null,
+          "competition_target_reason": "registered_competition_alias",
+          "competition_explicit_mentions": [
+            "tekken 8"
+          ],
+          "target_reason": "registered_competition_alias",
+          "target_candidate_count": 1,
+          "game_family": ""
+        }
+      },
+      {
+        "stage": "target_context",
+        "decision": "enrich_universal_intent",
+        "metadata": {
+          "target_id": "tekken8",
+          "target_type": "competition_game",
+          "domain": "competition_rules",
+          "label": "Tekken 8",
+          "score": 1.0
+        }
+      },
+      {
+        "stage": "operation_route_refine",
+        "decision": "competition_rules/competition_rules_lookup -> competition_rules/competition_rules_lookup",
+        "metadata": {
+          "operation": "competition_rule_lookup",
+          "domain": "competition_rules",
+          "expected_answer_types": [
+            "competition_rule"
+          ],
+          "targets": [
+            {
+              "target_id": "tekken8",
+              "target_type": "competition_game",
+              "domain": "competition_rules",
+              "label": "Tekken 8",
+              "score": 1.0
+            }
+          ],
+          "target_status": "exact",
+          "target_margin": 1.0,
+          "target_required": true,
+          "allows_multiple_targets": false,
+          "needs_clarification": false,
+          "confidence": 0.97,
+          "method": "competition_target_first",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "intent_operation": "rule_lookup",
+          "competition_game_ids": [
+            "tekken8"
+          ],
+          "competition_game_labels": [
+            "Tekken 8"
+          ],
+          "competition_rulebook_ids": [
+            "competition_rules_tekken8_psu_esports"
+          ],
+          "competition_facet": null,
+          "competition_target_reason": "registered_competition_alias",
+          "competition_explicit_mentions": [
+            "tekken 8"
+          ],
+          "target_reason": "registered_competition_alias",
+          "target_candidate_count": 1,
+          "game_family": ""
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "candidate_decisions",
+        "metadata": {
+          "elapsed_ms": 24.5,
+          "elapsed_sec": 0.0245
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "retrieval.competition_fact_cards",
+        "metadata": {
+          "selected": {
+            "capability_id": "retrieval.competition_fact_cards",
+            "action": "retrieval",
+            "domain": "competition_rules",
+            "score": 0.939,
+            "status": "accepted",
+            "reason": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority; question_frame_domain_match; precondition=competition_rule_retrieval_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          "selection": {
+            "status": "selected",
+            "execution_allowed": true,
+            "margin": 0.394,
+            "same_action_as_second": false,
+            "second": {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.544,
+              "status": "accepted",
+              "reason": "base=0.86; answer_type_match; question_frame_domain_mismatch; precondition=reservation_or_booking_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          },
+          "question_frame": {
+            "operation": "competition_rule_lookup",
+            "domain": "competition_rules",
+            "expected_answer_types": [
+              "competition_rule"
+            ],
+            "targets": [
+              {
+                "target_id": "tekken8",
+                "target_type": "competition_game",
+                "domain": "competition_rules",
+                "label": "Tekken 8",
+                "score": 1.0
+              }
+            ],
+            "target_status": "exact",
+            "target_margin": 1.0,
+            "target_required": true,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.97,
+            "method": "competition_target_first",
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "intent_operation": "rule_lookup",
+            "competition_game_ids": [
+              "tekken8"
+            ],
+            "competition_game_labels": [
+              "Tekken 8"
+            ],
+            "competition_rulebook_ids": [
+              "competition_rules_tekken8_psu_esports"
+            ],
+            "competition_facet": null,
+            "competition_target_reason": "registered_competition_alias",
+            "competition_explicit_mentions": [
+              "tekken 8"
+            ],
+            "target_reason": "registered_competition_alias",
+            "target_candidate_count": 1,
+            "game_family": ""
+          },
+          "candidates": [
+            {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.939,
+              "status": "accepted",
+              "reason": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority; question_frame_domain_match; precondition=competition_rule_retrieval_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.544,
+              "status": "accepted",
+              "reason": "base=0.86; answer_type_match; question_frame_domain_mismatch; precondition=reservation_or_booking_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.506,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; answer_type_match; tool_router_action=retrieval; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.489,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.467,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.444,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.4,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.322,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: competition_query_must_not_use_member_directory",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: booking_query_must_not_use_game_tool",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_control_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: booking_query_must_not_use_equipment_tool",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_schedule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_or_calculation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.general_answer",
+              "action": "general_llm",
+              "domain": "general",
+              "score": 0.139,
+              "status": "rejected",
+              "reason": "policy_veto: PSU-specific or medium/high-risk route cannot use general LLM",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "medium",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_precondition",
+        "metadata": {
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001,
+          "ok": false
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "reject_structured",
+        "metadata": {
+          "capability_id": "structured.unknown",
+          "ok": false,
+          "reason": "no_structured_capability_for_route",
+          "severity": "policy",
+          "selector_allows_structured": false,
+          "selected_capability_id": "retrieval.competition_fact_cards"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "structured_tool_execution",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0,
+          "precondition_ok": false,
+          "selector_allows_structured": false,
+          "selected_capability_id": "retrieval.competition_fact_cards",
+          "confidence": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "deterministic",
+        "metadata": {
+          "elapsed_ms": 0.0,
+          "elapsed_sec": 0.0,
+          "confidence": 0.0,
+          "selector_allows_deterministic": false,
+          "selected_capability_id": "retrieval.competition_fact_cards"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "competition_source_retrieval",
+        "metadata": {
+          "elapsed_ms": 172.24,
+          "elapsed_sec": 0.1722,
+          "hit_count": 6,
+          "target_game_ids": [
+            "tekken8"
+          ],
+          "facet": null
+        }
+      },
+      {
+        "stage": "rag_retrieval",
+        "decision": "curated_lexical",
+        "metadata": {
+          "category": "competition_rules",
+          "game": "Tekken 8",
+          "intent": "game_setting"
+        }
+      },
+      {
+        "stage": "competition_source_grounding",
+        "decision": "accepted",
+        "metadata": {
+          "hit_count": 6,
+          "validation_errors": []
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 5.57,
+          "elapsed_sec": 0.0056,
+          "format_response_style_ms": 4.96,
+          "answer_language": "th",
+          "total_elapsed_ms": 2183.15,
+          "total_elapsed_sec": 2.1832
+        }
+      }
+    ]
+  }
+]

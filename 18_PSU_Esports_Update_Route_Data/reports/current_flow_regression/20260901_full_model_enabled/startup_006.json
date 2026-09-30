@@ -1,0 +1,60 @@
+{
+  "event": "ready",
+  "elapsed_sec": 14.692971999989823,
+  "guard": {
+    "enabled": true,
+    "mode": "enforce",
+    "repeat_policy": "ask_retype",
+    "layout_threshold": 0.39,
+    "repeat_threshold": 0.55,
+    "corpus_size": 3946,
+    "profile_version": "keyboard-profile-v1:f2bb2d23722b55a7"
+  },
+  "caches": {
+    "ok": true,
+    "elapsed_sec": 9.1688,
+    "warmed": [
+      "game_title_aliases",
+      "structured_tools",
+      "routing_data",
+      "retrieval_data",
+      "probe_queries",
+      "semantic_embedding"
+    ],
+    "errors": [],
+    "timings": {
+      "game_title_aliases": 0.8588,
+      "structured_tools": 0.8276,
+      "routing_data": 0.1764,
+      "retrieval_data": 1.3649,
+      "probe_queries": 5.8195,
+      "semantic_embedding": 0.1214
+    }
+  },
+  "models": {
+    "embedding": {
+      "model": "psu-bge-m3:q8_0",
+      "dimensions": 1024,
+      "num_ctx": 1024
+    },
+    "llm": {
+      "ok": true,
+      "model": "scb10x/typhoon2.5-qwen3-4b",
+      "kind": "knowledge_warmup",
+      "elapsed_ms": 4573.01,
+      "response_chars": 2,
+      "done_reason": "stop",
+      "num_ctx": 3072,
+      "load_duration": 4198875700,
+      "prompt_eval_duration": 307427000,
+      "eval_duration": 55368000,
+      "health": {
+        "llm_health_enabled": true,
+        "llm_health_status": "ok",
+        "llm_health_failures": 0,
+        "llm_health_failure_scope": "kind_only"
+      }
+    },
+    "elapsed_sec": 4.719654500018805
+  }
+}

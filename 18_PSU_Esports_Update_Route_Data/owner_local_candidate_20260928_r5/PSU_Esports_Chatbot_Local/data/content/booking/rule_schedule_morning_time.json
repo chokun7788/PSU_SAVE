@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_schedule_morning_time",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "รอบเช้า.*เริ่ม",
+      "รอบเช้า.*09",
+      "รอบเช้า.*ถึง",
+      "ช่วงเช้า.*เวลา",
+      "ช่วงเช้า.*กี่โมง",
+      "ตอนเช้า.*เปิด",
+      "เช้า.*เปิด.*กี่โมง",
+      "Morning คือ"
+    ],
+    "en": [
+      "morning.*session.*time",
+      "morning.*slot.*time",
+      "morning.*time"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "schedule_morning_time",
+    "patterns": [
+      "รอบเช้า.*เริ่ม",
+      "รอบเช้า.*09",
+      "รอบเช้า.*ถึง",
+      "ช่วงเช้า.*เวลา",
+      "ช่วงเช้า.*กี่โมง",
+      "ตอนเช้า.*เปิด",
+      "เช้า.*เปิด.*กี่โมง",
+      "morning.*session.*time",
+      "morning.*slot.*time",
+      "morning.*time",
+      "Morning คือ"
+    ],
+    "priority": 122
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ใช่ รอบเช้า Morning คือ 09:00–12:00 แต่ถ้าไม่ได้ระบุวันควรดู timeline ทั้งสัปดาห์ด้วย: วันจันทร์ (Monday) ช่วงเช้า 09:00–12:00 เป็น Maintenance* เล่นไม่ได้ และเปิดเล่นช่วงบ่าย 13:00–16:00; วันอังคาร-พฤหัสบดี (Tuesday-Thursday) เปิดตามรอบปกติ 09:00–12:00 และ 13:00–16:00; วันศุกร์ (Friday) เปิดช่วงเช้า 09:00–12:00 แต่ช่วงบ่าย 13:00–16:00 เป็น Maintenance** สำหรับ Weekly hardware inspection and cleaning จึงไม่ใช่ช่วงเล่น"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Yes, the Morning slot is 09:00-12:00, but if no day is specified you should check the weekly timeline: Monday morning 09:00-12:00 is Maintenance* and not playable, while Monday afternoon 13:00-16:00 is open; Tuesday-Thursday follow the regular slots 09:00-12:00 and 13:00-16:00; Friday morning 09:00-12:00 is open, but Friday afternoon 13:00-16:00 is Maintenance** for weekly hardware inspection and cleaning, so it is not playable."
+      },
+      "source_sha256": "a5765f121a7b55a5d18a7c6e79c81dd7260da13e1feee2395631bd1c2df5ae8e",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/reservation_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_schedule_morning",
+      "curated_schedule_afternoon",
+      "curated_reservation_schedule_monday_morning",
+      "curated_reservation_schedule_friday_maintenance",
+      "reservation-intro-schedule"
+    ],
+    "last_verified_at": ""
+  }
+}

@@ -1,0 +1,4583 @@
+[
+  {
+    "id": "COMP-RAG-V2-EN-001",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What competition format does Counter-Strike 2 use?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "competition_format",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.4508,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s01_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s19_c01",
+      "competition_rules_cs2_psu_phuket_2026_s01_c01",
+      "competition_rules_cs2_psu_phuket_2026_s19_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s01_c01",
+      "competition_rules_cs2_psu_phuket_2026_s19_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 4.6,
+          "elapsed_sec": 0.0046,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0047,
+          "global_remaining_sec": 19.9953,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9953,
+          "timing_status": "running",
+          "parts": [
+            "What competition format does Counter-Strike 2 use?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What competition format does Counter-Strike 2 use?"
+          ],
+          "elapsed_ms": 0.55,
+          "elapsed_sec": 0.0005
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.6,
+          "elapsed_sec": 0.0006
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.96,
+          "elapsed_sec": 0.001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 14.22,
+          "elapsed_sec": 0.0142,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 450.71,
+          "total_elapsed_sec": 0.4507
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-002",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "How many games are played in a Counter-Strike 2 match?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "competition_format",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.3069,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s01_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s19_c01",
+      "competition_rules_cs2_psu_phuket_2026_s01_c01",
+      "competition_rules_cs2_psu_phuket_2026_s19_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s01_c01",
+      "competition_rules_cs2_psu_phuket_2026_s19_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 9.46,
+          "elapsed_sec": 0.0095,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0095,
+          "global_remaining_sec": 19.9905,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9904,
+          "timing_status": "running",
+          "parts": [
+            "How many games are played in a Counter-Strike 2 match?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How many games are played in a Counter-Strike 2 match?"
+          ],
+          "elapsed_ms": 107.77,
+          "elapsed_sec": 0.1078
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 107.81,
+          "elapsed_sec": 0.1078
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 162.84,
+          "elapsed_sec": 0.1628,
+          "route_category": "general",
+          "route_intent": "unknown_domain_query",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.35,
+          "elapsed_sec": 0.0004,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 306.93,
+          "total_elapsed_sec": 0.3069
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-003",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Is the Counter-Strike 2 event single elimination or does it use another format?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "competition_format",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.4407,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s01_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s20_c01",
+      "competition_rules_cs2_psu_phuket_2026_s01_c01",
+      "competition_rules_cs2_psu_phuket_2026_s20_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s01_c01",
+      "competition_rules_cs2_psu_phuket_2026_s20_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.05,
+          "elapsed_sec": 0.0021,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0021,
+          "global_remaining_sec": 19.9979,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9979,
+          "timing_status": "running",
+          "parts": [
+            "Is the Counter-Strike 2 event single elimination or does it use another format?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Is the Counter-Strike 2 event single elimination or does it use another format?"
+          ],
+          "elapsed_ms": 0.13,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.15,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "counterstrike2",
+              "title": "Counter-Strike 2",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Counter-Strike 2",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "counterstrike2",
+                "title": "Counter-Strike 2",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Counter-Strike 2",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 10.153,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 440.69,
+          "total_elapsed_sec": 0.4407
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-004",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What conduct is expected from Counter-Strike 2 players?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "conduct",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0336,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s35_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s36_c01",
+      "competition_rules_cs2_psu_phuket_2026_s35_c01",
+      "competition_rules_cs2_psu_phuket_2026_s36_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s35_c01",
+      "competition_rules_cs2_psu_phuket_2026_s36_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.74,
+          "elapsed_sec": 0.0017,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0018,
+          "global_remaining_sec": 19.9982,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9982,
+          "timing_status": "running",
+          "parts": [
+            "What conduct is expected from Counter-Strike 2 players?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What conduct is expected from Counter-Strike 2 players?"
+          ],
+          "elapsed_ms": 0.23,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.24,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "counterstrike2",
+              "title": "Counter-Strike 2",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Counter-Strike 2",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "counterstrike2",
+                "title": "Counter-Strike 2",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Counter-Strike 2",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 2.124,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.39,
+          "elapsed_sec": 0.0004,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 33.53,
+          "total_elapsed_sec": 0.0335
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-005",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What behaviour is not allowed during a Counter-Strike 2 match?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "conduct",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.036,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s35_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s36_c01",
+      "competition_rules_cs2_psu_phuket_2026_s35_c01",
+      "competition_rules_cs2_psu_phuket_2026_s36_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s35_c01",
+      "competition_rules_cs2_psu_phuket_2026_s36_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.71,
+          "elapsed_sec": 0.0017,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0018,
+          "global_remaining_sec": 19.9982,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9982,
+          "timing_status": "running",
+          "parts": [
+            "What behaviour is not allowed during a Counter-Strike 2 match?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What behaviour is not allowed during a Counter-Strike 2 match?"
+          ],
+          "elapsed_ms": 0.13,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 5.62,
+          "elapsed_sec": 0.0056,
+          "route_category": "schedule",
+          "route_intent": "schedule_query",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 35.95,
+          "total_elapsed_sec": 0.0359
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-006",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What do the Counter-Strike 2 rules say about player sportsmanship?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "conduct",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0301,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s35_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s36_c01",
+      "competition_rules_cs2_psu_phuket_2026_s35_c01",
+      "competition_rules_cs2_psu_phuket_2026_s36_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s35_c01",
+      "competition_rules_cs2_psu_phuket_2026_s36_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.63,
+          "elapsed_sec": 0.0016,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0017,
+          "global_remaining_sec": 19.9983,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9983,
+          "timing_status": "running",
+          "parts": [
+            "What do the Counter-Strike 2 rules say about player sportsmanship?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What do the Counter-Strike 2 rules say about player sportsmanship?"
+          ],
+          "elapsed_ms": 0.29,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.32,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.21,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.28,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 30.03,
+          "total_elapsed_sec": 0.03
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-007",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What happens if there is a dispute about a Counter-Strike 2 result?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "dispute",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0332,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s06_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s57_c01",
+      "competition_rules_cs2_psu_phuket_2026_s06_c01",
+      "competition_rules_cs2_psu_phuket_2026_s57_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s06_c01",
+      "competition_rules_cs2_psu_phuket_2026_s57_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.63,
+          "elapsed_sec": 0.0026,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0027,
+          "global_remaining_sec": 19.9973,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9973,
+          "timing_status": "running",
+          "parts": [
+            "What happens if there is a dispute about a Counter-Strike 2 result?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What happens if there is a dispute about a Counter-Strike 2 result?"
+          ],
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "counterstrike2",
+              "title": "Counter-Strike 2",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Counter-Strike 2",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "counterstrike2",
+                "title": "Counter-Strike 2",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Counter-Strike 2",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.482,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.26,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 33.16,
+          "total_elapsed_sec": 0.0332
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-008",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Who decides a disagreement in a Counter-Strike 2 match?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "dispute",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0358,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s06_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s57_c01",
+      "competition_rules_cs2_psu_phuket_2026_s06_c01",
+      "competition_rules_cs2_psu_phuket_2026_s57_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s06_c01",
+      "competition_rules_cs2_psu_phuket_2026_s57_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.53,
+          "elapsed_sec": 0.0015,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0016,
+          "global_remaining_sec": 19.9984,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9984,
+          "timing_status": "running",
+          "parts": [
+            "Who decides a disagreement in a Counter-Strike 2 match?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Who decides a disagreement in a Counter-Strike 2 match?"
+          ],
+          "elapsed_ms": 0.16,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.19,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 4.84,
+          "elapsed_sec": 0.0048,
+          "route_category": "general",
+          "route_intent": "unknown_domain_query",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.26,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 35.77,
+          "total_elapsed_sec": 0.0358
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-009",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "How do the Counter-Strike 2 rules resolve a conflict after a match?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "dispute",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0325,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s06_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s57_c01",
+      "competition_rules_cs2_psu_phuket_2026_s06_c01",
+      "competition_rules_cs2_psu_phuket_2026_s57_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s06_c01",
+      "competition_rules_cs2_psu_phuket_2026_s57_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.84,
+          "elapsed_sec": 0.0028,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0029,
+          "global_remaining_sec": 19.9971,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9971,
+          "timing_status": "running",
+          "parts": [
+            "How do the Counter-Strike 2 rules resolve a conflict after a match?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How do the Counter-Strike 2 rules resolve a conflict after a match?"
+          ],
+          "elapsed_ms": 0.32,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.34,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.15,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.3,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 32.48,
+          "total_elapsed_sec": 0.0325
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-010",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Who is eligible to enter the Counter-Strike 2 tournament?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "eligibility_registration",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0304,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s16_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s17_c01",
+      "competition_rules_cs2_psu_phuket_2026_s16_c01",
+      "competition_rules_cs2_psu_phuket_2026_s17_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s16_c01",
+      "competition_rules_cs2_psu_phuket_2026_s17_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.46,
+          "elapsed_sec": 0.0015,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0015,
+          "global_remaining_sec": 19.9985,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9985,
+          "timing_status": "running",
+          "parts": [
+            "Who is eligible to enter the Counter-Strike 2 tournament?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Who is eligible to enter the Counter-Strike 2 tournament?"
+          ],
+          "elapsed_ms": 0.22,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.24,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.26,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 30.38,
+          "total_elapsed_sec": 0.0304
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-011",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What eligibility requirements apply to Counter-Strike 2 participants?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "eligibility_registration",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0388,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s16_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s17_c01",
+      "competition_rules_cs2_psu_phuket_2026_s16_c01",
+      "competition_rules_cs2_psu_phuket_2026_s17_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s16_c01",
+      "competition_rules_cs2_psu_phuket_2026_s17_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 3.21,
+          "elapsed_sec": 0.0032,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0033,
+          "global_remaining_sec": 19.9967,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9967,
+          "timing_status": "running",
+          "parts": [
+            "What eligibility requirements apply to Counter-Strike 2 participants?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What eligibility requirements apply to Counter-Strike 2 participants?"
+          ],
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 5.77,
+          "elapsed_sec": 0.0058,
+          "route_category": "general",
+          "route_intent": "unknown_domain_query",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "counterstrike2",
+              "title": "Counter-Strike 2",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Counter-Strike 2",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "counterstrike2",
+                "title": "Counter-Strike 2",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Counter-Strike 2",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.748,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 38.76,
+          "total_elapsed_sec": 0.0388
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-012",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Which players may register for Counter-Strike 2?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "eligibility_registration",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.03,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s16_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s17_c01",
+      "competition_rules_cs2_psu_phuket_2026_s16_c01",
+      "competition_rules_cs2_psu_phuket_2026_s17_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s16_c01",
+      "competition_rules_cs2_psu_phuket_2026_s17_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.34,
+          "elapsed_sec": 0.0013,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0014,
+          "global_remaining_sec": 19.9986,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9986,
+          "timing_status": "running",
+          "parts": [
+            "Which players may register for Counter-Strike 2?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Which players may register for Counter-Strike 2?"
+          ],
+          "elapsed_ms": 0.21,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.22,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.13,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "counterstrike2",
+              "title": "Counter-Strike 2",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Counter-Strike 2",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "counterstrike2",
+                "title": "Counter-Strike 2",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Counter-Strike 2",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.637,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 29.95,
+          "total_elapsed_sec": 0.0299
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-013",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "May players use their own equipment in Counter-Strike 2?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "equipment",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0342,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s39_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s40_c01",
+      "competition_rules_cs2_psu_phuket_2026_s39_c01",
+      "competition_rules_cs2_psu_phuket_2026_s40_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s39_c01",
+      "competition_rules_cs2_psu_phuket_2026_s40_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.78,
+          "elapsed_sec": 0.0018,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0018,
+          "global_remaining_sec": 19.9982,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9981,
+          "timing_status": "running",
+          "parts": [
+            "May players use their own equipment in Counter-Strike 2?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "May players use their own equipment in Counter-Strike 2?"
+          ],
+          "elapsed_ms": 0.26,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.28,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "counterstrike2",
+              "title": "Counter-Strike 2",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Counter-Strike 2",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "counterstrike2",
+                "title": "Counter-Strike 2",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Counter-Strike 2",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.173,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 34.15,
+          "total_elapsed_sec": 0.0342
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-014",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Which devices or settings are allowed for Counter-Strike 2?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "equipment",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0405,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s39_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s40_c01",
+      "competition_rules_cs2_psu_phuket_2026_s39_c01",
+      "competition_rules_cs2_psu_phuket_2026_s40_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s39_c01",
+      "competition_rules_cs2_psu_phuket_2026_s40_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.64,
+          "elapsed_sec": 0.0016,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0017,
+          "global_remaining_sec": 19.9983,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9983,
+          "timing_status": "running",
+          "parts": [
+            "Which devices or settings are allowed for Counter-Strike 2?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Which devices or settings are allowed for Counter-Strike 2?"
+          ],
+          "elapsed_ms": 0.11,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 5.37,
+          "elapsed_sec": 0.0054,
+          "route_category": "schedule",
+          "route_intent": "schedule_query",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "counterstrike2",
+              "title": "Counter-Strike 2",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Counter-Strike 2",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "counterstrike2",
+                "title": "Counter-Strike 2",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Counter-Strike 2",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.277,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.49,
+          "elapsed_sec": 0.0005,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 40.51,
+          "total_elapsed_sec": 0.0405
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-015",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What equipment rules apply to the Counter-Strike 2 event?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "equipment",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0315,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s39_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s40_c01",
+      "competition_rules_cs2_psu_phuket_2026_s39_c01",
+      "competition_rules_cs2_psu_phuket_2026_s40_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s39_c01",
+      "competition_rules_cs2_psu_phuket_2026_s40_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.54,
+          "elapsed_sec": 0.0015,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0016,
+          "global_remaining_sec": 19.9984,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9984,
+          "timing_status": "running",
+          "parts": [
+            "What equipment rules apply to the Counter-Strike 2 event?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What equipment rules apply to the Counter-Strike 2 event?"
+          ],
+          "elapsed_ms": 0.11,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.13,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 31.52,
+          "total_elapsed_sec": 0.0315
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-016",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What fair-play rules apply to Counter-Strike 2?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "fair_play_conduct",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0294,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": false,
+    "evidence_alignment": "none",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s35_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s36_c01",
+      "competition_rules_cs2_psu_phuket_2026_s35_c01",
+      "competition_rules_cs2_psu_phuket_2026_s36_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s35_c01",
+      "competition_rules_cs2_psu_phuket_2026_s36_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.36,
+          "elapsed_sec": 0.0014,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0014,
+          "global_remaining_sec": 19.9986,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9986,
+          "timing_status": "running",
+          "parts": [
+            "What fair-play rules apply to Counter-Strike 2?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What fair-play rules apply to Counter-Strike 2?"
+          ],
+          "elapsed_ms": 0.2,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.22,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.13,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.28,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 29.34,
+          "total_elapsed_sec": 0.0293
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-017",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Which unsporting behaviours are prohibited in Counter-Strike 2?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "fair_play_conduct",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0386,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": false,
+    "evidence_alignment": "none",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s35_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s36_c01",
+      "competition_rules_cs2_psu_phuket_2026_s35_c01",
+      "competition_rules_cs2_psu_phuket_2026_s36_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s35_c01",
+      "competition_rules_cs2_psu_phuket_2026_s36_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.85,
+          "elapsed_sec": 0.0019,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0019,
+          "global_remaining_sec": 19.9981,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9981,
+          "timing_status": "running",
+          "parts": [
+            "Which unsporting behaviours are prohibited in Counter-Strike 2?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Which unsporting behaviours are prohibited in Counter-Strike 2?"
+          ],
+          "elapsed_ms": 0.13,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.15,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 5.7,
+          "elapsed_sec": 0.0057,
+          "route_category": "general",
+          "route_intent": "unknown_domain_query",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "counterstrike2",
+              "title": "Counter-Strike 2",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Counter-Strike 2",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "counterstrike2",
+                "title": "Counter-Strike 2",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Counter-Strike 2",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.663,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.31,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 38.56,
+          "total_elapsed_sec": 0.0386
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-018",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Where can I check the sportsmanship rules for Counter-Strike 2?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "fair_play_conduct",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0317,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": false,
+    "evidence_alignment": "none",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s35_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s36_c01",
+      "competition_rules_cs2_psu_phuket_2026_s35_c01",
+      "competition_rules_cs2_psu_phuket_2026_s36_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s35_c01",
+      "competition_rules_cs2_psu_phuket_2026_s36_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.55,
+          "elapsed_sec": 0.0025,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0027,
+          "global_remaining_sec": 19.9973,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9973,
+          "timing_status": "running",
+          "parts": [
+            "Where can I check the sportsmanship rules for Counter-Strike 2?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Where can I check the sportsmanship rules for Counter-Strike 2?"
+          ],
+          "elapsed_ms": 0.11,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 31.72,
+          "total_elapsed_sec": 0.0317
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-019",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "How should players contact officials during a Counter-Strike 2 match?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "in_match_operations",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.034,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s06_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s30_c01",
+      "competition_rules_cs2_psu_phuket_2026_s06_c01",
+      "competition_rules_cs2_psu_phuket_2026_s30_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s06_c01",
+      "competition_rules_cs2_psu_phuket_2026_s30_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.83,
+          "elapsed_sec": 0.0018,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0019,
+          "global_remaining_sec": 19.9981,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9981,
+          "timing_status": "running",
+          "parts": [
+            "How should players contact officials during a Counter-Strike 2 match?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How should players contact officials during a Counter-Strike 2 match?"
+          ],
+          "elapsed_ms": 0.77,
+          "elapsed_sec": 0.0008
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.8,
+          "elapsed_sec": 0.0008
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.15,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.29,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 33.96,
+          "total_elapsed_sec": 0.034
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-020",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What is the in-match procedure for Counter-Strike 2?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "in_match_operations",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0415,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s06_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s30_c01",
+      "competition_rules_cs2_psu_phuket_2026_s06_c01",
+      "competition_rules_cs2_psu_phuket_2026_s30_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s06_c01",
+      "competition_rules_cs2_psu_phuket_2026_s30_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.43,
+          "elapsed_sec": 0.0014,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0015,
+          "global_remaining_sec": 19.9985,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9985,
+          "timing_status": "running",
+          "parts": [
+            "What is the in-match procedure for Counter-Strike 2?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What is the in-match procedure for Counter-Strike 2?"
+          ],
+          "elapsed_ms": 0.17,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.21,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 6.46,
+          "elapsed_sec": 0.0065,
+          "route_category": "general",
+          "route_intent": "unknown_domain_query",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.34,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 41.51,
+          "total_elapsed_sec": 0.0415
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-021",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Who should we notify if an issue occurs during Counter-Strike 2?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "in_match_operations",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0377,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s06_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s30_c01",
+      "competition_rules_cs2_psu_phuket_2026_s06_c01",
+      "competition_rules_cs2_psu_phuket_2026_s30_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s06_c01",
+      "competition_rules_cs2_psu_phuket_2026_s30_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 3.45,
+          "elapsed_sec": 0.0035,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0035,
+          "global_remaining_sec": 19.9965,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9965,
+          "timing_status": "running",
+          "parts": [
+            "Who should we notify if an issue occurs during Counter-Strike 2?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Who should we notify if an issue occurs during Counter-Strike 2?"
+          ],
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 6.08,
+          "elapsed_sec": 0.0061,
+          "route_category": "general",
+          "route_intent": "unknown_domain_query",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "counterstrike2",
+              "title": "Counter-Strike 2",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Counter-Strike 2",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "counterstrike2",
+                "title": "Counter-Strike 2",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Counter-Strike 2",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.705,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.34,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 37.69,
+          "total_elapsed_sec": 0.0377
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-022",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Which maps are used in the Counter-Strike 2 event?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "map_pool",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0314,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s28_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s31_c01",
+      "competition_rules_cs2_psu_phuket_2026_s28_c01",
+      "competition_rules_cs2_psu_phuket_2026_s31_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s28_c01",
+      "competition_rules_cs2_psu_phuket_2026_s31_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.39,
+          "elapsed_sec": 0.0014,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0015,
+          "global_remaining_sec": 19.9985,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9985,
+          "timing_status": "running",
+          "parts": [
+            "Which maps are used in the Counter-Strike 2 event?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Which maps are used in the Counter-Strike 2 event?"
+          ],
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "counterstrike2",
+              "title": "Counter-Strike 2",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Counter-Strike 2",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "counterstrike2",
+                "title": "Counter-Strike 2",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Counter-Strike 2",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.008,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 31.42,
+          "total_elapsed_sec": 0.0314
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-023",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "How are maps picked or banned for Counter-Strike 2?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "map_pool",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.033,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s28_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s31_c01",
+      "competition_rules_cs2_psu_phuket_2026_s28_c01",
+      "competition_rules_cs2_psu_phuket_2026_s31_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s28_c01",
+      "competition_rules_cs2_psu_phuket_2026_s31_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.63,
+          "elapsed_sec": 0.0016,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0017,
+          "global_remaining_sec": 19.9983,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9983,
+          "timing_status": "running",
+          "parts": [
+            "How are maps picked or banned for Counter-Strike 2?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How are maps picked or banned for Counter-Strike 2?"
+          ],
+          "elapsed_ms": 0.39,
+          "elapsed_sec": 0.0004
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.41,
+          "elapsed_sec": 0.0004
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.18,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.29,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 33.02,
+          "total_elapsed_sec": 0.033
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-024",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What is the Counter-Strike 2 map pool for this tournament?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "map_pool",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.028,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s28_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s31_c01",
+      "competition_rules_cs2_psu_phuket_2026_s28_c01",
+      "competition_rules_cs2_psu_phuket_2026_s31_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s28_c01",
+      "competition_rules_cs2_psu_phuket_2026_s31_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.42,
+          "elapsed_sec": 0.0014,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0015,
+          "global_remaining_sec": 19.9985,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9985,
+          "timing_status": "running",
+          "parts": [
+            "What is the Counter-Strike 2 map pool for this tournament?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What is the Counter-Strike 2 map pool for this tournament?"
+          ],
+          "elapsed_ms": 0.23,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.25,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.31,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 27.98,
+          "total_elapsed_sec": 0.028
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-025",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "How should a Counter-Strike 2 match be configured?",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "match_configuration",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0368,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s23_c01",
+      "canonical::competition_rules_cs2_psu_phuket_2026_s24_c01",
+      "competition_rules_cs2_psu_phuket_2026_s23_c01",
+      "competition_rules_cs2_psu_phuket_2026_s24_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s23_c01",
+      "competition_rules_cs2_psu_phuket_2026_s24_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.45,
+          "elapsed_sec": 0.0014,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0015,
+          "global_remaining_sec": 19.9985,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9985,
+          "timing_status": "running",
+          "parts": [
+            "How should a Counter-Strike 2 match be configured?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How should a Counter-Strike 2 match be configured?"
+          ],
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 4.17,
+          "elapsed_sec": 0.0042,
+          "route_category": "general",
+          "route_intent": "unknown_domain_query",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 36.82,
+          "total_elapsed_sec": 0.0368
+        }
+      }
+    ]
+  }
+]

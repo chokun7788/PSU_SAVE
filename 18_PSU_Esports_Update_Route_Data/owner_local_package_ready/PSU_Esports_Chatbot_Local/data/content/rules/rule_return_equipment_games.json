@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_return_equipment_games",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "ยืมอุปกรณ์.*แผ่นเกม",
+      "นำอุปกรณ์.*แผ่นเกม.*คืน",
+      "แผ่นเกม.*คืน"
+    ],
+    "en": []
+  },
+  "facts": {
+    "route_category": "rules",
+    "intent": "return_equipment_games",
+    "patterns": [
+      "ยืมอุปกรณ์.*แผ่นเกม",
+      "นำอุปกรณ์.*แผ่นเกม.*คืน",
+      "แผ่นเกม.*คืน"
+    ],
+    "priority": 110
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "กรุณานำอุปกรณ์และแผ่นเกมที่เบิกไปใช้งานมาคืนหลังจากใช้งานเสร็จ"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Borrowed equipment and game discs must be returned after use."
+      },
+      "source_sha256": "653ecf2cf09671402aa8d2ec9cc48891e42d2de580ddd443fb4786eaf0e156e6",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/misc_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_rule_return_equipment",
+      "reservation-studio-rules"
+    ],
+    "last_verified_at": ""
+  }
+}

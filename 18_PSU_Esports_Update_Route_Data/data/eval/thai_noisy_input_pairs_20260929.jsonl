@@ -1,0 +1,49 @@
+{"id":"G01","group":"greeting","noise":"insert","clean":"สวัสดี","noisy":"สวัวสดี","expected_intent":"chatbot_greeting"}
+{"id":"G02","group":"greeting","noise":"vowel_substitution","clean":"สวัสดี","noisy":"สวะสดี","expected_intent":"chatbot_greeting"}
+{"id":"G03","group":"greeting","noise":"consonant_substitution","clean":"สวัสดี","noisy":"สวัดดี","expected_intent":"chatbot_greeting"}
+{"id":"G04","group":"greeting","noise":"deletion","clean":"สวัสดี","noisy":"สวสดี","expected_intent":"chatbot_greeting"}
+{"id":"G05","group":"greeting","noise":"repeat","clean":"สวัสดี","noisy":"สวัสสดี","expected_intent":"chatbot_greeting"}
+{"id":"G06","group":"greeting","noise":"repeat_vowel","clean":"สวัสดี","noisy":"สวัสดีี","expected_intent":"chatbot_greeting"}
+{"id":"G07","group":"greeting","noise":"repeat_polite","clean":"สวัสดีครับ","noisy":"สวัสดีครับบบ","expected_intent":"chatbot_greeting"}
+{"id":"G08","group":"greeting","noise":"informal","clean":"สวัสดีครับ","noisy":"หวัดดีคับ","expected_intent":"chatbot_greeting"}
+{"id":"I01","group":"identity","noise":"informal_typo","clean":"นายเป็นใคร","noisy":"นายเปนไค","expected_intent":"chatbot_identity"}
+{"id":"I02","group":"identity","noise":"deletion","clean":"นายเป็นใคร","noisy":"นยเปนใค","expected_intent":"chatbot_identity"}
+{"id":"I03","group":"identity","noise":"insert","clean":"บอทนี้ทำอะไรได้บ้าง","noisy":"บอทนี้ทำอาไรได้บ้าง","expected_intent":"chatbot_identity"}
+{"id":"I04","group":"identity","noise":"repeat","clean":"คุณทำอะไรได้บ้าง","noisy":"คุณทำอะไรได้บ้างงง","expected_intent":"chatbot_identity"}
+{"id":"P01","group":"price","noise":"repeat","clean":"PS5 ราคาเท่าไหร่","noisy":"PS5 ราาคาเท่าไหร่","expected_intent":"service_fee_query","protected":["PS5"]}
+{"id":"P02","group":"price","noise":"insert","clean":"PS5 ราคาเท่าไหร่","noisy":"PS5 ราคารเท่าไหร่","expected_intent":"service_fee_query","protected":["PS5"]}
+{"id":"P03","group":"price","noise":"deletion","clean":"VR 30 นาที ราคาเท่าไหร่","noisy":"VR 30 นาที ราคาท่าไหร่","expected_intent":"service_fee_query","protected":["VR","30"]}
+{"id":"P04","group":"price","noise":"repeat","clean":"PC ชั่วโมงละเท่าไหร่","noisy":"PC ชั่วโมวงละเท่าไหร่","expected_intent":"service_fee_query","protected":["PC"]}
+{"id":"P05","group":"price","noise":"informal","clean":"PS5 ราคาเท่าไหร่","noisy":"เพลย์ห้าคิดตังเท่าไหรอะ","expected_intent":"service_fee_query"}
+{"id":"S01","group":"schedule","noise":"substitution","clean":"เปิดกี่โมง","noisy":"เปิดกี่โมว","expected_intent":"schedule_query"}
+{"id":"S02","group":"schedule","noise":"repeat","clean":"วันจันทร์เปิดกี่โมง","noisy":"วันจันทร์เปิิดกี่โมง","expected_intent":"schedule_query"}
+{"id":"S03","group":"schedule","noise":"repeat","clean":"ปิดกี่โมง","noisy":"ปิดกี่โมงง","expected_intent":"schedule_query"}
+{"id":"S04","group":"schedule","noise":"deletion","clean":"วันเสาร์เปิดกี่โมง","noisy":"วันเสาร์เปดกี่โมง","expected_intent":"schedule_query"}
+{"id":"S05","group":"schedule","noise":"informal","clean":"วันนี้เปิดไหม","noisy":"วันนี้เปืดมั้ย","expected_intent":"schedule_query"}
+{"id":"B01","group":"booking","noise":"informal","clean":"จองยังไง","noisy":"จองย้งไง","expected_intent":"booking_policy"}
+{"id":"B02","group":"booking","noise":"insert","clean":"ต้องจองล่วงหน้าไหม","noisy":"ต้องจองล่วงหนั้าไหม","expected_intent":"booking_policy"}
+{"id":"B03","group":"booking","noise":"slang","clean":"จอง PS5 ยังไง","noisy":"จอง PS5 ยังงัย","expected_intent":"booking_policy","protected":["PS5"]}
+{"id":"B04","group":"booking","noise":"deletion","clean":"ยกเลิกการจองยังไง","noisy":"ยกเลิกการจองยงไง","expected_intent":"booking_policy"}
+{"id":"B05","group":"booking","noise":"repeat","clean":"ต้องจองก่อนกี่ชั่วโมง","noisy":"ต้องจองก่อนกี่ชั่วโมงง","expected_intent":"booking_policy"}
+{"id":"L01","group":"games_list","noise":"insert","clean":"มีเกมอะไรบ้าง","noisy":"มีเกมอาไรบ้าง","expected_intent":"list"}
+{"id":"L02","group":"games_list","noise":"deletion","clean":"PS5 มีเกมอะไรบ้าง","noisy":"PS5 มีเกมอไรบ้าง","expected_intent":"list","protected":["PS5"]}
+{"id":"L03","group":"games_list","noise":"repeat","clean":"มีเกมอะไรบ้าง","noisy":"มีเกมออะไรบ้าง","expected_intent":"list"}
+{"id":"L04","group":"games_list","noise":"substitution","clean":"มีเกมแข่งรถไหม","noisy":"มีเกมแข่งรดไหม","expected_intent":"list"}
+{"id":"L05","group":"games_list","noise":"paraphrase","clean":"มีอะไรให้เล่นบ้าง","noisy":"ที่นี่เล่นไรได้มั่ง","expected_intent":"list"}
+{"id":"E01","group":"equipment","noise":"deletion","clean":"มีอุปกรณ์อะไรบ้าง","noisy":"มีอุปกอนอะไรบ้าง","expected_intent":"list"}
+{"id":"E02","group":"equipment","noise":"deletion","clean":"PC ใช้การ์ดจอรุ่นอะไร","noisy":"PC ใช้กาดจอรุ่นอะไร","expected_intent":"equipment_item_lookup","protected":["PC"]}
+{"id":"E03","group":"equipment","noise":"repeat","clean":"PC ใช้การ์ดจอรุ่นอะไร","noisy":"PC ใช้การ์ดจอรุ่นอะไรร","expected_intent":"equipment_item_lookup","protected":["PC"]}
+{"id":"E04","group":"equipment","noise":"slang","clean":"มีอุปกรณ์อะไรบ้าง","noisy":"มีอุปกรณ์ไรมั่ง","expected_intent":"list"}
+{"id":"C01","group":"contact","noise":"deletion","clean":"ติดต่อศูนย์ยังไง","noisy":"ติดต่อศุนย์ยังไง","expected_intent":"how_to"}
+{"id":"C02","group":"contact","noise":"repeat","clean":"ติดต่อศูนย์ยังไง","noisy":"ติดต่อศูนย์ยังไงง","expected_intent":"how_to"}
+{"id":"R01","group":"rules","noise":"repeat","clean":"กฎของศูนย์มีอะไรบ้าง","noisy":"กฎของศูนย์มีอะไรบ้างง","expected_intent":"studio_rules"}
+{"id":"R02","group":"rules","noise":"deletion","clean":"กฎของศูนย์มีอะไรบ้าง","noisy":"กฎของศุนย์มีอะไรบ้าง","expected_intent":"studio_rules"}
+{"id":"A01","group":"social","noise":"repeat","clean":"ขอบคุณ","noisy":"ขอบคุณนน","expected_intent":"social_thanks"}
+{"id":"A02","group":"social","noise":"informal","clean":"ขอบคุณครับ","noisy":"ขอบคุนคับ","expected_intent":"social_thanks"}
+{"id":"A03","group":"social","noise":"repeat","clean":"ขอโทษ","noisy":"ขอโทษษ","expected_intent":"social_apology"}
+{"id":"A04","group":"social","noise":"repeat","clean":"โอเค","noisy":"โอเคคค","expected_intent":"social_ack"}
+{"id":"A05","group":"social","noise":"repeat","clean":"บาย","noisy":"บายยย","expected_intent":"social_farewell"}
+{"id":"A06","group":"social","noise":"informal","clean":"ขอบคุณ","noisy":"แต๊งกิ้ว","expected_intent":"social_thanks"}
+{"id":"X01","group":"protected","noise":"greeting_preface","clean":"PS5 ราคาเท่าไหร่","noisy":"สวัวสดี PS5 ราคาเท่าไหร่","expected_intent":"service_fee_query","protected":["PS5"]}
+{"id":"X02","group":"protected","noise":"greeting_preface","clean":"PC1 ว่างไหมตอน 10:00","noisy":"สวะสดี PC1 ว่างไหมตอน 10:00","expected_intent":"live_booking_status","protected":["PC1","10:00"],"answer_oracle":"route_only"}
+{"id":"X03","group":"protected","noise":"booking_slang","clean":"PC11 ว่างไหมตอน 10:00","noisy":"PC11 ว่างมั้ยตอน 10:00","expected_intent":"live_booking_status","protected":["PC11","10:00"],"answer_oracle":"route_only"}

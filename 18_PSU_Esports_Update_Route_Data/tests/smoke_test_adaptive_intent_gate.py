@@ -13,6 +13,9 @@ sys.path.insert(0, str(ROOT))
 from app.pipeline.preprocess import extract_entities, preprocess_input  # noqa: E402
 from app.pipeline.router import route_intent  # noqa: E402
 from app.pipeline.universal_intent import _heuristic_intent, _skip_llm_first_for_strong_route  # noqa: E402
+from app.pipeline.input_recovery import has_thai_game_catalog_surface_variant  # noqa: E402
+from app.pipeline.model_gateway import preflight_llm_allowed  # noqa: E402
+from app.pipeline.schemas import PipelineRoute  # noqa: E402
 
 
 def _decision(question: str) -> tuple[bool, str]:
@@ -31,8 +34,13 @@ def _heuristic(question: str):
 
 
 def main() -> int:
+    if has_thai_game_catalog_surface_variant("มีเกมอะไรบ้าง"):
+        raise AssertionError("normal Thai catalog wording must not be classified as a surface typo")
+    if not has_thai_game_catalog_surface_variant("มีเกมออะไรบ้าง"):
+        raise AssertionError("inserted-character Thai catalog wording should request bounded intent review")
+
     skip, reason = _decision("เกมตอนนี้มีเกมอะไรบ้าง")
-    if skip or "broad" not in reason:
+    if skip or "LLM intent" not in reason:
         raise AssertionError(f"broad game list should get LLM intent review, got skip={skip}, reason={reason}")
 
     skip, reason = _decision("คนดูแลศูนย์มีใครบ้าง")
@@ -55,8 +63,16 @@ def main() -> int:
         raise AssertionError(f"clear platform game catalog should skip LLM intent, got skip={skip}, reason={reason}")
 
     skip, reason = _decision("สตาฟเล่นเกมอะไรบ้าง")
-    if skip or "people_or_role" not in reason:
+    if skip or "LLM intent" not in reason:
         raise AssertionError(f"people/game mixed signal should get LLM intent review, got skip={skip}, reason={reason}")
+
+    allowed, reason = preflight_llm_allowed(
+        PipelineRoute("general", "general_knowledge_query", 0.82, "general", "low", "smoke"),
+        True,
+        "What is latency? Answer briefly.",
+    )
+    if allowed or "reserves one LLM call" not in reason:
+        raise AssertionError(f"clear English general request should skip intent preflight, got allowed={allowed}, reason={reason}")
 
     print("ADAPTIVE INTENT GATE SMOKE TEST OK")
     return 0

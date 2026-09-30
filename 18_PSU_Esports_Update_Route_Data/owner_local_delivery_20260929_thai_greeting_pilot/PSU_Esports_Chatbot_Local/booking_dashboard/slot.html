@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PSU Esports Slot Report v26</title>
+  <link rel="stylesheet" href="assets/css/slot.css">
+</head>
+<body data-lang="th">
+  <main class="wrap">
+    <header class="topbar panel">
+      <div class="brand">
+        <div class="eyebrow"><span class="dot"></span> PSU ESPORTS SLOT REPORT</div>
+        <h1 data-i18n="title">ตารางสถานะเครื่อง</h1>
+      </div>
+
+      <div class="actions">
+        <label class="date-card">
+          <span data-i18n="dateLabel">เลือกวันที่</span>
+          <input id="dateInput" type="date">
+        </label>
+        <button class="btn primary" id="refreshBtn" type="button" data-i18n="refresh">โหลดข้อมูล</button>
+        <button class="lang-toggle" id="langToggle" type="button">
+          <span class="lang-active">ไทย</span>
+          <span class="lang-next">EN</span>
+        </button>
+      </div>
+    </header>
+
+    <section class="status-row">
+      <div class="status-pill" id="connectionStatus">Loading...</div>
+      <div class="status-pill center-pill" id="centerText">-</div>
+      <div class="status-pill" id="updatedText">-</div>
+      <div class="status-pill legend-mini">
+        <span class="chip red">1/1</span><span data-i18n="booked">ถูกจองแล้ว</span>
+        <span class="chip green">0/1</span><span data-i18n="available">ว่าง</span>
+        <span class="chip gray">0/1</span><span data-i18n="closed">ปิด/ผ่านเวลา</span>
+      </div>
+    </section>
+
+    <section class="table-panel panel">
+      <table id="slotTable">
+        <thead></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="message" id="message"></section>
+  </main>
+
+  <script src="assets/js/slot.js"></script>
+</body>
+</html>

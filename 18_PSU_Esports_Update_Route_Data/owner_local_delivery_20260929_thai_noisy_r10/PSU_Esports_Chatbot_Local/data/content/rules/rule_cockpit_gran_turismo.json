@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_cockpit_gran_turismo",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "พวงมาลัย.*gran turismo",
+      "พวงมาลัย.*เล่น",
+      "ขับรถ.*gran turismo"
+    ],
+    "en": [
+      "cockpit.*gran turismo"
+    ]
+  },
+  "facts": {
+    "route_category": "games",
+    "intent": "cockpit_gran_turismo",
+    "patterns": [
+      "cockpit.*gran turismo",
+      "พวงมาลัย.*gran turismo",
+      "พวงมาลัย.*เล่น",
+      "ขับรถ.*gran turismo"
+    ],
+    "priority": 126
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "Cockpit หรือพวงมาลัยใช้เล่นเกม Gran Turismo 7 (Single Player) ได้"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "The Cockpit/racing wheel setup can be used to play Gran Turismo 7 (Single Player)."
+      },
+      "source_sha256": "c5f47af75880286edf43fec51e811bd9b3032d054f79eb13c0831c1c39e00907",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/games_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_games_cockpit",
+      "reservation-service-cockpit"
+    ],
+    "last_verified_at": ""
+  }
+}

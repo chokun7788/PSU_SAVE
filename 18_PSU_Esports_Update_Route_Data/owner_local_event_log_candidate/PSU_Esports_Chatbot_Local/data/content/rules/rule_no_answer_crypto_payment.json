@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_no_answer_crypto_payment",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "คริปโต"
+    ],
+    "en": [
+      "crypto",
+      "bitcoin",
+      "btc",
+      "usdt"
+    ]
+  },
+  "facts": {
+    "route_category": "no_answer",
+    "intent": "no_answer_crypto_payment",
+    "patterns": [
+      "คริปโต",
+      "crypto",
+      "bitcoin",
+      "btc",
+      "usdt"
+    ],
+    "priority": 130
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ยังไม่พบข้อมูลว่าศูนย์รับชำระด้วยคริปโตในฐานข้อมูลที่มี ข้อมูลการชำระเงินที่ยืนยันได้คือชำระโดยโอนเข้าบัญชีธนาคารและแนบสลิปการโอนเงินในระบบจอง"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "No information about cryptocurrency payment was found in the available knowledge base. The confirmed payment method is bank transfer with an uploaded payment slip in the booking system."
+      },
+      "source_sha256": "20310959b1e6fd0bd9bdd192193c9dab19aa389bcf2a1e334a9a661fab8e3eaa",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/no_answer_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_payment_bank"
+    ],
+    "last_verified_at": ""
+  }
+}

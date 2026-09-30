@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_service_schedule",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "เปิดถึงกี่โมง",
+      "เปิดกี่โมง",
+      "ปิดถึงกี่โมง",
+      "ปิดกี่โมง",
+      "เปิดปิดกี่โมง",
+      "เปิด-ปิดกี่โมง",
+      "เวลาเปิด",
+      "เวลาปิด",
+      "เวลาทำการ",
+      "เวลาให้บริการ",
+      "ตารางบริการ"
+    ],
+    "en": [
+      "service hours",
+      "opening hours",
+      "closing hours"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "service_schedule",
+    "patterns": [
+      "เปิดถึงกี่โมง",
+      "เปิดกี่โมง",
+      "ปิดถึงกี่โมง",
+      "ปิดกี่โมง",
+      "เปิดปิดกี่โมง",
+      "เปิด-ปิดกี่โมง",
+      "เวลาเปิด",
+      "เวลาปิด",
+      "เวลาทำการ",
+      "เวลาให้บริการ",
+      "ตารางบริการ",
+      "service hours",
+      "opening hours",
+      "closing hours"
+    ],
+    "priority": 100
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ไม่ได้เปิด 24 ชั่วโมง ตารางบริการแบ่งเป็น Morning 09:00–12:00 และ Afternoon 13:00–16:00 โดยดูตามวันดังนี้: วันจันทร์ (Monday) ช่วงเช้า 09:00–12:00 เป็น Maintenance* เล่นไม่ได้ และเปิดเล่นช่วงบ่าย 13:00–16:00; วันอังคาร-พฤหัสบดี (Tuesday-Thursday) เปิดตามรอบปกติ 09:00–12:00 และ 13:00–16:00; วันศุกร์ (Friday) เปิดช่วงเช้า 09:00–12:00 แต่ช่วงบ่าย 13:00–16:00 เป็น Maintenance** สำหรับ Weekly hardware inspection and cleaning จึงไม่ใช่ช่วงเล่น"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "The studio is not open 24 hours. Service sessions are Morning 09:00-12:00 and Afternoon 13:00-16:00. By day: Monday morning 09:00-12:00 is Maintenance* and not playable, while Monday afternoon 13:00-16:00 is open; Tuesday-Thursday follow the regular slots 09:00-12:00 and 13:00-16:00; Friday morning 09:00-12:00 is open, but Friday afternoon 13:00-16:00 is Maintenance** for weekly hardware inspection and cleaning, so it is not playable."
+      },
+      "source_sha256": "c86d8109daf690e58acce1d2b64eaa786101b6001c1225edee12ba8bd80f2b1e",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/reservation_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_schedule_morning",
+      "curated_schedule_afternoon",
+      "curated_reservation_schedule_monday_morning",
+      "curated_reservation_schedule_friday_maintenance"
+    ],
+    "last_verified_at": ""
+  }
+}

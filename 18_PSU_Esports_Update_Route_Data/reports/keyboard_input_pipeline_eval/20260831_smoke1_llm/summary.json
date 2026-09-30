@@ -1,0 +1,77 @@
+{
+  "generated_at": "2026-08-31T12:38:14",
+  "dataset": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\keyboard_input_anomaly_ground_truth_500_20260830.jsonl",
+  "corpus": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\model_benchmark_1500.jsonl",
+  "model": "scb10x/typhoon2.5-qwen3-4b",
+  "allow_llm": true,
+  "semantic_rag": true,
+  "facts_composer": false,
+  "timeout_sec": 9.0,
+  "num_predict": 128,
+  "num_ctx": 2048,
+  "layout_threshold": 0.418411,
+  "repeat_threshold": 0.718849,
+  "warmup": {
+    "ok": true,
+    "model": "scb10x/typhoon2.5-qwen3-4b",
+    "kind": "preflight",
+    "elapsed_ms": 6431.46,
+    "response_chars": 2,
+    "done_reason": "length",
+    "num_ctx": 2048,
+    "load_duration": 6276789400,
+    "prompt_eval_duration": 107520000,
+    "eval_duration": 1000,
+    "health": {
+      "llm_health_enabled": true,
+      "llm_health_status": "ok",
+      "llm_health_failures": 0,
+      "llm_health_failure_scope": "model_and_kind"
+    }
+  },
+  "pipeline_warmup": {
+    "ok": true,
+    "elapsed_sec": 37.0692,
+    "warmed": [
+      "game_title_aliases",
+      "structured_tools",
+      "routing_data",
+      "retrieval_data",
+      "probe_queries",
+      "semantic_embedding"
+    ],
+    "errors": [],
+    "timings": {
+      "game_title_aliases": 0.8822,
+      "structured_tools": 0.5378,
+      "routing_data": 0.2067,
+      "retrieval_data": 1.2957,
+      "probe_queries": 29.7385,
+      "semantic_embedding": 4.4081
+    }
+  },
+  "total_wall_sec": 0.012,
+  "total": 1,
+  "guard_action_accuracy_pct": 100.0,
+  "guard_block_accuracy_pct": 100.0,
+  "pipeline_executed": 0,
+  "guard_blocked": 1,
+  "source_contract_evaluated": 0,
+  "source_contract_passed": 0,
+  "source_contract_pass_rate_pct": 0.0,
+  "timeout_or_over_budget_count": 0,
+  "llm_call_total": 0,
+  "llm_pipeline_case_count": 0,
+  "avg_wall_sec_all": 0.0,
+  "p95_wall_sec_all": 0.0,
+  "max_wall_sec_all": 0.0,
+  "avg_wall_sec_pipeline": 0.0,
+  "p95_wall_sec_pipeline": 0.0,
+  "max_wall_sec_pipeline": 0.0,
+  "mode_counts": {},
+  "family_counts": {
+    "layout_th_to_en_full": 1
+  },
+  "guard_error_counts": {},
+  "source_error_counts": {}
+}

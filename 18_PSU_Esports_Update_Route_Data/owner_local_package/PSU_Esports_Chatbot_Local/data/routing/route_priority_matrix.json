@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "description": "Priority rules for resolving route conflicts before deterministic handlers run.",
+  "rules": [
+    {
+      "id": "studio_rule_terms_force_rules",
+      "description": "Studio rule words should not fall through to general LLM.",
+      "when_any": ["กฎ", "ห้าม", "ข้อห้าม", "อาหาร", "เครื่องดื่ม", "น้ำ", "ของหาย", "ฝากกระเป๋า", "สูบบุหรี่", "แอลกอฮอล์", "อาวุธ", "ขยะ"],
+      "priority_over_categories": ["general", "unknown", "knowledge", "overview"],
+      "force_route": {"category": "rules", "intent": "studio_rules", "answer_type": "fact", "risk": "medium", "confidence": 0.93}
+    },
+    {
+      "id": "damage_penalty_terms_force_penalty",
+      "description": "Damage/penalty words should win over price and controller/button ambiguity.",
+      "when_any": ["เสียหาย", "พัง", "ค่าปรับ", "โดนปรับ", "ปรับเท่าไหร่", "ชดเชย", "จอแตก", "จอยพัง", "คอมพัง", "เมาส์พัง", "คีย์บอร์ดพัง"],
+      "priority_over_categories": ["general", "unknown", "knowledge", "overview", "games", "equipment", "service_fee"],
+      "force_route": {"category": "penalty", "intent": "penalty_policy", "answer_type": "fact", "risk": "high", "confidence": 0.94}
+    },
+    {
+      "id": "game_catalog_terms_force_games",
+      "description": "Game-list words should win over equipment/news when the user asks what games are available.",
+      "when_any": ["มีเกมอะไร", "เกมอะไร", "เกมไร", "รายชื่อเกม", "เกมทั้งหมด", "เกมใน", "เกมบน", "เกมแนว", "แนวเกม", "เกมรถแข่ง", "เกม vr", "เกมบน playstation", "moba", "โมบ้า"],
+      "priority_over_categories": ["equipment", "events_news", "knowledge", "overview", "general", "unknown"],
+      "force_route": {"category": "games", "intent": "game_catalog_lookup", "answer_type": "list", "risk": "low", "confidence": 0.95}
+    },
+    {
+      "id": "equipment_detail_terms_force_equipment",
+      "description": "Equipment model/count/detail words should win over games/general.",
+      "when_any": ["อุปกรณ์", "เครื่องรุ่น", "รุ่นไหน", "ทีวีกี่นิ้ว", "กี่นิ้ว", "มีจอกี่", "จอกี่", "พวงมาลัยอะไร", "สเปค", "spec"],
+      "blocked_by_any": ["เกมเยอะสุด", "เกมมากสุด", "เกมน้อยสุด", "จำนวนเกม", "เกมกี่เกม", "จัดอันดับเกม"],
+      "priority_over_categories": ["equipment", "games", "knowledge", "overview", "general", "unknown"],
+      "force_route": {"category": "equipment", "intent": "equipment_item_lookup", "answer_type": "fact", "risk": "low", "confidence": 0.94}
+    },
+    {
+      "id": "price_terms_force_service_fee",
+      "description": "Price words should win over game/equipment entities.",
+      "when_any": ["ราคา", "ค่าบริการ", "ค่าเล่น", "กี่บาท", "เท่าไหร่", "เท่าไร", "เสียเงิน", "ต้องจ่าย", "ฟรี", "คิดเงิน", "จ่ายไหม", "service fee", "price", "cost", "fee"],
+      "when_any_entity": ["ps5", "playstation", "เพลย์", "nintendo", "switch", "vr", "cockpit", "พวงมาลัย", "pc", "คอม", "เครื่อง", "บริการ"],
+      "priority_over_categories": ["games", "equipment", "knowledge", "overview", "general", "unknown"],
+      "force_route": {"category": "service_fee", "intent": "service_fee_query", "answer_type": "calculation", "risk": "medium", "confidence": 0.96}
+    },
+    {
+      "id": "booking_terms_force_reservation",
+      "description": "Booking workflow words should win over game/equipment entities.",
+      "when_any": ["จอง", "booking", "book", "เช็คอิน", "เชคอิน", "check in", "checkin", "ยกเลิก", "แก้ไข", "จองล่วงหน้า", "กรอกข้อมูล", "session"],
+      "when_any_entity": ["ps5", "playstation", "เพลย์", "nintendo", "switch", "vr", "cockpit", "พวงมาลัย", "pc", "คอม", "เกม"],
+      "priority_over_categories": ["games", "equipment", "schedule", "knowledge", "overview", "general", "unknown"],
+      "force_route": {"category": "reservation", "intent": "booking_policy", "answer_type": "fact", "risk": "medium", "confidence": 0.93}
+    },
+    {
+      "id": "control_terms_force_game_controls",
+      "description": "Controller/button words should win over broad game detail.",
+      "when_any": ["ปุ่ม", "controller", "คอนโทรลเลอร์", "กดอะไร", "กดยังไง", "button", "buttons", "r1", "r2", "l1", "l2", "square", "triangle", "circle", "cross", "d-pad"],
+      "when_any_entity": ["เกม", "tekken", "mario", "overcooked", "ps5", "playstation", "nintendo", "switch", "vr"],
+      "priority_over_categories": ["games", "equipment", "knowledge", "general", "unknown"],
+      "force_route": {"category": "games", "intent": "game_control_lookup", "answer_type": "fact", "risk": "low", "confidence": 0.95}
+    },
+    {
+      "id": "member_terms_force_members",
+      "description": "Member/staff/role words should win over game/team words.",
+      "when_any": ["สมาชิก", "member", "members", "สตาฟ", "staff", "ทีมงาน", "ตำแหน่ง", "ใครเป็น", "ใครทำ", "ผู้จัดการ", "internship", "cooperative", "developer", "web & ai", "game and 3d"],
+      "blocked_by_any": ["ปุ่ม", "กดอะไร", "กดยังไง", "controller", "button", "buttons", "controls"],
+      "priority_over_categories": ["games", "equipment", "overview", "knowledge", "general", "unknown"],
+      "force_route": {"category": "overview", "intent": "members_lookup", "answer_type": "fact", "risk": "low", "confidence": 0.94}
+    },
+    {
+      "id": "schedule_terms_force_schedule",
+      "description": "Opening/service-hour words should win over game entities unless booking price is explicit.",
+      "when_any": ["เปิด", "ปิด", "กี่โมง", "เวลา", "ช่วงเช้า", "ช่วงบ่าย", "morning", "afternoon", "maintenance", "วันจันทร์", "วันอังคาร", "วันพุธ", "วันพฤหัส", "วันศุกร์"],
+      "when_any_entity": ["ศูนย์", "studio", "ps5", "playstation", "nintendo", "switch", "vr", "cockpit", "pc"],
+      "blocked_by_any": ["ราคา", "ค่าบริการ", "กี่บาท", "เสียเงิน", "จอง", "booking"],
+      "priority_over_categories": ["games", "equipment", "knowledge", "overview", "general", "unknown"],
+      "force_route": {"category": "schedule", "intent": "schedule_query", "answer_type": "fact", "risk": "medium", "confidence": 0.94}
+    }
+  ]
+}

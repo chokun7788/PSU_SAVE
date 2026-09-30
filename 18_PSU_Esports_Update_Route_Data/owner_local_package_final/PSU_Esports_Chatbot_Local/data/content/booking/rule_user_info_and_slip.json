@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_user_info_and_slip",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "กรอกข้อมูล.*สลิป",
+      "ข้อมูล.*แนบสลิป",
+      "กรอกข้อมูลอะไรบ้าง"
+    ],
+    "en": [
+      "user info.*slip",
+      "fill.*info.*slip"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "user_info_and_payment_slip",
+    "patterns": [
+      "กรอกข้อมูล.*สลิป",
+      "ข้อมูล.*แนบสลิป",
+      "กรอกข้อมูลอะไรบ้าง",
+      "user info.*slip",
+      "fill.*info.*slip"
+    ],
+    "priority": 134
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ตอนจองต้องกรอก Student ID/Staff ID/National ID, ชื่อ, นามสกุล, อีเมล, เบอร์โทรศัพท์ และคอมเมนต์ถ้ามี จากนั้นชำระเงินโดยโอนเข้าบัญชีธนาคารและแนบสลิปการโอนเงิน"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "The booking form requires Student ID/Staff ID/National ID, first name, last name, email, phone number, and optional comments. Payment is made by bank transfer and the payment slip must be uploaded."
+      },
+      "source_sha256": "a14a20f882f3607670baa82a4ddc005af4a68ff38f6fbaed593b68a03cfb0dcc",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/reservation_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_user_info_required",
+      "curated_booking_steps",
+      "curated_payment_bank"
+    ],
+    "last_verified_at": ""
+  }
+}

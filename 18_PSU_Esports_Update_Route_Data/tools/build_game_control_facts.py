@@ -19,6 +19,11 @@ SUPPORTED_PLATFORM_KEYS = ("ps5", "nintendo", "pc", "vr")
 GAME_NAME_OVERRIDES = {
     "FINAL FANTASY XVI.json": "FINAL FANTASY XVI",
     "Movine_Out_2.json": "Moving Out 2",
+    # The booking catalog uses the store-facing title.  Keep every control
+    # source on that same canonical title so a resolver result can never miss
+    # a valid mapping merely because a source uses a subtitle/version label.
+    "Resident Evil 4.json": "Resident Evil 4",
+    "The Last of Us Part II.json": "The Last of Us Part II (Remastered)",
 }
 
 

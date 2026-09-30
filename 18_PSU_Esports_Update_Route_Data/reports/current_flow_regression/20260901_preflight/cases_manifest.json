@@ -1,0 +1,201 @@
+[
+  {
+    "suite": "faq",
+    "case": {
+      "kind": "single",
+      "group": "service_fee",
+      "question": "PC ราคาเท่าไหร่",
+      "expected_category": "service_fee",
+      "expected_mode_prefix": null,
+      "must_contain": [
+        "PC",
+        "0 บาท",
+        "25 บาท"
+      ],
+      "must_contain_any": [],
+      "must_not_contain": [
+        "Local LLM"
+      ],
+      "llm_required": false,
+      "quality_bucket": "psu_fact",
+      "risk": "medium",
+      "source": "broad_usage_eval_v1",
+      "note": "from SF-001",
+      "id": "MB-0001-SF-001"
+    }
+  },
+  {
+    "suite": "faq",
+    "case": {
+      "kind": "single",
+      "group": "service_fee",
+      "question": "นักศึกษา PSU เล่น PC 30 นาที เสียกี่บาท",
+      "expected_category": "service_fee",
+      "expected_mode_prefix": null,
+      "must_contain": [],
+      "must_contain_any": [
+        "0 บาท",
+        "0 บาท"
+      ],
+      "must_not_contain": [
+        "Local LLM"
+      ],
+      "llm_required": false,
+      "quality_bucket": "psu_fact",
+      "risk": "medium",
+      "source": "broad_usage_eval_v1",
+      "note": "from SF-002",
+      "id": "MB-0002-SF-002"
+    }
+  },
+  {
+    "suite": "faq",
+    "case": {
+      "kind": "single",
+      "group": "service_fee",
+      "question": "นักศึกษา PSU เล่น PC 1 ชั่วโมง เสียกี่บาท",
+      "expected_category": "service_fee",
+      "expected_mode_prefix": null,
+      "must_contain": [],
+      "must_contain_any": [
+        "0 บาท",
+        "0 บาท"
+      ],
+      "must_not_contain": [
+        "Local LLM"
+      ],
+      "llm_required": false,
+      "quality_bucket": "psu_fact",
+      "risk": "medium",
+      "source": "broad_usage_eval_v1",
+      "note": "from SF-003",
+      "id": "MB-0003-SF-003"
+    }
+  },
+  {
+    "suite": "keyboard",
+    "case": {
+      "id": "KIA-0001",
+      "split": "test",
+      "observed_input": "g]jo",
+      "canonical_question": "เล่น",
+      "expected_flags": [
+        "keyboard_layout_mismatch"
+      ],
+      "should_detect_keyboard_layout": true,
+      "should_detect_repeated_character": false,
+      "should_block_answer": true,
+      "expected_action": "request_retype",
+      "anomaly_family": "layout_th_to_en_full",
+      "layout_direction": "thai_intended_english_active",
+      "corruption_scope": "full_thai_script",
+      "repeat_interpretation": "none",
+      "contains_adjacent_repeat": false,
+      "length_band": "04_07",
+      "difficulty": "hard",
+      "label_confidence": "high",
+      "generation_note": "manual short-query layout mismatch",
+      "source_group": "manual_edge_case",
+      "source_case_id": null,
+      "source_expected_category": null,
+      "source_case": null
+    }
+  },
+  {
+    "suite": "keyboard",
+    "case": {
+      "id": "KIA-0002",
+      "split": "test",
+      "observed_input": "ik8k",
+      "canonical_question": "ราคา",
+      "expected_flags": [
+        "keyboard_layout_mismatch"
+      ],
+      "should_detect_keyboard_layout": true,
+      "should_detect_repeated_character": false,
+      "should_block_answer": true,
+      "expected_action": "request_retype",
+      "anomaly_family": "layout_th_to_en_full",
+      "layout_direction": "thai_intended_english_active",
+      "corruption_scope": "full_thai_script",
+      "repeat_interpretation": "none",
+      "contains_adjacent_repeat": false,
+      "length_band": "04_07",
+      "difficulty": "hard",
+      "label_confidence": "high",
+      "generation_note": "manual short-query layout mismatch",
+      "source_group": "manual_edge_case",
+      "source_case_id": null,
+      "source_expected_category": null,
+      "source_case": null
+    }
+  },
+  {
+    "suite": "keyboard",
+    "case": {
+      "id": "KIA-0003",
+      "split": "test",
+      "observed_input": "0v'",
+      "canonical_question": "จอง",
+      "expected_flags": [
+        "keyboard_layout_mismatch"
+      ],
+      "should_detect_keyboard_layout": true,
+      "should_detect_repeated_character": false,
+      "should_block_answer": true,
+      "expected_action": "request_retype",
+      "anomaly_family": "layout_th_to_en_full",
+      "layout_direction": "thai_intended_english_active",
+      "corruption_scope": "full_thai_script",
+      "repeat_interpretation": "none",
+      "contains_adjacent_repeat": false,
+      "length_band": "01_03",
+      "difficulty": "hard",
+      "label_confidence": "high",
+      "generation_note": "manual short-query layout mismatch",
+      "source_group": "manual_edge_case",
+      "source_case_id": null,
+      "source_expected_category": null,
+      "source_case": null
+    }
+  },
+  {
+    "suite": "canonical",
+    "case": {
+      "id": "CP-01",
+      "question": "Nebula Fields แนวไหน",
+      "expected_mode_prefix": "canonical_answer",
+      "must_contain": [
+        "Sandbox"
+      ],
+      "must_not_contain": [],
+      "group": "synthetic_canonical"
+    }
+  },
+  {
+    "suite": "canonical",
+    "case": {
+      "id": "CP-02",
+      "question": "เนบิวลาฟิลด์ เป็นเกมแนวอะไร",
+      "expected_mode_prefix": "canonical_answer",
+      "must_contain": [
+        "Sandbox"
+      ],
+      "must_not_contain": [],
+      "group": "synthetic_canonical"
+    }
+  },
+  {
+    "suite": "canonical",
+    "case": {
+      "id": "CP-03",
+      "question": "What genre is Nebula Fields?",
+      "expected_mode_prefix": "canonical_answer",
+      "must_contain": [
+        "Sandbox"
+      ],
+      "must_not_contain": [],
+      "group": "synthetic_canonical"
+    }
+  }
+]

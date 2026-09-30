@@ -1,0 +1,1658 @@
+[
+  {
+    "id": "COMP-RAG-EN-265",
+    "locale": "en",
+    "case_type": "source_gap_safe_no_answer",
+    "question": "How many minutes before a RoV match must a team arrive at the venue?",
+    "expected_game_id": "rov",
+    "expected_rulebook_ids": [
+      "competition_rules_rov_blueket_2025_men"
+    ],
+    "expected_facet": "pre_match_on_site",
+    "expected_answer_status": "no_answer_expected",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "no_answer",
+    "mode": "pipeline:competition_facet_not_covered_no_answer_en",
+    "elapsed_sec": 0.4705,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "source_gap_safe": true,
+    "evidence_alignment": "not_specified",
+    "returned_evidence_ids": [],
+    "returned_rulebook_refs": [],
+    "passed": true,
+    "failures": [],
+    "answer": "I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 85.93,
+          "elapsed_sec": 0.0859,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0861,
+          "global_remaining_sec": 19.9139,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9139,
+          "timing_status": "running",
+          "parts": [
+            "How many minutes before a RoV match must a team arrive at the venue?"
+          ],
+          "competition_rule_query": false
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How many minutes before a RoV match must a team arrive at the venue?"
+          ],
+          "elapsed_ms": 0.75,
+          "elapsed_sec": 0.0007
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.81,
+          "elapsed_sec": 0.0008
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 1.26,
+          "elapsed_sec": 0.0013,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_facet_not_covered_no_answer_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 14.32,
+          "elapsed_sec": 0.0143,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 470.46,
+          "total_elapsed_sec": 0.4705
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-EN-266",
+    "locale": "en",
+    "case_type": "source_gap_safe_no_answer",
+    "question": "What is the on-site check-in procedure after arriving for a RoV match?",
+    "expected_game_id": "rov",
+    "expected_rulebook_ids": [
+      "competition_rules_rov_blueket_2025_men"
+    ],
+    "expected_facet": "pre_match_on_site",
+    "expected_answer_status": "no_answer_expected",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "no_answer",
+    "mode": "pipeline:competition_facet_not_covered_no_answer_en",
+    "elapsed_sec": 0.0334,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "source_gap_safe": true,
+    "evidence_alignment": "not_specified",
+    "returned_evidence_ids": [],
+    "returned_rulebook_refs": [],
+    "passed": true,
+    "failures": [],
+    "answer": "I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 5.68,
+          "elapsed_sec": 0.0057,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0058,
+          "global_remaining_sec": 19.9942,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9942,
+          "timing_status": "running",
+          "parts": [
+            "What is the on-site check-in procedure after arriving for a RoV match?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What is the on-site check-in procedure after arriving for a RoV match?",
+            "what is the on-site checkin procedure after arriving for a rov match?"
+          ],
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.16,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.19,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_facet_not_covered_no_answer_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.29,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 33.41,
+          "total_elapsed_sec": 0.0334
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-EN-267",
+    "locale": "en",
+    "case_type": "source_gap_safe_no_answer",
+    "question": "How many starting players must a VALORANT team field?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "team_size",
+    "expected_answer_status": "no_answer_expected",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:structured_competition_rules_en",
+    "elapsed_sec": 0.7864,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": false,
+    "target_ok": true,
+    "evidence_ok": true,
+    "source_gap_safe": false,
+    "evidence_alignment": "not_specified",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s03_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "competition_rules_valorant_psu_phuket_2026_s03_c01",
+      "competition_rules_valorant_psu_phuket_2026_s17_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "competition_rules_valorant_psu_phuket_2026_s03_c01",
+      "competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "outcome expected no_answer_expected, got answer",
+      "source-gap no-answer attached evidence or did not abstain safely"
+    ],
+    "answer": "English draft translation of VALORANT competition rules:\n- Competition Area and Regulations * Personnel during Match Preparation * No more than 6 players are allowed in the match preparation area. * Electronic devices * Mobile phones, tablets, and smartwatches are strictly prohibited in the competition area until the match has concluded.\n- Competition Venue and Regulations: Competition Area and Regulations * Personnel: During Match Prep, no more than 6 players may be present. * Electronic devices: Mobile phones, tablets, and smartwatches may not be brought into the competition area until the match ends. * Documents and notes: Players may not bring notes or documents into the area.\n- Steps from before the game starts to character selection: Steps from before the game starts until character selection * Reporting time: players must arrive at the venue at least 30 minutes before the scheduled start time. * New content restrictions * New agents will be restricted and unavailable for approximately 2 weeks after being released in Competitive mode.\nSource: https://esports.computing.psu.ac.th/ (original source in Thai)",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 8.86,
+          "elapsed_sec": 0.0089,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0089,
+          "global_remaining_sec": 19.9911,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9911,
+          "timing_status": "running",
+          "parts": [
+            "How many starting players must a VALORANT team field?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How many starting players must a VALORANT team field?"
+          ],
+          "elapsed_ms": 99.03,
+          "elapsed_sec": 0.099
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 99.07,
+          "elapsed_sec": 0.0991
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.16,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "VALORANT",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "VALORANT",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 8.66,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:structured_competition_rules_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.62,
+          "elapsed_sec": 0.0006,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 786.33,
+          "total_elapsed_sec": 0.7863
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-EN-268",
+    "locale": "en",
+    "case_type": "source_gap_safe_no_answer",
+    "question": "How many substitute players may a VALORANT team register?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "roster_composition",
+    "expected_answer_status": "no_answer_expected",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "no_answer",
+    "mode": "pipeline:competition_facet_not_covered_no_answer_en",
+    "elapsed_sec": 0.0666,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "source_gap_safe": true,
+    "evidence_alignment": "not_specified",
+    "returned_evidence_ids": [],
+    "returned_rulebook_refs": [],
+    "passed": true,
+    "failures": [],
+    "answer": "I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 3.01,
+          "elapsed_sec": 0.003,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0031,
+          "global_remaining_sec": 19.9969,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9969,
+          "timing_status": "running",
+          "parts": [
+            "How many substitute players may a VALORANT team register?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How many substitute players may a VALORANT team register?"
+          ],
+          "elapsed_ms": 0.26,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.29,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 27.2,
+          "elapsed_sec": 0.0272,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": "general_student",
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "VALORANT",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "VALORANT",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.124,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_facet_not_covered_no_answer_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.41,
+          "elapsed_sec": 0.0004,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 66.61,
+          "total_elapsed_sec": 0.0666
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-EN-269",
+    "locale": "en",
+    "case_type": "source_gap_safe_no_answer",
+    "question": "What is the minimum age requirement to enter this VALORANT tournament?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "eligibility_registration",
+    "expected_answer_status": "no_answer_expected",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "no_answer",
+    "mode": "pipeline:competition_facet_not_covered_no_answer_en",
+    "elapsed_sec": 0.0599,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "source_gap_safe": true,
+    "evidence_alignment": "not_specified",
+    "returned_evidence_ids": [],
+    "returned_rulebook_refs": [],
+    "passed": true,
+    "failures": [],
+    "answer": "I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.6,
+          "elapsed_sec": 0.0026,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0027,
+          "global_remaining_sec": 19.9973,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9973,
+          "timing_status": "running",
+          "parts": [
+            "What is the minimum age requirement to enter this VALORANT tournament?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What is the minimum age requirement to enter this VALORANT tournament?"
+          ],
+          "elapsed_ms": 0.33,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.35,
+          "elapsed_sec": 0.0004
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.17,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_facet_not_covered_no_answer_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.5,
+          "elapsed_sec": 0.0005,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 59.64,
+          "total_elapsed_sec": 0.0596
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-EN-270",
+    "locale": "en",
+    "case_type": "source_gap_safe_no_answer",
+    "question": "What is the roster registration deadline for this VALORANT tournament?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "registration",
+    "expected_answer_status": "no_answer_expected",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "no_answer",
+    "mode": "pipeline:competition_facet_not_covered_no_answer_en",
+    "elapsed_sec": 0.0683,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "source_gap_safe": true,
+    "evidence_alignment": "not_specified",
+    "returned_evidence_ids": [],
+    "returned_rulebook_refs": [],
+    "passed": true,
+    "failures": [],
+    "answer": "I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 3.36,
+          "elapsed_sec": 0.0034,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0036,
+          "global_remaining_sec": 19.9964,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9964,
+          "timing_status": "running",
+          "parts": [
+            "What is the roster registration deadline for this VALORANT tournament?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What is the roster registration deadline for this VALORANT tournament?"
+          ],
+          "elapsed_ms": 0.9,
+          "elapsed_sec": 0.0009
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 1.01,
+          "elapsed_sec": 0.001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.28,
+          "elapsed_sec": 0.0003,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_facet_not_covered_no_answer_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.26,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 68.2,
+          "total_elapsed_sec": 0.0682
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-EN-271",
+    "locale": "en",
+    "case_type": "source_gap_safe_no_answer",
+    "question": "What penalty applies to profanity or inappropriate conduct in VALORANT?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "conduct",
+    "expected_answer_status": "no_answer_expected",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "no_answer",
+    "mode": "pipeline:competition_facet_not_covered_no_answer_en",
+    "elapsed_sec": 0.2143,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "source_gap_safe": true,
+    "evidence_alignment": "not_specified",
+    "returned_evidence_ids": [],
+    "returned_rulebook_refs": [],
+    "passed": true,
+    "failures": [],
+    "answer": "I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 4.39,
+          "elapsed_sec": 0.0044,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0045,
+          "global_remaining_sec": 19.9955,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9955,
+          "timing_status": "running",
+          "parts": [
+            "What penalty applies to profanity or inappropriate conduct in VALORANT?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What penalty applies to profanity or inappropriate conduct in VALORANT?"
+          ],
+          "elapsed_ms": 0.19,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.47,
+          "elapsed_sec": 0.0005
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 183.75,
+          "elapsed_sec": 0.1837,
+          "route_category": "games",
+          "route_intent": "games_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_facet_not_covered_no_answer_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.29,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 214.32,
+          "total_elapsed_sec": 0.2143
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-EN-272",
+    "locale": "en",
+    "case_type": "source_gap_safe_no_answer",
+    "question": "What do the VALORANT rules require for sportsmanship and fair play?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "fair_play_conduct",
+    "expected_answer_status": "no_answer_expected",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "no_answer",
+    "mode": "pipeline:competition_facet_not_covered_no_answer_en",
+    "elapsed_sec": 0.0298,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "source_gap_safe": true,
+    "evidence_alignment": "not_specified",
+    "returned_evidence_ids": [],
+    "returned_rulebook_refs": [],
+    "passed": true,
+    "failures": [],
+    "answer": "I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 3.22,
+          "elapsed_sec": 0.0032,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0033,
+          "global_remaining_sec": 19.9967,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9967,
+          "timing_status": "running",
+          "parts": [
+            "What do the VALORANT rules require for sportsmanship and fair play?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What do the VALORANT rules require for sportsmanship and fair play?"
+          ],
+          "elapsed_ms": 0.28,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.3,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.15,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_facet_not_covered_no_answer_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.3,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 29.78,
+          "total_elapsed_sec": 0.0298
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-EN-273",
+    "locale": "en",
+    "case_type": "source_gap_safe_no_answer",
+    "question": "Who should a player contact for a general issue during a VALORANT match?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "in_match_operations",
+    "expected_answer_status": "no_answer_expected",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:structured_competition_rules_en",
+    "elapsed_sec": 0.2086,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": false,
+    "target_ok": true,
+    "evidence_ok": true,
+    "source_gap_safe": false,
+    "evidence_alignment": "not_specified",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s09_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s18_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s24_c01",
+      "competition_rules_valorant_psu_phuket_2026_s09_c01",
+      "competition_rules_valorant_psu_phuket_2026_s18_c01",
+      "competition_rules_valorant_psu_phuket_2026_s24_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026_s09_c01",
+      "competition_rules_valorant_psu_phuket_2026_s18_c01",
+      "competition_rules_valorant_psu_phuket_2026_s24_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "outcome expected no_answer_expected, got answer",
+      "source-gap no-answer attached evidence or did not abstain safely"
+    ],
+    "answer": "English draft translation of VALORANT competition rules:\n- A bug is an in-game error that causes unintended outcomes. Bugs are classified as follows * Play-Through Bug Bugs that do not significantly affect competitive integrity. Play must continue, and no challenge may be requested. * Major Bug Bugs that significantly affect gameplay or core mechanics and cannot be immediately resolved.\n- Using bugs caused by the player themselves to gain unintended advantages is considered a violation.\n- Pre-Game Process (Before Game Start to Agent Selection) * Check-in time * Teams must arrive at the venue at least 30 minutes before the scheduled match time. * New Content Restrictions * New agents are restricted for approximately 2 weeks after being released in Competitive mode.\nSource: https://esports.computing.psu.ac.th/ (original source in Thai)",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 12.56,
+          "elapsed_sec": 0.0126,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0127,
+          "global_remaining_sec": 19.9873,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9873,
+          "timing_status": "running",
+          "parts": [
+            "Who should a player contact for a general issue during a VALORANT match?"
+          ],
+          "competition_rule_query": false
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Who should a player contact for a general issue during a VALORANT match?"
+          ],
+          "elapsed_ms": 0.3,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.33,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.17,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:structured_competition_rules_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.3,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 208.54,
+          "total_elapsed_sec": 0.2085
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-EN-274",
+    "locale": "en",
+    "case_type": "source_gap_safe_no_answer",
+    "question": "What procedure must officials follow for an unspecified incident during a VALORANT match?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "in_match_operations",
+    "expected_answer_status": "no_answer_expected",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:structured_competition_rules_en",
+    "elapsed_sec": 0.1667,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": false,
+    "target_ok": true,
+    "evidence_ok": true,
+    "source_gap_safe": false,
+    "evidence_alignment": "not_specified",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s18_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s19_c01",
+      "competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "competition_rules_valorant_psu_phuket_2026_s18_c01",
+      "competition_rules_valorant_psu_phuket_2026_s19_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "competition_rules_valorant_psu_phuket_2026_s18_c01",
+      "competition_rules_valorant_psu_phuket_2026_s19_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "outcome expected no_answer_expected, got answer",
+      "source-gap no-answer attached evidence or did not abstain safely"
+    ],
+    "answer": "English draft translation of VALORANT competition rules:\n- Competition Area and Regulations * Personnel during Match Preparation * No more than 6 players are allowed in the match preparation area. * Electronic devices * Mobile phones, tablets, and smartwatches are strictly prohibited in the competition area until the match has concluded.\n- Pre-Game Process (Before Game Start to Agent Selection) * Check-in time * Teams must arrive at the venue at least 30 minutes before the scheduled match time. * New Content Restrictions * New agents are restricted for approximately 2 weeks after being released in Competitive mode.\n- Post-Match Procedure * Result recording * Officials will immediately verify and record match results. * Forfeiture * If a forfeit occurs, the result for that map will be recorded as 13-0. Match Pauses\nSource: https://esports.computing.psu.ac.th/ (original source in Thai)",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 13.55,
+          "elapsed_sec": 0.0136,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0136,
+          "global_remaining_sec": 19.9864,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9864,
+          "timing_status": "running",
+          "parts": [
+            "What procedure must officials follow for an unspecified incident during a VALORANT match?"
+          ],
+          "competition_rule_query": false
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What procedure must officials follow for an unspecified incident during a VALORANT match?"
+          ],
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.17,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 6.86,
+          "elapsed_sec": 0.0069,
+          "route_category": "games",
+          "route_intent": "games_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:structured_competition_rules_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.32,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 166.68,
+          "total_elapsed_sec": 0.1667
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,54 @@
+{
+  "finished_at": "2026-09-15T19:37:40.274559+07:00",
+  "suites": {
+    "th": {
+      "total": 8,
+      "completed": 8,
+      "strict_pass": 8,
+      "strict_pass_rate": 1.0,
+      "status_counts": {
+        "completed": 8
+      },
+      "mode_counts": {
+        "pipeline:deterministic_calculator_fast": 8
+      },
+      "failure_types": {},
+      "latency_sec": {
+        "mean": 2.122,
+        "p50": 0.6224,
+        "p95": 12.5806,
+        "p99": 12.5806,
+        "max": 12.5806,
+        "over_10s": 1,
+        "over_20s": 0
+      }
+    },
+    "en": {
+      "total": 8,
+      "completed": 8,
+      "strict_pass": 8,
+      "strict_pass_rate": 1.0,
+      "status_counts": {
+        "completed": 8
+      },
+      "mode_counts": {
+        "pipeline:structured_service_fee_en": 8
+      },
+      "failure_types": {},
+      "latency_sec": {
+        "mean": 0.0241,
+        "p50": 0.0082,
+        "p95": 0.1142,
+        "p99": 0.1142,
+        "max": 0.1142,
+        "over_10s": 0,
+        "over_20s": 0
+      }
+    }
+  },
+  "comparison_limits": [
+    "Thai and English corpora use their own existing answer contracts; strict-pass rates are not a translation-quality A/B score.",
+    "English Shadow is machine-translated test input and not approved public English knowledge.",
+    "This is serial in-process evaluation with no browser, HTTP queue, or concurrent-user latency."
+  ]
+}

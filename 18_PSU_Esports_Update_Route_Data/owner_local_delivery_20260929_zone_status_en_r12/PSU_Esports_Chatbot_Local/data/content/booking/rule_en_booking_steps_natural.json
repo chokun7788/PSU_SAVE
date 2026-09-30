@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_en_booking_steps_natural",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [],
+    "en": [
+      "how\\s+(?:do|can)\\s+i\\s+(?:make\\s+)?a?\\s*booking",
+      "how\\s+(?:do|can)\\s+i\\s+reserve",
+      "how\\s+to\\s+(?:make\\s+)?a?\\s*(?:booking|reservation|reserve)",
+      "make\\s+(?:a|the)\\s+booking",
+      "book\\s+(?:a|the)\\s+(?:slot|session|zone|service)",
+      "booking\\s+process",
+      "reservation\\s+process"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "booking_steps",
+    "patterns": [
+      "how\\s+(?:do|can)\\s+i\\s+(?:make\\s+)?a?\\s*booking",
+      "how\\s+(?:do|can)\\s+i\\s+reserve",
+      "how\\s+to\\s+(?:make\\s+)?a?\\s*(?:booking|reservation|reserve)",
+      "make\\s+(?:a|the)\\s+booking",
+      "book\\s+(?:a|the)\\s+(?:slot|session|zone|service)",
+      "booking\\s+process",
+      "reservation\\s+process"
+    ],
+    "priority": 132
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ขั้นตอนจองคือ เลือกบริการ เลือกวันและเวลา กรอกข้อมูลผู้ใช้ ตรวจสอบข้อมูล ชำระเงินโดยโอนเข้าบัญชี และแนบสลิปการโอนเงิน"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "The booking steps are: select a service, choose date and time, fill in user information, review the details, make payment by bank transfer, and upload the payment slip."
+      },
+      "source_sha256": "3bb6942508d3cb1e3e3ebbadb1e79a7041cc75cb115fa15d19fb86df10da12a7",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/english_support_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "curated_booking_steps"
+    ],
+    "last_verified_at": ""
+  }
+}

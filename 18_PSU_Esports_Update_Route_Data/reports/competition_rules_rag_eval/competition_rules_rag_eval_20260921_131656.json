@@ -1,0 +1,3180 @@
+[
+  {
+    "id": "COMP-RAG-V2-EN-126",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Who should we notify if an issue occurs during VALORANT?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "in_match_operations",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.8574,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": false,
+    "evidence_alignment": "none",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s03_c01",
+      "competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "competition_rules_valorant_psu_phuket_2026_s03_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "competition_rules_valorant_psu_phuket_2026_s03_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 51.95,
+          "elapsed_sec": 0.052,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0521,
+          "global_remaining_sec": 19.9479,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9479,
+          "timing_status": "running",
+          "parts": [
+            "Who should we notify if an issue occurs during VALORANT?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Who should we notify if an issue occurs during VALORANT?"
+          ],
+          "elapsed_ms": 0.44,
+          "elapsed_sec": 0.0004
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.48,
+          "elapsed_sec": 0.0005
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 174.34,
+          "elapsed_sec": 0.1743,
+          "route_category": "games",
+          "route_intent": "games_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "VALORANT",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "VALORANT",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 9.979,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 9.67,
+          "elapsed_sec": 0.0097,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 857.36,
+          "total_elapsed_sec": 0.8574
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-127",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Which maps are used in the VALORANT event?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "map_pool",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0309,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s06_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s18_c01",
+      "competition_rules_valorant_psu_phuket_2026_s06_c01",
+      "competition_rules_valorant_psu_phuket_2026_s18_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s06_c01",
+      "competition_rules_valorant_psu_phuket_2026_s18_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.39,
+          "elapsed_sec": 0.0014,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0015,
+          "global_remaining_sec": 19.9985,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9985,
+          "timing_status": "running",
+          "parts": [
+            "Which maps are used in the VALORANT event?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Which maps are used in the VALORANT event?"
+          ],
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.18,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "VALORANT",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "VALORANT",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 2.203,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.31,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 30.87,
+          "total_elapsed_sec": 0.0309
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-128",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "How are maps picked or banned for VALORANT?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "map_pool",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0195,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s06_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s18_c01",
+      "competition_rules_valorant_psu_phuket_2026_s06_c01",
+      "competition_rules_valorant_psu_phuket_2026_s18_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s06_c01",
+      "competition_rules_valorant_psu_phuket_2026_s18_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.78,
+          "elapsed_sec": 0.0018,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0018,
+          "global_remaining_sec": 19.9982,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9982,
+          "timing_status": "running",
+          "parts": [
+            "How are maps picked or banned for VALORANT?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How are maps picked or banned for VALORANT?"
+          ],
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.15,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.26,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 19.46,
+          "total_elapsed_sec": 0.0195
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-129",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What is the VALORANT map pool for this tournament?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "map_pool",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.1269,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s06_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s18_c01",
+      "competition_rules_valorant_psu_phuket_2026_s06_c01",
+      "competition_rules_valorant_psu_phuket_2026_s18_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s06_c01",
+      "competition_rules_valorant_psu_phuket_2026_s18_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.51,
+          "elapsed_sec": 0.0015,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0016,
+          "global_remaining_sec": 19.9984,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9984,
+          "timing_status": "running",
+          "parts": [
+            "What is the VALORANT map pool for this tournament?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What is the VALORANT map pool for this tournament?"
+          ],
+          "elapsed_ms": 106.52,
+          "elapsed_sec": 0.1065
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 106.56,
+          "elapsed_sec": 0.1066
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.16,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.36,
+          "elapsed_sec": 0.0004,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 126.85,
+          "total_elapsed_sec": 0.1269
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-130",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "When may a VALORANT match be paused?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "pause_timeout",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0985,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s21_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s22_c01",
+      "competition_rules_valorant_psu_phuket_2026_s21_c01",
+      "competition_rules_valorant_psu_phuket_2026_s22_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s21_c01",
+      "competition_rules_valorant_psu_phuket_2026_s22_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.67,
+          "elapsed_sec": 0.0017,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0017,
+          "global_remaining_sec": 19.9983,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9983,
+          "timing_status": "running",
+          "parts": [
+            "When may a VALORANT match be paused?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "When may a VALORANT match be paused?"
+          ],
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.49,
+          "elapsed_sec": 0.0005,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 98.44,
+          "total_elapsed_sec": 0.0984
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-131",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "How do timeout and technical pause rules work in VALORANT?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "pause_timeout",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.02,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s06_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s22_c01",
+      "competition_rules_valorant_psu_phuket_2026_s06_c01",
+      "competition_rules_valorant_psu_phuket_2026_s22_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s06_c01",
+      "competition_rules_valorant_psu_phuket_2026_s22_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.2,
+          "elapsed_sec": 0.0022,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0023,
+          "global_remaining_sec": 19.9977,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9977,
+          "timing_status": "running",
+          "parts": [
+            "How do timeout and technical pause rules work in VALORANT?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How do timeout and technical pause rules work in VALORANT?"
+          ],
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.32,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 19.94,
+          "total_elapsed_sec": 0.0199
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-132",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What should we do if a VALORANT match needs to stop mid-game?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "pause_timeout",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0272,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s06_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s21_c01",
+      "competition_rules_valorant_psu_phuket_2026_s06_c01",
+      "competition_rules_valorant_psu_phuket_2026_s21_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s06_c01",
+      "competition_rules_valorant_psu_phuket_2026_s21_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.94,
+          "elapsed_sec": 0.0029,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0031,
+          "global_remaining_sec": 19.9969,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9969,
+          "timing_status": "running",
+          "parts": [
+            "What should we do if a VALORANT match needs to stop mid-game?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What should we do if a VALORANT match needs to stop mid-game?"
+          ],
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.3,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 7.08,
+          "elapsed_sec": 0.0071,
+          "route_category": "games",
+          "route_intent": "games_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.28,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 27.22,
+          "total_elapsed_sec": 0.0272
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-133",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What happens when a VALORANT rule is broken?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "penalty",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0222,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s04_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s25_c01",
+      "competition_rules_valorant_psu_phuket_2026_s04_c01",
+      "competition_rules_valorant_psu_phuket_2026_s25_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s04_c01",
+      "competition_rules_valorant_psu_phuket_2026_s25_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.94,
+          "elapsed_sec": 0.0019,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.002,
+          "global_remaining_sec": 19.998,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.998,
+          "timing_status": "running",
+          "parts": [
+            "What happens when a VALORANT rule is broken?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What happens when a VALORANT rule is broken?"
+          ],
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.15,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "VALORANT",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "VALORANT",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.486,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.28,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 22.15,
+          "total_elapsed_sec": 0.0221
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-134",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What penalties can apply to a VALORANT violation?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "penalty",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0252,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s04_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s25_c01",
+      "competition_rules_valorant_psu_phuket_2026_s04_c01",
+      "competition_rules_valorant_psu_phuket_2026_s25_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s04_c01",
+      "competition_rules_valorant_psu_phuket_2026_s25_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.92,
+          "elapsed_sec": 0.0019,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.002,
+          "global_remaining_sec": 19.998,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.998,
+          "timing_status": "running",
+          "parts": [
+            "What penalties can apply to a VALORANT violation?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What penalties can apply to a VALORANT violation?"
+          ],
+          "elapsed_ms": 0.11,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 4.47,
+          "elapsed_sec": 0.0045,
+          "route_category": "games",
+          "route_intent": "games_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "VALORANT",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "VALORANT",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.013,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 25.22,
+          "total_elapsed_sec": 0.0252
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-135",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "How do organisers handle misconduct in VALORANT?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "penalty",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0268,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s04_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s25_c01",
+      "competition_rules_valorant_psu_phuket_2026_s04_c01",
+      "competition_rules_valorant_psu_phuket_2026_s25_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s04_c01",
+      "competition_rules_valorant_psu_phuket_2026_s25_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.08,
+          "elapsed_sec": 0.0021,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0021,
+          "global_remaining_sec": 19.9979,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9979,
+          "timing_status": "running",
+          "parts": [
+            "How do organisers handle misconduct in VALORANT?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How do organisers handle misconduct in VALORANT?"
+          ],
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.13,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 4.22,
+          "elapsed_sec": 0.0042,
+          "route_category": "games",
+          "route_intent": "games_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "VALORANT",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "VALORANT",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 2.315,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.28,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 26.75,
+          "total_elapsed_sec": 0.0267
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-136",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "How do players check in for VALORANT?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "pre_match_on_site",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0223,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": false,
+    "evidence_alignment": "none",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s03_c01",
+      "competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "competition_rules_valorant_psu_phuket_2026_s03_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "competition_rules_valorant_psu_phuket_2026_s03_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.36,
+          "elapsed_sec": 0.0014,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0014,
+          "global_remaining_sec": 19.9986,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9986,
+          "timing_status": "running",
+          "parts": [
+            "How do players check in for VALORANT?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How do players check in for VALORANT?",
+            "how do players checkin for valorant?"
+          ],
+          "elapsed_ms": 0.57,
+          "elapsed_sec": 0.0006
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.6,
+          "elapsed_sec": 0.0006
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.17,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "VALORANT",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "VALORANT",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 0.898,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 22.31,
+          "total_elapsed_sec": 0.0223
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-137",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What must players do on site before a VALORANT match?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "pre_match_on_site",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0214,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": false,
+    "evidence_alignment": "none",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s03_c01",
+      "competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "competition_rules_valorant_psu_phuket_2026_s03_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "competition_rules_valorant_psu_phuket_2026_s03_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.88,
+          "elapsed_sec": 0.0029,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0029,
+          "global_remaining_sec": 19.9971,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9971,
+          "timing_status": "running",
+          "parts": [
+            "What must players do on site before a VALORANT match?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What must players do on site before a VALORANT match?"
+          ],
+          "elapsed_ms": 0.29,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.31,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.15,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.4,
+          "elapsed_sec": 0.0004,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 21.36,
+          "total_elapsed_sec": 0.0214
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-138",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Does the VALORANT event have a check-in time or venue requirement?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "pre_match_on_site",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0225,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": false,
+    "evidence_alignment": "none",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s03_c01",
+      "competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "competition_rules_valorant_psu_phuket_2026_s03_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "competition_rules_valorant_psu_phuket_2026_s03_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.63,
+          "elapsed_sec": 0.0026,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0027,
+          "global_remaining_sec": 19.9973,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9972,
+          "timing_status": "running",
+          "parts": [
+            "Does the VALORANT event have a check-in time or venue requirement?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Does the VALORANT event have a check-in time or venue requirement?",
+            "does the valorant event have a checkin time or venue requirement?"
+          ],
+          "elapsed_ms": 0.13,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.15,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.18,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "VALORANT",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "VALORANT",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.886,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.31,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 22.46,
+          "total_elapsed_sec": 0.0225
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-139",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "How many players must a VALORANT team have?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "team_size",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0202,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": false,
+    "evidence_alignment": "none",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s08_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "competition_rules_valorant_psu_phuket_2026_s08_c01",
+      "competition_rules_valorant_psu_phuket_2026_s17_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s08_c01",
+      "competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.45,
+          "elapsed_sec": 0.0015,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0015,
+          "global_remaining_sec": 19.9985,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9985,
+          "timing_status": "running",
+          "parts": [
+            "How many players must a VALORANT team have?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How many players must a VALORANT team have?"
+          ],
+          "elapsed_ms": 0.29,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.31,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.16,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "VALORANT",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "VALORANT",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.659,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.28,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 20.16,
+          "total_elapsed_sec": 0.0202
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-140",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "How many starters and substitutes can a VALORANT roster include?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "team_size",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0526,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": false,
+    "evidence_alignment": "none",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s08_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "competition_rules_valorant_psu_phuket_2026_s08_c01",
+      "competition_rules_valorant_psu_phuket_2026_s17_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s08_c01",
+      "competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 3.78,
+          "elapsed_sec": 0.0038,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0039,
+          "global_remaining_sec": 19.9961,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9961,
+          "timing_status": "running",
+          "parts": [
+            "How many starters and substitutes can a VALORANT roster include?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How many starters and substitutes can a VALORANT roster include?"
+          ],
+          "elapsed_ms": 0.16,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.19,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 27.01,
+          "elapsed_sec": 0.027,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": "general_student",
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "VALORANT",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "VALORANT",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 2.473,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 52.58,
+          "total_elapsed_sec": 0.0526
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-141",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What is the permitted roster size for VALORANT?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "team_size",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0215,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": false,
+    "evidence_alignment": "none",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s08_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "competition_rules_valorant_psu_phuket_2026_s08_c01",
+      "competition_rules_valorant_psu_phuket_2026_s17_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s08_c01",
+      "competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.47,
+          "elapsed_sec": 0.0025,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0025,
+          "global_remaining_sec": 19.9975,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9975,
+          "timing_status": "running",
+          "parts": [
+            "What is the permitted roster size for VALORANT?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What is the permitted roster size for VALORANT?"
+          ],
+          "elapsed_ms": 0.11,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.13,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.15,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "VALORANT",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "VALORANT",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.28,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.26,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 21.45,
+          "total_elapsed_sec": 0.0215
+        }
+      }
+    ]
+  }
+]

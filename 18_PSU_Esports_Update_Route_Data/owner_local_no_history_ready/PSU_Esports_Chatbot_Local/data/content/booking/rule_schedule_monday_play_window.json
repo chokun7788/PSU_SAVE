@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_schedule_monday_play_window",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "วันจันทร์.*เล่น.*ตั้งแต่",
+      "วันจันทร์.*เล่น.*กี่โมง",
+      "วันจันทร์.*เล่น.*ช่วงไหน",
+      "วันจันทร์.*รอบเล่น",
+      "จันทร์.*เล่น.*ตั้งแต่",
+      "จันทร์.*เล่น.*กี่โมง",
+      "จันทร์.*รอบเล่น"
+    ],
+    "en": [
+      "monday.*play"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "schedule_monday_play_window",
+    "patterns": [
+      "วันจันทร์.*เล่น.*ตั้งแต่",
+      "วันจันทร์.*เล่น.*กี่โมง",
+      "วันจันทร์.*เล่น.*ช่วงไหน",
+      "วันจันทร์.*รอบเล่น",
+      "จันทร์.*เล่น.*ตั้งแต่",
+      "จันทร์.*เล่น.*กี่โมง",
+      "จันทร์.*รอบเล่น",
+      "monday.*play"
+    ],
+    "priority": 129
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "วันจันทร์ช่วง Morning 09:00–12:00 เป็น Maintenance* ยังไม่ใช่ช่วงเล่น/เปิดให้บริการ ส่วนช่วง Afternoon 13:00–16:00 เป็น Open for Service จึงเล่นได้ช่วง 13:00–16:00"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "On Monday, Morning 09:00-12:00 is Maintenance*, not an open service slot. Play/service is available in the Afternoon slot, 13:00-16:00."
+      },
+      "source_sha256": "ab7859ac2d185bfe07332693712edf9d0b3931b7f82e7deed8f64258dc83880f",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/reservation_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_reservation_schedule_monday_morning",
+      "reservation-intro-schedule"
+    ],
+    "last_verified_at": ""
+  }
+}

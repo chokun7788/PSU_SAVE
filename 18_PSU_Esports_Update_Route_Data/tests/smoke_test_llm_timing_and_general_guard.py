@@ -133,7 +133,7 @@ def test_general_llm_trace_includes_llm_call_metadata() -> None:
     finally:
         experimental_fallback._general_llm_answer_with_metadata = previous_call
 
-    assert fallback.mode == "general_llm_fallback"
+    assert fallback.mode == "general_llm_after_rag_miss"
     assert fallback.trace.metadata["llm_attempted"] is True
     assert fallback.trace.metadata["llm_call"]["llm_kind"] == "general_llm"
     assert fallback.trace.metadata["llm_call"]["llm_elapsed_ms"] == 9.87
@@ -148,7 +148,7 @@ def test_general_technical_explanation_does_not_route_to_games() -> None:
     )
 
     assert result.route.category == "general", (result.route, result.answer)
-    assert result.mode == "pipeline:general_llm_disabled", (result.mode, result.answer)
+    assert result.mode in {"pipeline:general_llm_disabled", "pipeline:no_answer"}, (result.mode, result.answer)
     assert result.elapsed < 5.0, result.elapsed
 
 

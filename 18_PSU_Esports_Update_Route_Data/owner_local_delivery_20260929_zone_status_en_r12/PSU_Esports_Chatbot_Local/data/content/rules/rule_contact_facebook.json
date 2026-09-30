@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_contact_facebook",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "เฟส",
+      "เฟซ"
+    ],
+    "en": [
+      "facebook"
+    ]
+  },
+  "facts": {
+    "route_category": "contact",
+    "intent": "contact_facebook",
+    "patterns": [
+      "facebook",
+      "เฟส",
+      "เฟซ"
+    ],
+    "priority": 100
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "Facebook ของศูนย์คือ https://www.facebook.com/psuesportsphuket"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "The Facebook page is https://www.facebook.com/psuesportsphuket."
+      },
+      "source_sha256": "dcebb7ea995bccc5e3fb3c21ec8312482996e4807ee57bce03c8129a0b95282f",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/contact_rules.jsonl",
+    "url": "https://esports.phuket.psu.ac.th/Contact-Us",
+    "source_ids": [
+      "curated_contact_facebook"
+    ],
+    "last_verified_at": ""
+  }
+}

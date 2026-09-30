@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_ps5_games",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "ps5.*เกม",
+      "playstation.*เกม",
+      "เกม.*ps5",
+      "เกม.*playstation"
+    ],
+    "en": [
+      "ps5 games",
+      "playstation games"
+    ]
+  },
+  "facts": {
+    "route_category": "games",
+    "intent": "ps5_games",
+    "patterns": [
+      "ps5.*เกม",
+      "playstation.*เกม",
+      "เกม.*ps5",
+      "เกม.*playstation",
+      "ps5 games",
+      "playstation games"
+    ],
+    "priority": 100
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "เกม PlayStation 5 ที่มีในรายการ ได้แก่ Call of Duty: Modern Warfare III, Delta Force, EA Sports FC 24, eFootball, FINAL FANTASY XVI, Fortnite, God of War Ragnarok, Hogwarts Legacy, Marvel’s Spider-Man 2, Naruto X Boruto Ultimate Ninja Storm Connections, Resident Evil 4, Resident Evil Village, TEKKEN 8, THE FINALS, The Last of Us Part I, The Last of Us Part II Remastered และ Uncharted: Legacy of Thieves Collection"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "PlayStation 5 games include Call of Duty: Modern Warfare III, Delta Force, EA Sports FC 24, eFootball, FINAL FANTASY XVI, Fortnite, God of War Ragnarok, Hogwarts Legacy, Marvel’s Spider-Man 2, Naruto X Boruto Ultimate Ninja Storm Connections, Resident Evil 4, Resident Evil Village, TEKKEN 8, THE FINALS, The Last of Us Part I, The Last of Us Part II Remastered, and Uncharted: Legacy of Thieves Collection."
+      },
+      "source_sha256": "4af4abfe2ea0372b1d1e551a440e4adddb8b1105f408e8d0c52dadc1f2ae29be",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/games_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_games_ps5",
+      "reservation-service-ps5"
+    ],
+    "last_verified_at": ""
+  }
+}

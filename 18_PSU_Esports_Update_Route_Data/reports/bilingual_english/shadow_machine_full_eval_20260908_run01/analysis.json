@@ -1,0 +1,310 @@
+{
+  "purpose": "Machine-translated English Shadow regression analysis. It measures pipeline behavior, not human-approved English quality.",
+  "translation_audit": {
+    "total_corpus_rows": 1600,
+    "unique_ids": 1600,
+    "duplicate_ids": 0,
+    "translation_statuses": {
+      "machine_translated_unreviewed": 1600
+    },
+    "translation_methods": {
+      "local_ollama_batch": 1600
+    },
+    "missing_question_en": 0,
+    "thai_script_in_question_en": 0,
+    "duplicate_english_questions": 85,
+    "expected_categories": {
+      "service_fee": 258,
+      "games": 635,
+      "['games', 'no_answer']": 11,
+      "['games', 'clarification', 'no_answer']": 13,
+      "equipment": 37,
+      "['equipment', 'clarification']": 5,
+      "['equipment', 'games']": 16,
+      "reservation": 21,
+      "['schedule', 'reservation']": 10,
+      "['members', 'overview']": 47,
+      "competition_rules": 75,
+      "multi_question": 31,
+      "['clarification', 'games', 'equipment', 'service_fee', 'reservation', 'no_answer']": 14,
+      "['no_answer', 'games', 'general']": 10,
+      "['games', 'reservation']": 49,
+      "['games', 'clarification']": 12,
+      "overview": 16,
+      "schedule": 3,
+      "['rules', 'penalty']": 4,
+      "['games', 'multi_question']": 7,
+      "['multi_question', 'reservation', 'games', 'equipment']": 51,
+      "['general', 'knowledge']": 275
+    }
+  },
+  "evaluation": {
+    "total_cases": 1600,
+    "strict_pass": 909,
+    "strict_pass_rate": 0.568125,
+    "localization_blocked_cases": 0,
+    "timeout_cases": 0,
+    "exception_cases": 0,
+    "thai_prose_in_answers": 0,
+    "response_languages": {
+      "en": 1600
+    },
+    "mode_counts": {
+      "pipeline:structured_service_fee_en": 287,
+      "pipeline:english_no_answer": 259,
+      "pipeline:missing_english_localization": 411,
+      "pipeline:structured_game_availability_en": 104,
+      "pipeline:games_unknown_target_en": 5,
+      "pipeline:structured_games_count_en": 2,
+      "pipeline:structured_games_catalog_en": 62,
+      "pipeline:structured_game_controls_en": 296,
+      "pipeline:answer_contract_no_answer": 10,
+      "pipeline:structured_equipment_catalog_en": 131,
+      "pipeline:rule_en": 9,
+      "pipeline:structured_schedule_en": 24
+    },
+    "failure_types": {
+      "category": 691
+    },
+    "route_confusion_top_20": {
+      "['general', 'knowledge'] -> no_answer": 189,
+      "['general', 'knowledge'] -> equipment": 83,
+      "competition_rules -> games": 69,
+      "['multi_question', 'reservation', 'games', 'equipment'] -> service_fee": 50,
+      "['games', 'reservation'] -> games": 42,
+      "service_fee -> games": 29,
+      "['members', 'overview'] -> no_answer": 25,
+      "['members', 'overview'] -> overview": 22,
+      "reservation -> no_answer": 15,
+      "['equipment', 'games'] -> equipment": 14,
+      "multi_question -> games": 14,
+      "['games', 'clarification', 'no_answer'] -> games": 12,
+      "games -> no_answer": 11,
+      "['games', 'no_answer'] -> games": 11,
+      "['games', 'clarification'] -> games": 11,
+      "['schedule', 'reservation'] -> schedule": 10,
+      "multi_question -> service_fee": 10,
+      "['clarification', 'games', 'equipment', 'service_fee', 'reservation', 'no_answer'] -> equipment": 7,
+      "['games', 'multi_question'] -> games": 7,
+      "['clarification', 'games', 'equipment', 'service_fee', 'reservation', 'no_answer'] -> no_answer": 6
+    },
+    "by_group": {
+      "unspecified": {
+        "total": 1600,
+        "passed": 909,
+        "blocked": 0,
+        "pass_rate": 0.568125
+      }
+    },
+    "latency_sec": {
+      "mean": 0.3677,
+      "p50": 0.0147,
+      "p95": 2.5859,
+      "p99": 3.0377,
+      "max": 7.1398
+    },
+    "slowest_20": [
+      {
+        "id": "EN-SHADOW-0553",
+        "question": "How many players can CS2 support?",
+        "latency_sec": 7.1398,
+        "mode": "pipeline:structured_game_availability_en",
+        "route_category": "games",
+        "failures": [
+          "category:games not in ['competition_rules']"
+        ]
+      },
+      {
+        "id": "EN-SHADOW-0052",
+        "question": "Which is more expensive, PS5 or Nintendo?",
+        "latency_sec": 6.5981,
+        "mode": "pipeline:english_no_answer",
+        "route_category": "no_answer",
+        "failures": [
+          "category:no_answer not in ['service_fee']"
+        ]
+      },
+      {
+        "id": "EN-SHADOW-0053",
+        "question": "How are VR 30-minute sessions different from VR one-hour sessions?",
+        "latency_sec": 5.5859,
+        "mode": "pipeline:english_no_answer",
+        "route_category": "no_answer",
+        "failures": [
+          "category:no_answer not in ['service_fee']"
+        ]
+      },
+      {
+        "id": "EN-SHADOW-0647",
+        "question": "Request information not available on the PSU Esports website",
+        "latency_sec": 3.4022,
+        "mode": "pipeline:missing_english_localization",
+        "route_category": "knowledge",
+        "failures": [
+          "category:knowledge not in [['no_answer', 'games', 'general']]"
+        ]
+      },
+      {
+        "id": "EN-SHADOW-1495",
+        "question": "What's the difference between server and client? Answer appropriately for a PSU student",
+        "latency_sec": 3.3748,
+        "mode": "pipeline:english_no_answer",
+        "route_category": "no_answer",
+        "failures": [
+          "category:no_answer not in [['general', 'knowledge']]"
+        ]
+      },
+      {
+        "id": "EN-SHADOW-1234",
+        "question": "Who is the PSU student in the internship position of Game and 3D Developer?",
+        "latency_sec": 3.1489,
+        "mode": "pipeline:missing_english_localization",
+        "route_category": "overview",
+        "failures": []
+      },
+      {
+        "id": "EN-SHADOW-1052",
+        "question": "What button do you press in this game?",
+        "latency_sec": 3.1441,
+        "mode": "pipeline:structured_games_catalog_en",
+        "route_category": "games",
+        "failures": [
+          "category:games not in [['games', 'clarification', 'no_answer']]"
+        ]
+      },
+      {
+        "id": "EN-SHADOW-0583",
+        "question": "How many players can Tekken 8 support?",
+        "latency_sec": 3.1189,
+        "mode": "pipeline:structured_game_availability_en",
+        "route_category": "games",
+        "failures": [
+          "category:games not in ['competition_rules']"
+        ]
+      },
+      {
+        "id": "EN-SHADOW-0589",
+        "question": "How many games are played in the TEKKEN 8 finals round?",
+        "latency_sec": 3.1178,
+        "mode": "pipeline:structured_game_availability_en",
+        "route_category": "games",
+        "failures": [
+          "category:games not in ['competition_rules']"
+        ]
+      },
+      {
+        "id": "EN-SHADOW-0618",
+        "question": "How many members are there, and who is the president?",
+        "latency_sec": 3.0883,
+        "mode": "pipeline:missing_english_localization",
+        "route_category": "overview",
+        "failures": [
+          "category:overview not in ['multi_question']"
+        ]
+      },
+      {
+        "id": "EN-SHADOW-1592",
+        "question": "Write one polite promotional sentence for the event without providing lengthy examples.",
+        "latency_sec": 3.0753,
+        "mode": "pipeline:structured_games_catalog_en",
+        "route_category": "games",
+        "failures": [
+          "category:games not in [['general', 'knowledge']]"
+        ]
+      },
+      {
+        "id": "EN-SHADOW-0568",
+        "question": "How many players does Counter-Strike 2 support?",
+        "latency_sec": 3.064,
+        "mode": "pipeline:structured_game_availability_en",
+        "route_category": "games",
+        "failures": [
+          "category:games not in ['competition_rules']"
+        ]
+      },
+      {
+        "id": "EN-SHADOW-0573",
+        "question": "How is the competition format in Counter-Strike 2?",
+        "latency_sec": 3.0636,
+        "mode": "pipeline:structured_game_availability_en",
+        "route_category": "games",
+        "failures": [
+          "category:games not in ['competition_rules']"
+        ]
+      },
+      {
+        "id": "EN-SHADOW-1378",
+        "question": "What is API? Please provide one paragraph.",
+        "latency_sec": 3.0464,
+        "mode": "pipeline:structured_games_catalog_en",
+        "route_category": "games",
+        "failures": [
+          "category:games not in [['general', 'knowledge']]"
+        ]
+      },
+      {
+        "id": "EN-SHADOW-0820",
+        "question": "What games are available in the Cockpit Zone",
+        "latency_sec": 3.0447,
+        "mode": "pipeline:structured_games_catalog_en",
+        "route_category": "games",
+        "failures": []
+      },
+      {
+        "id": "EN-SHADOW-1249",
+        "question": "How much is the penalty for a broken controller?",
+        "latency_sec": 3.041,
+        "mode": "pipeline:structured_games_catalog_en",
+        "route_category": "games",
+        "failures": [
+          "category:games not in [['rules', 'penalty']]"
+        ]
+      },
+      {
+        "id": "EN-SHADOW-0657",
+        "question": "What do you need to book to play TEKKEN 8?",
+        "latency_sec": 3.0377,
+        "mode": "pipeline:missing_english_localization",
+        "route_category": "games",
+        "failures": [
+          "category:games not in [['games', 'reservation']]"
+        ]
+      },
+      {
+        "id": "EN-SHADOW-0559",
+        "question": "How many games are played in the CS2 finals?",
+        "latency_sec": 3.0336,
+        "mode": "pipeline:structured_game_availability_en",
+        "route_category": "games",
+        "failures": [
+          "category:games not in ['competition_rules']"
+        ]
+      },
+      {
+        "id": "EN-SHADOW-0593",
+        "question": "Do I need to check in before playing TEKKEN 8?",
+        "latency_sec": 3.0331,
+        "mode": "pipeline:structured_game_availability_en",
+        "route_category": "games",
+        "failures": [
+          "category:games not in ['competition_rules']"
+        ]
+      },
+      {
+        "id": "EN-SHADOW-0560",
+        "question": "Can CS2 have a backup player?",
+        "latency_sec": 3.0305,
+        "mode": "pipeline:structured_game_availability_en",
+        "route_category": "games",
+        "failures": [
+          "category:games not in ['competition_rules']"
+        ]
+      }
+    ]
+  },
+  "interpretation_limits": [
+    "Every machine-translated question remains unreviewed test data and is not public chatbot knowledge.",
+    "Shadow rows generally verify expected route, effective language, validation, and latency; they do not replace an English Gold answer-quality review.",
+    "A localization_pending blocker is an intentional safety outcome when approved English content does not exist."
+  ]
+}

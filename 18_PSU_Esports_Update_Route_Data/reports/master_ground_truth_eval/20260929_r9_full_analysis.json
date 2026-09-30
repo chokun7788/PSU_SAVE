@@ -1,0 +1,380 @@
+{
+  "new_rows": 10000,
+  "matched": 10000,
+  "transitions": {
+    "pass -> pass": 8994,
+    "fail -> fail": 993,
+    "pass -> fail": 13
+  },
+  "by_domain": {
+    "en/competition_rules": {
+      "count": 500,
+      "r8_pass": 64,
+      "r9_pass": 64
+    },
+    "en/compound_context_boundary": {
+      "count": 250,
+      "r8_pass": 233,
+      "r9_pass": 227
+    },
+    "en/equipment": {
+      "count": 350,
+      "r8_pass": 312,
+      "r9_pass": 312
+    },
+    "en/game_controls": {
+      "count": 650,
+      "r8_pass": 638,
+      "r9_pass": 638
+    },
+    "en/game_detail": {
+      "count": 450,
+      "r8_pass": 446,
+      "r9_pass": 446
+    },
+    "en/games_catalog_availability": {
+      "count": 600,
+      "r8_pass": 600,
+      "r9_pass": 600
+    },
+    "en/live_booking": {
+      "count": 400,
+      "r8_pass": 400,
+      "r9_pass": 400
+    },
+    "en/members_overview_contact": {
+      "count": 250,
+      "r8_pass": 240,
+      "r9_pass": 240
+    },
+    "en/reservation_policy": {
+      "count": 450,
+      "r8_pass": 441,
+      "r9_pass": 441
+    },
+    "en/schedule_calendar": {
+      "count": 350,
+      "r8_pass": 337,
+      "r9_pass": 337
+    },
+    "en/service_fee": {
+      "count": 400,
+      "r8_pass": 379,
+      "r9_pass": 379
+    },
+    "en/studio_rules_penalties": {
+      "count": 350,
+      "r8_pass": 350,
+      "r9_pass": 350
+    },
+    "th/competition_rules": {
+      "count": 500,
+      "r8_pass": 479,
+      "r9_pass": 477
+    },
+    "th/compound_context_boundary": {
+      "count": 250,
+      "r8_pass": 137,
+      "r9_pass": 137
+    },
+    "th/equipment": {
+      "count": 350,
+      "r8_pass": 320,
+      "r9_pass": 320
+    },
+    "th/game_controls": {
+      "count": 650,
+      "r8_pass": 621,
+      "r9_pass": 620
+    },
+    "th/game_detail": {
+      "count": 450,
+      "r8_pass": 422,
+      "r9_pass": 422
+    },
+    "th/games_catalog_availability": {
+      "count": 600,
+      "r8_pass": 565,
+      "r9_pass": 565
+    },
+    "th/live_booking": {
+      "count": 400,
+      "r8_pass": 400,
+      "r9_pass": 400
+    },
+    "th/members_overview_contact": {
+      "count": 250,
+      "r8_pass": 226,
+      "r9_pass": 226
+    },
+    "th/reservation_policy": {
+      "count": 450,
+      "r8_pass": 416,
+      "r9_pass": 416
+    },
+    "th/schedule_calendar": {
+      "count": 350,
+      "r8_pass": 300,
+      "r9_pass": 298
+    },
+    "th/service_fee": {
+      "count": 400,
+      "r8_pass": 396,
+      "r9_pass": 394
+    },
+    "th/studio_rules_penalties": {
+      "count": 350,
+      "r8_pass": 285,
+      "r9_pass": 285
+    }
+  },
+  "failure_causes": {
+    "status": 830,
+    "route": 240,
+    "none of required alternatives found": 128,
+    "missing required text": 2,
+    "latency 10679.187s exceeded ceiling": 1,
+    "latency 16793.692s exceeded ceiling": 1,
+    "latency 10679.704s exceeded ceiling": 1,
+    "latency 16793.911s exceeded ceiling": 1,
+    "latency 10679.598s exceeded ceiling": 1,
+    "latency 16794.140s exceeded ceiling": 1,
+    "latency 10679.778s exceeded ceiling": 1,
+    "latency 16793.260s exceeded ceiling": 1
+  },
+  "changed_cases": [
+    {
+      "id": "MASTER-GT-TH-00320",
+      "locale": "th",
+      "domain": "service_fee",
+      "question": "ขอสอบถามหน่อยครับ นักศึกษาต่างมหาลัย เล่น PS5 30 นาที เสียกี่บาท",
+      "change": "pass -> fail",
+      "r8_route": "service_fee",
+      "r9_route": "service_fee",
+      "r8_mode": "pipeline:deterministic_calculator_fast",
+      "r9_mode": "pipeline:deterministic_calculator_fast",
+      "r8_failures": [],
+      "r9_failures": [
+        "latency 10679.187s exceeded ceiling"
+      ],
+      "r8_answer": "ระยะเวลาที่ถามคือ 30 นาที ใช้ 1 session ตามแพ็กเกจ PlayStation 5 60 นาที\nคำตอบราคา: 50 บาท สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน\n•    คำนวณจาก 50 บาท/session x 1 session = 50 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น\n\nรายละเอียดจากตาราง:\nPlayStation ",
+      "r9_answer": "ระยะเวลาที่ถามคือ 30 นาที ใช้ 1 session ตามแพ็กเกจ PlayStation 5 60 นาที\nคำตอบราคา: 50 บาท สำหรับกลุ่ม PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน\n•    คำนวณจาก 50 บาท/session x 1 session = 50 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Alumni and General Student / นักศึกษาหรือนักเรียนต่างสถาบัน / มหาลัยอื่น\n\nรายละเอียดจากตาราง:\nPlayStation "
+    },
+    {
+      "id": "MASTER-GT-TH-00338",
+      "locale": "th",
+      "domain": "service_fee",
+      "question": "ขอสอบถามหน่อยครับ นักศึกษา PSU เล่น Cockpit 1 ชั่วโมง เสียกี่บาท",
+      "change": "pass -> fail",
+      "r8_route": "service_fee",
+      "r9_route": "no_answer",
+      "r8_mode": "pipeline:deterministic_calculator_fast",
+      "r9_mode": "pipeline:request_timeout_no_answer",
+      "r8_failures": [],
+      "r9_failures": [
+        "none of required alternatives found: ['0 บาท', '0 บาท']",
+        "route expected ['service_fee'], got no_answer",
+        "status expected answer_available, got no_answer",
+        "latency 16793.692s exceeded ceiling"
+      ],
+      "r8_answer": "ระยะเวลาที่ถามคือ 1 ชั่วโมง ใช้ 1 session ตามแพ็กเกจ Cockpit 60 นาที\nคำตอบราคา: 0 บาท สำหรับกลุ่ม PSU Student and Staff\n•    คำนวณจาก 0 บาท/session x 1 session = 0 บาท\nกลุ่มผู้ใช้ที่ตรวจเจอ: PSU Student and Staff\n\nรายละเอียดจากตาราง:\nCockpit 60 นาที (1 ชั่วโมง, 1 คน)\n•    PSU Student and Staff: 0 บาท\n•    PSU Alumni and General Student: 65 บาท\n•   ",
+      "r9_answer": "ขออภัยครับ คำถามนี้ใช้เวลาประมวลผลเกินเวลาที่กำหนด เลยหยุดไว้ก่อนเพื่อไม่ให้ระบบค้าง\nลองถามใหม่ให้เฉพาะเจาะจงขึ้น เช่น ระบุโซน เกม หรือเรื่องที่ต้องการถามโดยตรงครับ"
+    },
+    {
+      "id": "MASTER-GT-TH-01475",
+      "locale": "th",
+      "domain": "schedule_calendar",
+      "question": "กำลังวางแผนไปใช้บริการ เลยอยากทราบว่า ขอข้อมูลที่ยืนยันได้หน่อยครับ: วันจันทร์เช้าเปิดหรือปิด",
+      "change": "pass -> fail",
+      "r8_route": "schedule",
+      "r9_route": "no_answer",
+      "r8_mode": "pipeline:structured_schedule",
+      "r9_mode": "pipeline:request_timeout_no_answer",
+      "r8_failures": [],
+      "r9_failures": [
+        "route expected ['schedule'], got no_answer",
+        "status expected answer_available, got no_answer",
+        "latency 10679.704s exceeded ceiling"
+      ],
+      "r8_answer": "วันจันทร์: เปิดให้เล่นช่วง 13:00-16:00 ส่วน 09:00-12:00 เป็น Maintenance*\n\nรายละเอียดจากตาราง:\n•    วันจันทร์: Morning 09:00-12:00 = maintenance, Afternoon 13:00-16:00 = open\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+      "r9_answer": "ขออภัยครับ คำถามนี้ใช้เวลาประมวลผลเกินเวลาที่กำหนด เลยหยุดไว้ก่อนเพื่อไม่ให้ระบบค้าง\nลองถามใหม่ให้เฉพาะเจาะจงขึ้น เช่น ระบุโซน เกม หรือเรื่องที่ต้องการถามโดยตรงครับ"
+    },
+    {
+      "id": "MASTER-GT-TH-01484",
+      "locale": "th",
+      "domain": "schedule_calendar",
+      "question": "กำลังวางแผนไปใช้บริการ เลยอยากทราบว่า กำลังวางแผนจะไปใช้บริการ พอดีอยากรู้ว่า พรุ่งนี้เปิดไหม",
+      "change": "pass -> fail",
+      "r8_route": "schedule",
+      "r9_route": "no_answer",
+      "r8_mode": "pipeline:calendar_schedule_fast_path",
+      "r9_mode": "pipeline:request_timeout_no_answer",
+      "r8_failures": [],
+      "r9_failures": [
+        "route expected ['reservation', 'schedule'], got no_answer",
+        "status expected live_lookup_required, got no_answer",
+        "latency 16793.911s exceeded ceiling"
+      ],
+      "r8_answer": "พรุ่งนี้ 29/09/2026 (วันอังคาร): วันอังคารเปิดให้เล่น 09:00-12:00 และ 13:00-16:00\nวันที่อ้างอิงของระบบ: วันนี้คือ 28/09/2026 (วันจันทร์) ตามเวลาไทย\n\nปฏิทินไทยของวันที่นี้:\nไม่พบวันหยุดไทยหรือเทศกาลในปฏิทินที่บันทึกไว้สำหรับวันที่นี้\n\nรายละเอียดจากตาราง:\n•    วันจันทร์ช่วงเช้า 09:00-12:00 เป็น Maintenance* และเปิดช่วงบ่าย 13:00-16:00\n•    วันอังคาร-",
+      "r9_answer": "ขออภัยครับ คำถามนี้ใช้เวลาประมวลผลเกินเวลาที่กำหนด เลยหยุดไว้ก่อนเพื่อไม่ให้ระบบค้าง\nลองถามใหม่ให้เฉพาะเจาะจงขึ้น เช่น ระบุโซน เกม หรือเรื่องที่ต้องการถามโดยตรงครับ"
+    },
+    {
+      "id": "MASTER-GT-TH-02664",
+      "locale": "th",
+      "domain": "game_controls",
+      "question": "ในเกม Animal Crossing: New Horizons บน Nintendo Switch ปุ่ม + (Plus) ใช้ทำอะไร",
+      "change": "pass -> fail",
+      "r8_route": "games",
+      "r9_route": "no_answer",
+      "r8_mode": "pipeline:structured_game_controls",
+      "r9_mode": "pipeline:request_timeout_no_answer",
+      "r8_failures": [],
+      "r9_failures": [
+        "none of required alternatives found: ['+ (Plus)', 'หยุดเกมชั่วคราว']",
+        "route expected ['games'], got no_answer",
+        "status expected answer_available, got no_answer",
+        "latency 16794.140s exceeded ceiling"
+      ],
+      "r8_answer": "Animal Crossing: New Horizons ปุ่มที่ตรงกับคำถาม:\nNintendo Switch\n•    A: โต้ตอบ / ใช้ไอเทม / ย้ายเฟอร์นิเจอร์ (กดค้าง) - โต้ตอบกับสิ่งแวดล้อม คุยกับ NPC ใช้ไอเทม และกดค้างเพื่อย้ายเฟอร์นิเจอร์\n•    + (Plus): หยุดเกมชั่วคราว - หยุดเกมชั่วคราวเพื่อเข้าสู่เมนูระบบ\nหมายเหตุ: ข้อมูลปุ่มจากแหล่งรองนี้ยังไม่ได้ตรวจยืนยันกับเกมและเครื่องที่ศูนย์ใช้อยู่จริ",
+      "r9_answer": "ขออภัยครับ คำถามนี้ใช้เวลาประมวลผลเกินเวลาที่กำหนด เลยหยุดไว้ก่อนเพื่อไม่ให้ระบบค้าง\nลองถามใหม่ให้เฉพาะเจาะจงขึ้น เช่น ระบุโซน เกม หรือเรื่องที่ต้องการถามโดยตรงครับ"
+    },
+    {
+      "id": "MASTER-GT-TH-04200",
+      "locale": "th",
+      "domain": "competition_rules",
+      "question": "Tekken 8 แข่งจริง กฎเกี่ยวกับขอบเขตและข้อมูลของรายการ เป็นแบบไหน",
+      "change": "pass -> fail",
+      "r8_route": "competition_rules",
+      "r9_route": "no_answer",
+      "r8_mode": "pipeline:competition_source_rag",
+      "r9_mode": "pipeline:request_timeout_no_answer",
+      "r8_failures": [],
+      "r9_failures": [
+        "route expected ['competition_rules'], got no_answer",
+        "status expected answer_available, got no_answer",
+        "latency 10679.778s exceeded ceiling"
+      ],
+      "r8_answer": "คำตอบ: กฎระเบียบและรูปแบบการแข่งขัน Tekken 8 รายการ PSU Esports ปะทะมันส์ สนั่นจอ\n\nอ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+      "r9_answer": "ขออภัยครับ คำถามนี้ใช้เวลาประมวลผลเกินเวลาที่กำหนด เลยหยุดไว้ก่อนเพื่อไม่ให้ระบบค้าง\nลองถามใหม่ให้เฉพาะเจาะจงขึ้น เช่น ระบุโซน เกม หรือเรื่องที่ต้องการถามโดยตรงครับ"
+    },
+    {
+      "id": "MASTER-GT-TH-04224",
+      "locale": "th",
+      "domain": "competition_rules",
+      "question": "Valorant แข่งจริง กฎเกี่ยวกับขั้นตอนระหว่างการแข่งขัน เป็นแบบไหน",
+      "change": "pass -> fail",
+      "r8_route": "competition_rules",
+      "r9_route": "no_answer",
+      "r8_mode": "pipeline:competition_facet_not_covered_no_answer",
+      "r9_mode": "pipeline:request_timeout_no_answer",
+      "r8_failures": [],
+      "r9_failures": [
+        "latency 16793.260s exceeded ceiling"
+      ],
+      "r8_answer": "ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน",
+      "r9_answer": "ขออภัยครับ คำถามนี้ใช้เวลาประมวลผลเกินเวลาที่กำหนด เลยหยุดไว้ก่อนเพื่อไม่ให้ระบบค้าง\nลองถามใหม่ให้เฉพาะเจาะจงขึ้น เช่น ระบุโซน เกม หรือเรื่องที่ต้องการถามโดยตรงครับ"
+    },
+    {
+      "id": "MASTER-GT-EN-04770",
+      "locale": "en",
+      "domain": "compound_context_boundary",
+      "question": "Which PC is available now",
+      "change": "pass -> fail",
+      "r8_route": "schedule",
+      "r9_route": "schedule",
+      "r8_mode": "pipeline:live_booking_status_unavailable",
+      "r9_mode": "pipeline:live_booking_status_fast_path",
+      "r8_failures": [],
+      "r9_failures": [
+        "status expected safe_no_answer, got answer"
+      ],
+      "r8_answer": "For 2026-09-28 (Asia/Bangkok), I cannot confirm the live opening or booking status because the Booking Dashboard is unavailable. I will not present a saved schedule as live availability. Please check the reservation page or try again shortly.\nSource: https://esports.computing.psu.ac.th/reservation",
+      "r9_answer": "Live status for 2026-09-29, 01:38 (Asia/Bangkok): the studio is not open for this requested time.\nUpdated: 2026-09-29 01:38:23 (live WordPress booking export)\nSource: https://esports.computing.psu.ac.th/reservation"
+    },
+    {
+      "id": "MASTER-GT-EN-04771",
+      "locale": "en",
+      "domain": "compound_context_boundary",
+      "question": "Which PC is available now? Please answer briefly",
+      "change": "pass -> fail",
+      "r8_route": "schedule",
+      "r9_route": "schedule",
+      "r8_mode": "pipeline:live_booking_status_unavailable",
+      "r9_mode": "pipeline:live_booking_status_fast_path",
+      "r8_failures": [],
+      "r9_failures": [
+        "status expected safe_no_answer, got answer"
+      ],
+      "r8_answer": "For 2026-09-28 (Asia/Bangkok), I cannot confirm the live opening or booking status because the Booking Dashboard is unavailable. I will not present a saved schedule as live availability. Please check the reservation page or try again shortly.\nSource: https://esports.computing.psu.ac.th/reservation",
+      "r9_answer": "Live status for 2026-09-29, 01:38 (Asia/Bangkok): the studio is not open for this requested time.\nUpdated: 2026-09-29 01:38:23 (live WordPress booking export cached briefly)\nSource: https://esports.computing.psu.ac.th/reservation"
+    },
+    {
+      "id": "MASTER-GT-EN-04772",
+      "locale": "en",
+      "domain": "compound_context_boundary",
+      "question": "Which PC is available now? Please use verified information",
+      "change": "pass -> fail",
+      "r8_route": "schedule",
+      "r9_route": "schedule",
+      "r8_mode": "pipeline:live_booking_status_unavailable",
+      "r9_mode": "pipeline:live_booking_status_fast_path",
+      "r8_failures": [],
+      "r9_failures": [
+        "status expected safe_no_answer, got answer"
+      ],
+      "r8_answer": "For 2026-09-28 (Asia/Bangkok), I cannot confirm the live opening or booking status because the Booking Dashboard is unavailable. I will not present a saved schedule as live availability. Please check the reservation page or try again shortly.\nSource: https://esports.computing.psu.ac.th/reservation",
+      "r9_answer": "Live status for 2026-09-29, 01:38 (Asia/Bangkok): the studio is not open for this requested time.\nUpdated: 2026-09-29 01:38:23 (live WordPress booking export cached briefly)\nSource: https://esports.computing.psu.ac.th/reservation"
+    },
+    {
+      "id": "MASTER-GT-EN-04773",
+      "locale": "en",
+      "domain": "compound_context_boundary",
+      "question": "Which PC is available now? I need the official answer",
+      "change": "pass -> fail",
+      "r8_route": "schedule",
+      "r9_route": "schedule",
+      "r8_mode": "pipeline:live_booking_status_unavailable",
+      "r9_mode": "pipeline:live_booking_status_fast_path",
+      "r8_failures": [],
+      "r9_failures": [
+        "status expected safe_no_answer, got answer"
+      ],
+      "r8_answer": "For 2026-09-28 (Asia/Bangkok), I cannot confirm the live opening or booking status because the Booking Dashboard is unavailable. I will not present a saved schedule as live availability. Please check the reservation page or try again shortly.\nSource: https://esports.computing.psu.ac.th/reservation",
+      "r9_answer": "Live status for 2026-09-29, 01:38 (Asia/Bangkok): the studio is not open for this requested time.\nUpdated: 2026-09-29 01:38:23 (live WordPress booking export cached briefly)\nSource: https://esports.computing.psu.ac.th/reservation"
+    },
+    {
+      "id": "MASTER-GT-EN-04774",
+      "locale": "en",
+      "domain": "compound_context_boundary",
+      "question": "Which PC is available now? Could you check this for me",
+      "change": "pass -> fail",
+      "r8_route": "schedule",
+      "r9_route": "schedule",
+      "r8_mode": "pipeline:live_booking_status_unavailable",
+      "r9_mode": "pipeline:live_booking_status_fast_path",
+      "r8_failures": [],
+      "r9_failures": [
+        "status expected safe_no_answer, got answer"
+      ],
+      "r8_answer": "For 2026-09-28 (Asia/Bangkok), I cannot confirm the live opening or booking status because the Booking Dashboard is unavailable. I will not present a saved schedule as live availability. Please check the reservation page or try again shortly.\nSource: https://esports.computing.psu.ac.th/reservation",
+      "r9_answer": "Live status for 2026-09-29, 01:38 (Asia/Bangkok): the studio is not open for this requested time.\nUpdated: 2026-09-29 01:38:23 (live WordPress booking export cached briefly)\nSource: https://esports.computing.psu.ac.th/reservation"
+    },
+    {
+      "id": "MASTER-GT-EN-04775",
+      "locale": "en",
+      "domain": "compound_context_boundary",
+      "question": "Please tell me: Which PC is available now",
+      "change": "pass -> fail",
+      "r8_route": "schedule",
+      "r9_route": "schedule",
+      "r8_mode": "pipeline:live_booking_status_unavailable",
+      "r9_mode": "pipeline:live_booking_status_fast_path",
+      "r8_failures": [],
+      "r9_failures": [
+        "status expected safe_no_answer, got answer"
+      ],
+      "r8_answer": "For 2026-09-28 (Asia/Bangkok), I cannot confirm the live opening or booking status because the Booking Dashboard is unavailable. I will not present a saved schedule as live availability. Please check the reservation page or try again shortly.\nSource: https://esports.computing.psu.ac.th/reservation",
+      "r9_answer": "Live status for 2026-09-29, 01:38 (Asia/Bangkok): the studio is not open for this requested time.\nUpdated: 2026-09-29 01:38:23 (live WordPress booking export cached briefly)\nSource: https://esports.computing.psu.ac.th/reservation"
+    }
+  ]
+}

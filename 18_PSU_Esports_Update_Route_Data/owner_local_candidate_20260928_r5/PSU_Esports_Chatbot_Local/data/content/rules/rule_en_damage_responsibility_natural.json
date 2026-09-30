@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_en_damage_responsibility_natural",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [],
+    "en": [
+      "what\\s+happens\\s+if\\s+i\\s+(?:damage|break)",
+      "if\\s+i\\s+(?:damage|break).*(?:equipment|device|controller|computer|screen)",
+      "(?:damage|break|broken).*(?:equipment|device).*(?:fine|pay|responsible|compensation)",
+      "equipment\\s+damage\\s+(?:policy|penalty|fine)"
+    ]
+  },
+  "facts": {
+    "route_category": "penalty",
+    "intent": "damage_responsibility",
+    "patterns": [
+      "what\\s+happens\\s+if\\s+i\\s+(?:damage|break)",
+      "if\\s+i\\s+(?:damage|break).*(?:equipment|device|controller|computer|screen)",
+      "(?:damage|break|broken).*(?:equipment|device).*(?:fine|pay|responsible|compensation)",
+      "equipment\\s+damage\\s+(?:policy|penalty|fine)"
+    ],
+    "priority": 132
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ถ้าทำอุปกรณ์เสียหาย ผู้ใช้งานต้องรับผิดชอบค่าปรับหรือค่าชดเชยตามระดับความเสียหาย"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "If equipment is damaged, users are responsible for fines or compensation depending on severity: minor damage is 100-500 THB, moderate damage is the actual cost or 500-2,000 THB, and severe damage requires full compensation for the property."
+      },
+      "source_sha256": "8b2eddd2842fe41ff8133ec60fe6e5320c187428f83942735e61691587171216",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/english_support_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_damage_minor",
+      "curated_damage_moderate",
+      "curated_damage_severe"
+    ],
+    "last_verified_at": ""
+  }
+}

@@ -1,0 +1,1404 @@
+# Competition Rules RAG: Automated Failure Triage
+
+## Input Reports
+
+- `competition_rules_rag_eval_20260921_215543.json`
+
+## Summary
+
+| Locale | Passed | Total | Failed |
+| --- | ---: | ---: | ---: |
+| en | 3 | 264 | 261 |
+| th | 209 | 264 | 55 |
+
+## Failure Taxonomy
+
+| Classification | Count | Meaning |
+| --- | ---: | --- |
+| `english_localization_gap` | 222 | The Thai target source was found, but no approved English overlay was available. |
+| `source_coverage_gap` | 74 | The selected rulebook has no retrieved section that directly proves the requested facet. |
+| `gold_or_section_contract_gap` | 17 | The answer is target-grounded, but its returned section is outside the current Gold allowed-evidence list. |
+| `routing_or_target_failure` | 3 | The request did not retain the expected competition route or rulebook target. |
+
+## Review Queue
+
+### en / english_localization_gap / competition_format (18 cases)
+
+- `COMP-RAG-EN-001` — What do the CS2 tournament rules say about the competition format?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-002` — For Counter-Strike 2, can you verify the rule on the competition format?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-003` — I am preparing for a Counter Strike 2 match. What is the policy for the competition format?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-004` — Please retrieve the official CS2 rulebook evidence for the competition format.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-005` — How is the competition format handled in the Counter-Strike 2 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-006` — Could you cite the Counter Strike 2 rule concerning the competition format?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-115` — What do the RoV tournament rules say about the competition format?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-116` — For Arena of Valor, can you verify the rule on the competition format?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-117` — I am preparing for a AOV match. What is the policy for the competition format?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-118` — Please retrieve the official RoV rulebook evidence for the competition format.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-119` — How is the competition format handled in the Arena of Valor tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-120` — Could you cite the AOV rule concerning the competition format?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-163` — What do the TEKKEN 8 tournament rules say about the competition format?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-164` — For Tekken 8, can you verify the rule on the competition format?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-165` — I am preparing for a T8 match. What is the policy for the competition format?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-166` — Please retrieve the official TEKKEN 8 rulebook evidence for the competition format.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-167` — How is the competition format handled in the Tekken 8 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-168` — Could you cite the T8 rule concerning the competition format?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+
+### en / english_localization_gap / conduct (12 cases)
+
+- `COMP-RAG-EN-007` — What do the CS2 tournament rules say about player conduct and sportsmanship?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-008` — For Counter-Strike 2, can you verify the rule on player conduct and sportsmanship?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-009` — I am preparing for a Counter Strike 2 match. What is the policy for player conduct and sportsmanship?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-010` — Please retrieve the official CS2 rulebook evidence for player conduct and sportsmanship.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-011` — How is player conduct and sportsmanship handled in the Counter-Strike 2 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-012` — Could you cite the Counter Strike 2 rule concerning player conduct and sportsmanship?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-169` — What do the TEKKEN 8 tournament rules say about player conduct and sportsmanship?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-170` — For Tekken 8, can you verify the rule on player conduct and sportsmanship?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-171` — I am preparing for a T8 match. What is the policy for player conduct and sportsmanship?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:missing_english_localization`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: This information does not yet have an approved English localization. Please open the cited original source or ask a staff member for confirmation. Source: https://esports.computing.psu.ac.th/ (original source in Thai)
+- `COMP-RAG-EN-172` — Please retrieve the official TEKKEN 8 rulebook evidence for player conduct and sportsmanship.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-173` — How is player conduct and sportsmanship handled in the Tekken 8 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-174` — Could you cite the T8 rule concerning player conduct and sportsmanship?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:missing_english_localization`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: This information does not yet have an approved English localization. Please open the cited original source or ask a staff member for confirmation. Source: https://esports.computing.psu.ac.th/ (original source in Thai)
+
+### en / english_localization_gap / disconnect (6 cases)
+
+- `COMP-RAG-EN-121` — What do the RoV tournament rules say about disconnections and reconnects?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-122` — For Arena of Valor, can you verify the rule on disconnections and reconnects?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-123` — I am preparing for a AOV match. What is the policy for disconnections and reconnects?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-124` — Please retrieve the official RoV rulebook evidence for disconnections and reconnects.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-125` — How is disconnections and reconnects handled in the Arena of Valor tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-126` — Could you cite the AOV rule concerning disconnections and reconnects?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+
+### en / english_localization_gap / dispute (12 cases)
+
+- `COMP-RAG-EN-013` — What do the CS2 tournament rules say about protests and disputes?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-014` — For Counter-Strike 2, can you verify the rule on protests and disputes?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-015` — I am preparing for a Counter Strike 2 match. What is the policy for protests and disputes?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-016` — Please retrieve the official CS2 rulebook evidence for protests and disputes.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-017` — How is protests and disputes handled in the Counter-Strike 2 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-018` — Could you cite the Counter Strike 2 rule concerning protests and disputes?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-175` — What do the TEKKEN 8 tournament rules say about protests and disputes?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-176` — For Tekken 8, can you verify the rule on protests and disputes?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-177` — I am preparing for a T8 match. What is the policy for protests and disputes?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:missing_english_localization`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: This information does not yet have an approved English localization. Please open the cited original source or ask a staff member for confirmation. Source: https://esports.computing.psu.ac.th/ (original source in Thai)
+- `COMP-RAG-EN-178` — Please retrieve the official TEKKEN 8 rulebook evidence for protests and disputes.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-179` — How is protests and disputes handled in the Tekken 8 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-180` — Could you cite the T8 rule concerning protests and disputes?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:missing_english_localization`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: This information does not yet have an approved English localization. Please open the cited original source or ask a staff member for confirmation. Source: https://esports.computing.psu.ac.th/ (original source in Thai)
+
+### en / english_localization_gap / equipment (24 cases)
+
+- `COMP-RAG-EN-025` — What do the CS2 tournament rules say about competition equipment and devices?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-026` — For Counter-Strike 2, can you verify the rule on competition equipment and devices?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-027` — I am preparing for a Counter Strike 2 match. What is the policy for competition equipment and devices?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-028` — Please retrieve the official CS2 rulebook evidence for competition equipment and devices.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-029` — How is competition equipment and devices handled in the Counter-Strike 2 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-030` — Could you cite the Counter Strike 2 rule concerning competition equipment and devices?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-127` — What do the RoV tournament rules say about competition equipment and devices?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-128` — For Arena of Valor, can you verify the rule on competition equipment and devices?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-129` — I am preparing for a AOV match. What is the policy for competition equipment and devices?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-130` — Please retrieve the official RoV rulebook evidence for competition equipment and devices.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-131` — How is competition equipment and devices handled in the Arena of Valor tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-132` — Could you cite the AOV rule concerning competition equipment and devices?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-181` — What do the TEKKEN 8 tournament rules say about competition equipment and devices?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-182` — For Tekken 8, can you verify the rule on competition equipment and devices?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-183` — I am preparing for a T8 match. What is the policy for competition equipment and devices?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-184` — Please retrieve the official TEKKEN 8 rulebook evidence for competition equipment and devices.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-185` — How is competition equipment and devices handled in the Tekken 8 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-186` — Could you cite the T8 rule concerning competition equipment and devices?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-211` — What do the VALORANT tournament rules say about competition equipment and devices?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-212` — For Valorant, can you verify the rule on competition equipment and devices?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-213` — I am preparing for a Valo match. What is the policy for competition equipment and devices?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-214` — Please retrieve the official VALORANT rulebook evidence for competition equipment and devices.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-215` — How is competition equipment and devices handled in the Valorant tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-216` — Could you cite the Valo rule concerning competition equipment and devices?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+
+### en / english_localization_gap / fair_play_conduct (6 cases)
+
+- `COMP-RAG-EN-031` — What do the CS2 tournament rules say about fair play and prohibited conduct?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-032` — For Counter-Strike 2, can you verify the rule on fair play and prohibited conduct?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-033` — I am preparing for a Counter Strike 2 match. What is the policy for fair play and prohibited conduct?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-034` — Please retrieve the official CS2 rulebook evidence for fair play and prohibited conduct.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-035` — How is fair play and prohibited conduct handled in the Counter-Strike 2 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-036` — Could you cite the Counter Strike 2 rule concerning fair play and prohibited conduct?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+
+### en / english_localization_gap / in_match_operations (6 cases)
+
+- `COMP-RAG-EN-037` — What do the CS2 tournament rules say about in-match procedure?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-038` — For Counter-Strike 2, can you verify the rule on in-match procedure?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-039` — I am preparing for a Counter Strike 2 match. What is the policy for in-match procedure?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-040` — Please retrieve the official CS2 rulebook evidence for in-match procedure.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-041` — How is in-match procedure handled in the Counter-Strike 2 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-042` — Could you cite the Counter Strike 2 rule concerning in-match procedure?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+
+### en / english_localization_gap / map_pool (12 cases)
+
+- `COMP-RAG-EN-043` — What do the CS2 tournament rules say about maps, vetoes, and map selection?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-044` — For Counter-Strike 2, can you verify the rule on maps, vetoes, and map selection?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-045` — I am preparing for a Counter Strike 2 match. What is the policy for maps, vetoes, and map selection?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-046` — Please retrieve the official CS2 rulebook evidence for maps, vetoes, and map selection.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-047` — How is maps, vetoes, and map selection handled in the Counter-Strike 2 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-048` — Could you cite the Counter Strike 2 rule concerning maps, vetoes, and map selection?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-229` — What do the VALORANT tournament rules say about maps, vetoes, and map selection?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-230` — For Valorant, can you verify the rule on maps, vetoes, and map selection?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-231` — I am preparing for a Valo match. What is the policy for maps, vetoes, and map selection?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-232` — Please retrieve the official VALORANT rulebook evidence for maps, vetoes, and map selection.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-233` — How is maps, vetoes, and map selection handled in the Valorant tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-234` — Could you cite the Valo rule concerning maps, vetoes, and map selection?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+
+### en / english_localization_gap / match_configuration (6 cases)
+
+- `COMP-RAG-EN-049` — What do the CS2 tournament rules say about game version and match configuration?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-050` — For Counter-Strike 2, can you verify the rule on game version and match configuration?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-051` — I am preparing for a Counter Strike 2 match. What is the policy for game version and match configuration?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-052` — Please retrieve the official CS2 rulebook evidence for game version and match configuration.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-053` — How is game version and match configuration handled in the Counter-Strike 2 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-054` — Could you cite the Counter Strike 2 rule concerning game version and match configuration?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+
+### en / english_localization_gap / match_settings (12 cases)
+
+- `COMP-RAG-EN-055` — What do the CS2 tournament rules say about in-game settings?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-056` — For Counter-Strike 2, can you verify the rule on in-game settings?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-057` — I am preparing for a Counter Strike 2 match. What is the policy for in-game settings?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-058` — Please retrieve the official CS2 rulebook evidence for in-game settings.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-059` — How is in-game settings handled in the Counter-Strike 2 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-060` — Could you cite the Counter Strike 2 rule concerning in-game settings?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-187` — What do the TEKKEN 8 tournament rules say about in-game settings?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-188` — For Tekken 8, can you verify the rule on in-game settings?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-189` — I am preparing for a T8 match. What is the policy for in-game settings?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-190` — Please retrieve the official TEKKEN 8 rulebook evidence for in-game settings.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-191` — How is in-game settings handled in the Tekken 8 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-192` — Could you cite the T8 rule concerning in-game settings?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+
+### en / english_localization_gap / pause_timeout (20 cases)
+
+- `COMP-RAG-EN-061` — What do the CS2 tournament rules say about pauses and timeouts?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-062` — For Counter-Strike 2, can you verify the rule on pauses and timeouts?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-063` — I am preparing for a Counter Strike 2 match. What is the policy for pauses and timeouts?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-064` — Please retrieve the official CS2 rulebook evidence for pauses and timeouts.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-065` — How is pauses and timeouts handled in the Counter-Strike 2 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-066` — Could you cite the Counter Strike 2 rule concerning pauses and timeouts?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-133` — What do the RoV tournament rules say about pauses and timeouts?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-134` — For Arena of Valor, can you verify the rule on pauses and timeouts?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-135` — I am preparing for a AOV match. What is the policy for pauses and timeouts?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-136` — Please retrieve the official RoV rulebook evidence for pauses and timeouts.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-137` — How is pauses and timeouts handled in the Arena of Valor tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-138` — Could you cite the AOV rule concerning pauses and timeouts?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-235` — What do the VALORANT tournament rules say about pauses and timeouts?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-236` — For Valorant, can you verify the rule on pauses and timeouts?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-237` — I am preparing for a Valo match. What is the policy for pauses and timeouts?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-238` — Please retrieve the official VALORANT rulebook evidence for pauses and timeouts.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-239` — How is pauses and timeouts handled in the Valorant tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-240` — Could you cite the Valo rule concerning pauses and timeouts?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-263` — How do CS2 and VALORANT technical pause rules differ?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified competition-rule evidence was found for Counter-Strike 2 and VALORANT in the original Thai sources for this comparison. Approved English wording for every required rule section is not available yet, so I will not translate the rules live. Original ...
+- `COMP-RAG-EN-264` — Compare the pause penalty rules for RoV and TEKKEN 8.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified competition-rule evidence was found for Arena of Valor (RoV) and Tekken 8 in the original Thai sources for this comparison. Approved English wording for every required rule section is not available yet, so I will not translate the rules live. Origi...
+
+### en / english_localization_gap / penalty (12 cases)
+
+- `COMP-RAG-EN-067` — What do the CS2 tournament rules say about penalties?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-068` — For Counter-Strike 2, can you verify the rule on penalties?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-069` — I am preparing for a Counter Strike 2 match. What is the policy for penalties?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-070` — Please retrieve the official CS2 rulebook evidence for penalties.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-071` — How is penalties handled in the Counter-Strike 2 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-072` — Could you cite the Counter Strike 2 rule concerning penalties?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-241` — What do the VALORANT tournament rules say about penalties?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-242` — For Valorant, can you verify the rule on penalties?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-243` — I am preparing for a Valo match. What is the policy for penalties?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-244` — Please retrieve the official VALORANT rulebook evidence for penalties.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-245` — How is penalties handled in the Valorant tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-246` — Could you cite the Valo rule concerning penalties?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+
+### en / english_localization_gap / penalty_matrix (6 cases)
+
+- `COMP-RAG-EN-073` — What do the CS2 tournament rules say about the penalty matrix?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-074` — For Counter-Strike 2, can you verify the rule on the penalty matrix?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-075` — I am preparing for a Counter Strike 2 match. What is the policy for the penalty matrix?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-076` — Please retrieve the official CS2 rulebook evidence for the penalty matrix.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-077` — How is the penalty matrix handled in the Counter-Strike 2 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-078` — Could you cite the Counter Strike 2 rule concerning the penalty matrix?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+
+### en / english_localization_gap / pre_match_on_site (6 cases)
+
+- `COMP-RAG-EN-247` — What do the VALORANT tournament rules say about check-in and the competition area?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-248` — For Valorant, can you verify the rule on check-in and the competition area?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-249` — I am preparing for a Valo match. What is the policy for check-in and the competition area?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-250` — Please retrieve the official VALORANT rulebook evidence for check-in and the competition area.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-251` — How is check-in and the competition area handled in the Valorant tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-252` — Could you cite the Valo rule concerning check-in and the competition area?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+
+### en / english_localization_gap / protest_dispute (12 cases)
+
+- `COMP-RAG-EN-085` — What do the CS2 tournament rules say about dispute resolution?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-086` — For Counter-Strike 2, can you verify the rule on dispute resolution?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-087` — I am preparing for a Counter Strike 2 match. What is the policy for dispute resolution?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-088` — Please retrieve the official CS2 rulebook evidence for dispute resolution.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-089` — How is dispute resolution handled in the Counter-Strike 2 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-090` — Could you cite the Counter Strike 2 rule concerning dispute resolution?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-193` — What do the TEKKEN 8 tournament rules say about dispute resolution?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-194` — For Tekken 8, can you verify the rule on dispute resolution?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-195` — I am preparing for a T8 match. What is the policy for dispute resolution?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:missing_english_localization`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: This information does not yet have an approved English localization. Please open the cited original source or ask a staff member for confirmation. Source: https://esports.computing.psu.ac.th/ (original source in Thai)
+- `COMP-RAG-EN-196` — Please retrieve the official TEKKEN 8 rulebook evidence for dispute resolution.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-197` — How is dispute resolution handled in the Tekken 8 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-198` — Could you cite the T8 rule concerning dispute resolution?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:missing_english_localization`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: This information does not yet have an approved English localization. Please open the cited original source or ask a staff member for confirmation. Source: https://esports.computing.psu.ac.th/ (original source in Thai)
+
+### en / english_localization_gap / registration (12 cases)
+
+- `COMP-RAG-EN-091` — What do the CS2 tournament rules say about registration?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-092` — For Counter-Strike 2, can you verify the rule on registration?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-093` — I am preparing for a Counter Strike 2 match. What is the policy for registration?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-094` — Please retrieve the official CS2 rulebook evidence for registration.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-095` — How is registration handled in the Counter-Strike 2 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-096` — Could you cite the Counter Strike 2 rule concerning registration?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-145` — What do the RoV tournament rules say about registration?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-146` — For Arena of Valor, can you verify the rule on registration?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-147` — I am preparing for a AOV match. What is the policy for registration?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-148` — Please retrieve the official RoV rulebook evidence for registration.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-149` — How is registration handled in the Arena of Valor tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-150` — Could you cite the AOV rule concerning registration?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+
+### en / english_localization_gap / rulebook_identity (18 cases)
+
+- `COMP-RAG-EN-097` — What do the CS2 tournament rules say about the rulebook scope and tournament identity?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-098` — For Counter-Strike 2, can you verify the rule on the rulebook scope and tournament identity?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-099` — I am preparing for a Counter Strike 2 match. What is the policy for the rulebook scope and tournament identity?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-100` — Please retrieve the official CS2 rulebook evidence for the rulebook scope and tournament identity.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-101` — How is the rulebook scope and tournament identity handled in the Counter-Strike 2 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-102` — Could you cite the Counter Strike 2 rule concerning the rulebook scope and tournament identity?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-151` — What do the RoV tournament rules say about the rulebook scope and tournament identity?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-152` — For Arena of Valor, can you verify the rule on the rulebook scope and tournament identity?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified competition-rule evidence was found for Arena of Valor (RoV) and VALORANT in the original Thai sources for this comparison. Approved English wording for every required rule section is not available yet, so I will not translate the rules live. Origi...
+- `COMP-RAG-EN-153` — I am preparing for a AOV match. What is the policy for the rulebook scope and tournament identity?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-154` — Please retrieve the official RoV rulebook evidence for the rulebook scope and tournament identity.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-155` — How is the rulebook scope and tournament identity handled in the Arena of Valor tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-156` — Could you cite the AOV rule concerning the rulebook scope and tournament identity?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-199` — What do the TEKKEN 8 tournament rules say about the rulebook scope and tournament identity?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-200` — For Tekken 8, can you verify the rule on the rulebook scope and tournament identity?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-201` — I am preparing for a T8 match. What is the policy for the rulebook scope and tournament identity?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:missing_english_localization`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: This information does not yet have an approved English localization. Please open the cited original source or ask a staff member for confirmation. Source: https://esports.computing.psu.ac.th/ (original source in Thai)
+- `COMP-RAG-EN-202` — Please retrieve the official TEKKEN 8 rulebook evidence for the rulebook scope and tournament identity.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-203` — How is the rulebook scope and tournament identity handled in the Tekken 8 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_t...
+- `COMP-RAG-EN-204` — Could you cite the T8 rule concerning the rulebook scope and tournament identity?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:missing_english_localization`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: This information does not yet have an approved English localization. Please open the cited original source or ask a staff member for confirmation. Source: https://esports.computing.psu.ac.th/ (original source in Thai)
+
+### en / english_localization_gap / schedule (6 cases)
+
+- `COMP-RAG-EN-103` — What do the CS2 tournament rules say about the tournament schedule?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-104` — For Counter-Strike 2, can you verify the rule on the tournament schedule?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-105` — I am preparing for a Counter Strike 2 match. What is the policy for the tournament schedule?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-106` — Please retrieve the official CS2 rulebook evidence for the tournament schedule.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-107` — How is the tournament schedule handled in the Counter-Strike 2 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-108` — Could you cite the Counter Strike 2 rule concerning the tournament schedule?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+
+### en / english_localization_gap / team_size (16 cases)
+
+- `COMP-RAG-EN-109` — What do the CS2 tournament rules say about team size and roster composition?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-110` — For Counter-Strike 2, can you verify the rule on team size and roster composition?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-111` — I am preparing for a Counter Strike 2 match. What is the policy for team size and roster composition?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-112` — Please retrieve the official CS2 rulebook evidence for team size and roster composition.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-113` — How is team size and roster composition handled in the Counter-Strike 2 tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-114` — Could you cite the Counter Strike 2 rule concerning team size and roster composition?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Counter-Strike 2 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition...
+- `COMP-RAG-EN-157` — What do the RoV tournament rules say about team size and roster composition?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-158` — For Arena of Valor, can you verify the rule on team size and roster composition?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-159` — I am preparing for a AOV match. What is the policy for team size and roster composition?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-160` — Please retrieve the official RoV rulebook evidence for team size and roster composition.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-161` — How is team size and roster composition handled in the Arena of Valor tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-162` — Could you cite the AOV rule concerning team size and roster composition?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competi...
+- `COMP-RAG-EN-253` — What do the VALORANT tournament rules say about team size and roster composition?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-254` — For Valorant, can you verify the rule on team size and roster composition?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-256` — Please retrieve the official VALORANT rulebook evidence for team size and roster composition.
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+- `COMP-RAG-EN-257` — How is team size and roster composition handled in the Valorant tournament rules?
+  - Expected: `answer_available`; actual: `localization_pending` via `pipeline:competition_source_localization_pending_en`
+  - Reason: The Thai target source was found, but no approved English overlay was available.
+  - Output: Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live. Original source in Thai: local://competition_rules/competition_rules_v...
+
+### en / routing_or_target_failure / safe_outcome (1 cases)
+
+- `COMP-RAG-EN-260` — How many players can a team have?
+  - Expected: `clarification_required`; actual: `no_answer` via `pipeline:english_no_answer`
+  - Reason: The request did not retain the expected competition route or rulebook target.
+  - Output: I could not find verified PSU Esports Studio - Phuket information for this question.
+
+### en / source_coverage_gap / conduct (6 cases)
+
+- `COMP-RAG-EN-205` — What do the VALORANT tournament rules say about player conduct and sportsmanship?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-206` — For Valorant, can you verify the rule on player conduct and sportsmanship?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-207` — I am preparing for a Valo match. What is the policy for player conduct and sportsmanship?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-208` — Please retrieve the official VALORANT rulebook evidence for player conduct and sportsmanship.
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-209` — How is player conduct and sportsmanship handled in the Valorant tournament rules?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-210` — Could you cite the Valo rule concerning player conduct and sportsmanship?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+
+### en / source_coverage_gap / eligibility_registration (6 cases)
+
+- `COMP-RAG-EN-019` — What do the CS2 tournament rules say about eligibility, roster, and registration?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-020` — For Counter-Strike 2, can you verify the rule on eligibility, roster, and registration?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-021` — I am preparing for a Counter Strike 2 match. What is the policy for eligibility, roster, and registration?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-022` — Please retrieve the official CS2 rulebook evidence for eligibility, roster, and registration.
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-023` — How is eligibility, roster, and registration handled in the Counter-Strike 2 tournament rules?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-024` — Could you cite the Counter Strike 2 rule concerning eligibility, roster, and registration?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+
+### en / source_coverage_gap / fair_play_conduct (6 cases)
+
+- `COMP-RAG-EN-217` — What do the VALORANT tournament rules say about fair play and prohibited conduct?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-218` — For Valorant, can you verify the rule on fair play and prohibited conduct?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-219` — I am preparing for a Valo match. What is the policy for fair play and prohibited conduct?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-220` — Please retrieve the official VALORANT rulebook evidence for fair play and prohibited conduct.
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-221` — How is fair play and prohibited conduct handled in the Valorant tournament rules?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-222` — Could you cite the Valo rule concerning fair play and prohibited conduct?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+
+### en / source_coverage_gap / in_match_operations (6 cases)
+
+- `COMP-RAG-EN-223` — What do the VALORANT tournament rules say about in-match procedure?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-224` — For Valorant, can you verify the rule on in-match procedure?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-225` — I am preparing for a Valo match. What is the policy for in-match procedure?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-226` — Please retrieve the official VALORANT rulebook evidence for in-match procedure.
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-227` — How is in-match procedure handled in the Valorant tournament rules?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-228` — Could you cite the Valo rule concerning in-match procedure?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+
+### en / source_coverage_gap / pre_match_on_site (12 cases)
+
+- `COMP-RAG-EN-079` — What do the CS2 tournament rules say about check-in and the competition area?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-080` — For Counter-Strike 2, can you verify the rule on check-in and the competition area?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-081` — I am preparing for a Counter Strike 2 match. What is the policy for check-in and the competition area?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-082` — Please retrieve the official CS2 rulebook evidence for check-in and the competition area.
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-083` — How is check-in and the competition area handled in the Counter-Strike 2 tournament rules?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-084` — Could you cite the Counter Strike 2 rule concerning check-in and the competition area?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-139` — What do the RoV tournament rules say about check-in and the competition area?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-140` — For Arena of Valor, can you verify the rule on check-in and the competition area?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-141` — I am preparing for a AOV match. What is the policy for check-in and the competition area?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-142` — Please retrieve the official RoV rulebook evidence for check-in and the competition area.
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-143` — How is check-in and the competition area handled in the Arena of Valor tournament rules?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-144` — Could you cite the AOV rule concerning check-in and the competition area?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+
+### en / source_coverage_gap / team_size (2 cases)
+
+- `COMP-RAG-EN-255` — I am preparing for a Valo match. What is the policy for team size and roster composition?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+- `COMP-RAG-EN-258` — Could you cite the Valo rule concerning team size and roster composition?
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer_en`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.
+
+### th / gold_or_section_contract_gap / disconnect (3 cases)
+
+- `COMP-RAG-TH-123` — ขออ้างอิงกติกา อารีน่าออฟเวเลอร์ ในหัวข้อการหลุดจากเกมหรือการเชื่อมต่อ หน่อย
+  - Expected: `answer_available`; actual: `answer` via `pipeline:competition_source_rag`
+  - Reason: The answer is target-grounded, but its returned section is outside the current Gold allowed-evidence list.
+  - Output: คำตอบ: 4.3.1.ในกรณีที่มีผู้เข้าแข่งขันหลุดออกจากเกม ให้ทำการหยุดเกมชั่วคราว โดยแต่ละทีมสามารถกดหยุดเกมได้ทีมละ 5 ครั้ง ครั้งละไม่เกิน 1 นาที ถ้าหากเกินเวลาดังกล่าว อีกทีมสามารถกด Resume ได้ทันทีและทำการแข่งขันต่อตามปกติ  รายละเอียดที่เกี่ยวข้อง: •    4.5.2....
+- `COMP-RAG-TH-124` — กำลังจะลงแข่ง RoV อยากรู้เรื่องการหลุดจากเกมหรือการเชื่อมต่อ
+  - Expected: `answer_available`; actual: `answer` via `pipeline:competition_source_rag`
+  - Reason: The answer is target-grounded, but its returned section is outside the current Gold allowed-evidence list.
+  - Output: คำตอบ: 4.3.1.ในกรณีที่มีผู้เข้าแข่งขันหลุดออกจากเกม ให้ทำการหยุดเกมชั่วคราว โดยแต่ละทีมสามารถกดหยุดเกมได้ทีมละ 5 ครั้ง ครั้งละไม่เกิน 1 นาที ถ้าหากเกินเวลาดังกล่าว อีกทีมสามารถกด Resume ได้ทันทีและทำการแข่งขันต่อตามปกติ  รายละเอียดที่เกี่ยวข้อง: •    4.3.2....
+- `COMP-RAG-TH-125` — Arena of Valor มีข้อกำหนดเรื่องการหลุดจากเกมหรือการเชื่อมต่อ ไหม
+  - Expected: `answer_available`; actual: `answer` via `pipeline:competition_source_rag`
+  - Reason: The answer is target-grounded, but its returned section is outside the current Gold allowed-evidence list.
+  - Output: คำตอบ: 4.5.2.หากเกมหยุดลงเป็นเวลาเกินกว่า 10 นาที ทางทีมงานมีสิทธิสั่งให้เริ่มเกมใหม่ เว้นแต่ทีมผู้เข้าร่วมแข่งขันทีมใดทีมหนึ่งมีคะแนนมากกว่าอีกทีมเป็นจำนวนมาก ทางทีมงานอาจใช้ดุลยพินิจในการสั่งให้ทีมที่มีคะแนนมากกว่าดังกล่าวเป็นผู้ชนะในเกมที่หยุดลงนั้นตามที...
+
+### th / gold_or_section_contract_gap / penalty_matrix (6 cases)
+
+- `COMP-RAG-TH-073` — กติกา CS2 เรื่องตารางบทลงโทษ ว่าอย่างไร
+  - Expected: `answer_available`; actual: `answer` via `pipeline:competition_source_rag`
+  - Reason: The answer is target-grounded, but its returned section is outside the current Gold allowed-evidence list.
+  - Output: คำตอบ: ตารางบทลงโทษระบุผลตามประเภทการละเมิดที่ยืนยันได้ เช่น  รายละเอียดที่เกี่ยวข้อง: •    การด่าทอ/ใช้ความรุนแรงทางวาจา -> ตักเตือน → ปรับแพ้ในรอบนั้น → ตัดสิทธิ์ •    การโกงทุกรูปแบบ -> ปรับแพ้ในรอบนั้น / ตัดสิทธิ์จากการแข่งขัน •    ดูสตรีมระหว่างแข่ง ->...
+- `COMP-RAG-TH-074` — Counter-Strike 2 แข่งจริง กฎเกี่ยวกับตารางบทลงโทษ เป็นแบบไหน
+  - Expected: `answer_available`; actual: `answer` via `pipeline:competition_source_rag`
+  - Reason: The answer is target-grounded, but its returned section is outside the current Gold allowed-evidence list.
+  - Output: คำตอบ: ตารางบทลงโทษระบุผลตามประเภทการละเมิดที่ยืนยันได้ เช่น  รายละเอียดที่เกี่ยวข้อง: •    การด่าทอ/ใช้ความรุนแรงทางวาจา -> ตักเตือน → ปรับแพ้ในรอบนั้น → ตัดสิทธิ์ •    การโกงทุกรูปแบบ -> ปรับแพ้ในรอบนั้น / ตัดสิทธิ์จากการแข่งขัน •    ดูสตรีมระหว่างแข่ง ->...
+- `COMP-RAG-TH-075` — ขออ้างอิงกติกา เคาน์เตอร์สไตรก์ 2 ในหัวข้อตารางบทลงโทษ หน่อย
+  - Expected: `answer_available`; actual: `answer` via `pipeline:competition_source_rag`
+  - Reason: The answer is target-grounded, but its returned section is outside the current Gold allowed-evidence list.
+  - Output: คำตอบ: ตารางบทลงโทษระบุผลตามประเภทการละเมิดที่ยืนยันได้ เช่น  รายละเอียดที่เกี่ยวข้อง: •    การด่าทอ/ใช้ความรุนแรงทางวาจา -> ตักเตือน → ปรับแพ้ในรอบนั้น → ตัดสิทธิ์ •    การโกงทุกรูปแบบ -> ปรับแพ้ในรอบนั้น / ตัดสิทธิ์จากการแข่งขัน •    ดูสตรีมระหว่างแข่ง ->...
+- `COMP-RAG-TH-076` — กำลังจะลงแข่ง CS2 อยากรู้เรื่องตารางบทลงโทษ
+  - Expected: `answer_available`; actual: `answer` via `pipeline:competition_source_rag`
+  - Reason: The answer is target-grounded, but its returned section is outside the current Gold allowed-evidence list.
+  - Output: คำตอบ: ตารางบทลงโทษระบุผลตามประเภทการละเมิดที่ยืนยันได้ เช่น  รายละเอียดที่เกี่ยวข้อง: •    การด่าทอ/ใช้ความรุนแรงทางวาจา -> ตักเตือน → ปรับแพ้ในรอบนั้น → ตัดสิทธิ์ •    การโกงทุกรูปแบบ -> ปรับแพ้ในรอบนั้น / ตัดสิทธิ์จากการแข่งขัน •    ดูสตรีมระหว่างแข่ง ->...
+- `COMP-RAG-TH-077` — Counter-Strike 2 มีข้อกำหนดเรื่องตารางบทลงโทษ ไหม
+  - Expected: `answer_available`; actual: `answer` via `pipeline:competition_source_rag`
+  - Reason: The answer is target-grounded, but its returned section is outside the current Gold allowed-evidence list.
+  - Output: คำตอบ: ตารางบทลงโทษระบุผลตามประเภทการละเมิดที่ยืนยันได้ เช่น  รายละเอียดที่เกี่ยวข้อง: •    การด่าทอ/ใช้ความรุนแรงทางวาจา -> ตักเตือน → ปรับแพ้ในรอบนั้น → ตัดสิทธิ์ •    การโกงทุกรูปแบบ -> ปรับแพ้ในรอบนั้น / ตัดสิทธิ์จากการแข่งขัน •    ดูสตรีมระหว่างแข่ง ->...
+- `COMP-RAG-TH-078` — ตาม rulebook เคาน์เตอร์สไตรก์ 2 ตารางบทลงโทษ ต้องทำยังไง
+  - Expected: `answer_available`; actual: `answer` via `pipeline:competition_source_rag`
+  - Reason: The answer is target-grounded, but its returned section is outside the current Gold allowed-evidence list.
+  - Output: คำตอบ: ตารางบทลงโทษระบุผลตามประเภทการละเมิดที่ยืนยันได้ เช่น  รายละเอียดที่เกี่ยวข้อง: •    การด่าทอ/ใช้ความรุนแรงทางวาจา -> ตักเตือน → ปรับแพ้ในรอบนั้น → ตัดสิทธิ์ •    การโกงทุกรูปแบบ -> ปรับแพ้ในรอบนั้น / ตัดสิทธิ์จากการแข่งขัน •    ดูสตรีมระหว่างแข่ง ->...
+
+### th / gold_or_section_contract_gap / pre_match_on_site (5 cases)
+
+- `COMP-RAG-TH-247` — กติกา VALORANT เรื่องการรายงานตัวและพื้นที่แข่งขัน ว่าอย่างไร
+  - Expected: `answer_available`; actual: `answer` via `pipeline:competition_source_rag`
+  - Reason: The answer is target-grounded, but its returned section is outside the current Gold allowed-evidence list.
+  - Output: คำตอบ: * เวลาการรายงานตัว ต้องมาถึงสนามแข่งไม่น้อยกว่า 30 นาที ก่อนเวลาแข่ง  รายละเอียดที่เกี่ยวข้อง: •    Check-in time  อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_p...
+- `COMP-RAG-TH-248` — Valorant แข่งจริง กฎเกี่ยวกับการรายงานตัวและพื้นที่แข่งขัน เป็นแบบไหน
+  - Expected: `answer_available`; actual: `answer` via `pipeline:competition_source_rag`
+  - Reason: The answer is target-grounded, but its returned section is outside the current Gold allowed-evidence list.
+  - Output: คำตอบ: * เวลาการรายงานตัว ต้องมาถึงสนามแข่งไม่น้อยกว่า 30 นาที ก่อนเวลาแข่ง  รายละเอียดที่เกี่ยวข้อง: •    Check-in time  อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_p...
+- `COMP-RAG-TH-249` — ขออ้างอิงกติกา วาโล ในหัวข้อการรายงานตัวและพื้นที่แข่งขัน หน่อย
+  - Expected: `answer_available`; actual: `answer` via `pipeline:competition_source_rag`
+  - Reason: The answer is target-grounded, but its returned section is outside the current Gold allowed-evidence list.
+  - Output: คำตอบ: * เวลาการรายงานตัว ต้องมาถึงสนามแข่งไม่น้อยกว่า 30 นาที ก่อนเวลาแข่ง  รายละเอียดที่เกี่ยวข้อง: •    Check-in time  อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_p...
+- `COMP-RAG-TH-250` — กำลังจะลงแข่ง VALORANT อยากรู้เรื่องการรายงานตัวและพื้นที่แข่งขัน
+  - Expected: `answer_available`; actual: `answer` via `pipeline:competition_source_rag`
+  - Reason: The answer is target-grounded, but its returned section is outside the current Gold allowed-evidence list.
+  - Output: คำตอบ: * เวลาการรายงานตัว ต้องมาถึงสนามแข่งไม่น้อยกว่า 30 นาที ก่อนเวลาแข่ง  รายละเอียดที่เกี่ยวข้อง: •    Check-in time  อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_p...
+- `COMP-RAG-TH-252` — ตาม rulebook วาโล การรายงานตัวและพื้นที่แข่งขัน ต้องทำยังไง
+  - Expected: `answer_available`; actual: `answer` via `pipeline:competition_source_rag`
+  - Reason: The answer is target-grounded, but its returned section is outside the current Gold allowed-evidence list.
+  - Output: คำตอบ: * เวลาการรายงานตัว ต้องมาถึงสนามแข่งไม่น้อยกว่า 30 นาที ก่อนเวลาแข่ง  รายละเอียดที่เกี่ยวข้อง: •    Check-in time  อ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament แหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_p...
+
+### th / gold_or_section_contract_gap / team_size (3 cases)
+
+- `COMP-RAG-TH-254` — Valorant แข่งจริง กฎเกี่ยวกับจำนวนผู้เล่นและองค์ประกอบทีม เป็นแบบไหน
+  - Expected: `answer_available`; actual: `answer` via `pipeline:competition_source_rag`
+  - Reason: The answer is target-grounded, but its returned section is outside the current Gold allowed-evidence list.
+  - Output: คำตอบ: 3. การหยุดกรณีฉุกเฉิน (Player Emergency Pause)  รายละเอียดที่เกี่ยวข้อง: •    ขอได้ 1 ครั้งต่อแผนที่ •    รวมเวลาทั้งหมดไม่เกิน 10 นาที ต่อหนึ่งแมตช์ หากเกินเวลาผู้เล่นรายนั้นอาจหมดสิทธิ์แข่งต่อและต้องใช้ตัวสำรองแทน •    กฎเกี่ยวกับบั๊ก •    บั๊กคือข...
+- `COMP-RAG-TH-256` — กำลังจะลงแข่ง VALORANT อยากรู้เรื่องจำนวนผู้เล่นและองค์ประกอบทีม
+  - Expected: `answer_available`; actual: `answer` via `pipeline:competition_source_rag`
+  - Reason: The answer is target-grounded, but its returned section is outside the current Gold allowed-evidence list.
+  - Output: คำตอบ: 3. การหยุดกรณีฉุกเฉิน (Player Emergency Pause)  รายละเอียดที่เกี่ยวข้อง: •    ขอได้ 1 ครั้งต่อแผนที่ •    รวมเวลาทั้งหมดไม่เกิน 10 นาที ต่อหนึ่งแมตช์ หากเกินเวลาผู้เล่นรายนั้นอาจหมดสิทธิ์แข่งต่อและต้องใช้ตัวสำรองแทน •    กฎเกี่ยวกับบั๊ก •    บั๊กคือข...
+- `COMP-RAG-TH-257` — Valorant มีข้อกำหนดเรื่องจำนวนผู้เล่นและองค์ประกอบทีม ไหม
+  - Expected: `answer_available`; actual: `answer` via `pipeline:competition_source_rag`
+  - Reason: The answer is target-grounded, but its returned section is outside the current Gold allowed-evidence list.
+  - Output: คำตอบ: 3. การหยุดกรณีฉุกเฉิน (Player Emergency Pause)  รายละเอียดที่เกี่ยวข้อง: •    ขอได้ 1 ครั้งต่อแผนที่ •    รวมเวลาทั้งหมดไม่เกิน 10 นาที ต่อหนึ่งแมตช์ หากเกินเวลาผู้เล่นรายนั้นอาจหมดสิทธิ์แข่งต่อและต้องใช้ตัวสำรองแทน •    กฎเกี่ยวกับบั๊ก •    บั๊กคือข...
+
+### th / routing_or_target_failure / match_settings (2 cases)
+
+- `COMP-RAG-TH-189` — ขออ้างอิงกติกา เทคเค่น 8 ในหัวข้อการตั้งค่าในเกม หน่อย
+  - Expected: `answer_available`; actual: `clarification` via `pipeline:competition_target_clarification`
+  - Reason: The request did not retain the expected competition route or rulebook target.
+  - Output: ต้องการดูกติกาของเกมใดครับ เช่น Counter-Strike 2, RoV, Tekken 8 หรือ VALORANT
+- `COMP-RAG-TH-192` — ตาม rulebook เทคเค่น 8 การตั้งค่าในเกม ต้องทำยังไง
+  - Expected: `answer_available`; actual: `clarification` via `pipeline:competition_target_clarification`
+  - Reason: The request did not retain the expected competition route or rulebook target.
+  - Output: ต้องการดูกติกาของเกมใดครับ เช่น Counter-Strike 2, RoV, Tekken 8 หรือ VALORANT
+
+### th / source_coverage_gap / conduct (6 cases)
+
+- `COMP-RAG-TH-205` — กติกา VALORANT เรื่องมารยาทและพฤติกรรมผู้เล่น ว่าอย่างไร
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-206` — Valorant แข่งจริง กฎเกี่ยวกับมารยาทและพฤติกรรมผู้เล่น เป็นแบบไหน
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-207` — ขออ้างอิงกติกา วาโล ในหัวข้อมารยาทและพฤติกรรมผู้เล่น หน่อย
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-208` — กำลังจะลงแข่ง VALORANT อยากรู้เรื่องมารยาทและพฤติกรรมผู้เล่น
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-209` — Valorant มีข้อกำหนดเรื่องมารยาทและพฤติกรรมผู้เล่น ไหม
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-210` — ตาม rulebook วาโล มารยาทและพฤติกรรมผู้เล่น ต้องทำยังไง
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+
+### th / source_coverage_gap / fair_play_conduct (6 cases)
+
+- `COMP-RAG-TH-217` — กติกา VALORANT เรื่องfair play และข้อห้าม ว่าอย่างไร
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-218` — Valorant แข่งจริง กฎเกี่ยวกับfair play และข้อห้าม เป็นแบบไหน
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-219` — ขออ้างอิงกติกา วาโล ในหัวข้อfair play และข้อห้าม หน่อย
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-220` — กำลังจะลงแข่ง VALORANT อยากรู้เรื่องfair play และข้อห้าม
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-221` — Valorant มีข้อกำหนดเรื่องfair play และข้อห้าม ไหม
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-222` — ตาม rulebook วาโล fair play และข้อห้าม ต้องทำยังไง
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+
+### th / source_coverage_gap / in_match_operations (6 cases)
+
+- `COMP-RAG-TH-223` — กติกา VALORANT เรื่องขั้นตอนระหว่างการแข่งขัน ว่าอย่างไร
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-224` — Valorant แข่งจริง กฎเกี่ยวกับขั้นตอนระหว่างการแข่งขัน เป็นแบบไหน
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-225` — ขออ้างอิงกติกา วาโล ในหัวข้อขั้นตอนระหว่างการแข่งขัน หน่อย
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-226` — กำลังจะลงแข่ง VALORANT อยากรู้เรื่องขั้นตอนระหว่างการแข่งขัน
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-227` — Valorant มีข้อกำหนดเรื่องขั้นตอนระหว่างการแข่งขัน ไหม
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-228` — ตาม rulebook วาโล ขั้นตอนระหว่างการแข่งขัน ต้องทำยังไง
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+
+### th / source_coverage_gap / match_configuration (6 cases)
+
+- `COMP-RAG-TH-049` — กติกา CS2 เรื่องเวอร์ชันเกมและการตั้งค่าแมตช์ ว่าอย่างไร
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-050` — Counter-Strike 2 แข่งจริง กฎเกี่ยวกับเวอร์ชันเกมและการตั้งค่าแมตช์ เป็นแบบไหน
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-051` — ขออ้างอิงกติกา เคาน์เตอร์สไตรก์ 2 ในหัวข้อเวอร์ชันเกมและการตั้งค่าแมตช์ หน่อย
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-052` — กำลังจะลงแข่ง CS2 อยากรู้เรื่องเวอร์ชันเกมและการตั้งค่าแมตช์
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-053` — Counter-Strike 2 มีข้อกำหนดเรื่องเวอร์ชันเกมและการตั้งค่าแมตช์ ไหม
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-054` — ตาม rulebook เคาน์เตอร์สไตรก์ 2 เวอร์ชันเกมและการตั้งค่าแมตช์ ต้องทำยังไง
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+
+### th / source_coverage_gap / pre_match_on_site (12 cases)
+
+- `COMP-RAG-TH-079` — กติกา CS2 เรื่องการรายงานตัวและพื้นที่แข่งขัน ว่าอย่างไร
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-080` — Counter-Strike 2 แข่งจริง กฎเกี่ยวกับการรายงานตัวและพื้นที่แข่งขัน เป็นแบบไหน
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-081` — ขออ้างอิงกติกา เคาน์เตอร์สไตรก์ 2 ในหัวข้อการรายงานตัวและพื้นที่แข่งขัน หน่อย
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-082` — กำลังจะลงแข่ง CS2 อยากรู้เรื่องการรายงานตัวและพื้นที่แข่งขัน
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-083` — Counter-Strike 2 มีข้อกำหนดเรื่องการรายงานตัวและพื้นที่แข่งขัน ไหม
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-084` — ตาม rulebook เคาน์เตอร์สไตรก์ 2 การรายงานตัวและพื้นที่แข่งขัน ต้องทำยังไง
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-139` — กติกา RoV เรื่องการรายงานตัวและพื้นที่แข่งขัน ว่าอย่างไร
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-140` — Arena of Valor แข่งจริง กฎเกี่ยวกับการรายงานตัวและพื้นที่แข่งขัน เป็นแบบไหน
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-141` — ขออ้างอิงกติกา อารีน่าออฟเวเลอร์ ในหัวข้อการรายงานตัวและพื้นที่แข่งขัน หน่อย
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-142` — กำลังจะลงแข่ง RoV อยากรู้เรื่องการรายงานตัวและพื้นที่แข่งขัน
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-143` — Arena of Valor มีข้อกำหนดเรื่องการรายงานตัวและพื้นที่แข่งขัน ไหม
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+- `COMP-RAG-TH-144` — ตาม rulebook อารีน่าออฟเวเลอร์ การรายงานตัวและพื้นที่แข่งขัน ต้องทำยังไง
+  - Expected: `answer_available`; actual: `no_answer` via `pipeline:competition_facet_not_covered_no_answer`
+  - Reason: The selected rulebook has no retrieved section that directly proves the requested facet.
+  - Output: ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน
+
+## Next Action by Class
+
+- `routing_or_target_failure`: inspect Question Frame and target lock before touching retrieval.
+- `source_coverage_gap`: add or approve a source section; keep the safe no-answer until then.
+- `gold_or_section_contract_gap`: review section bundles and create reviewed Gold, without widening current Gold silently.
+- `english_localization_gap`: approve an English overlay tied to the current Thai source hash.
+- `safe_outcome_contract_gap`: decide whether the corpus expects clarification or no-answer, then make that distinction explicit.
+- `answer_contract_failure`: inspect the validator error and evidence metadata before changing wording.

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_checkin_advance",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "เช็คอินล่วงหน้า",
+      "เชคอินล่วงหน้า",
+      "check in ล่วงหน้า",
+      "check-in ล่วงหน้า",
+      "เช็คอินได้กี่นาที",
+      "เชคอิน.*กี่นาที",
+      "เช็คอินก่อนกี่นาที",
+      "เชคอินก่อนกี่นาที"
+    ],
+    "en": [
+      "check in how early",
+      "how early can.*check",
+      "checkin.*minute"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "checkin_advance_time",
+    "patterns": [
+      "เช็คอินล่วงหน้า",
+      "เชคอินล่วงหน้า",
+      "check in ล่วงหน้า",
+      "check-in ล่วงหน้า",
+      "เช็คอินได้กี่นาที",
+      "เชคอิน.*กี่นาที",
+      "เช็คอินก่อนกี่นาที",
+      "เชคอินก่อนกี่นาที",
+      "check in how early",
+      "how early can.*check",
+      "checkin.*minute"
+    ],
+    "priority": 100
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "เช็คอินได้ล่วงหน้าสูงสุด 30 นาที และต้องเช็คอินก่อนเวลาเริ่มต้นของรอบที่จอง"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Check-in is available up to 30 minutes before the reserved time slot, and users must check in before the slot begins."
+      },
+      "source_sha256": "23710454cd644f9d6d0fe6aab696294708a6fc725cb258437cbefdb4e13e6ebb",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/reservation_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "curated_checkin_30_minutes"
+    ],
+    "last_verified_at": ""
+  }
+}

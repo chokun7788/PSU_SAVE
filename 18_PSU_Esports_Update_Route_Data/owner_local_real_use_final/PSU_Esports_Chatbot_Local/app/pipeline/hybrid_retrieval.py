@@ -1,0 +1,323 @@
+from __future__ import annotations
+
+import time
+from typing import Any, TYPE_CHECKING
+
+from app.core.normalization import normalize_text
+from app.pipeline.retrieval import (
+    _game_row_entity_match,
+    answer_from_curated_hits,
+    hit_from_curated,
+    retrieve_curated,
+)
+from app.pipeline.schemas import PipelineRoute, PipelineTrace
+from app.pipeline.vector_retrieval import retrieve_vector_guarded
+from app.pipeline.document_reranker import rerank_documents
+from app.pipeline.model_gateway import retrieval_budget
+from app.pipeline.semantic_vector_retrieval import retrieve_semantic_guarded
+from app.pipeline.source_guard import assess_sources
+
+if TYPE_CHECKING:
+    from app.pipeline.question_frame import QuestionFrame
+
+
+HYBRID_CATEGORIES = {"games", "equipment", "knowledge", "events_news", "competition_rules"}
+LEGACY_CURATED_SKIP_CATEGORIES = {"games", "equipment"}
+
+GAME_DETAIL_TERMS = (
+    "คืออะไร", "อะไรคือ", "วิธีเล่น", "สอนเล่น", "เล่นยังไง", "เล่นอย่างไร",
+    "แนวอะไร", "เกี่ยวกับอะไร",
+)
+BROAD_GAME_LIST_TERMS = (
+    "มีเกมอะไร", "เกมอะไรบ้าง", "เกมอะไรให้เล่น", "เกมทั้งหมด", "รายชื่อเกม",
+    "รายการเกม", "แนวเกม", "ประเภทเกม", "มีอะไรบ้าง",
+)
+COMPETITION_TERMS = (
+    "แข่ง", "แข่งขัน", "กติกา", "กฎ", "ทัวร์", "tournament", "ลงแข่ง",
+    "รางวัล", "ทีม", "ผู้เล่น", "match", "round",
+)
+
+
+def should_use_hybrid_retrieval(route: PipelineRoute) -> bool:
+    return route.category in HYBRID_CATEGORIES
+
+
+def should_skip_legacy_curated_after_hybrid(route: PipelineRoute) -> bool:
+    return route.category in LEGACY_CURATED_SKIP_CATEGORIES
+
+
+def _has(q: str, *terms: str) -> bool:
+    return any(term in q for term in terms)
+
+
+def _row_key(row: dict[str, Any]) -> tuple[str, str, str]:
+    return (
+        str(row.get("id", "")),
+        str(row.get("_source_file", "")),
+        str(row.get("source_url", "")),
+    )
+
+
+def _route_allows_category(route: PipelineRoute, row: dict[str, Any]) -> bool:
+    category = str(row.get("category", ""))
+    if category == route.category:
+        return True
+    if route.category == "equipment" and route.intent == "equipment_game_catalog" and category == "games":
+        return True
+    return False
+
+
+def _looks_like_game_detail(query: str) -> bool:
+    q = normalize_text(query)
+    return _has(q, *GAME_DETAIL_TERMS)
+
+
+def _looks_like_broad_game_list(query: str) -> bool:
+    q = normalize_text(query)
+    return _has(q, *BROAD_GAME_LIST_TERMS)
+
+
+def _guard_candidate(query: str, route: PipelineRoute, row: dict[str, Any]) -> tuple[bool, str]:
+    category = str(row.get("category", ""))
+    q = normalize_text(query)
+
+    if not _route_allows_category(route, row):
+        return False, "category_mismatch"
+    if category == "competition_rules" and route.category != "competition_rules":
+        return False, "competition_blocked"
+    if _has(q, *COMPETITION_TERMS) and category != "competition_rules" and route.category == "competition_rules":
+        return False, "competition_route_requires_rules"
+
+    if route.category in {"games", "equipment"} and category == "games":
+        if _looks_like_broad_game_list(q):
+            return False, "broad_game_list_needs_fast_path"
+        if _looks_like_game_detail(q) and not _game_row_entity_match(q, row):
+            entity_score = float(row.get("_entity_score", 0.0) or 0.0)
+            if entity_score < 0.45:
+                return False, "weak_game_entity"
+
+    if route.category == "equipment" and category == "equipment":
+        if _has(q, "เกม", "game", "games") and not _has(q, "อุปกรณ์", "เครื่อง", "ใช้งาน", "วิธีใช้"):
+            return False, "equipment_doc_for_game_query_blocked"
+
+    return True, "ok"
+
+
+def _hybrid_score(row: dict[str, Any], origin_count: int) -> float:
+    score = float(row.get("_score", 0.0) or 0.0)
+    vector_score = float(row.get("_vector_score", 0.0) or 0.0)
+    lexical_score = float(row.get("_lexical_score", 0.0) or 0.0)
+    entity_score = float(row.get("_entity_score", 0.0) or 0.0)
+    semantic_score = float(row.get("_semantic_score", 0.0) or 0.0)
+    priority = float(row.get("priority", 0.0) or 0.0) / 100.0
+    return (
+        score
+        + (vector_score * 6.0)
+        + (lexical_score * 3.0)
+        + (entity_score * 5.0)
+        + (semantic_score * 8.0)
+        + priority
+        + (origin_count - 1) * 1.5
+    )
+
+
+def _frame_retrieval_constraints(question_frame: "QuestionFrame | None") -> dict[str, Any]:
+    if question_frame is None:
+        return {"entity_ids": (), "facets": (), "strict_target": False}
+
+    entity_ids = tuple(target.target_id for target in question_frame.targets)
+    facet_by_operation = {
+        "game_detail": ("overview", "gameplay"),
+        "game_how_to": ("how_to_play", "gameplay", "overview"),
+        "control_lookup": ("controls",),
+        "equipment_lookup": ("overview", "equipment"),
+        "semantic_evidence_lookup": ("overview", "summary"),
+    }
+    return {
+        "entity_ids": entity_ids,
+        "facets": facet_by_operation.get(question_frame.operation, ()),
+        "strict_target": bool(
+            question_frame.target_required
+            and question_frame.target_status == "exact"
+            and entity_ids
+        ),
+    }
+
+
+def _metadata_matches_constraints(row: dict[str, Any], constraints: dict[str, Any]) -> tuple[bool, str]:
+    if not constraints.get("strict_target"):
+        return True, "ok"
+    entity_ids = {
+        normalize_text(str(value)).strip()
+        for value in row.get("entity_ids", [])
+        if normalize_text(str(value)).strip()
+    }
+    required_ids = {
+        normalize_text(str(value)).strip()
+        for value in constraints.get("entity_ids", ())
+        if normalize_text(str(value)).strip()
+    }
+    is_dynamic = bool(row.get("dynamic_knowledge") or row.get("ingestion_source") == "dynamic_rag")
+    if not entity_ids and is_dynamic:
+        return False, "dynamic_entity_metadata_missing"
+    if entity_ids and not (entity_ids & required_ids):
+        return False, "question_frame_entity_mismatch"
+
+    facets = {
+        normalize_text(str(value)).strip()
+        for value in row.get("facets", [])
+        if normalize_text(str(value)).strip()
+    }
+    required_facets = {
+        normalize_text(str(value)).strip()
+        for value in constraints.get("facets", ())
+        if normalize_text(str(value)).strip()
+    }
+    if required_facets and facets and not (facets & required_facets):
+        return False, "question_frame_facet_mismatch"
+    if required_facets and not facets and is_dynamic:
+        return False, "dynamic_facet_metadata_missing"
+    return True, "ok"
+
+
+def retrieve_hybrid_guarded(
+    query: str,
+    route: PipelineRoute,
+    limit: int = 4,
+    *,
+    question_frame: "QuestionFrame | None" = None,
+    locale: str | None = None,
+) -> tuple[list[dict[str, Any]], PipelineTrace]:
+    budget = retrieval_budget(query, route)
+    candidate_limit = max(2, int(budget["candidate_limit"]))
+    final_limit = max(1, min(limit, int(budget["final_limit"])))
+    constraints = _frame_retrieval_constraints(question_frame)
+    timings_ms: dict[str, float] = {}
+    started = time.perf_counter()
+    curated_started = time.perf_counter()
+    curated_hits, curated_trace = retrieve_curated(query, route.category, limit=candidate_limit)
+    timings_ms["hybrid_curated_retrieval"] = round((time.perf_counter() - curated_started) * 1000, 2)
+    vector_started = time.perf_counter()
+    vector_hits, vector_trace = retrieve_vector_guarded(query, route, limit=candidate_limit)
+    timings_ms["hybrid_vector_retrieval"] = round((time.perf_counter() - vector_started) * 1000, 2)
+    semantic_started = time.perf_counter()
+    semantic_hits, semantic_trace = retrieve_semantic_guarded(
+        query,
+        route,
+        limit=candidate_limit,
+        required_entity_ids=constraints["entity_ids"] if constraints["strict_target"] else None,
+        required_facets=constraints["facets"] if constraints["strict_target"] else None,
+        locale=locale,
+    )
+    timings_ms["hybrid_semantic_retrieval"] = round((time.perf_counter() - semantic_started) * 1000, 2)
+
+    merged: dict[tuple[str, str, str], dict[str, Any]] = {}
+    origins: dict[tuple[str, str, str], set[str]] = {}
+    blocked: dict[str, int] = {}
+
+    for origin, rows in (
+        ("curated", curated_hits),
+        ("vector", vector_hits),
+        ("semantic", semantic_hits),
+    ):
+        for row in rows:
+            ok, reason = _guard_candidate(query, route, row)
+            if not ok:
+                blocked[reason] = blocked.get(reason, 0) + 1
+                continue
+            metadata_ok, metadata_reason = _metadata_matches_constraints(row, constraints)
+            if not metadata_ok:
+                blocked[metadata_reason] = blocked.get(metadata_reason, 0) + 1
+                continue
+            key = _row_key(row)
+            if key not in merged:
+                merged[key] = dict(row)
+                origins[key] = set()
+            origins[key].add(origin)
+            if float(row.get("_score", 0.0) or 0.0) > float(merged[key].get("_score", 0.0) or 0.0):
+                merged[key].update(row)
+
+    scored: list[tuple[float, dict[str, Any]]] = []
+    for key, row in merged.items():
+        origin_set = origins.get(key, set())
+        score = _hybrid_score(row, len(origin_set))
+        row = dict(row)
+        row["_hybrid_score"] = round(score, 3)
+        row["_hybrid_origins"] = sorted(origin_set)
+        scored.append((score, row))
+
+    scored.sort(key=lambda item: item[0], reverse=True)
+    hits = [row for _, row in scored[:candidate_limit]]
+    timings_ms["hybrid_merge_and_score"] = round((time.perf_counter() - started) * 1000 - sum(timings_ms.values()), 2)
+    rerank_started = time.perf_counter()
+    hits, rerank_trace = rerank_documents(query, hits, limit=final_limit)
+    rerank_metadata = rerank_trace.metadata if isinstance(rerank_trace.metadata, dict) else {}
+    timings_ms["hybrid_document_reranker"] = round(
+        float(rerank_metadata.get("elapsed_sec", 0.0) or 0.0) * 1000
+        if rerank_metadata.get("elapsed_sec") is not None
+        else (time.perf_counter() - rerank_started) * 1000,
+        2,
+    )
+    quality = assess_sources(hits)
+    confidence = min(0.91, 0.50 + (hits[0]["_hybrid_score"] / 24 if hits else 0.0))
+    detail = (
+        f"hits={len(hits)} curated={len(curated_hits)} "
+        f"vector={len(vector_hits)} semantic={len(semantic_hits)}"
+    )
+    if hits:
+        detail += f" top={hits[0].get('id')} score={hits[0].get('_hybrid_score')} origins={','.join(hits[0].get('_hybrid_origins', []))}"
+    elif blocked:
+        detail += " blocked=" + ", ".join(f"{key}:{value}" for key, value in sorted(blocked.items())[:4])
+
+    return hits, PipelineTrace(
+        "hybrid_retrieval",
+        "guarded_candidate_rerank",
+        confidence,
+        detail,
+        {
+            "category": route.category,
+            "intent": route.intent,
+            "question_frame_constraints": constraints,
+            "locale": locale,
+            "retrieval_budget": budget,
+            "source_quality": quality.as_dict(),
+            "curated_trace": curated_trace.detail,
+            "vector_trace": vector_trace.detail,
+            "semantic_trace": {
+                "stage": semantic_trace.stage,
+                "decision": semantic_trace.decision,
+                "confidence": semantic_trace.confidence,
+                "detail": semantic_trace.detail,
+                "metadata": semantic_trace.metadata,
+            },
+            "timings_ms": timings_ms,
+            "rerank_trace": {
+                "stage": rerank_trace.stage,
+                "decision": rerank_trace.decision,
+                "confidence": rerank_trace.confidence,
+                "detail": rerank_trace.detail,
+                "metadata": rerank_trace.metadata,
+            },
+        },
+    )
+
+
+def answer_from_hybrid_hits(hits: list[dict[str, Any]], query: str = "") -> tuple[str | None, list[dict[str, Any]], float]:
+    if not hits:
+        return None, [], 0.0
+    score = float(hits[0].get("_hybrid_score", 0.0) or 0.0)
+    category = str(hits[0].get("category", ""))
+    minimum = 5.0
+    if category in {"knowledge", "events_news"}:
+        minimum = 6.0
+    if category == "games" and _looks_like_game_detail(query):
+        minimum = 5.5
+    if score < minimum:
+        return None, [], min(0.58, score / 12)
+
+    answer, raw_hits, confidence = answer_from_curated_hits(hits, query)
+    if answer is None:
+        return None, [], confidence
+    if not raw_hits:
+        raw_hits = [hit_from_curated(row) for row in hits[:2]]
+    return answer, raw_hits, min(0.89, max(confidence, 0.58 + score / 26))

@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_payment_10_minutes",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "หลังจอง.*จ่าย",
+      "หลังจอง.*ชำระ",
+      "หลัง booking.*จ่าย",
+      "หลัง booking.*ชำระ",
+      "ชำระเงินหลัง booking",
+      "ชำระ.*booking.*เร็ว",
+      "ต้องจ่ายภายในกี่นาที",
+      "จ่ายภายในกี่นาที",
+      "ชำระภายในกี่นาที",
+      "ไม่ชำระ",
+      "ไม่จ่าย",
+      "ลืมจ่าย",
+      "ลืมชำระ",
+      "ชำระ.*10",
+      "จ่าย.*10"
+    ],
+    "en": [
+      "payment.*timeout",
+      "payment.*10",
+      "not.*pay"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "payment_timeout",
+    "patterns": [
+      "หลังจอง.*จ่าย",
+      "หลังจอง.*ชำระ",
+      "หลัง booking.*จ่าย",
+      "หลัง booking.*ชำระ",
+      "ชำระเงินหลัง booking",
+      "ชำระ.*booking.*เร็ว",
+      "ต้องจ่ายภายในกี่นาที",
+      "จ่ายภายในกี่นาที",
+      "ชำระภายในกี่นาที",
+      "ไม่ชำระ",
+      "ไม่จ่าย",
+      "ลืมจ่าย",
+      "ลืมชำระ",
+      "ชำระ.*10",
+      "จ่าย.*10",
+      "payment.*timeout",
+      "payment.*10",
+      "not.*pay"
+    ],
+    "priority": 120
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "หลังจองต้องชำระเงินทันที หากไม่ชำระภายใน 10 นาที การจองจะถูกยกเลิก และหากต้องการใช้บริการต้องทำรายการจองใหม่"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Payment must be made immediately after booking. If payment is not made within 10 minutes, the booking will be cancelled, and the user must make a new booking to use the service."
+      },
+      "source_sha256": "0b07f50d75f8573734def56e5bac90d572865d0a524c8a0cd0383946cdd20301",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/reservation_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_payment_10_minutes"
+    ],
+    "last_verified_at": ""
+  }
+}

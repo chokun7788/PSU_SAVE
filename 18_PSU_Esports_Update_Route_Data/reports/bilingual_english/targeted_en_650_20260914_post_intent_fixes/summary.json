@@ -1,0 +1,49 @@
+{
+  "finished_at": "2026-09-14T17:30:24.578343+07:00",
+  "suites": {
+    "en": {
+      "total": 650,
+      "completed": 650,
+      "strict_pass": 606,
+      "strict_pass_rate": 0.932308,
+      "status_counts": {
+        "completed": 650
+      },
+      "mode_counts": {
+        "pipeline:structured_service_fee_en": 85,
+        "pipeline:english_no_answer": 20,
+        "pipeline:price_service_clarification_en": 4,
+        "pipeline:games_unknown_target_en": 5,
+        "pipeline:structured_game_detail_en": 120,
+        "pipeline:structured_game_availability_en": 35,
+        "pipeline:structured_games_count_en": 2,
+        "pipeline:structured_games_catalog_en": 27,
+        "pipeline:structured_game_controls_en": 130,
+        "pipeline:missing_english_localization": 72,
+        "pipeline:structured_equipment_catalog_en": 15,
+        "pipeline:structured_equipment_item_en": 47,
+        "pipeline:rule_en": 15,
+        "pipeline:structured_schedule_en": 13,
+        "pipeline:structured_competition_rules_en": 56,
+        "pipeline:multi_question_splitter": 4
+      },
+      "failure_types": {
+        "category": 44
+      },
+      "latency_sec": {
+        "mean": 0.2946,
+        "p50": 0.0127,
+        "p95": 2.8674,
+        "p99": 3.1692,
+        "max": 3.785,
+        "over_10s": 0,
+        "over_20s": 0
+      }
+    }
+  },
+  "comparison_limits": [
+    "Thai and English corpora use their own existing answer contracts; strict-pass rates are not a translation-quality A/B score.",
+    "English Shadow is machine-translated test input and not approved public English knowledge.",
+    "This is serial in-process evaluation with no browser, HTTP queue, or concurrent-user latency."
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "dataset": "keyboard_input_anomaly_ground_truth_500_20260830.jsonl",
+  "generated_from": "model_benchmark_1500.jsonl",
+  "total": 500,
+  "split_counts": {
+    "calibration": 100,
+    "test": 400
+  },
+  "family_counts": {
+    "combined_layout_and_repeat": 60,
+    "layout_en_to_th_full": 25,
+    "layout_th_to_en_full": 90,
+    "layout_th_to_en_suffix": 20,
+    "layout_th_to_en_token": 45,
+    "repeat_latin_internal": 25,
+    "repeat_short_token": 15,
+    "repeat_thai_internal": 60,
+    "repeat_thai_mark_or_vowel": 40,
+    "valid_expressive_repetition": 20,
+    "valid_lexical_double": 20,
+    "valid_normal": 50,
+    "valid_protected_or_mixed": 30
+  },
+  "flag_counts": {
+    "keyboard_layout_mismatch": 240,
+    "repeated_character_typo": 200,
+    "no_flag": 120
+  },
+  "action_counts": {
+    "continue": 120,
+    "request_retype": 240,
+    "soft_flag_typo": 140
+  },
+  "length_band_counts": {
+    "01_03": 1,
+    "04_07": 17,
+    "08_15": 54,
+    "16_40": 330,
+    "41_plus": 98
+  },
+  "source_group_counts": {
+    "ambiguity_no_answer": 16,
+    "ambiguous_controls": 6,
+    "availability_game": 31,
+    "availability_machine_split": 4,
+    "availability_service": 20,
+    "competition_rules": 31,
+    "compound": 31,
+    "equipment": 31,
+    "game_controls": 31,
+    "game_detail": 17,
+    "games": 32,
+    "general_llm": 31,
+    "manual_edge_case": 130,
+    "members": 26,
+    "policy_schedule_rules": 7,
+    "reservation": 16,
+    "schedule": 8,
+    "service_fee": 32
+  },
+  "quality_checks": {
+    "unique_ids": true,
+    "unique_observed_inputs": true,
+    "exactly_500_cases": true,
+    "calibration_100_test_400": true
+  }
+}

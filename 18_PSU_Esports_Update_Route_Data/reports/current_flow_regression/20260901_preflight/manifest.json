@@ -1,0 +1,229 @@
+{
+  "started_at": "2026-09-01T00:39:30.693191+07:00",
+  "model_enabled": true,
+  "no_llm_baseline": false,
+  "environment": {
+    "PYTHONIOENCODING": "utf-8",
+    "PYTHONUTF8": "1",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PSU_LLM_PREFLIGHT": "0",
+    "PSU_OLLAMA_THINK": "false",
+    "PSU_CHATBOT_OLLAMA_MODEL": "scb10x/typhoon2.5-qwen3-4b",
+    "PSU_INTENT_LLM_MODEL": "scb10x/typhoon2.5-qwen3-4b",
+    "PSU_TOOL_ROUTER_MODEL": "scb10x/typhoon2.5-qwen3-4b",
+    "PSU_FACTS_LLM_MODEL": "scb10x/typhoon2.5-qwen3-4b",
+    "PSU_KNOWLEDGE_LLM_MODEL": "scb10x/typhoon2.5-qwen3-4b",
+    "PSU_LLM_MAX_CALLS": "2",
+    "PSU_GENERAL_LLM_TIMEOUT_SEC": "9",
+    "PSU_PIPELINE_GLOBAL_TIMEOUT_SEC": "9",
+    "PSU_EXPERIMENTAL_LLM_TIMEOUT_SEC": "9",
+    "PSU_FACTS_LLM_TIMEOUT_SEC": "5",
+    "PSU_INTENT_LLM_TIMEOUT_SEC": "8",
+    "PSU_TOOL_ROUTER_TIMEOUT_SEC": "1.2",
+    "PSU_GENERAL_LLM_NUM_PREDICT": "128",
+    "PSU_RAG_LLM_NUM_PREDICT": "128",
+    "PSU_FACTS_LLM_NUM_PREDICT": "192",
+    "PSU_INTENT_LLM_NUM_PREDICT": "128",
+    "PSU_TOOL_ROUTER_NUM_PREDICT": "128",
+    "PSU_GENERAL_LLM_NUM_CTX": "2048",
+    "PSU_FACTS_LLM_NUM_CTX": "3072",
+    "PSU_INTENT_LLM_NUM_CTX": "2048",
+    "PSU_TOOL_ROUTER_NUM_CTX": "2048",
+    "PSU_QUERY_PLANNER_NUM_CTX": "2048",
+    "PSU_LLM_TOOL_ROUTER": "0",
+    "PSU_FACTS_LLM_COMPOSER": "1",
+    "PSU_RAG_LLM_COMPOSER": "1",
+    "PSU_MODEL_FIRST_FLOW": "1",
+    "PSU_MODEL_FIRST_MIN_REMAINING_SEC": "6.0",
+    "PSU_SEMANTIC_RETRIEVAL": "1",
+    "PSU_EMBEDDING_MODEL": "psu-bge-m3:q8_0",
+    "PSU_EMBEDDING_NUM_CTX": "1024",
+    "OLLAMA_URL": "http://127.0.0.1:11434",
+    "PSU_CANONICAL_KNOWLEDGE": "1",
+    "PSU_KNOWLEDGE_DB": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\reports\\current_flow_regression\\20260901_preflight\\isolated_canonical.sqlite",
+    "PSU_KNOWLEDGE_ALLOW_DEMO": "1",
+    "PSU_INPUT_QUALITY_GUARD_MODE": "enforce",
+    "PSU_INPUT_QUALITY_REPEAT_POLICY": "ask_retype",
+    "PSU_INPUT_QUALITY_LAYOUT_THRESHOLD": "0.39",
+    "PSU_INPUT_QUALITY_REPEAT_THRESHOLD": "0.55"
+  },
+  "models": {
+    "models": [
+      {
+        "name": "psu-bge-m3:q4_k_m",
+        "model": "psu-bge-m3:q4_k_m",
+        "modified_at": "2026-08-23T23:19:45.2622746+07:00",
+        "size": 437779733,
+        "digest": "d8353b626ed366a7f6276235ee6d365a1cb2211d57d89c4948615be189850c12",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "bert",
+          "families": [
+            "bert"
+          ],
+          "parameter_size": "566.70M",
+          "quantization_level": "Q4_K_M",
+          "context_length": 8192,
+          "embedding_length": 1024
+        },
+        "capabilities": [
+          "embedding"
+        ]
+      },
+      {
+        "name": "psu-bge-m3:q8_0",
+        "model": "psu-bge-m3:q8_0",
+        "modified_at": "2026-08-23T23:19:15.1920539+07:00",
+        "size": 634554995,
+        "digest": "28842e9c4234e92e226901c53d03ae6ed6afc357b0d3f1f881a2eb90668f05be",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "bert",
+          "families": [
+            "bert"
+          ],
+          "parameter_size": "566.70M",
+          "quantization_level": "Q8_0",
+          "context_length": 8192,
+          "embedding_length": 1024
+        },
+        "capabilities": [
+          "embedding"
+        ]
+      },
+      {
+        "name": "bge-m3:latest",
+        "model": "bge-m3:latest",
+        "modified_at": "2026-08-23T23:02:40.2603224+07:00",
+        "size": 1157672605,
+        "digest": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "bert",
+          "families": [
+            "bert"
+          ],
+          "parameter_size": "566.70M",
+          "quantization_level": "F16",
+          "context_length": 8192,
+          "embedding_length": 1024
+        },
+        "capabilities": [
+          "embedding"
+        ]
+      },
+      {
+        "name": "scb10x/typhoon2.5-qwen3-4b:latest",
+        "model": "scb10x/typhoon2.5-qwen3-4b:latest",
+        "modified_at": "2026-08-04T20:40:35.3794466+07:00",
+        "size": 2497289434,
+        "digest": "b1f251ef835962b270ba48266d4e32e6f90b29f10930d0712ef5eaabec773a05",
+        "details": {
+          "parent_model": "/usr/share/ollama/.ollama/models/blobs/sha256-b365302922688f3a3c9ac8e3c00ab97a152cac0cdbf4eb5a734ecb483ae3e511",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "4.0B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 262144,
+          "embedding_length": 2560
+        },
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      {
+        "name": "supachai/llama-3-typhoon-v1.5:8b-instruct",
+        "model": "supachai/llama-3-typhoon-v1.5:8b-instruct",
+        "modified_at": "2026-07-21T17:09:54.592651+07:00",
+        "size": 4921248088,
+        "digest": "3e00010a12ad53de707c65b4486104882521802a7bedad664b7378e3bbdd73e4",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "llama",
+          "families": [
+            "llama"
+          ],
+          "parameter_size": "8.0B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 8192,
+          "embedding_length": 4096
+        },
+        "capabilities": [
+          "completion"
+        ]
+      },
+      {
+        "name": "qwen2.5:3b",
+        "model": "qwen2.5:3b",
+        "modified_at": "2026-06-29T17:44:51.2875575+07:00",
+        "size": 1929912432,
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 32768,
+          "embedding_length": 2048
+        },
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      {
+        "name": "qwen3:4b",
+        "model": "qwen3:4b",
+        "modified_at": "2026-06-29T15:21:28.3403306+07:00",
+        "size": 2497293931,
+        "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "4.0B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 262144,
+          "embedding_length": 2560
+        },
+        "capabilities": [
+          "completion",
+          "tools",
+          "thinking"
+        ]
+      }
+    ]
+  },
+  "hardware": "name, memory.total [MiB], memory.used [MiB], memory.free [MiB]\nNVIDIA GeForce RTX 4050 Laptop GPU, 6141 MiB, 2043 MiB, 3878 MiB\n",
+  "watchdog_sec": 30,
+  "counts": {
+    "faq": 3,
+    "keyboard": 3,
+    "canonical": 3
+  },
+  "guard": "current runtime implementation, enforce; not shipped default shadow",
+  "scope": "serial backend, empty session history, isolated synthetic canonical DB; not HTTP/load/production",
+  "baseline_caveats": [
+    "old FAQ runner bypassed input guard",
+    "old keyboard runner used a prototype fitted on FAQ test questions",
+    "evaluation date and warm/cache state differ",
+    "canonical pilot owns only two synthetic records",
+    "30-second watchdog observations are right-censored",
+    "no network/browser latency included"
+  ]
+}

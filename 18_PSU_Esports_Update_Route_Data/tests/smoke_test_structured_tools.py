@@ -107,14 +107,14 @@ def main() -> int:
     print("OK structured tekken specific control")
 
     result = answer_question_pipeline_debug("Overcooked 2 มีปุ่มอะไรบ้าง")
-    assert result.mode == "pipeline:structured_game_controls_no_data", result.mode
+    assert result.mode == "pipeline:structured_game_controls", result.mode
     assert_contains(
         result.answer,
-        ["Overcooked 2", "Nintendo Switch Zone", "ยังไม่พบข้อมูลปุ่มควบคุม"],
-        "known game without version-matched controls should not borrow another title's controls",
+        ["Overcooked! 2", "PlayStation / PS5", "Left Stick", "Square", "ยังไม่ได้ตรวจยืนยัน"],
+        "version-matched secondary controls must disclose their review status",
     )
-    assert_not_contains(result.answer, ["L (Left Stick)", "Cross", "หยิบ / วาง"], "controls must stay version-matched")
-    print("OK known game does not borrow controls from another title")
+    assert_not_contains(result.answer, ["L (Left Stick) / R (Right Stick)"], "controls must stay version-matched")
+    print("OK Overcooked! 2 uses its own controls with source-review caveat")
 
     result = answer_question_pipeline_debug("VALORANT ปุ่มอะไร")
     assert result.mode == "pipeline:structured_game_controls", result.mode
@@ -136,6 +136,16 @@ def main() -> int:
     assert result.route.category == "equipment", result.route
     assert_contains(result.answer, ["Logitech G923", "Cockpit Zone", "Gran Turismo 7"], "logitech equipment item")
     print("OK structured equipment item")
+
+    gpu = answer_question_pipeline_debug("เครื่อง PC ใช้การ์ดจอรุ่นอะไร")
+    assert gpu.mode == "pipeline:structured_equipment_item", gpu.mode
+    assert_contains(gpu.answer, ["Gaming PC", "RTX 5060 8GB", "สเปกที่บันทึกไว้ในโปรเจกต์", "ยังไม่พบหลักฐาน"], "recorded PC GPU spec")
+    assert_not_contains(gpu.answer, ["Gaming Monitor", "จอภาพสำหรับใช้คู่"], "graphics card must not select display")
+
+    monitor = answer_question_pipeline_debug("จอ PC เป็นรุ่นอะไร")
+    assert monitor.mode == "pipeline:structured_equipment_item", monitor.mode
+    assert_contains(monitor.answer, ["Gaming Monitor", "จอภาพสำหรับใช้คู่"], "PC display still selects monitor")
+    print("OK graphics card and display questions select separate equipment records")
 
     result = answer_question_pipeline_debug("วันจันทร์เปิดกี่โมง")
     assert result.mode == "pipeline:structured_schedule", result.mode

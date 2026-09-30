@@ -1,0 +1,953 @@
+{
+  "current_1600": {
+    "total": 1600,
+    "passed": 1509,
+    "regressions_from_baseline": 90,
+    "regression_groups": {
+      "games": 43,
+      "members": 10,
+      "competition_rules": 11,
+      "compound": 1,
+      "ambiguity_no_answer": 1,
+      "availability_service": 1,
+      "availability_game": 9,
+      "availability_machine_split": 2,
+      "game_detail": 3,
+      "game_controls": 8,
+      "service_fee": 1
+    },
+    "regression_transitions": [
+      {
+        "baseline_mode": "pipeline:structured_game_detail",
+        "current_mode": "pipeline:semantic_rag_dynamic",
+        "count": 28
+      },
+      {
+        "baseline_mode": "pipeline:structured_game_detail",
+        "current_mode": "pipeline:structured_game_detail",
+        "count": 12
+      },
+      {
+        "baseline_mode": "pipeline:structured_service_game_availability",
+        "current_mode": "pipeline:semantic_rag_dynamic",
+        "count": 10
+      },
+      {
+        "baseline_mode": "pipeline:structured_game_controls",
+        "current_mode": "pipeline:semantic_rag_dynamic",
+        "count": 9
+      },
+      {
+        "baseline_mode": "pipeline:competition_fact_card",
+        "current_mode": "pipeline:semantic_rag_dynamic",
+        "count": 8
+      },
+      {
+        "baseline_mode": "pipeline:structured_members_person_lookup",
+        "current_mode": "pipeline:semantic_rag_dynamic",
+        "count": 3
+      },
+      {
+        "baseline_mode": "pipeline:structured_members_role_lookup",
+        "current_mode": "pipeline:semantic_rag_dynamic",
+        "count": 3
+      },
+      {
+        "baseline_mode": "pipeline:structured_members_role_lookup",
+        "current_mode": "pipeline:request_timeout_no_answer",
+        "count": 3
+      },
+      {
+        "baseline_mode": "pipeline:rag_direct_curated",
+        "current_mode": "pipeline:semantic_rag_dynamic",
+        "count": 3
+      },
+      {
+        "baseline_mode": "pipeline:structured_games_genre_list",
+        "current_mode": "pipeline:semantic_rag_dynamic",
+        "count": 2
+      },
+      {
+        "baseline_mode": "pipeline:structured_service_game_availability_no_match",
+        "current_mode": "pipeline:semantic_rag_dynamic",
+        "count": 2
+      },
+      {
+        "baseline_mode": "pipeline:structured_game_detail",
+        "current_mode": "pipeline:game_multi_name_mention_fast_path",
+        "count": 1
+      },
+      {
+        "baseline_mode": "pipeline:structured_members_person_lookup",
+        "current_mode": "pipeline:request_timeout_no_answer",
+        "count": 1
+      },
+      {
+        "baseline_mode": "pipeline:multi_question_splitter",
+        "current_mode": "pipeline:request_timeout_no_answer",
+        "count": 1
+      },
+      {
+        "baseline_mode": "pipeline:games_known_unsupported_fast_path",
+        "current_mode": "pipeline:semantic_rag_dynamic",
+        "count": 1
+      },
+      {
+        "baseline_mode": "pipeline:service_game_availability_fast_path",
+        "current_mode": "pipeline:semantic_rag_dynamic",
+        "count": 1
+      },
+      {
+        "baseline_mode": "pipeline:ambiguity_clarification",
+        "current_mode": "pipeline:semantic_rag_dynamic",
+        "count": 1
+      },
+      {
+        "baseline_mode": "pipeline:deterministic_calculator_fast",
+        "current_mode": "pipeline:request_timeout_no_answer",
+        "count": 1
+      }
+    ],
+    "llm_calls_actual": {
+      "facts_composer": 126,
+      "universal_intent": 84,
+      "general_llm": 275
+    },
+    "slowest_cases": [
+      {
+        "id": "MB-1123-SF-154",
+        "group": "service_fee",
+        "wall_sec": 1820.6946,
+        "mode": "pipeline:request_timeout_no_answer",
+        "score": 56.0
+      },
+      {
+        "id": "MB-0507-M-018",
+        "group": "members",
+        "wall_sec": 70.1336,
+        "mode": "pipeline:request_timeout_no_answer",
+        "score": 56.0
+      },
+      {
+        "id": "MB-0503-M-014",
+        "group": "members",
+        "wall_sec": 61.8867,
+        "mode": "pipeline:request_timeout_no_answer",
+        "score": 56.0
+      },
+      {
+        "id": "MB-0499-M-010",
+        "group": "members",
+        "wall_sec": 30.8306,
+        "mode": "pipeline:request_timeout_no_answer",
+        "score": 56.0
+      },
+      {
+        "id": "MB-0618-C-007",
+        "group": "compound",
+        "wall_sec": 28.549,
+        "mode": "pipeline:request_timeout_no_answer",
+        "score": 44.0
+      },
+      {
+        "id": "MB-0519-M-030",
+        "group": "members",
+        "wall_sec": 10.6703,
+        "mode": "pipeline:request_timeout_no_answer",
+        "score": 56.0
+      },
+      {
+        "id": "MB-0413-E-012",
+        "group": "equipment",
+        "wall_sec": 10.4444,
+        "mode": "pipeline:structured_equipment_item",
+        "score": 90.0
+      },
+      {
+        "id": "MB-0408-E-007",
+        "group": "equipment",
+        "wall_sec": 10.2976,
+        "mode": "pipeline:structured_equipment_catalog",
+        "score": 90.0
+      },
+      {
+        "id": "MB-0414-E-013",
+        "group": "equipment",
+        "wall_sec": 10.119,
+        "mode": "pipeline:structured_equipment_item",
+        "score": 90.0
+      },
+      {
+        "id": "MB-0638-ANA-012",
+        "group": "ambiguity_no_answer",
+        "wall_sec": 9.0493,
+        "mode": "pipeline:structured_equipment_catalog",
+        "score": 90.0
+      },
+      {
+        "id": "MB-0407-E-006",
+        "group": "equipment",
+        "wall_sec": 8.9387,
+        "mode": "pipeline:structured_equipment_item",
+        "score": 100.0
+      },
+      {
+        "id": "MB-0419-E-018",
+        "group": "equipment",
+        "wall_sec": 8.2435,
+        "mode": "pipeline:structured_equipment_item",
+        "score": 100.0
+      },
+      {
+        "id": "MB-0429-E-028",
+        "group": "equipment",
+        "wall_sec": 8.2435,
+        "mode": "pipeline:structured_equipment_item",
+        "score": 100.0
+      },
+      {
+        "id": "MB-0422-E-021",
+        "group": "equipment",
+        "wall_sec": 8.2216,
+        "mode": "pipeline:structured_equipment_item",
+        "score": 100.0
+      },
+      {
+        "id": "MB-0426-E-025",
+        "group": "equipment",
+        "wall_sec": 8.1762,
+        "mode": "pipeline:structured_equipment_item",
+        "score": 100.0
+      }
+    ]
+  },
+  "keyboard_500": {
+    "total": 500,
+    "guard_action_accuracy_pct": 100.0,
+    "guard_block_accuracy_pct": 100.0,
+    "llm_calls_actual": {
+      "universal_intent": 64,
+      "facts_composer": 21,
+      "general_llm": 28,
+      "query_planner": 2,
+      "rag_llm": 9
+    },
+    "families": {
+      "combined_layout_and_repeat": {
+        "total": 60,
+        "blocked": 60,
+        "pipeline_executed": 0,
+        "source_contract": null,
+        "avg_wall_sec_pipeline": 0.0,
+        "p95_wall_sec_pipeline": 0.0,
+        "over_budget": 0,
+        "llm_call_count": 0
+      },
+      "layout_en_to_th_full": {
+        "total": 25,
+        "blocked": 25,
+        "pipeline_executed": 0,
+        "source_contract": null,
+        "avg_wall_sec_pipeline": 0.0,
+        "p95_wall_sec_pipeline": 0.0,
+        "over_budget": 0,
+        "llm_call_count": 0
+      },
+      "layout_th_to_en_full": {
+        "total": 90,
+        "blocked": 90,
+        "pipeline_executed": 0,
+        "source_contract": null,
+        "avg_wall_sec_pipeline": 0.0,
+        "p95_wall_sec_pipeline": 0.0,
+        "over_budget": 0,
+        "llm_call_count": 0
+      },
+      "layout_th_to_en_suffix": {
+        "total": 20,
+        "blocked": 20,
+        "pipeline_executed": 0,
+        "source_contract": null,
+        "avg_wall_sec_pipeline": 0.0,
+        "p95_wall_sec_pipeline": 0.0,
+        "over_budget": 0,
+        "llm_call_count": 0
+      },
+      "layout_th_to_en_token": {
+        "total": 45,
+        "blocked": 45,
+        "pipeline_executed": 0,
+        "source_contract": null,
+        "avg_wall_sec_pipeline": 0.0,
+        "p95_wall_sec_pipeline": 0.0,
+        "over_budget": 0,
+        "llm_call_count": 0
+      },
+      "repeat_latin_internal": {
+        "total": 25,
+        "blocked": 0,
+        "pipeline_executed": 25,
+        "source_contract": {
+          "evaluated": 25,
+          "passed": 21,
+          "pass_rate_pct": 84.0
+        },
+        "avg_wall_sec_pipeline": 0.9031,
+        "p95_wall_sec_pipeline": 2.0214,
+        "over_budget": 0,
+        "llm_call_count": 6
+      },
+      "repeat_short_token": {
+        "total": 15,
+        "blocked": 0,
+        "pipeline_executed": 15,
+        "source_contract": null,
+        "avg_wall_sec_pipeline": 4.4978,
+        "p95_wall_sec_pipeline": 8.1523,
+        "over_budget": 0,
+        "llm_call_count": 14
+      },
+      "repeat_thai_internal": {
+        "total": 60,
+        "blocked": 0,
+        "pipeline_executed": 60,
+        "source_contract": {
+          "evaluated": 60,
+          "passed": 42,
+          "pass_rate_pct": 70.0
+        },
+        "avg_wall_sec_pipeline": 2.1646,
+        "p95_wall_sec_pipeline": 9.4261,
+        "over_budget": 4,
+        "llm_call_count": 48
+      },
+      "repeat_thai_mark_or_vowel": {
+        "total": 40,
+        "blocked": 0,
+        "pipeline_executed": 40,
+        "source_contract": {
+          "evaluated": 40,
+          "passed": 30,
+          "pass_rate_pct": 75.0
+        },
+        "avg_wall_sec_pipeline": 0.6623,
+        "p95_wall_sec_pipeline": 1.5645,
+        "over_budget": 0,
+        "llm_call_count": 20
+      },
+      "valid_expressive_repetition": {
+        "total": 20,
+        "blocked": 0,
+        "pipeline_executed": 20,
+        "source_contract": null,
+        "avg_wall_sec_pipeline": 1.4533,
+        "p95_wall_sec_pipeline": 5.1898,
+        "over_budget": 0,
+        "llm_call_count": 21
+      },
+      "valid_lexical_double": {
+        "total": 20,
+        "blocked": 0,
+        "pipeline_executed": 20,
+        "source_contract": null,
+        "avg_wall_sec_pipeline": 7.5633,
+        "p95_wall_sec_pipeline": 52.4155,
+        "over_budget": 3,
+        "llm_call_count": 13
+      },
+      "valid_normal": {
+        "total": 50,
+        "blocked": 0,
+        "pipeline_executed": 50,
+        "source_contract": {
+          "evaluated": 50,
+          "passed": 49,
+          "pass_rate_pct": 98.0
+        },
+        "avg_wall_sec_pipeline": 1.2238,
+        "p95_wall_sec_pipeline": 7.34,
+        "over_budget": 0,
+        "llm_call_count": 23
+      },
+      "valid_protected_or_mixed": {
+        "total": 30,
+        "blocked": 0,
+        "pipeline_executed": 30,
+        "source_contract": null,
+        "avg_wall_sec_pipeline": 3.2912,
+        "p95_wall_sec_pipeline": 8.2854,
+        "over_budget": 1,
+        "llm_call_count": 17
+      }
+    },
+    "failed_source_cases": [
+      {
+        "id": "KIA-0184",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0816-AS-012",
+        "input": "Nintendo Switch (1-4 Persons) มีเกกมอะไรบ้าง",
+        "wall_sec": 6.9916,
+        "mode": "pipeline:structured_equipment_item",
+        "score": 66.0,
+        "errors": [
+          "category_mismatch:equipment",
+          "missing_any"
+        ]
+      },
+      {
+        "id": "KIA-0186",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0640-ANA-014",
+        "input": "สรุปคืออทำยังไง",
+        "wall_sec": 4.6197,
+        "mode": "pipeline:general_llm_fallback",
+        "score": 66.0,
+        "errors": [
+          "category_mismatch:general",
+          "missing_any"
+        ]
+      },
+      {
+        "id": "KIA-0192",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0413-E-012",
+        "input": "Gaming PC รุ่น MSI MAG Infinite S3 14th อยู่โซซนไหน",
+        "wall_sec": 10.762,
+        "mode": "pipeline:structured_equipment_catalog",
+        "score": 78.0,
+        "errors": [
+          "mode_mismatch:pipeline:structured_equipment_catalog",
+          "timeout_budget_exceeded"
+        ]
+      },
+      {
+        "id": "KIA-0193",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0470-R-011",
+        "input": "จอองแล้วแก้ไขได้ไหม",
+        "wall_sec": 11.3395,
+        "mode": "pipeline:structured_equipment_catalog",
+        "score": 56.0,
+        "errors": [
+          "category_mismatch:equipment",
+          "missing_any",
+          "timeout_budget_exceeded"
+        ]
+      },
+      {
+        "id": "KIA-0198",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0854-GD-011",
+        "input": "Uncharted เลล่นยังไง",
+        "wall_sec": 9.4261,
+        "mode": "pipeline:structured_game_detail",
+        "score": 90.0,
+        "errors": [
+          "timeout_budget_exceeded"
+        ]
+      },
+      {
+        "id": "KIA-0199",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0642-ANA-016",
+        "input": "มี GTA V ไหหม",
+        "wall_sec": 4.9904,
+        "mode": "pipeline:general_llm_fallback",
+        "score": 84.0,
+        "errors": [
+          "missing_any"
+        ]
+      },
+      {
+        "id": "KIA-0204",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0264-GC-018",
+        "input": "Counter-Strike 2 ใช้จออยยังไง",
+        "wall_sec": 13.1501,
+        "mode": "pipeline:no_answer",
+        "score": 74.0,
+        "errors": [
+          "missing_any",
+          "timeout_budget_exceeded"
+        ]
+      },
+      {
+        "id": "KIA-0206",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0471-R-012",
+        "input": "จอองแล้วโอนสิทธิ์ให้เพื่อนได้ไหม",
+        "wall_sec": 4.2521,
+        "mode": "pipeline:structured_equipment_catalog",
+        "score": 66.0,
+        "errors": [
+          "category_mismatch:equipment",
+          "missing_any"
+        ]
+      },
+      {
+        "id": "KIA-0207",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0548-CR-012",
+        "input": "VALORANT ต้องเช็คอินกก่อนแข่งไหม",
+        "wall_sec": 0.4073,
+        "mode": "pipeline:semantic_rag_dynamic",
+        "score": 82.0,
+        "errors": [
+          "category_mismatch:events_news"
+        ]
+      },
+      {
+        "id": "KIA-0208",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0521-M-032",
+        "input": "ใครเป็นรอองประธาน",
+        "wall_sec": 0.3668,
+        "mode": "pipeline:structured_members_role_lookup",
+        "score": 84.0,
+        "errors": [
+          "missing_any"
+        ]
+      },
+      {
+        "id": "KIA-0210",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0818-AS-014",
+        "input": "Cockpit #01-#02 มีเกกมอะไรบ้าง",
+        "wall_sec": 0.8941,
+        "mode": "pipeline:structured_equipment_item",
+        "score": 82.0,
+        "errors": [
+          "category_mismatch:equipment"
+        ]
+      },
+      {
+        "id": "KIA-0216",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0670-AG-017",
+        "input": "VALORANT เล่นได้ที่เครรื่องไหน",
+        "wall_sec": 0.4367,
+        "mode": "pipeline:schedule_fast_path",
+        "score": 66.0,
+        "errors": [
+          "category_mismatch:schedule",
+          "missing_any"
+        ]
+      },
+      {
+        "id": "KIA-0220",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0549-CR-013",
+        "input": "VALORANT ใช้บัญชีออะไรแข่ง",
+        "wall_sec": 0.363,
+        "mode": "pipeline:semantic_rag_dynamic",
+        "score": 82.0,
+        "errors": [
+          "category_mismatch:events_news"
+        ]
+      },
+      {
+        "id": "KIA-0222",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0626-C-015",
+        "input": "Tekken 8 ราคคาเท่าไหร่ แล้วมีปุ่มอะไรบ้าง",
+        "wall_sec": 6.2716,
+        "mode": "pipeline:experimental_rag_llm_fallback",
+        "score": 70.0,
+        "errors": [
+          "category_mismatch:service_fee",
+          "mode_mismatch:pipeline:experimental_rag_llm_fallback"
+        ]
+      },
+      {
+        "id": "KIA-0229",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0671-AG-018",
+        "input": "มี VALORANT ไหหม",
+        "wall_sec": 0.2606,
+        "mode": "pipeline:semantic_rag_dynamic",
+        "score": 82.0,
+        "errors": [
+          "category_mismatch:events_news"
+        ]
+      },
+      {
+        "id": "KIA-0231",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0416-E-015",
+        "input": "Gaming Monitor อยู่โซซนไหน",
+        "wall_sec": 0.7123,
+        "mode": "pipeline:structured_equipment_catalog",
+        "score": 88.0,
+        "errors": [
+          "mode_mismatch:pipeline:structured_equipment_catalog"
+        ]
+      },
+      {
+        "id": "KIA-0232",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0473-R-014",
+        "input": "ถ้ายกเเลิกต้องทำยังไง",
+        "wall_sec": 1.5928,
+        "mode": "pipeline:general_llm_fallback",
+        "score": 82.0,
+        "errors": [
+          "category_mismatch:general"
+        ]
+      },
+      {
+        "id": "KIA-0236",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0820-AS-016",
+        "input": "Cockpit Zone รายการเกกมมีอะไรบ้าง",
+        "wall_sec": 0.6735,
+        "mode": "pipeline:ambiguity_clarification",
+        "score": 82.0,
+        "errors": [
+          "category_mismatch:clarification"
+        ]
+      },
+      {
+        "id": "KIA-0241",
+        "family": "repeat_thai_mark_or_vowel",
+        "source_case_id": "MB-0102-G-014",
+        "input": "Call of Duty: Warzone เล่นได้้ที่ไหน",
+        "wall_sec": 0.3213,
+        "mode": "pipeline:schedule_fast_path",
+        "score": 66.0,
+        "errors": [
+          "category_mismatch:schedule",
+          "missing_any"
+        ]
+      },
+      {
+        "id": "KIA-0248",
+        "family": "repeat_thai_mark_or_vowel",
+        "source_case_id": "MB-1253-C-017",
+        "input": "PC จองยังไง แล้วเปิิดวันไหนบ้าง",
+        "wall_sec": 3.2693,
+        "mode": "pipeline:booking_howto_fast_path",
+        "score": 82.0,
+        "errors": [
+          "category_mismatch:reservation"
+        ]
+      },
+      {
+        "id": "KIA-0250",
+        "family": "repeat_thai_mark_or_vowel",
+        "source_case_id": "MB-0858-GD-015",
+        "input": "Animal Crossing เล่นได้้ที่ไหน",
+        "wall_sec": 0.2818,
+        "mode": "pipeline:schedule_fast_path",
+        "score": 66.0,
+        "errors": [
+          "category_mismatch:schedule",
+          "missing_any"
+        ]
+      },
+      {
+        "id": "KIA-0263",
+        "family": "repeat_thai_mark_or_vowel",
+        "source_case_id": "MB-0859-GD-016",
+        "input": "The Legend of Zelda เป็นเเกมแนวไหน",
+        "wall_sec": 0.4447,
+        "mode": "pipeline:semantic_rag_dynamic",
+        "score": 66.0,
+        "errors": [
+          "category_mismatch:knowledge",
+          "missing_any"
+        ]
+      },
+      {
+        "id": "KIA-0264",
+        "family": "repeat_thai_mark_or_vowel",
+        "source_case_id": "MB-0647-ANA-021",
+        "input": "ขอข้อมูลที่ไม่ไได้อยู่ในเว็บ PSU Esports",
+        "wall_sec": 0.9981,
+        "mode": "pipeline:candidate_margin_clarification",
+        "score": 66.0,
+        "errors": [
+          "category_mismatch:clarification",
+          "missing_any"
+        ]
+      },
+      {
+        "id": "KIA-0267",
+        "family": "repeat_thai_mark_or_vowel",
+        "source_case_id": "MB-0104-G-016",
+        "input": "Call of Duty: Warzone เป็นเเกมแนวไหน",
+        "wall_sec": 0.3662,
+        "mode": "pipeline:semantic_rag_dynamic",
+        "score": 66.0,
+        "errors": [
+          "category_mismatch:knowledge",
+          "missing_any"
+        ]
+      },
+      {
+        "id": "KIA-0271",
+        "family": "repeat_thai_mark_or_vowel",
+        "source_case_id": "MB-0476-R-017",
+        "input": "ต้องแนบสลิิปไหม",
+        "wall_sec": 0.5767,
+        "mode": "pipeline:candidate_margin_clarification",
+        "score": 82.0,
+        "errors": [
+          "category_mismatch:clarification"
+        ]
+      },
+      {
+        "id": "KIA-0274",
+        "family": "repeat_thai_mark_or_vowel",
+        "source_case_id": "MB-1255-C-019",
+        "input": "PS5 จองยังไง แล้วเปิิดวันไหนบ้าง",
+        "wall_sec": 0.3425,
+        "mode": "pipeline:structured_booking_selection",
+        "score": 82.0,
+        "errors": [
+          "category_mismatch:reservation"
+        ]
+      },
+      {
+        "id": "KIA-0275",
+        "family": "repeat_thai_mark_or_vowel",
+        "source_case_id": "MB-0827-AS-019",
+        "input": "VR Zone รายการเกมมีีอะไรบ้าง",
+        "wall_sec": 0.3576,
+        "mode": "pipeline:semantic_rag_dynamic",
+        "score": 66.0,
+        "errors": [
+          "category_mismatch:knowledge",
+          "missing_any"
+        ]
+      },
+      {
+        "id": "KIA-0280",
+        "family": "repeat_thai_mark_or_vowel",
+        "source_case_id": "MB-0105-G-017",
+        "input": "League of Legends คือเเกมอะไร",
+        "wall_sec": 0.337,
+        "mode": "pipeline:semantic_rag_dynamic",
+        "score": 70.0,
+        "errors": [
+          "category_mismatch:knowledge",
+          "missing:League of Legends"
+        ]
+      },
+      {
+        "id": "KIA-0283",
+        "family": "repeat_latin_internal",
+        "source_case_id": "MB-0420-E-019",
+        "input": "Gaming Keybooard ใช้ทำอะไร",
+        "wall_sec": 1.6869,
+        "mode": "pipeline:general_llm_fallback",
+        "score": 82.0,
+        "errors": [
+          "category_mismatch:general"
+        ]
+      },
+      {
+        "id": "KIA-0294",
+        "family": "repeat_latin_internal",
+        "source_case_id": "MB-0421-E-020",
+        "input": "Gamiing Mouse คืออะไร",
+        "wall_sec": 0.8409,
+        "mode": "pipeline:general_llm_fallback",
+        "score": 82.0,
+        "errors": [
+          "category_mismatch:general"
+        ]
+      },
+      {
+        "id": "KIA-0301",
+        "family": "repeat_latin_internal",
+        "source_case_id": "MB-0107-G-019",
+        "input": "League of Legeends เล่นยังไง",
+        "wall_sec": 0.4244,
+        "mode": "pipeline:semantic_rag_dynamic",
+        "score": 66.0,
+        "errors": [
+          "category_mismatch:knowledge",
+          "missing_any"
+        ]
+      },
+      {
+        "id": "KIA-0304",
+        "family": "repeat_latin_internal",
+        "source_case_id": "MB-0422-E-021",
+        "input": "Gamiing Mouse อยู่โซนไหน",
+        "wall_sec": 5.4226,
+        "mode": "pipeline:no_answer",
+        "score": 72.0,
+        "errors": [
+          "mode_mismatch:pipeline:no_answer",
+          "missing_any"
+        ]
+      },
+      {
+        "id": "KIA-0430",
+        "family": "valid_normal",
+        "source_case_id": "MB-0120-G-032",
+        "input": "Fortnite เป็นเกมแนวไหน",
+        "wall_sec": 0.3069,
+        "mode": "pipeline:semantic_rag_dynamic",
+        "score": 66.0,
+        "errors": [
+          "category_mismatch:knowledge",
+          "missing_any"
+        ]
+      }
+    ],
+    "slowest_cases": [
+      {
+        "id": "KIA-0486",
+        "family": "valid_lexical_double",
+        "source_case_id": null,
+        "wall_sec": 55.2759,
+        "mode": "pipeline:no_answer",
+        "errors": [
+          "source_case_unavailable"
+        ]
+      },
+      {
+        "id": "KIA-0487",
+        "family": "valid_lexical_double",
+        "source_case_id": null,
+        "wall_sec": 52.4155,
+        "mode": "pipeline:no_answer",
+        "errors": [
+          "source_case_unavailable"
+        ]
+      },
+      {
+        "id": "KIA-0460",
+        "family": "valid_protected_or_mixed",
+        "source_case_id": null,
+        "wall_sec": 39.7741,
+        "mode": "pipeline:games_unknown_fast_path",
+        "errors": [
+          "source_case_unavailable"
+        ]
+      },
+      {
+        "id": "KIA-0204",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0264-GC-018",
+        "wall_sec": 13.1501,
+        "mode": "pipeline:no_answer",
+        "errors": [
+          "missing_any",
+          "timeout_budget_exceeded"
+        ]
+      },
+      {
+        "id": "KIA-0193",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0470-R-011",
+        "wall_sec": 11.3395,
+        "mode": "pipeline:structured_equipment_catalog",
+        "errors": [
+          "category_mismatch:equipment",
+          "missing_any",
+          "timeout_budget_exceeded"
+        ]
+      },
+      {
+        "id": "KIA-0483",
+        "family": "valid_lexical_double",
+        "source_case_id": null,
+        "wall_sec": 10.851,
+        "mode": "pipeline:no_answer",
+        "errors": [
+          "source_case_unavailable"
+        ]
+      },
+      {
+        "id": "KIA-0192",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0413-E-012",
+        "wall_sec": 10.762,
+        "mode": "pipeline:structured_equipment_catalog",
+        "errors": [
+          "mode_mismatch:pipeline:structured_equipment_catalog",
+          "timeout_budget_exceeded"
+        ]
+      },
+      {
+        "id": "KIA-0198",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0854-GD-011",
+        "wall_sec": 9.4261,
+        "mode": "pipeline:structured_game_detail",
+        "errors": [
+          "timeout_budget_exceeded"
+        ]
+      },
+      {
+        "id": "KIA-0442",
+        "family": "valid_protected_or_mixed",
+        "source_case_id": null,
+        "wall_sec": 8.2854,
+        "mode": "pipeline:candidate_margin_clarification",
+        "errors": [
+          "source_case_unavailable"
+        ]
+      },
+      {
+        "id": "KIA-0307",
+        "family": "repeat_short_token",
+        "source_case_id": null,
+        "wall_sec": 8.1523,
+        "mode": "pipeline:structured_equipment_catalog",
+        "errors": [
+          "source_case_unavailable"
+        ]
+      },
+      {
+        "id": "KIA-0384",
+        "family": "valid_normal",
+        "source_case_id": "MB-0429-E-028",
+        "wall_sec": 8.0676,
+        "mode": "pipeline:structured_equipment_item",
+        "errors": []
+      },
+      {
+        "id": "KIA-0315",
+        "family": "repeat_short_token",
+        "source_case_id": null,
+        "wall_sec": 8.051,
+        "mode": "pipeline:structured_equipment_catalog",
+        "errors": [
+          "source_case_unavailable"
+        ]
+      },
+      {
+        "id": "KIA-0311",
+        "family": "repeat_short_token",
+        "source_case_id": null,
+        "wall_sec": 8.0463,
+        "mode": "pipeline:structured_equipment_catalog",
+        "errors": [
+          "source_case_unavailable"
+        ]
+      },
+      {
+        "id": "KIA-0205",
+        "family": "repeat_thai_internal",
+        "source_case_id": "MB-0414-E-013",
+        "wall_sec": 7.6727,
+        "mode": "pipeline:structured_equipment_item",
+        "errors": []
+      },
+      {
+        "id": "KIA-0313",
+        "family": "repeat_short_token",
+        "source_case_id": null,
+        "wall_sec": 7.613,
+        "mode": "pipeline:structured_equipment_catalog",
+        "errors": [
+          "source_case_unavailable"
+        ]
+      }
+    ]
+  }
+}

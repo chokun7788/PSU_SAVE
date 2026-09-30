@@ -1,0 +1,45 @@
+{
+  "package_name": "PSU_Esports_Chatbot_Local",
+  "included_data_directories": [
+    "calendar",
+    "competition_rules",
+    "content",
+    "control_game",
+    "control_game_split",
+    "curated",
+    "intent",
+    "knowledge_inbox",
+    "locales",
+    "manifests",
+    "routing",
+    "rules",
+    "sources",
+    "style",
+    "vector"
+  ],
+  "local_runtime_features": [
+    "per_page_anonymous_sessions",
+    "sqlite_transcript",
+    "append_only_daily_jsonl_log",
+    "owner_html_log_report",
+    "loopback_only_server",
+    "live_booking_status_aggregate_only"
+  ],
+  "excluded": [
+    "reports",
+    "tests",
+    "tools except export_local_chat_logs.py",
+    "notebooks",
+    "data/eval",
+    "data/ground_truth",
+    "data/human_review",
+    "data/logs",
+    "Ollama model weights"
+  ],
+  "required_local_models": [
+    "scb10x/typhoon2.5-qwen3-4b",
+    "psu-bge-m3:q8_0"
+  ],
+  "built_at": "2026-09-28T12:54:14.4341218Z",
+  "runtime_version": "2026.09.28-owner-review-candidate-r5"
+}

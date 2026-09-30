@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_no_answer_home_delivery_console",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "ส่งเครื่องเกมไปบ้าน",
+      "เครื่องเกม.*ไปบ้าน",
+      "เช่าจอไปบ้าน",
+      "เช่า.*จอ.*บ้าน"
+    ],
+    "en": []
+  },
+  "facts": {
+    "route_category": "no_answer",
+    "intent": "no_answer_home_delivery_console",
+    "patterns": [
+      "ส่งเครื่องเกมไปบ้าน",
+      "เครื่องเกม.*ไปบ้าน",
+      "เช่าจอไปบ้าน",
+      "เช่า.*จอ.*บ้าน"
+    ],
+    "priority": 130
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ยังไม่พบข้อมูลเรื่องบริการส่งหรือให้เช่าเครื่องเกม/จอกลับไปใช้ที่บ้านในฐานข้อมูลที่มี ข้อมูลที่มีเป็นการจองใช้อุปกรณ์ภายใน PSU Esports Studio ตามรอบเวลา ดังนั้นควรจองเพื่อใช้งานที่ศูนย์ หรือสอบถามเจ้าหน้าที่หากต้องการบริการนอกสถานที่"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "No information about console/screen home delivery or take-home rental was found in the available knowledge base. The available data describes reserving studio equipment for on-site use by time slot, so please book for on-site use or ask staff about off-site requests."
+      },
+      "source_sha256": "8124ad6b7c4174a97f4c3596b09a210ead1a47083c00f3b6e1987bdaffeb7475",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/no_answer_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation"
+    ],
+    "last_verified_at": ""
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "created_at": "2026-09-01T00:00:36.636014+07:00",
+  "cases": 20,
+  "passed": 20,
+  "unit_test_exit_code": 0,
+  "integration_smokes": [
+    {
+      "test": "smoke_test_runtime_input_quality_guard.py",
+      "exit_code": 0
+    },
+    {
+      "test": "smoke_test_request_deadline.py",
+      "exit_code": 0
+    },
+    {
+      "test": "smoke_test_answer_pipeline.py",
+      "exit_code": 0
+    }
+  ],
+  "average_sec": 0.17932401000289247,
+  "max_sec": 0.6560917999595404,
+  "p95_sec_nearest_rank": 0.5949631999246776,
+  "llm_attempted": 5,
+  "llm_order_accepted": 3,
+  "models": {
+    "dimensions": 1024,
+    "model": "psu-bge-m3:q8_0",
+    "num_ctx": 1024
+  },
+  "lifecycle": [
+    {
+      "action": "save_approve",
+      "record_id": "demo_nebula",
+      "version": 1,
+      "hash": "d60b48a84e52b7c77dd42ecc3c16be926a49e45e6bd0941fb9aeac48cac3f66f"
+    },
+    {
+      "action": "save_approve",
+      "record_id": "demo_food_rule",
+      "version": 1,
+      "hash": "80fce8ed465974039cc5364d962965b485b0bc22deff812e3f8ae3da546085fb"
+    },
+    {
+      "action": "publish",
+      "release_id": "853e0e39016d4e70ac268eaa7748c6c8",
+      "elapsed_sec": 0.3583766999654472
+    },
+    {
+      "action": "save_approve",
+      "record_id": "demo_nebula",
+      "version": 2,
+      "hash": "d8c024c0e5ebe250ceeacb2cfa410e7a639466616453dae332a9d41d94b03966"
+    },
+    {
+      "action": "publish",
+      "release_id": "3180e9be9883459e95eec010328d0056",
+      "elapsed_sec": 0.26302589988335967
+    },
+    {
+      "action": "publish",
+      "release_id": "e973b0232cbb416a938217dbea825b25",
+      "elapsed_sec": 0.17703670007176697
+    }
+  ],
+  "warmup": {
+    "embedding": {
+      "model": "psu-bge-m3:q8_0",
+      "dimensions": 1024,
+      "num_ctx": 1024
+    },
+    "llm": {
+      "ok": true,
+      "model": "scb10x/typhoon2.5-qwen3-4b",
+      "kind": "knowledge_warmup",
+      "elapsed_ms": 118.97,
+      "response_chars": 2,
+      "done_reason": "stop",
+      "num_ctx": 3072,
+      "load_duration": 9558700,
+      "prompt_eval_duration": 28089000,
+      "eval_duration": 31257000,
+      "health": {
+        "llm_health_enabled": true,
+        "llm_health_status": "ok",
+        "llm_health_failures": 0,
+        "llm_health_failure_scope": "kind_only"
+      }
+    },
+    "elapsed_sec": 0.23560399981215596
+  },
+  "hardware": "name, memory.total [MiB], memory.used [MiB], memory.free [MiB]\r\nNVIDIA GeForce RTX 4050 Laptop GPU, 6141 MiB, 5422 MiB, 499 MiB\r\n",
+  "limitations": [
+    "synthetic development cases, not independent accuracy benchmark",
+    "LLM orders approved extracts; no free paraphrasing",
+    "not the 1600/500 regression suite",
+    "not a concurrent load test; no production rollout",
+    "schema approval is not automatic fact verification"
+  ]
+}

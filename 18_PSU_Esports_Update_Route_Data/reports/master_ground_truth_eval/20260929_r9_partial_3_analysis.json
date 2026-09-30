@@ -1,0 +1,205 @@
+{
+  "new_rows": 5775,
+  "matched": 5775,
+  "transitions": {
+    "pass -> pass": 5128,
+    "fail -> fail": 641,
+    "pass -> fail": 6
+  },
+  "by_domain": {
+    "en/competition_rules": {
+      "count": 500,
+      "r8_pass": 64,
+      "r9_pass": 64
+    },
+    "en/compound_context_boundary": {
+      "count": 250,
+      "r8_pass": 233,
+      "r9_pass": 227
+    },
+    "en/equipment": {
+      "count": 350,
+      "r8_pass": 312,
+      "r9_pass": 312
+    },
+    "en/game_controls": {
+      "count": 650,
+      "r8_pass": 638,
+      "r9_pass": 638
+    },
+    "en/game_detail": {
+      "count": 450,
+      "r8_pass": 446,
+      "r9_pass": 446
+    },
+    "en/games_catalog_availability": {
+      "count": 600,
+      "r8_pass": 600,
+      "r9_pass": 600
+    },
+    "en/live_booking": {
+      "count": 400,
+      "r8_pass": 400,
+      "r9_pass": 400
+    },
+    "en/members_overview_contact": {
+      "count": 250,
+      "r8_pass": 240,
+      "r9_pass": 240
+    },
+    "en/reservation_policy": {
+      "count": 450,
+      "r8_pass": 441,
+      "r9_pass": 441
+    },
+    "en/schedule_calendar": {
+      "count": 350,
+      "r8_pass": 337,
+      "r9_pass": 337
+    },
+    "en/service_fee": {
+      "count": 400,
+      "r8_pass": 379,
+      "r9_pass": 379
+    },
+    "en/studio_rules_penalties": {
+      "count": 350,
+      "r8_pass": 350,
+      "r9_pass": 350
+    },
+    "th/competition_rules": {
+      "count": 65,
+      "r8_pass": 60,
+      "r9_pass": 60
+    },
+    "th/game_detail": {
+      "count": 91,
+      "r8_pass": 87,
+      "r9_pass": 87
+    },
+    "th/schedule_calendar": {
+      "count": 156,
+      "r8_pass": 135,
+      "r9_pass": 135
+    },
+    "th/service_fee": {
+      "count": 213,
+      "r8_pass": 211,
+      "r9_pass": 211
+    },
+    "th/studio_rules_penalties": {
+      "count": 250,
+      "r8_pass": 201,
+      "r9_pass": 201
+    }
+  },
+  "failure_causes": {
+    "status": 576,
+    "route": 124,
+    "none of required alternatives found": 10
+  },
+  "changed_cases": [
+    {
+      "id": "MASTER-GT-EN-04770",
+      "locale": "en",
+      "domain": "compound_context_boundary",
+      "question": "Which PC is available now",
+      "change": "pass -> fail",
+      "r8_route": "schedule",
+      "r9_route": "schedule",
+      "r8_mode": "pipeline:live_booking_status_unavailable",
+      "r9_mode": "pipeline:live_booking_status_fast_path",
+      "r8_failures": [],
+      "r9_failures": [
+        "status expected safe_no_answer, got answer"
+      ],
+      "r8_answer": "For 2026-09-28 (Asia/Bangkok), I cannot confirm the live opening or booking status because the Booking Dashboard is unavailable. I will not present a saved schedule as live availability. Please check the reservation page or try again shortly.\nSource: https://esports.computing.psu.ac.th/reservation",
+      "r9_answer": "Live status for 2026-09-29, 01:38 (Asia/Bangkok): the studio is not open for this requested time.\nUpdated: 2026-09-29 01:38:23 (live WordPress booking export)\nSource: https://esports.computing.psu.ac.th/reservation"
+    },
+    {
+      "id": "MASTER-GT-EN-04771",
+      "locale": "en",
+      "domain": "compound_context_boundary",
+      "question": "Which PC is available now? Please answer briefly",
+      "change": "pass -> fail",
+      "r8_route": "schedule",
+      "r9_route": "schedule",
+      "r8_mode": "pipeline:live_booking_status_unavailable",
+      "r9_mode": "pipeline:live_booking_status_fast_path",
+      "r8_failures": [],
+      "r9_failures": [
+        "status expected safe_no_answer, got answer"
+      ],
+      "r8_answer": "For 2026-09-28 (Asia/Bangkok), I cannot confirm the live opening or booking status because the Booking Dashboard is unavailable. I will not present a saved schedule as live availability. Please check the reservation page or try again shortly.\nSource: https://esports.computing.psu.ac.th/reservation",
+      "r9_answer": "Live status for 2026-09-29, 01:38 (Asia/Bangkok): the studio is not open for this requested time.\nUpdated: 2026-09-29 01:38:23 (live WordPress booking export cached briefly)\nSource: https://esports.computing.psu.ac.th/reservation"
+    },
+    {
+      "id": "MASTER-GT-EN-04772",
+      "locale": "en",
+      "domain": "compound_context_boundary",
+      "question": "Which PC is available now? Please use verified information",
+      "change": "pass -> fail",
+      "r8_route": "schedule",
+      "r9_route": "schedule",
+      "r8_mode": "pipeline:live_booking_status_unavailable",
+      "r9_mode": "pipeline:live_booking_status_fast_path",
+      "r8_failures": [],
+      "r9_failures": [
+        "status expected safe_no_answer, got answer"
+      ],
+      "r8_answer": "For 2026-09-28 (Asia/Bangkok), I cannot confirm the live opening or booking status because the Booking Dashboard is unavailable. I will not present a saved schedule as live availability. Please check the reservation page or try again shortly.\nSource: https://esports.computing.psu.ac.th/reservation",
+      "r9_answer": "Live status for 2026-09-29, 01:38 (Asia/Bangkok): the studio is not open for this requested time.\nUpdated: 2026-09-29 01:38:23 (live WordPress booking export cached briefly)\nSource: https://esports.computing.psu.ac.th/reservation"
+    },
+    {
+      "id": "MASTER-GT-EN-04773",
+      "locale": "en",
+      "domain": "compound_context_boundary",
+      "question": "Which PC is available now? I need the official answer",
+      "change": "pass -> fail",
+      "r8_route": "schedule",
+      "r9_route": "schedule",
+      "r8_mode": "pipeline:live_booking_status_unavailable",
+      "r9_mode": "pipeline:live_booking_status_fast_path",
+      "r8_failures": [],
+      "r9_failures": [
+        "status expected safe_no_answer, got answer"
+      ],
+      "r8_answer": "For 2026-09-28 (Asia/Bangkok), I cannot confirm the live opening or booking status because the Booking Dashboard is unavailable. I will not present a saved schedule as live availability. Please check the reservation page or try again shortly.\nSource: https://esports.computing.psu.ac.th/reservation",
+      "r9_answer": "Live status for 2026-09-29, 01:38 (Asia/Bangkok): the studio is not open for this requested time.\nUpdated: 2026-09-29 01:38:23 (live WordPress booking export cached briefly)\nSource: https://esports.computing.psu.ac.th/reservation"
+    },
+    {
+      "id": "MASTER-GT-EN-04774",
+      "locale": "en",
+      "domain": "compound_context_boundary",
+      "question": "Which PC is available now? Could you check this for me",
+      "change": "pass -> fail",
+      "r8_route": "schedule",
+      "r9_route": "schedule",
+      "r8_mode": "pipeline:live_booking_status_unavailable",
+      "r9_mode": "pipeline:live_booking_status_fast_path",
+      "r8_failures": [],
+      "r9_failures": [
+        "status expected safe_no_answer, got answer"
+      ],
+      "r8_answer": "For 2026-09-28 (Asia/Bangkok), I cannot confirm the live opening or booking status because the Booking Dashboard is unavailable. I will not present a saved schedule as live availability. Please check the reservation page or try again shortly.\nSource: https://esports.computing.psu.ac.th/reservation",
+      "r9_answer": "Live status for 2026-09-29, 01:38 (Asia/Bangkok): the studio is not open for this requested time.\nUpdated: 2026-09-29 01:38:23 (live WordPress booking export cached briefly)\nSource: https://esports.computing.psu.ac.th/reservation"
+    },
+    {
+      "id": "MASTER-GT-EN-04775",
+      "locale": "en",
+      "domain": "compound_context_boundary",
+      "question": "Please tell me: Which PC is available now",
+      "change": "pass -> fail",
+      "r8_route": "schedule",
+      "r9_route": "schedule",
+      "r8_mode": "pipeline:live_booking_status_unavailable",
+      "r9_mode": "pipeline:live_booking_status_fast_path",
+      "r8_failures": [],
+      "r9_failures": [
+        "status expected safe_no_answer, got answer"
+      ],
+      "r8_answer": "For 2026-09-28 (Asia/Bangkok), I cannot confirm the live opening or booking status because the Booking Dashboard is unavailable. I will not present a saved schedule as live availability. Please check the reservation page or try again shortly.\nSource: https://esports.computing.psu.ac.th/reservation",
+      "r9_answer": "Live status for 2026-09-29, 01:38 (Asia/Bangkok): the studio is not open for this requested time.\nUpdated: 2026-09-29 01:38:23 (live WordPress booking export cached briefly)\nSource: https://esports.computing.psu.ac.th/reservation"
+    }
+  ]
+}

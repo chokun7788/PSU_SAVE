@@ -1,0 +1,4749 @@
+[
+  {
+    "id": "COMP-RAG-V2-EN-101",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Who decides a disagreement in a Tekken 8 match?",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "dispute",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.3545,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s01_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s02_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s06_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s08_c01",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01",
+      "competition_rules_tekken8_psu_esports_s08_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01",
+      "competition_rules_tekken8_psu_esports_s08_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 39.05,
+          "elapsed_sec": 0.0391,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0392,
+          "global_remaining_sec": 19.9608,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9608,
+          "timing_status": "running",
+          "parts": [
+            "Who decides a disagreement in a Tekken 8 match?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Who decides a disagreement in a Tekken 8 match?"
+          ],
+          "elapsed_ms": 0.4,
+          "elapsed_sec": 0.0004
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.44,
+          "elapsed_sec": 0.0004
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 176.96,
+          "elapsed_sec": 0.177,
+          "route_category": "games",
+          "route_intent": "games_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 10.48,
+          "elapsed_sec": 0.0105,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 354.44,
+          "total_elapsed_sec": 0.3544
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-102",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "How do the Tekken 8 rules resolve a conflict after a match?",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "dispute",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0134,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s01_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s02_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s06_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s08_c01",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01",
+      "competition_rules_tekken8_psu_esports_s08_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01",
+      "competition_rules_tekken8_psu_esports_s08_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.07,
+          "elapsed_sec": 0.0021,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0022,
+          "global_remaining_sec": 19.9978,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9978,
+          "timing_status": "running",
+          "parts": [
+            "How do the Tekken 8 rules resolve a conflict after a match?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How do the Tekken 8 rules resolve a conflict after a match?"
+          ],
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.24,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.52,
+          "elapsed_sec": 0.0005,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 13.33,
+          "total_elapsed_sec": 0.0133
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-103",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "May players use their own equipment in Tekken 8?",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "equipment",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 1.0523,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s01_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s02_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s04_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s07_c01",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s04_c01",
+      "competition_rules_tekken8_psu_esports_s07_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s04_c01",
+      "competition_rules_tekken8_psu_esports_s07_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 3.02,
+          "elapsed_sec": 0.003,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0031,
+          "global_remaining_sec": 19.9969,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9969,
+          "timing_status": "running",
+          "parts": [
+            "May players use their own equipment in Tekken 8?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "May players use their own equipment in Tekken 8?"
+          ],
+          "elapsed_ms": 604.12,
+          "elapsed_sec": 0.6041
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 604.15,
+          "elapsed_sec": 0.6042
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.19,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "tekken8",
+              "title": "TEKKEN 8",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "TEKKEN 8",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_ps5_01_02"
+              ],
+              "zones": [
+                "PC Zone",
+                "PlayStation 5 Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "tekken8",
+                "title": "TEKKEN 8",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "TEKKEN 8",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_ps5_01_02"
+                ],
+                "zones": [
+                  "PC Zone",
+                  "PlayStation 5 Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 9.192,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.29,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 1052.26,
+          "total_elapsed_sec": 1.0523
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-104",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Which devices or settings are allowed for Tekken 8?",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "equipment",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0203,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s01_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s02_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s04_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s07_c01",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s04_c01",
+      "competition_rules_tekken8_psu_esports_s07_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s04_c01",
+      "competition_rules_tekken8_psu_esports_s07_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.79,
+          "elapsed_sec": 0.0028,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0029,
+          "global_remaining_sec": 19.9971,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9971,
+          "timing_status": "running",
+          "parts": [
+            "Which devices or settings are allowed for Tekken 8?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Which devices or settings are allowed for Tekken 8?"
+          ],
+          "elapsed_ms": 0.11,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 4.75,
+          "elapsed_sec": 0.0047,
+          "route_category": "schedule",
+          "route_intent": "schedule_query",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "tekken8",
+              "title": "TEKKEN 8",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "TEKKEN 8",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_ps5_01_02"
+              ],
+              "zones": [
+                "PC Zone",
+                "PlayStation 5 Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "tekken8",
+                "title": "TEKKEN 8",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "TEKKEN 8",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_ps5_01_02"
+                ],
+                "zones": [
+                  "PC Zone",
+                  "PlayStation 5 Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.495,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 20.29,
+          "total_elapsed_sec": 0.0203
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-105",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What equipment rules apply to the Tekken 8 event?",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "equipment",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0139,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s01_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s02_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s04_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s07_c01",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s04_c01",
+      "competition_rules_tekken8_psu_esports_s07_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s04_c01",
+      "competition_rules_tekken8_psu_esports_s07_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 3.31,
+          "elapsed_sec": 0.0033,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0034,
+          "global_remaining_sec": 19.9966,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9966,
+          "timing_status": "running",
+          "parts": [
+            "What equipment rules apply to the Tekken 8 event?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What equipment rules apply to the Tekken 8 event?"
+          ],
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.11,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 13.9,
+          "total_elapsed_sec": 0.0139
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-106",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Are there required in-game settings for Tekken 8?",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "match_settings",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.2043,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s01_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s02_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s04_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s06_c01",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s04_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s04_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 4.62,
+          "elapsed_sec": 0.0046,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0047,
+          "global_remaining_sec": 19.9953,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9953,
+          "timing_status": "running",
+          "parts": [
+            "Are there required in-game settings for Tekken 8?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Are there required in-game settings for Tekken 8?"
+          ],
+          "elapsed_ms": 172.36,
+          "elapsed_sec": 0.1724
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 172.39,
+          "elapsed_sec": 0.1724
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 7.1,
+          "elapsed_sec": 0.0071,
+          "route_category": "games",
+          "route_intent": "games_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "tekken8",
+              "title": "TEKKEN 8",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "TEKKEN 8",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_ps5_01_02"
+              ],
+              "zones": [
+                "PC Zone",
+                "PlayStation 5 Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "tekken8",
+                "title": "TEKKEN 8",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "TEKKEN 8",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_ps5_01_02"
+                ],
+                "zones": [
+                  "PC Zone",
+                  "PlayStation 5 Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.365,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.28,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 204.33,
+          "total_elapsed_sec": 0.2043
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-107",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What default match settings should Tekken 8 players use?",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "match_settings",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0821,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s01_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s02_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s04_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s06_c01",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s04_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s04_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.06,
+          "elapsed_sec": 0.0021,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0021,
+          "global_remaining_sec": 19.9979,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9979,
+          "timing_status": "running",
+          "parts": [
+            "What default match settings should Tekken 8 players use?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What default match settings should Tekken 8 players use?"
+          ],
+          "elapsed_ms": 69.39,
+          "elapsed_sec": 0.0694
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 69.42,
+          "elapsed_sec": 0.0694
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.2,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.31,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 82.03,
+          "total_elapsed_sec": 0.082
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-108",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Which settings must be configured before a Tekken 8 match?",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "match_settings",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0211,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s01_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s02_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s04_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s06_c01",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s04_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s04_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 3.77,
+          "elapsed_sec": 0.0038,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0039,
+          "global_remaining_sec": 19.9961,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9961,
+          "timing_status": "running",
+          "parts": [
+            "Which settings must be configured before a Tekken 8 match?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Which settings must be configured before a Tekken 8 match?"
+          ],
+          "elapsed_ms": 0.17,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.2,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 4.98,
+          "elapsed_sec": 0.005,
+          "route_category": "games",
+          "route_intent": "games_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.3,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 21.04,
+          "total_elapsed_sec": 0.021
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-109",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "How can a team protest a Tekken 8 result?",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "protest_dispute",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0135,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s01_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s02_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s06_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s08_c01",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01",
+      "competition_rules_tekken8_psu_esports_s08_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01",
+      "competition_rules_tekken8_psu_esports_s08_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.49,
+          "elapsed_sec": 0.0015,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0016,
+          "global_remaining_sec": 19.9984,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9984,
+          "timing_status": "running",
+          "parts": [
+            "How can a team protest a Tekken 8 result?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How can a team protest a Tekken 8 result?"
+          ],
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "tekken8",
+              "title": "TEKKEN 8",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "TEKKEN 8",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_ps5_01_02"
+              ],
+              "zones": [
+                "PC Zone",
+                "PlayStation 5 Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "tekken8",
+                "title": "TEKKEN 8",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "TEKKEN 8",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_ps5_01_02"
+                ],
+                "zones": [
+                  "PC Zone",
+                  "PlayStation 5 Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.126,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.53,
+          "elapsed_sec": 0.0005,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 13.45,
+          "total_elapsed_sec": 0.0135
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-110",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "When may we raise an objection in the Tekken 8 event?",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "protest_dispute",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0201,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s01_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s02_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s06_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s08_c01",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01",
+      "competition_rules_tekken8_psu_esports_s08_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01",
+      "competition_rules_tekken8_psu_esports_s08_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.22,
+          "elapsed_sec": 0.0022,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0023,
+          "global_remaining_sec": 19.9977,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9977,
+          "timing_status": "running",
+          "parts": [
+            "When may we raise an objection in the Tekken 8 event?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "When may we raise an objection in the Tekken 8 event?"
+          ],
+          "elapsed_ms": 0.11,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 5.52,
+          "elapsed_sec": 0.0055,
+          "route_category": "games",
+          "route_intent": "games_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "tekken8",
+              "title": "TEKKEN 8",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "TEKKEN 8",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_ps5_01_02"
+              ],
+              "zones": [
+                "PC Zone",
+                "PlayStation 5 Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "tekken8",
+                "title": "TEKKEN 8",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "TEKKEN 8",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_ps5_01_02"
+                ],
+                "zones": [
+                  "PC Zone",
+                  "PlayStation 5 Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.165,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.57,
+          "elapsed_sec": 0.0006,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 20.11,
+          "total_elapsed_sec": 0.0201
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-111",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What is the process for challenging a Tekken 8 decision?",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "protest_dispute",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0193,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s01_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s02_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s06_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s08_c01",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01",
+      "competition_rules_tekken8_psu_esports_s08_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01",
+      "competition_rules_tekken8_psu_esports_s08_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.48,
+          "elapsed_sec": 0.0025,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0026,
+          "global_remaining_sec": 19.9974,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9974,
+          "timing_status": "running",
+          "parts": [
+            "What is the process for challenging a Tekken 8 decision?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What is the process for challenging a Tekken 8 decision?"
+          ],
+          "elapsed_ms": 0.11,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 5.06,
+          "elapsed_sec": 0.0051,
+          "route_category": "games",
+          "route_intent": "games_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "tekken8",
+              "title": "TEKKEN 8",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "TEKKEN 8",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_ps5_01_02"
+              ],
+              "zones": [
+                "PC Zone",
+                "PlayStation 5 Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "tekken8",
+                "title": "TEKKEN 8",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "TEKKEN 8",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_ps5_01_02"
+                ],
+                "zones": [
+                  "PC Zone",
+                  "PlayStation 5 Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.648,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.26,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 19.3,
+          "total_elapsed_sec": 0.0193
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-112",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What does this Tekken 8 rulebook cover?",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "rulebook_identity",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0124,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s01_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s02_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s04_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s06_c01",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s04_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s04_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.73,
+          "elapsed_sec": 0.0017,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0018,
+          "global_remaining_sec": 19.9982,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9982,
+          "timing_status": "running",
+          "parts": [
+            "What does this Tekken 8 rulebook cover?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What does this Tekken 8 rulebook cover?"
+          ],
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.25,
+          "elapsed_sec": 0.0003,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 12.43,
+          "total_elapsed_sec": 0.0124
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-113",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Can you give an overview of the Tekken 8 event rules?",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "rulebook_identity",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0127,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s01_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s02_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s04_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s06_c01",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s04_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s04_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.74,
+          "elapsed_sec": 0.0017,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0018,
+          "global_remaining_sec": 19.9982,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9982,
+          "timing_status": "running",
+          "parts": [
+            "Can you give an overview of the Tekken 8 event rules?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Can you give an overview of the Tekken 8 event rules?"
+          ],
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.18,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 12.65,
+          "total_elapsed_sec": 0.0127
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-114",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Which tournament does this Tekken 8 rulebook apply to?",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "rulebook_identity",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0661,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s01_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s02_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s04_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s06_c01",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s04_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s04_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.02,
+          "elapsed_sec": 0.002,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0021,
+          "global_remaining_sec": 19.9979,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9979,
+          "timing_status": "running",
+          "parts": [
+            "Which tournament does this Tekken 8 rulebook apply to?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Which tournament does this Tekken 8 rulebook apply to?"
+          ],
+          "elapsed_ms": 52.49,
+          "elapsed_sec": 0.0525
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 52.53,
+          "elapsed_sec": 0.0525
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.15,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.55,
+          "elapsed_sec": 0.0006,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 66.02,
+          "total_elapsed_sec": 0.066
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-115",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What conduct is expected from VALORANT players?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "conduct",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.1095,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s11_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s12_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s24_c02",
+      "competition_rules_valorant_psu_phuket_2026_s11_c01",
+      "competition_rules_valorant_psu_phuket_2026_s12_c01",
+      "competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "competition_rules_valorant_psu_phuket_2026_s24_c02"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s11_c01",
+      "competition_rules_valorant_psu_phuket_2026_s12_c01",
+      "competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "competition_rules_valorant_psu_phuket_2026_s24_c02",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.74,
+          "elapsed_sec": 0.0017,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0019,
+          "global_remaining_sec": 19.9981,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9981,
+          "timing_status": "running",
+          "parts": [
+            "What conduct is expected from VALORANT players?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What conduct is expected from VALORANT players?"
+          ],
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.3,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.17,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "VALORANT",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "VALORANT",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.666,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.28,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 109.49,
+          "total_elapsed_sec": 0.1095
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-116",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What behaviour is not allowed during a VALORANT match?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "conduct",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0387,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s11_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s12_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s24_c02",
+      "competition_rules_valorant_psu_phuket_2026_s11_c01",
+      "competition_rules_valorant_psu_phuket_2026_s12_c01",
+      "competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "competition_rules_valorant_psu_phuket_2026_s24_c02"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s11_c01",
+      "competition_rules_valorant_psu_phuket_2026_s12_c01",
+      "competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "competition_rules_valorant_psu_phuket_2026_s24_c02",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 3.33,
+          "elapsed_sec": 0.0033,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0034,
+          "global_remaining_sec": 19.9966,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9966,
+          "timing_status": "running",
+          "parts": [
+            "What behaviour is not allowed during a VALORANT match?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What behaviour is not allowed during a VALORANT match?"
+          ],
+          "elapsed_ms": 0.13,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.16,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 4.93,
+          "elapsed_sec": 0.0049,
+          "route_category": "schedule",
+          "route_intent": "schedule_query",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.43,
+          "elapsed_sec": 0.0004,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 38.65,
+          "total_elapsed_sec": 0.0387
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-117",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What do the VALORANT rules say about player sportsmanship?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "conduct",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.098,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s11_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s12_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s24_c02",
+      "competition_rules_valorant_psu_phuket_2026_s11_c01",
+      "competition_rules_valorant_psu_phuket_2026_s12_c01",
+      "competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "competition_rules_valorant_psu_phuket_2026_s24_c02"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s11_c01",
+      "competition_rules_valorant_psu_phuket_2026_s12_c01",
+      "competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "competition_rules_valorant_psu_phuket_2026_s24_c02",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 5.81,
+          "elapsed_sec": 0.0058,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0059,
+          "global_remaining_sec": 19.9941,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9941,
+          "timing_status": "running",
+          "parts": [
+            "What do the VALORANT rules say about player sportsmanship?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What do the VALORANT rules say about player sportsmanship?"
+          ],
+          "elapsed_ms": 0.48,
+          "elapsed_sec": 0.0005
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.54,
+          "elapsed_sec": 0.0005
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.24,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.31,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 97.99,
+          "total_elapsed_sec": 0.098
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-118",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "May players use their own equipment in VALORANT?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "equipment",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0329,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s01_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s07_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s16_c01",
+      "competition_rules_valorant_psu_phuket_2026_s01_c01",
+      "competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "competition_rules_valorant_psu_phuket_2026_s07_c01",
+      "competition_rules_valorant_psu_phuket_2026_s16_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s01_c01",
+      "competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "competition_rules_valorant_psu_phuket_2026_s07_c01",
+      "competition_rules_valorant_psu_phuket_2026_s16_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.93,
+          "elapsed_sec": 0.0019,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.002,
+          "global_remaining_sec": 19.998,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.998,
+          "timing_status": "running",
+          "parts": [
+            "May players use their own equipment in VALORANT?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "May players use their own equipment in VALORANT?"
+          ],
+          "elapsed_ms": 0.3,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.33,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.15,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "VALORANT",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "VALORANT",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 0.966,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.33,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 32.86,
+          "total_elapsed_sec": 0.0329
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-119",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Which devices or settings are allowed for VALORANT?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "equipment",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0286,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s01_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s07_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s16_c01",
+      "competition_rules_valorant_psu_phuket_2026_s01_c01",
+      "competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "competition_rules_valorant_psu_phuket_2026_s07_c01",
+      "competition_rules_valorant_psu_phuket_2026_s16_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s01_c01",
+      "competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "competition_rules_valorant_psu_phuket_2026_s07_c01",
+      "competition_rules_valorant_psu_phuket_2026_s16_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.85,
+          "elapsed_sec": 0.0018,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0019,
+          "global_remaining_sec": 19.9981,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9981,
+          "timing_status": "running",
+          "parts": [
+            "Which devices or settings are allowed for VALORANT?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Which devices or settings are allowed for VALORANT?"
+          ],
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 4.04,
+          "elapsed_sec": 0.004,
+          "route_category": "schedule",
+          "route_intent": "schedule_query",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "VALORANT",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "VALORANT",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 0.934,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.29,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 28.54,
+          "total_elapsed_sec": 0.0285
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-120",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What equipment rules apply to the VALORANT event?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "equipment",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0229,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s01_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s07_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s16_c01",
+      "competition_rules_valorant_psu_phuket_2026_s01_c01",
+      "competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "competition_rules_valorant_psu_phuket_2026_s07_c01",
+      "competition_rules_valorant_psu_phuket_2026_s16_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s01_c01",
+      "competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "competition_rules_valorant_psu_phuket_2026_s07_c01",
+      "competition_rules_valorant_psu_phuket_2026_s16_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.64,
+          "elapsed_sec": 0.0016,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0017,
+          "global_remaining_sec": 19.9983,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9983,
+          "timing_status": "running",
+          "parts": [
+            "What equipment rules apply to the VALORANT event?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What equipment rules apply to the VALORANT event?"
+          ],
+          "elapsed_ms": 0.09,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.11,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.13,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.28,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 22.93,
+          "total_elapsed_sec": 0.0229
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-121",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What fair-play rules apply to VALORANT?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "fair_play_conduct",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.025,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": false,
+    "evidence_alignment": "none",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s11_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s12_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s24_c02",
+      "competition_rules_valorant_psu_phuket_2026_s11_c01",
+      "competition_rules_valorant_psu_phuket_2026_s12_c01",
+      "competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "competition_rules_valorant_psu_phuket_2026_s24_c02"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s11_c01",
+      "competition_rules_valorant_psu_phuket_2026_s12_c01",
+      "competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "competition_rules_valorant_psu_phuket_2026_s24_c02",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.38,
+          "elapsed_sec": 0.0014,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0014,
+          "global_remaining_sec": 19.9986,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9985,
+          "timing_status": "running",
+          "parts": [
+            "What fair-play rules apply to VALORANT?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What fair-play rules apply to VALORANT?"
+          ],
+          "elapsed_ms": 0.28,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.3,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.15,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.28,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 24.99,
+          "total_elapsed_sec": 0.025
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-122",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Which unsporting behaviours are prohibited in VALORANT?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "fair_play_conduct",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0333,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": false,
+    "evidence_alignment": "none",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s11_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s12_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s24_c02",
+      "competition_rules_valorant_psu_phuket_2026_s11_c01",
+      "competition_rules_valorant_psu_phuket_2026_s12_c01",
+      "competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "competition_rules_valorant_psu_phuket_2026_s24_c02"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s11_c01",
+      "competition_rules_valorant_psu_phuket_2026_s12_c01",
+      "competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "competition_rules_valorant_psu_phuket_2026_s24_c02",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.94,
+          "elapsed_sec": 0.0019,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.002,
+          "global_remaining_sec": 19.998,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.998,
+          "timing_status": "running",
+          "parts": [
+            "Which unsporting behaviours are prohibited in VALORANT?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Which unsporting behaviours are prohibited in VALORANT?"
+          ],
+          "elapsed_ms": 0.22,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.26,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 5.0,
+          "elapsed_sec": 0.005,
+          "route_category": "games",
+          "route_intent": "games_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "VALORANT",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "VALORANT",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 2.311,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.35,
+          "elapsed_sec": 0.0004,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 33.28,
+          "total_elapsed_sec": 0.0333
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-123",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Where can I check the sportsmanship rules for VALORANT?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "fair_play_conduct",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0276,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": false,
+    "evidence_alignment": "none",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s11_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s12_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s24_c02",
+      "competition_rules_valorant_psu_phuket_2026_s11_c01",
+      "competition_rules_valorant_psu_phuket_2026_s12_c01",
+      "competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "competition_rules_valorant_psu_phuket_2026_s24_c02"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s11_c01",
+      "competition_rules_valorant_psu_phuket_2026_s12_c01",
+      "competition_rules_valorant_psu_phuket_2026_s17_c01",
+      "competition_rules_valorant_psu_phuket_2026_s24_c02",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.34,
+          "elapsed_sec": 0.0023,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0024,
+          "global_remaining_sec": 19.9976,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9976,
+          "timing_status": "running",
+          "parts": [
+            "Where can I check the sportsmanship rules for VALORANT?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Where can I check the sportsmanship rules for VALORANT?"
+          ],
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.16,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.28,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 27.63,
+          "total_elapsed_sec": 0.0276
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-124",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "How should players contact officials during a VALORANT match?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "in_match_operations",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0285,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": false,
+    "evidence_alignment": "none",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s01_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s03_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s16_c01",
+      "competition_rules_valorant_psu_phuket_2026_s01_c01",
+      "competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "competition_rules_valorant_psu_phuket_2026_s03_c01",
+      "competition_rules_valorant_psu_phuket_2026_s16_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s01_c01",
+      "competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "competition_rules_valorant_psu_phuket_2026_s03_c01",
+      "competition_rules_valorant_psu_phuket_2026_s16_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.13,
+          "elapsed_sec": 0.0021,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0022,
+          "global_remaining_sec": 19.9978,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9978,
+          "timing_status": "running",
+          "parts": [
+            "How should players contact officials during a VALORANT match?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How should players contact officials during a VALORANT match?"
+          ],
+          "elapsed_ms": 0.3,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.33,
+          "elapsed_sec": 0.0003
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.24,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.29,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 28.47,
+          "total_elapsed_sec": 0.0285
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-125",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What is the in-match procedure for VALORANT?",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "in_match_operations",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0283,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": false,
+    "evidence_alignment": "none",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s01_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s03_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s16_c01",
+      "competition_rules_valorant_psu_phuket_2026_s01_c01",
+      "competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "competition_rules_valorant_psu_phuket_2026_s03_c01",
+      "competition_rules_valorant_psu_phuket_2026_s16_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s01_c01",
+      "competition_rules_valorant_psu_phuket_2026_s02_c01",
+      "competition_rules_valorant_psu_phuket_2026_s03_c01",
+      "competition_rules_valorant_psu_phuket_2026_s16_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "answer": "Verified VALORANT competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.53,
+          "elapsed_sec": 0.0015,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0016,
+          "global_remaining_sec": 19.9984,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9984,
+          "timing_status": "running",
+          "parts": [
+            "What is the in-match procedure for VALORANT?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What is the in-match procedure for VALORANT?"
+          ],
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 4.63,
+          "elapsed_sec": 0.0046,
+          "route_category": "games",
+          "route_intent": "games_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.28,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 28.26,
+          "total_elapsed_sec": 0.0283
+        }
+      }
+    ]
+  }
+]

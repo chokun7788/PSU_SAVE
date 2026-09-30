@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_refund_policy",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "คืนเงิน",
+      "ได้เงินคืน",
+      "ขอเงินคืน"
+    ],
+    "en": [
+      "refund"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "refund_policy",
+    "patterns": [
+      "คืนเงิน",
+      "refund",
+      "ได้เงินคืน",
+      "ขอเงินคืน"
+    ],
+    "priority": 100
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "โดยทั่วไปไม่มีการคืนเงิน ยกเว้นกรณีที่ศูนย์เป็นฝ่ายผิดพลาด เช่น อุปกรณ์ขัดข้อง หรือมีเหตุสุดวิสัยที่ทำให้ศูนย์ต้องปิดให้บริการ"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "In general, refunds are not issued except when the studio is at fault, such as equipment malfunction or force majeure that causes the center to close."
+      },
+      "source_sha256": "a3751ec6aa56d7bdbb705c7839db5216d56b5d09c89663f1742dbf0af7267e06",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/reservation_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "curated_refund_policy"
+    ],
+    "last_verified_at": ""
+  }
+}

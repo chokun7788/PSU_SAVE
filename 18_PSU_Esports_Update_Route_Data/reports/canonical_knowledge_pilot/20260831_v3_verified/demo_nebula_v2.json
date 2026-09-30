@@ -1,0 +1,82 @@
+{
+  "schema_version": "2.1-pilot",
+  "record_id": "demo_nebula",
+  "type": "game",
+  "title": "Nebula Fields",
+  "aliases": [
+    "Nebula Fields",
+    "เนบิวลาฟิลด์"
+  ],
+  "entity_id": "game:demo_nebula",
+  "scope": {
+    "branch": "psu_phuket",
+    "access": "public"
+  },
+  "effective_from": "2026-01-01T00:00:00+07:00",
+  "valid_until": null,
+  "facts": [
+    {
+      "fact_id": "genre",
+      "predicate": "genre",
+      "value": "Puzzle",
+      "claim_status": "verified",
+      "source_refs": [
+        {
+          "source_id": "demo_guide",
+          "quote": "แนวเกม: Puzzle"
+        }
+      ]
+    },
+    {
+      "fact_id": "availability",
+      "predicate": "service_availability",
+      "value": null,
+      "claim_status": "unknown",
+      "source_refs": []
+    }
+  ],
+  "sections": [
+    {
+      "section_id": "overview",
+      "facet": "overview",
+      "heading": "ลักษณะเกม",
+      "text": "เกมทดสอบจำลองการสำรวจดาวและสร้างฐาน เป็นข้อมูลสมมติสำหรับทดสอบระบบเท่านั้น",
+      "depends_on": [],
+      "source_refs": [
+        {
+          "source_id": "demo_guide",
+          "quote": "เกมทดสอบจำลองการสำรวจดาวและสร้างฐาน เป็นข้อมูลสมมติสำหรับทดสอบระบบเท่านั้น"
+        }
+      ]
+    },
+    {
+      "section_id": "how",
+      "facet": "how_to_play",
+      "heading": "วิธีเริ่มเล่น",
+      "text": "เลือกโหมดสำรวจ เก็บทรัพยากร แล้วสร้างฐานบนดาวจำลอง",
+      "depends_on": [
+        "overview"
+      ],
+      "source_refs": [
+        {
+          "source_id": "demo_guide",
+          "quote": "เลือกโหมดสำรวจ เก็บทรัพยากร แล้วสร้างฐานบนดาวจำลอง"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "demo_guide",
+      "title": "คู่มือสมมติ",
+      "url": "demo://nebula-guide",
+      "snapshot_text": "แนวเกม: Puzzle\nเกมทดสอบจำลองการสำรวจดาวและสร้างฐาน เป็นข้อมูลสมมติสำหรับทดสอบระบบเท่านั้น\nเลือกโหมดสำรวจ เก็บทรัพยากร แล้วสร้างฐานบนดาวจำลอง",
+      "snapshot_sha256": "b0f707630e4702c94ead86f358ea85f9b79082d27edbfb935ded15cb02d35568",
+      "authority": [
+        "genre",
+        "overview",
+        "how_to_play"
+      ]
+    }
+  ]
+}

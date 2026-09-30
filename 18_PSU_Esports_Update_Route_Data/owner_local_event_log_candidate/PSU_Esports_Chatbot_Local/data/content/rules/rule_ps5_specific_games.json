@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_ps5_specific_games",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "เพลย์.*tekken",
+      "เพลย์ห้า.*tekken",
+      "เพลย์.*สไปเดอร์",
+      "เพลย์.*ฟอร์ทไนท์"
+    ],
+    "en": [
+      "ps5.*spider",
+      "playstation.*spider",
+      "spider-man",
+      "spider man",
+      "ps5.*fortnite",
+      "playstation.*fortnite",
+      "fortnite",
+      "ps5.*god of war",
+      "playstation.*god of war",
+      "god of war",
+      "ps5.*tekken",
+      "playstation.*tekken"
+    ]
+  },
+  "facts": {
+    "route_category": "games",
+    "intent": "ps5_specific_games",
+    "patterns": [
+      "ps5.*spider",
+      "playstation.*spider",
+      "spider-man",
+      "spider man",
+      "ps5.*fortnite",
+      "playstation.*fortnite",
+      "fortnite",
+      "ps5.*god of war",
+      "playstation.*god of war",
+      "god of war",
+      "ps5.*tekken",
+      "playstation.*tekken",
+      "เพลย์.*tekken",
+      "เพลย์ห้า.*tekken",
+      "เพลย์.*สไปเดอร์",
+      "เพลย์.*ฟอร์ทไนท์"
+    ],
+    "priority": 125
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "เกม PlayStation 5 ที่มีในรายการรวมถึง Marvel’s Spider-Man 2, Fortnite, God of War Ragnarok และ TEKKEN 8"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "The PlayStation 5 list includes Marvel's Spider-Man 2, Fortnite, God of War Ragnarok, and TEKKEN 8."
+      },
+      "source_sha256": "996d59b5fe11dea54c8ebc9acb3bb765b191a17c0f875a3f6fb7177baf6422ba",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/games_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_games_ps5",
+      "reservation-service-ps5"
+    ],
+    "last_verified_at": ""
+  }
+}

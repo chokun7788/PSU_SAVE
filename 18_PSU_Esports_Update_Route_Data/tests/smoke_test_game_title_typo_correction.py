@@ -167,7 +167,7 @@ def main() -> int:
     )
     check_answer(
         "overcookd 2 มีปุ่มอะไรบ้าง",
-        ["Overcooked 2", "มีอยู่ในรายการเกมที่ยืนยันได้", "Nintendo Switch Zone", "ยังไม่พบข้อมูลปุ่มควบคุม"],
+        ["Overcooked! 2", "PlayStation / PS5", "Left Stick", "Square", "Cross"],
     )
     check_answer(
         "Mario มีข้อมูลไหม",

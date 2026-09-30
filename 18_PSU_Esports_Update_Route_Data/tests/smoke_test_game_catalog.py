@@ -59,6 +59,19 @@ def main() -> int:
             raise AssertionError(f"{question}: should answer all games, not only PS5\n{result.answer}")
     print("OK game catalog: explicit all/current games")
 
+    result = answer_question_pipeline_debug("ตอนนี้มีเกมออะไรบ้าง", experimental_allow_llm=True)
+    assert_contains(
+        result.answer,
+        ["ตอนนี้มีเกมที่ยืนยันได้ทั้งหมด 42 เกมครับ", "PC Zone (6 เกม)", "VR Zone (4 เกม)"],
+        "Thai game catalog surface variant",
+    )
+    if result.mode != "pipeline:structured_games_catalog" or result.route.category != "games":
+        raise AssertionError(f"surface variant should resolve to games catalog, got {result.mode}/{result.route.category}")
+    intent_trace = next((item for item in result.trace if item.stage == "universal_intent"), None)
+    if intent_trace is None or not bool(intent_trace.metadata.get("llm_attempted")):
+        raise AssertionError("surface variant should receive bounded Local LLM intent review")
+    print("OK game catalog: Thai repeated-character variant uses LLM review")
+
     result = answer_question_pipeline_debug("PS5 มีเกมอะไรบ้าง")
     assert_contains(
         result.answer,

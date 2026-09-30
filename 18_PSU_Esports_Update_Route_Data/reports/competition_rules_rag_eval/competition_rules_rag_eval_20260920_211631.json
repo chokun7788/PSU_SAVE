@@ -1,0 +1,292 @@
+[
+  {
+    "id": "COMP-RAG-TH-001",
+    "locale": "th",
+    "case_type": "facet_targeted_retrieval",
+    "question": "กติกา CS2 เรื่องรูปแบบการแข่งขัน ว่าอย่างไร",
+    "expected_game_id": "cs2",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026"
+    ],
+    "expected_facet": "competition_format",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rules_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_fact_card",
+    "elapsed_sec": 2.3641,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "legacy_fact_id",
+    "returned_evidence_ids": [
+      "cs2_format_single_elim_bo3"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "คำตอบ: Counter-Strike 2: CS2 เป็น Single Elimination และรอบรองชนะเลิศ/รอบชิงชนะเลิศเป็น Best of 3 (BO3)\n\nหลักฐานจากกติกา:\n•    เอกสารระบุรูปแบบทัวร์นาเมนต์ Single Elimination และกำหนดรอบรอง/รอบชิงเป็น BO3\n\nอ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": null
+  },
+  {
+    "id": "COMP-RAG-TH-261",
+    "locale": "th",
+    "case_type": "adversarial_safe_outcome",
+    "question": "Dota 2 แข่งตามกติกาศูนย์นี้ pause ได้กี่ครั้ง",
+    "expected_game_id": "dota2",
+    "expected_rulebook_ids": [],
+    "expected_facet": "",
+    "expected_answer_status": "no_answer_expected",
+    "actual_category": "events_news",
+    "actual_intent": "news_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:studio_rules_overview_fast_path",
+    "elapsed_sec": 0.467,
+    "validation_ok": true,
+    "route_ok": false,
+    "outcome_ok": false,
+    "target_ok": true,
+    "evidence_ok": null,
+    "evidence_alignment": "none",
+    "returned_evidence_ids": [
+      "Reservation"
+    ],
+    "returned_rulebook_refs": [
+      "Reservation",
+      "https://esports.computing.psu.ac.th/reservation"
+    ],
+    "passed": false,
+    "failures": [
+      "route expected ['competition_rules', 'no_answer'], got events_news",
+      "outcome expected no_answer_expected, got answer",
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "answer": "กติกาการใช้บริการในศูนย์โดยสรุปครับ\n•    ฝากสัมภาระก่อนเข้าใช้บริการ และศูนย์ไม่รับผิดชอบทรัพย์สินสูญหาย\n•    รับประทานอาหารและเครื่องดื่มได้เฉพาะพื้นที่ที่กำหนด\n•    คืนอุปกรณ์และแผ่นเกมหลังใช้งานเสร็จ\n•    งดส่งเสียงดังเกินควร และห้ามพูดจาดูหมิ่นหรือเสียดสีผู้อื่น\n•    ห้ามเคลื่อนย้ายอุปกรณ์/สิ่งของโดยไม่ได้รับอนุญาต และห้ามใช้ปลั๊กไฟส่วนตัวโดยไม่ได้รับอนุญาต\n•    ห้ามสูบบุหรี่ เสพสารเสพติด ดื่มแอลกอฮอล์ พกอาวุธ ทะเลาะวิวาท หรือเล่นการพนัน\n•    หากทำอุปกรณ์เสียหาย อาจมีค่าปรับ/ค่าซ่อมหรือชดเชยตามระดับความเสียหาย\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "trace": null
+  },
+  {
+    "id": "COMP-RAG-TH-262",
+    "locale": "th",
+    "case_type": "adversarial_safe_outcome",
+    "question": "กติกา Free Fire ของรายการนี้เรื่องโกงว่าไง",
+    "expected_game_id": "freefire",
+    "expected_rulebook_ids": [],
+    "expected_facet": "",
+    "expected_answer_status": "no_answer_expected",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rules_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_fact_card",
+    "elapsed_sec": 6.4822,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": false,
+    "target_ok": true,
+    "evidence_ok": null,
+    "evidence_alignment": "none",
+    "returned_evidence_ids": [
+      "cs2_pause_policy"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "outcome expected no_answer_expected, got answer",
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "answer": "คำตอบ: Counter-Strike 2: ต่างกันคือ CS2 Technical Pause ขอได้ทีมละ 2 ครั้ง รวมไม่เกิน 10 นาที ส่วน Tactical Timeout ขอได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที\n\nหลักฐานจากกติกา:\n•    เอกสารระบุ Technical Pause ได้ทีมละ 2 ครั้ง ระยะเวลารวมไม่เกิน 10 นาที และ Tactical Timeout ได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที\n\nอ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": null
+  },
+  {
+    "id": "COMP-RAG-TH-263",
+    "locale": "th",
+    "case_type": "cross_rulebook_comparison",
+    "question": "CS2 กับ VALORANT เรื่อง technical pause ต่างกันยังไง",
+    "expected_game_id": "multi",
+    "expected_rulebook_ids": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "pause_timeout",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rules_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_fact_card",
+    "elapsed_sec": 0.2946,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": false,
+    "evidence_ok": false,
+    "evidence_alignment": "none",
+    "returned_evidence_ids": [
+      "cs2_pause_policy"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "missing rulebook target(s): ['competition_rules_cs2_psu_phuket_2026', 'competition_rules_valorant_psu_phuket_2026']",
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "answer": "คำตอบ: Counter-Strike 2: ต่างกันคือ CS2 Technical Pause ขอได้ทีมละ 2 ครั้ง รวมไม่เกิน 10 นาที ส่วน Tactical Timeout ขอได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที\n\nหลักฐานจากกติกา:\n•    เอกสารระบุ Technical Pause ได้ทีมละ 2 ครั้ง ระยะเวลารวมไม่เกิน 10 นาที และ Tactical Timeout ได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที\n\nอ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": null
+  },
+  {
+    "id": "COMP-RAG-TH-115",
+    "locale": "th",
+    "case_type": "facet_targeted_retrieval",
+    "question": "กติกา RoV เรื่องรูปแบบการแข่งขัน ว่าอย่างไร",
+    "expected_game_id": "rov",
+    "expected_rulebook_ids": [
+      "competition_rules_rov_blueket_2025_men"
+    ],
+    "expected_facet": "competition_format",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rules_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_fact_card",
+    "elapsed_sec": 0.3566,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "legacy_fact_id",
+    "returned_evidence_ids": [
+      "rov_format_bo3_all_rounds"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_rov_blueket_2025_men",
+      "competition_rules_rov_blueket_2025_men_s05_c01",
+      "local://competition_rules/competition_rules_rov_blueket_2025_men"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "คำตอบ: Arena of Valor (RoV): RoV รายการ Blueket Games 2025 ประเภททีมชาย แข่ง Best of 3 (BO3) ทุกรอบ\n\nหลักฐานจากกติกา:\n•    เอกสารหัวข้อ 3. รูปแบบการแข่งขัน ระบุว่าแข่งแบบออฟไลน์ และแข่ง Best of 3 (BO3) ทุกรอบ\n\nอ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "trace": null
+  },
+  {
+    "id": "COMP-RAG-TH-259",
+    "locale": "th",
+    "case_type": "adversarial_safe_outcome",
+    "question": "กติกา timeout เป็นยังไง",
+    "expected_game_id": "",
+    "expected_rulebook_ids": [],
+    "expected_facet": "",
+    "expected_answer_status": "clarification_required",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rules_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_fact_card",
+    "elapsed_sec": 5.7774,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": false,
+    "target_ok": true,
+    "evidence_ok": null,
+    "evidence_alignment": "none",
+    "returned_evidence_ids": [
+      "cs2_pause_policy"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "outcome expected clarification_required, got answer",
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "answer": "คำตอบ: Counter-Strike 2: ต่างกันคือ CS2 Technical Pause ขอได้ทีมละ 2 ครั้ง รวมไม่เกิน 10 นาที ส่วน Tactical Timeout ขอได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที\n\nหลักฐานจากกติกา:\n•    เอกสารระบุ Technical Pause ได้ทีมละ 2 ครั้ง ระยะเวลารวมไม่เกิน 10 นาที และ Tactical Timeout ได้ทีมละ 4 ครั้ง ครั้งละ 30 วินาที\n\nอ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "trace": null
+  },
+  {
+    "id": "COMP-RAG-TH-163",
+    "locale": "th",
+    "case_type": "facet_targeted_retrieval",
+    "question": "กติกา TEKKEN 8 เรื่องรูปแบบการแข่งขัน ว่าอย่างไร",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "competition_format",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rules_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_fact_card",
+    "elapsed_sec": 0.68,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": false,
+    "evidence_alignment": "none",
+    "returned_evidence_ids": [
+      "tekken8_format_ps5_1v1"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": false,
+    "failures": [
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "answer": "คำตอบ: Tekken 8 เป็นการแข่งขันออฟไลน์แบบ 1v1 บน PlayStation 5 ใช้รูปแบบ First to 2 (FT2), Round 3 และเวลา 60 วินาที\n\nหลักฐานจากกติกา:\n•    เอกสารระบุแข่งขันแบบ Offline, Platform PlayStation 5, 1v1, FT2, R3 และตั้งเวลา 60 วินาที\n\nอ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": null
+  },
+  {
+    "id": "COMP-RAG-TH-205",
+    "locale": "th",
+    "case_type": "facet_targeted_retrieval",
+    "question": "กติกา VALORANT เรื่องมารยาทและพฤติกรรมผู้เล่น ว่าอย่างไร",
+    "expected_game_id": "valorant",
+    "expected_rulebook_ids": [
+      "competition_rules_valorant_psu_phuket_2026"
+    ],
+    "expected_facet": "conduct",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rules_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:hybrid_guarded_rerank",
+    "elapsed_sec": 6.3493,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": false,
+    "evidence_alignment": "none",
+    "returned_evidence_ids": [
+      "competition.competition_rules_valorant_psu_phuket_2026::th::section:2",
+      "competition.competition_rules_valorant_psu_phuket_2026::th::section:3",
+      "competition.competition_rules_valorant_psu_phuket_2026::th::section:8",
+      "competition_rules_valorant_psu_phuket_2026_s03_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition.competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s03_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "answer": "คำตอบ: * เวลาการรายงานตัว ต้องมาถึงสนามแข่งไม่น้อยกว่า 30 นาที ก่อนเวลาแข่ง\n\nรายละเอียดที่เกี่ยวข้อง:\n•    เอเจนท์ใหม่ จะถูกจำกัดห้ามใช้ประมาณ 2 สัปดาห์ หลังเปิดให้เล่นในโหมด Competitive\n•    แผนที่ใหม่ จะถูกจำกัดห้ามใช้ประมาณ 4 สัปดาห์ หลังเปิดให้เล่นในโหมด Competitive\n•    ผู้เล่นต้อง ปิด (OFF) การแสดงผลเลือด (Blood) และศพ (Bodies)\n•    ห้ามแสดงกราฟ FPS หรือ Latency ระหว่างการแข่งขัน\n•    จำนวนบุคลากร ในช่วงเตรียมตัว (Match Prep) มีผู้เล่นได้ไม่เกิน 6 คน\n\nอ้างอิงจากกติกา: VALORANT\nแหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": null
+  }
+]

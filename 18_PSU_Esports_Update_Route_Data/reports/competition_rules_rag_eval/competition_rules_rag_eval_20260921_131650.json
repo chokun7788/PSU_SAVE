@@ -1,0 +1,4798 @@
+[
+  {
+    "id": "COMP-RAG-V2-EN-076",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "When may a Arena of Valor match be paused?",
+    "expected_game_id": "rov",
+    "expected_rulebook_ids": [
+      "competition_rules_rov_blueket_2025_men"
+    ],
+    "expected_facet": "pause_timeout",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.2966,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_rov_blueket_2025_men_s06_c01",
+      "canonical::competition_rules_rov_blueket_2025_men_s06_c03",
+      "competition_rules_rov_blueket_2025_men_s06_c01",
+      "competition_rules_rov_blueket_2025_men_s06_c03"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_rov_blueket_2025_men",
+      "competition_rules_rov_blueket_2025_men_s06_c01",
+      "competition_rules_rov_blueket_2025_men_s06_c03",
+      "local://competition_rules/competition_rules_rov_blueket_2025_men"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 6.4,
+          "elapsed_sec": 0.0064,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0065,
+          "global_remaining_sec": 19.9935,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9935,
+          "timing_status": "running",
+          "parts": [
+            "When may a Arena of Valor match be paused?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "When may a Arena of Valor match be paused?"
+          ],
+          "elapsed_ms": 0.54,
+          "elapsed_sec": 0.0005
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.58,
+          "elapsed_sec": 0.0006
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.95,
+          "elapsed_sec": 0.0009,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 14.75,
+          "elapsed_sec": 0.0148,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 296.58,
+          "total_elapsed_sec": 0.2966
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-077",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "How do timeout and technical pause rules work in Arena of Valor?",
+    "expected_game_id": "rov",
+    "expected_rulebook_ids": [
+      "competition_rules_rov_blueket_2025_men"
+    ],
+    "expected_facet": "pause_timeout",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0156,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_rov_blueket_2025_men_s06_c01",
+      "canonical::competition_rules_rov_blueket_2025_men_s06_c03",
+      "competition_rules_rov_blueket_2025_men_s06_c01",
+      "competition_rules_rov_blueket_2025_men_s06_c03"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_rov_blueket_2025_men",
+      "competition_rules_rov_blueket_2025_men_s06_c01",
+      "competition_rules_rov_blueket_2025_men_s06_c03",
+      "local://competition_rules/competition_rules_rov_blueket_2025_men"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.92,
+          "elapsed_sec": 0.0019,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.002,
+          "global_remaining_sec": 19.998,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.998,
+          "timing_status": "running",
+          "parts": [
+            "How do timeout and technical pause rules work in Arena of Valor?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How do timeout and technical pause rules work in Arena of Valor?"
+          ],
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.15,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.16,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.29,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 15.59,
+          "total_elapsed_sec": 0.0156
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-078",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What should we do if a Arena of Valor match needs to stop mid-game?",
+    "expected_game_id": "rov",
+    "expected_rulebook_ids": [
+      "competition_rules_rov_blueket_2025_men"
+    ],
+    "expected_facet": "pause_timeout",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.7744,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_rov_blueket_2025_men_s06_c01",
+      "canonical::competition_rules_rov_blueket_2025_men_s06_c03",
+      "competition_rules_rov_blueket_2025_men_s06_c01",
+      "competition_rules_rov_blueket_2025_men_s06_c03"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_rov_blueket_2025_men",
+      "competition_rules_rov_blueket_2025_men_s06_c01",
+      "competition_rules_rov_blueket_2025_men_s06_c03",
+      "local://competition_rules/competition_rules_rov_blueket_2025_men"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 12.84,
+          "elapsed_sec": 0.0128,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0129,
+          "global_remaining_sec": 19.9871,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9871,
+          "timing_status": "running",
+          "parts": [
+            "What should we do if a Arena of Valor match needs to stop mid-game?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What should we do if a Arena of Valor match needs to stop mid-game?"
+          ],
+          "elapsed_ms": 572.44,
+          "elapsed_sec": 0.5724
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 572.48,
+          "elapsed_sec": 0.5725
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 174.9,
+          "elapsed_sec": 0.1749,
+          "route_category": "general",
+          "route_intent": "unknown_domain_query",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 774.42,
+          "total_elapsed_sec": 0.7744
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-079",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "How do players check in for Arena of Valor?",
+    "expected_game_id": "rov",
+    "expected_rulebook_ids": [
+      "competition_rules_rov_blueket_2025_men"
+    ],
+    "expected_facet": "pre_match_on_site",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.4535,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_rov_blueket_2025_men_s02_c01",
+      "canonical::competition_rules_rov_blueket_2025_men_s04_c01",
+      "competition_rules_rov_blueket_2025_men_s02_c01",
+      "competition_rules_rov_blueket_2025_men_s04_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_rov_blueket_2025_men",
+      "competition_rules_rov_blueket_2025_men_s02_c01",
+      "competition_rules_rov_blueket_2025_men_s04_c01",
+      "local://competition_rules/competition_rules_rov_blueket_2025_men"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.36,
+          "elapsed_sec": 0.0014,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0014,
+          "global_remaining_sec": 19.9986,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9986,
+          "timing_status": "running",
+          "parts": [
+            "How do players check in for Arena of Valor?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How do players check in for Arena of Valor?",
+            "how do players checkin for arena of valor?"
+          ],
+          "elapsed_ms": 20.14,
+          "elapsed_sec": 0.0201
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 20.18,
+          "elapsed_sec": 0.0202
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.18,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Valo",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Valo",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 10.006,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.29,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 453.52,
+          "total_elapsed_sec": 0.4535
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-080",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What must players do on site before a Arena of Valor match?",
+    "expected_game_id": "rov",
+    "expected_rulebook_ids": [
+      "competition_rules_rov_blueket_2025_men"
+    ],
+    "expected_facet": "pre_match_on_site",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0404,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_rov_blueket_2025_men_s02_c01",
+      "canonical::competition_rules_rov_blueket_2025_men_s04_c01",
+      "competition_rules_rov_blueket_2025_men_s02_c01",
+      "competition_rules_rov_blueket_2025_men_s04_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_rov_blueket_2025_men",
+      "competition_rules_rov_blueket_2025_men_s02_c01",
+      "competition_rules_rov_blueket_2025_men_s04_c01",
+      "local://competition_rules/competition_rules_rov_blueket_2025_men"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.35,
+          "elapsed_sec": 0.0023,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0024,
+          "global_remaining_sec": 19.9976,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9976,
+          "timing_status": "running",
+          "parts": [
+            "What must players do on site before a Arena of Valor match?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What must players do on site before a Arena of Valor match?"
+          ],
+          "elapsed_ms": 24.78,
+          "elapsed_sec": 0.0248
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 24.82,
+          "elapsed_sec": 0.0248
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.28,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 40.42,
+          "total_elapsed_sec": 0.0404
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-081",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Does the Arena of Valor event have a check-in time or venue requirement?",
+    "expected_game_id": "rov",
+    "expected_rulebook_ids": [
+      "competition_rules_rov_blueket_2025_men"
+    ],
+    "expected_facet": "pre_match_on_site",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0175,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_rov_blueket_2025_men_s02_c01",
+      "canonical::competition_rules_rov_blueket_2025_men_s04_c01",
+      "competition_rules_rov_blueket_2025_men_s02_c01",
+      "competition_rules_rov_blueket_2025_men_s04_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_rov_blueket_2025_men",
+      "competition_rules_rov_blueket_2025_men_s02_c01",
+      "competition_rules_rov_blueket_2025_men_s04_c01",
+      "local://competition_rules/competition_rules_rov_blueket_2025_men"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.23,
+          "elapsed_sec": 0.0022,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0023,
+          "global_remaining_sec": 19.9977,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9977,
+          "timing_status": "running",
+          "parts": [
+            "Does the Arena of Valor event have a check-in time or venue requirement?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Does the Arena of Valor event have a check-in time or venue requirement?",
+            "does the arena of valor event have a checkin time or venue requirement?"
+          ],
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.17,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.16,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Valo",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Valo",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 2.205,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.37,
+          "elapsed_sec": 0.0004,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 17.49,
+          "total_elapsed_sec": 0.0175
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-082",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "How do I register for Arena of Valor?",
+    "expected_game_id": "rov",
+    "expected_rulebook_ids": [
+      "competition_rules_rov_blueket_2025_men"
+    ],
+    "expected_facet": "registration",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0191,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_rov_blueket_2025_men_s03_c01",
+      "canonical::competition_rules_rov_blueket_2025_men_s08_c01",
+      "competition_rules_rov_blueket_2025_men_s03_c01",
+      "competition_rules_rov_blueket_2025_men_s08_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_rov_blueket_2025_men",
+      "competition_rules_rov_blueket_2025_men_s03_c01",
+      "competition_rules_rov_blueket_2025_men_s08_c01",
+      "local://competition_rules/competition_rules_rov_blueket_2025_men"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.28,
+          "elapsed_sec": 0.0013,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0014,
+          "global_remaining_sec": 19.9986,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9986,
+          "timing_status": "running",
+          "parts": [
+            "How do I register for Arena of Valor?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How do I register for Arena of Valor?"
+          ],
+          "elapsed_ms": 0.09,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 4.33,
+          "elapsed_sec": 0.0043,
+          "route_category": "general",
+          "route_intent": "unknown_domain_query",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Valo",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Valo",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 0.894,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.32,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 19.08,
+          "total_elapsed_sec": 0.0191
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-083",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What is needed to submit a Arena of Valor entry?",
+    "expected_game_id": "rov",
+    "expected_rulebook_ids": [
+      "competition_rules_rov_blueket_2025_men"
+    ],
+    "expected_facet": "registration",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0203,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_rov_blueket_2025_men_s03_c01",
+      "canonical::competition_rules_rov_blueket_2025_men_s08_c01",
+      "competition_rules_rov_blueket_2025_men_s03_c01",
+      "competition_rules_rov_blueket_2025_men_s08_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_rov_blueket_2025_men",
+      "competition_rules_rov_blueket_2025_men_s03_c01",
+      "competition_rules_rov_blueket_2025_men_s08_c01",
+      "local://competition_rules/competition_rules_rov_blueket_2025_men"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.67,
+          "elapsed_sec": 0.0027,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0027,
+          "global_remaining_sec": 19.9973,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9973,
+          "timing_status": "running",
+          "parts": [
+            "What is needed to submit a Arena of Valor entry?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What is needed to submit a Arena of Valor entry?"
+          ],
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 4.57,
+          "elapsed_sec": 0.0046,
+          "route_category": "general",
+          "route_intent": "unknown_domain_query",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Valo",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Valo",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.181,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.26,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 20.3,
+          "total_elapsed_sec": 0.0203
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-084",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Until when can a team register for Arena of Valor?",
+    "expected_game_id": "rov",
+    "expected_rulebook_ids": [
+      "competition_rules_rov_blueket_2025_men"
+    ],
+    "expected_facet": "registration",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0159,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_rov_blueket_2025_men_s03_c01",
+      "canonical::competition_rules_rov_blueket_2025_men_s08_c01",
+      "competition_rules_rov_blueket_2025_men_s03_c01",
+      "competition_rules_rov_blueket_2025_men_s08_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_rov_blueket_2025_men",
+      "competition_rules_rov_blueket_2025_men_s03_c01",
+      "competition_rules_rov_blueket_2025_men_s08_c01",
+      "local://competition_rules/competition_rules_rov_blueket_2025_men"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.49,
+          "elapsed_sec": 0.0025,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0026,
+          "global_remaining_sec": 19.9974,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9974,
+          "timing_status": "running",
+          "parts": [
+            "Until when can a team register for Arena of Valor?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Until when can a team register for Arena of Valor?"
+          ],
+          "elapsed_ms": 0.11,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.15,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Valo",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Valo",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.067,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.42,
+          "elapsed_sec": 0.0004,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 15.83,
+          "total_elapsed_sec": 0.0158
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-085",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What does this Arena of Valor rulebook cover?",
+    "expected_game_id": "rov",
+    "expected_rulebook_ids": [
+      "competition_rules_rov_blueket_2025_men"
+    ],
+    "expected_facet": "rulebook_identity",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0122,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_rov_blueket_2025_men_s01_c01",
+      "canonical::competition_rules_rov_blueket_2025_men_s06_c03",
+      "competition_rules_rov_blueket_2025_men_s01_c01",
+      "competition_rules_rov_blueket_2025_men_s06_c03"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_rov_blueket_2025_men",
+      "competition_rules_rov_blueket_2025_men_s01_c01",
+      "competition_rules_rov_blueket_2025_men_s06_c03",
+      "local://competition_rules/competition_rules_rov_blueket_2025_men"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.4,
+          "elapsed_sec": 0.0014,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0015,
+          "global_remaining_sec": 19.9985,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9985,
+          "timing_status": "running",
+          "parts": [
+            "What does this Arena of Valor rulebook cover?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What does this Arena of Valor rulebook cover?"
+          ],
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.11,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.24,
+          "elapsed_sec": 0.0002,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 12.14,
+          "total_elapsed_sec": 0.0121
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-086",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Can you give an overview of the Arena of Valor event rules?",
+    "expected_game_id": "rov",
+    "expected_rulebook_ids": [
+      "competition_rules_rov_blueket_2025_men"
+    ],
+    "expected_facet": "rulebook_identity",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.014,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_rov_blueket_2025_men_s01_c01",
+      "canonical::competition_rules_rov_blueket_2025_men_s06_c03",
+      "competition_rules_rov_blueket_2025_men_s01_c01",
+      "competition_rules_rov_blueket_2025_men_s06_c03"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_rov_blueket_2025_men",
+      "competition_rules_rov_blueket_2025_men_s01_c01",
+      "competition_rules_rov_blueket_2025_men_s06_c03",
+      "local://competition_rules/competition_rules_rov_blueket_2025_men"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.31,
+          "elapsed_sec": 0.0023,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0024,
+          "global_remaining_sec": 19.9976,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9976,
+          "timing_status": "running",
+          "parts": [
+            "Can you give an overview of the Arena of Valor event rules?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Can you give an overview of the Arena of Valor event rules?"
+          ],
+          "elapsed_ms": 0.11,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.13,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.24,
+          "elapsed_sec": 0.0002,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 13.94,
+          "total_elapsed_sec": 0.0139
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-087",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Which tournament does this Arena of Valor rulebook apply to?",
+    "expected_game_id": "rov",
+    "expected_rulebook_ids": [
+      "competition_rules_rov_blueket_2025_men"
+    ],
+    "expected_facet": "rulebook_identity",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.1163,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_rov_blueket_2025_men_s01_c01",
+      "canonical::competition_rules_rov_blueket_2025_men_s06_c03",
+      "competition_rules_rov_blueket_2025_men_s01_c01",
+      "competition_rules_rov_blueket_2025_men_s06_c03"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_rov_blueket_2025_men",
+      "competition_rules_rov_blueket_2025_men_s01_c01",
+      "competition_rules_rov_blueket_2025_men_s06_c03",
+      "local://competition_rules/competition_rules_rov_blueket_2025_men"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.75,
+          "elapsed_sec": 0.0028,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0028,
+          "global_remaining_sec": 19.9972,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9972,
+          "timing_status": "running",
+          "parts": [
+            "Which tournament does this Arena of Valor rulebook apply to?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Which tournament does this Arena of Valor rulebook apply to?"
+          ],
+          "elapsed_ms": 102.04,
+          "elapsed_sec": 0.102
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 102.1,
+          "elapsed_sec": 0.1021
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.17,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.27,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 116.28,
+          "total_elapsed_sec": 0.1163
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-088",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "How many players must a Arena of Valor team have?",
+    "expected_game_id": "rov",
+    "expected_rulebook_ids": [
+      "competition_rules_rov_blueket_2025_men"
+    ],
+    "expected_facet": "team_size",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.041,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_rov_blueket_2025_men_s01_c01",
+      "canonical::competition_rules_rov_blueket_2025_men_s06_c01",
+      "competition_rules_rov_blueket_2025_men_s01_c01",
+      "competition_rules_rov_blueket_2025_men_s06_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_rov_blueket_2025_men",
+      "competition_rules_rov_blueket_2025_men_s01_c01",
+      "competition_rules_rov_blueket_2025_men_s06_c01",
+      "local://competition_rules/competition_rules_rov_blueket_2025_men"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.68,
+          "elapsed_sec": 0.0017,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0017,
+          "global_remaining_sec": 19.9982,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9982,
+          "timing_status": "running",
+          "parts": [
+            "How many players must a Arena of Valor team have?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How many players must a Arena of Valor team have?"
+          ],
+          "elapsed_ms": 26.18,
+          "elapsed_sec": 0.0262
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 26.22,
+          "elapsed_sec": 0.0262
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.16,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Valo",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Valo",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.169,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.29,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 40.94,
+          "total_elapsed_sec": 0.0409
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-089",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "How many starters and substitutes can a Arena of Valor roster include?",
+    "expected_game_id": "rov",
+    "expected_rulebook_ids": [
+      "competition_rules_rov_blueket_2025_men"
+    ],
+    "expected_facet": "team_size",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.041,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_rov_blueket_2025_men_s01_c01",
+      "canonical::competition_rules_rov_blueket_2025_men_s06_c01",
+      "competition_rules_rov_blueket_2025_men_s01_c01",
+      "competition_rules_rov_blueket_2025_men_s06_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_rov_blueket_2025_men",
+      "competition_rules_rov_blueket_2025_men_s01_c01",
+      "competition_rules_rov_blueket_2025_men_s06_c01",
+      "local://competition_rules/competition_rules_rov_blueket_2025_men"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.15,
+          "elapsed_sec": 0.0021,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0022,
+          "global_remaining_sec": 19.9978,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9978,
+          "timing_status": "running",
+          "parts": [
+            "How many starters and substitutes can a Arena of Valor roster include?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How many starters and substitutes can a Arena of Valor roster include?"
+          ],
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 25.5,
+          "elapsed_sec": 0.0255,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": "general_student",
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Valo",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Valo",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.836,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.26,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 40.99,
+          "total_elapsed_sec": 0.041
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-090",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What is the permitted roster size for Arena of Valor?",
+    "expected_game_id": "rov",
+    "expected_rulebook_ids": [
+      "competition_rules_rov_blueket_2025_men"
+    ],
+    "expected_facet": "team_size",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0137,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_rov_blueket_2025_men_s01_c01",
+      "canonical::competition_rules_rov_blueket_2025_men_s06_c01",
+      "competition_rules_rov_blueket_2025_men_s01_c01",
+      "competition_rules_rov_blueket_2025_men_s06_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_rov_blueket_2025_men",
+      "competition_rules_rov_blueket_2025_men_s01_c01",
+      "competition_rules_rov_blueket_2025_men_s06_c01",
+      "local://competition_rules/competition_rules_rov_blueket_2025_men"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Arena of Valor (RoV) competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_rov_blueket_2025_men",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.61,
+          "elapsed_sec": 0.0016,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0017,
+          "global_remaining_sec": 19.9983,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9983,
+          "timing_status": "running",
+          "parts": [
+            "What is the permitted roster size for Arena of Valor?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What is the permitted roster size for Arena of Valor?"
+          ],
+          "elapsed_ms": 0.11,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.17,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "valorant",
+              "title": "VALORANT",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Valo",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Valo",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.241,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.42,
+          "elapsed_sec": 0.0004,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 13.67,
+          "total_elapsed_sec": 0.0137
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-091",
+    "locale": "en",
+    "case_type": "adversarial_safe_outcome",
+    "question": "Do I need to specify the game before asking about pause rules?",
+    "expected_game_id": "",
+    "expected_rulebook_ids": [],
+    "expected_facet": "",
+    "expected_answer_status": "clarification_required",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.2001,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": false,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "not_specified",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_cs2_psu_phuket_2026_s33_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s21_c01",
+      "competition_rules_cs2_psu_phuket_2026_s33_c01",
+      "competition_rules_valorant_psu_phuket_2026_s21_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_cs2_psu_phuket_2026",
+      "competition_rules_cs2_psu_phuket_2026_s33_c01",
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s21_c01",
+      "local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "outcome expected clarification_required, got answer"
+    ],
+    "answer": "Verified the requested competition-rule topic competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.94,
+          "elapsed_sec": 0.0019,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.002,
+          "global_remaining_sec": 19.998,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.998,
+          "timing_status": "running",
+          "parts": [
+            "Do I need to specify the game before asking about pause rules?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Do I need to specify the game before asking about pause rules?"
+          ],
+          "elapsed_ms": 58.54,
+          "elapsed_sec": 0.0585
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 58.58,
+          "elapsed_sec": 0.0586
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 5.33,
+          "elapsed_sec": 0.0053,
+          "route_category": "equipment",
+          "route_intent": "equipment_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.29,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 200.06,
+          "total_elapsed_sec": 0.2001
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-092",
+    "locale": "en",
+    "case_type": "adversarial_safe_outcome",
+    "question": "Please tell me the timeout rules.",
+    "expected_game_id": "",
+    "expected_rulebook_ids": [],
+    "expected_facet": "",
+    "expected_answer_status": "clarification_required",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0521,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": false,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "not_specified",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_valorant_psu_phuket_2026_s06_c01",
+      "canonical::competition_rules_valorant_psu_phuket_2026_s21_c01",
+      "competition_rules_valorant_psu_phuket_2026_s06_c01",
+      "competition_rules_valorant_psu_phuket_2026_s21_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_valorant_psu_phuket_2026",
+      "competition_rules_valorant_psu_phuket_2026_s06_c01",
+      "competition_rules_valorant_psu_phuket_2026_s21_c01",
+      "local://competition_rules/competition_rules_valorant_psu_phuket_2026"
+    ],
+    "passed": false,
+    "failures": [
+      "outcome expected clarification_required, got answer"
+    ],
+    "answer": "Verified the requested competition-rule topic competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 0.87,
+          "elapsed_sec": 0.0009,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.001,
+          "global_remaining_sec": 19.999,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.999,
+          "timing_status": "running",
+          "parts": [
+            "Please tell me the timeout rules."
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Please tell me the timeout rules."
+          ],
+          "elapsed_ms": 0.08,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 3.61,
+          "elapsed_sec": 0.0036,
+          "route_category": "general",
+          "route_intent": "unknown_domain_query",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.28,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 52.11,
+          "total_elapsed_sec": 0.0521
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-093",
+    "locale": "en",
+    "case_type": "adversarial_safe_outcome",
+    "question": "Can you show me the protest rules?",
+    "expected_game_id": "",
+    "expected_rulebook_ids": [],
+    "expected_facet": "",
+    "expected_answer_status": "clarification_required",
+    "actual_category": "no_answer",
+    "actual_intent": "english_verified_evidence_unavailable",
+    "actual_status": "no_answer",
+    "mode": "pipeline:english_no_answer",
+    "elapsed_sec": 0.7389,
+    "validation_ok": true,
+    "route_ok": false,
+    "outcome_ok": false,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "not_specified",
+    "returned_evidence_ids": [],
+    "returned_rulebook_refs": [],
+    "passed": false,
+    "failures": [
+      "route expected ['competition_rules', 'clarification'], got no_answer",
+      "outcome expected clarification_required, got no_answer"
+    ],
+    "answer": "I could not find verified PSU Esports Studio - Phuket information for this question.",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 3.03,
+          "elapsed_sec": 0.003,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0034,
+          "global_remaining_sec": 19.9966,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9966,
+          "timing_status": "running",
+          "parts": [
+            "Can you show me the protest rules?"
+          ],
+          "competition_rule_query": false
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Can you show me the protest rules?"
+          ],
+          "elapsed_ms": 0.09,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 4.06,
+          "elapsed_sec": 0.0041,
+          "route_category": "general",
+          "route_intent": "unknown_domain_query",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "defer_english_response_to_intent_review",
+        "metadata": {
+          "effective_locale": "en",
+          "runtime_translation": false,
+          "initial_mode": "pipeline:english_no_answer",
+          "review_required": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "semantic_route_refiner",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "route_category": "general",
+          "route_intent": "unknown_domain_query",
+          "route_locked": false
+        }
+      },
+      {
+        "stage": "semantic_route_refiner",
+        "decision": "skipped",
+        "metadata": {}
+      },
+      {
+        "stage": "freshness_guard",
+        "decision": "not_required",
+        "metadata": {
+          "requires_live_evidence": false
+        }
+      },
+      {
+        "stage": "boundary_guard",
+        "decision": "allow",
+        "metadata": {
+          "flags": []
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "guard_scope",
+        "metadata": {
+          "elapsed_ms": 0.01,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "guard",
+        "decision": "weak_domain_signal",
+        "metadata": {}
+      },
+      {
+        "stage": "router",
+        "decision": "general",
+        "metadata": {
+          "intent": "unknown_domain_query",
+          "answer_type": "fact"
+        }
+      },
+      {
+        "stage": "model_gateway",
+        "decision": "skip_preflight_llm",
+        "metadata": {
+          "allow_llm": false,
+          "preflight_allow_llm": false,
+          "route_category": "general",
+          "route_intent": "unknown_domain_query"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "universal_intent",
+        "metadata": {
+          "elapsed_ms": 583.67,
+          "elapsed_sec": 0.5837,
+          "method": "heuristic",
+          "confidence": 0.45
+        }
+      },
+      {
+        "stage": "universal_intent",
+        "decision": "general/unknown",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "low_candidate_margin"
+          ],
+          "input_recovery": {
+            "score": 0.3211,
+            "language": "en",
+            "language_quality": 0.6789,
+            "should_review_intent": false,
+            "reason": "English character n-gram quality=0.679",
+            "action": "continue"
+          },
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "general",
+              "operation": "unknown",
+              "target": "",
+              "confidence": 0.45,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "general",
+              "operation": "how_to",
+              "target": "",
+              "confidence": 0.55,
+              "reason": "router category candidate"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [],
+          "answer_style": "direct",
+          "heuristic": {
+            "domain": "general",
+            "operation": "unknown",
+            "confidence": 0.45,
+            "reason": "domain_terms=2; no clear operation terms"
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "english_renderer_after_intent_review",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "no_answer",
+          "route_intent": "english_verified_evidence_unavailable",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 5.27,
+          "elapsed_sec": 0.0053,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 738.88,
+          "total_elapsed_sec": 0.7389
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-094",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What competition format does Tekken 8 use?",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "competition_format",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0445,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s01_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.29,
+          "elapsed_sec": 0.0013,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0014,
+          "global_remaining_sec": 19.9986,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9986,
+          "timing_status": "running",
+          "parts": [
+            "What competition format does Tekken 8 use?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What competition format does Tekken 8 use?"
+          ],
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.11,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.14,
+          "elapsed_sec": 0.0001,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.34,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 44.49,
+          "total_elapsed_sec": 0.0445
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-095",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "How many games are played in a Tekken 8 match?",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "competition_format",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.1158,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s01_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.48,
+          "elapsed_sec": 0.0015,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0016,
+          "global_remaining_sec": 19.9984,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9984,
+          "timing_status": "running",
+          "parts": [
+            "How many games are played in a Tekken 8 match?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "How many games are played in TEKKEN 8 match?",
+            "How many games are played in a Tekken 8 match?",
+            "How many games are played in a Tekken 8 match? TEKKEN 8"
+          ],
+          "elapsed_ms": 32.07,
+          "elapsed_sec": 0.0321
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 32.1,
+          "elapsed_sec": 0.0321
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 75.01,
+          "elapsed_sec": 0.075,
+          "route_category": "games",
+          "route_intent": "games_lookup",
+          "variant_count": 2
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "kept_original_query",
+        "metadata": {
+          "candidates": [
+            {
+              "query": "How many games are played in a Tekken 8 match?",
+              "category": "games",
+              "intent": "games_lookup",
+              "confidence": 0.88
+            },
+            {
+              "query": "How many games are played in a Tekken 8 match? TEKKEN 8",
+              "category": "games",
+              "intent": "games_lookup",
+              "confidence": 0.88
+            }
+          ]
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.26,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 115.74,
+          "total_elapsed_sec": 0.1157
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-096",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "Is the Tekken 8 event single elimination or does it use another format?",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "competition_format",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0126,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s01_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s02_c01",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s02_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 2.24,
+          "elapsed_sec": 0.0022,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0023,
+          "global_remaining_sec": 19.9977,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9977,
+          "timing_status": "running",
+          "parts": [
+            "Is the Tekken 8 event single elimination or does it use another format?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Is the Tekken 8 event single elimination or does it use another format?"
+          ],
+          "elapsed_ms": 0.13,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.17,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.17,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "tekken8",
+              "title": "TEKKEN 8",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "TEKKEN 8",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_ps5_01_02"
+              ],
+              "zones": [
+                "PC Zone",
+                "PlayStation 5 Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "tekken8",
+                "title": "TEKKEN 8",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "TEKKEN 8",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_ps5_01_02"
+                ],
+                "zones": [
+                  "PC Zone",
+                  "PlayStation 5 Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.664,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.26,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 12.53,
+          "total_elapsed_sec": 0.0125
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-097",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What conduct is expected from Tekken 8 players?",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "conduct",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0563,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s01_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s05_c01",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s05_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s05_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.45,
+          "elapsed_sec": 0.0015,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0015,
+          "global_remaining_sec": 19.9985,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9985,
+          "timing_status": "running",
+          "parts": [
+            "What conduct is expected from Tekken 8 players?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What conduct is expected from Tekken 8 players?"
+          ],
+          "elapsed_ms": 44.99,
+          "elapsed_sec": 0.045
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 45.03,
+          "elapsed_sec": 0.045
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.15,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "tekken8",
+              "title": "TEKKEN 8",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "TEKKEN 8",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_ps5_01_02"
+              ],
+              "zones": [
+                "PC Zone",
+                "PlayStation 5 Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "tekken8",
+                "title": "TEKKEN 8",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "TEKKEN 8",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_ps5_01_02"
+                ],
+                "zones": [
+                  "PC Zone",
+                  "PlayStation 5 Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.252,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.28,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 56.3,
+          "total_elapsed_sec": 0.0563
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-098",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What behaviour is not allowed during a Tekken 8 match?",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "conduct",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0149,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s01_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s05_c01",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s05_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s05_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.75,
+          "elapsed_sec": 0.0017,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0018,
+          "global_remaining_sec": 19.9982,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9982,
+          "timing_status": "running",
+          "parts": [
+            "What behaviour is not allowed during a Tekken 8 match?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What behaviour is not allowed during a Tekken 8 match?"
+          ],
+          "elapsed_ms": 0.1,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.12,
+          "elapsed_sec": 0.0001
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 4.75,
+          "elapsed_sec": 0.0048,
+          "route_category": "schedule",
+          "route_intent": "schedule_query",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.26,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 14.89,
+          "total_elapsed_sec": 0.0149
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-099",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What do the Tekken 8 rules say about player sportsmanship?",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "conduct",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0682,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s01_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s05_c01",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s05_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s01_c01",
+      "competition_rules_tekken8_psu_esports_s05_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.76,
+          "elapsed_sec": 0.0018,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0018,
+          "global_remaining_sec": 19.9982,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9982,
+          "timing_status": "running",
+          "parts": [
+            "What do the Tekken 8 rules say about player sportsmanship?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What do the Tekken 8 rules say about player sportsmanship?"
+          ],
+          "elapsed_ms": 57.22,
+          "elapsed_sec": 0.0572
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 57.26,
+          "elapsed_sec": 0.0573
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.16,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.26,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 68.21,
+          "total_elapsed_sec": 0.0682
+        }
+      }
+    ]
+  },
+  {
+    "id": "COMP-RAG-V2-EN-100",
+    "locale": "en",
+    "case_type": "facet_targeted_retrieval",
+    "question": "What happens if there is a dispute about a Tekken 8 result?",
+    "expected_game_id": "tekken8",
+    "expected_rulebook_ids": [
+      "competition_rules_tekken8_psu_esports"
+    ],
+    "expected_facet": "dispute",
+    "expected_answer_status": "answer_available",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "answer",
+    "mode": "pipeline:competition_source_localization_pending_en",
+    "elapsed_sec": 0.0126,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "canonical_rule_id",
+    "returned_evidence_ids": [
+      "canonical::competition_rules_tekken8_psu_esports_s06_c01",
+      "canonical::competition_rules_tekken8_psu_esports_s08_c01",
+      "competition_rules_tekken8_psu_esports_s06_c01",
+      "competition_rules_tekken8_psu_esports_s08_c01"
+    ],
+    "returned_rulebook_refs": [
+      "competition_rules_tekken8_psu_esports",
+      "competition_rules_tekken8_psu_esports_s06_c01",
+      "competition_rules_tekken8_psu_esports_s08_c01",
+      "local://competition_rules/competition_rules_tekken8_psu_esports"
+    ],
+    "passed": true,
+    "failures": [],
+    "answer": "Verified Tekken 8 competition-rule evidence was found in the original Thai source for this topic. An approved English wording is not available yet, so I will not translate the rule live.\nOriginal source in Thai: local://competition_rules/competition_rules_tekken8_psu_esports",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 1.96,
+          "elapsed_sec": 0.002,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.002,
+          "global_remaining_sec": 19.998,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.998,
+          "timing_status": "running",
+          "parts": [
+            "What happens if there is a dispute about a Tekken 8 result?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "What happens if there is a dispute about a Tekken 8 result?"
+          ],
+          "elapsed_ms": 0.19,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.22,
+          "elapsed_sec": 0.0002
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 0.24,
+          "elapsed_sec": 0.0002,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "tekken8",
+              "title": "TEKKEN 8",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "TEKKEN 8",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_ps5_01_02"
+              ],
+              "zones": [
+                "PC Zone",
+                "PlayStation 5 Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "tekken8",
+                "title": "TEKKEN 8",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "TEKKEN 8",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_ps5_01_02"
+                ],
+                "zones": [
+                  "PC Zone",
+                  "PlayStation 5 Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 1.502,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_source_localization_pending_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 0.29,
+          "elapsed_sec": 0.0003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 12.56,
+          "total_elapsed_sec": 0.0126
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_en_contact_methods",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [],
+    "en": [
+      "how\\s+(?:do|can)\\s+i\\s+contact.*(?:studio|psu esports)",
+      "contact\\s+(?:details|information|methods?)",
+      "ways?\\s+to\\s+contact.*studio",
+      "how\\s+to\\s+reach.*studio"
+    ]
+  },
+  "facts": {
+    "route_category": "contact",
+    "intent": "contact_methods",
+    "patterns": [
+      "how\\s+(?:do|can)\\s+i\\s+contact.*(?:studio|psu esports)",
+      "contact\\s+(?:details|information|methods?)",
+      "ways?\\s+to\\s+contact.*studio",
+      "how\\s+to\\s+reach.*studio"
+    ],
+    "priority": 131
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ติดต่อศูนย์ได้ทางอีเมล psuesportspkt@gmail.com โทร +66 7627 6004 หรือ +66 7627 6045 และ Facebook PSU Esports Phuket"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Contact PSU Esports Studio - Phuket by email at psuesportspkt@gmail.com, by phone at +66 7627 6004 or +66 7627 6045, or through https://www.facebook.com/psuesportsphuket."
+      },
+      "source_sha256": "b72245037ac652dae09e15bd5086a6f1013114465905053d4ebc1a4c4c9cd9e7",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/english_support_rules.jsonl",
+    "url": "https://esports.phuket.psu.ac.th/Contact-Us",
+    "source_ids": [
+      "curated_contact_email",
+      "curated_contact_phone",
+      "curated_contact_facebook"
+    ],
+    "last_verified_at": ""
+  }
+}

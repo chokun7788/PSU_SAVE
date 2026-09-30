@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_no_answer_competition_prize_money",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "(rov|arena of valor|aov|valorant|cs2|counter-strike|tekken).*แข่ง.*(รางวัล|เงินรางวัล|ชนะได้เงิน|ได้เงินรางวัล|ได้กี่บาท|ได้เงินเท่าไหร่|ได้เงินเท่าไร|prize)",
+      "(รางวัล|เงินรางวัล|ชนะได้เงิน|ได้เงินรางวัล|ได้กี่บาท|ได้เงินเท่าไหร่|ได้เงินเท่าไร|prize).*(rov|arena of valor|aov|valorant|cs2|counter-strike|tekken).*แข่ง"
+    ],
+    "en": []
+  },
+  "facts": {
+    "route_category": "no_answer",
+    "intent": "no_answer_competition_prize_money",
+    "patterns": [
+      "(rov|arena of valor|aov|valorant|cs2|counter-strike|tekken).*แข่ง.*(รางวัล|เงินรางวัล|ชนะได้เงิน|ได้เงินรางวัล|ได้กี่บาท|ได้เงินเท่าไหร่|ได้เงินเท่าไร|prize)",
+      "(รางวัล|เงินรางวัล|ชนะได้เงิน|ได้เงินรางวัล|ได้กี่บาท|ได้เงินเท่าไหร่|ได้เงินเท่าไร|prize).*(rov|arena of valor|aov|valorant|cs2|counter-strike|tekken).*แข่ง"
+    ],
+    "priority": 150
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ยังไม่พบข้อมูลเงินรางวัลหรือจำนวนเงินที่ผู้ชนะจะได้รับในฐานข้อมูลที่ยืนยันได้ของรายการแข่งขันนี้ครับ ข้อมูลที่มีตอนนี้เป็นกติกา/รูปแบบการแข่งขัน จึงไม่ควรสรุปจำนวนเงินรางวัลเอง"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "No verified prize money information was found for this competition in the available knowledge base. The current data covers rules and competition formats, so the prize amount should not be inferred."
+      },
+      "source_sha256": "74d2b0e5b7d344f7b593d7ffa9d4faf6a70ce54bd4dc506f9e9561988e8caa27",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/no_answer_rules.jsonl",
+    "url": "local://competition_rules",
+    "source_ids": [
+      "competition_rules"
+    ],
+    "last_verified_at": ""
+  }
+}

@@ -1,0 +1,147 @@
+[
+  {
+    "id": "COMP-RAG-V2-EN-093",
+    "locale": "en",
+    "case_type": "adversarial_safe_outcome",
+    "question": "Can you show me the protest rules?",
+    "expected_game_id": "",
+    "expected_rulebook_ids": [],
+    "expected_facet": "",
+    "expected_answer_status": "clarification_required",
+    "actual_category": "competition_rules",
+    "actual_intent": "competition_rule_lookup",
+    "actual_status": "clarification",
+    "mode": "pipeline:competition_target_clarification_en",
+    "elapsed_sec": 0.4248,
+    "validation_ok": true,
+    "route_ok": true,
+    "outcome_ok": true,
+    "target_ok": true,
+    "evidence_ok": true,
+    "evidence_alignment": "not_specified",
+    "returned_evidence_ids": [],
+    "returned_rulebook_refs": [],
+    "passed": true,
+    "failures": [],
+    "answer": "Which game's competition rules would you like to check: Counter-Strike 2, RoV, Tekken 8, or VALORANT?",
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "metadata": {
+          "elapsed_ms": 28.06,
+          "elapsed_sec": 0.0281,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0282,
+          "global_remaining_sec": 19.9718,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9718,
+          "timing_status": "running",
+          "parts": [
+            "Can you show me the protest rules?"
+          ],
+          "competition_rule_query": false
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "metadata": {
+          "language_hint": "en",
+          "query_variants": [
+            "Can you show me the protest rules?"
+          ],
+          "elapsed_ms": 0.65,
+          "elapsed_sec": 0.0007
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "metadata": {
+          "elapsed_ms": 0.7,
+          "elapsed_sec": 0.0007
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "metadata": {
+          "elapsed_ms": 211.42,
+          "elapsed_sec": 0.2114,
+          "route_category": "general",
+          "route_intent": "unknown_domain_query",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:competition_target_clarification_en",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "competition_rules",
+          "route_intent": "competition_rule_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "metadata": {
+          "elapsed_ms": 12.03,
+          "elapsed_sec": 0.012,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 424.7,
+          "total_elapsed_sec": 0.4247
+        }
+      }
+    ]
+  }
+]

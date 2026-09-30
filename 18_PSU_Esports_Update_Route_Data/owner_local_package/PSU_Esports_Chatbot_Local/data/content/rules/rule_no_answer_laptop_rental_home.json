@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_no_answer_laptop_rental_home",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "เช่าโน้ตบุ๊กกลับบ้าน",
+      "เช่า notebook กลับบ้าน"
+    ],
+    "en": [
+      "rent.*laptop.*home",
+      "laptop.*rental"
+    ]
+  },
+  "facts": {
+    "route_category": "no_answer",
+    "intent": "no_answer_laptop_rental_home",
+    "patterns": [
+      "เช่าโน้ตบุ๊กกลับบ้าน",
+      "เช่า notebook กลับบ้าน",
+      "rent.*laptop.*home",
+      "laptop.*rental"
+    ],
+    "priority": 120
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ยังไม่พบข้อมูลเรื่องบริการเช่าโน้ตบุ๊กกลับบ้านในฐานข้อมูลที่มี ข้อมูลที่มีระบุการจองใช้อุปกรณ์ภายในศูนย์เป็นรอบเวลา จึงยังไม่ควรสรุปว่าสามารถนำอุปกรณ์กลับไปใช้นอกสถานที่ได้"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "No information about laptop rental for taking home was found in the available knowledge base. The available data describes reserving equipment for use inside the studio by time slot, so take-home use should not be assumed."
+      },
+      "source_sha256": "c4f1152c5d24fa51da47818a34ef53e73fdf093a3e2936cb00a230228f7a5f85",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/no_answer_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation"
+    ],
+    "last_verified_at": ""
+  }
+}

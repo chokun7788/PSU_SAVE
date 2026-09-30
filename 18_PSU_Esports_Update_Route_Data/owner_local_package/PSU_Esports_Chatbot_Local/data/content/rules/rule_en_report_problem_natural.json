@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_en_report_problem_natural",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [],
+    "en": [
+      "what\\s+should\\s+i\\s+do.*(?:problem|issue)",
+      "who\\s+should\\s+i\\s+tell.*(?:problem|issue)",
+      "equipment\\s+(?:has|with)\\s+(?:a\\s+)?problem",
+      "report\\s+(?:an?\\s+)?(?:issue|problem)"
+    ]
+  },
+  "facts": {
+    "route_category": "rules",
+    "intent": "report_problem_to_staff",
+    "patterns": [
+      "what\\s+should\\s+i\\s+do.*(?:problem|issue)",
+      "who\\s+should\\s+i\\s+tell.*(?:problem|issue)",
+      "equipment\\s+(?:has|with)\\s+(?:a\\s+)?problem",
+      "report\\s+(?:an?\\s+)?(?:issue|problem)"
+    ],
+    "priority": 131
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "หากพบปัญหาการใช้งาน พฤติกรรมไม่เหมาะสม หรือข้อกังวล ควรแจ้งเจ้าหน้าที่ทันที"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "If there is a usage problem, inappropriate behavior, or any concern, users should notify staff immediately."
+      },
+      "source_sha256": "8c5c758afeb00598e941eb4bfb188445122dcb443872ad91c8631dbc1813533b",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/english_support_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_rule_report_problem"
+    ],
+    "last_verified_at": ""
+  }
+}

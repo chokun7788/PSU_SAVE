@@ -19,6 +19,11 @@ DEFAULT_OUTPUT = ROOT / "data" / "curated" / "dynamic_knowledge.jsonl"
 DEFAULT_INDEX = ROOT / "data" / "vector" / "psu_semantic_vector_index.json"
 ALLOWED_CATEGORIES = {"knowledge", "events_news", "about_us", "games", "equipment"}
 ALLOWED_TRUST_LEVELS = {"official", "user_confirmed", "internal_verified", "secondary"}
+ALLOWED_CONTENT_TYPES = {
+    "document", "faq", "game", "rule", "equipment", "zone", "booking_policy", "operating_notice", "news",
+}
+PUBLISHABLE_STATUSES = {"published"}
+WORKFLOW_STATUSES = {"draft", "in_review", "approved", "published", "archived"}
 
 
 @dataclass
@@ -28,6 +33,9 @@ class IngestionReport:
     output_chunks: int = 0
     replaced_documents: int = 0
     skipped_drafts: int = 0
+    status_counts: dict[str, int] = field(default_factory=dict)
+    ready_document_ids: list[str] = field(default_factory=list)
+    pending_document_ids: dict[str, list[str]] = field(default_factory=dict)
     errors: list[str] = field(default_factory=list)
     output_path: str = ""
     semantic_index: dict[str, Any] | None = None
@@ -39,6 +47,9 @@ class IngestionReport:
             "output_chunks": self.output_chunks,
             "replaced_documents": self.replaced_documents,
             "skipped_drafts": self.skipped_drafts,
+            "status_counts": self.status_counts,
+            "ready_document_ids": self.ready_document_ids,
+            "pending_document_ids": self.pending_document_ids,
             "errors": self.errors,
             "output_path": self.output_path,
             "semantic_index": self.semantic_index,
@@ -117,6 +128,21 @@ def _iso_date(value: Any, field_name: str, *, required: bool = False) -> str:
     return text
 
 
+def _sha256(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def _string_list(value: Any, field_name: str, *, limit: int = 24) -> list[str]:
+    if value is None:
+        return []
+    if not isinstance(value, list):
+        raise ValueError(f"{field_name} must be a list")
+    values = list(dict.fromkeys(str(item).strip() for item in value if str(item).strip()))
+    if len(values) > limit:
+        raise ValueError(f"{field_name} exceeds {limit} items")
+    return values
+
+
 def validate_document(document: dict[str, Any]) -> dict[str, Any]:
     row = dict(document)
     for field_name in ("id", "title", "text", "category", "source_url", "trust_level", "updated_at"):
@@ -142,8 +168,22 @@ def validate_document(document: dict[str, Any]) -> dict[str, Any]:
         "valid_until",
     )
     row["status"] = str(row.get("status") or "draft").strip().lower()
-    if row["status"] not in {"draft", "published", "archived"}:
-        raise ValueError("status must be draft, published, or archived")
+    if row["status"] not in WORKFLOW_STATUSES:
+        raise ValueError("status must be draft, in_review, approved, published, or archived")
+    row["content_type"] = str(row.get("content_type") or "document").strip().lower()
+    if row["content_type"] not in ALLOWED_CONTENT_TYPES:
+        raise ValueError(f"unsupported content_type {row['content_type']!r}")
+    row["entity_ids"] = _string_list(row.get("entity_ids") or [row["id"]], "entity_ids")
+    row["facets"] = _string_list(row.get("facets") or [row.get("facet") or "overview"], "facets", limit=12)
+    row["language"] = str(row.get("language") or "th").strip().lower()
+    if row["language"] not in {"th", "en"}:
+        raise ValueError("language must be th or en")
+    row["source_language"] = str(row.get("source_language") or row["language"]).strip().lower()
+    if row["source_language"] not in {"th", "en", "mixed"}:
+        raise ValueError("source_language must be th, en, or mixed")
+    row["version"] = int(row.get("version") or 1)
+    if row["version"] < 1:
+        raise ValueError("version must be at least 1")
     row["time_sensitive"] = bool(row.get("time_sensitive"))
     row["freshness_verified"] = bool(row.get("freshness_verified"))
     row["retrieved_at"] = str(row.get("retrieved_at") or "").strip()
@@ -154,12 +194,25 @@ def validate_document(document: dict[str, Any]) -> dict[str, Any]:
             raise ValueError("freshness_verified documents require retrieved_at and valid_until")
         if row["trust_level"] == "secondary":
             raise ValueError("secondary sources cannot be marked freshness_verified")
-    row["tags"] = [str(value).strip() for value in row.get("tags", []) if str(value).strip()]
-    row["aliases"] = [str(value).strip() for value in row.get("aliases", []) if str(value).strip()]
+    row["tags"] = _string_list(row.get("tags"), "tags")
+    row["aliases"] = _string_list(row.get("aliases"), "aliases")
     row["priority"] = max(0, min(100, int(row.get("priority") or 50)))
     row["text"] = str(row["text"]).strip()
     row["title"] = str(row["title"]).strip()
     row["source_url"] = str(row["source_url"]).strip()
+    row["source_snapshot_text"] = str(row.get("source_snapshot_text") or "").strip()
+    row["source_snapshot_sha256"] = str(row.get("source_snapshot_sha256") or "").strip().lower()
+    row["approved_by"] = str(row.get("approved_by") or "").strip()
+    row["approved_at"] = str(row.get("approved_at") or "").strip()
+    if row["status"] in PUBLISHABLE_STATUSES:
+        if not row["approved_by"] or not row["approved_at"]:
+            raise ValueError("published documents require approved_by and approved_at")
+        if not row["source_snapshot_text"] or not row["source_snapshot_sha256"]:
+            raise ValueError("published documents require immutable source_snapshot_text and source_snapshot_sha256")
+        if row["source_snapshot_sha256"] != _sha256(row["source_snapshot_text"]):
+            raise ValueError("source_snapshot_sha256 does not match source_snapshot_text")
+        if row["text"] not in row["source_snapshot_text"]:
+            raise ValueError("published text must be an exact excerpt of source_snapshot_text")
     row["dynamic_knowledge"] = True
     return row
 
@@ -224,9 +277,35 @@ def document_to_chunks(
         return []
     chunks = chunk_text(row["text"], max_chars=max_chars, overlap_chars=overlap_chars)
     output: list[dict[str, Any]] = []
-    content_hash = hashlib.sha256(row["text"].encode("utf-8")).hexdigest()
+    # The index must change when retrieval-relevant governance metadata changes,
+    # not only when the visible text changes.  Otherwise a stale vector index can
+    # keep serving an older scope, locale, or validity policy after publication.
+    content_fingerprint = {
+        "text": row["text"],
+        "content_type": row["content_type"],
+        "entity_ids": row["entity_ids"],
+        "facets": row["facets"],
+        "language": row["language"],
+        "source_language": row["source_language"],
+        "version": row["version"],
+        "status": row["status"],
+        "valid_from": row["valid_from"],
+        "valid_until": row["valid_until"],
+        "source_snapshot_sha256": row["source_snapshot_sha256"],
+    }
+    content_hash = hashlib.sha256(
+        json.dumps(content_fingerprint, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
     for index, chunk in enumerate(chunks, 1):
         chunk_id = f"{row['id']}__c{index:03d}"
+        search_text = "\n".join((
+            f"[Type: {row['content_type']}]",
+            f"[Document: {row['title']}]",
+            f"[Entities: {', '.join(row['entity_ids'])}]",
+            f"[Facets: {', '.join(row['facets'])}]",
+            f"[Language: {row['language']}]",
+            chunk,
+        ))
         output.append({
             **{key: value for key, value in row.items() if key not in {"id", "text", "_input_file"}},
             "id": chunk_id,
@@ -235,6 +314,7 @@ def document_to_chunks(
             "chunk_count": len(chunks),
             "content_hash": content_hash,
             "text": chunk,
+            "search_text": search_text,
             "ingestion_source": "dynamic_rag",
             "input_file": str(row.get("_input_file") or ""),
         })
@@ -274,10 +354,14 @@ def ingest(
         source = str(document.get("_input_file") or input_path)
         try:
             validated = validate_document(document)
+            status = validated["status"]
+            report.status_counts[status] = report.status_counts.get(status, 0) + 1
             if validated["status"] != "published":
                 report.skipped_drafts += 1
+                report.pending_document_ids.setdefault(status, []).append(validated["id"])
                 continue
             incoming_document_ids.add(validated["id"])
+            report.ready_document_ids.append(validated["id"])
             chunks = document_to_chunks(
                 document,
                 max_chars=max_chars,
@@ -287,6 +371,10 @@ def ingest(
             new_chunks.extend(chunks)
         except Exception as exc:  # noqa: BLE001 - collect all document errors for admin review.
             report.errors.append(f"document {position} ({source}): {exc}")
+
+    report.ready_document_ids.sort()
+    for ids in report.pending_document_ids.values():
+        ids.sort()
 
     if report.errors:
         return report

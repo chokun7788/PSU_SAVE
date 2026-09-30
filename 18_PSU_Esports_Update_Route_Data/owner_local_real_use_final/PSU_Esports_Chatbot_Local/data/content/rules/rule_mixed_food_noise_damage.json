@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_mixed_food_noise_damage",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "กินข้าว.*เสียงดัง.*จอยพัง",
+      "กิน.*เสียงดัง.*พัง",
+      "อาหาร.*เสียงดัง.*เสียหาย",
+      "ขนม.*เสียงดัง.*พัง"
+    ],
+    "en": []
+  },
+  "facts": {
+    "route_category": "rules",
+    "intent": "food_noise_damage",
+    "patterns": [
+      "กินข้าว.*เสียงดัง.*จอยพัง",
+      "กิน.*เสียงดัง.*พัง",
+      "อาหาร.*เสียงดัง.*เสียหาย",
+      "ขนม.*เสียงดัง.*พัง"
+    ],
+    "priority": 137
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "กรณีนี้เกี่ยวกับหลายกฎพร้อมกัน: อาหารและเครื่องดื่มรับประทานได้เฉพาะพื้นที่ที่กำหนด, ควรงดส่งเสียงดังเกินควร, และถ้าทำอุปกรณ์เสียหายผู้ใช้งานต้องรับผิดชอบค่าปรับหรือค่าชดเชยตามระดับความเสียหาย"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "This touches multiple rules: food and drinks are allowed only in designated areas, excessive noise should be avoided, and users are responsible for fines or compensation if equipment is damaged."
+      },
+      "source_sha256": "2a00369529d27636407f1148014b15eedcb7f34e0df787b3567cd081c99beea6",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/misc_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_rule_food_drinks",
+      "curated_rule_noise_language",
+      "curated_damage_minor",
+      "curated_damage_moderate",
+      "curated_damage_severe"
+    ],
+    "last_verified_at": ""
+  }
+}

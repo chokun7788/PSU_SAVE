@@ -1,0 +1,53 @@
+{
+  "generated_at": "2026-08-31T14:28:08",
+  "runtime_guard": {
+    "enabled": true,
+    "mode": "enforce",
+    "repeat_policy": "ask_retype",
+    "layout_threshold": 0.418411,
+    "repeat_threshold": 0.46,
+    "corpus_size": 3405
+  },
+  "dataset": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\data\\eval\\keyboard_input_anomaly_ground_truth_500_20260830.jsonl",
+  "thresholds": {
+    "layout": 0.418411,
+    "repeat": 0.46
+  },
+  "test": {
+    "layout": {
+      "tp": 191,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.994792,
+      "f1": 0.997389
+    },
+    "repeat": {
+      "tp": 160,
+      "fp": 22,
+      "fn": 0,
+      "precision": 0.879121,
+      "recall": 1.0,
+      "f1": 0.935673
+    },
+    "any_error_count": 23,
+    "error_families": {
+      "layout_th_to_en_full": 6,
+      "layout_th_to_en_token": 1,
+      "layout_th_to_en_suffix": 4,
+      "layout_en_to_th_full": 1,
+      "valid_normal": 5,
+      "valid_lexical_double": 6
+    }
+  },
+  "score_ranges": {
+    "repeat_positive": [
+      0.466352,
+      1.0
+    ],
+    "repeat_negative": [
+      0.0,
+      0.628461
+    ]
+  }
+}

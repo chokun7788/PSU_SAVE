@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PSU Esports Canonical Content Record",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "content_id",
+    "category",
+    "kind",
+    "lifecycle",
+    "aliases",
+    "facts",
+    "locales",
+    "source"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "content_id": { "type": "string", "minLength": 1 },
+    "category": { "type": "string", "minLength": 1 },
+    "kind": { "type": "string", "minLength": 1 },
+    "lifecycle": {
+      "type": "object",
+      "required": ["status", "version"],
+      "properties": {
+        "status": { "enum": ["draft", "review", "published", "expired", "archived"] },
+        "version": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "aliases": {
+      "type": "object",
+      "required": ["th", "en"],
+      "properties": {
+        "th": { "type": "array", "items": { "type": "string" } },
+        "en": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "facts": { "type": "object" },
+    "locales": {
+      "type": "object",
+      "required": ["th", "en"],
+      "properties": {
+        "th": {
+          "type": "object",
+          "required": ["status", "fields"],
+          "properties": {
+            "status": { "const": "source" },
+            "fields": { "type": "object", "minProperties": 1 }
+          }
+        },
+        "en": {
+          "type": "object",
+          "required": ["status", "fields", "source_sha256", "approved_by", "approved_at"],
+          "properties": {
+            "status": { "enum": ["missing", "draft", "legacy_unreviewed", "approved", "stale"] },
+            "fields": { "type": "object" },
+            "source_sha256": { "type": "string", "minLength": 64, "maxLength": 64 },
+            "approved_by": { "type": "string" },
+            "approved_at": { "type": "string" }
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["path"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "url": { "type": "string" },
+        "source_ids": { "type": "array", "items": { "type": "string" } },
+        "last_verified_at": { "type": "string" }
+      }
+    }
+  }
+}

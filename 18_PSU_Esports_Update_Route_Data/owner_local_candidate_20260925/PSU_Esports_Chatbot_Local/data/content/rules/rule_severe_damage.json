@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_severe_damage",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "จอแตก",
+      "คอมพิวเตอร์พัง",
+      "คอมพัง",
+      "คอม.*พัง",
+      "เสียหายร้ายแรง",
+      "ใช้งานไม่ได้"
+    ],
+    "en": [
+      "severe damage",
+      "broken screen"
+    ]
+  },
+  "facts": {
+    "route_category": "penalty",
+    "intent": "severe_damage_compensation",
+    "patterns": [
+      "จอแตก",
+      "คอมพิวเตอร์พัง",
+      "คอมพัง",
+      "คอม.*พัง",
+      "เสียหายร้ายแรง",
+      "ใช้งานไม่ได้",
+      "severe damage",
+      "broken screen"
+    ],
+    "priority": 121
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ความเสียหายร้ายแรง เช่น จอแตก คอมพิวเตอร์พัง เฟอร์นิเจอร์เสียหายจนใช้ไม่ได้ หรืออุปกรณ์ใช้งานไม่ได้ ต้องชดเชยราคาทรัพย์สินเต็มจำนวนตามราคากลาง"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Severe damage such as broken screens, computer failure, unusable furniture, or unusable equipment requires full compensation based on the market price."
+      },
+      "source_sha256": "e0d89a90a908d27837a51d99a42c50c6286c26605ec1f8ee8586787a93c774cc",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/penalty_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_damage_severe"
+    ],
+    "last_verified_at": ""
+  }
+}

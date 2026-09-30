@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_en_cancel_booking",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [],
+    "en": [
+      "can\\s+i\\s+cancel.*booking",
+      "how\\s+(?:do|can)\\s+i\\s+cancel.*booking",
+      "cancel\\s+(?:my|a|the)\\s+booking"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "cancel_advance_time",
+    "patterns": [
+      "can\\s+i\\s+cancel.*booking",
+      "how\\s+(?:do|can)\\s+i\\s+cancel.*booking",
+      "cancel\\s+(?:my|a|the)\\s+booking"
+    ],
+    "priority": 130
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "การยกเลิกการจองต้องทำล่วงหน้าอย่างน้อย 1 ชั่วโมง"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Cancellations must be made at least 1 hour in advance."
+      },
+      "source_sha256": "ff6fe1640817e80a543965d8b7a12b84b4900844be7e7e38ba24f58f5895c3bf",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/english_support_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "curated_cancel_1_hour"
+    ],
+    "last_verified_at": ""
+  }
+}

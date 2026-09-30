@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_cockpit_games",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "cockpit.*เกม",
+      "เกม.*cockpit",
+      "cockpit.*เล่น",
+      "ขับรถ.*เกม",
+      "พวงมาลัย.*เกม"
+    ],
+    "en": []
+  },
+  "facts": {
+    "route_category": "games",
+    "intent": "cockpit_games",
+    "patterns": [
+      "cockpit.*เกม",
+      "เกม.*cockpit",
+      "cockpit.*เล่น",
+      "ขับรถ.*เกม",
+      "พวงมาลัย.*เกม"
+    ],
+    "priority": 100
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "Cockpit ใช้เล่นเกม Gran Turismo 7 (Single Player) ได้"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Cockpit can be used to play Gran Turismo 7 (Single Player)."
+      },
+      "source_sha256": "a5205cf64df4fab0649e49975a825b74d98bf92a9b5f16dfbb248a8bfacae521",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/games_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_games_cockpit",
+      "reservation-service-cockpit"
+    ],
+    "last_verified_at": ""
+  }
+}

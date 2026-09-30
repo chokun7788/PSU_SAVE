@@ -1,0 +1,418 @@
+{
+  "overall": {
+    "rows": 2000,
+    "regressions": 239,
+    "regression_primary_failure": {
+      "status": 54,
+      "route": 154,
+      "content": 31
+    },
+    "clean_failure_primary": {
+      "route": 59,
+      "status": 128,
+      "content": 23
+    },
+    "no_positive_content_contract": 1107,
+    "regressions_with_no_positive_content_contract": 120,
+    "route_only_regression_count": 26,
+    "route_only_safe_no_answer_ids": [
+      "MASTER-GT-TH-04758"
+    ],
+    "noisy_ambiguous_game_mode_scored_as_answer_ids": [
+      "MASTER-GT-TH-00890",
+      "MASTER-GT-TH-00859",
+      "MASTER-GT-TH-01137"
+    ],
+    "baseline_failure_by_domain": {
+      "studio_rules_penalties": 18,
+      "compound_context_boundary": 44,
+      "schedule_calendar": 12,
+      "game_controls": 3,
+      "members_overview_contact": 16,
+      "game_detail": 5,
+      "games_catalog_availability": 2,
+      "competition_rules": 77,
+      "equipment": 21,
+      "reservation_policy": 6,
+      "service_fee": 6
+    },
+    "regression_by_domain": {
+      "games_catalog_availability": 23,
+      "live_booking": 21,
+      "compound_context_boundary": 36,
+      "members_overview_contact": 21,
+      "service_fee": 18,
+      "equipment": 10,
+      "schedule_calendar": 12,
+      "studio_rules_penalties": 27,
+      "reservation_policy": 22,
+      "game_controls": 35,
+      "game_detail": 9,
+      "competition_rules": 5
+    },
+    "regression_by_edit_recipe": {
+      "neighbor": 46,
+      "transpose": 39,
+      "repeat": 26,
+      "mixed": 82,
+      "delete": 46
+    },
+    "regression_route_transitions": [
+      {
+        "from": "games",
+        "to": "games",
+        "count": 53
+      },
+      {
+        "from": "schedule",
+        "to": "no_answer",
+        "count": 13
+      },
+      {
+        "from": "overview",
+        "to": "clarification",
+        "count": 10
+      },
+      {
+        "from": "rules",
+        "to": "no_answer",
+        "count": 10
+      },
+      {
+        "from": "multi_question",
+        "to": "service_fee",
+        "count": 9
+      },
+      {
+        "from": "reservation",
+        "to": "reservation",
+        "count": 9
+      },
+      {
+        "from": "clarification",
+        "to": "no_answer",
+        "count": 8
+      },
+      {
+        "from": "reservation",
+        "to": "no_answer",
+        "count": 8
+      },
+      {
+        "from": "schedule",
+        "to": "games",
+        "count": 5
+      },
+      {
+        "from": "service_fee",
+        "to": "games",
+        "count": 5
+      },
+      {
+        "from": "schedule",
+        "to": "general",
+        "count": 5
+      },
+      {
+        "from": "overview",
+        "to": "no_answer",
+        "count": 5
+      },
+      {
+        "from": "equipment",
+        "to": "no_answer",
+        "count": 5
+      },
+      {
+        "from": "multi_question",
+        "to": "schedule",
+        "count": 5
+      },
+      {
+        "from": "games",
+        "to": "no_answer",
+        "count": 5
+      }
+    ],
+    "review_status": {
+      "generated_paraphrase_pending_review": 1021,
+      "source_grounded_gold_candidate": 373,
+      "inherited_gold_candidate": 606
+    }
+  },
+  "by_locale": {
+    "th": {
+      "rows": 1000,
+      "regressions": 101,
+      "regression_primary_failure": {
+        "status": 16,
+        "route": 71,
+        "content": 14
+      },
+      "clean_failure_primary": {
+        "route": 45,
+        "status": 39,
+        "content": 22
+      },
+      "no_positive_content_contract": 456,
+      "regressions_with_no_positive_content_contract": 39,
+      "route_only_regression_count": 13,
+      "route_only_safe_no_answer_ids": [
+        "MASTER-GT-TH-04758"
+      ],
+      "noisy_ambiguous_game_mode_scored_as_answer_ids": [
+        "MASTER-GT-TH-00890",
+        "MASTER-GT-TH-00859",
+        "MASTER-GT-TH-01137"
+      ],
+      "baseline_failure_by_domain": {
+        "studio_rules_penalties": 18,
+        "compound_context_boundary": 40,
+        "schedule_calendar": 9,
+        "game_controls": 2,
+        "members_overview_contact": 12,
+        "game_detail": 5,
+        "games_catalog_availability": 2,
+        "competition_rules": 5,
+        "equipment": 7,
+        "reservation_policy": 5,
+        "service_fee": 1
+      },
+      "regression_by_domain": {
+        "games_catalog_availability": 11,
+        "live_booking": 10,
+        "compound_context_boundary": 9,
+        "members_overview_contact": 12,
+        "service_fee": 14,
+        "equipment": 2,
+        "schedule_calendar": 5,
+        "studio_rules_penalties": 13,
+        "reservation_policy": 7,
+        "game_controls": 10,
+        "game_detail": 4,
+        "competition_rules": 4
+      },
+      "regression_by_edit_recipe": {
+        "neighbor": 17,
+        "transpose": 19,
+        "repeat": 10,
+        "mixed": 38,
+        "delete": 17
+      },
+      "regression_route_transitions": [
+        {
+          "from": "games",
+          "to": "games",
+          "count": 19
+        },
+        {
+          "from": "overview",
+          "to": "clarification",
+          "count": 10
+        },
+        {
+          "from": "service_fee",
+          "to": "games",
+          "count": 5
+        },
+        {
+          "from": "multi_question",
+          "to": "service_fee",
+          "count": 5
+        },
+        {
+          "from": "schedule",
+          "to": "general",
+          "count": 5
+        },
+        {
+          "from": "service_fee",
+          "to": "general",
+          "count": 4
+        },
+        {
+          "from": "rules",
+          "to": "clarification",
+          "count": 4
+        },
+        {
+          "from": "penalty",
+          "to": "clarification",
+          "count": 4
+        },
+        {
+          "from": "reservation",
+          "to": "general",
+          "count": 4
+        },
+        {
+          "from": "schedule",
+          "to": "games",
+          "count": 3
+        },
+        {
+          "from": "schedule",
+          "to": "clarification",
+          "count": 3
+        },
+        {
+          "from": "reservation",
+          "to": "clarification",
+          "count": 3
+        },
+        {
+          "from": "service_fee",
+          "to": "reservation",
+          "count": 3
+        },
+        {
+          "from": "reservation",
+          "to": "reservation",
+          "count": 3
+        },
+        {
+          "from": "reservation",
+          "to": "equipment",
+          "count": 2
+        }
+      ],
+      "review_status": {
+        "generated_paraphrase_pending_review": 541,
+        "source_grounded_gold_candidate": 188,
+        "inherited_gold_candidate": 271
+      }
+    },
+    "en": {
+      "rows": 1000,
+      "regressions": 138,
+      "regression_primary_failure": {
+        "route": 83,
+        "status": 38,
+        "content": 17
+      },
+      "clean_failure_primary": {
+        "route": 14,
+        "status": 89,
+        "content": 1
+      },
+      "no_positive_content_contract": 651,
+      "regressions_with_no_positive_content_contract": 81,
+      "route_only_regression_count": 13,
+      "route_only_safe_no_answer_ids": [],
+      "noisy_ambiguous_game_mode_scored_as_answer_ids": [],
+      "baseline_failure_by_domain": {
+        "service_fee": 5,
+        "competition_rules": 72,
+        "equipment": 14,
+        "schedule_calendar": 3,
+        "reservation_policy": 1,
+        "members_overview_contact": 4,
+        "compound_context_boundary": 4,
+        "game_controls": 1
+      },
+      "regression_by_domain": {
+        "studio_rules_penalties": 14,
+        "game_controls": 25,
+        "reservation_policy": 15,
+        "game_detail": 5,
+        "members_overview_contact": 9,
+        "compound_context_boundary": 27,
+        "equipment": 8,
+        "schedule_calendar": 7,
+        "live_booking": 11,
+        "service_fee": 4,
+        "games_catalog_availability": 12,
+        "competition_rules": 1
+      },
+      "regression_by_edit_recipe": {
+        "delete": 29,
+        "transpose": 20,
+        "mixed": 44,
+        "neighbor": 29,
+        "repeat": 16
+      },
+      "regression_route_transitions": [
+        {
+          "from": "games",
+          "to": "games",
+          "count": 34
+        },
+        {
+          "from": "schedule",
+          "to": "no_answer",
+          "count": 13
+        },
+        {
+          "from": "rules",
+          "to": "no_answer",
+          "count": 10
+        },
+        {
+          "from": "clarification",
+          "to": "no_answer",
+          "count": 8
+        },
+        {
+          "from": "reservation",
+          "to": "no_answer",
+          "count": 8
+        },
+        {
+          "from": "reservation",
+          "to": "reservation",
+          "count": 6
+        },
+        {
+          "from": "overview",
+          "to": "no_answer",
+          "count": 5
+        },
+        {
+          "from": "equipment",
+          "to": "no_answer",
+          "count": 5
+        },
+        {
+          "from": "multi_question",
+          "to": "schedule",
+          "count": 5
+        },
+        {
+          "from": "games",
+          "to": "no_answer",
+          "count": 5
+        },
+        {
+          "from": "service_fee",
+          "to": "no_answer",
+          "count": 4
+        },
+        {
+          "from": "multi_question",
+          "to": "service_fee",
+          "count": 4
+        },
+        {
+          "from": "equipment",
+          "to": "schedule",
+          "count": 4
+        },
+        {
+          "from": "penalty",
+          "to": "no_answer",
+          "count": 3
+        },
+        {
+          "from": "games",
+          "to": "service_fee",
+          "count": 3
+        }
+      ],
+      "review_status": {
+        "inherited_gold_candidate": 335,
+        "generated_paraphrase_pending_review": 480,
+        "source_grounded_gold_candidate": 185
+      }
+    }
+  }
+}

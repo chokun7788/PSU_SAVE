@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_booking_max_sessions",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "สูงสุดกี่ session",
+      "กี่ sessions",
+      "จองได้กี่ session",
+      "จอง 1 ครั้ง.*กี่ session"
+    ],
+    "en": [
+      "maximum.*sessions",
+      "how many sessions"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "booking_max_sessions",
+    "patterns": [
+      "สูงสุดกี่ session",
+      "กี่ sessions",
+      "จองได้กี่ session",
+      "จอง 1 ครั้ง.*กี่ session",
+      "maximum.*sessions",
+      "how many sessions"
+    ],
+    "priority": 100
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "การจอง 1 ครั้งสามารถจองได้สูงสุด 3 Sessions"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "One booking can include a maximum of 3 sessions."
+      },
+      "source_sha256": "05621566323b9651217fa69f8de81c9d28c1f92b3b7d26162af42359d93260cf",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/reservation_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "curated_reservation_max_sessions"
+    ],
+    "last_verified_at": ""
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_en_smoking_alcohol_natural",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [],
+    "en": [
+      "can\\s+i\\s+(?:smoke|drink alcohol)",
+      "is\\s+(?:smoking|alcohol).*(?:allowed|permitted)",
+      "are\\s+(?:cigarettes|alcoholic drinks).*(?:allowed|permitted)"
+    ]
+  },
+  "facts": {
+    "route_category": "rules",
+    "intent": "smoking_alcohol_rule",
+    "patterns": [
+      "can\\s+i\\s+(?:smoke|drink alcohol)",
+      "is\\s+(?:smoking|alcohol).*(?:allowed|permitted)",
+      "are\\s+(?:cigarettes|alcoholic drinks).*(?:allowed|permitted)"
+    ],
+    "priority": 132
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ห้ามสูบบุหรี่และดื่มเครื่องดื่มแอลกอฮอล์ภายในพื้นที่ศูนย์"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Smoking and alcoholic drinks are prohibited inside the studio."
+      },
+      "source_sha256": "c722ac659cce72dfffe88fa7a9d0a9b2c6d2cd6426b947b160e2b03b9909c243",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/english_support_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_rule_smoking_alcohol"
+    ],
+    "last_verified_at": ""
+  }
+}

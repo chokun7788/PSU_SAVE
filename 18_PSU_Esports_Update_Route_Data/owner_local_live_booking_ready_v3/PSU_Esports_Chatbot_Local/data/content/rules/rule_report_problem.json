@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_report_problem",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "พบปัญหา.*เครื่อง",
+      "ปัญหาเครื่อง",
+      "เครื่อง.*มีปัญหา",
+      "ปัญหา.*ตอนเล่น",
+      "ควรแจ้งใคร"
+    ],
+    "en": [
+      "report.*problem"
+    ]
+  },
+  "facts": {
+    "route_category": "rules",
+    "intent": "report_problem_to_staff",
+    "patterns": [
+      "พบปัญหา.*เครื่อง",
+      "ปัญหาเครื่อง",
+      "เครื่อง.*มีปัญหา",
+      "ปัญหา.*ตอนเล่น",
+      "ควรแจ้งใคร",
+      "report.*problem"
+    ],
+    "priority": 126
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "หากพบปัญหาการใช้งาน พฤติกรรมที่ไม่เหมาะสม หรือข้อกังวลใด ๆ ควรแจ้งเจ้าหน้าที่ทันที"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "If there is a usage problem, inappropriate behavior, or any concern, users should notify staff immediately."
+      },
+      "source_sha256": "a3123ecbe8fe739ba1524ce671ae4dab3976f5cc9a11c202ca771e8e3d739ca5",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/misc_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_rule_report_problem"
+    ],
+    "last_verified_at": ""
+  }
+}

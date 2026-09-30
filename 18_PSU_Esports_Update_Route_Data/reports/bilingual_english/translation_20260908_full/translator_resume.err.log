@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tools\translate_english_shadow_corpus.py", line 355, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tools\translate_english_shadow_corpus.py", line 332, in main
+    _write_jsonl_atomic(args.output, [translated[row["id"]] for row in source_rows if row["id"] in translated])
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tools\translate_english_shadow_corpus.py", line 66, in _write_jsonl_atomic
+    temporary.replace(path)
+    ~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Chokhun\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 780, in replace
+    os.replace(self, target)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+PermissionError: [WinError 5] Access is denied: 'data\\eval\\english_shadow_1600_machine_20260908.jsonl.tmp' -> 'data\\eval\\english_shadow_1600_machine_20260908.jsonl'

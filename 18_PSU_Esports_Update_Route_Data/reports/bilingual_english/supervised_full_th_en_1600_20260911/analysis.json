@@ -1,0 +1,1359 @@
+{
+  "thai": {
+    "total": 1600,
+    "strict_pass": 1388,
+    "strict_pass_rate": 0.8675,
+    "status_counts": {
+      "completed": 1600
+    },
+    "failure_types": {
+      "category": 50,
+      "missing": 2,
+      "missing_any": 170,
+      "mode": 5
+    },
+    "route_confusion_top_15": {
+      "['general', 'knowledge'] -> general": 275,
+      "['multi_question', 'reservation', 'games', 'equipment'] -> multi_question": 51,
+      "['members', 'overview'] -> overview": 47,
+      "['games', 'reservation'] -> reservation": 47,
+      "competition_rules -> games": 24,
+      "['equipment', 'games'] -> equipment": 16,
+      "['games', 'clarification', 'no_answer'] -> games": 12,
+      "games -> clarification": 11,
+      "['games', 'clarification'] -> clarification": 11,
+      "['schedule', 'reservation'] -> schedule": 10,
+      "['clarification', 'games', 'equipment', 'service_fee', 'reservation', 'no_answer'] -> clarification": 7,
+      "['games', 'no_answer'] -> games": 7,
+      "['games', 'multi_question'] -> multi_question": 6,
+      "['no_answer', 'games', 'general'] -> no_answer": 5,
+      "['games', 'no_answer'] -> clarification": 4
+    },
+    "mode_counts": {
+      "pipeline:deterministic_calculator_fast": 227,
+      "pipeline:structured_service_fee_by_game": 28,
+      "pipeline:no_answer": 202,
+      "pipeline:ambiguity_clarification": 42,
+      "pipeline:structured_game_detail": 122,
+      "pipeline:structured_service_game_availability": 180,
+      "pipeline:structured_game_controls": 316,
+      "pipeline:structured_games_catalog": 6,
+      "pipeline:structured_game_zone_ranking": 1,
+      "pipeline:structured_games_genre_list": 4,
+      "pipeline:structured_games_family": 3,
+      "pipeline:game_control_missing_game_context": 11,
+      "pipeline:structured_equipment_catalog": 10,
+      "pipeline:structured_equipment_item": 48,
+      "pipeline:structured_reservation_fact": 12,
+      "pipeline:structured_booking_selection": 3,
+      "pipeline:booking_howto_fast_path": 1,
+      "pipeline:booking_fast_path": 1,
+      "pipeline:checkin_fast_path": 1,
+      "pipeline:mixed_reservation_fast": 1,
+      "pipeline:rag_direct_curated": 1,
+      "pipeline:structured_schedule": 10,
+      "pipeline:calendar_schedule_fast_path": 2,
+      "pipeline:calendar_upcoming_holidays_fast_path": 1,
+      "pipeline:structured_members_group_list": 4,
+      "pipeline:structured_members_group_count": 2,
+      "pipeline:structured_members_person_lookup": 25,
+      "pipeline:structured_members_role_lookup": 32,
+      "pipeline:competition_fact_card": 37,
+      "pipeline:hybrid_guarded_rerank": 11,
+      "pipeline:multi_question_splitter": 88,
+      "pipeline:experimental_rag_direct_fallback": 2,
+      "pipeline:experimental_rag_llm_fallback": 3,
+      "pipeline:game_target_unknown": 1,
+      "pipeline:games_known_unsupported_fast_path": 2,
+      "pipeline:boundary_no_answer_sensitive": 1,
+      "pipeline:freshness_live_source_required": 2,
+      "pipeline:general_input_clarification": 1,
+      "pipeline:structured_service_capacity": 6,
+      "pipeline:structured_booking_game_service_selection": 40,
+      "pipeline:structured_booking_game_family_clarification": 1,
+      "pipeline:structured_service_game_availability_no_match": 4,
+      "pipeline:structured_game_controls_no_current_game": 8,
+      "pipeline:request_timeout_no_answer": 1,
+      "pipeline:category_rule_fast_path": 1,
+      "pipeline:rules_fast_path": 1,
+      "pipeline:penalty_fast_path": 1,
+      "pipeline:mixed_rules_fast": 1,
+      "pipeline:studio_rules_overview_fast_path": 1,
+      "pipeline:general_llm_after_rag_miss": 91
+    },
+    "latency_sec": {
+      "observed_mean_excluding_watchdog_escapes": 2.7741,
+      "observed_p50_excluding_watchdog_escapes": 0.7671,
+      "observed_p95_excluding_watchdog_escapes": 10.3902,
+      "observed_p99_excluding_watchdog_escapes": 19.0201,
+      "observed_max_excluding_watchdog_escapes": 19.0551,
+      "observed_over_10s_excluding_watchdog_escapes": 89,
+      "observed_over_20s_excluding_watchdog_escapes": 0,
+      "raw_max_including_watchdog_escapes": 887.2689
+    },
+    "watchdog_escape_observed": 1,
+    "watchdog_escape_cases": [
+      {
+        "id": "MB-1099-SF-130",
+        "question": "General Student เล่น PS5 3 ชั่วโมง เสียกี่บาท",
+        "wall_sec": 887.2689,
+        "mode": "pipeline:request_timeout_no_answer",
+        "failures": [
+          "category",
+          "missing_any"
+        ]
+      }
+    ],
+    "slowest_20": [
+      {
+        "id": "MB-1099-SF-130",
+        "question": "General Student เล่น PS5 3 ชั่วโมง เสียกี่บาท",
+        "wall_sec": 887.2689,
+        "mode": "pipeline:request_timeout_no_answer",
+        "route": "no_answer/request_timeout",
+        "status": "completed",
+        "failures": [
+          "category",
+          "missing_any"
+        ],
+        "answer_preview": "ขออภัยครับ คำถามนี้ใช้เวลาประมวลผลเกินเวลาที่กำหนด เลยหยุดไว้ก่อนเพื่อไม่ให้ระบบค้าง ลองถามใหม่ให้เฉพาะเจาะจงขึ้น เช่น ระบุโซน เกม หรือเรื่องที่ต้องการถามโดยตรงครับ"
+      },
+      {
+        "id": "MB-1340-GL-015",
+        "question": "ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค ตอบสั้น ๆ",
+        "wall_sec": 19.0551,
+        "mode": "pipeline:no_answer",
+        "route": "general/how_to",
+        "status": "completed",
+        "failures": [
+          "missing_any"
+        ],
+        "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+      },
+      {
+        "id": "MB-1349-GL-024",
+        "question": "JSON คืออะไร ขอแบบเข้าใจง่าย",
+        "wall_sec": 19.0516,
+        "mode": "pipeline:no_answer",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+      },
+      {
+        "id": "MB-1389-GL-064",
+        "question": "JSON คืออะไร อธิบายให้มือใหม่เข้าใจ",
+        "wall_sec": 19.0338,
+        "mode": "pipeline:no_answer",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+      },
+      {
+        "id": "MB-1348-GL-023",
+        "question": "API คืออะไร ขอแบบเข้าใจง่าย",
+        "wall_sec": 19.0325,
+        "mode": "pipeline:no_answer",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [
+          "missing_any"
+        ],
+        "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+      },
+      {
+        "id": "MB-1364-GL-039",
+        "question": "GPU คืออะไรแบบเข้าใจง่าย ตอบเป็นภาษาไทย",
+        "wall_sec": 19.0313,
+        "mode": "pipeline:no_answer",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [
+          "missing_any"
+        ],
+        "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+      },
+      {
+        "id": "MB-1489-GL-164",
+        "question": "JSON คืออะไร ตอบให้เหมาะกับนักศึกษา",
+        "wall_sec": 19.0313,
+        "mode": "pipeline:no_answer",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+      },
+      {
+        "id": "MB-1448-GL-123",
+        "question": "API คืออะไร อธิบายแบบใช้กับวงการเกม",
+        "wall_sec": 19.0291,
+        "mode": "pipeline:no_answer",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [
+          "missing_any"
+        ],
+        "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+      },
+      {
+        "id": "MB-1329-GL-004",
+        "question": "JSON คืออะไร",
+        "wall_sec": 19.0282,
+        "mode": "pipeline:no_answer",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+      },
+      {
+        "id": "MB-1484-GL-159",
+        "question": "GPU คืออะไรแบบเข้าใจง่าย ตอบแบบสุภาพ",
+        "wall_sec": 19.025,
+        "mode": "pipeline:no_answer",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [
+          "missing_any"
+        ],
+        "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+      },
+      {
+        "id": "MB-1409-GL-084",
+        "question": "JSON คืออะไร ขอแบบไม่ใช้ศัพท์ยาก",
+        "wall_sec": 19.0249,
+        "mode": "pipeline:no_answer",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+      },
+      {
+        "id": "MB-1326-GL-001",
+        "question": "อธิบายคำว่า latency ในระบบคอมพิวเตอร์แบบสั้น ๆ",
+        "wall_sec": 19.0242,
+        "mode": "pipeline:no_answer",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [
+          "missing_any"
+        ],
+        "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+      },
+      {
+        "id": "MB-1464-GL-139",
+        "question": "GPU คืออะไรแบบเข้าใจง่าย ช่วยยกตัวอย่างสั้น ๆ",
+        "wall_sec": 19.0239,
+        "mode": "pipeline:no_answer",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [
+          "missing_any"
+        ],
+        "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+      },
+      {
+        "id": "MB-1444-GL-119",
+        "question": "GPU คืออะไรแบบเข้าใจง่าย อธิบายแบบใช้ในงาน chatbot",
+        "wall_sec": 19.0223,
+        "mode": "pipeline:no_answer",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [
+          "missing_any"
+        ],
+        "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+      },
+      {
+        "id": "MB-1548-GL-223",
+        "question": "API คืออะไร ตอบแบบประโยคเดียว",
+        "wall_sec": 19.0221,
+        "mode": "pipeline:no_answer",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [
+          "missing_any"
+        ],
+        "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+      },
+      {
+        "id": "MB-1509-GL-184",
+        "question": "JSON คืออะไร ขอแบบไม่เป็นทางการมาก",
+        "wall_sec": 19.0203,
+        "mode": "pipeline:no_answer",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+      },
+      {
+        "id": "MB-1588-GL-263",
+        "question": "API คืออะไร ตอบแบบไม่ต้องมีตัวอย่างยาว",
+        "wall_sec": 19.0201,
+        "mode": "pipeline:no_answer",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [
+          "missing_any"
+        ],
+        "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+      },
+      {
+        "id": "MB-1528-GL-203",
+        "question": "API คืออะไร ช่วยสรุปใจความสำคัญ",
+        "wall_sec": 19.0187,
+        "mode": "pipeline:no_answer",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [
+          "missing_any"
+        ],
+        "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+      },
+      {
+        "id": "MB-1544-GL-219",
+        "question": "GPU คืออะไรแบบเข้าใจง่าย ตอบแบบ bullet สั้น ๆ",
+        "wall_sec": 19.0184,
+        "mode": "pipeline:no_answer",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [
+          "missing_any"
+        ],
+        "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+      },
+      {
+        "id": "MB-1369-GL-044",
+        "question": "JSON คืออะไร ไม่ต้องยาว",
+        "wall_sec": 19.0164,
+        "mode": "pipeline:no_answer",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+      }
+    ]
+  },
+  "english": {
+    "total": 1600,
+    "strict_pass": 1061,
+    "strict_pass_rate": 0.663125,
+    "status_counts": {
+      "completed": 1600
+    },
+    "failure_types": {
+      "category": 518,
+      "thai_prose_leak": 23,
+      "latency": 1,
+      "pipeline_timeout": 1
+    },
+    "route_confusion_top_15": {
+      "['general', 'knowledge'] -> no_answer": 266,
+      "competition_rules -> games": 55,
+      "['multi_question', 'reservation', 'games', 'equipment'] -> service_fee": 50,
+      "['games', 'reservation'] -> games": 42,
+      "['members', 'overview'] -> no_answer": 34,
+      "['equipment', 'games'] -> equipment": 14,
+      "reservation -> no_answer": 14,
+      "['members', 'overview'] -> overview": 13,
+      "multi_question -> games": 13,
+      "['games', 'clarification', 'no_answer'] -> games": 12,
+      "['games', 'clarification'] -> games": 12,
+      "games -> no_answer": 11,
+      "['games', 'no_answer'] -> games": 11,
+      "multi_question -> service_fee": 11,
+      "equipment -> no_answer": 10
+    },
+    "mode_counts": {
+      "pipeline:structured_service_fee_en": 311,
+      "pipeline:structured_equipment_catalog_en": 57,
+      "pipeline:english_no_answer": 358,
+      "pipeline:price_service_clarification_en": 4,
+      "pipeline:games_unknown_target_en": 8,
+      "pipeline:structured_game_detail_en": 232,
+      "pipeline:structured_game_availability_en": 141,
+      "pipeline:structured_games_count_en": 2,
+      "pipeline:structured_games_catalog_en": 64,
+      "pipeline:structured_game_controls_en": 294,
+      "pipeline:missing_english_localization": 42,
+      "pipeline:answer_contract_no_answer": 9,
+      "pipeline:rule_en": 8,
+      "pipeline:structured_schedule_en": 24,
+      "pipeline:structured_competition_rules_en": 21,
+      "pipeline:structured_members_source_th": 23,
+      "pipeline:request_timeout_no_answer": 1,
+      "pipeline:experimental_rag_direct_fallback": 1
+    },
+    "latency_sec": {
+      "observed_mean_excluding_watchdog_escapes": 0.805,
+      "observed_p50_excluding_watchdog_escapes": 0.0303,
+      "observed_p95_excluding_watchdog_escapes": 2.9266,
+      "observed_p99_excluding_watchdog_escapes": 3.3081,
+      "observed_max_excluding_watchdog_escapes": 16.5494,
+      "observed_over_10s_excluding_watchdog_escapes": 4,
+      "observed_over_20s_excluding_watchdog_escapes": 0,
+      "raw_max_including_watchdog_escapes": 7902.7385
+    },
+    "watchdog_escape_observed": 1,
+    "watchdog_escape_cases": [
+      {
+        "id": "EN-SHADOW-0608",
+        "question": "Does ROV require check-in before a match?",
+        "wall_sec": 7902.7385,
+        "mode": "pipeline:request_timeout_no_answer",
+        "failures": [
+          "category",
+          "latency",
+          "pipeline_timeout"
+        ]
+      }
+    ],
+    "slowest_20": [
+      {
+        "id": "EN-SHADOW-0608",
+        "question": "Does ROV require check-in before a match?",
+        "wall_sec": 7902.7385,
+        "mode": "pipeline:request_timeout_no_answer",
+        "route": "no_answer/request_timeout",
+        "status": "completed",
+        "failures": [
+          "category",
+          "latency",
+          "pipeline_timeout"
+        ],
+        "answer_preview": "This request reached the processing time limit, so it was stopped to keep the service responsive. Please try a more specific question, such as naming the zone, game, or topic directly."
+      },
+      {
+        "id": "EN-SHADOW-0609",
+        "question": "Which account does ROV use to compete",
+        "wall_sec": 16.5494,
+        "mode": "pipeline:structured_games_catalog_en",
+        "route": "games/games_lookup",
+        "status": "completed",
+        "failures": [
+          "category"
+        ],
+        "answer_preview": "There are currently 42 verified games available. PC Zone (6 games) • Call of Duty: Warzone • Counter-Strike 2 • League of Legends • PUBG: BATTLEGROUNDS • TEKKEN 8 • VALORANT PlayStation 5 Zone (17 games) • Call of Duty: Modern Warfare III • Delta Force • EA Sp"
+      },
+      {
+        "id": "EN-SHADOW-0646",
+        "question": "What is the personal phone number of the staff member?",
+        "wall_sec": 14.3502,
+        "mode": "pipeline:structured_members_source_th",
+        "route": "overview/members_lookup",
+        "status": "completed",
+        "failures": [
+          "category",
+          "thai_prose_leak"
+        ],
+        "answer_preview": "PSU Esports Studio - Phuket member directory (names and roles are shown exactly as in the official Thai source): - ผศ.ดร.นิวัติ แก้วประดับ: อธิการบดี - มหาวิทยาลัยสงขลานครินทร์ - รศ.ดร.พันธ์ ทองชุมนุม: รองอธิการบดี - มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต - ร"
+      },
+      {
+        "id": "EN-SHADOW-0645",
+        "question": "Is Valorant Mobile available?",
+        "wall_sec": 13.8638,
+        "mode": "pipeline:experimental_rag_direct_fallback",
+        "route": "no_answer/guard_no_answer",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "Verified English information is not available for this question yet. The system will not translate Thai evidence at runtime. Source: https://esports.computing.psu.ac.th/, local://competition_rules"
+      },
+      {
+        "id": "EN-SHADOW-0647",
+        "question": "Request information not available on the PSU Esports website",
+        "wall_sec": 12.3777,
+        "mode": "pipeline:missing_english_localization",
+        "route": "knowledge/knowledge_localization_unavailable",
+        "status": "completed",
+        "failures": [
+          "category"
+        ],
+        "answer_preview": "This information does not yet have an approved English localization. Please open the cited original source or ask a staff member for confirmation. Source: https://esports.phuket.psu.ac.th/home (original source in Thai)"
+      },
+      {
+        "id": "EN-SHADOW-0052",
+        "question": "Which is more expensive, PS5 or Nintendo?",
+        "wall_sec": 9.2437,
+        "mode": "pipeline:structured_equipment_catalog_en",
+        "route": "equipment/equipment_catalog",
+        "status": "completed",
+        "failures": [
+          "category"
+        ],
+        "answer_preview": "Verified equipment in PlayStation 5 Zone: - PlayStation 5 Slim With Ultra HD Blu-Ray Disc Drive (PlayStation 5 Zone / VR Zone) - 2 Units in PlayStation 5 Zone and 1 Unit in VR Zone Source: https://esports.phuket.psu.ac.th/home (original source in Thai)"
+      },
+      {
+        "id": "EN-SHADOW-1586",
+        "question": "Explain the term latency in a computer system briefly without giving long examples",
+        "wall_sec": 3.8212,
+        "mode": "pipeline:english_no_answer",
+        "route": "no_answer/english_verified_evidence_unavailable",
+        "status": "completed",
+        "failures": [
+          "category"
+        ],
+        "answer_preview": "I could not find verified PSU Esports Studio - Phuket information for this question."
+      },
+      {
+        "id": "EN-SHADOW-0819",
+        "question": "How many players can join Cockpit #01-#02?",
+        "wall_sec": 3.8155,
+        "mode": "pipeline:english_no_answer",
+        "route": "no_answer/english_verified_evidence_unavailable",
+        "status": "completed",
+        "failures": [
+          "category"
+        ],
+        "answer_preview": "I could not find verified PSU Esports Studio - Phuket information for this question."
+      },
+      {
+        "id": "EN-SHADOW-0610",
+        "question": "What maps are available in ROV?",
+        "wall_sec": 3.756,
+        "mode": "pipeline:structured_competition_rules_en",
+        "route": "competition_rules/competition_rule_lookup",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "Verified competition rules: - Competition Rules 4. Regulations and Competition Rules 4.1. Basic Rules 4.1.1. Prohibited to use character names or phrases that are offensive or disrespectful toward others. 4.1.2. In the first match, the team on the upper side o"
+      },
+      {
+        "id": "EN-SHADOW-1556",
+        "question": "Explain the term latency in a computer system briefly. Explain its pros and cons briefly.",
+        "wall_sec": 3.715,
+        "mode": "pipeline:english_no_answer",
+        "route": "no_answer/english_verified_evidence_unavailable",
+        "status": "completed",
+        "failures": [
+          "category"
+        ],
+        "answer_preview": "I could not find verified PSU Esports Studio - Phuket information for this question."
+      },
+      {
+        "id": "EN-SHADOW-0605",
+        "question": "Does ROV have a backup character?",
+        "wall_sec": 3.452,
+        "mode": "pipeline:structured_competition_rules_en",
+        "route": "competition_rules/competition_rule_lookup",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "Verified competition rules: - Competition Rules 4. Regulations and Competition Rules 4.1. Basic Rules 4.1.1. Prohibited to use character names or phrases that are offensive or disrespectful toward others. 4.1.2. In the first match, the team on the upper side o"
+      },
+      {
+        "id": "EN-SHADOW-1558",
+        "question": "What is API? Briefly explain its advantages and disadvantages",
+        "wall_sec": 3.4072,
+        "mode": "pipeline:english_no_answer",
+        "route": "no_answer/english_verified_evidence_unavailable",
+        "status": "completed",
+        "failures": [
+          "category"
+        ],
+        "answer_preview": "I could not find verified PSU Esports Studio - Phuket information for this question."
+      },
+      {
+        "id": "EN-SHADOW-0474",
+        "question": "What happens if I arrive late?",
+        "wall_sec": 3.368,
+        "mode": "pipeline:structured_competition_rules_en",
+        "route": "competition_rules/competition_rule_lookup",
+        "status": "completed",
+        "failures": [
+          "category"
+        ],
+        "answer_preview": "Verified competition rules: - Competition Rules * Offline mode * PlayStation 5 console used * Singles (1v1) format * Match format: * FT2: Winner is the first to win two games * Each game uses R3 rules (3 rounds per game) and 60S rule (60 seconds per round) * I"
+      },
+      {
+        "id": "EN-SHADOW-0589",
+        "question": "How many games are played in the TEKKEN 8 finals round?",
+        "wall_sec": 3.3676,
+        "mode": "pipeline:structured_competition_rules_en",
+        "route": "competition_rules/competition_rule_lookup",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "Verified competition rules: - Competition Rules * Offline mode * PlayStation 5 console used * Singles (1v1) format * Match format: * FT2: Winner is the first to win two games * Each game uses R3 rules (3 rounds per game) and 60S rule (60 seconds per round) * I"
+      },
+      {
+        "id": "EN-SHADOW-0603",
+        "question": "What is the format of ROV competition?",
+        "wall_sec": 3.364,
+        "mode": "pipeline:structured_competition_rules_en",
+        "route": "competition_rules/competition_rule_lookup",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "Verified competition rules: - Competition Rules 4. Regulations and Competition Rules 4.1. Basic Rules 4.1.1. Prohibited to use character names or phrases that are offensive or disrespectful toward others. 4.1.2. In the first match, the team on the upper side o"
+      },
+      {
+        "id": "EN-SHADOW-0543",
+        "question": "What is VALORANT's match format?",
+        "wall_sec": 3.3335,
+        "mode": "pipeline:structured_competition_rules_en",
+        "route": "competition_rules/competition_rule_lookup",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "Verified competition rules: - Competition Rules * Offline mode * PlayStation 5 console used * Singles (1v1) format * Match format: * FT2: Winner is the first to win two games * Each game uses R3 rules (3 rounds per game) and 60S rule (60 seconds per round) * I"
+      },
+      {
+        "id": "EN-SHADOW-0588",
+        "question": "What is the match format for TEKKEN 8?",
+        "wall_sec": 3.3081,
+        "mode": "pipeline:structured_competition_rules_en",
+        "route": "competition_rules/competition_rule_lookup",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "Verified competition rules: - Competition Rules * Offline mode * PlayStation 5 console used * Singles (1v1) format * Match format: * FT2: Winner is the first to win two games * Each game uses R3 rules (3 rounds per game) and 60S rule (60 seconds per round) * I"
+      },
+      {
+        "id": "EN-SHADOW-0582",
+        "question": "What are the rules of competition in TEKKEN 8?",
+        "wall_sec": 3.2818,
+        "mode": "pipeline:structured_competition_rules_en",
+        "route": "competition_rules/competition_rule_lookup",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "Verified competition rules: - Characters and Setup * Any character can be selected (except DLC characters) * No character customization allowed in any case (such as clothing, hairstyle, combat effects, aura, etc.) * Only standard skins are permitted * Assist b"
+      },
+      {
+        "id": "EN-SHADOW-0597",
+        "question": "What are the ROV competition rules?",
+        "wall_sec": 3.2766,
+        "mode": "pipeline:structured_competition_rules_en",
+        "route": "competition_rules/competition_rule_lookup",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "Verified competition rules: - Competition Rules 4. Regulations and Competition Rules 4.1. Basic Rules 4.1.1. Prohibited to use character names or phrases that are offensive or disrespectful toward others. 4.1.2. In the first match, the team on the upper side o"
+      },
+      {
+        "id": "EN-SHADOW-0650",
+        "question": "Can you help me with my math homework?",
+        "wall_sec": 3.1608,
+        "mode": "pipeline:english_no_answer",
+        "route": "no_answer/english_verified_evidence_unavailable",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "I could not find verified PSU Esports Studio - Phuket information for this question."
+      }
+    ]
+  },
+  "parity": {
+    "shared_ids": 1600,
+    "route_category_mismatches": 595,
+    "large_bullet_shape_gaps": 480,
+    "pass_asymmetry": 387,
+    "route_mismatch_examples": [
+      {
+        "id": "MB-0031-SF-031",
+        "thai": "equipment",
+        "english": "service_fee",
+        "question_en": "How much does Cockpit cost"
+      },
+      {
+        "id": "MB-0052-SF-052",
+        "thai": "service_fee",
+        "english": "equipment",
+        "question_en": "Which is more expensive, PS5 or Nintendo?"
+      },
+      {
+        "id": "MB-0053-SF-053",
+        "thai": "service_fee",
+        "english": "no_answer",
+        "question_en": "How are VR 30-minute sessions different from VR one-hour sessions?"
+      },
+      {
+        "id": "MB-0064-SF-064",
+        "thai": "games",
+        "english": "service_fee",
+        "question_en": "How much does TEKKEN 8 cost?"
+      },
+      {
+        "id": "MB-0078-SF-078",
+        "thai": "service_fee",
+        "english": "games",
+        "question_en": "The Last of Us Part I / Part II price"
+      },
+      {
+        "id": "MB-0081-SF-081",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is the price of Overcooked 2?"
+      },
+      {
+        "id": "MB-0179-G-091",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "How do you play Overcooked 2?"
+      },
+      {
+        "id": "MB-0180-G-092",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What genre is Overcooked 2?"
+      },
+      {
+        "id": "MB-0241-G-153",
+        "thai": "games",
+        "english": "no_answer",
+        "question_en": "Which game can be played across multiple zones?"
+      },
+      {
+        "id": "MB-0295-GC-049",
+        "thai": "games",
+        "english": "no_answer",
+        "question_en": "What are the two buttons in It Takes Two altogether?"
+      },
+      {
+        "id": "MB-0296-GC-050",
+        "thai": "games",
+        "english": "no_answer",
+        "question_en": "How do you use the controller in It Takes Two?"
+      },
+      {
+        "id": "MB-0297-GC-051",
+        "thai": "games",
+        "english": "no_answer",
+        "question_en": "In It Takes Two, what buttons are used for movement?"
+      },
+      {
+        "id": "MB-0298-GC-052",
+        "thai": "games",
+        "english": "no_answer",
+        "question_en": "In It Takes Two, which buttons are used for sprinting?"
+      },
+      {
+        "id": "MB-0343-GC-097",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What are all the buttons in Overcooked 2?"
+      },
+      {
+        "id": "MB-0344-GC-098",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "How do you use a controller in Overcooked 2?"
+      },
+      {
+        "id": "MB-0345-GC-099",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "In Overcooked 2, which buttons are used for movement?"
+      },
+      {
+        "id": "MB-0346-GC-100",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "In Overcooked 2, what buttons are used for picking up and placing items?"
+      },
+      {
+        "id": "MB-0397-GC-151",
+        "thai": "games",
+        "english": "no_answer",
+        "question_en": "How to play"
+      },
+      {
+        "id": "MB-0403-E-002",
+        "thai": "clarification",
+        "english": "equipment",
+        "question_en": "What equipment is available in the PC zone?"
+      },
+      {
+        "id": "MB-0405-E-004",
+        "thai": "clarification",
+        "english": "equipment",
+        "question_en": "What can you use in the PlayStation 5 Zone?"
+      },
+      {
+        "id": "MB-0409-E-008",
+        "thai": "clarification",
+        "english": "equipment",
+        "question_en": "What VR equipment is available in the VR Zone?"
+      },
+      {
+        "id": "MB-0411-E-010",
+        "thai": "clarification",
+        "english": "equipment",
+        "question_en": "What facilities are available in the Cockpit Zone?"
+      },
+      {
+        "id": "MB-0436-E-035",
+        "thai": "equipment",
+        "english": "no_answer",
+        "question_en": "What is Racezone Full Cockpit V3"
+      },
+      {
+        "id": "MB-0438-E-037",
+        "thai": "equipment",
+        "english": "no_answer",
+        "question_en": "What is the Racezone Full Cockpit V3 used for"
+      },
+      {
+        "id": "MB-0439-E-038",
+        "thai": "equipment",
+        "english": "no_answer",
+        "question_en": "What is the Pulse Elite Wireless Headset"
+      }
+    ],
+    "shape_gap_examples": [
+      {
+        "id": "MB-0022-SF-022",
+        "thai": {
+          "lines": 15,
+          "bullets": 8
+        },
+        "english": {
+          "lines": 7,
+          "bullets": 2
+        },
+        "question_en": "How much does a PSU student pay to play Nintendo Switch for 30 minutes?"
+      },
+      {
+        "id": "MB-0023-SF-023",
+        "thai": {
+          "lines": 15,
+          "bullets": 8
+        },
+        "english": {
+          "lines": 9,
+          "bullets": 4
+        },
+        "question_en": "How much does a PSU student pay to play Nintendo Switch for one hour?"
+      },
+      {
+        "id": "MB-0024-SF-024",
+        "thai": {
+          "lines": 15,
+          "bullets": 8
+        },
+        "english": {
+          "lines": 7,
+          "bullets": 2
+        },
+        "question_en": "How much does a PSU student pay to play Nintendo Switch for 2 hours?"
+      },
+      {
+        "id": "MB-0025-SF-025",
+        "thai": {
+          "lines": 15,
+          "bullets": 8
+        },
+        "english": {
+          "lines": 9,
+          "bullets": 4
+        },
+        "question_en": "How much does it cost for a student from another university to play Nintendo Switch for 30 minutes?"
+      },
+      {
+        "id": "MB-0026-SF-026",
+        "thai": {
+          "lines": 15,
+          "bullets": 8
+        },
+        "english": {
+          "lines": 9,
+          "bullets": 4
+        },
+        "question_en": "How much does it cost for a student from another university to play Nintendo Switch for 1 hour?"
+      },
+      {
+        "id": "MB-0027-SF-027",
+        "thai": {
+          "lines": 15,
+          "bullets": 8
+        },
+        "english": {
+          "lines": 9,
+          "bullets": 4
+        },
+        "question_en": "How much does it cost for a student from another university to play Nintendo Switch for 2 hours?"
+      },
+      {
+        "id": "MB-0033-SF-033",
+        "thai": {
+          "lines": 10,
+          "bullets": 4
+        },
+        "english": {
+          "lines": 4,
+          "bullets": 1
+        },
+        "question_en": "How much does a PSU student pay to play Cockpit for one hour?"
+      },
+      {
+        "id": "MB-0044-SF-044",
+        "thai": {
+          "lines": 15,
+          "bullets": 8
+        },
+        "english": {
+          "lines": 5,
+          "bullets": 2
+        },
+        "question_en": "How much does it cost for a PSU student to play VR for 2 hours?"
+      },
+      {
+        "id": "MB-0047-SF-047",
+        "thai": {
+          "lines": 15,
+          "bullets": 8
+        },
+        "english": {
+          "lines": 5,
+          "bullets": 2
+        },
+        "question_en": "How much does it cost for a student from another university to play VR for 2 hours?"
+      },
+      {
+        "id": "MB-0050-SF-050",
+        "thai": {
+          "lines": 15,
+          "bullets": 8
+        },
+        "english": {
+          "lines": 7,
+          "bullets": 4
+        },
+        "question_en": "How much does it cost for a general visitor to play VR for two hours?"
+      },
+      {
+        "id": "MB-0051-SF-051",
+        "thai": {
+          "lines": 15,
+          "bullets": 9
+        },
+        "english": {
+          "lines": 6,
+          "bullets": 3
+        },
+        "question_en": "What is the price difference between PC and PS5?"
+      },
+      {
+        "id": "MB-0052-SF-052",
+        "thai": {
+          "lines": 13,
+          "bullets": 9
+        },
+        "english": {
+          "lines": 3,
+          "bullets": 1
+        },
+        "question_en": "Which is more expensive, PS5 or Nintendo?"
+      },
+      {
+        "id": "MB-0053-SF-053",
+        "thai": {
+          "lines": 14,
+          "bullets": 9
+        },
+        "english": {
+          "lines": 1,
+          "bullets": 0
+        },
+        "question_en": "How are VR 30-minute sessions different from VR one-hour sessions?"
+      },
+      {
+        "id": "MB-0056-SF-056",
+        "thai": {
+          "lines": 9,
+          "bullets": 4
+        },
+        "english": {
+          "lines": 4,
+          "bullets": 1
+        },
+        "question_en": "Does a student from Mahasarakham University have to pay to play Nintendo for 4 people?"
+      },
+      {
+        "id": "MB-0057-SF-057",
+        "thai": {
+          "lines": 11,
+          "bullets": 6
+        },
+        "english": {
+          "lines": 5,
+          "bullets": 2
+        },
+        "question_en": "How much does it cost for a general adult to play VR for 1 hour?"
+      },
+      {
+        "id": "MB-0075-SF-075",
+        "thai": {
+          "lines": 20,
+          "bullets": 9
+        },
+        "english": {
+          "lines": 2,
+          "bullets": 0
+        },
+        "question_en": "Resident Evil 4 price"
+      },
+      {
+        "id": "MB-0076-SF-076",
+        "thai": {
+          "lines": 20,
+          "bullets": 9
+        },
+        "english": {
+          "lines": 2,
+          "bullets": 0
+        },
+        "question_en": "Resident Evil Village price"
+      },
+      {
+        "id": "MB-0078-SF-078",
+        "thai": {
+          "lines": 8,
+          "bullets": 3
+        },
+        "english": {
+          "lines": 2,
+          "bullets": 0
+        },
+        "question_en": "The Last of Us Part I / Part II price"
+      },
+      {
+        "id": "MB-0233-G-145",
+        "thai": {
+          "lines": 52,
+          "bullets": 45
+        },
+        "english": {
+          "lines": 2,
+          "bullets": 0
+        },
+        "question_en": "How many games are there in total?"
+      },
+      {
+        "id": "MB-0235-G-147",
+        "thai": {
+          "lines": 18,
+          "bullets": 10
+        },
+        "english": {
+          "lines": 9,
+          "bullets": 6
+        },
+        "question_en": "What PC games are available"
+      },
+      {
+        "id": "MB-0237-G-149",
+        "thai": {
+          "lines": 40,
+          "bullets": 34
+        },
+        "english": {
+          "lines": 20,
+          "bullets": 17
+        },
+        "question_en": "What games are available on Nintendo Switch"
+      },
+      {
+        "id": "MB-0240-G-152",
+        "thai": {
+          "lines": 8,
+          "bullets": 5
+        },
+        "english": {
+          "lines": 6,
+          "bullets": 0
+        },
+        "question_en": "Which equipment has the most games?"
+      },
+      {
+        "id": "MB-0241-G-153",
+        "thai": {
+          "lines": 90,
+          "bullets": 70
+        },
+        "english": {
+          "lines": 1,
+          "bullets": 0
+        },
+        "question_en": "Which game can be played across multiple zones?"
+      },
+      {
+        "id": "MB-0242-G-154",
+        "thai": {
+          "lines": 8,
+          "bullets": 4
+        },
+        "english": {
+          "lines": 4,
+          "bullets": 1
+        },
+        "question_en": "What racing games are available"
+      },
+      {
+        "id": "MB-0243-G-155",
+        "thai": {
+          "lines": 14,
+          "bullets": 8
+        },
+        "english": {
+          "lines": 52,
+          "bullets": 45
+        },
+        "question_en": "What games are available"
+      }
+    ],
+    "pass_asymmetry_examples": [
+      {
+        "id": "MB-0031-SF-031",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category"
+        ],
+        "english_failures": [],
+        "question_en": "How much does Cockpit cost"
+      },
+      {
+        "id": "MB-0052-SF-052",
+        "thai_pass": true,
+        "english_pass": false,
+        "thai_failures": [],
+        "english_failures": [
+          "category"
+        ],
+        "question_en": "Which is more expensive, PS5 or Nintendo?"
+      },
+      {
+        "id": "MB-0053-SF-053",
+        "thai_pass": true,
+        "english_pass": false,
+        "thai_failures": [],
+        "english_failures": [
+          "category"
+        ],
+        "question_en": "How are VR 30-minute sessions different from VR one-hour sessions?"
+      },
+      {
+        "id": "MB-0064-SF-064",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "How much does TEKKEN 8 cost?"
+      },
+      {
+        "id": "MB-0078-SF-078",
+        "thai_pass": true,
+        "english_pass": false,
+        "thai_failures": [],
+        "english_failures": [
+          "category"
+        ],
+        "question_en": "The Last of Us Part I / Part II price"
+      },
+      {
+        "id": "MB-0179-G-091",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category"
+        ],
+        "english_failures": [],
+        "question_en": "How do you play Overcooked 2?"
+      },
+      {
+        "id": "MB-0180-G-092",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing_any"
+        ],
+        "english_failures": [],
+        "question_en": "What genre is Overcooked 2?"
+      },
+      {
+        "id": "MB-0241-G-153",
+        "thai_pass": true,
+        "english_pass": false,
+        "thai_failures": [],
+        "english_failures": [
+          "category"
+        ],
+        "question_en": "Which game can be played across multiple zones?"
+      },
+      {
+        "id": "MB-0295-GC-049",
+        "thai_pass": true,
+        "english_pass": false,
+        "thai_failures": [],
+        "english_failures": [
+          "category"
+        ],
+        "question_en": "What are the two buttons in It Takes Two altogether?"
+      },
+      {
+        "id": "MB-0296-GC-050",
+        "thai_pass": true,
+        "english_pass": false,
+        "thai_failures": [],
+        "english_failures": [
+          "category"
+        ],
+        "question_en": "How do you use the controller in It Takes Two?"
+      },
+      {
+        "id": "MB-0297-GC-051",
+        "thai_pass": true,
+        "english_pass": false,
+        "thai_failures": [],
+        "english_failures": [
+          "category"
+        ],
+        "question_en": "In It Takes Two, what buttons are used for movement?"
+      },
+      {
+        "id": "MB-0298-GC-052",
+        "thai_pass": true,
+        "english_pass": false,
+        "thai_failures": [],
+        "english_failures": [
+          "category"
+        ],
+        "question_en": "In It Takes Two, which buttons are used for sprinting?"
+      },
+      {
+        "id": "MB-0343-GC-097",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "mode"
+        ],
+        "english_failures": [],
+        "question_en": "What are all the buttons in Overcooked 2?"
+      },
+      {
+        "id": "MB-0344-GC-098",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "mode"
+        ],
+        "english_failures": [],
+        "question_en": "How do you use a controller in Overcooked 2?"
+      },
+      {
+        "id": "MB-0345-GC-099",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "mode"
+        ],
+        "english_failures": [],
+        "question_en": "In Overcooked 2, which buttons are used for movement?"
+      },
+      {
+        "id": "MB-0346-GC-100",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "mode"
+        ],
+        "english_failures": [],
+        "question_en": "In Overcooked 2, what buttons are used for picking up and placing items?"
+      },
+      {
+        "id": "MB-0436-E-035",
+        "thai_pass": true,
+        "english_pass": false,
+        "thai_failures": [],
+        "english_failures": [
+          "category"
+        ],
+        "question_en": "What is Racezone Full Cockpit V3"
+      },
+      {
+        "id": "MB-0438-E-037",
+        "thai_pass": true,
+        "english_pass": false,
+        "thai_failures": [],
+        "english_failures": [
+          "category"
+        ],
+        "question_en": "What is the Racezone Full Cockpit V3 used for"
+      },
+      {
+        "id": "MB-0439-E-038",
+        "thai_pass": true,
+        "english_pass": false,
+        "thai_failures": [],
+        "english_failures": [
+          "category"
+        ],
+        "question_en": "What is the Pulse Elite Wireless Headset"
+      },
+      {
+        "id": "MB-0441-E-040",
+        "thai_pass": true,
+        "english_pass": false,
+        "thai_failures": [],
+        "english_failures": [
+          "category"
+        ],
+        "question_en": "What is the Pulse Elite Wireless Headset used for?"
+      },
+      {
+        "id": "MB-0451-E-050",
+        "thai_pass": true,
+        "english_pass": false,
+        "thai_failures": [],
+        "english_failures": [
+          "category"
+        ],
+        "question_en": "What is a 65-inch TV?"
+      },
+      {
+        "id": "MB-0452-E-051",
+        "thai_pass": true,
+        "english_pass": false,
+        "thai_failures": [],
+        "english_failures": [
+          "category"
+        ],
+        "question_en": "Where is the 65-inch TV located?"
+      },
+      {
+        "id": "MB-0453-E-052",
+        "thai_pass": true,
+        "english_pass": false,
+        "thai_failures": [],
+        "english_failures": [
+          "category"
+        ],
+        "question_en": "What can a 65-inch TV be used for?"
+      },
+      {
+        "id": "MB-0454-E-053",
+        "thai_pass": true,
+        "english_pass": false,
+        "thai_failures": [],
+        "english_failures": [
+          "category"
+        ],
+        "question_en": "What is an 86-inch TV?"
+      },
+      {
+        "id": "MB-0455-E-054",
+        "thai_pass": true,
+        "english_pass": false,
+        "thai_failures": [],
+        "english_failures": [
+          "category"
+        ],
+        "question_en": "Where is the 86-inch TV located?"
+      }
+    ]
+  },
+  "parity_mapping": {
+    "method": "english source_case_id -> Thai benchmark id",
+    "english_rows_with_source_case_id": 1600
+  }
+}

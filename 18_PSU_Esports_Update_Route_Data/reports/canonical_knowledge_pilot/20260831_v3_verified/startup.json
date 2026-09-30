@@ -1,0 +1,29 @@
+{
+  "warmup": {
+    "embedding": {
+      "model": "psu-bge-m3:q8_0",
+      "dimensions": 1024,
+      "num_ctx": 1024
+    },
+    "llm": {
+      "ok": true,
+      "model": "scb10x/typhoon2.5-qwen3-4b",
+      "kind": "knowledge_warmup",
+      "elapsed_ms": 118.97,
+      "response_chars": 2,
+      "done_reason": "stop",
+      "num_ctx": 3072,
+      "load_duration": 9558700,
+      "prompt_eval_duration": 28089000,
+      "eval_duration": 31257000,
+      "health": {
+        "llm_health_enabled": true,
+        "llm_health_status": "ok",
+        "llm_health_failures": 0,
+        "llm_health_failure_scope": "kind_only"
+      }
+    },
+    "elapsed_sec": 0.23560399981215596
+  },
+  "hardware": "name, memory.total [MiB], memory.used [MiB], memory.free [MiB]\r\nNVIDIA GeForce RTX 4050 Laptop GPU, 6141 MiB, 5422 MiB, 499 MiB\r\n"
+}

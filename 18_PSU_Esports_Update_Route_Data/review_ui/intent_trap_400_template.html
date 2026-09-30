@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ตรวจคำตอบ PSU Esports | 400 ข้อ</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      color: #172536;
+      background: #f4f6f9;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-width: 300px; }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    button:disabled { cursor: default; opacity: .45; }
+    button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid #78a8df; outline-offset: 2px; }
+    .topbar { background: #fff; border-bottom: 1px solid #d8e0e9; padding: 16px 24px 14px; }
+    .topline { display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    h1 { margin: 0; font-size: 21px; line-height: 1.3; }
+    .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .button { border: 1px solid #b9c9db; background: #fff; color: #1b416d; border-radius: 5px; padding: 8px 12px; min-height: 38px; font-weight: 600; }
+    .button:hover:not(:disabled) { background: #edf4fb; }
+    .button.primary { color: #fff; background: #175b9f; border-color: #175b9f; }
+    .button.primary:hover { background: #104b86; }
+    .progress-line { display: flex; gap: 14px; align-items: center; margin-top: 14px; font-size: 13px; color: #526579; flex-wrap: wrap; }
+    #progressText { font-weight: 700; color: #173b62; }
+    .progress { height: 7px; background: #e5eaf0; margin-top: 9px; border-radius: 4px; overflow: hidden; }
+    #progressFill { height: 100%; width: 0; background: #19816d; transition: width .2s; }
+    .layout { display: grid; grid-template-columns: minmax(260px, 330px) minmax(0, 1fr); min-height: calc(100vh - 119px); max-width: 1500px; margin: 0 auto; background: #fff; }
+    .sidebar { border-right: 1px solid #d8e0e9; min-width: 0; display: flex; flex-direction: column; }
+    .filters { padding: 16px; display: grid; gap: 9px; border-bottom: 1px solid #d8e0e9; }
+    .filters input, .filters select { width: 100%; min-width: 0; border: 1px solid #c4cfdb; border-radius: 5px; background: #fff; color: #172536; padding: 9px 10px; min-height: 39px; }
+    .filter-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .list-head { padding: 10px 16px; font-size: 12px; font-weight: 700; color: #536579; border-bottom: 1px solid #e5eaf0; }
+    .item-list { overflow-y: auto; flex: 1; max-height: calc(100vh - 284px); }
+    .item { display: block; width: 100%; text-align: left; background: #fff; border: 0; border-bottom: 1px solid #e7ecf1; padding: 12px 16px; color: inherit; }
+    .item:hover { background: #f3f7fb; }
+    .item.active { background: #eaf3fc; border-left: 4px solid #175b9f; padding-left: 12px; }
+    .item-top { display: flex; gap: 8px; justify-content: space-between; align-items: center; font-size: 11px; font-weight: 700; color: #5c6c7d; }
+    .item-question { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; margin-top: 4px; line-height: 1.4; font-size: 13px; }
+    .state { white-space: nowrap; }
+    .state.correct { color: #147361; }
+    .state.partial { color: #a36010; }
+    .state.incorrect { color: #ad4052; }
+    .review-info { background: #fff6e4; border-left: 3px solid #c48220; color: #62451c; padding: 9px 12px; margin: -6px 0 20px; font-size: 13px; line-height: 1.5; }
+    .detail { min-width: 0; display: flex; flex-direction: column; }
+    .detail-content { padding: 24px clamp(18px, 3vw, 44px); max-width: 1000px; width: 100%; margin: 0 auto; flex: 1; }
+    .meta { color: #5f7081; font-size: 13px; font-weight: 600; margin-bottom: 18px; }
+    .section { border-bottom: 1px solid #e1e7ee; padding: 0 0 22px; margin-bottom: 22px; }
+    .label { margin: 0 0 9px; color: #536579; font-size: 13px; font-weight: 700; }
+    .question { margin: 0; font-size: 20px; line-height: 1.55; overflow-wrap: anywhere; }
+    .answer { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.65; font-size: 15px; margin: 0; }
+    .decision-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
+    .choice { min-height: 51px; background: #fff; border: 1px solid #c4cfdb; border-radius: 5px; font-weight: 700; font-size: 15px; color: #24374b; }
+    .choice:hover { background: #f5f8fb; }
+    .choice.selected.correct { color: #126d5e; background: #e8f6f1; border-color: #1a8b72; }
+    .choice.selected.partial { color: #92570e; background: #fff4dd; border-color: #c48220; }
+    .choice.selected.incorrect { color: #a53548; background: #fff0f1; border-color: #c34b5e; }
+    .note-label { display: block; margin-top: 20px; font-size: 13px; font-weight: 700; color: #536579; }
+    #note { display: block; width: 100%; resize: vertical; min-height: 74px; padding: 10px 12px; margin-top: 8px; border: 1px solid #c4cfdb; border-radius: 5px; line-height: 1.5; }
+    .detail-foot { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; padding: 14px clamp(18px, 3vw, 44px); border-top: 1px solid #d8e0e9; background: #fff; position: sticky; bottom: 0; }
+    .foot-spacer { flex: 1; }
+    .muted { color: #647588; font-size: 13px; }
+    .empty { color: #66788c; padding: 38px 0; }
+    [hidden] { display: none !important; }
+    @media (max-width: 760px) {
+      .topbar { padding: 14px 16px; }
+      .layout { display: block; }
+      .sidebar { border-right: 0; border-bottom: 1px solid #d8e0e9; }
+      .filters { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); padding: 12px 16px; }
+      .filters input { grid-column: 1 / -1; }
+      .filter-pair { grid-column: 1 / -1; }
+      .item-list { max-height: 170px; }
+      .detail-content { padding: 20px 16px; }
+      .detail-foot { padding: 12px 16px; }
+      .question { font-size: 18px; }
+    }
+    @media (max-width: 440px) {
+      .actions { width: 100%; }
+      .actions .button { flex: 1; }
+      .decision-row { gap: 6px; }
+      .choice { font-size: 13px; padding: 5px; }
+      .detail-foot .button { padding: 8px 9px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topline">
+      <h1>ตรวจคำตอบ PSU Esports</h1>
+      <div class="actions">
+        <button id="importButton" class="button" type="button">นำเข้าผลตรวจ</button>
+        <input id="importFile" type="file" accept="application/json,.json" hidden>
+        <button id="exportButton" class="button primary" type="button">ส่งออกผลตรวจ</button>
+      </div>
+    </div>
+    <div class="progress-line">
+      <span id="progressText">0/400 ตรวจแล้ว</span>
+      <span id="countsText"></span>
+      <span id="saveStatus" aria-live="polite"></span>
+    </div>
+    <div class="progress" role="progressbar" aria-label="ความคืบหน้าการตรวจ" aria-valuemin="0" aria-valuemax="400" aria-valuenow="0" id="progressBar"><div id="progressFill"></div></div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar" aria-label="รายการคำถาม">
+      <div class="filters">
+        <input id="search" type="search" placeholder="ค้นหาคำถามหรือรหัส" aria-label="ค้นหาคำถามหรือรหัส">
+        <select id="language" aria-label="ภาษา"><option value="all">ทุกภาษา</option><option value="th">ไทย</option><option value="en">English</option></select>
+        <select id="decisionFilter" aria-label="ผลตรวจ"><option value="all">ทุกผลตรวจ</option><option value="unreviewed">ยังไม่ตรวจ</option><option value="projected">เทียบจากไทย</option><option value="correct">ถูก</option><option value="partial">ใกล้เคียง</option><option value="incorrect">ผิด</option></select>
+        <div class="filter-pair"><select id="domain" aria-label="หมวดคำถาม"></select><button id="nextUnreviewed" class="button" type="button">ข้อที่ยังไม่ตรวจ</button></div>
+      </div>
+      <div id="listHead" class="list-head"></div>
+      <div id="itemList" class="item-list"></div>
+    </aside>
+
+    <section class="detail" aria-label="รายละเอียดคำตอบ">
+      <div class="detail-content">
+        <div id="empty" class="empty">ไม่พบคำถามตามตัวกรองที่เลือก</div>
+        <div id="detailBody" hidden>
+          <div id="meta" class="meta"></div>
+          <div id="reviewInfo" class="review-info" hidden></div>
+          <section class="section"><h2 class="label">คำถาม</h2><p id="question" class="question"></p></section>
+          <section class="section"><h2 class="label">คำตอบจากแชทบอท</h2><p id="answer" class="answer"></p></section>
+          <section class="section">
+            <h2 class="label">ผลตรวจของคุณ</h2>
+            <div class="decision-row" role="group" aria-label="เลือกผลตรวจ">
+              <button type="button" class="choice correct" data-decision="correct" title="ตอบตรงคำถามและข้อมูลถูกต้อง">ถูก</button>
+              <button type="button" class="choice partial" data-decision="partial" title="เกี่ยวข้องแต่ยังไม่ครบหรือยังต้องปรับ">ใกล้เคียง</button>
+              <button type="button" class="choice incorrect" data-decision="incorrect" title="ผิดประเด็นหรือข้อมูลผิด">ผิด</button>
+            </div>
+            <label class="note-label" for="note">หมายเหตุ</label>
+            <textarea id="note" placeholder="จดจุดที่ควรแก้หรือข้อมูลที่ขาด" maxlength="4000"></textarea>
+          </section>
+        </div>
+      </div>
+      <div class="detail-foot">
+        <button id="previous" class="button" type="button">ก่อนหน้า</button>
+        <button id="next" class="button" type="button">ถัดไป</button>
+        <span class="foot-spacer"></span>
+        <button id="clear" class="button" type="button">ล้างผลข้อนี้</button>
+        <span id="position" class="muted"></span>
+      </div>
+    </section>
+  </main>
+
+  <script id="reviewData" type="application/json">__REVIEW_DATA__</script>
+  <script>
+    (() => {
+      "use strict";
+      const payload = JSON.parse(document.getElementById("reviewData").textContent);
+      const items = payload.items;
+      const byId = new Map(items.map(item => [item.id, item]));
+      const key = `psu-intent-trap-review:${payload.source_sha256}`;
+      const decisions = new Map();
+      const labels = {correct: "ถูก", partial: "ใกล้เคียง", incorrect: "ผิด"};
+      const warningLabels = {
+        not_manually_reviewed_in_thai: "ข้อไทยนี้ยังไม่ได้ตรวจเอง",
+        note_about_booking_on_food_question: "หมายเหตุเดิมไม่ตรงกับคำถามเรื่องอาหาร",
+        note_does_not_specify_requested_id: "หมายเหตุเดิมยังไม่ระบุเอกสารที่ถาม",
+        english_route_or_status_differs_from_thai: "เส้นทางตอบอังกฤษต่างจากไทย",
+        english_answer_less_helpful_than_thai: "คำตอบอังกฤษให้รายละเอียดน้อยกว่าไทย"
+      };
+      const domains = {
+        outsider_eligibility: "สิทธิ์บุคคลภายนอก",
+        food_bring_scope: "การนำอาหารเข้า",
+        equipment_access_trap: "สิทธิ์ใช้อุปกรณ์",
+        unclear_or_outside_scope: "คำถามกำกวม/นอกขอบเขต"
+      };
+      const $ = id => document.getElementById(id);
+      let selectedId = null;
+      let storageReady = true;
+      let noteTimer = null;
+
+      function hydrate(data) {
+        if (!data || data.source_sha256 !== payload.source_sha256 || !Array.isArray(data.decisions)) return false;
+        decisions.clear();
+        for (const row of data.decisions) {
+          if (!byId.has(row.id)) continue;
+          const decision = labels[row.decision] ? row.decision : null;
+          const note = typeof row.note === "string" ? row.note.slice(0, 4000) : "";
+          if (decision || note) decisions.set(row.id, {
+            ...row,
+            decision,
+            note,
+            origin: row.origin === "assistant_projected" ? "assistant_projected" : "user_manual",
+            warnings: Array.isArray(row.warnings) ? row.warnings.filter(value => typeof value === "string") : []
+          });
+        }
+        return true;
+      }
+
+      function documentData() {
+        return {
+          schema_version: 1,
+          source_file: payload.source_file,
+          source_sha256: payload.source_sha256,
+          exported_at: new Date().toISOString(),
+          total: items.length,
+          reviewed: [...decisions.values()].filter(row => row.decision).length,
+          manual_reviewed: [...decisions.values()].filter(row => row.decision && row.origin !== "assistant_projected").length,
+          assistant_projected: [...decisions.values()].filter(row => row.decision && row.origin === "assistant_projected").length,
+          decisions: items.filter(item => decisions.has(item.id)).map(item => ({id: item.id, ...decisions.get(item.id)}))
+        };
+      }
+
+      function save() {
+        try {
+          localStorage.setItem(key, JSON.stringify(documentData()));
+          storageReady = true;
+          $("saveStatus").textContent = "บันทึกในเบราว์เซอร์แล้ว";
+        } catch (_) {
+          storageReady = false;
+          $("saveStatus").textContent = "บันทึกในเบราว์เซอร์ไม่ได้";
+        }
+      }
+
+      function visibleItems() {
+        const search = $("search").value.trim().toLocaleLowerCase();
+        const language = $("language").value;
+        const domain = $("domain").value;
+        const filter = $("decisionFilter").value;
+        return items.filter(item => {
+          const decision = decisions.get(item.id)?.decision || null;
+          if (language !== "all" && item.locale !== language) return false;
+          if (domain !== "all" && item.domain !== domain) return false;
+          if (filter !== "all") {
+            if (filter === "unreviewed" && decision !== null) return false;
+            if (filter === "projected" && decisions.get(item.id)?.origin !== "assistant_projected") return false;
+            if (!["unreviewed", "projected"].includes(filter) && decision !== filter) return false;
+          }
+          return !search || `${item.id} ${item.question} ${item.answer}`.toLocaleLowerCase().includes(search);
+        });
+      }
+
+      function render() {
+        const reviewed = [...decisions.values()].filter(row => row.decision).length;
+        const manual = [...decisions.values()].filter(row => row.decision && row.origin !== "assistant_projected").length;
+        const projected = reviewed - manual;
+        const count = name => [...decisions.values()].filter(row => row.decision === name).length;
+        $("progressText").textContent = `${manual}/${items.length} ตรวจเอง`;
+        $("countsText").textContent = `เทียบจากไทย ${projected} · ถูก ${count("correct")} · ใกล้เคียง ${count("partial")} · ผิด ${count("incorrect")}`;
+        $("progressFill").style.width = `${manual / items.length * 100}%`;
+        $("progressBar").setAttribute("aria-valuenow", String(manual));
+
+        const visible = visibleItems();
+        if (!visible.some(item => item.id === selectedId)) selectedId = visible[0]?.id || null;
+        $("listHead").textContent = `${visible.length} ข้อในรายการ`;
+        const list = $("itemList");
+        list.replaceChildren();
+        const fragment = document.createDocumentFragment();
+        for (const item of visible) {
+          const result = decisions.get(item.id)?.decision;
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = `item${item.id === selectedId ? " active" : ""}`;
+          button.setAttribute("aria-current", item.id === selectedId ? "true" : "false");
+          const top = document.createElement("span");
+          top.className = "item-top";
+          const id = document.createElement("span");
+          id.textContent = item.id.replace("INTENT-TRAP-", "");
+          const state = document.createElement("span");
+          state.className = `state ${result || ""}`;
+          state.textContent = result ? `${labels[result]}${decisions.get(item.id)?.origin === "assistant_projected" ? " · เทียบ" : ""}` : "ยังไม่ตรวจ";
+          top.append(id, state);
+          const question = document.createElement("span");
+          question.className = "item-question";
+          question.textContent = item.question;
+          button.append(top, question);
+          button.addEventListener("click", () => { selectedId = item.id; render(); });
+          fragment.append(button);
+        }
+        list.append(fragment);
+
+        const index = visible.findIndex(item => item.id === selectedId);
+        $("empty").hidden = index >= 0;
+        $("detailBody").hidden = index < 0;
+        $("previous").disabled = index <= 0;
+        $("next").disabled = index < 0 || index >= visible.length - 1;
+        $("clear").disabled = index < 0;
+        $("position").textContent = index >= 0 ? `${index + 1} / ${visible.length}` : "";
+        if (index < 0) return;
+        const item = visible[index];
+        const entry = decisions.get(item.id) || {};
+        $("meta").textContent = `${item.id} · ${item.locale === "th" ? "ไทย" : "English"} · ${domains[item.domain] || item.domain}`;
+        const reviewInfo = $("reviewInfo");
+        const warnings = (entry.warnings || []).map(code => warningLabels[code] || code);
+        reviewInfo.hidden = entry.origin !== "assistant_projected";
+        reviewInfo.textContent = entry.origin === "assistant_projected"
+          ? `ผลนี้ผมเทียบจากข้อ ${entry.source_id || "ภาษาไทย"} ยังไม่ใช่ผลตรวจของคุณ${warnings.length ? ` · ${warnings.join(" · ")}` : ""}`
+          : "";
+        $("question").textContent = item.question;
+        $("answer").textContent = item.answer;
+        $("note").value = entry.note || "";
+        for (const button of document.querySelectorAll(".choice")) {
+          const selected = button.dataset.decision === entry.decision;
+          button.classList.toggle("selected", selected);
+          button.setAttribute("aria-pressed", String(selected));
+        }
+      }
+
+      function updateCurrent(patch) {
+        if (!selectedId) return;
+        const current = decisions.get(selectedId) || {decision: null, note: ""};
+        decisions.set(selectedId, {...current, ...patch, origin: "user_manual", updated_at: new Date().toISOString()});
+        save();
+        render();
+      }
+
+      for (const button of document.querySelectorAll(".choice")) {
+        button.addEventListener("click", () => updateCurrent({decision: button.dataset.decision, note: $("note").value}));
+      }
+      $("note").addEventListener("input", () => {
+        if (!selectedId) return;
+        const id = selectedId;
+        const note = $("note").value;
+        clearTimeout(noteTimer);
+        noteTimer = setTimeout(() => {
+          const current = decisions.get(id) || {decision: null, note: ""};
+          decisions.set(id, {...current, note, updated_at: new Date().toISOString()});
+          save();
+        }, 250);
+      });
+      for (const filter of ["search", "language", "domain", "decisionFilter"]) {
+        $(filter).addEventListener(filter === "search" ? "input" : "change", render);
+      }
+      function move(amount) {
+        const visible = visibleItems();
+        const index = visible.findIndex(item => item.id === selectedId);
+        const next = visible[index + amount];
+        if (next) { selectedId = next.id; render(); $("itemList").querySelector(".active")?.scrollIntoView({block: "nearest"}); }
+      }
+      $("previous").addEventListener("click", () => move(-1));
+      $("next").addEventListener("click", () => move(1));
+      $("nextUnreviewed").addEventListener("click", () => {
+        const next = items.find(item => !decisions.get(item.id)?.decision || decisions.get(item.id)?.origin === "assistant_projected");
+        if (!next) return;
+        $("search").value = "";
+        $("language").value = "all";
+        $("domain").value = "all";
+        $("decisionFilter").value = "all";
+        selectedId = next.id;
+        render();
+        $("itemList").querySelector(".active")?.scrollIntoView({block: "nearest"});
+      });
+      $("clear").addEventListener("click", () => { if (selectedId) { decisions.delete(selectedId); save(); render(); } });
+      $("exportButton").addEventListener("click", () => {
+        clearTimeout(noteTimer);
+        if (selectedId && $("note").value !== (decisions.get(selectedId)?.note || "")) {
+          const current = decisions.get(selectedId) || {decision: null, note: ""};
+          decisions.set(selectedId, {...current, note: $("note").value, updated_at: new Date().toISOString()});
+          save();
+        }
+        const body = JSON.stringify(documentData(), null, 2);
+        const url = URL.createObjectURL(new Blob([body], {type: "application/json;charset=utf-8"}));
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `intent_trap_review_${new Date().toISOString().replace(/[:.]/g, "-")}.json`;
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      });
+      $("importButton").addEventListener("click", () => $("importFile").click());
+      $("importFile").addEventListener("change", async event => {
+        const file = event.target.files?.[0];
+        if (!file) return;
+        try {
+          const incoming = JSON.parse(await file.text());
+          if (incoming.source_sha256 !== payload.source_sha256 || !Array.isArray(incoming.decisions)) {
+            alert("ไฟล์ผลตรวจไม่ตรงกับชุดคำถาม 400 ข้อนี้");
+            return;
+          }
+          if (decisions.size && !confirm("แทนที่ผลตรวจที่อยู่ในหน้านี้ด้วยไฟล์ที่นำเข้าหรือไม่?")) return;
+          hydrate(incoming);
+          save();
+          render();
+        } catch (_) {
+          alert("อ่านไฟล์ผลตรวจไม่สำเร็จ");
+        } finally {
+          event.target.value = "";
+        }
+      });
+      const domainSelect = $("domain");
+      domainSelect.add(new Option("ทุกหมวด", "all"));
+      for (const domain of [...new Set(items.map(item => item.domain))]) {
+        domainSelect.add(new Option(domains[domain] || domain, domain));
+      }
+      try {
+        const saved = localStorage.getItem(key);
+        if (saved) hydrate(JSON.parse(saved));
+      } catch (_) {
+        storageReady = false;
+      }
+      $("saveStatus").textContent = storageReady ? "บันทึกในเบราว์เซอร์อัตโนมัติ" : "บันทึกในเบราว์เซอร์ไม่ได้";
+      selectedId = items.find(item => !decisions.get(item.id)?.decision)?.id || items[0]?.id || null;
+      render();
+    })();
+  </script>
+</body>
+</html>

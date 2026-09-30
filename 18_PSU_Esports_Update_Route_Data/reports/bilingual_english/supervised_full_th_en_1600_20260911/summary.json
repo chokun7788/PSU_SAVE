@@ -1,0 +1,130 @@
+{
+  "finished_at": "2026-09-11T15:24:28.726036+07:00",
+  "suites": {
+    "th": {
+      "total": 1600,
+      "completed": 1600,
+      "strict_pass": 1388,
+      "strict_pass_rate": 0.8675,
+      "status_counts": {
+        "completed": 1600
+      },
+      "mode_counts": {
+        "pipeline:deterministic_calculator_fast": 227,
+        "pipeline:structured_service_fee_by_game": 28,
+        "pipeline:no_answer": 202,
+        "pipeline:ambiguity_clarification": 42,
+        "pipeline:structured_game_detail": 122,
+        "pipeline:structured_service_game_availability": 180,
+        "pipeline:structured_game_controls": 316,
+        "pipeline:structured_games_catalog": 6,
+        "pipeline:structured_game_zone_ranking": 1,
+        "pipeline:structured_games_genre_list": 4,
+        "pipeline:structured_games_family": 3,
+        "pipeline:game_control_missing_game_context": 11,
+        "pipeline:structured_equipment_catalog": 10,
+        "pipeline:structured_equipment_item": 48,
+        "pipeline:structured_reservation_fact": 12,
+        "pipeline:structured_booking_selection": 3,
+        "pipeline:booking_howto_fast_path": 1,
+        "pipeline:booking_fast_path": 1,
+        "pipeline:checkin_fast_path": 1,
+        "pipeline:mixed_reservation_fast": 1,
+        "pipeline:rag_direct_curated": 1,
+        "pipeline:structured_schedule": 10,
+        "pipeline:calendar_schedule_fast_path": 2,
+        "pipeline:calendar_upcoming_holidays_fast_path": 1,
+        "pipeline:structured_members_group_list": 4,
+        "pipeline:structured_members_group_count": 2,
+        "pipeline:structured_members_person_lookup": 25,
+        "pipeline:structured_members_role_lookup": 32,
+        "pipeline:competition_fact_card": 37,
+        "pipeline:hybrid_guarded_rerank": 11,
+        "pipeline:multi_question_splitter": 88,
+        "pipeline:experimental_rag_direct_fallback": 2,
+        "pipeline:experimental_rag_llm_fallback": 3,
+        "pipeline:game_target_unknown": 1,
+        "pipeline:games_known_unsupported_fast_path": 2,
+        "pipeline:boundary_no_answer_sensitive": 1,
+        "pipeline:freshness_live_source_required": 2,
+        "pipeline:general_input_clarification": 1,
+        "pipeline:structured_service_capacity": 6,
+        "pipeline:structured_booking_game_service_selection": 40,
+        "pipeline:structured_booking_game_family_clarification": 1,
+        "pipeline:structured_service_game_availability_no_match": 4,
+        "pipeline:structured_game_controls_no_current_game": 8,
+        "pipeline:request_timeout_no_answer": 1,
+        "pipeline:category_rule_fast_path": 1,
+        "pipeline:rules_fast_path": 1,
+        "pipeline:penalty_fast_path": 1,
+        "pipeline:mixed_rules_fast": 1,
+        "pipeline:studio_rules_overview_fast_path": 1,
+        "pipeline:general_llm_after_rag_miss": 91
+      },
+      "failure_types": {
+        "category": 50,
+        "missing": 2,
+        "missing_any": 170,
+        "mode": 5
+      },
+      "latency_sec": {
+        "mean": 3.3269,
+        "p50": 0.7671,
+        "p95": 10.3902,
+        "p99": 19.0201,
+        "max": 887.2689,
+        "over_10s": 90,
+        "over_20s": 1
+      }
+    },
+    "en": {
+      "total": 1600,
+      "completed": 1600,
+      "strict_pass": 1061,
+      "strict_pass_rate": 0.663125,
+      "status_counts": {
+        "completed": 1600
+      },
+      "mode_counts": {
+        "pipeline:structured_service_fee_en": 311,
+        "pipeline:structured_equipment_catalog_en": 57,
+        "pipeline:english_no_answer": 358,
+        "pipeline:price_service_clarification_en": 4,
+        "pipeline:games_unknown_target_en": 8,
+        "pipeline:structured_game_detail_en": 232,
+        "pipeline:structured_game_availability_en": 141,
+        "pipeline:structured_games_count_en": 2,
+        "pipeline:structured_games_catalog_en": 64,
+        "pipeline:structured_game_controls_en": 294,
+        "pipeline:missing_english_localization": 42,
+        "pipeline:answer_contract_no_answer": 9,
+        "pipeline:rule_en": 8,
+        "pipeline:structured_schedule_en": 24,
+        "pipeline:structured_competition_rules_en": 21,
+        "pipeline:structured_members_source_th": 23,
+        "pipeline:request_timeout_no_answer": 1,
+        "pipeline:experimental_rag_direct_fallback": 1
+      },
+      "failure_types": {
+        "category": 518,
+        "thai_prose_leak": 23,
+        "latency": 1,
+        "pipeline_timeout": 1
+      },
+      "latency_sec": {
+        "mean": 5.7437,
+        "p50": 0.0303,
+        "p95": 2.9266,
+        "p99": 3.3081,
+        "max": 7902.7385,
+        "over_10s": 5,
+        "over_20s": 1
+      }
+    }
+  },
+  "comparison_limits": [
+    "Thai and English corpora use their own existing answer contracts; strict-pass rates are not a translation-quality A/B score.",
+    "English Shadow is machine-translated test input and not approved public English knowledge.",
+    "This is serial in-process evaluation with no browser, HTTP queue, or concurrent-user latency."
+  ]
+}

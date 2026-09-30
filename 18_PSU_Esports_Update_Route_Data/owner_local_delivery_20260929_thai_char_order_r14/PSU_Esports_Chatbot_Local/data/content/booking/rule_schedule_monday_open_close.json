@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_schedule_monday_open_close",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "วันจันทร์.*เปิด.*ปิด",
+      "วันจันทร์.*เปิด.*กีโมง",
+      "วันจันทร์.*เปิด.*กี่โมง",
+      "วันจันทร์.*ปิด.*กีโมง",
+      "วันจันทร์.*ปิด.*กี่โมง",
+      "วันจัน.*เปิด.*ปิด",
+      "วันจัน.*เปิด.*กีโมง",
+      "วันจัน.*เปิด.*กี่โมง",
+      "เปิดปิด.*วันจัน",
+      "เปิดปิด.*จัน",
+      "จัน.*เปิด.*ปิด",
+      "จัน.*เปิด.*กีโมง",
+      "จัน.*เปิด.*กี่โมง",
+      "จันทร์.*เปิด.*ปิด",
+      "จันทร์.*เปิด.*กีโมง",
+      "จันทร์.*เปิด.*กี่โมง",
+      "จันทร์.*ปิด.*กีโมง",
+      "จันทร์.*ปิด.*กี่โมง"
+    ],
+    "en": [
+      "monday.*open.*close",
+      "monday.*hours"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "schedule_monday_open_close",
+    "patterns": [
+      "วันจันทร์.*เปิด.*ปิด",
+      "วันจันทร์.*เปิด.*กีโมง",
+      "วันจันทร์.*เปิด.*กี่โมง",
+      "วันจันทร์.*ปิด.*กีโมง",
+      "วันจันทร์.*ปิด.*กี่โมง",
+      "วันจัน.*เปิด.*ปิด",
+      "วันจัน.*เปิด.*กีโมง",
+      "วันจัน.*เปิด.*กี่โมง",
+      "เปิดปิด.*วันจัน",
+      "เปิดปิด.*จัน",
+      "จัน.*เปิด.*ปิด",
+      "จัน.*เปิด.*กีโมง",
+      "จัน.*เปิด.*กี่โมง",
+      "จันทร์.*เปิด.*ปิด",
+      "จันทร์.*เปิด.*กีโมง",
+      "จันทร์.*เปิด.*กี่โมง",
+      "จันทร์.*ปิด.*กีโมง",
+      "จันทร์.*ปิด.*กี่โมง",
+      "monday.*open.*close",
+      "monday.*hours"
+    ],
+    "priority": 130
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "วันจันทร์ช่วง Morning 09:00–12:00 เป็น Maintenance* จึงยังไม่ใช่ช่วงเล่น/เปิดให้บริการ ส่วนช่วง Afternoon 13:00–16:00 เป็น Open for Service ดังนั้นวันจันทร์เปิดให้เล่นช่วง 13:00 น. และปิด 16:00 น."
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "On Monday, Morning 09:00-12:00 is Maintenance*, not an open service slot. Afternoon 13:00-16:00 is Open for Service, so Monday play/service hours are 13:00-16:00."
+      },
+      "source_sha256": "ac823355cc44517b25ea2c8092196a5f22452723e51c5909b1073600c07d38b9",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/reservation_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_reservation_schedule_monday_morning",
+      "reservation-intro-schedule"
+    ],
+    "last_verified_at": ""
+  }
+}

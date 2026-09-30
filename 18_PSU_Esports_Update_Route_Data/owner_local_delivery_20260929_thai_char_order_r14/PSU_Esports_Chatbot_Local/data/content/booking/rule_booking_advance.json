@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_booking_advance",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "จองล่วงหน้า",
+      "ต้องจองก่อน",
+      "จองก่อนกี่",
+      "จอง.*กี่ชั่วโมง",
+      "book.*ล่วงหน้า",
+      "book.*กี่.*hr",
+      "book.*กี่.*hour",
+      "ล่วงหน้า.*กี่.*hr",
+      "ล่วงหน้า.*กี่.*hour",
+      "walk in.*จองก่อน",
+      "walk-in.*จองก่อน"
+    ],
+    "en": [
+      "reserve.*advance",
+      "booking.*advance",
+      "book.*advance"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "booking_advance_time",
+    "patterns": [
+      "จองล่วงหน้า",
+      "ต้องจองก่อน",
+      "จองก่อนกี่",
+      "จอง.*กี่ชั่วโมง",
+      "book.*ล่วงหน้า",
+      "book.*กี่.*hr",
+      "book.*กี่.*hour",
+      "ล่วงหน้า.*กี่.*hr",
+      "ล่วงหน้า.*กี่.*hour",
+      "reserve.*advance",
+      "booking.*advance",
+      "book.*advance",
+      "walk in.*จองก่อน",
+      "walk-in.*จองก่อน"
+    ],
+    "priority": 105
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ต้องจองล่วงหน้าผ่านระบบออนไลน์ก่อนเวลาใช้งานอย่างน้อย 1 ชั่วโมง"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Users must make a reservation through the online system at least 1 hour before the intended use time."
+      },
+      "source_sha256": "81904539c4a86e8dcbb04b66597a11e4155bb77cdbf3149dd86ea9ae00532d6c",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/reservation_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_reservation_advance_time"
+    ],
+    "last_verified_at": ""
+  }
+}

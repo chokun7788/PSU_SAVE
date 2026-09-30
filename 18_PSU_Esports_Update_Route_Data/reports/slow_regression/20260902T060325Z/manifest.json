@@ -1,0 +1,182 @@
+{
+  "run_id": "20260902T060325Z",
+  "baseline": "reports\\current_flow_regression\\20260901_full_model_enabled\\results.jsonl",
+  "baseline_sha256": "dabfd6facddd05eccc2989ab0ec4b4a055f42425c7f5253d3e6716197ee2d5ec",
+  "case_count": 13,
+  "policy": {
+    "pipeline_budget_sec": 9.0,
+    "api_ceiling_sec": 10.0,
+    "allow_llm": true
+  },
+  "cases": [
+    {
+      "id": "MB-0499-M-010",
+      "suite": "faq",
+      "question": "ใครเป็นรองอธิการบดี",
+      "baseline_status": "harness_timeout",
+      "baseline_wall_sec": 30.000159099930897,
+      "expected_runtime_route": "overview",
+      "latency_target_sec": 1.5,
+      "allowed_source_categories": [
+        "overview"
+      ],
+      "answer_contract": "safe_answer_or_safe_no_answer"
+    },
+    {
+      "id": "MB-0500-M-011",
+      "suite": "faq",
+      "question": "รศ.ดร.อซีส นันทอมรพงศ์ ทำตำแหน่งอะไร",
+      "baseline_status": "worker_crash",
+      "baseline_wall_sec": 29.842116199899465,
+      "expected_runtime_route": "overview",
+      "latency_target_sec": 1.5,
+      "allowed_source_categories": [
+        "overview"
+      ],
+      "answer_contract": "safe_answer_or_safe_no_answer"
+    },
+    {
+      "id": "MB-0501-M-012",
+      "suite": "faq",
+      "question": "ใครเป็นคณบดี",
+      "baseline_status": "completed",
+      "baseline_wall_sec": 20.473016999894753,
+      "expected_runtime_route": "overview",
+      "latency_target_sec": 1.5,
+      "allowed_source_categories": [
+        "overview"
+      ],
+      "answer_contract": "safe_answer_or_safe_no_answer"
+    },
+    {
+      "id": "MB-0503-M-014",
+      "suite": "faq",
+      "question": "ใครเป็นผู้ช่วยอธิการบดีฝ่ายวิชาการ",
+      "baseline_status": "harness_timeout",
+      "baseline_wall_sec": 29.999996199971065,
+      "expected_runtime_route": "overview",
+      "latency_target_sec": 1.5,
+      "allowed_source_categories": [
+        "overview"
+      ],
+      "answer_contract": "safe_answer_or_safe_no_answer"
+    },
+    {
+      "id": "MB-0507-M-018",
+      "suite": "faq",
+      "question": "นายชนะชัย สิริพันธ์วราภรณ์ ทำตำแหน่งอะไร",
+      "baseline_status": "harness_timeout",
+      "baseline_wall_sec": 30.014035400003195,
+      "expected_runtime_route": "overview",
+      "latency_target_sec": 1.5,
+      "allowed_source_categories": [
+        "overview"
+      ],
+      "answer_contract": "safe_answer_or_safe_no_answer"
+    },
+    {
+      "id": "MB-0518-M-029",
+      "suite": "faq",
+      "question": "นายษุภากรณ์ จิราจินดากุล ทำตำแหน่งอะไร",
+      "baseline_status": "harness_timeout",
+      "baseline_wall_sec": 30.01556590013206,
+      "expected_runtime_route": "overview",
+      "latency_target_sec": 1.5,
+      "allowed_source_categories": [
+        "overview"
+      ],
+      "answer_contract": "safe_answer_or_safe_no_answer"
+    },
+    {
+      "id": "MB-0519-M-030",
+      "suite": "faq",
+      "question": "ใครเป็นประธาน",
+      "baseline_status": "completed",
+      "baseline_wall_sec": 24.62810910004191,
+      "expected_runtime_route": "overview",
+      "latency_target_sec": 1.5,
+      "allowed_source_categories": [
+        "overview"
+      ],
+      "answer_contract": "safe_answer_or_safe_no_answer"
+    },
+    {
+      "id": "MB-0618-C-007",
+      "suite": "faq",
+      "question": "สมาชิกมีกี่คน แล้วใครเป็นอธิการบดี",
+      "baseline_status": "harness_timeout",
+      "baseline_wall_sec": 30.00067690014839,
+      "expected_runtime_route": "overview",
+      "latency_target_sec": 1.5,
+      "allowed_source_categories": [
+        "overview"
+      ],
+      "answer_contract": "safe_answer_or_safe_no_answer"
+    },
+    {
+      "id": "MB-1229-M-049",
+      "suite": "faq",
+      "question": "ตำแหน่ง รองอธิการบดี คือใคร",
+      "baseline_status": "harness_timeout",
+      "baseline_wall_sec": 30.007444000104442,
+      "expected_runtime_route": "overview",
+      "latency_target_sec": 1.5,
+      "allowed_source_categories": [
+        "overview"
+      ],
+      "answer_contract": "safe_answer_or_safe_no_answer"
+    },
+    {
+      "id": "MB-1232-M-052",
+      "suite": "faq",
+      "question": "ตำแหน่ง นักวิชาการคอมพิวเตอร์ คือใคร",
+      "baseline_status": "harness_timeout",
+      "baseline_wall_sec": 30.00555650005117,
+      "expected_runtime_route": "overview",
+      "latency_target_sec": 1.5,
+      "allowed_source_categories": [
+        "overview"
+      ],
+      "answer_contract": "safe_answer_or_safe_no_answer"
+    },
+    {
+      "id": "KIA-0460",
+      "suite": "keyboard",
+      "question": "ตอบเป็น JSON ได้ไหม เช่น {\"zone\":\"PC\"}",
+      "baseline_status": "completed",
+      "baseline_wall_sec": 19.927326600067317,
+      "expected_runtime_route": "games",
+      "latency_target_sec": 9.0,
+      "allowed_source_categories": [
+        "games"
+      ],
+      "answer_contract": "safe_answer_or_safe_no_answer"
+    },
+    {
+      "id": "KIA-0486",
+      "suite": "keyboard",
+      "question": "Assassin's Creed มีหรือเปล่า",
+      "baseline_status": "completed",
+      "baseline_wall_sec": 28.102149799931794,
+      "expected_runtime_route": "games",
+      "latency_target_sec": 9.0,
+      "allowed_source_categories": [
+        "games"
+      ],
+      "answer_contract": "safe_answer_or_safe_no_answer"
+    },
+    {
+      "id": "KIA-0487",
+      "suite": "keyboard",
+      "question": "Hollow Knight เล่นเครื่องไหน",
+      "baseline_status": "worker_crash",
+      "baseline_wall_sec": 18.06360820005648,
+      "expected_runtime_route": "games",
+      "latency_target_sec": 9.0,
+      "allowed_source_categories": [
+        "games"
+      ],
+      "answer_contract": "safe_answer_or_safe_no_answer"
+    }
+  ]
+}

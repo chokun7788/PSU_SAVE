@@ -1,0 +1,61 @@
+{
+  "schema_version": "2.1-pilot",
+  "record_id": "demo_food_rule",
+  "type": "rule",
+  "title": "กฎอาหารทดลอง",
+  "aliases": [
+    "กฎอาหารทดลอง",
+    "Demo food rule"
+  ],
+  "entity_id": "rule:demo_food",
+  "scope": {
+    "branch": "psu_phuket",
+    "access": "public"
+  },
+  "effective_from": "2026-01-01T00:00:00+07:00",
+  "valid_until": null,
+  "facts": [],
+  "sections": [
+    {
+      "section_id": "policy",
+      "facet": "policy",
+      "heading": "ข้อกำหนด",
+      "text": "ห้ามนำอาหารเข้าโซน DEMO-A ยกเว้นพื้นที่รับประทานอาหารที่กำหนด",
+      "depends_on": [
+        "exceptions"
+      ],
+      "source_refs": [
+        {
+          "source_id": "demo_guide",
+          "quote": "ห้ามนำอาหารเข้าโซน DEMO-A ยกเว้นพื้นที่รับประทานอาหารที่กำหนด"
+        }
+      ]
+    },
+    {
+      "section_id": "exceptions",
+      "facet": "exceptions",
+      "heading": "ขอบเขตข้อยกเว้น",
+      "text": "ข้อยกเว้นนี้ใช้เฉพาะพื้นที่รับประทานอาหาร ไม่ครอบคลุมบริเวณเครื่องเล่น",
+      "depends_on": [],
+      "source_refs": [
+        {
+          "source_id": "demo_guide",
+          "quote": "ข้อยกเว้นนี้ใช้เฉพาะพื้นที่รับประทานอาหาร ไม่ครอบคลุมบริเวณเครื่องเล่น"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "demo_guide",
+      "title": "คู่มือสมมติ",
+      "url": "demo://nebula-guide",
+      "snapshot_text": "ห้ามนำอาหารเข้าโซน DEMO-A ยกเว้นพื้นที่รับประทานอาหารที่กำหนด\nข้อยกเว้นนี้ใช้เฉพาะพื้นที่รับประทานอาหาร ไม่ครอบคลุมบริเวณเครื่องเล่น",
+      "snapshot_sha256": "91825eda3f35adde74789a85d2d174ea915e5f60ab46e3c6478f4f2824b57bc9",
+      "authority": [
+        "policy",
+        "exceptions"
+      ]
+    }
+  ]
+}

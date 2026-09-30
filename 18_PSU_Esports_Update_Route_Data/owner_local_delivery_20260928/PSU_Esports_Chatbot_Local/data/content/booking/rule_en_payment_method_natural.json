@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_en_payment_method_natural",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [],
+    "en": [
+      "how\\s+(?:do|can)\\s+i\\s+pay",
+      "what\\s+payment\\s+methods?",
+      "where\\s+(?:do|can)\\s+i\\s+(?:pay|transfer)",
+      "payment\\s+(?:method|details|account)",
+      "pay\\s+for\\s+(?:my|the|a)\\s+booking"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "bank_account",
+    "patterns": [
+      "how\\s+(?:do|can)\\s+i\\s+pay",
+      "what\\s+payment\\s+methods?",
+      "where\\s+(?:do|can)\\s+i\\s+(?:pay|transfer)",
+      "payment\\s+(?:method|details|account)",
+      "pay\\s+for\\s+(?:my|the|a)\\s+booking"
+    ],
+    "priority": 131
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ชำระเงินโดยโอนผ่านธนาคารไทยพาณิชย์ ชื่อบัญชี PSU Esports Studio - Phuket เลขบัญชี 795-276244-1 และต้องแนบสลิป"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Payment is made by bank transfer via Siam Commercial Bank, account name PSU Esports Studio - Phuket, account number 795-276244-1, with the payment slip uploaded."
+      },
+      "source_sha256": "2bd8fb7327bd45294638567a81627a70cb5ad67dcfc9ffd8999d7c0e62a7d042",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/english_support_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_payment_bank"
+    ],
+    "last_verified_at": ""
+  }
+}

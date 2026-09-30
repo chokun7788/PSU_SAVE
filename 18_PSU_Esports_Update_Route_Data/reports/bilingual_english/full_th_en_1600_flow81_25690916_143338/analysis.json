@@ -1,0 +1,1326 @@
+{
+  "thai": {
+    "total": 1600,
+    "strict_pass": 1519,
+    "strict_pass_rate": 0.949375,
+    "status_counts": {
+      "completed": 1600
+    },
+    "failure_types": {
+      "category": 64,
+      "missing": 35,
+      "missing_any": 19,
+      "mode": 4
+    },
+    "route_confusion_top_15": {
+      "['general', 'knowledge'] -> general": 271,
+      "['multi_question', 'reservation', 'games', 'equipment'] -> multi_question": 51,
+      "['members', 'overview'] -> overview": 47,
+      "['games', 'reservation'] -> reservation": 47,
+      "games -> clarification": 34,
+      "['equipment', 'games'] -> equipment": 16,
+      "['games', 'clarification', 'no_answer'] -> games": 12,
+      "['games', 'no_answer'] -> games": 11,
+      "['games', 'clarification'] -> clarification": 11,
+      "['schedule', 'reservation'] -> schedule": 10,
+      "competition_rules -> games": 9,
+      "['clarification', 'games', 'equipment', 'service_fee', 'reservation', 'no_answer'] -> clarification": 7,
+      "competition_rules -> knowledge": 6,
+      "['games', 'multi_question'] -> multi_question": 6,
+      "['no_answer', 'games', 'general'] -> no_answer": 5
+    },
+    "mode_counts": {
+      "pipeline:deterministic_calculator_fast": 228,
+      "pipeline:structured_service_fee_by_game": 30,
+      "pipeline:ambiguity_clarification": 60,
+      "pipeline:structured_service_game_availability": 181,
+      "pipeline:structured_game_detail": 84,
+      "pipeline:structured_game_controls": 327,
+      "pipeline:structured_games_catalog": 6,
+      "pipeline:structured_game_zone_ranking": 1,
+      "pipeline:semantic_rag_dynamic": 20,
+      "pipeline:structured_games_genre_list": 2,
+      "pipeline:structured_games_family": 3,
+      "pipeline:game_control_missing_game_context": 11,
+      "pipeline:structured_equipment_catalog": 8,
+      "pipeline:structured_equipment_item": 48,
+      "pipeline:structured_reservation_fact": 10,
+      "pipeline:structured_booking_selection": 3,
+      "pipeline:booking_howto_fast_path": 1,
+      "pipeline:booking_fast_path": 1,
+      "pipeline:checkin_fast_path": 1,
+      "pipeline:mixed_reservation_fast": 1,
+      "pipeline:rag_direct_curated": 1,
+      "pipeline:structured_schedule": 10,
+      "pipeline:calendar_schedule_fast_path": 2,
+      "pipeline:calendar_upcoming_holidays_fast_path": 1,
+      "pipeline:structured_members_group_list": 4,
+      "pipeline:structured_members_group_count": 2,
+      "pipeline:structured_members_person_lookup": 25,
+      "pipeline:structured_members_role_lookup": 32,
+      "pipeline:competition_fact_card": 39,
+      "pipeline:hybrid_guarded_rerank": 14,
+      "pipeline:no_answer": 12,
+      "pipeline:multi_question_splitter": 88,
+      "pipeline:guard_no_answer": 5,
+      "pipeline:games_known_unsupported_fast_path": 2,
+      "pipeline:boundary_no_answer_sensitive": 1,
+      "pipeline:freshness_live_source_required": 2,
+      "pipeline:general_input_clarification": 1,
+      "pipeline:structured_service_capacity": 6,
+      "pipeline:structured_booking_game_service_selection": 40,
+      "pipeline:structured_booking_game_family_clarification": 1,
+      "pipeline:structured_service_game_availability_no_match": 4,
+      "pipeline:structured_game_controls_no_current_game": 8,
+      "pipeline:category_rule_fast_path": 1,
+      "pipeline:rules_fast_path": 1,
+      "pipeline:penalty_fast_path": 1,
+      "pipeline:mixed_rules_fast": 1,
+      "pipeline:studio_rules_overview_fast_path": 1,
+      "pipeline:general_llm_direct": 244,
+      "pipeline:general_llm_after_rag_miss": 25
+    },
+    "latency_sec": {
+      "observed_mean_excluding_watchdog_escapes": 1.0844,
+      "observed_p50_excluding_watchdog_escapes": 0.6877,
+      "observed_p95_excluding_watchdog_escapes": 2.1802,
+      "observed_p99_excluding_watchdog_escapes": 14.4206,
+      "observed_max_excluding_watchdog_escapes": 19.5349,
+      "observed_over_10s_excluding_watchdog_escapes": 30,
+      "observed_over_20s_excluding_watchdog_escapes": 0,
+      "raw_max_including_watchdog_escapes": 19.5349
+    },
+    "watchdog_escape_observed": 0,
+    "watchdog_escape_cases": [],
+    "slowest_20": [
+      {
+        "id": "MB-1360-GL-035",
+        "question": "ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค ตอบเป็นภาษาไทย",
+        "wall_sec": 19.5349,
+        "mode": "pipeline:general_llm_after_rag_miss",
+        "route": "general/how_to",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ขอบคุณสำหรับความช่วยเหลืออย่างยิ่งครับ ขอแสดงความชื่นชมและขอบคุณอีกครั้งครับ หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket"
+      },
+      {
+        "id": "MB-1540-GL-215",
+        "question": "ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค ตอบแบบ bullet สั้น ๆ",
+        "wall_sec": 19.4232,
+        "mode": "pipeline:general_llm_after_rag_miss",
+        "route": "general/how_to",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "• ขอบคุณสำหรับความช่วยเหลืออย่างยิ่งครับ • ขอแสดงความชื่นชมและขอบคุณอีกครั้งครับ หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket"
+      },
+      {
+        "id": "MB-1460-GL-135",
+        "question": "ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค ช่วยยกตัวอย่างสั้น ๆ",
+        "wall_sec": 19.185,
+        "mode": "pipeline:general_llm_after_rag_miss",
+        "route": "general/how_to",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ขอบคุณสำหรับความช่วยเหลือที่ให้มาอย่างจริงใจครับ ขอแสดงความชื่นชมและขอบคุณอีกครั้งครับ หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket"
+      },
+      {
+        "id": "MB-1450-GL-125",
+        "question": "ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค อธิบายแบบใช้กับวงการเกม",
+        "wall_sec": 19.0232,
+        "mode": "pipeline:no_answer",
+        "route": "general/how_to",
+        "status": "completed",
+        "failures": [
+          "missing_any"
+        ],
+        "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+      },
+      {
+        "id": "MB-1380-GL-055",
+        "question": "ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค ขอ 1 ย่อหน้า",
+        "wall_sec": 19.0217,
+        "mode": "pipeline:no_answer",
+        "route": "general/how_to",
+        "status": "completed",
+        "failures": [
+          "missing_any"
+        ],
+        "answer_preview": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ"
+      },
+      {
+        "id": "MB-1410-GL-085",
+        "question": "ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค ขอแบบไม่ใช้ศัพท์ยาก",
+        "wall_sec": 16.1821,
+        "mode": "pipeline:general_llm_after_rag_miss",
+        "route": "general/how_to",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ขอบคุณสำหรับความช่วยเหลืออย่างยิ่งครับ ขอแสดงความชื่นชมและขอบคุณอีกครั้งครับ หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket"
+      },
+      {
+        "id": "MB-1510-GL-185",
+        "question": "ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค ขอแบบไม่เป็นทางการมาก",
+        "wall_sec": 15.9751,
+        "mode": "pipeline:general_llm_after_rag_miss",
+        "route": "general/how_to",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ขอบคุณสำหรับความช่วยเหลือเสมอครับ ขอบคุณจริง ๆ ที่ให้โอกาสได้ร่วมงานครับ หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket"
+      },
+      {
+        "id": "MB-1470-GL-145",
+        "question": "ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค เปรียบเทียบแบบสั้น",
+        "wall_sec": 15.667,
+        "mode": "pipeline:general_llm_after_rag_miss",
+        "route": "general/how_to",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "คำตอบ: พูดขอบคุณอย่างจริงใจและแสดงความเคารพเสมอครับ ข้อดี: สื่อถึงความรู้สึกจริงใจและเคารพผู้อื่นครับ ข้อเสีย: อาจใช้เวลานานหากพูดซ้ำหรือละเอียดเกินไปครับ หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket"
+      },
+      {
+        "id": "MB-1570-GL-245",
+        "question": "ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค ให้คำจำกัดความแบบสั้น",
+        "wall_sec": 14.948,
+        "mode": "pipeline:general_llm_after_rag_miss",
+        "route": "general/how_to",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ขอบคุณสำหรับการช่วยเหลืออย่างจริงใจครับ ขอแสดงความชื่นชมและขอบคุณอีกครั้งครับ หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket"
+      },
+      {
+        "id": "MB-1330-GL-005",
+        "question": "ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค",
+        "wall_sec": 14.8189,
+        "mode": "pipeline:general_llm_after_rag_miss",
+        "route": "general/how_to",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ขอบคุณสำหรับความช่วยเหลืออย่างยิ่งครับ ขอแสดงความชื่นชมและขอบคุณอีกครั้งครับ หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket"
+      },
+      {
+        "id": "MB-1400-GL-075",
+        "question": "ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค ตอบแบบเด็กปีหนึ่งเข้าใจได้",
+        "wall_sec": 14.7116,
+        "mode": "pipeline:general_llm_after_rag_miss",
+        "route": "general/how_to",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ขอบคุณมากครับสำหรับความช่วยเหลือที่ให้มา ขอบคุณครับสำหรับคำแนะนำที่น่ารักและสุภาพมากครับ หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket"
+      },
+      {
+        "id": "MB-1370-GL-045",
+        "question": "ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค ไม่ต้องยาว",
+        "wall_sec": 14.6449,
+        "mode": "pipeline:general_llm_after_rag_miss",
+        "route": "general/how_to",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ขอบคุณสำหรับความช่วยเหลืออย่างยิ่งครับ ขอแสดงความชื่นชมและขอบคุณอีกครั้งครับ หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket"
+      },
+      {
+        "id": "MB-1520-GL-195",
+        "question": "ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค ขอแบบเป็นทางการ",
+        "wall_sec": 14.5598,
+        "mode": "pipeline:general_llm_after_rag_miss",
+        "route": "general/how_to",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ขอบคุณสำหรับความช่วยเหลืออย่างยิ่งในครั้งนี้ครับ ขอแสดงความชื่นชมและขอบคุณอีกครั้งสำหรับความใส่ใจครับ หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket"
+      },
+      {
+        "id": "MB-1430-GL-105",
+        "question": "ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค ขอคำตอบไม่เกิน 3 บรรทัด",
+        "wall_sec": 14.519,
+        "mode": "pipeline:general_llm_after_rag_miss",
+        "route": "general/how_to",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ขอบคุณสำหรับความช่วยเหลืออย่างยิ่งครับ ขอแสดงความชื่นชมและขอบคุณอีกครั้งครับ หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket"
+      },
+      {
+        "id": "MB-1420-GL-095",
+        "question": "ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค ขอสรุปเป็น 2 ข้อ",
+        "wall_sec": 14.4414,
+        "mode": "pipeline:general_llm_after_rag_miss",
+        "route": "general/how_to",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "• กรุณาขอบคุณอย่างจริงใจเสมอครับ • พูดจาสุภาพและแสดงความเคารพครับ หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket"
+      },
+      {
+        "id": "MB-1500-GL-175",
+        "question": "ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค เขียนเป็นภาษาไทยธรรมชาติ",
+        "wall_sec": 14.4258,
+        "mode": "pipeline:general_llm_after_rag_miss",
+        "route": "general/how_to",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ขอบคุณสำหรับความช่วยเหลืออย่างยิ่งครับ ขอแสดงความชื่นชมและขอบคุณอีกครั้งครับ หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket"
+      },
+      {
+        "id": "MB-1390-GL-065",
+        "question": "ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค อธิบายให้มือใหม่เข้าใจ",
+        "wall_sec": 14.4206,
+        "mode": "pipeline:general_llm_after_rag_miss",
+        "route": "general/how_to",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ขอบคุณสำหรับความช่วยเหลืออย่างยิ่งครับ ขอแสดงความชื่นชมและขอบคุณอีกครั้งครับ หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket"
+      },
+      {
+        "id": "MB-1440-GL-115",
+        "question": "ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค อธิบายแบบใช้ในงาน chatbot",
+        "wall_sec": 14.3313,
+        "mode": "pipeline:general_llm_after_rag_miss",
+        "route": "general/how_to",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ขอบคุณสำหรับความช่วยเหลืออย่างยิ่งครับ ขอแสดงความชื่นชมและขอบคุณอีกครั้งครับ หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket"
+      },
+      {
+        "id": "MB-1530-GL-205",
+        "question": "ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค ช่วยสรุปใจความสำคัญ",
+        "wall_sec": 14.3248,
+        "mode": "pipeline:general_llm_after_rag_miss",
+        "route": "general/how_to",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ขอบคุณสำหรับความช่วยเหลือและความใส่ใจเสมอมาครับ ขอแสดงความชื่นชมและขอบคุณอีกครั้งครับ หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket"
+      },
+      {
+        "id": "MB-1340-GL-015",
+        "question": "ช่วยสรุปวิธีพูดขอบคุณแบบสุภาพ 2 ประโยค ตอบสั้น ๆ",
+        "wall_sec": 14.2595,
+        "mode": "pipeline:general_llm_after_rag_miss",
+        "route": "general/how_to",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "ขอบคุณสำหรับความช่วยเหลืออย่างยิ่งครับ ขอแสดงความชื่นชมและขอบคุณอีกครั้งครับ หมายเหตุ: คำตอบนี้เป็นความรู้ทั่วไปของโมเดล ไม่ได้อ้างอิงจากฐานข้อมูล PSU Esports Studio - Phuket"
+      }
+    ]
+  },
+  "english": {
+    "total": 1600,
+    "strict_pass": 1425,
+    "strict_pass_rate": 0.890625,
+    "status_counts": {
+      "completed": 1600
+    },
+    "failure_types": {
+      "thai_prose_leak": 55,
+      "category": 120
+    },
+    "route_confusion_top_15": {
+      "['general', 'knowledge'] -> general": 179,
+      "['general', 'knowledge'] -> no_answer": 86,
+      "['multi_question', 'reservation', 'games', 'equipment'] -> multi_question": 50,
+      "['members', 'overview'] -> overview": 47,
+      "['games', 'reservation'] -> reservation": 40,
+      "['equipment', 'games'] -> equipment": 16,
+      "['games', 'clarification', 'no_answer'] -> games": 12,
+      "['games', 'no_answer'] -> games": 11,
+      "['games', 'clarification'] -> games": 11,
+      "['schedule', 'reservation'] -> schedule": 10,
+      "['clarification', 'games', 'equipment', 'service_fee', 'reservation', 'no_answer'] -> no_answer": 8,
+      "['no_answer', 'games', 'general'] -> no_answer": 6,
+      "['games', 'multi_question'] -> games": 6,
+      "['equipment', 'clarification'] -> equipment": 5,
+      "['clarification', 'games', 'equipment', 'service_fee', 'reservation', 'no_answer'] -> equipment": 5
+    },
+    "mode_counts": {
+      "pipeline:structured_service_fee_en": 256,
+      "pipeline:price_service_clarification_en": 3,
+      "pipeline:structured_game_detail_en": 157,
+      "pipeline:structured_game_availability_en": 135,
+      "pipeline:games_unknown_target_en": 7,
+      "pipeline:structured_games_count_en": 1,
+      "pipeline:structured_games_catalog_en": 52,
+      "pipeline:structured_games_multi_zone_en": 1,
+      "pipeline:structured_game_controls_en": 323,
+      "pipeline:game_controls_no_source_en": 9,
+      "pipeline:english_no_answer": 113,
+      "pipeline:structured_equipment_catalog_en": 20,
+      "pipeline:structured_equipment_item_en": 48,
+      "pipeline:rule_en": 65,
+      "pipeline:structured_schedule_en": 15,
+      "pipeline:structured_members_source_th": 55,
+      "pipeline:member_role_not_found_en": 5,
+      "pipeline:structured_competition_rules_en": 76,
+      "pipeline:multi_question_splitter": 78,
+      "pipeline:answer_contract_no_answer": 1,
+      "pipeline:general_llm_direct": 161,
+      "pipeline:no_answer": 12,
+      "pipeline:general_rag_miss_llm_unavailable": 6,
+      "pipeline:missing_english_localization": 1
+    },
+    "latency_sec": {
+      "observed_mean_excluding_watchdog_escapes": 0.2333,
+      "observed_p50_excluding_watchdog_escapes": 0.02,
+      "observed_p95_excluding_watchdog_escapes": 0.8918,
+      "observed_p99_excluding_watchdog_escapes": 4.3011,
+      "observed_max_excluding_watchdog_escapes": 8.6779,
+      "observed_over_10s_excluding_watchdog_escapes": 0,
+      "observed_over_20s_excluding_watchdog_escapes": 0,
+      "raw_max_including_watchdog_escapes": 8.6779
+    },
+    "watchdog_escape_observed": 0,
+    "watchdog_escape_cases": [],
+    "slowest_20": [
+      {
+        "id": "EN-SHADOW-0739",
+        "question": "Where is The Last of Us Part II located?",
+        "wall_sec": 8.6779,
+        "mode": "pipeline:games_unknown_target_en",
+        "route": "games/unknown_game",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "I could not find The Last of Us Part I / Part II in the verified PSU game records. I will not substitute another game. Source: https://esports.computing.psu.ac.th/ (original source in Thai)"
+      },
+      {
+        "id": "EN-SHADOW-1581",
+        "question": "What is the word 'reservation' in Thai? Explain it simply.",
+        "wall_sec": 8.4368,
+        "mode": "pipeline:english_no_answer",
+        "route": "no_answer/english_verified_evidence_unavailable",
+        "status": "completed",
+        "failures": [
+          "category"
+        ],
+        "answer_preview": "I could not find verified PSU Esports Studio - Phuket information for this question."
+      },
+      {
+        "id": "EN-SHADOW-1591",
+        "question": "What is the word 'reservation' in Thai?",
+        "wall_sec": 8.3622,
+        "mode": "pipeline:english_no_answer",
+        "route": "no_answer/english_verified_evidence_unavailable",
+        "status": "completed",
+        "failures": [
+          "category"
+        ],
+        "answer_preview": "I could not find verified PSU Esports Studio - Phuket information for this question."
+      },
+      {
+        "id": "EN-SHADOW-1443",
+        "question": "What is a mechanical keyboard, briefly explained for use in a chatbot?",
+        "wall_sec": 8.3371,
+        "mode": "pipeline:general_rag_miss_llm_unavailable",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "General model assistance is temporarily unavailable. You can still ask about verified PSU Esports games, controls, equipment, prices, booking, opening hours, and rules."
+      },
+      {
+        "id": "EN-SHADOW-0064",
+        "question": "How much does TEKKEN 8 cost?",
+        "wall_sec": 8.1328,
+        "mode": "pipeline:price_service_clarification_en",
+        "route": "service_fee/service_fee_query",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "TEKKEN 8 is available on more than one service (PC, PlayStation 5). Which service and duration should I price? Source: https://esports.computing.psu.ac.th/ (original source in Thai)"
+      },
+      {
+        "id": "EN-SHADOW-0622",
+        "question": "What is the shooting button in Call of Duty? Where can I play it?",
+        "wall_sec": 8.1132,
+        "mode": "pipeline:multi_question_splitter",
+        "route": "multi_question/multi_question_split",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "This question contains several topics. Here are the answers separately: Question 1: What is the shooting button in Call of Duty There are currently 42 verified games available. PC Zone (6 games) • Call of Duty: Warzone • Counter-Strike 2 • League of Legends • "
+      },
+      {
+        "id": "EN-SHADOW-0397",
+        "question": "How to play",
+        "wall_sec": 8.1095,
+        "mode": "pipeline:english_no_answer",
+        "route": "no_answer/english_verified_evidence_unavailable",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "I could not find verified PSU Esports Studio - Phuket information for this question."
+      },
+      {
+        "id": "EN-SHADOW-1483",
+        "question": "What is a mechanical keyboard, briefly?",
+        "wall_sec": 6.113,
+        "mode": "pipeline:general_llm_direct",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "A mechanical keyboard uses individual mechanical switches for each key, providing tactile feedback and durability. It differs from membrane keyboards by offering better responsiveness and actuation. Note: This is general model knowledge and is not verified by "
+      },
+      {
+        "id": "EN-SHADOW-1401",
+        "question": "What is the word 'reservation' in Thai? Answer simply for a first grader to understand.",
+        "wall_sec": 5.4877,
+        "mode": "pipeline:english_no_answer",
+        "route": "no_answer/english_verified_evidence_unavailable",
+        "status": "completed",
+        "failures": [
+          "category"
+        ],
+        "answer_preview": "I could not find verified PSU Esports Studio - Phuket information for this question."
+      },
+      {
+        "id": "EN-SHADOW-1441",
+        "question": "What is the Thai word for reservation when used in a chatbot context?",
+        "wall_sec": 5.1865,
+        "mode": "pipeline:english_no_answer",
+        "route": "no_answer/english_verified_evidence_unavailable",
+        "status": "completed",
+        "failures": [
+          "category"
+        ],
+        "answer_preview": "I could not find verified PSU Esports Studio - Phuket information for this question."
+      },
+      {
+        "id": "EN-SHADOW-1495",
+        "question": "What's the difference between server and client? Answer appropriately for a PSU student",
+        "wall_sec": 4.8869,
+        "mode": "pipeline:missing_english_localization",
+        "route": "events_news/knowledge_localization_unavailable",
+        "status": "completed",
+        "failures": [
+          "category"
+        ],
+        "answer_preview": "This information does not yet have an approved English localization. Please open the cited original source or ask a staff member for confirmation. Source: https://esports.phuket.psu.ac.th/home (original source in Thai)"
+      },
+      {
+        "id": "EN-SHADOW-1490",
+        "question": "Summarize a polite two-sentence way to say thank you, suitable for a PSU student",
+        "wall_sec": 4.8233,
+        "mode": "pipeline:english_no_answer",
+        "route": "no_answer/english_verified_evidence_unavailable",
+        "status": "completed",
+        "failures": [
+          "category"
+        ],
+        "answer_preview": "I could not find verified PSU Esports Studio - Phuket information for this question."
+      },
+      {
+        "id": "EN-SHADOW-1496",
+        "question": "Explain what latency means in a computer system briefly",
+        "wall_sec": 4.8029,
+        "mode": "pipeline:general_llm_direct",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "Latency refers to the delay between a request and the system's response. It is crucial for real-time performance in computing systems. Note: This is general model knowledge and is not verified by the PSU Esports Studio - Phuket knowledge base."
+      },
+      {
+        "id": "EN-SHADOW-1403",
+        "question": "What is a mechanical keyboard? Answer simply so a first-grader can understand",
+        "wall_sec": 4.6195,
+        "mode": "pipeline:general_llm_direct",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "A mechanical keyboard has small buttons called switches that make a click when pressed. Each switch feels different and helps type faster and more clearly than normal keyboards. mechanical keyboard Note: This is general model knowledge and is not verified by t"
+      },
+      {
+        "id": "EN-SHADOW-1503",
+        "question": "What is a mechanical keyboard, short and natural Thai language",
+        "wall_sec": 4.4586,
+        "mode": "pipeline:no_answer",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "I could not find verified PSU Esports Studio - Phuket information for this question."
+      },
+      {
+        "id": "EN-SHADOW-1393",
+        "question": "What is a mechanical keyboard? Explain it simply for beginners.",
+        "wall_sec": 4.4444,
+        "mode": "pipeline:general_llm_direct",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "A mechanical keyboard uses individual mechanical switches under each key. Each switch provides tactile feedback and longer life compared to standard keyboards. What kind of feedback are you looking for in a mechanical keyboard? Note: This is general model know"
+      },
+      {
+        "id": "EN-SHADOW-1491",
+        "question": "Translate the word 'reservation' into Thai, suitable for a student from another university",
+        "wall_sec": 4.3011,
+        "mode": "pipeline:no_answer",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "I could not find verified PSU Esports Studio - Phuket information for this question."
+      },
+      {
+        "id": "EN-SHADOW-1333",
+        "question": "What is a mechanical keyboard like?",
+        "wall_sec": 4.2124,
+        "mode": "pipeline:general_llm_direct",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "A mechanical keyboard feels responsive and tactile due to its individual mechanical switches. Each key has a distinct actuation point and sound, offering precise typing and durability. Mechanical keyboards are often preferred for gaming and typing. Note: This "
+      },
+      {
+        "id": "EN-SHADOW-1501",
+        "question": "What is the Thai word for reservation?",
+        "wall_sec": 4.1621,
+        "mode": "pipeline:english_no_answer",
+        "route": "no_answer/english_verified_evidence_unavailable",
+        "status": "completed",
+        "failures": [
+          "category"
+        ],
+        "answer_preview": "I could not find verified PSU Esports Studio - Phuket information for reservation."
+      },
+      {
+        "id": "EN-SHADOW-1583",
+        "question": "What is a mechanical keyboard? Explain it simply.",
+        "wall_sec": 4.1406,
+        "mode": "pipeline:general_llm_direct",
+        "route": "general/detail",
+        "status": "completed",
+        "failures": [],
+        "answer_preview": "A mechanical keyboard uses individual mechanical switches for each key. Each switch provides tactile feedback and durability compared to membrane keyboards. What is your main interest in mechanical keyboards? Note: This is general model knowledge and is not ve"
+      }
+    ]
+  },
+  "parity": {
+    "shared_ids": 1600,
+    "route_category_mismatches": 219,
+    "large_bullet_shape_gaps": 478,
+    "pass_asymmetry": 244,
+    "route_mismatch_examples": [
+      {
+        "id": "MB-0089-G-001",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is VALORANT"
+      },
+      {
+        "id": "MB-0101-G-013",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is Call of Duty: Warzone?"
+      },
+      {
+        "id": "MB-0105-G-017",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is League of Legends?"
+      },
+      {
+        "id": "MB-0109-G-021",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is Tekken 8?"
+      },
+      {
+        "id": "MB-0113-G-025",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is Marvel's Spider-Man 2?"
+      },
+      {
+        "id": "MB-0117-G-029",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is Fortnite?"
+      },
+      {
+        "id": "MB-0121-G-033",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is God of War Ragnarök"
+      },
+      {
+        "id": "MB-0125-G-037",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is Beat Saber"
+      },
+      {
+        "id": "MB-0129-G-041",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is Horizon Call of the Mountain?"
+      },
+      {
+        "id": "MB-0133-G-045",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is Gran Turismo 7?"
+      },
+      {
+        "id": "MB-0137-G-049",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is Call of Duty: Modern Warfare III?"
+      },
+      {
+        "id": "MB-0141-G-053",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is EA Sports FC 24"
+      },
+      {
+        "id": "MB-0145-G-057",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is FINAL FANTASY XVI?"
+      },
+      {
+        "id": "MB-0149-G-061",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is Hogwarts Legacy?"
+      },
+      {
+        "id": "MB-0153-G-065",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is Resident Evil 4"
+      },
+      {
+        "id": "MB-0157-G-069",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is Resident Evil Village"
+      },
+      {
+        "id": "MB-0161-G-073",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is NARUTO X BORUTO Ultimate Ninja Storm Connections"
+      },
+      {
+        "id": "MB-0165-G-077",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is The Last of Us Part I / Part II"
+      },
+      {
+        "id": "MB-0169-G-081",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is Uncharted: Legacy of Thieves Collection?"
+      },
+      {
+        "id": "MB-0173-G-085",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is Mario Kart 8 Deluxe?"
+      },
+      {
+        "id": "MB-0177-G-089",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is Overcooked 2?"
+      },
+      {
+        "id": "MB-0181-G-093",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is Super Smash Bros Ultimate"
+      },
+      {
+        "id": "MB-0189-G-101",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is Animal Crossing: New Horizons?"
+      },
+      {
+        "id": "MB-0193-G-105",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is It Takes Two?"
+      },
+      {
+        "id": "MB-0197-G-109",
+        "thai": "clarification",
+        "english": "games",
+        "question_en": "What is Luigi's Mansion 3?"
+      }
+    ],
+    "shape_gap_examples": [
+      {
+        "id": "MB-0022-SF-022",
+        "thai": {
+          "lines": 15,
+          "bullets": 8
+        },
+        "english": {
+          "lines": 7,
+          "bullets": 2
+        },
+        "question_en": "How much does a PSU student pay to play Nintendo Switch for 30 minutes?"
+      },
+      {
+        "id": "MB-0023-SF-023",
+        "thai": {
+          "lines": 15,
+          "bullets": 8
+        },
+        "english": {
+          "lines": 9,
+          "bullets": 4
+        },
+        "question_en": "How much does a PSU student pay to play Nintendo Switch for one hour?"
+      },
+      {
+        "id": "MB-0024-SF-024",
+        "thai": {
+          "lines": 15,
+          "bullets": 8
+        },
+        "english": {
+          "lines": 7,
+          "bullets": 2
+        },
+        "question_en": "How much does a PSU student pay to play Nintendo Switch for 2 hours?"
+      },
+      {
+        "id": "MB-0025-SF-025",
+        "thai": {
+          "lines": 15,
+          "bullets": 8
+        },
+        "english": {
+          "lines": 9,
+          "bullets": 4
+        },
+        "question_en": "How much does it cost for a student from another university to play Nintendo Switch for 30 minutes?"
+      },
+      {
+        "id": "MB-0026-SF-026",
+        "thai": {
+          "lines": 15,
+          "bullets": 8
+        },
+        "english": {
+          "lines": 9,
+          "bullets": 4
+        },
+        "question_en": "How much does it cost for a student from another university to play Nintendo Switch for 1 hour?"
+      },
+      {
+        "id": "MB-0027-SF-027",
+        "thai": {
+          "lines": 15,
+          "bullets": 8
+        },
+        "english": {
+          "lines": 9,
+          "bullets": 4
+        },
+        "question_en": "How much does it cost for a student from another university to play Nintendo Switch for 2 hours?"
+      },
+      {
+        "id": "MB-0033-SF-033",
+        "thai": {
+          "lines": 10,
+          "bullets": 4
+        },
+        "english": {
+          "lines": 4,
+          "bullets": 1
+        },
+        "question_en": "How much does a PSU student pay to play Cockpit for one hour?"
+      },
+      {
+        "id": "MB-0044-SF-044",
+        "thai": {
+          "lines": 15,
+          "bullets": 8
+        },
+        "english": {
+          "lines": 5,
+          "bullets": 2
+        },
+        "question_en": "How much does it cost for a PSU student to play VR for 2 hours?"
+      },
+      {
+        "id": "MB-0047-SF-047",
+        "thai": {
+          "lines": 15,
+          "bullets": 8
+        },
+        "english": {
+          "lines": 5,
+          "bullets": 2
+        },
+        "question_en": "How much does it cost for a student from another university to play VR for 2 hours?"
+      },
+      {
+        "id": "MB-0050-SF-050",
+        "thai": {
+          "lines": 15,
+          "bullets": 8
+        },
+        "english": {
+          "lines": 7,
+          "bullets": 4
+        },
+        "question_en": "How much does it cost for a general visitor to play VR for two hours?"
+      },
+      {
+        "id": "MB-0051-SF-051",
+        "thai": {
+          "lines": 15,
+          "bullets": 9
+        },
+        "english": {
+          "lines": 6,
+          "bullets": 3
+        },
+        "question_en": "What is the price difference between PC and PS5?"
+      },
+      {
+        "id": "MB-0052-SF-052",
+        "thai": {
+          "lines": 13,
+          "bullets": 9
+        },
+        "english": {
+          "lines": 6,
+          "bullets": 3
+        },
+        "question_en": "Which is more expensive, PS5 or Nintendo?"
+      },
+      {
+        "id": "MB-0053-SF-053",
+        "thai": {
+          "lines": 14,
+          "bullets": 9
+        },
+        "english": {
+          "lines": 11,
+          "bullets": 6
+        },
+        "question_en": "How are VR 30-minute sessions different from VR one-hour sessions?"
+      },
+      {
+        "id": "MB-0056-SF-056",
+        "thai": {
+          "lines": 9,
+          "bullets": 4
+        },
+        "english": {
+          "lines": 4,
+          "bullets": 1
+        },
+        "question_en": "Does a student from Mahasarakham University have to pay to play Nintendo for 4 people?"
+      },
+      {
+        "id": "MB-0057-SF-057",
+        "thai": {
+          "lines": 11,
+          "bullets": 6
+        },
+        "english": {
+          "lines": 5,
+          "bullets": 2
+        },
+        "question_en": "How much does it cost for a general adult to play VR for 1 hour?"
+      },
+      {
+        "id": "MB-0064-SF-064",
+        "thai": {
+          "lines": 16,
+          "bullets": 6
+        },
+        "english": {
+          "lines": 2,
+          "bullets": 0
+        },
+        "question_en": "How much does TEKKEN 8 cost?"
+      },
+      {
+        "id": "MB-0075-SF-075",
+        "thai": {
+          "lines": 20,
+          "bullets": 9
+        },
+        "english": {
+          "lines": 2,
+          "bullets": 0
+        },
+        "question_en": "Resident Evil 4 price"
+      },
+      {
+        "id": "MB-0076-SF-076",
+        "thai": {
+          "lines": 20,
+          "bullets": 9
+        },
+        "english": {
+          "lines": 2,
+          "bullets": 0
+        },
+        "question_en": "Resident Evil Village price"
+      },
+      {
+        "id": "MB-0233-G-145",
+        "thai": {
+          "lines": 52,
+          "bullets": 45
+        },
+        "english": {
+          "lines": 2,
+          "bullets": 0
+        },
+        "question_en": "How many games are there in total?"
+      },
+      {
+        "id": "MB-0235-G-147",
+        "thai": {
+          "lines": 18,
+          "bullets": 10
+        },
+        "english": {
+          "lines": 9,
+          "bullets": 6
+        },
+        "question_en": "What PC games are available"
+      },
+      {
+        "id": "MB-0237-G-149",
+        "thai": {
+          "lines": 40,
+          "bullets": 34
+        },
+        "english": {
+          "lines": 20,
+          "bullets": 17
+        },
+        "question_en": "What games are available on Nintendo Switch"
+      },
+      {
+        "id": "MB-0240-G-152",
+        "thai": {
+          "lines": 8,
+          "bullets": 5
+        },
+        "english": {
+          "lines": 7,
+          "bullets": 0
+        },
+        "question_en": "Which equipment has the most games?"
+      },
+      {
+        "id": "MB-0241-G-153",
+        "thai": {
+          "lines": 90,
+          "bullets": 70
+        },
+        "english": {
+          "lines": 5,
+          "bullets": 3
+        },
+        "question_en": "Which game can be played across multiple zones?"
+      },
+      {
+        "id": "MB-0242-G-154",
+        "thai": {
+          "lines": 5,
+          "bullets": 4
+        },
+        "english": {
+          "lines": 4,
+          "bullets": 1
+        },
+        "question_en": "What racing games are available"
+      },
+      {
+        "id": "MB-0243-G-155",
+        "thai": {
+          "lines": 9,
+          "bullets": 8
+        },
+        "english": {
+          "lines": 52,
+          "bullets": 45
+        },
+        "question_en": "What games are available"
+      }
+    ],
+    "pass_asymmetry_examples": [
+      {
+        "id": "MB-0089-G-001",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is VALORANT"
+      },
+      {
+        "id": "MB-0101-G-013",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is Call of Duty: Warzone?"
+      },
+      {
+        "id": "MB-0105-G-017",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is League of Legends?"
+      },
+      {
+        "id": "MB-0109-G-021",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is Tekken 8?"
+      },
+      {
+        "id": "MB-0113-G-025",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is Marvel's Spider-Man 2?"
+      },
+      {
+        "id": "MB-0117-G-029",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is Fortnite?"
+      },
+      {
+        "id": "MB-0121-G-033",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is God of War Ragnarök"
+      },
+      {
+        "id": "MB-0125-G-037",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is Beat Saber"
+      },
+      {
+        "id": "MB-0129-G-041",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is Horizon Call of the Mountain?"
+      },
+      {
+        "id": "MB-0133-G-045",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is Gran Turismo 7?"
+      },
+      {
+        "id": "MB-0137-G-049",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is Call of Duty: Modern Warfare III?"
+      },
+      {
+        "id": "MB-0141-G-053",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is EA Sports FC 24"
+      },
+      {
+        "id": "MB-0145-G-057",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is FINAL FANTASY XVI?"
+      },
+      {
+        "id": "MB-0149-G-061",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is Hogwarts Legacy?"
+      },
+      {
+        "id": "MB-0153-G-065",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is Resident Evil 4"
+      },
+      {
+        "id": "MB-0157-G-069",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is Resident Evil Village"
+      },
+      {
+        "id": "MB-0161-G-073",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is NARUTO X BORUTO Ultimate Ninja Storm Connections"
+      },
+      {
+        "id": "MB-0165-G-077",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is The Last of Us Part I / Part II"
+      },
+      {
+        "id": "MB-0169-G-081",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is Uncharted: Legacy of Thieves Collection?"
+      },
+      {
+        "id": "MB-0173-G-085",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is Mario Kart 8 Deluxe?"
+      },
+      {
+        "id": "MB-0177-G-089",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is Overcooked 2?"
+      },
+      {
+        "id": "MB-0181-G-093",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is Super Smash Bros Ultimate"
+      },
+      {
+        "id": "MB-0189-G-101",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is Animal Crossing: New Horizons?"
+      },
+      {
+        "id": "MB-0193-G-105",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is It Takes Two?"
+      },
+      {
+        "id": "MB-0197-G-109",
+        "thai_pass": false,
+        "english_pass": true,
+        "thai_failures": [
+          "category",
+          "missing"
+        ],
+        "english_failures": [],
+        "question_en": "What is Luigi's Mansion 3?"
+      }
+    ]
+  },
+  "parity_mapping": {
+    "method": "english source_case_id -> Thai benchmark id",
+    "english_rows_with_source_case_id": 1600
+  }
+}

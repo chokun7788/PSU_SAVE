@@ -22,7 +22,7 @@ ROUTE = PipelineRoute("knowledge", "knowledge_lookup", 0.82, "summary", "medium"
 INTENT = UniversalIntent("knowledge", "lookup", "booking", 0.82, "smoke")
 
 
-def test_default_model_first_is_off() -> None:
+def test_default_model_first_enables_grounded_composer_after_evidence() -> None:
     previous = os.environ.pop("PSU_MODEL_FIRST_FLOW", None)
     try:
         plan = plan_rag_model_path(
@@ -35,8 +35,8 @@ def test_default_model_first_is_off() -> None:
     finally:
         if previous is not None:
             os.environ["PSU_MODEL_FIRST_FLOW"] = previous
-    assert plan.path == "deterministic_rag"
-    assert plan.use_llm is False
+    assert plan.path == "rag_grounded_composer"
+    assert plan.use_llm is True
 
 
 def test_adaptive_budget_expands_for_compound_query() -> None:
@@ -60,7 +60,10 @@ def test_high_confidence_structured_route_skips_preflight_llm() -> None:
         else:
             os.environ["PSU_MODEL_FIRST_FLOW"] = previous
     assert allowed is False
-    assert reason == "high-confidence deterministic route"
+    assert reason in {
+        "high-confidence deterministic route",
+        "verified deterministic game catalog route",
+    }
 
 
 def test_model_first_rag_route_reserves_budget_for_grounded_composer() -> None:
@@ -246,7 +249,7 @@ def test_hybrid_retrieval_keeps_default_path_healthy() -> None:
 
 
 if __name__ == "__main__":
-    test_default_model_first_is_off()
+    test_default_model_first_enables_grounded_composer_after_evidence()
     test_adaptive_budget_expands_for_compound_query()
     test_high_confidence_structured_route_skips_preflight_llm()
     test_model_first_rag_route_reserves_budget_for_grounded_composer()

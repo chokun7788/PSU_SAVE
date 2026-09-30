@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_pc_games",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "pc.*เกม",
+      "คอม.*เกม",
+      "เกม.*pc",
+      "เกม.*คอม"
+    ],
+    "en": [
+      "pc games"
+    ]
+  },
+  "facts": {
+    "route_category": "games",
+    "intent": "pc_games",
+    "patterns": [
+      "pc.*เกม",
+      "คอม.*เกม",
+      "เกม.*pc",
+      "เกม.*คอม",
+      "pc games"
+    ],
+    "priority": 100
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "เกม PC ที่มีในรายการ ได้แก่ Tekken 8, Counter-Strike 2, League of Legends, PUBG: BATTLEGROUNDS, VALORANT และ Call of Duty: Warzone"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "PC games include Tekken 8, Counter-Strike 2, League of Legends, PUBG: BATTLEGROUNDS, VALORANT, and Call of Duty: Warzone."
+      },
+      "source_sha256": "bc44ee7afeee6799b686373c0de686404a129d107cd4d2644437c29d43d1d5a2",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/games_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_games_pc",
+      "reservation-service-pc"
+    ],
+    "last_verified_at": ""
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_no_answer_birthday_discount",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "ส่วนลดวันเกิด",
+      "วันเกิด.*ส่วนลด"
+    ],
+    "en": [
+      "birthday discount",
+      "birthday.*promo"
+    ]
+  },
+  "facts": {
+    "route_category": "no_answer",
+    "intent": "no_answer_birthday_discount",
+    "patterns": [
+      "ส่วนลดวันเกิด",
+      "วันเกิด.*ส่วนลด",
+      "birthday discount",
+      "birthday.*promo"
+    ],
+    "priority": 130
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ยังไม่พบข้อมูลเรื่องส่วนลดวันเกิดในฐานข้อมูลที่มี ข้อมูลราคาที่มีตอนนี้เป็นตารางค่าบริการตามประเภทอุปกรณ์และกลุ่มผู้ใช้ หากมีโปรโมชันพิเศษควรตรวจสอบกับเพจหรือเจ้าหน้าที่ศูนย์ก่อนจอง"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "No information about a birthday discount was found in the available knowledge base. The available pricing is the service fee table by equipment type and user group. Please check with the center's page or staff for special promotions."
+      },
+      "source_sha256": "3ca8829e725b653f7473c221d6705e906cdf42fe31840419468cd85a8ad1fa63",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/no_answer_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "source_ids": [
+      "service_fee"
+    ],
+    "last_verified_at": ""
+  }
+}
