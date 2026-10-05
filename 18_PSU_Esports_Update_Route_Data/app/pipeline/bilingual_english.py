@@ -471,6 +471,15 @@ def _price_package_keys(service: str, query: str) -> list[str]:
 
 def _answer_price(query: str, entities: EntityBundle) -> EnglishSupportResult | None:
     tokens = _tokens(query)
+    # "pay" can ask for a deadline or method. It does not establish a fee
+    # amount even when a service/game was carried from another clause.
+    if tokens & {"book", "booking", "reserve", "reservation"} and not (
+        tokens & {"price", "cost", "fee", "much", "expensive", "cheaper", "cheapest"}
+    ) and (
+        re.search(r"\b(?:how\s+(?:long|soon|quickly)|when)\b.*\b(?:pay|payment)\b", query, re.I)
+        or re.search(r"\bhow\s+(?:do|can)\s+i\s+pay\b|\bpayment\s+(?:method|deadline|timeout)\b", query, re.I)
+    ):
+        return None
     comparison_signal = bool(tokens & {"expensive", "cheaper", "cheapest", "difference", "differences", "different", "compare", "comparison"})
     control_signal = bool(tokens & {"button", "buttons", "key", "keys", "controller", "controllers", "control", "controls"})
     explicit_price_signal = bool(tokens & {
@@ -561,7 +570,7 @@ def _weekday_from_query(query: str, entities: EntityBundle) -> int | None:
     if entities.day and any(day in tokens for day in _DAY_TOKENS):
         return {"monday": 0, "tuesday": 1, "wednesday": 2, "thursday": 3, "friday": 4}.get(entities.day)
     for token, weekday in _DAY_TOKENS.items():
-        if token in tokens:
+        if token in tokens or (token in {name.casefold() for name in _WEEKDAY_NAMES_EN} and token + "s" in tokens):
             return weekday
     if "today" in tokens:
         return today_bangkok().weekday()
@@ -683,7 +692,7 @@ def _answer_schedule(query: str, entities: EntityBundle) -> EnglishSupportResult
             reason="a holiday date is required to check the calendar exception",
             answer_type="clarification",
         )
-    signal = bool(tokens & {"open", "opening", "close", "closing", "hours", "schedule", "time", "maintenance", "morning", "afternoon", "today", "tomorrow"})
+    signal = bool(tokens & {"open", "opens", "opening", "close", "closes", "closing", "hours", "schedule", "time", "maintenance", "morning", "afternoon", "today", "tomorrow"})
     signal = signal or bool(re.search(r"\b(?:what|which)\s+days?\s+(?:are|is)\s+available\b", query, flags=re.IGNORECASE))
     weekday = _weekday_from_query(query, entities)
     if not signal and weekday is None:
@@ -719,13 +728,13 @@ def _answer_schedule(query: str, entities: EntityBundle) -> EnglishSupportResult
         if "morning" in tokens:
             if weekday == 0:
                 text = "Monday morning, 09:00-12:00, is a maintenance period and is not a regular play session."
-            elif weekday == 4:
-                text = "Friday morning is open for play from 09:00-12:00."
+            elif weekday in {1, 2, 3, 4}:
+                text = f"{_WEEKDAY_NAMES_EN[weekday]} morning is open for play from 09:00-12:00."
         elif "afternoon" in tokens:
             if weekday == 4:
                 text = "Friday afternoon, 13:00-16:00, is a maintenance period and is not a regular play session."
-            elif weekday == 0:
-                text = "Monday afternoon is open for play from 13:00-16:00."
+            elif weekday in {0, 1, 2, 3}:
+                text = f"{_WEEKDAY_NAMES_EN[weekday]} afternoon is open for play from 13:00-16:00."
     text += _source_suffix(RESERVATION_URL)
     return _result(
         text,
@@ -804,6 +813,8 @@ def _answer_booking_intent(query: str, matcher: RuleMatcher) -> EnglishSupportRe
             reason="group booking requires a service target before applying verified capacity and fee records",
             answer_type="clarification",
         )
+    if booking_signal and re.search(r"\btransfer(?:ring)?\s+(?:(?:my|the|a)\s+)?(?:booking|reservation)\b", query, re.I) and not (tokens & {"bank", "money", "payment", "slip"}):
+        return _rule_answer("transfer booking", matcher)
     payment_method_signal = (
         _phrase(query, "how do i pay")
         or _phrase(query, "payment method")
@@ -964,6 +975,17 @@ def _answer_game_controls(query: str, game: str, *, route_intent: str = "") -> E
         if _game_title_key(row.get("game")) == game_key
     ]
     rows = [row for row in game_rows if row.get("button") and row.get("action_en")]
+    from app.pipeline.control_button_target import explicit_button_selection
+
+    button_selection = explicit_button_selection(query, rows)
+    if button_selection is not None and not button_selection.rows:
+        return _result(
+            f"I could not find a verified mapping for the {button_selection.observed} button in {game}. Please check the button name and platform.",
+            category="games", intent="game_control_lookup", mode="pipeline:game_controls_unknown_button_no_answer_en",
+            confidence=0.98, hits=[], reason="physical identifier is absent from this game's control records",
+            answer_type="no_answer")
+    if button_selection is not None:
+        rows = list(button_selection.rows)
     action_terms = ("accelerate",) if re.search(r"\bgas pedal\b", query, flags=re.IGNORECASE) else ("shoot", "fire") if re.search(r"\bshooting\b", query, flags=re.IGNORECASE) else ()
     if action_terms and rows:
         matched_rows = [row for row in rows if any(term in str(row.get("action_en") or "").casefold() for term in action_terms)]
@@ -1509,6 +1531,10 @@ def _answer_equipment(query: str, entities: EntityBundle, *, route: PipelineRout
     # example, ``Sony PlayStation VR2`` contains "PlayStation" but belongs to
     # VR Zone rather than the PlayStation 5 catalog.
     specific = next((row for row in all_rows if matches_item(row)), None)
+    equipment_objects = {"equipment", "device", "devices", "hardware", "spec", "specs", "monitor", "keyboard", "mouse", "headset", "chair", "console"}
+    if specific is None and not (tokens & equipment_objects) and zone is None:
+        # Offer/have is a verb, not evidence that its object is studio hardware.
+        return None
     rows = [row for row in all_rows if not zone or zone in str(row.get("zone"))]
     if not rows and specific is None:
         return None
@@ -1621,6 +1647,8 @@ _UNVERIFIED_MEMBER_ROLE_TERMS = {"captain", "ambassador", "referee"}
 def _requested_member_role_terms(query: str) -> set[str]:
     q = normalize_text(query)
     tokens = _tokens(q)
+    if "president" in tokens and "club" in tokens and not (tokens & {"vice", "deputy"}):
+        return {"ประธาน"}
     return {
         thai_term
         for english_role, thai_terms in _MEMBER_ROLE_QUERY_ALIASES.items()
@@ -1659,6 +1687,28 @@ def _answer_members(query: str, *, route: PipelineRoute) -> EnglishSupportResult
     if not _is_member_query(query, route):
         return None
     tokens = _tokens(query)
+    if re.search(r"\bhow\s+many\s+(?:categories|groups)\b",query,re.I) and tokens & {'member','members'}:
+        rows=_member_rows()
+        groups={group:sum(str(row.get('group'))==group for row in rows) for group in dict.fromkeys(str(row.get('group') or 'Unspecified group') for row in rows)}
+        answer=f"The recorded member directory has {len(groups)} groups and {len(rows)} member records:\n" + "\n".join(f"- {group}: {count} records" for group,count in groups.items())
+        return _result(answer+_source_suffix(MEMBERS_URL),category='overview',intent='members_lookup',mode='pipeline:structured_member_group_count_en',confidence=.98,hits=[_hit('Members','members',MEMBERS_URL,'Member directory')],reason='group and record counts computed directly from the source directory')
+    if re.search(r"\bhow\s+many\s+members?\b", query, re.I):
+        rows = _member_rows()
+        counts = {group: sum(str(row.get("group")) == group for row in rows)
+                  for group in dict.fromkeys(str(row.get("group") or "Unspecified group") for row in rows)}
+        text = f"The stored source directory contains {len(rows)} member records:\n"
+        text += "\n".join(f"- {group}: {count}" for group, count in counts.items())
+        text += "\nThese are counts in the recorded directory, not a live headcount."
+        return _result(text + _source_suffix(MEMBERS_URL), category="overview", intent="members_lookup",
+                       mode="pipeline:structured_member_count_en", confidence=0.98,
+                       hits=[_hit("Members", "members", MEMBERS_URL, "Member directory")],
+                       reason="counts computed separately for each stored source group")
+    if "president" in tokens and not (tokens & {"club", "university", "rector", "vice", "deputy"}):
+        return _result("Do you mean the university president or the esports club chairperson?",
+                       category="clarification", intent="member_role_scope_required",
+                       mode="pipeline:member_role_scope_clarification_en", confidence=0.8,
+                       hits=[], reason="president has more than one supported institutional scope",
+                       answer_type="clarification")
     if tokens & _UNVERIFIED_MEMBER_ROLE_TERMS or _phrase(query, "main character"):
         return _result(
             "I could not find a verified PSU Esports Studio - Phuket member record for that requested role.",
@@ -1670,7 +1720,27 @@ def _answer_members(query: str, *, route: PipelineRoute) -> EnglishSupportResult
             reason="unverified English role was not mapped to an official member record",
             answer_type="no_answer",
         )
-    member_rows = _member_rows_for_requested_role(query)
+    # An explicit person is not a request for the complete member directory.
+    # Only source names or approved name localizations can bind an identity.
+    person_request = re.search(r"\b(?:position|role)\s+(?:does|do|is)\s+(.+?)(?:\s+(?:hold|holds|old)\b|\?|$)", query, re.I)
+    if person_request:
+        named = person_request.group(1).strip()
+        def name_key(value):
+            return re.sub(r"\b(?:mr|mrs|ms|dr|prof)\.?|[^\w\u0e00-\u0e7f]+", "", value.casefold())
+        matches = tuple(row for row in _member_rows() if any(
+            name_key(value) and name_key(value) == name_key(named)
+            for value in (str(row.get('name') or ''), approved_localization(row, 'name') or '')
+        ))
+        if not matches:
+            return _result(
+                "I could not verify a member record for " + named + ". Please provide the exact name from the official member directory; I cannot infer an official identity from an unverified English spelling.",
+                category="overview", intent="members_lookup", mode="pipeline:member_person_not_found_en",
+                confidence=0.98, hits=[_hit("Members", "members", MEMBERS_URL, "Members")],
+                reason="explicit person has no exact source or approved localized name match", answer_type="no_answer",
+            )
+        member_rows = matches
+    else:
+        member_rows = _member_rows_for_requested_role(query)
     role_requested = _has_requested_member_role(query)
     if not member_rows:
         return _result(
@@ -1730,13 +1800,18 @@ def _answer_members(query: str, *, route: PipelineRoute) -> EnglishSupportResult
     ]
     for name, role, affiliation, _row in translated_rows:
         suffix = f" - {affiliation}" if affiliation else ""
-        lines.append(f"- {name}: {role}{suffix}")
+        original_role = str(_row.get("role") or "")
+        role_identifier = f" ({original_role})" if re.search(r"[\u0e00-\u0e7f]", original_role) else ""
+        lines.append(f"- {name}: {role}{role_identifier}{suffix}")
+    original_names = any(re.search(r"[\u0e00-\u0e7f]", name) for name, _, _, _ in translated_rows)
+    if original_names:
+        lines.insert(1, "Names retain the exact spelling in the official Thai source; role labels are translated.")
     lines.append(f"Source: {MEMBERS_URL} (original source in Thai)")
     return _result(
         "\n".join(lines),
         category="overview",
         intent="members_lookup",
-        mode="pipeline:structured_members_en",
+        mode="pipeline:structured_members_source_th" if original_names else "pipeline:structured_members_en",
         confidence=0.98,
         hits=[_hit("Members", "members", MEMBERS_URL, "Members")],
         reason="English member localization overlay matched current Thai source hashes",
@@ -1757,6 +1832,8 @@ def _is_competition_query(query: str, route: PipelineRoute) -> bool:
     known_game = _known_game(query)
     competition_target = _competition_target(query)
     requested_facet = competition_facet(query)
+    if tokens & {"rule", "rules"} and tokens & {"timeout", "timeouts", "protest", "protests"}:
+        return True
     # ``FINAL FANTASY XVI`` is a verified catalog title. Its literal title
     # must not turn an ordinary game/control question into a finals question.
     if known_game == "FINAL FANTASY XVI":
@@ -1826,6 +1903,22 @@ def _competition_target_matches(target: str, candidate_game: str) -> bool:
     return any(alias in candidate for alias in aliases.get(target, ()))
 
 
+def _pause_subtype_supported(row: dict[str, Any], query: str) -> bool:
+    """Require the requested pause kind in the original section heading."""
+    kinds = _tokens(query) & {"technical", "tactical", "emergency"}
+    if len(kinds) != 1 or competition_facet(query) != "pause_timeout":
+        return True
+    heading = normalize_text(str(row.get("section_title") or ""))
+    if not heading:
+        heading = normalize_text(str(row.get("text") or "").splitlines()[0])
+    terms = {
+        "technical": ("technical", "ทางเทคนิค"),
+        "tactical": ("tactical", "ทางยุทธวิธี"),
+        "emergency": ("emergency", "ฉุกเฉิน"),
+    }[next(iter(kinds))]
+    return any(term in heading for term in terms)
+
+
 def _answer_competition_comparison(
     query: str,
     *,
@@ -1846,6 +1939,7 @@ def _answer_competition_comparison(
             row for row in _competition_rows()
             if _competition_target_matches(label, str(row.get("game") or ""))
             and (not requested_facet or source_row_supports_facet(row, requested_facet))
+            and _pause_subtype_supported(row, query)
         ]
         if not source_matches:
             missing_targets.append(label)
@@ -1856,7 +1950,7 @@ def _answer_competition_comparison(
             text = approved_localization(row, "text")
             if text is None:
                 continue
-            section = approved_localization(row, "section_title") or str(row.get("section_title") or "")
+            section = approved_localization(row, "section_title") or f"Rule section {row.get('section_index') or ''}".strip()
             searchable = _tokens(" ".join((section, text, " ".join(str(tag) for tag in row.get("tags") or []))))
             score = len(query_tokens & searchable) / max(1, len(query_tokens))
             scored.append((score, int(row.get("section_index") or 0), row, section, text))
@@ -1921,6 +2015,22 @@ def _answer_competition_comparison(
     )
 
 
+def _competition_english_content_lines(text: str) -> list[str]:
+    from app.pipeline.competition_presentation import source_clause_lines
+    lines = source_clause_lines(text)
+    body = []
+    for line in lines:
+        if re.match(r"(?i)^(?:update:|english below)", line):
+            continue
+        if re.search(r"\b(?:must|shall|may|allowed|prohibited|required|uses?|played|winner|forfeit|include|consists|not|cannot)\b", line, re.I) or (len(line) >= 8 and re.search(r"\d", line)):
+            body.append(line)
+    # A map pool is a literal list of names. Retain its values as a unit;
+    # none of the individual names is an English normative sentence.
+    if not body and len(lines) >= 4 and re.search(r"\bmaps?\b", lines[0], re.I):
+        body = ["; ".join(lines[1:])]
+    return body
+
+
 def _answer_competition(query: str, *, route: PipelineRoute) -> EnglishSupportResult | None:
     if not _is_competition_query(query, route):
         return None
@@ -1952,6 +2062,20 @@ def _answer_competition(query: str, *, route: PipelineRoute) -> EnglishSupportRe
     if resolution.status == "multiple":
         return _answer_competition_comparison(query, target_labels=target_labels)
     query_tokens = _tokens(query)
+    if query_tokens & {"procedure", "procedures"} and competition_facet(query) is None:
+        # A heading with the word "procedure" is not evidence of the requested
+        # steps. Preserve real words such as "march" and ask for the phase;
+        # silently replacing them with "match" would change the user's meaning.
+        return _result(
+            "Which competition procedure do you mean: before a match, during a match, or after a match? Please specify the step or situation you want to check.",
+            category="competition_rules",
+            intent="competition_rule_lookup",
+            mode="pipeline:competition_procedure_clarification_en",
+            confidence=0.98,
+            hits=[],
+            reason="procedure requested without a verified phase or rule facet; headings are insufficient evidence",
+            answer_type="clarification",
+        )
     # The explicit game name proves the rulebook target, but it must not make
     # every section in that rulebook look relevant. Score the requested rule
     # facet separately so "CS2 overtime" cannot select a generic CS2 setting.
@@ -1985,6 +2109,22 @@ def _answer_competition(query: str, *, route: PipelineRoute) -> EnglishSupportRe
             row for row in source_rows
             if _competition_target_matches(target, str(row.get("game") or ""))
         ]
+    from app.pipeline.competition_presentation import build_penalty_table, focused_pause_lines, focused_rule_lines, pause_rows_for_query, requested_pause_kind, render_rule_reply
+    source_table = build_penalty_table(query, 'en', source_rows)
+    if source_table:
+        return _result(source_table.answer, category='competition_rules', intent='competition_rule_lookup',
+                       mode='pipeline:structured_competition_rules_en', confidence=0.94,
+                       hits=[hit_from_curated(row) for row in source_table.rows],
+                       reason='complete source table pairs with hash-verified English text')
+    scoped_pause_rows = pause_rows_for_query(query, source_rows)
+    if requested_pause_kind(query) and scoped_pause_rows and not any(focused_pause_lines(query, str(row.get('text') or '')) for row in scoped_pause_rows):
+        return _result(
+            "Answer: I could not find a clause confirming the requested detail in the recorded section for this pause type. Please check that detail with the organizer.",
+            category='competition_rules', intent='competition_rule_lookup',
+            mode='pipeline:competition_facet_not_covered_no_answer_en', confidence=0.94,
+            hits=[hit_from_curated(row) for row in scoped_pause_rows],
+            reason='requested pause proposition is absent from the matching source subtype', answer_type='no_answer',
+        )
     # English presentation is an overlay, not an independent retrieval path.
     # Apply the same direct-facet guard as Thai before reporting a missing
     # translation. Otherwise an unrelated section from the right game could
@@ -1999,8 +2139,10 @@ def _answer_competition(query: str, *, route: PipelineRoute) -> EnglishSupportRe
         requested_facet = competition_facet(query)
         if requested_facet and not source_row_supports_facet(row, requested_facet):
             continue
+        if not _pause_subtype_supported(row, query):
+            continue
         text = approved_localization(row, "text")
-        section = approved_localization(row, "section_title") or str(row.get("section_title") or "")
+        section = approved_localization(row, "section_title") or f"Rule section {row.get('section_index') or ''}".strip()
         if text is None:
             continue
         searchable = _tokens(" ".join((game, section, text, " ".join(str(tag) for tag in row.get("tags") or []))))
@@ -2185,23 +2327,32 @@ def _answer_competition(query: str, *, route: PipelineRoute) -> EnglishSupportRe
             answer_type="no_answer",
         )
     candidates.sort(key=lambda item: (
+        not bool(focused_rule_lines(query, item[3], requested_facet)) if requested_facet != "rulebook_identity" else False,
         -item[0],
         source_rank.get(str(item[4].get("id") or ""), 10**6),
         int(item[4].get("section_index") or 0),
         int(item[4].get("chunk_index") or 0),
     ))
     draft_preview_used = any(localization_status(row, "text") == "draft_preview" for *_values, row in candidates)
-    heading = (
-        f"English draft translation of {target + ' ' if target else ''}competition rules:"
-        if draft_preview_used
-        else f"Verified {target + ' ' if target else ''}competition rules:"
-    )
-    lines = [heading]
+    rendered_clauses: list[str] = []
     hits: list[dict[str, Any]] = []
     seen: set[str] = set()
     seen_token_sets: list[set[str]] = []
-    for _score, _facet_score, section, text, row in candidates[:3]:
-        rendered = _compact_english_excerpt(text, focus_query=query)
+    seen_origins: set[str] = set()
+    primary_row: dict[str, Any] | None = None
+    for _score, _facet_score, section, text, row in candidates:
+        if len(hits) >= 3:
+            break
+        origin = str(row.get('id') or '').removeprefix('canonical::')
+        if origin in seen_origins:
+            continue
+        pause_focus = focused_pause_lines(query, text)
+        content_lines = focused_rule_lines(query, text, requested_facet)
+        if requested_facet and requested_facet != "rulebook_identity" and not content_lines:
+            continue
+        # Preserve complete clauses and exceptions; never cut a factual unit.
+        clause_limit = 5 if requested_facet == 'penalty' else 3
+        rendered = '\n'.join(content_lines[:clause_limit]) if content_lines else text
         if not rendered or rendered in seen:
             continue
         rendered_tokens = _tokens(rendered)
@@ -2211,18 +2362,28 @@ def _answer_competition(query: str, *, route: PipelineRoute) -> EnglishSupportRe
         ):
             continue
         seen.add(rendered)
+        seen_origins.add(origin)
         seen_token_sets.append(rendered_tokens)
-        prefix = f"{section}: " if section and section.casefold() not in rendered.casefold() else ""
-        lines.append(f"- {prefix}{rendered}")
+        primary_row = primary_row or row
+        rendered_clauses.extend(content_lines[:clause_limit] if content_lines else [text])
         # Keep the canonical source mapping carried by the curated chunk. An
         # English overlay changes display text only; it must retain the same
         # evidence identifier as the Thai answer for validation and audits.
         hits.append(hit_from_curated(row))
-    if len(lines) == 1:
+        if pause_focus:
+            # Other renderings of the same scoped clause add no new answer.
+            break
+        if requested_facet == 'penalty' and len(content_lines) >= 5:
+            # One source section already provides the complete listed types.
+            # Adjacent translations of the same types only repeat that list.
+            break
+    if not rendered_clauses or primary_row is None:
         return None
-    lines.append(_source_suffix(RESERVATION_URL).strip())
+    answer = render_rule_reply(rendered_clauses[0], rendered_clauses[1:], primary_row, 'en')
+    if draft_preview_used:
+        answer += '\nEnglish draft translation.'
     return _result(
-        "\n".join(lines),
+        answer,
         category="competition_rules",
         intent="competition_rule_lookup",
         mode="pipeline:structured_competition_rules_en",
@@ -2265,14 +2426,14 @@ def _answer_missing_localized_domain(query: str, *, route: PipelineRoute) -> Eng
     if route.category in {"knowledge", "events_news"} or knowledge_signal:
         category = route.category if route.category in {"knowledge", "events_news"} else "knowledge"
         return _result(
-            format_no_answer("knowledge-base content", "en", missing_translation=True) + _source_suffix(HOME_URL),
+            format_no_answer("this question", "en"),
             category=category,
             intent="knowledge_localization_unavailable",
-            mode="pipeline:missing_english_localization",
+            mode="pipeline:english_no_answer",
             confidence=0.95,
-            hits=[_hit("english_rag_projection", category, HOME_URL, "Knowledge base")],
-            reason="no approved English RAG evidence matched this knowledge request",
-            warnings=("missing_translation",),
+            hits=[],
+            reason="no matching verified English evidence; an untranslated original has not been established",
+            warnings=("matching_source_evidence_not_established",),
             answer_type="no_answer",
         )
     return None
@@ -2347,11 +2508,11 @@ def _answer_english_clarification(query: str) -> EnglishSupportResult | None:
         prompt = "Please specify the competition and the rule topic you want, such as eligibility, match format, equipment, penalties, or check-in."
     elif re.search(r"\b(?:how much (?:is it|does it cost)|price)\b", q) and not _detect_service(query, EntityBundle()):
         prompt = "Which service, duration, and user group should I price: PC, PlayStation 5, Nintendo Switch, Cockpit, or VR?"
-    elif re.search(r"\bwhere can i play (?:it|this(?: game)?)\b", q) and known_game is None:
+    elif re.search(r"\bwhere (?:can|an) i play (?:it|this(?: game)?)\b", q) and known_game is None:
         prompt = "Which game do you mean? Please provide the game title so I can check its verified studio zone."
     elif re.search(r"\b(?:what do i use to play that|how (?:do|can) (?:i|you) play this|tell me more about that)\b", q):
         prompt = "What game, equipment item, or previous topic do you mean? Please name it so I can use the correct verified record."
-    elif re.search(r"\bcan i book this\b", q):
+    elif re.search(r"\bcan i book (?:this|that|it|his|hers|theirs)\s*[?.]*$", q):
         prompt = "Which service or zone do you want to book, and for what date and time?"
     elif re.search(r"\b(?:special request|what should i play|what would you recommend|recommend me|which device is best|in short,? what should i do)\b", q):
         prompt = "Please tell me the zone, game type, or specific request you are interested in so I can answer from the verified catalog."
@@ -2461,7 +2622,14 @@ def answer_english_supported(
     # membership, keyboard, controller, or console cannot return a catalog.
     safe_rule = _rule_answer(query, matcher, category="no_answer")
     if safe_rule is not None:
+        if safe_rule.route.intent == 'no_answer_overnight_room':
+            from dataclasses import replace
+            safe_rule=replace(safe_rule,answer='I could not find verified overnight accommodation information. '+safe_rule.answer)
         return safe_rule
+    if re.search(r"\b(?:studio|usage|house)\s+rule\b", query, re.I) and not _competition_target(query):
+        general_rules = _rule_answer("What are the studio rules", matcher)
+        if general_rules is not None:
+            return general_rules
     scope_guidance = _answer_english_scope_guidance(query)
     if scope_guidance is not None:
         return scope_guidance

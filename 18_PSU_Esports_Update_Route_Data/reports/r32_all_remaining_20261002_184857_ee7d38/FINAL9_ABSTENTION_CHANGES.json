@@ -1,0 +1,753 @@
+[
+  {
+    "question": "What is the Tekken 8 tournament minimum age?",
+    "locale": "en",
+    "previous": "I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.",
+    "actual": "I could not find a verified minimum-age requirement in this game's recorded rulebook.",
+    "grades": [
+      {
+        "corpus": "competition_composition_r28_280_20261001.json",
+        "row_index": 245,
+        "id": "R28-control-age-en",
+        "variant": "question",
+        "expected": {
+          "id": "R28-control-age-en",
+          "anchor": "age",
+          "locale": "en",
+          "question": "What is the Tekken 8 tournament minimum age?",
+          "mutation": "control",
+          "kind": "control",
+          "game": "",
+          "clauses": [],
+          "sources": [],
+          "source_sha256": {},
+          "status": "no_answer",
+          "forbidden": [
+            "18 years",
+            "อายุ 18"
+          ]
+        },
+        "passed": true,
+        "failures": [],
+        "evidence_level": "complete_clause_composition",
+        "grader_detail": null
+      },
+      {
+        "corpus": "competition_content_contract_r27_320_20261001.json",
+        "row_index": 316,
+        "id": "R27-safe-age-en",
+        "variant": "question",
+        "expected": {
+          "id": "R27-safe-age-en",
+          "anchor": "safe-age-en",
+          "locale": "en",
+          "question": "What is the Tekken 8 tournament minimum age?",
+          "status": "no_answer",
+          "required_clauses": [],
+          "first_clause": false,
+          "mutation": "control"
+        },
+        "passed": true,
+        "failures": [],
+        "evidence_level": "complete_clause_content",
+        "grader_detail": null
+      }
+    ]
+  },
+  {
+    "question": "What are the CS2 tournament eligibility and minimum age requirements?",
+    "locale": "en",
+    "previous": "I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.",
+    "actual": "I could not find a verified minimum-age requirement in this game's recorded rulebook.",
+    "grades": [
+      {
+        "corpus": "competition_composition_r28_280_20261001.json",
+        "row_index": 247,
+        "id": "R28-control-age-multi-en",
+        "variant": "question",
+        "expected": {
+          "id": "R28-control-age-multi-en",
+          "anchor": "age-multi",
+          "locale": "en",
+          "question": "What are the CS2 tournament eligibility and minimum age requirements?",
+          "mutation": "control",
+          "kind": "control",
+          "game": "",
+          "clauses": [],
+          "sources": [],
+          "source_sha256": {},
+          "status": "no_answer",
+          "forbidden": [
+            "minimum age is",
+            "อายุขั้นต่ำคือ"
+          ]
+        },
+        "passed": true,
+        "failures": [],
+        "evidence_level": "complete_clause_composition",
+        "grader_detail": null
+      }
+    ]
+  },
+  {
+    "question": "What is the minimum age requirement to enter this VALORANT tournament?",
+    "locale": "en",
+    "previous": "I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.",
+    "actual": "I could not find a verified minimum-age requirement in this game's recorded rulebook.",
+    "grades": [
+      {
+        "corpus": "competition_rules_rag_ground_truth_v1.jsonl",
+        "row_index": 537,
+        "id": "COMP-RAG-EN-269",
+        "variant": "question",
+        "expected": {
+          "allowed_evidence_fact_ids": [],
+          "allowed_evidence_rule_ids": [],
+          "allowed_source_urls": [],
+          "answer_language_requirement": "safe_no_answer_en",
+          "case_type": "source_gap_safe_no_answer",
+          "evidence_statuses": [
+            "unsupported_in_active_source"
+          ],
+          "expected_answer_status": "no_answer_expected",
+          "expected_facet": "eligibility_registration",
+          "expected_game_id": "valorant",
+          "expected_route_categories": [
+            "competition_rules",
+            "no_answer"
+          ],
+          "expected_rulebook_ids": [
+            "competition_rules_valorant_psu_phuket_2026"
+          ],
+          "id": "COMP-RAG-EN-269",
+          "latency_ceiling_sec": 20.0,
+          "locale": "en",
+          "question": "What is the minimum age requirement to enter this VALORANT tournament?",
+          "question_style": "human_written_source_gap",
+          "rag_required": false,
+          "review_status": "source_gap_negative_gold",
+          "source_gap_manifest_key": "valorant:eligibility_registration",
+          "source_gap_reason": "Active VALORANT rulebook import does not state a minimum participant age or another direct eligibility requirement.",
+          "suite": "competition_rules_rag_ground_truth_v1",
+          "target_locked": true
+        },
+        "passed": true,
+        "failures": [],
+        "evidence_level": "competition_legacy_evidence",
+        "grader_detail": {
+          "id": "COMP-RAG-EN-269",
+          "locale": "en",
+          "case_type": "source_gap_safe_no_answer",
+          "question": "What is the minimum age requirement to enter this VALORANT tournament?",
+          "expected_game_id": "valorant",
+          "expected_rulebook_ids": [
+            "competition_rules_valorant_psu_phuket_2026"
+          ],
+          "expected_facet": "eligibility_registration",
+          "expected_answer_status": "no_answer_expected",
+          "actual_category": "competition_rules",
+          "actual_intent": "competition_rules_lookup",
+          "actual_status": "no_answer",
+          "mode": "pipeline:competition_rule_detail_no_answer",
+          "elapsed_sec": 0.2512,
+          "validation_ok": true,
+          "route_ok": true,
+          "outcome_ok": true,
+          "target_ok": true,
+          "evidence_ok": true,
+          "source_gap_safe": true,
+          "evidence_alignment": "not_specified",
+          "returned_evidence_ids": [],
+          "returned_rulebook_refs": [],
+          "passed": true,
+          "failures": [],
+          "answer": "I could not find a verified minimum-age requirement in this game's recorded rulebook.",
+          "trace": null
+        }
+      },
+      {
+        "corpus": "competition_user_r24_2000_20261001.jsonl",
+        "row_index": 1780,
+        "id": "R24-EN-valorant-061",
+        "variant": "question",
+        "expected": {
+          "allowed_evidence_fact_ids": [],
+          "allowed_evidence_rule_ids": [],
+          "allowed_source_urls": [],
+          "answer_language_requirement": "safe_no_answer_en",
+          "case_type": "source_gap_safe_no_answer",
+          "evidence_statuses": [
+            "unsupported_in_active_source"
+          ],
+          "expected_answer_status": "no_answer_expected",
+          "expected_facet": "eligibility_registration",
+          "expected_game_id": "valorant",
+          "expected_route_categories": [
+            "competition_rules",
+            "no_answer"
+          ],
+          "expected_rulebook_ids": [
+            "competition_rules_valorant_psu_phuket_2026"
+          ],
+          "id": "R24-EN-valorant-061",
+          "latency_ceiling_sec": 20,
+          "locale": "en",
+          "question": "What is the minimum age requirement to enter this VALORANT tournament?",
+          "question_style": "human_written_source_gap",
+          "rag_required": false,
+          "review_status": "assistant_source_reviewed_candidate",
+          "source_gap_manifest_key": "valorant:eligibility_registration",
+          "source_gap_reason": "Active VALORANT rulebook import does not state a minimum participant age or another direct eligibility requirement.",
+          "suite": "competition_rules_rag_ground_truth_v1",
+          "target_locked": true,
+          "parent_gold_id": "COMP-RAG-EN-269",
+          "oracle": "existing_source_evidence",
+          "clean_question": "What is the minimum age requirement to enter this VALORANT tournament?",
+          "mutation": "clean",
+          "generation_index": 0
+        },
+        "passed": true,
+        "failures": [],
+        "evidence_level": "competition_legacy_evidence",
+        "grader_detail": {
+          "id": "R24-EN-valorant-061",
+          "locale": "en",
+          "case_type": "source_gap_safe_no_answer",
+          "question": "What is the minimum age requirement to enter this VALORANT tournament?",
+          "expected_game_id": "valorant",
+          "expected_rulebook_ids": [
+            "competition_rules_valorant_psu_phuket_2026"
+          ],
+          "expected_facet": "eligibility_registration",
+          "expected_answer_status": "no_answer_expected",
+          "actual_category": "competition_rules",
+          "actual_intent": "competition_rules_lookup",
+          "actual_status": "no_answer",
+          "mode": "pipeline:competition_rule_detail_no_answer",
+          "elapsed_sec": 0.2512,
+          "validation_ok": true,
+          "route_ok": true,
+          "outcome_ok": true,
+          "target_ok": true,
+          "evidence_ok": true,
+          "source_gap_safe": true,
+          "evidence_alignment": "not_specified",
+          "returned_evidence_ids": [],
+          "returned_rulebook_refs": [],
+          "passed": true,
+          "failures": [],
+          "answer": "I could not find a verified minimum-age requirement in this game's recorded rulebook.",
+          "trace": null
+        }
+      }
+    ]
+  },
+  {
+    "question": "Please check: What is the minimum age requirement to enter this VALORANT tournament? please.",
+    "locale": "en",
+    "previous": "I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.",
+    "actual": "I could not find a verified minimum-age requirement in this game's recorded rulebook.",
+    "grades": [
+      {
+        "corpus": "competition_user_r24_2000_20261001.jsonl",
+        "row_index": 1846,
+        "id": "R24-EN-valorant-127",
+        "variant": "question",
+        "expected": {
+          "allowed_evidence_fact_ids": [],
+          "allowed_evidence_rule_ids": [],
+          "allowed_source_urls": [],
+          "answer_language_requirement": "safe_no_answer_en",
+          "case_type": "source_gap_safe_no_answer",
+          "evidence_statuses": [
+            "unsupported_in_active_source"
+          ],
+          "expected_answer_status": "no_answer_expected",
+          "expected_facet": "eligibility_registration",
+          "expected_game_id": "valorant",
+          "expected_route_categories": [
+            "competition_rules",
+            "no_answer"
+          ],
+          "expected_rulebook_ids": [
+            "competition_rules_valorant_psu_phuket_2026"
+          ],
+          "id": "R24-EN-valorant-127",
+          "latency_ceiling_sec": 20,
+          "locale": "en",
+          "question": "Please check: What is the minimum age requirement to enter this VALORANT tournament? please.",
+          "question_style": "human_written_source_gap",
+          "rag_required": false,
+          "review_status": "assistant_source_reviewed_candidate",
+          "source_gap_manifest_key": "valorant:eligibility_registration",
+          "source_gap_reason": "Active VALORANT rulebook import does not state a minimum participant age or another direct eligibility requirement.",
+          "suite": "competition_rules_rag_ground_truth_v1",
+          "target_locked": true,
+          "parent_gold_id": "COMP-RAG-EN-269",
+          "oracle": "existing_source_evidence",
+          "clean_question": "What is the minimum age requirement to enter this VALORANT tournament?",
+          "mutation": "natural_wrapper",
+          "generation_index": 1
+        },
+        "passed": true,
+        "failures": [],
+        "evidence_level": "competition_legacy_evidence",
+        "grader_detail": {
+          "id": "R24-EN-valorant-127",
+          "locale": "en",
+          "case_type": "source_gap_safe_no_answer",
+          "question": "Please check: What is the minimum age requirement to enter this VALORANT tournament? please.",
+          "expected_game_id": "valorant",
+          "expected_rulebook_ids": [
+            "competition_rules_valorant_psu_phuket_2026"
+          ],
+          "expected_facet": "eligibility_registration",
+          "expected_answer_status": "no_answer_expected",
+          "actual_category": "competition_rules",
+          "actual_intent": "competition_rules_lookup",
+          "actual_status": "no_answer",
+          "mode": "pipeline:competition_rule_detail_no_answer",
+          "elapsed_sec": 0.3121,
+          "validation_ok": true,
+          "route_ok": true,
+          "outcome_ok": true,
+          "target_ok": true,
+          "evidence_ok": true,
+          "source_gap_safe": true,
+          "evidence_alignment": "not_specified",
+          "returned_evidence_ids": [],
+          "returned_rulebook_refs": [],
+          "passed": true,
+          "failures": [],
+          "answer": "I could not find a verified minimum-age requirement in this game's recorded rulebook.",
+          "trace": null
+        }
+      }
+    ]
+  },
+  {
+    "question": "Could you explain: What is the minimum age requirement to enter this VALORANT tournament? please.",
+    "locale": "en",
+    "previous": "I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.",
+    "actual": "I could not find a verified minimum-age requirement in this game's recorded rulebook.",
+    "grades": [
+      {
+        "corpus": "competition_user_r24_2000_20261001.jsonl",
+        "row_index": 1912,
+        "id": "R24-EN-valorant-193",
+        "variant": "question",
+        "expected": {
+          "allowed_evidence_fact_ids": [],
+          "allowed_evidence_rule_ids": [],
+          "allowed_source_urls": [],
+          "answer_language_requirement": "safe_no_answer_en",
+          "case_type": "source_gap_safe_no_answer",
+          "evidence_statuses": [
+            "unsupported_in_active_source"
+          ],
+          "expected_answer_status": "no_answer_expected",
+          "expected_facet": "eligibility_registration",
+          "expected_game_id": "valorant",
+          "expected_route_categories": [
+            "competition_rules",
+            "no_answer"
+          ],
+          "expected_rulebook_ids": [
+            "competition_rules_valorant_psu_phuket_2026"
+          ],
+          "id": "R24-EN-valorant-193",
+          "latency_ceiling_sec": 20,
+          "locale": "en",
+          "question": "Could you explain: What is the minimum age requirement to enter this VALORANT tournament? please.",
+          "question_style": "human_written_source_gap",
+          "rag_required": false,
+          "review_status": "assistant_source_reviewed_candidate",
+          "source_gap_manifest_key": "valorant:eligibility_registration",
+          "source_gap_reason": "Active VALORANT rulebook import does not state a minimum participant age or another direct eligibility requirement.",
+          "suite": "competition_rules_rag_ground_truth_v1",
+          "target_locked": true,
+          "parent_gold_id": "COMP-RAG-EN-269",
+          "oracle": "existing_source_evidence",
+          "clean_question": "What is the minimum age requirement to enter this VALORANT tournament?",
+          "mutation": "natural_wrapper",
+          "generation_index": 2
+        },
+        "passed": true,
+        "failures": [],
+        "evidence_level": "competition_legacy_evidence",
+        "grader_detail": {
+          "id": "R24-EN-valorant-193",
+          "locale": "en",
+          "case_type": "source_gap_safe_no_answer",
+          "question": "Could you explain: What is the minimum age requirement to enter this VALORANT tournament? please.",
+          "expected_game_id": "valorant",
+          "expected_rulebook_ids": [
+            "competition_rules_valorant_psu_phuket_2026"
+          ],
+          "expected_facet": "eligibility_registration",
+          "expected_answer_status": "no_answer_expected",
+          "actual_category": "competition_rules",
+          "actual_intent": "competition_rules_lookup",
+          "actual_status": "no_answer",
+          "mode": "pipeline:competition_rule_detail_no_answer",
+          "elapsed_sec": 0.3359,
+          "validation_ok": true,
+          "route_ok": true,
+          "outcome_ok": true,
+          "target_ok": true,
+          "evidence_ok": true,
+          "source_gap_safe": true,
+          "evidence_alignment": "not_specified",
+          "returned_evidence_ids": [],
+          "returned_rulebook_refs": [],
+          "passed": true,
+          "failures": [],
+          "answer": "I could not find a verified minimum-age requirement in this game's recorded rulebook.",
+          "trace": null
+        }
+      }
+    ]
+  },
+  {
+    "question": "What is the minimum age requirement to enter this VALORANT tournament",
+    "locale": "en",
+    "previous": "I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.",
+    "actual": "I could not find a verified minimum-age requirement in this game's recorded rulebook.",
+    "grades": [
+      {
+        "corpus": "master_ground_truth_bilingual_10000_v1.jsonl",
+        "row_index": 9268,
+        "id": "MASTER-GT-EN-04269",
+        "variant": "question",
+        "expected": {
+          "answer_contract": {
+            "must_contain": [],
+            "must_contain_any": [],
+            "must_not_contain": []
+          },
+          "critical": true,
+          "domain": "competition_rules",
+          "expected_answer_status": "no_answer_expected",
+          "expected_facet": "eligibility_registration",
+          "expected_intent": "",
+          "expected_route_categories": [
+            "competition_rules",
+            "no_answer"
+          ],
+          "expected_target": "valorant",
+          "generation_version": "master-gt-builder-v1-20260922",
+          "id": "MASTER-GT-EN-04269",
+          "latency_ceiling_sec": 20.0,
+          "locale": "en",
+          "metadata": {
+            "case_type": "source_gap_safe_no_answer",
+            "rag_required": false,
+            "source_gap_manifest_key": "valorant:eligibility_registration"
+          },
+          "origin": "competition_rules_rag_ground_truth_v1",
+          "origin_id": "COMP-RAG-EN-269",
+          "question": "What is the minimum age requirement to enter this VALORANT tournament",
+          "question_style": "source_form",
+          "review_status": "source_grounded_gold_candidate",
+          "source_contract": {
+            "live_dependency": false,
+            "requirement": "target_and_facet_grounded_rulebook",
+            "source_ids": [
+              "competition_rules_valorant_psu_phuket_2026"
+            ],
+            "source_urls": []
+          },
+          "suite": "psu_esports_master_ground_truth_candidate_v1"
+        },
+        "passed": true,
+        "failures": [],
+        "evidence_level": "route_outcome_only",
+        "grader_detail": {
+          "strong_outcome_matches": true,
+          "positive_content_asserted": false
+        }
+      },
+      {
+        "corpus": "master_ground_truth_bilingual_10000_v2.jsonl",
+        "row_index": 9268,
+        "id": "MASTER-GT-EN-04269",
+        "variant": "question",
+        "expected": {
+          "answer_contract": {
+            "must_contain": [],
+            "must_contain_any": [],
+            "must_not_contain": []
+          },
+          "critical": true,
+          "domain": "competition_rules",
+          "expected_answer_status": "no_answer_expected",
+          "expected_facet": "eligibility_registration",
+          "expected_intent": "",
+          "expected_route_categories": [
+            "competition_rules",
+            "no_answer"
+          ],
+          "expected_target": "valorant",
+          "generation_version": "master-gt-builder-v2-20260923",
+          "id": "MASTER-GT-EN-04269",
+          "latency_ceiling_sec": 20.0,
+          "locale": "en",
+          "metadata": {
+            "case_type": "source_gap_safe_no_answer",
+            "rag_required": false,
+            "source_gap_manifest_key": "valorant:eligibility_registration"
+          },
+          "origin": "competition_rules_rag_ground_truth_v1",
+          "origin_id": "COMP-RAG-EN-269",
+          "question": "What is the minimum age requirement to enter this VALORANT tournament",
+          "question_style": "source_form",
+          "review_status": "source_grounded_gold_candidate",
+          "source_contract": {
+            "live_dependency": false,
+            "requirement": "target_and_facet_grounded_rulebook",
+            "source_ids": [
+              "competition_rules_valorant_psu_phuket_2026"
+            ],
+            "source_urls": []
+          },
+          "suite": "psu_esports_master_ground_truth_candidate_v2"
+        },
+        "passed": true,
+        "failures": [],
+        "evidence_level": "route_outcome_only",
+        "grader_detail": {
+          "strong_outcome_matches": true,
+          "positive_content_asserted": false
+        }
+      },
+      {
+        "corpus": "master_ground_truth_en_5000_v1.jsonl",
+        "row_index": 4268,
+        "id": "MASTER-GT-EN-04269",
+        "variant": "question",
+        "expected": {
+          "answer_contract": {
+            "must_contain": [],
+            "must_contain_any": [],
+            "must_not_contain": []
+          },
+          "critical": true,
+          "domain": "competition_rules",
+          "expected_answer_status": "no_answer_expected",
+          "expected_facet": "eligibility_registration",
+          "expected_intent": "",
+          "expected_route_categories": [
+            "competition_rules",
+            "no_answer"
+          ],
+          "expected_target": "valorant",
+          "generation_version": "master-gt-builder-v1-20260922",
+          "id": "MASTER-GT-EN-04269",
+          "latency_ceiling_sec": 20.0,
+          "locale": "en",
+          "metadata": {
+            "case_type": "source_gap_safe_no_answer",
+            "rag_required": false,
+            "source_gap_manifest_key": "valorant:eligibility_registration"
+          },
+          "origin": "competition_rules_rag_ground_truth_v1",
+          "origin_id": "COMP-RAG-EN-269",
+          "question": "What is the minimum age requirement to enter this VALORANT tournament",
+          "question_style": "source_form",
+          "review_status": "source_grounded_gold_candidate",
+          "source_contract": {
+            "live_dependency": false,
+            "requirement": "target_and_facet_grounded_rulebook",
+            "source_ids": [
+              "competition_rules_valorant_psu_phuket_2026"
+            ],
+            "source_urls": []
+          },
+          "suite": "psu_esports_master_ground_truth_candidate_v1"
+        },
+        "passed": true,
+        "failures": [],
+        "evidence_level": "route_outcome_only",
+        "grader_detail": {
+          "strong_outcome_matches": true,
+          "positive_content_asserted": false
+        }
+      },
+      {
+        "corpus": "master_ground_truth_en_5000_v2.jsonl",
+        "row_index": 4268,
+        "id": "MASTER-GT-EN-04269",
+        "variant": "question",
+        "expected": {
+          "answer_contract": {
+            "must_contain": [],
+            "must_contain_any": [],
+            "must_not_contain": []
+          },
+          "critical": true,
+          "domain": "competition_rules",
+          "expected_answer_status": "no_answer_expected",
+          "expected_facet": "eligibility_registration",
+          "expected_intent": "",
+          "expected_route_categories": [
+            "competition_rules",
+            "no_answer"
+          ],
+          "expected_target": "valorant",
+          "generation_version": "master-gt-builder-v2-20260923",
+          "id": "MASTER-GT-EN-04269",
+          "latency_ceiling_sec": 20.0,
+          "locale": "en",
+          "metadata": {
+            "case_type": "source_gap_safe_no_answer",
+            "rag_required": false,
+            "source_gap_manifest_key": "valorant:eligibility_registration"
+          },
+          "origin": "competition_rules_rag_ground_truth_v1",
+          "origin_id": "COMP-RAG-EN-269",
+          "question": "What is the minimum age requirement to enter this VALORANT tournament",
+          "question_style": "source_form",
+          "review_status": "source_grounded_gold_candidate",
+          "source_contract": {
+            "live_dependency": false,
+            "requirement": "target_and_facet_grounded_rulebook",
+            "source_ids": [
+              "competition_rules_valorant_psu_phuket_2026"
+            ],
+            "source_urls": []
+          },
+          "suite": "psu_esports_master_ground_truth_candidate_v2"
+        },
+        "passed": true,
+        "failures": [],
+        "evidence_level": "route_outcome_only",
+        "grader_detail": {
+          "strong_outcome_matches": true,
+          "positive_content_asserted": false
+        }
+      },
+      {
+        "corpus": "master_gt_bilingual_multi_error_2000_20260929_r15.jsonl",
+        "row_index": 1969,
+        "id": "MASTER-GT-EN-04269",
+        "variant": "clean",
+        "expected": {
+          "answer_contract": {
+            "must_contain": [],
+            "must_contain_any": [],
+            "must_not_contain": []
+          },
+          "clean_question": "What is the minimum age requirement to enter this VALORANT tournament",
+          "domain": "competition_rules",
+          "edit_actions": [
+            "neighbor",
+            "delete"
+          ],
+          "edit_recipe": "mixed",
+          "expected_answer_status": "no_answer_expected",
+          "expected_route_categories": [
+            "competition_rules",
+            "no_answer"
+          ],
+          "expected_target": "valorant",
+          "id": "MASTER-GT-EN-04269",
+          "latency_ceiling_sec": 20.0,
+          "locale": "en",
+          "metadata": {
+            "case_type": "source_gap_safe_no_answer",
+            "rag_required": false,
+            "source_gap_manifest_key": "valorant:eligibility_registration"
+          },
+          "noisy_question": "What is the minimum sge requrement to enter this VALORANT tournament",
+          "protected_literals": [
+            "VALORANT"
+          ],
+          "review_status": "source_grounded_gold_candidate",
+          "source_contract": {
+            "live_dependency": false,
+            "requirement": "target_and_facet_grounded_rulebook",
+            "source_ids": [
+              "competition_rules_valorant_psu_phuket_2026"
+            ],
+            "source_urls": []
+          },
+          "source_fixture": "master_ground_truth_bilingual_10000_v2.jsonl",
+          "synthetic_seed": 20260929,
+          "question": "What is the minimum age requirement to enter this VALORANT tournament"
+        },
+        "passed": true,
+        "failures": [],
+        "evidence_level": "route_outcome_only",
+        "grader_detail": {
+          "strong_outcome_matches": true,
+          "positive_content_asserted": false
+        }
+      }
+    ]
+  },
+  {
+    "question": "What is the minimum sge requrement to enter this VALORANT tournament",
+    "locale": "en",
+    "previous": "I could not find a verified rule section for that specific topic in this game's rulebook, so I will not substitute a different rule.",
+    "actual": "I could not find a verified minimum-age requirement in this game's recorded rulebook.",
+    "grades": [
+      {
+        "corpus": "master_gt_bilingual_multi_error_2000_20260929_r15.jsonl",
+        "row_index": 1969,
+        "id": "MASTER-GT-EN-04269",
+        "variant": "noisy",
+        "expected": {
+          "answer_contract": {
+            "must_contain": [],
+            "must_contain_any": [],
+            "must_not_contain": []
+          },
+          "clean_question": "What is the minimum age requirement to enter this VALORANT tournament",
+          "domain": "competition_rules",
+          "edit_actions": [
+            "neighbor",
+            "delete"
+          ],
+          "edit_recipe": "mixed",
+          "expected_answer_status": "no_answer_expected",
+          "expected_route_categories": [
+            "competition_rules",
+            "no_answer"
+          ],
+          "expected_target": "valorant",
+          "id": "MASTER-GT-EN-04269",
+          "latency_ceiling_sec": 20.0,
+          "locale": "en",
+          "metadata": {
+            "case_type": "source_gap_safe_no_answer",
+            "rag_required": false,
+            "source_gap_manifest_key": "valorant:eligibility_registration"
+          },
+          "noisy_question": "What is the minimum sge requrement to enter this VALORANT tournament",
+          "protected_literals": [
+            "VALORANT"
+          ],
+          "review_status": "source_grounded_gold_candidate",
+          "source_contract": {
+            "live_dependency": false,
+            "requirement": "target_and_facet_grounded_rulebook",
+            "source_ids": [
+              "competition_rules_valorant_psu_phuket_2026"
+            ],
+            "source_urls": []
+          },
+          "source_fixture": "master_ground_truth_bilingual_10000_v2.jsonl",
+          "synthetic_seed": 20260929,
+          "question": "What is the minimum sge requrement to enter this VALORANT tournament"
+        },
+        "passed": true,
+        "failures": [],
+        "evidence_level": "route_outcome_only",
+        "grader_detail": {
+          "strong_outcome_matches": true,
+          "positive_content_asserted": false
+        }
+      }
+    ]
+  }
+]

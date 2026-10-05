@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_reservation_quick_summary",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "จองล่วงหน้า.*เช็คอิน.*ยกเลิก",
+      "จองล่วงหน้า.*เชคอิน.*ยกเลิก",
+      "บอกทั้งจองล่วงหน้า.*เช็คอิน.*ยกเลิก",
+      "บอกทั้งจองล่วงหน้า.*เชคอิน.*ยกเลิก"
+    ],
+    "en": []
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "reservation_quick_summary",
+    "patterns": [
+      "จองล่วงหน้า.*เช็คอิน.*ยกเลิก",
+      "จองล่วงหน้า.*เชคอิน.*ยกเลิก",
+      "บอกทั้งจองล่วงหน้า.*เช็คอิน.*ยกเลิก",
+      "บอกทั้งจองล่วงหน้า.*เชคอิน.*ยกเลิก"
+    ],
+    "priority": 131
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "สรุปสั้นๆ: ต้องจองล่วงหน้าอย่างน้อย 1 ชั่วโมง, เช็คอินได้ล่วงหน้าสูงสุด 30 นาทีและต้องเช็คอินก่อนเริ่มรอบ, หากต้องยกเลิกหรือแก้ไขการจองควรดำเนินการล่วงหน้าอย่างน้อย 1 ชั่วโมง"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Quick summary: book at least 1 hour in advance, check in up to 30 minutes before the slot and before it starts, and cancel or change a booking at least 1 hour in advance."
+      },
+      "source_sha256": "ad83935cae620743807934fb936b3dcc72c8a4e5214f2415bec4604c74924b46",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/reservation_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_reservation_advance_time",
+      "curated_checkin_30_minutes",
+      "curated_cancel_1_hour"
+    ],
+    "last_verified_at": ""
+  }
+}

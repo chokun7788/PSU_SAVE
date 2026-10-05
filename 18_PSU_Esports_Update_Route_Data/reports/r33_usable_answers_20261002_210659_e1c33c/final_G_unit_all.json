@@ -1,0 +1,13 @@
+{
+  "tests": 472,
+  "elapsed_sec": 226.21327960002236,
+  "failures": [],
+  "errors": [
+    [
+      "test_thai_compound_contact_retains_both_source_records (tests.test_usable_task_frames_r33_20261002.UsableTaskFrameTests.test_thai_compound_contact_retains_both_source_records)",
+      "Traceback (most recent call last):\n  File \"C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\tests\\test_usable_task_frames_r33_20261002.py\", line 10, in test_thai_compound_contact_retains_both_source_records\n    category, result=answer_closed_query_improvement('ขออีเมลและเบอร์โทรติดต่อศูนย์หน่อย','th')\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\pipeline\\closed_query_improvements.py\", line 169, in answer_closed_query_improvement\n    result=resolver(query,locale)\n           ^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\pipeline\\closed_query_improvements.py\", line 140, in _contact_fields\n    rows={row['id']:row for row in load_curated_rows()}\n          ~~~^^^^^^\nKeyError: 'id'\n"
+    ]
+  ],
+  "skipped": [],
+  "success": false
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_no_answer_full_day_booking",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "เหมาทั้งวัน",
+      "จอง.*ทั้งวัน"
+    ],
+    "en": [
+      "whole day booking",
+      "full day"
+    ]
+  },
+  "facts": {
+    "route_category": "no_answer",
+    "intent": "no_answer_full_day_booking",
+    "patterns": [
+      "เหมาทั้งวัน",
+      "จอง.*ทั้งวัน",
+      "whole day booking",
+      "full day"
+    ],
+    "priority": 130
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ยังไม่พบข้อมูลเรื่องการจองแบบเหมาทั้งวันในฐานข้อมูลที่มี ข้อมูลการจองที่มีระบุว่าการจอง 1 ครั้งสามารถจองได้สูงสุด 3 Sessions และต้องจองล่วงหน้าอย่างน้อย 1 ชั่วโมง จึงควรใช้เงื่อนไขนี้ก่อนหากไม่มีประกาศอื่นเพิ่มเติม"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "No information about full-day private booking was found in the available knowledge base. The available booking rule says one booking can include a maximum of 3 sessions and must be made at least 1 hour in advance."
+      },
+      "source_sha256": "7b9f371eac7d83c5b2940f2415c701dd163a108e49d07473937f19a62eb4b5e3",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/no_answer_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_reservation_max_sessions",
+      "curated_reservation_advance_time"
+    ],
+    "last_verified_at": ""
+  }
+}

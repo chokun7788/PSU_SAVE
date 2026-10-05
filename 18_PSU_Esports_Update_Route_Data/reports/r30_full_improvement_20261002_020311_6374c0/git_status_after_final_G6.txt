@@ -1,0 +1,157 @@
+ M app/booking/live_status.py
+ M app/core/keyboard_input_anomaly.py
+ M app/core/locale.py
+ M app/core/normalization.py
+ M app/core/runtime_input_quality_guard.py
+ M app/pipeline/answer_contracts.py
+ M app/pipeline/bilingual_english.py
+ M app/pipeline/chatbot_identity.py
+ M app/pipeline/competition_targets.py
+ M app/pipeline/competition_taxonomy.py
+ M app/pipeline/engine.py
+ M app/pipeline/preprocess.py
+ M app/pipeline/protected_intents.py
+ M app/pipeline/question_frame.py
+ M app/pipeline/retrieval.py
+ M app/pipeline/router.py
+ M app/pipeline/structured_tools.py
+ M app/pipeline/validator.py
+ M app/pipeline/vector_retrieval.py
+ M app/runtime/fast_answer.py
+ M app/web_api/pipeline_supervisor.py
+ M app/web_api/server.py
+ M deployment_templates/LOCAL_OPERATION_AND_DATA_POLICY_TH.md
+ M deployment_templates/OWNER_HANDOFF_AND_SCOPE_TH.md
+ M deployment_templates/README_TH.md
+ M deployment_templates/Start-PSU-Esports-Chatbot.ps1
+ M tests/test_competition_target_grounding.py
+ M tests/test_master_ground_truth_route_regressions.py
+ M tools/build_owner_local_package.ps1
+ M tools/manage_english_localizations.py
+ M web_chat/app.js
+ M web_chat/styles.css
+?? app/booking/wordpress_status.py
+?? app/core/duration_alternatives.py
+?? app/core/intent_cue_recovery.py
+?? app/pipeline/closed_query_improvements.py
+?? app/pipeline/competition_detail.py
+?? app/pipeline/competition_fast_route.py
+?? app/pipeline/competition_overview.py
+?? app/pipeline/competition_presentation.py
+?? app/pipeline/competition_source_gaps.py
+?? app/pipeline/control_button_target.py
+?? app/pipeline/service_fee_alternatives.py
+?? data/eval/competition_composition_r28_280_20261001.json
+?? data/eval/competition_content_contract_r27_320_20261001.json
+?? data/eval/competition_new_questions_r27_128_20261001.json
+?? data/eval/competition_user_r24_2000_20261001.jsonl
+?? data/eval/competition_user_r24_2000_20261001.manifest.json
+?? data/eval/typo_r16_contract_overlay_20260930.jsonl
+?? data/locales/en/CURRENT
+?? data/locales/en/releases/
+?? docs/110_typo_failure_forensic_and_scoring_20260930.md
+?? docs/111_full_typo_and_answer_reliability_remediation_plan_20260930.md
+?? docs/112_typo_answer_reliability_plan_review_v2_20260930.md
+?? docs/113_intent_cue_recovery_implementation_and_eval_20260930.md
+?? docs/114_r18_remaining_failures_root_cause_20260930.md
+?? docs/115_r18_failure_layers_and_content_contract_explained_20260930.md
+?? docs/116_target_integrity_step1_implementation_20260930.md
+?? docs/117_reliability_flow_ten_reviews_20261001.md
+?? docs/118_reliability_flow_implementation_and_final_eval_20261001.md
+?? docs/119_r20_remaining_errors_deep_analysis_20261001.md
+?? docs/120_integrated_reliability_and_english_flow_20261001.md
+?? docs/121_r21_integrated_results_and_failure_priorities_20261001.md
+?? docs/122_on_demand_booking_flow_and_results_20261001.md
+?? docs/123_available_equipment_only_flow_and_results_20261001.md
+?? docs/124_competition_user_ground_truth_r24_flow_and_results_20261001.md
+?? docs/125_competition_format_r25_flow_20261001.md
+?? docs/126_competition_content_speed_r26_flow_20261001.md
+?? docs/127_competition_contract_r27_flow_20261001.md
+?? docs/128_competition_composition_r28_flow_20261001.md
+?? docs/129_input_guard_context_r29_flow_20261002.md
+?? docs/130_full_improvement_r30_flow_20261002.md
+?? owner_local_delivery_20260930_intent_cue_r18/
+?? owner_local_delivery_20260930_target_integrity_r19/
+?? owner_local_delivery_20261001_available_equipment_r23/
+?? owner_local_delivery_20261001_competition_composition_r28_ready/
+?? owner_local_delivery_20261001_competition_content_speed_r26/
+?? owner_local_delivery_20261001_competition_content_speed_r26_final/
+?? owner_local_delivery_20261001_competition_content_speed_r26_final_ui/
+?? owner_local_delivery_20261001_competition_content_speed_r26_ready/
+?? owner_local_delivery_20261001_competition_contract_r27_final/
+?? owner_local_delivery_20261001_competition_contract_r27_ready/
+?? owner_local_delivery_20261001_competition_contract_r27_verified/
+?? owner_local_delivery_20261001_competition_format_r25/
+?? owner_local_delivery_20261001_competition_format_r25_final/
+?? owner_local_delivery_20261001_competition_r24/
+?? owner_local_delivery_20261001_competition_r24_final/
+?? owner_local_delivery_20261001_competition_r24_verified/
+?? owner_local_delivery_20261001_integrated_r21/
+?? owner_local_delivery_20261001_on_demand_booking_r22/
+?? owner_local_delivery_20261001_reliability_flow_r20/
+?? owner_local_delivery_20261002_competition_composition_r28_guard_verified/
+?? owner_local_delivery_20261002_competition_composition_r28_verified/
+?? owner_local_delivery_20261002_full_improvement_r30_F/
+?? owner_local_delivery_20261002_full_improvement_r30_G2/
+?? owner_local_delivery_20261002_full_improvement_r30_G3/
+?? owner_local_delivery_20261002_full_improvement_r30_G4/
+?? owner_local_delivery_20261002_full_improvement_r30_G5/
+?? owner_local_delivery_20261002_full_improvement_r30_G6/
+?? owner_local_delivery_20261002_input_context_r29_verified/
+?? reports/r20_deep_failure_analysis_20261001/
+?? reports/r21_integrated_improvement_20261001/
+?? reports/r22_on_demand_booking_20261001_e667148c/
+?? reports/r23_available_equipment_only_20261001_da12ba27/
+?? reports/r24_competition_20261001_164524_5ce728/
+?? reports/r25_competition_format_20261001_182903_580ca7/
+?? reports/r26_competition_content_speed_20261001_195338_2e1f80/
+?? reports/r27_competition_contract_20261001_211252_b0bf95/
+?? reports/r28_competition_composition_20261001_231456_23d4ce/
+?? reports/r29_input_guard_context_20261002_005246_30dbb7/
+?? reports/r30_full_improvement_20261002_020311_6374c0/
+?? reports/reliability_flow_20261001/
+?? reports/target_integrity_step1_20260930/
+?? reports/typo_r16_20260930/
+?? tests/test_available_equipment_only_20261001.py
+?? tests/test_booking_on_demand_20261001.py
+?? tests/test_competition_composition_r28_20261001.py
+?? tests/test_competition_content_speed_r26_20261001.py
+?? tests/test_competition_contract_r27_20261001.py
+?? tests/test_competition_format_r25_20261001.py
+?? tests/test_competition_user_questions_r24_20261001.py
+?? tests/test_eval_contract_v2_20260930.py
+?? tests/test_input_downstream_r29_20261002.py
+?? tests/test_input_guard_context_r29_20261002.py
+?? tests/test_integrated_improvement_r21_20261001.py
+?? tests/test_intent_cue_recovery_20260930.py
+?? tests/test_live_booking_typo_fixture_20260930.py
+?? tests/test_r30_closed_query_boundaries.py
+?? tests/test_r30_competition_and_ingress.py
+?? tests/test_r30_final_improvements.py
+?? tests/test_r30_mixed_game_title_locale.py
+?? tests/test_r30_remaining_source_contracts.py
+?? tests/test_r30_source_gate.py
+?? tests/test_reliability_flow_20261001.py
+?? tests/test_target_integrity_step1_20260930.py
+?? tests/test_worker_recycle_r27_20261001.py
+?? tools/analyze_integrated_r21_20261001.py
+?? tools/analyze_r20_remaining_failures_20261001.py
+?? tools/analyze_reliability_flow_20261001.py
+?? tools/analyze_typo_r16_delta.py
+?? tools/competition_content_grader_r27.py
+?? tools/competition_user_ground_truth_r24.py
+?? tools/eval_contract_v2.py
+?? tools/eval_reliability_focused_20261001.py
+?? tools/eval_reliability_holdout_20261001.py
+?? tools/eval_target_integrity_step1_20260930.py
+?? tools/finalize_english_r21_20261001.py
+?? tools/prepare_typo_r16_audit.py
+?? tools/replay_integrated_r21_20261001.py
+?? tools/review_english_r21_20261001.py
+?? tools/run_competition_composition_r28.py
+?? tools/run_competition_contract_r27.py
+?? tools/run_typo_regression_subset.py
+?? tools/spotcheck_integrated_package_r21_20261001.py
+?? tools/spotcheck_r18_api.py
+?? tools/spotcheck_reliability_r20_20261001.py
+?? tools/spotcheck_target_integrity_step1_20260930.py

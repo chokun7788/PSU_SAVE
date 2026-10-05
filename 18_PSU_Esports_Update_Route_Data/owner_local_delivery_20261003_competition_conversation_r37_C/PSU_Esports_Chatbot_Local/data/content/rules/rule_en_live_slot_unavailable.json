@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_en_live_slot_unavailable",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [],
+    "en": [
+      "(?:available|free|open|live)\\s+(?:booking\\s+)?(?:slots?|machines?|pcs?|consoles?)",
+      "(?:available|free|open)\\s+(?:slots?|machines?|pcs?|consoles?).*(?:today|tomorrow|now|at)",
+      "check\\s+(?:a|the|my)?\\s*(?:live\\s+)?slots?",
+      "which\\s+(?:slots?|machines?|pcs?|consoles?).*(?:available|free)"
+    ]
+  },
+  "facts": {
+    "route_category": "no_answer",
+    "intent": "live_slot_unavailable",
+    "patterns": [
+      "(?:available|free|open|live)\\s+(?:booking\\s+)?(?:slots?|machines?|pcs?|consoles?)",
+      "(?:available|free|open)\\s+(?:slots?|machines?|pcs?|consoles?).*(?:today|tomorrow|now|at)",
+      "check\\s+(?:a|the|my)?\\s*(?:live\\s+)?slots?",
+      "which\\s+(?:slots?|machines?|pcs?|consoles?).*(?:available|free)"
+    ],
+    "priority": 132
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ขณะนี้ระบบยังไม่มี API สถานะการจองแบบสด จึงไม่สามารถยืนยัน Slot ว่างได้จากแชท กรุณาตรวจจากหน้าจองโดยตรง"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Live booking-slot data is not connected to the chatbot yet, so I cannot verify current availability. Please check the reservation page directly."
+      },
+      "source_sha256": "592625c64c5500886346ccb52fa218e9205f7fa45cbb30a26e09becba8228444",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/english_support_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation"
+    ],
+    "last_verified_at": ""
+  }
+}

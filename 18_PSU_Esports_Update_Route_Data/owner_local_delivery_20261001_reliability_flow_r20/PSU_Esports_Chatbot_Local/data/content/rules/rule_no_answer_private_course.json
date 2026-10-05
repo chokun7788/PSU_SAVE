@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_no_answer_private_course",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "คอร์สสอน",
+      "สอนเล่น",
+      "สอน.*valorant",
+      "สอน.*rov",
+      "สอน.*arena of valor",
+      "สอน.*อาโอวี",
+      "โค้ช.*valorant",
+      "โค้ช.*rov"
+    ],
+    "en": [
+      "private.*course",
+      "coaching"
+    ]
+  },
+  "facts": {
+    "route_category": "no_answer",
+    "intent": "no_answer_private_course",
+    "patterns": [
+      "คอร์สสอน",
+      "สอนเล่น",
+      "สอน.*valorant",
+      "สอน.*rov",
+      "สอน.*arena of valor",
+      "สอน.*อาโอวี",
+      "โค้ช.*valorant",
+      "โค้ช.*rov",
+      "private.*course",
+      "coaching"
+    ],
+    "priority": 130
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ยังไม่พบข้อมูลยืนยันว่าศูนย์มีคอร์สสอนเล่นเกมหรือบริการโค้ชส่วนตัวครับ ข้อมูลที่มีตอนนี้ยืนยันได้เฉพาะรายการเกม/อุปกรณ์ และข้อมูลกิจกรรมหรือกติกาการแข่งขันบางรายการ ถ้าต้องการเรียนหรือให้เจ้าหน้าที่สอนเล่นเกมเฉพาะ เช่น RoV หรือ VALORANT ควรสอบถามเจ้าหน้าที่หรือเพจของศูนย์ก่อนจองอีกครั้ง"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "No verified information about private game coaching courses was found. The available data confirms games/equipment and some activity or competition rule information only. For coaching on a specific game such as RoV or VALORANT, please confirm with staff or the center's page before booking."
+      },
+      "source_sha256": "4c1e8e0552768ad91663734417dfc8b265eb95a702fd9e973f9fa1575f5776b7",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/no_answer_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "Events_and_News"
+    ],
+    "last_verified_at": ""
+  }
+}

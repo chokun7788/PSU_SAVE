@@ -1,0 +1,1368 @@
+[
+  {
+    "timestamp": "2026-10-03T08:43:00.007302+00:00",
+    "schema_version": 1,
+    "event_type": "chat_exchange",
+    "exchange_id": "a2ba5e39b11645db9f892a573166c262",
+    "channel": "web",
+    "request_id": "ac265dae574e4646a5a9188241a62265",
+    "client_session_id": "d0cc0688-e56c-46d7-957b-e8a2b51ba7d1",
+    "question": "มีรายการแข่งอะไรบ้าง",
+    "resolved_question": "มีรายการแข่งอะไรบ้าง",
+    "context_resolution": {
+      "original_question": "มีรายการแข่งอะไรบ้าง",
+      "resolved_question": "มีรายการแข่งอะไรบ้าง",
+      "used_context": false,
+      "context_game": null,
+      "context_domain": null,
+      "context_operation": null,
+      "context_topic": null,
+      "reason": "not_followup"
+    },
+    "query_debug": {
+      "original_question": "มีรายการแข่งอะไรบ้าง",
+      "resolved_question": "มีรายการแข่งอะไรบ้าง",
+      "normalized_query": "มีรายการรายการแข่งอะไรบ้าง",
+      "query_variants": [
+        "มีรายการแข่งอะไรบ้าง",
+        "มีรายการรายการแข่งอะไรบ้าง"
+      ],
+      "active_query": "มีรายการแข่งอะไรบ้าง",
+      "active_query_changed": false,
+      "trace": [
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "มีรายการรายการแข่งอะไรบ้าง",
+          "metadata": {
+            "language_hint": "th",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "มีรายการแข่งอะไรบ้าง",
+              "มีรายการรายการแข่งอะไรบ้าง"
+            ],
+            "competition_name_recovery": [],
+            "elapsed_ms": 35.0,
+            "elapsed_sec": 0.035
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "kept_original_query",
+          "confidence": 0.95,
+          "detail": "มีรายการแข่งอะไรบ้าง",
+          "metadata": {
+            "candidates": [
+              {
+                "query": "มีรายการรายการแข่งอะไรบ้าง",
+                "category": "games",
+                "intent": "competition_game_list",
+                "confidence": 0.95
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "recent_history_count": 0,
+    "experimental": {
+      "rag_fallback": true,
+      "allow_llm": true
+    },
+    "answer": "ต้องการดูกติกาของเกมใดครับ เช่น Counter-Strike 2, RoV, Tekken 8 หรือ VALORANT",
+    "mode": "pipeline:competition_target_clarification",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "universal_intent": {
+      "domain": "games",
+      "operation": "list",
+      "target": "",
+      "filters": {},
+      "needs": [],
+      "answer_style": "summary_bullets",
+      "confidence": 0.9,
+      "method": "llm",
+      "reason": "candidate_intent:c1 heuristic fallback"
+    },
+    "decision_artifact": {
+      "intent": {
+        "domain": "games",
+        "operation": "list",
+        "target": "",
+        "confidence": 0.9,
+        "method": "llm"
+      },
+      "route": {
+        "category": "competition_rules",
+        "intent": "competition_rules_lookup",
+        "confidence": 0.96,
+        "answer_type": "fact",
+        "risk": "medium",
+        "reason": "competition game list terms found; universal_intent=games/list; competition_question_frame_lock"
+      },
+      "tool_router": {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.9,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      "selected_candidate": null,
+      "candidates": [],
+      "rejected": [],
+      "policy": {},
+      "execution_plan": [
+        "normalize_and_extract_entities",
+        "route_and_resolve_universal_intent",
+        "generate_capability_candidates",
+        "apply_policy_and_rank",
+        "apply_tool_preconditions",
+        "ask_clarification",
+        "format_validate_and_record"
+      ],
+      "final": {
+        "mode": "pipeline:competition_target_clarification",
+        "confidence": 0.96,
+        "execution_step": "ask_clarification",
+        "executed_capability": "clarification.ask_user",
+        "selected_matches_execution": false,
+        "validation_ok": true,
+        "validation_errors": [],
+        "validation_warnings": [
+          "competition_target_clarification"
+        ],
+        "evidence_count": 0,
+        "source_ids": []
+      },
+      "production_metrics": {
+        "policy_version": "correctness_control_flow_v2",
+        "outcome": "clarification",
+        "quality_gate_status": "safe_abstain",
+        "candidate_margin": null,
+        "selection_status": "",
+        "ambiguity_decision": "allow",
+        "repair_attempted": false,
+        "repair_recovered": false,
+        "llm_call_count": 1,
+        "requires_shadow_review": true,
+        "shadow_review_reasons": [
+          "selected_execution_mismatch",
+          "clarification",
+          "validation_warning",
+          "llm_used"
+        ]
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": null,
+        "duration": null,
+        "price_intent": false
+      },
+      "structured_tool": null,
+      "tool_preconditions": [],
+      "candidate_execution": [],
+      "validation": null,
+      "llm_calls": [
+        {
+          "stage": "universal_intent",
+          "decision": "games/list",
+          "llm_kind": "universal_intent",
+          "llm_model": "scb10x/typhoon2.5-qwen3-4b",
+          "llm_timeout_sec": 14.0,
+          "llm_configured_timeout_sec": 14.0,
+          "llm_num_predict": 18,
+          "llm_num_ctx": 1536,
+          "llm_cache_hit": false,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 18.3499,
+          "global_elapsed_sec": 3.0757,
+          "global_remaining_sec": 15.2742,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 14.2742,
+          "timing_status": "running",
+          "llm_health_enabled": true,
+          "llm_health_allowed": true,
+          "llm_health_status": "ok",
+          "llm_health_kind": "universal_intent",
+          "llm_health_model": "scb10x/typhoon2.5-qwen3-4b",
+          "llm_health_failures": 0,
+          "llm_health_cooldown_remaining_sec": 0.0,
+          "llm_health_last_error_type": "",
+          "llm_health_last_error": "",
+          "llm_health_failure_scope": "kind_only",
+          "llm_budget_enabled": true,
+          "llm_budget_allowed": true,
+          "llm_budget_max_calls": 2,
+          "llm_budget_used_calls": 1,
+          "llm_budget_kind": "universal_intent",
+          "llm_concurrency_allowed": true,
+          "llm_concurrency_limit": 1,
+          "llm_concurrency_wait_sec": 0.2,
+          "llm_prompt_chars": 483,
+          "llm_candidate_count": 1,
+          "llm_compact_candidates_chars": 61,
+          "llm_elapsed_ms": 10672.38,
+          "llm_response_chars": 39,
+          "llm_done_reason": "stop",
+          "llm_parsed": true
+        }
+      ]
+    },
+    "confidence": 0.96,
+    "latency_sec": 13.9349,
+    "wall_sec": 13.9606,
+    "deadline": {
+      "global_timeout_enabled": true,
+      "global_timeout_sec": 20.0,
+      "global_elapsed_sec": 13.9605,
+      "global_remaining_sec": 6.0395,
+      "finalizer_reserve_sec": 1.0,
+      "work_remaining_sec": 5.0395,
+      "timing_status": "running"
+    },
+    "timing_status": "completed",
+    "timed_out": false,
+    "timeout_stage": "",
+    "retryable": false,
+    "worker_id": 0,
+    "sources": [],
+    "validation_ok": true,
+    "language": {
+      "requested": "auto",
+      "detected": "th",
+      "effective": "th",
+      "confidence": 0.9867,
+      "reason": "thai_script"
+    },
+    "input_recovery": {
+      "score": 0.1033,
+      "language": "th",
+      "language_quality": 0.8967,
+      "should_review_intent": false,
+      "reason": "Thai character n-gram quality=0.897",
+      "action": "continue"
+    },
+    "input_quality": {
+      "action": "continue",
+      "detected_action": "continue",
+      "applied_action": "continue",
+      "should_retype": false,
+      "flags": [],
+      "layout_score": 0.004625,
+      "repeat_score": 0.0,
+      "guard_status": "passed",
+      "guard_mode": "enforce",
+      "repeat_policy": "warn_and_continue",
+      "profile_version": "keyboard-profile-v1:2a863a4176572043",
+      "guard_elapsed_ms": 0.711,
+      "layout_direction": "english_intended_thai_active",
+      "layout_reason": "mapping lacks stronger English orthographic/lexical evidence",
+      "repeat_reason": "no adjacent repeated character",
+      "composition_evidence": null
+    },
+    "session_number": 307
+  },
+  {
+    "timestamp": "2026-10-03T08:43:32.412336+00:00",
+    "schema_version": 1,
+    "event_type": "chat_exchange",
+    "exchange_id": "76545706636d4040a5f89a42de965449",
+    "channel": "web",
+    "request_id": "3795c77b6cf940338a781ac1b2acc203",
+    "client_session_id": "d0cc0688-e56c-46d7-957b-e8a2b51ba7d1",
+    "question": "valorant",
+    "resolved_question": "valorant",
+    "context_resolution": {
+      "original_question": "valorant",
+      "resolved_question": "valorant",
+      "used_context": false,
+      "context_game": "VALORANT",
+      "context_domain": null,
+      "context_operation": null,
+      "context_topic": null,
+      "reason": "question_has_explicit_game"
+    },
+    "query_debug": {
+      "original_question": "valorant",
+      "resolved_question": "valorant",
+      "normalized_query": "valorant",
+      "query_variants": [
+        "valorant"
+      ],
+      "active_query": "valorant",
+      "active_query_changed": false,
+      "trace": [
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "valorant",
+          "metadata": {
+            "language_hint": "en",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "valorant"
+            ],
+            "competition_name_recovery": [],
+            "elapsed_ms": 20.69,
+            "elapsed_sec": 0.0207
+          }
+        }
+      ]
+    },
+    "recent_history_count": 2,
+    "experimental": {
+      "rag_fallback": true,
+      "allow_llm": true
+    },
+    "answer": "VALORANT: VALORANT คือเกมยิงเชิงกลยุทธ์ที่ผู้เล่นเลือก Agent ที่มีสกิลเฉพาะ แล้วเล่นเป็นฝ่ายบุก/รับในแต่ละรอบ\nแนวเกม: เกมยิง Tactical FPS แบบทีม 5v5\nวิธีเล่นโดยสรุป: ฝ่ายบุกต้องวาง Spike ส่วนฝ่ายรับต้องป้องกันพื้นที่หรือกู้ Spike การเล่นเน้นการเล็ง การสื่อสาร การใช้สกิล และการเล่นเป็นทีม\nเล่นได้ที่: PC Zone\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "mode": "pipeline:structured_game_detail",
+    "route_category": "games",
+    "route_intent": "game_detail_lookup",
+    "universal_intent": {
+      "domain": "games",
+      "operation": "detail",
+      "target": "VALORANT",
+      "filters": {
+        "resolved_target_id": "valorant",
+        "resolved_target_type": "game"
+      },
+      "needs": [],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "llm",
+      "reason": "candidate_intent:c1 heuristic fallback"
+    },
+    "decision_artifact": {
+      "intent": {
+        "domain": "games",
+        "operation": "detail",
+        "target": "VALORANT",
+        "confidence": 0.9,
+        "method": "llm"
+      },
+      "route": {
+        "category": "games",
+        "intent": "game_detail_lookup",
+        "confidence": 0.94,
+        "answer_type": "fact",
+        "risk": "low",
+        "reason": "exact game target locked: VALORANT; structured_mode=structured_game_detail"
+      },
+      "tool_router": {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.9,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      "selected_candidate": {
+        "capability_id": "structured.games",
+        "action": "structured",
+        "domain": "games",
+        "score": 0.999,
+        "status": "accepted",
+        "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; question_frame_domain_match; question_frame_operation=game_detail; precondition=game_domain_or_catalog_query",
+        "requires_evidence": true,
+        "risk": "low"
+      },
+      "candidates": [
+        {
+          "capability_id": "structured.games",
+          "action": "structured",
+          "domain": "games",
+          "score": 0.999,
+          "status": "accepted",
+          "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; question_frame_domain_match; question_frame_operation=game_detail; precondition=game_domain_or_catalog_query",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "fast.domain_handlers",
+          "action": "fast_path",
+          "domain": "multi",
+          "score": 0.489,
+          "status": "accepted",
+          "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "rulebase.category_rules",
+          "action": "rulebase",
+          "domain": "multi",
+          "score": 0.467,
+          "status": "accepted",
+          "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "retrieval.hybrid_guarded",
+          "action": "retrieval",
+          "domain": "multi",
+          "score": 0.456,
+          "status": "accepted",
+          "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "retrieval.vector_guarded",
+          "action": "vector",
+          "domain": "multi",
+          "score": 0.444,
+          "status": "accepted",
+          "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "llm.facts_composer",
+          "action": "rag_llm",
+          "domain": "multi",
+          "score": 0.4,
+          "status": "accepted",
+          "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "clarification.ask_user",
+          "action": "clarification",
+          "domain": "clarification",
+          "score": 0.322,
+          "status": "accepted",
+          "reason": "base=0.58; precondition=no_specific_precondition",
+          "requires_evidence": false,
+          "risk": "low"
+        },
+        {
+          "capability_id": "fallback.no_answer",
+          "action": "no_answer",
+          "domain": "no_answer",
+          "score": 0.278,
+          "status": "accepted",
+          "reason": "base=0.50; precondition=no_specific_precondition",
+          "requires_evidence": false,
+          "risk": "low"
+        }
+      ],
+      "rejected": [
+        {
+          "capability_id": "structured.members",
+          "action": "structured",
+          "domain": "members",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_a_member_query",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "structured.game_controls",
+          "action": "structured",
+          "domain": "game_controls",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_a_game_control_query",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "structured.equipment",
+          "action": "structured",
+          "domain": "equipment",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_an_equipment_query",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "structured.reservation",
+          "action": "structured",
+          "domain": "reservation",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_a_reservation_query",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "structured.schedule",
+          "action": "structured",
+          "domain": "schedule",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_a_schedule_query",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "structured.service_fee",
+          "action": "structured",
+          "domain": "service_fee",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_a_price_query",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "fast.price_calculator",
+          "action": "fast_path",
+          "domain": "service_fee",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_a_price_or_calculation_query",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "retrieval.competition_fact_cards",
+          "action": "retrieval",
+          "domain": "competition_rules",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_a_competition_rule_query",
+          "requires_evidence": true,
+          "risk": "medium"
+        }
+      ],
+      "policy": {
+        "psu_specific": true,
+        "route_risk": "low",
+        "general_llm_requires_non_psu": true
+      },
+      "execution_plan": [
+        "normalize_and_extract_entities",
+        "route_and_resolve_universal_intent",
+        "generate_capability_candidates",
+        "apply_policy_and_rank",
+        "apply_tool_preconditions",
+        "execute_structured_tool",
+        "format_validate_and_record"
+      ],
+      "final": {
+        "mode": "pipeline:structured_game_detail",
+        "confidence": 0.94,
+        "execution_step": "execute_structured_tool",
+        "executed_capability": "structured.games",
+        "selected_matches_execution": true,
+        "validation_ok": true,
+        "validation_errors": [],
+        "validation_warnings": [],
+        "evidence_count": 1,
+        "source_ids": [
+          "VALORANT"
+        ]
+      },
+      "production_metrics": {
+        "policy_version": "correctness_control_flow_v2",
+        "outcome": "answered",
+        "quality_gate_status": "pass",
+        "candidate_margin": 0.51,
+        "selection_status": "selected",
+        "ambiguity_decision": "allow",
+        "repair_attempted": false,
+        "repair_recovered": false,
+        "llm_call_count": 1,
+        "requires_shadow_review": true,
+        "shadow_review_reasons": [
+          "llm_used"
+        ]
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": null,
+        "duration": null,
+        "price_intent": false
+      },
+      "structured_tool": {
+        "stage": "structured_tool",
+        "decision": "structured_game_detail",
+        "confidence": 0.94,
+        "detail": "get_game_detail",
+        "metadata": {
+          "tool": "get_game_detail",
+          "game": "VALORANT",
+          "zones": [
+            "PC Zone"
+          ],
+          "elapsed": 5.9865,
+          "facts_composer_used": false
+        }
+      },
+      "tool_preconditions": [
+        {
+          "stage": "tool_precondition",
+          "decision": "allow_structured",
+          "confidence": 0.9,
+          "detail": "game_domain_or_catalog_query",
+          "metadata": {
+            "capability_id": "structured.games",
+            "ok": true,
+            "reason": "game_domain_or_catalog_query",
+            "severity": "policy",
+            "selector_allows_structured": true,
+            "selected_capability_id": "structured.games"
+          }
+        }
+      ],
+      "candidate_execution": [],
+      "validation": {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      "llm_calls": [
+        {
+          "stage": "universal_intent",
+          "decision": "games/detail",
+          "llm_kind": "universal_intent",
+          "llm_model": "scb10x/typhoon2.5-qwen3-4b",
+          "llm_timeout_sec": 14.0,
+          "llm_configured_timeout_sec": 14.0,
+          "llm_num_predict": 18,
+          "llm_num_ctx": 1536,
+          "llm_cache_hit": false,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 18.35,
+          "global_elapsed_sec": 0.0862,
+          "global_remaining_sec": 18.2637,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 17.2637,
+          "timing_status": "running",
+          "llm_health_enabled": true,
+          "llm_health_allowed": true,
+          "llm_health_status": "ok",
+          "llm_health_kind": "universal_intent",
+          "llm_health_model": "scb10x/typhoon2.5-qwen3-4b",
+          "llm_health_failures": 0,
+          "llm_health_cooldown_remaining_sec": 0.0,
+          "llm_health_last_error_type": "",
+          "llm_health_last_error": "",
+          "llm_health_failure_scope": "kind_only",
+          "llm_budget_enabled": true,
+          "llm_budget_allowed": true,
+          "llm_budget_max_calls": 2,
+          "llm_budget_used_calls": 1,
+          "llm_budget_kind": "universal_intent",
+          "llm_concurrency_allowed": true,
+          "llm_concurrency_limit": 1,
+          "llm_concurrency_wait_sec": 0.2,
+          "llm_prompt_chars": 532,
+          "llm_candidate_count": 2,
+          "llm_compact_candidates_chars": 123,
+          "llm_elapsed_ms": 5771.85,
+          "llm_response_chars": 39,
+          "llm_done_reason": "stop",
+          "llm_parsed": true
+        }
+      ]
+    },
+    "confidence": 0.94,
+    "latency_sec": 6.0419,
+    "wall_sec": 6.0511,
+    "deadline": {
+      "global_timeout_enabled": true,
+      "global_timeout_sec": 20.0,
+      "global_elapsed_sec": 6.051,
+      "global_remaining_sec": 13.949,
+      "finalizer_reserve_sec": 1.0,
+      "work_remaining_sec": 12.949,
+      "timing_status": "running"
+    },
+    "timing_status": "completed",
+    "timed_out": false,
+    "timeout_stage": "",
+    "retryable": false,
+    "worker_id": 0,
+    "sources": [
+      {
+        "id": "VALORANT",
+        "url": "https://esports.computing.psu.ac.th/reservation"
+      }
+    ],
+    "validation_ok": true,
+    "language": {
+      "requested": "auto",
+      "detected": "unknown",
+      "effective": "th",
+      "confidence": 0.45,
+      "reason": "latin_identifier_or_title;session_th"
+    },
+    "input_recovery": {
+      "score": 0.0362,
+      "language": "en",
+      "language_quality": 0.9638,
+      "should_review_intent": false,
+      "reason": "English character n-gram quality=0.964",
+      "action": "continue"
+    },
+    "input_quality": {
+      "action": "continue",
+      "detected_action": "continue",
+      "applied_action": "continue",
+      "should_retype": false,
+      "flags": [],
+      "layout_score": 0.001039,
+      "repeat_score": 0.0,
+      "guard_status": "passed",
+      "guard_mode": "enforce",
+      "repeat_policy": "warn_and_continue",
+      "profile_version": "keyboard-profile-v1:2a863a4176572043",
+      "guard_elapsed_ms": 1.022,
+      "layout_direction": "thai_intended_english_active",
+      "layout_reason": "protected ASCII/entity span",
+      "repeat_reason": "no adjacent repeated character",
+      "composition_evidence": null
+    },
+    "session_number": 307
+  },
+  {
+    "timestamp": "2026-10-03T08:43:40.134192+00:00",
+    "schema_version": 1,
+    "event_type": "chat_exchange",
+    "exchange_id": "c31818e60a6646eca59b5b1dc929682d",
+    "channel": "web",
+    "request_id": "3035a0d7f09c47f882d0db128630def4",
+    "client_session_id": "d0cc0688-e56c-46d7-957b-e8a2b51ba7d1",
+    "question": "ขอกฏการแข่ง",
+    "resolved_question": "ขอกฏการแข่ง",
+    "context_resolution": {
+      "original_question": "ขอกฏการแข่ง",
+      "resolved_question": "ขอกฏการแข่ง",
+      "used_context": false,
+      "context_game": null,
+      "context_domain": null,
+      "context_operation": null,
+      "context_topic": null,
+      "reason": "not_followup"
+    },
+    "query_debug": {
+      "original_question": "ขอกฏการแข่ง",
+      "resolved_question": "ขอกฏการแข่ง",
+      "normalized_query": "ขอกฏการแข่ง",
+      "query_variants": [
+        "ขอกฏการแข่ง"
+      ],
+      "active_query": "ขอกฏการแข่ง",
+      "active_query_changed": false,
+      "trace": [
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "ขอกฏการแข่ง",
+          "metadata": {
+            "language_hint": "th",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "ขอกฏการแข่ง"
+            ],
+            "competition_name_recovery": [],
+            "elapsed_ms": 14.47,
+            "elapsed_sec": 0.0145
+          }
+        }
+      ]
+    },
+    "recent_history_count": 4,
+    "experimental": {
+      "rag_fallback": true,
+      "allow_llm": true
+    },
+    "answer": "ต้องการดูกติกาของเกมใดครับ เช่น Counter-Strike 2, RoV, Tekken 8 หรือ VALORANT",
+    "mode": "pipeline:competition_target_clarification",
+    "route_category": "competition_rules",
+    "route_intent": "competition_rules_lookup",
+    "universal_intent": null,
+    "decision_artifact": {
+      "intent": {
+        "domain": "competition_rules",
+        "operation": "competition_rules_lookup",
+        "target": "",
+        "confidence": 0.98,
+        "method": "route"
+      },
+      "route": {
+        "category": "competition_rules",
+        "intent": "competition_rules_lookup",
+        "confidence": 0.98,
+        "answer_type": "clarification",
+        "risk": "low",
+        "reason": "explicit rule request requires a game target"
+      },
+      "tool_router": null,
+      "selected_candidate": null,
+      "candidates": [],
+      "rejected": [],
+      "policy": {},
+      "execution_plan": [
+        "normalize_and_extract_entities",
+        "route_and_resolve_universal_intent",
+        "generate_capability_candidates",
+        "apply_policy_and_rank",
+        "apply_tool_preconditions",
+        "ask_clarification",
+        "format_validate_and_record"
+      ],
+      "final": {
+        "mode": "pipeline:competition_target_clarification",
+        "confidence": 0.98,
+        "execution_step": "ask_clarification",
+        "executed_capability": "clarification.ask_user",
+        "selected_matches_execution": false,
+        "validation_ok": true,
+        "validation_errors": [],
+        "validation_warnings": [
+          "competition_target_clarification"
+        ],
+        "evidence_count": 0,
+        "source_ids": []
+      },
+      "production_metrics": {
+        "policy_version": "correctness_control_flow_v2",
+        "outcome": "clarification",
+        "quality_gate_status": "safe_abstain",
+        "candidate_margin": null,
+        "selection_status": "",
+        "ambiguity_decision": "",
+        "repair_attempted": false,
+        "repair_recovered": false,
+        "llm_call_count": 0,
+        "requires_shadow_review": true,
+        "shadow_review_reasons": [
+          "selected_execution_mismatch",
+          "clarification",
+          "validation_warning"
+        ]
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": null,
+        "duration": null,
+        "price_intent": false
+      },
+      "structured_tool": null,
+      "tool_preconditions": [],
+      "candidate_execution": [],
+      "validation": null,
+      "llm_calls": []
+    },
+    "confidence": 0.98,
+    "latency_sec": 0.0587,
+    "wall_sec": 0.0687,
+    "deadline": {
+      "global_timeout_enabled": true,
+      "global_timeout_sec": 20.0,
+      "global_elapsed_sec": 0.0686,
+      "global_remaining_sec": 19.9314,
+      "finalizer_reserve_sec": 1.0,
+      "work_remaining_sec": 18.9314,
+      "timing_status": "running"
+    },
+    "timing_status": "completed",
+    "timed_out": false,
+    "timeout_stage": "",
+    "retryable": false,
+    "worker_id": 0,
+    "sources": [],
+    "validation_ok": true,
+    "language": {
+      "requested": "auto",
+      "detected": "th",
+      "effective": "th",
+      "confidence": 0.9117,
+      "reason": "thai_script"
+    },
+    "input_recovery": {
+      "score": 0.2883,
+      "language": "th",
+      "language_quality": 0.7117,
+      "should_review_intent": false,
+      "reason": "Thai character n-gram quality=0.712",
+      "action": "continue"
+    },
+    "input_quality": {
+      "action": "continue",
+      "detected_action": "continue",
+      "applied_action": "continue",
+      "should_retype": false,
+      "flags": [],
+      "layout_score": 0.004387,
+      "repeat_score": 0.0,
+      "guard_status": "passed",
+      "guard_mode": "enforce",
+      "repeat_policy": "warn_and_continue",
+      "profile_version": "keyboard-profile-v1:2a863a4176572043",
+      "guard_elapsed_ms": 0.422,
+      "layout_direction": "english_intended_thai_active",
+      "layout_reason": "mapping lacks stronger English orthographic/lexical evidence",
+      "repeat_reason": "no adjacent repeated character",
+      "composition_evidence": null
+    },
+    "session_number": 307
+  },
+  {
+    "timestamp": "2026-10-03T08:43:46.565341+00:00",
+    "schema_version": 1,
+    "event_type": "chat_exchange",
+    "exchange_id": "b61412a4a8f24b89993dfc1533e19e4a",
+    "channel": "web",
+    "request_id": "ce69c7913b074db8a0eec6533cfc8376",
+    "client_session_id": "d0cc0688-e56c-46d7-957b-e8a2b51ba7d1",
+    "question": "valorant",
+    "resolved_question": "valorant",
+    "context_resolution": {
+      "original_question": "valorant",
+      "resolved_question": "valorant",
+      "used_context": false,
+      "context_game": "VALORANT",
+      "context_domain": null,
+      "context_operation": null,
+      "context_topic": null,
+      "reason": "question_has_explicit_game"
+    },
+    "query_debug": {
+      "original_question": "valorant",
+      "resolved_question": "valorant",
+      "normalized_query": "valorant",
+      "query_variants": [
+        "valorant"
+      ],
+      "active_query": "valorant",
+      "active_query_changed": false,
+      "trace": [
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "valorant",
+          "metadata": {
+            "language_hint": "en",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "valorant"
+            ],
+            "competition_name_recovery": [],
+            "elapsed_ms": 19.04,
+            "elapsed_sec": 0.019
+          }
+        }
+      ]
+    },
+    "recent_history_count": 6,
+    "experimental": {
+      "rag_fallback": true,
+      "allow_llm": true
+    },
+    "answer": "VALORANT: VALORANT คือเกมยิงเชิงกลยุทธ์ที่ผู้เล่นเลือก Agent ที่มีสกิลเฉพาะ แล้วเล่นเป็นฝ่ายบุก/รับในแต่ละรอบ\nแนวเกม: เกมยิง Tactical FPS แบบทีม 5v5\nวิธีเล่นโดยสรุป: ฝ่ายบุกต้องวาง Spike ส่วนฝ่ายรับต้องป้องกันพื้นที่หรือกู้ Spike การเล่นเน้นการเล็ง การสื่อสาร การใช้สกิล และการเล่นเป็นทีม\nเล่นได้ที่: PC Zone\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "mode": "pipeline:structured_game_detail",
+    "route_category": "games",
+    "route_intent": "game_detail_lookup",
+    "universal_intent": {
+      "domain": "games",
+      "operation": "detail",
+      "target": "VALORANT",
+      "filters": {
+        "resolved_target_id": "valorant",
+        "resolved_target_type": "game"
+      },
+      "needs": [],
+      "answer_style": "direct",
+      "confidence": 0.9,
+      "method": "llm",
+      "reason": "candidate_intent:c1 heuristic fallback"
+    },
+    "decision_artifact": {
+      "intent": {
+        "domain": "games",
+        "operation": "detail",
+        "target": "VALORANT",
+        "confidence": 0.9,
+        "method": "llm"
+      },
+      "route": {
+        "category": "games",
+        "intent": "game_detail_lookup",
+        "confidence": 0.94,
+        "answer_type": "fact",
+        "risk": "low",
+        "reason": "exact game target locked: VALORANT; structured_mode=structured_game_detail"
+      },
+      "tool_router": {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.9,
+        "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      "selected_candidate": {
+        "capability_id": "structured.games",
+        "action": "structured",
+        "domain": "games",
+        "score": 0.999,
+        "status": "accepted",
+        "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; question_frame_domain_match; question_frame_operation=game_detail; precondition=game_domain_or_catalog_query",
+        "requires_evidence": true,
+        "risk": "low"
+      },
+      "candidates": [
+        {
+          "capability_id": "structured.games",
+          "action": "structured",
+          "domain": "games",
+          "score": 0.999,
+          "status": "accepted",
+          "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; question_frame_domain_match; question_frame_operation=game_detail; precondition=game_domain_or_catalog_query",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "fast.domain_handlers",
+          "action": "fast_path",
+          "domain": "multi",
+          "score": 0.489,
+          "status": "accepted",
+          "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "rulebase.category_rules",
+          "action": "rulebase",
+          "domain": "multi",
+          "score": 0.467,
+          "status": "accepted",
+          "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "retrieval.hybrid_guarded",
+          "action": "retrieval",
+          "domain": "multi",
+          "score": 0.456,
+          "status": "accepted",
+          "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "retrieval.vector_guarded",
+          "action": "vector",
+          "domain": "multi",
+          "score": 0.444,
+          "status": "accepted",
+          "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "llm.facts_composer",
+          "action": "rag_llm",
+          "domain": "multi",
+          "score": 0.4,
+          "status": "accepted",
+          "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "clarification.ask_user",
+          "action": "clarification",
+          "domain": "clarification",
+          "score": 0.322,
+          "status": "accepted",
+          "reason": "base=0.58; precondition=no_specific_precondition",
+          "requires_evidence": false,
+          "risk": "low"
+        },
+        {
+          "capability_id": "fallback.no_answer",
+          "action": "no_answer",
+          "domain": "no_answer",
+          "score": 0.278,
+          "status": "accepted",
+          "reason": "base=0.50; precondition=no_specific_precondition",
+          "requires_evidence": false,
+          "risk": "low"
+        }
+      ],
+      "rejected": [
+        {
+          "capability_id": "structured.members",
+          "action": "structured",
+          "domain": "members",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_a_member_query",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "structured.game_controls",
+          "action": "structured",
+          "domain": "game_controls",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_a_game_control_query",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "structured.equipment",
+          "action": "structured",
+          "domain": "equipment",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_an_equipment_query",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "structured.reservation",
+          "action": "structured",
+          "domain": "reservation",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_a_reservation_query",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "structured.schedule",
+          "action": "structured",
+          "domain": "schedule",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_a_schedule_query",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "structured.service_fee",
+          "action": "structured",
+          "domain": "service_fee",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_a_price_query",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "fast.price_calculator",
+          "action": "fast_path",
+          "domain": "service_fee",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_a_price_or_calculation_query",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "retrieval.competition_fact_cards",
+          "action": "retrieval",
+          "domain": "competition_rules",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_a_competition_rule_query",
+          "requires_evidence": true,
+          "risk": "medium"
+        }
+      ],
+      "policy": {
+        "psu_specific": true,
+        "route_risk": "low",
+        "general_llm_requires_non_psu": true
+      },
+      "execution_plan": [
+        "normalize_and_extract_entities",
+        "route_and_resolve_universal_intent",
+        "generate_capability_candidates",
+        "apply_policy_and_rank",
+        "apply_tool_preconditions",
+        "execute_structured_tool",
+        "format_validate_and_record"
+      ],
+      "final": {
+        "mode": "pipeline:structured_game_detail",
+        "confidence": 0.94,
+        "execution_step": "execute_structured_tool",
+        "executed_capability": "structured.games",
+        "selected_matches_execution": true,
+        "validation_ok": true,
+        "validation_errors": [],
+        "validation_warnings": [],
+        "evidence_count": 1,
+        "source_ids": [
+          "VALORANT"
+        ]
+      },
+      "production_metrics": {
+        "policy_version": "correctness_control_flow_v2",
+        "outcome": "answered",
+        "quality_gate_status": "pass",
+        "candidate_margin": 0.51,
+        "selection_status": "selected",
+        "ambiguity_decision": "allow",
+        "repair_attempted": false,
+        "repair_recovered": false,
+        "llm_call_count": 1,
+        "requires_shadow_review": true,
+        "shadow_review_reasons": [
+          "llm_used"
+        ]
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": null,
+        "duration": null,
+        "price_intent": false
+      },
+      "structured_tool": {
+        "stage": "structured_tool",
+        "decision": "structured_game_detail",
+        "confidence": 0.94,
+        "detail": "get_game_detail",
+        "metadata": {
+          "tool": "get_game_detail",
+          "game": "VALORANT",
+          "zones": [
+            "PC Zone"
+          ],
+          "elapsed": 0.1524,
+          "facts_composer_used": false
+        }
+      },
+      "tool_preconditions": [
+        {
+          "stage": "tool_precondition",
+          "decision": "allow_structured",
+          "confidence": 0.9,
+          "detail": "game_domain_or_catalog_query",
+          "metadata": {
+            "capability_id": "structured.games",
+            "ok": true,
+            "reason": "game_domain_or_catalog_query",
+            "severity": "policy",
+            "selector_allows_structured": true,
+            "selected_capability_id": "structured.games"
+          }
+        }
+      ],
+      "candidate_execution": [],
+      "validation": {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      "llm_calls": [
+        {
+          "stage": "universal_intent",
+          "decision": "games/detail",
+          "llm_kind": "universal_intent",
+          "llm_model": "scb10x/typhoon2.5-qwen3-4b",
+          "llm_timeout_sec": 14.0,
+          "llm_configured_timeout_sec": 14.0,
+          "llm_num_predict": 18,
+          "llm_num_ctx": 1536,
+          "llm_cache_hit": true,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 18.35,
+          "global_elapsed_sec": 0.0673,
+          "global_remaining_sec": 18.2827,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 17.2827,
+          "timing_status": "running",
+          "llm_elapsed_ms": 0.0,
+          "llm_response_chars": 0,
+          "llm_parsed": true
+        }
+      ]
+    },
+    "confidence": 0.94,
+    "latency_sec": 0.1938,
+    "wall_sec": 0.2034,
+    "deadline": {
+      "global_timeout_enabled": true,
+      "global_timeout_sec": 20.0,
+      "global_elapsed_sec": 0.2034,
+      "global_remaining_sec": 19.7966,
+      "finalizer_reserve_sec": 1.0,
+      "work_remaining_sec": 18.7966,
+      "timing_status": "running"
+    },
+    "timing_status": "completed",
+    "timed_out": false,
+    "timeout_stage": "",
+    "retryable": false,
+    "worker_id": 0,
+    "sources": [
+      {
+        "id": "VALORANT",
+        "url": "https://esports.computing.psu.ac.th/reservation"
+      }
+    ],
+    "validation_ok": true,
+    "language": {
+      "requested": "auto",
+      "detected": "unknown",
+      "effective": "th",
+      "confidence": 0.45,
+      "reason": "latin_identifier_or_title;session_th"
+    },
+    "input_recovery": {
+      "score": 0.0362,
+      "language": "en",
+      "language_quality": 0.9638,
+      "should_review_intent": false,
+      "reason": "English character n-gram quality=0.964",
+      "action": "continue"
+    },
+    "input_quality": {
+      "action": "continue",
+      "detected_action": "continue",
+      "applied_action": "continue",
+      "should_retype": false,
+      "flags": [],
+      "layout_score": 0.001039,
+      "repeat_score": 0.0,
+      "guard_status": "passed",
+      "guard_mode": "enforce",
+      "repeat_policy": "warn_and_continue",
+      "profile_version": "keyboard-profile-v1:2a863a4176572043",
+      "guard_elapsed_ms": 0.393,
+      "layout_direction": "thai_intended_english_active",
+      "layout_reason": "protected ASCII/entity span",
+      "repeat_reason": "no adjacent repeated character",
+      "composition_evidence": null
+    },
+    "session_number": 307
+  }
+]

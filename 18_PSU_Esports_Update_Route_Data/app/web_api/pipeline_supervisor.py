@@ -189,6 +189,7 @@ def _worker_main(requests: Any, results: Any, events: Any, ready: Any, run_id: s
                     global_timeout_sec=float(task.get("pipeline_timeout_sec", 9.0)),
                     locale=str(task.get("locale") or "auto"),
                     locale_decision=task.get("locale_decision"),
+                    recent_history=task.get("recent_history"),
                 )
                 emit_performance_event("request_finished", "pipeline", status="completed", attributes={"mode": result.mode})
                 results.put({"task_id": task_id, "status": "ok", "result": result})
@@ -216,6 +217,9 @@ class _WorkerSlot:
     process: mp.Process
     lock: threading.Lock
     completed_requests: int = 0
+    replacement: _WorkerSlot | None = None
+    replacement_started: float = 0.0
+    recycle_retry_after: float = 0.0
 
 
 class PipelineWorkerSupervisor:
@@ -264,6 +268,7 @@ class PipelineWorkerSupervisor:
                         "ready": slot.ready.is_set(),
                         "completed_requests": slot.completed_requests,
                         "busy": slot.lock.locked(),
+                        "replacement_warming": slot.replacement is not None,
                     }
                     for slot in self._slots
                 ],
@@ -280,6 +285,7 @@ class PipelineWorkerSupervisor:
         request_id: str = "",
         locale: str = "auto",
         locale_decision: dict[str, Any] | None = None,
+        recent_history: list[dict[str, Any]] | None = None,
     ) -> SupervisedCall:
         started = time.perf_counter()
         self.start()
@@ -321,6 +327,7 @@ class PipelineWorkerSupervisor:
                     "experimental_allow_llm": experimental_allow_llm,
                     "locale": locale,
                     "locale_decision": locale_decision or {},
+                    "recent_history": list(recent_history or [])[-10:],
                     # The child must respect queue time already consumed in
                     # the parent; otherwise a burst could exceed the HTTP SLA.
                     "pipeline_timeout_sec": max(0.1, remaining_timeout_sec - 0.15),
@@ -363,7 +370,7 @@ class PipelineWorkerSupervisor:
             slot.completed_requests += 1
             result = event.get("result")
             if slot.completed_requests >= worker_recycle_requests():
-                self._replace_slot(slot)
+                self._maybe_recycle_slot(slot, request_id=request_id or task_id)
             self._performance.emit_parent("worker_result", "pipeline", request_id=request_id or task_id, worker_id=slot.worker_id, status="completed", attributes={"elapsed_ms": round((time.perf_counter() - started) * 1000, 3)})
             return SupervisedCall("ok", result=result, worker_id=slot.worker_id, elapsed_sec=time.perf_counter() - started)
         finally:
@@ -383,6 +390,10 @@ class PipelineWorkerSupervisor:
         return _WorkerSlot(worker_id, requests, results, ready, process, threading.Lock())
 
     def _stop_slot(self, slot: _WorkerSlot) -> None:
+        if slot.replacement is not None:
+            pending = slot.replacement
+            slot.replacement = None
+            self._stop_slot(pending)
         if slot.process.is_alive():
             try:
                 slot.requests.put_nowait(None)
@@ -408,6 +419,43 @@ class PipelineWorkerSupervisor:
                     self._slots[index] = replacement
                     break
 
+    def _maybe_recycle_slot(self, slot: _WorkerSlot, *, request_id: str) -> None:
+        """Warm planned replacements while the current worker keeps serving.
+
+        Called while the completed request owns slot.lock. Crash/timeout
+        replacement still uses the existing immediate containment path.
+        """
+        now = time.perf_counter()
+        with self._guard:
+            if not any(current is slot for current in self._slots):
+                return
+            pending = slot.replacement
+            if pending is None:
+                if now < slot.recycle_retry_after:
+                    return
+                try:
+                    slot.replacement = self._new_slot(slot.worker_id)
+                    slot.replacement_started = now
+                    self._performance.emit_parent("worker_recycle", "pipeline", request_id=request_id, worker_id=slot.worker_id, status="warming", attributes={"old_pid":slot.process.pid,"new_pid":slot.replacement.process.pid})
+                except Exception as exc:
+                    slot.recycle_retry_after = now + worker_startup_timeout_sec()
+                    self._performance.emit_parent("worker_recycle", "pipeline", request_id=request_id, worker_id=slot.worker_id, status="spawn_failed", attributes={"error_type":type(exc).__name__})
+                return
+            if pending.process.is_alive() and pending.ready.is_set():
+                old_pid = slot.process.pid
+                for index, current in enumerate(self._slots):
+                    if current is slot:
+                        self._slots[index] = pending
+                        break
+                slot.replacement = None
+                self._stop_slot(slot)
+                self._performance.emit_parent("worker_recycle", "pipeline", request_id=request_id, worker_id=slot.worker_id, status="promoted", attributes={"old_pid":old_pid,"new_pid":pending.process.pid})
+            elif not pending.process.is_alive() or now - slot.replacement_started >= worker_startup_timeout_sec():
+                slot.replacement = None
+                self._stop_slot(pending)
+                slot.recycle_retry_after = now + worker_startup_timeout_sec()
+                self._performance.emit_parent("worker_recycle", "pipeline", request_id=request_id, worker_id=slot.worker_id, status="warmup_failed", attributes={"old_pid":slot.process.pid})
+
     def _acquire_slot(self, *, wait_sec: float = 0.0) -> _WorkerSlot | None:
         deadline = time.perf_counter() + max(0.0, wait_sec)
         while True:
@@ -420,7 +468,14 @@ class PipelineWorkerSupervisor:
                 if not slot.ready.is_set():
                     continue
                 if slot.lock.acquire(blocking=False):
-                    return slot
+                    # A ready replacement may have been promoted after this
+                    # caller copied the slot list. Never dispatch to a retired
+                    # process captured in an older snapshot.
+                    with self._guard:
+                        active = any(current is slot for current in self._slots)
+                    if active:
+                        return slot
+                    slot.lock.release()
             remaining = deadline - time.perf_counter()
             if remaining <= 0:
                 return None

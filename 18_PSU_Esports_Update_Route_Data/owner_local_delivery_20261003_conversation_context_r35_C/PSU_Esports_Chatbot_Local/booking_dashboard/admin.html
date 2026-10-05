@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Calendar v26 - PSU Esports</title>
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero panel">
+      <div>
+        <h1>Admin Calendar v26</h1>
+        <p>ตั้งค่าวันที่ศูนย์เปิด/ปิด PSU eSports เมื่อปิดทั้งวัน หน้า User จะขึ้นว่าปิด และทุก slot เป็นสีเทา</p>
+      </div>
+      <div class="row" style="align-items:center;flex:0 0 auto">
+        <a class="btn" href="/" style="text-decoration:none">กลับหน้า User</a>
+        <button class="btn" id="refreshBtn" type="button">โหลดข้อมูลใหม่</button>
+      </div>
+    </section>
+
+    <div id="message" class="msg">กำลังโหลด...</div>
+
+    <section class="grid">
+      <section class="panel card">
+        <h2>ตั้งค่ารายวัน</h2>
+        <form class="form" id="dayForm">
+          <label class="label"><b>Admin PIN</b><input class="field" id="pin" type="password" placeholder="ค่าเริ่มต้น 1234"></label>
+          <label class="label"><b>วันที่</b><input class="field" id="date" type="date" required></label>
+          <label class="label"><b>สถานะศูนย์</b><select class="field" id="open"><option value="true">เปิดให้บริการ</option><option value="false">ปิดให้บริการทั้งวัน</option></select></label>
+          <div class="row">
+            <label class="label"><b>เวลาเปิด</b><input class="field" id="start" type="time" value="09:00"></label>
+            <label class="label"><b>เวลาปิด</b><input class="field" id="end" type="time" value="16:00"></label>
+          </div>
+          <label class="label"><b>เหตุผล/หมายเหตุ</b><textarea class="field" id="reason" rows="4" placeholder="เช่น ปิดปรับปรุง, วันหยุด, มีกิจกรรมพิเศษ"></textarea></label>
+          <button class="btn primary" type="submit">บันทึกวันนี้</button>
+          <button class="btn danger" id="clearDay" type="button">ลบ override ของวันนี้ / ใช้ค่า default</button>
+        </form>
+        <p class="hint">หมายเหตุ: Endpoint ระบบตั้งค่าอัตโนมัติแล้ว: จันทร์เปิด 12:00–16:00, อังคาร–พฤหัสเปิด 09:00–16:00, ศุกร์เปิด 09:00–13:00, เสาร์–อาทิตย์ปิด หน้านี้ใช้ตั้งค่าเฉพาะวันที่พิเศษให้ทับตารางอัตโนมัติ</p>
+      </section>
+
+      <section class="panel card">
+        <h2>วันที่ที่ตั้งค่าไว้</h2>
+        <div class="dates" id="dates"></div>
+      </section>
+    </section>
+  </main>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,5210 @@
+[
+  {
+    "question": "ขออีเมลและเบอร์โทรติดต่อศูนย์หน่อย",
+    "locale": "th",
+    "elapsed": 1.4988320000702515,
+    "response": {
+      "ok": true,
+      "request_id": "1e80739b5e0246ddb6b6467d281c23d9",
+      "session_id": "r33-probe-03e118442b614ddbae3b0a4315b6372e",
+      "answer": "ติดต่อศูนย์ได้ทางอีเมล psuesportspkt@gmail.com โทร +66 7627 6004 หรือ +66 7627 6045 และ Facebook PSU Esports Phuket\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Contact-Us, https://esports.computing.psu.ac.th/",
+      "mode": "pipeline:rag_direct_curated",
+      "route_category": "contact",
+      "route_intent": "detail",
+      "universal_intent": {
+        "domain": "contact",
+        "operation": "detail",
+        "target": "",
+        "filters": {},
+        "needs": [],
+        "answer_style": "direct",
+        "confidence": 0.9,
+        "method": "llm",
+        "reason": "candidate_intent:c1 heuristic fallback"
+      },
+      "confidence": 0.84,
+      "latency_sec": 1.435,
+      "wall_sec": 1.4523,
+      "deadline": {
+        "global_timeout_enabled": true,
+        "global_timeout_sec": 20.0,
+        "global_elapsed_sec": 1.4522,
+        "global_remaining_sec": 18.5478,
+        "finalizer_reserve_sec": 1.0,
+        "work_remaining_sec": 17.5478,
+        "timing_status": "running"
+      },
+      "timing_status": "completed",
+      "timed_out": false,
+      "timeout_stage": "",
+      "retryable": false,
+      "worker_id": 0,
+      "sources": [
+        {
+          "id": "rule_en_contact_methods::th::answer",
+          "url": "https://esports.phuket.psu.ac.th/Contact-Us"
+        },
+        {
+          "id": "rule_contact_email::th::answer",
+          "url": "https://esports.phuket.psu.ac.th/Contact-Us"
+        },
+        {
+          "id": "rule_contact_phone::th::answer",
+          "url": "https://esports.computing.psu.ac.th/"
+        }
+      ],
+      "validation_ok": true,
+      "language": {
+        "requested": "th",
+        "detected": "th",
+        "effective": "th",
+        "confidence": 1.0,
+        "reason": "toggle_override_th;thai_script"
+      },
+      "experimental_rag_fallback": false,
+      "experimental_allow_llm": true,
+      "input_recovery": {
+        "score": 0.2751,
+        "language": "th",
+        "language_quality": 0.7249,
+        "should_review_intent": false,
+        "reason": "Thai character n-gram quality=0.725",
+        "action": "continue"
+      },
+      "server_date": {
+        "iso": "2026-10-02",
+        "label": "02/10/2026 (วันศุกร์)",
+        "time": "22:58",
+        "datetime_iso": "2026-10-02T22:58:42.326485+07:00",
+        "timezone": "Asia/Bangkok",
+        "service_slot": {
+          "date": "2026-10-02",
+          "time": "22:58",
+          "weekday": "วันศุกร์",
+          "timezone": "Asia/Bangkok",
+          "status": "outside_hours",
+          "playable": false,
+          "slot": null,
+          "next_open_slot": null,
+          "reason": "outside_regular_service_hours",
+          "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+          "source": "reservation_schedule"
+        },
+        "thai_holidays": [],
+        "upcoming_thai_holidays": [
+          {
+            "date": "2026-10-13",
+            "title": "วันนวมินทรมหาราช",
+            "type": "national_holiday",
+            "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-16",
+            "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+            "type": "bank_holiday_bangkok",
+            "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+            "source": "Bank of Thailand Financial Institutions Holidays 2026",
+            "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+          },
+          {
+            "date": "2026-10-23",
+            "title": "วันปิยมหาราช",
+            "type": "national_holiday",
+            "note": "วันหยุดประจำปีของไทย",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-31",
+            "title": "วันฮาโลวีน",
+            "type": "observance",
+            "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-12-05",
+            "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+            "type": "national_holiday",
+            "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          }
+        ]
+      },
+      "calendar": {
+        "date": "2026-10-02",
+        "label": "02/10/2026 (วันศุกร์)",
+        "weekday": "วันศุกร์",
+        "time": "22:58",
+        "datetime_iso": "2026-10-02T22:58:42.326485+07:00",
+        "timezone": "Asia/Bangkok",
+        "service_slot": {
+          "date": "2026-10-02",
+          "time": "22:58",
+          "weekday": "วันศุกร์",
+          "timezone": "Asia/Bangkok",
+          "status": "outside_hours",
+          "playable": false,
+          "slot": null,
+          "next_open_slot": null,
+          "reason": "outside_regular_service_hours",
+          "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+          "source": "reservation_schedule"
+        },
+        "service_closure": null,
+        "thai_holidays": [],
+        "upcoming_thai_holidays": [
+          {
+            "date": "2026-10-13",
+            "title": "วันนวมินทรมหาราช",
+            "type": "national_holiday",
+            "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-16",
+            "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+            "type": "bank_holiday_bangkok",
+            "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+            "source": "Bank of Thailand Financial Institutions Holidays 2026",
+            "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+          },
+          {
+            "date": "2026-10-23",
+            "title": "วันปิยมหาราช",
+            "type": "national_holiday",
+            "note": "วันหยุดประจำปีของไทย",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-31",
+            "title": "วันฮาโลวีน",
+            "type": "observance",
+            "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-12-05",
+            "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+            "type": "national_holiday",
+            "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          }
+        ]
+      },
+      "input_quality": {
+        "action": "continue",
+        "detected_action": "continue",
+        "applied_action": "continue",
+        "should_retype": false,
+        "flags": [],
+        "layout_score": 0.004875,
+        "repeat_score": 0.530908,
+        "guard_status": "passed",
+        "guard_mode": "enforce",
+        "repeat_policy": "warn_and_continue",
+        "profile_version": "keyboard-profile-v1:2a863a4176572043",
+        "guard_elapsed_ms": 1.89
+      },
+      "context_resolution": {
+        "original_question": "ขออีเมลและเบอร์โทรติดต่อศูนย์หน่อย",
+        "resolved_question": "ขออีเมลและเบอร์โทรติดต่อศูนย์หน่อย",
+        "used_context": false,
+        "context_game": null,
+        "context_domain": null,
+        "context_operation": null,
+        "context_topic": null,
+        "reason": "no_matching_context_resolution"
+      },
+      "query_debug": {
+        "original_question": "ขออีเมลและเบอร์โทรติดต่อศูนย์หน่อย",
+        "resolved_question": "ขออีเมลและเบอร์โทรติดต่อศูนย์หน่อย",
+        "normalized_query": "ขออีเมลและเบอร์โทรติดต่อศูนย์หน่อย",
+        "query_variants": [
+          "ขออีเมลและเบอร์โทรติดต่อศูนย์หน่อย"
+        ],
+        "active_query": "ขออีเมลและเบอร์โทรติดต่อศูนย์หน่อย",
+        "active_query_changed": false,
+        "trace": [
+          {
+            "stage": "preprocess",
+            "decision": "normalized",
+            "confidence": 1.0,
+            "detail": "ขออีเมลและเบอร์โทรติดต่อศูนย์หน่อย",
+            "metadata": {
+              "language_hint": "th",
+              "nonsemantic_preface_removed": false,
+              "query_variants": [
+                "ขออีเมลและเบอร์โทรติดต่อศูนย์หน่อย"
+              ],
+              "competition_name_recovery": [],
+              "elapsed_ms": 21.32,
+              "elapsed_sec": 0.0213
+            }
+          }
+        ]
+      },
+      "decision_artifact": {
+        "intent": {
+          "domain": "contact",
+          "operation": "detail",
+          "target": "",
+          "confidence": 0.9,
+          "method": "llm"
+        },
+        "route": {
+          "category": "contact",
+          "intent": "detail",
+          "confidence": 0.92,
+          "answer_type": "fact",
+          "risk": "low",
+          "reason": "contact terms found; universal_intent=contact/detail"
+        },
+        "tool_router": {
+          "stage": "tool_router",
+          "decision": "heuristic:retrieval",
+          "confidence": 0.9,
+          "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        "selected_candidate": {
+          "capability_id": "retrieval.hybrid_guarded",
+          "action": "retrieval",
+          "domain": "multi",
+          "score": 0.506,
+          "status": "accepted",
+          "reason": "base=0.72; multi_domain; answer_type_match; tool_router_action=retrieval; precondition=no_specific_precondition",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        "candidates": [
+          {
+            "capability_id": "retrieval.hybrid_guarded",
+            "action": "retrieval",
+            "domain": "multi",
+            "score": 0.506,
+            "status": "accepted",
+            "reason": "base=0.72; multi_domain; answer_type_match; tool_router_action=retrieval; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "fast.domain_handlers",
+            "action": "fast_path",
+            "domain": "multi",
+            "score": 0.489,
+            "status": "accepted",
+            "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "rulebase.category_rules",
+            "action": "rulebase",
+            "domain": "multi",
+            "score": 0.467,
+            "status": "accepted",
+            "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "retrieval.vector_guarded",
+            "action": "vector",
+            "domain": "multi",
+            "score": 0.444,
+            "status": "accepted",
+            "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "llm.facts_composer",
+            "action": "rag_llm",
+            "domain": "multi",
+            "score": 0.4,
+            "status": "accepted",
+            "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "clarification.ask_user",
+            "action": "clarification",
+            "domain": "clarification",
+            "score": 0.322,
+            "status": "accepted",
+            "reason": "base=0.58; precondition=no_specific_precondition",
+            "requires_evidence": false,
+            "risk": "low"
+          },
+          {
+            "capability_id": "fallback.no_answer",
+            "action": "no_answer",
+            "domain": "no_answer",
+            "score": 0.278,
+            "status": "accepted",
+            "reason": "base=0.50; precondition=no_specific_precondition",
+            "requires_evidence": false,
+            "risk": "low"
+          }
+        ],
+        "rejected": [
+          {
+            "capability_id": "structured.members",
+            "action": "structured",
+            "domain": "members",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_member_query",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.games",
+            "action": "structured",
+            "domain": "games",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_game_query",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.game_controls",
+            "action": "structured",
+            "domain": "game_controls",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_game_control_query",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.equipment",
+            "action": "structured",
+            "domain": "equipment",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_an_equipment_query",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.reservation",
+            "action": "structured",
+            "domain": "reservation",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_reservation_query",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "structured.schedule",
+            "action": "structured",
+            "domain": "schedule",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_schedule_query",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "structured.service_fee",
+            "action": "structured",
+            "domain": "service_fee",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_price_query",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "fast.price_calculator",
+            "action": "fast_path",
+            "domain": "service_fee",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_price_or_calculation_query",
+            "requires_evidence": true,
+            "risk": "medium"
+          }
+        ],
+        "policy": {
+          "psu_specific": true,
+          "route_risk": "low",
+          "general_llm_requires_non_psu": true
+        },
+        "execution_plan": [
+          "normalize_and_extract_entities",
+          "route_and_resolve_universal_intent",
+          "generate_capability_candidates",
+          "apply_policy_and_rank",
+          "apply_tool_preconditions",
+          "execute_retrieval",
+          "format_validate_and_record"
+        ],
+        "final": {
+          "mode": "pipeline:rag_direct_curated",
+          "confidence": 0.84,
+          "execution_step": "execute_retrieval",
+          "executed_capability": "retrieval.hybrid_guarded",
+          "selected_matches_execution": true,
+          "validation_ok": true,
+          "validation_errors": [],
+          "validation_warnings": [],
+          "evidence_count": 3,
+          "source_ids": [
+            "curated_contact_email",
+            "curated_contact_phone",
+            "curated_contact_facebook"
+          ]
+        },
+        "production_metrics": {
+          "policy_version": "correctness_control_flow_v2",
+          "outcome": "answered",
+          "quality_gate_status": "pass",
+          "candidate_margin": 0.017,
+          "selection_status": "selected_low_margin",
+          "ambiguity_decision": "allow",
+          "repair_attempted": false,
+          "repair_recovered": false,
+          "llm_call_count": 1,
+          "requires_shadow_review": true,
+          "shadow_review_reasons": [
+            "llm_used"
+          ]
+        },
+        "entities": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        },
+        "structured_tool": null,
+        "tool_preconditions": [
+          {
+            "stage": "tool_precondition",
+            "decision": "reject_structured",
+            "confidence": 0.2,
+            "detail": "candidate_selector_preferred_non_structured_action",
+            "metadata": {
+              "capability_id": "structured.unknown",
+              "ok": false,
+              "reason": "no_structured_capability_for_route",
+              "severity": "policy",
+              "selector_allows_structured": false,
+              "selected_capability_id": "retrieval.hybrid_guarded"
+            }
+          }
+        ],
+        "candidate_execution": [],
+        "validation": {
+          "stage": "validation",
+          "decision": "ok",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {}
+        },
+        "llm_calls": [
+          {
+            "stage": "universal_intent",
+            "decision": "contact/detail",
+            "llm_kind": "universal_intent",
+            "llm_model": "scb10x/typhoon2.5-qwen3-4b",
+            "llm_timeout_sec": 14.0,
+            "llm_configured_timeout_sec": 14.0,
+            "llm_num_predict": 18,
+            "llm_num_ctx": 1536,
+            "llm_cache_hit": false,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.2747,
+            "global_remaining_sec": 18.0753,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.0753,
+            "timing_status": "running",
+            "llm_health_enabled": true,
+            "llm_health_allowed": true,
+            "llm_health_status": "ok",
+            "llm_health_kind": "universal_intent",
+            "llm_health_model": "scb10x/typhoon2.5-qwen3-4b",
+            "llm_health_failures": 0,
+            "llm_health_cooldown_remaining_sec": 0.0,
+            "llm_health_last_error_type": "",
+            "llm_health_last_error": "",
+            "llm_health_failure_scope": "kind_only",
+            "llm_budget_enabled": true,
+            "llm_budget_allowed": true,
+            "llm_budget_max_calls": 2,
+            "llm_budget_used_calls": 1,
+            "llm_budget_kind": "universal_intent",
+            "llm_concurrency_allowed": true,
+            "llm_concurrency_limit": 1,
+            "llm_concurrency_wait_sec": 0.2,
+            "llm_prompt_chars": 500,
+            "llm_candidate_count": 1,
+            "llm_compact_candidates_chars": 65,
+            "llm_elapsed_ms": 605.79,
+            "llm_response_chars": 39,
+            "llm_done_reason": "stop",
+            "llm_parsed": true
+          }
+        ]
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": null,
+        "duration": null,
+        "price_intent": false,
+        "short_answer": false,
+        "comparison_intent": false,
+        "raw": {
+          "normalized_query": "ขออีเมลและเบอร์โทรติดต่อศูนย์หน่อย",
+          "language_hint": "th"
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      },
+      "trace": [
+        {
+          "stage": "timing",
+          "decision": "locale_resolution",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.03,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0001,
+            "global_remaining_sec": 18.3499,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3499,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "intent_cue_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 42.87,
+            "elapsed_sec": 0.0429,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0429,
+            "global_remaining_sec": 18.307,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.307,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "canonical_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.043,
+            "global_remaining_sec": 18.307,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.307,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "locale_resolution",
+          "decision": "th",
+          "confidence": 1.0,
+          "detail": "toggle_override_th;thai_script",
+          "metadata": {
+            "requested": "th",
+            "detected": "th",
+            "effective": "th",
+            "confidence": 1.0,
+            "reason": "toggle_override_th;thai_script"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "ขออีเมลและเบอร์โทรติดต่อศูนย์หน่อย",
+            "candidate": "ขออีเมลและเบอร์โทรติดต่อศูนย์หน่อย",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "parts=1",
+          "metadata": {
+            "elapsed_ms": 26.57,
+            "elapsed_sec": 0.0266,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0696,
+            "global_remaining_sec": 18.2804,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.2804,
+            "timing_status": "running",
+            "entry_to_split_ms": 42.96,
+            "parts": [
+              "ขออีเมลและเบอร์โทรติดต่อศูนย์หน่อย"
+            ],
+            "competition_rule_query": false
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "single clear operation does not need planner",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": true
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "ขออีเมลและเบอร์โทรติดต่อศูนย์หน่อย",
+          "metadata": {
+            "language_hint": "th",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "ขออีเมลและเบอร์โทรติดต่อศูนย์หน่อย"
+            ],
+            "competition_name_recovery": [],
+            "elapsed_ms": 21.32,
+            "elapsed_sec": 0.0213
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 21.52,
+            "elapsed_sec": 0.0215
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "contact/contact_lookup",
+          "metadata": {
+            "elapsed_ms": 9.75,
+            "elapsed_sec": 0.0098,
+            "route_category": "contact",
+            "route_intent": "contact_lookup",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          }
+        },
+        {
+          "stage": "target_lock",
+          "decision": "not_locked",
+          "confidence": 0.92,
+          "detail": "game_resolution_unknown",
+          "metadata": {
+            "locked": false,
+            "route_category": "contact",
+            "route_intent": "contact_lookup",
+            "reason": "game_resolution_unknown",
+            "resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "detail",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 19,
+              "comparison_count": 64,
+              "elapsed_ms": 4.295,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "semantic_route_refiner",
+          "confidence": 1.0,
+          "detail": "skipped_protected_route",
+          "metadata": {
+            "elapsed_ms": 0.03,
+            "elapsed_sec": 0.0,
+            "route_category": "contact",
+            "route_intent": "contact_lookup",
+            "route_locked": false
+          }
+        },
+        {
+          "stage": "semantic_route_refiner",
+          "decision": "skipped_protected_route",
+          "confidence": 0.92,
+          "detail": "protected=contact/contact_lookup",
+          "metadata": {}
+        },
+        {
+          "stage": "freshness_guard",
+          "decision": "not_required",
+          "confidence": 0.9,
+          "detail": "query does not require live dynamic evidence",
+          "metadata": {
+            "requires_live_evidence": false
+          }
+        },
+        {
+          "stage": "boundary_guard",
+          "decision": "allow",
+          "confidence": 0.9,
+          "detail": "no high-confidence boundary matched",
+          "metadata": {
+            "flags": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "guard_scope",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0
+          }
+        },
+        {
+          "stage": "guard",
+          "decision": "domain_ok",
+          "confidence": 0.9,
+          "detail": "domain hints found",
+          "metadata": {}
+        },
+        {
+          "stage": "router",
+          "decision": "contact",
+          "confidence": 0.92,
+          "detail": "contact terms found",
+          "metadata": {
+            "intent": "contact_lookup",
+            "answer_type": "fact"
+          }
+        },
+        {
+          "stage": "model_gateway",
+          "decision": "allow_preflight_llm",
+          "confidence": 0.92,
+          "detail": "ambiguous route may benefit from model review",
+          "metadata": {
+            "allow_llm": true,
+            "preflight_allow_llm": true,
+            "route_category": "contact",
+            "route_intent": "contact_lookup"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "universal_intent",
+          "confidence": 1.0,
+          "detail": "contact/detail",
+          "metadata": {
+            "elapsed_ms": 610.48,
+            "elapsed_sec": 0.6105,
+            "method": "llm",
+            "confidence": 0.9
+          }
+        },
+        {
+          "stage": "universal_intent",
+          "decision": "contact/detail",
+          "confidence": 0.9,
+          "detail": "candidate_intent:c1 heuristic fallback",
+          "metadata": {
+            "method": "llm",
+            "llm_attempted": true,
+            "llm_first": true,
+            "llm_first_skip_reason": "",
+            "llm_first_review_reason": "",
+            "llm_call": {
+              "llm_kind": "universal_intent",
+              "llm_model": "scb10x/typhoon2.5-qwen3-4b",
+              "llm_timeout_sec": 14.0,
+              "llm_configured_timeout_sec": 14.0,
+              "llm_num_predict": 18,
+              "llm_num_ctx": 1536,
+              "llm_cache_hit": false,
+              "global_timeout_enabled": true,
+              "global_timeout_sec": 18.35,
+              "global_elapsed_sec": 0.2747,
+              "global_remaining_sec": 18.0753,
+              "finalizer_reserve_sec": 1.0,
+              "work_remaining_sec": 17.0753,
+              "timing_status": "running",
+              "llm_health_enabled": true,
+              "llm_health_allowed": true,
+              "llm_health_status": "ok",
+              "llm_health_kind": "universal_intent",
+              "llm_health_model": "scb10x/typhoon2.5-qwen3-4b",
+              "llm_health_failures": 0,
+              "llm_health_cooldown_remaining_sec": 0.0,
+              "llm_health_last_error_type": "",
+              "llm_health_last_error": "",
+              "llm_health_failure_scope": "kind_only",
+              "llm_budget_enabled": true,
+              "llm_budget_allowed": true,
+              "llm_budget_max_calls": 2,
+              "llm_budget_used_calls": 1,
+              "llm_budget_kind": "universal_intent",
+              "llm_concurrency_allowed": true,
+              "llm_concurrency_limit": 1,
+              "llm_concurrency_wait_sec": 0.2,
+              "llm_prompt_chars": 500,
+              "llm_candidate_count": 1,
+              "llm_compact_candidates_chars": 65,
+              "llm_elapsed_ms": 605.79,
+              "llm_response_chars": 39,
+              "llm_done_reason": "stop",
+              "llm_parsed": true
+            },
+            "intent_risk_flags": [],
+            "input_recovery": {
+              "score": 0.2751,
+              "language": "th",
+              "language_quality": 0.7249,
+              "should_review_intent": false,
+              "reason": "Thai character n-gram quality=0.725",
+              "action": "continue"
+            },
+            "llm_rejected_reason": "",
+            "intent_candidates": [
+              {
+                "id": "c1",
+                "domain": "contact",
+                "operation": "detail",
+                "target": "",
+                "confidence": 0.82,
+                "reason": "heuristic fallback"
+              }
+            ],
+            "target": "",
+            "filters": {},
+            "needs": [],
+            "answer_style": "direct",
+            "heuristic": {
+              "domain": "contact",
+              "operation": "detail",
+              "confidence": 0.82,
+              "reason": "domain_terms=6; no clear operation terms; explicit contact target treated as detail lookup"
+            }
+          }
+        },
+        {
+          "stage": "universal_route_refine",
+          "decision": "contact/contact_lookup -> contact/detail",
+          "confidence": 0.9,
+          "detail": "route refined by universal intent",
+          "metadata": {
+            "domain": "contact",
+            "operation": "detail",
+            "method": "llm"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_router",
+          "confidence": 1.0,
+          "detail": "retrieval/contact",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "method": "heuristic",
+            "confidence": 0.9
+          }
+        },
+        {
+          "stage": "tool_router",
+          "decision": "heuristic:retrieval",
+          "confidence": 0.9,
+          "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "ambiguity_gate",
+          "confidence": 1.0,
+          "detail": "allow",
+          "metadata": {
+            "elapsed_ms": 156.1,
+            "elapsed_sec": 0.1561,
+            "flags": [],
+            "confidence": 0.94
+          }
+        },
+        {
+          "stage": "ambiguity_gate",
+          "decision": "allow",
+          "confidence": 0.94,
+          "detail": "ambiguity risk acceptable",
+          "metadata": {
+            "flags": [],
+            "route": "contact/detail",
+            "intent": "contact/detail",
+            "has_known_game": false,
+            "has_service_or_zone": false,
+            "game_entity_resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 19,
+              "comparison_count": 64,
+              "elapsed_ms": 24.029,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            },
+            "intent_candidates": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "question_frame",
+          "confidence": 0.9,
+          "detail": "contact/detail",
+          "metadata": {
+            "elapsed_ms": 121.2,
+            "elapsed_sec": 0.1212,
+            "operation": "detail",
+            "domain": "contact",
+            "expected_answer_types": [
+              "fact",
+              "summary"
+            ],
+            "targets": [],
+            "target_status": "unknown",
+            "target_margin": 0.0,
+            "target_required": false,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.9,
+            "method": "operation_first",
+            "route_category": "contact",
+            "route_intent": "detail",
+            "intent_operation": "detail",
+            "target_reason": "no_target_candidate",
+            "target_candidate_count": 0,
+            "game_family": ""
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "candidate_decisions",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 110.49,
+            "elapsed_sec": 0.1105
+          }
+        },
+        {
+          "stage": "decision_candidates",
+          "decision": "retrieval.hybrid_guarded",
+          "confidence": 0.5055555555555555,
+          "detail": "base=0.72; multi_domain; answer_type_match; tool_router_action=retrieval; precondition=no_specific_precondition",
+          "metadata": {
+            "selected": {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.506,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; answer_type_match; tool_router_action=retrieval; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            "selection": {
+              "status": "selected_low_margin",
+              "execution_allowed": true,
+              "margin": 0.017,
+              "same_action_as_second": false,
+              "second": {
+                "capability_id": "fast.domain_handlers",
+                "action": "fast_path",
+                "domain": "multi",
+                "score": 0.489,
+                "status": "accepted",
+                "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              }
+            },
+            "question_frame": {
+              "operation": "detail",
+              "domain": "contact",
+              "expected_answer_types": [
+                "fact",
+                "summary"
+              ],
+              "targets": [],
+              "target_status": "unknown",
+              "target_margin": 0.0,
+              "target_required": false,
+              "allows_multiple_targets": false,
+              "needs_clarification": false,
+              "confidence": 0.9,
+              "method": "operation_first",
+              "route_category": "contact",
+              "route_intent": "detail",
+              "intent_operation": "detail",
+              "target_reason": "no_target_candidate",
+              "target_candidate_count": 0,
+              "game_family": ""
+            },
+            "candidates": [
+              {
+                "capability_id": "retrieval.hybrid_guarded",
+                "action": "retrieval",
+                "domain": "multi",
+                "score": 0.506,
+                "status": "accepted",
+                "reason": "base=0.72; multi_domain; answer_type_match; tool_router_action=retrieval; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "fast.domain_handlers",
+                "action": "fast_path",
+                "domain": "multi",
+                "score": 0.489,
+                "status": "accepted",
+                "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "rulebase.category_rules",
+                "action": "rulebase",
+                "domain": "multi",
+                "score": 0.467,
+                "status": "accepted",
+                "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.vector_guarded",
+                "action": "vector",
+                "domain": "multi",
+                "score": 0.444,
+                "status": "accepted",
+                "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "llm.facts_composer",
+                "action": "rag_llm",
+                "domain": "multi",
+                "score": 0.4,
+                "status": "accepted",
+                "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "clarification.ask_user",
+                "action": "clarification",
+                "domain": "clarification",
+                "score": 0.322,
+                "status": "accepted",
+                "reason": "base=0.58; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              },
+              {
+                "capability_id": "fallback.no_answer",
+                "action": "no_answer",
+                "domain": "no_answer",
+                "score": 0.278,
+                "status": "accepted",
+                "reason": "base=0.50; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              }
+            ],
+            "rejected": [
+              {
+                "capability_id": "structured.members",
+                "action": "structured",
+                "domain": "members",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_member_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.games",
+                "action": "structured",
+                "domain": "games",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_game_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.game_controls",
+                "action": "structured",
+                "domain": "game_controls",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_game_control_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.equipment",
+                "action": "structured",
+                "domain": "equipment",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_an_equipment_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.reservation",
+                "action": "structured",
+                "domain": "reservation",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_reservation_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.schedule",
+                "action": "structured",
+                "domain": "schedule",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_schedule_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.service_fee",
+                "action": "structured",
+                "domain": "service_fee",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_price_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "fast.price_calculator",
+                "action": "fast_path",
+                "domain": "service_fee",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_price_or_calculation_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              }
+            ],
+            "policy": {
+              "psu_specific": true,
+              "route_risk": "low",
+              "general_llm_requires_non_psu": true
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_precondition",
+          "confidence": 1.0,
+          "detail": "structured.unknown",
+          "metadata": {
+            "elapsed_ms": 0.14,
+            "elapsed_sec": 0.0001,
+            "ok": false
+          }
+        },
+        {
+          "stage": "tool_precondition",
+          "decision": "reject_structured",
+          "confidence": 0.2,
+          "detail": "candidate_selector_preferred_non_structured_action",
+          "metadata": {
+            "capability_id": "structured.unknown",
+            "ok": false,
+            "reason": "no_structured_capability_for_route",
+            "severity": "policy",
+            "selector_allows_structured": false,
+            "selected_capability_id": "retrieval.hybrid_guarded"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "structured_tool_execution",
+          "confidence": 1.0,
+          "detail": "no_result",
+          "metadata": {
+            "elapsed_ms": 0.0,
+            "elapsed_sec": 0.0,
+            "precondition_ok": false,
+            "selector_allows_structured": false,
+            "selected_capability_id": "retrieval.hybrid_guarded",
+            "confidence": 0.0
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "deterministic",
+          "confidence": 1.0,
+          "detail": "no_match",
+          "metadata": {
+            "elapsed_ms": 0.0,
+            "elapsed_sec": 0.0,
+            "confidence": 0.0,
+            "selector_allows_deterministic": false,
+            "selected_capability_id": "retrieval.hybrid_guarded"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "curated_retrieval",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 28.77,
+            "elapsed_sec": 0.0288,
+            "hit_count": 3,
+            "category": "contact"
+          }
+        },
+        {
+          "stage": "rag_retrieval",
+          "decision": "curated_lexical",
+          "confidence": 0.84,
+          "detail": "hits=3",
+          "metadata": {
+            "category": "contact",
+            "game": null,
+            "intent": null
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "curated_answer",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.38,
+            "elapsed_sec": 0.0004,
+            "raw_hit_count": 3,
+            "confidence": 0.84
+          }
+        },
+        {
+          "stage": "llm_rewrite",
+          "decision": "skipped_curated_direct",
+          "confidence": 0.84,
+          "detail": "LLM not needed for curated fact",
+          "metadata": {}
+        },
+        {
+          "stage": "validation",
+          "decision": "ok",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {}
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:rag_direct_curated",
+          "metadata": {
+            "elapsed_ms": 5.06,
+            "elapsed_sec": 0.0051,
+            "format_response_style_ms": 1.83,
+            "answer_language": "th",
+            "total_elapsed_ms": 1434.84,
+            "total_elapsed_sec": 1.4348
+          }
+        }
+      ],
+      "log_sinks": {
+        "status": "queued"
+      }
+    }
+  },
+  {
+    "question": "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี Minecraft ไหม",
+    "locale": "th",
+    "elapsed": 0.7225177000509575,
+    "response": {
+      "ok": true,
+      "request_id": "9dd2e83a4ecb48ab876fdb40b29b96b1",
+      "session_id": "r33-probe-7babbbe514b24adca0c67932823af870",
+      "answer": "ยังไม่พบ Minecraft ในรายการเกมของศูนย์ที่ยืนยันได้ครับ กรุณาสอบถามเจ้าหน้าที่ก่อนจองเพื่อเล่นเกมนี้ ข้อมูลนี้ยังไม่ใช่การยืนยันว่าศูนย์ไม่มีเกมดังกล่าว\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+      "mode": "pipeline:recorded_game_catalog_no_answer",
+      "route_category": "games",
+      "route_intent": "verified_policy_unavailable",
+      "universal_intent": null,
+      "confidence": 0.97,
+      "latency_sec": 0.6895,
+      "wall_sec": 0.7169,
+      "deadline": {
+        "global_timeout_enabled": true,
+        "global_timeout_sec": 20.0,
+        "global_elapsed_sec": 0.7169,
+        "global_remaining_sec": 19.2831,
+        "finalizer_reserve_sec": 1.0,
+        "work_remaining_sec": 18.2831,
+        "timing_status": "running"
+      },
+      "timing_status": "completed",
+      "timed_out": false,
+      "timeout_stage": "",
+      "retryable": false,
+      "worker_id": 0,
+      "sources": [
+        {
+          "id": "our_games",
+          "url": "https://esports.phuket.psu.ac.th/Services/our-games"
+        },
+        {
+          "id": "Reservation",
+          "url": "https://esports.computing.psu.ac.th/reservation"
+        }
+      ],
+      "validation_ok": true,
+      "language": {
+        "requested": "th",
+        "detected": "mixed",
+        "effective": "th",
+        "confidence": 1.0,
+        "reason": "toggle_override_th;mixed_thai_function_words"
+      },
+      "experimental_rag_fallback": false,
+      "experimental_allow_llm": true,
+      "input_recovery": {
+        "score": 0.2865,
+        "language": "mixed",
+        "language_quality": 0.7135,
+        "should_review_intent": false,
+        "reason": "Thai character n-gram quality=0.713",
+        "action": "continue"
+      },
+      "server_date": {
+        "iso": "2026-10-02",
+        "label": "02/10/2026 (วันศุกร์)",
+        "time": "22:58",
+        "datetime_iso": "2026-10-02T22:58:43.050689+07:00",
+        "timezone": "Asia/Bangkok",
+        "service_slot": {
+          "date": "2026-10-02",
+          "time": "22:58",
+          "weekday": "วันศุกร์",
+          "timezone": "Asia/Bangkok",
+          "status": "outside_hours",
+          "playable": false,
+          "slot": null,
+          "next_open_slot": null,
+          "reason": "outside_regular_service_hours",
+          "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+          "source": "reservation_schedule"
+        },
+        "thai_holidays": [],
+        "upcoming_thai_holidays": [
+          {
+            "date": "2026-10-13",
+            "title": "วันนวมินทรมหาราช",
+            "type": "national_holiday",
+            "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-16",
+            "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+            "type": "bank_holiday_bangkok",
+            "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+            "source": "Bank of Thailand Financial Institutions Holidays 2026",
+            "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+          },
+          {
+            "date": "2026-10-23",
+            "title": "วันปิยมหาราช",
+            "type": "national_holiday",
+            "note": "วันหยุดประจำปีของไทย",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-31",
+            "title": "วันฮาโลวีน",
+            "type": "observance",
+            "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-12-05",
+            "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+            "type": "national_holiday",
+            "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          }
+        ]
+      },
+      "calendar": {
+        "date": "2026-10-02",
+        "label": "02/10/2026 (วันศุกร์)",
+        "weekday": "วันศุกร์",
+        "time": "22:58",
+        "datetime_iso": "2026-10-02T22:58:43.050689+07:00",
+        "timezone": "Asia/Bangkok",
+        "service_slot": {
+          "date": "2026-10-02",
+          "time": "22:58",
+          "weekday": "วันศุกร์",
+          "timezone": "Asia/Bangkok",
+          "status": "outside_hours",
+          "playable": false,
+          "slot": null,
+          "next_open_slot": null,
+          "reason": "outside_regular_service_hours",
+          "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+          "source": "reservation_schedule"
+        },
+        "service_closure": null,
+        "thai_holidays": [],
+        "upcoming_thai_holidays": [
+          {
+            "date": "2026-10-13",
+            "title": "วันนวมินทรมหาราช",
+            "type": "national_holiday",
+            "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-16",
+            "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+            "type": "bank_holiday_bangkok",
+            "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+            "source": "Bank of Thailand Financial Institutions Holidays 2026",
+            "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+          },
+          {
+            "date": "2026-10-23",
+            "title": "วันปิยมหาราช",
+            "type": "national_holiday",
+            "note": "วันหยุดประจำปีของไทย",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-31",
+            "title": "วันฮาโลวีน",
+            "type": "observance",
+            "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-12-05",
+            "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+            "type": "national_holiday",
+            "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          }
+        ]
+      },
+      "input_quality": {
+        "action": "continue",
+        "detected_action": "continue",
+        "applied_action": "continue",
+        "should_retype": false,
+        "flags": [],
+        "layout_score": 0.016326,
+        "repeat_score": 0.0,
+        "guard_status": "passed",
+        "guard_mode": "enforce",
+        "repeat_policy": "warn_and_continue",
+        "profile_version": "keyboard-profile-v1:2a863a4176572043",
+        "guard_elapsed_ms": 1.902
+      },
+      "context_resolution": {
+        "original_question": "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี Minecraft ไหม",
+        "resolved_question": "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี Minecraft ไหม",
+        "used_context": false,
+        "context_game": null,
+        "context_domain": null,
+        "context_operation": null,
+        "context_topic": null,
+        "reason": "not_followup"
+      },
+      "query_debug": {
+        "original_question": "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี Minecraft ไหม",
+        "resolved_question": "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี Minecraft ไหม",
+        "normalized_query": "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี minecraft ไหม",
+        "query_variants": [
+          "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี Minecraft ไหม"
+        ],
+        "active_query": "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี Minecraft ไหม",
+        "active_query_changed": false,
+        "trace": [
+          {
+            "stage": "preprocess",
+            "decision": "normalized",
+            "confidence": 1.0,
+            "detail": "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี minecraft ไหม",
+            "metadata": {
+              "language_hint": "mixed_th_en",
+              "nonsemantic_preface_removed": false,
+              "query_variants": [
+                "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี Minecraft ไหม"
+              ],
+              "competition_name_recovery": [],
+              "elapsed_ms": 316.8,
+              "elapsed_sec": 0.3168
+            }
+          }
+        ]
+      },
+      "decision_artifact": {
+        "intent": {
+          "domain": "games",
+          "operation": "verified_policy_unavailable",
+          "target": "",
+          "confidence": 0.97,
+          "method": "route"
+        },
+        "route": {
+          "category": "games",
+          "intent": "verified_policy_unavailable",
+          "confidence": 0.97,
+          "answer_type": "fact",
+          "risk": "medium",
+          "reason": "explicit query bound to stored source facts"
+        },
+        "tool_router": null,
+        "selected_candidate": null,
+        "candidates": [],
+        "rejected": [],
+        "policy": {},
+        "execution_plan": [
+          "normalize_and_extract_entities",
+          "route_and_resolve_universal_intent",
+          "generate_capability_candidates",
+          "apply_policy_and_rank",
+          "apply_tool_preconditions",
+          "answer_no_verified_data",
+          "format_validate_and_record"
+        ],
+        "final": {
+          "mode": "pipeline:recorded_game_catalog_no_answer",
+          "confidence": 0.97,
+          "execution_step": "answer_no_verified_data",
+          "executed_capability": "fallback.no_answer",
+          "selected_matches_execution": false,
+          "validation_ok": true,
+          "validation_errors": [],
+          "validation_warnings": [],
+          "evidence_count": 2,
+          "source_ids": [
+            "our_games",
+            "Reservation"
+          ]
+        },
+        "production_metrics": {
+          "policy_version": "correctness_control_flow_v2",
+          "outcome": "no_answer",
+          "quality_gate_status": "safe_abstain",
+          "candidate_margin": null,
+          "selection_status": "",
+          "ambiguity_decision": "",
+          "repair_attempted": false,
+          "repair_recovered": false,
+          "llm_call_count": 0,
+          "requires_shadow_review": true,
+          "shadow_review_reasons": [
+            "selected_execution_mismatch",
+            "no_answer"
+          ]
+        },
+        "entities": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        },
+        "structured_tool": null,
+        "tool_preconditions": [],
+        "candidate_execution": [],
+        "validation": null,
+        "llm_calls": []
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": null,
+        "duration": null,
+        "price_intent": false,
+        "short_answer": false,
+        "comparison_intent": false,
+        "raw": {
+          "normalized_query": "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี minecraft ไหม",
+          "language_hint": "mixed_th_en"
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      },
+      "trace": [
+        {
+          "stage": "timing",
+          "decision": "locale_resolution",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.04,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0001,
+            "global_remaining_sec": 18.3499,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3499,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "intent_cue_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 76.1,
+            "elapsed_sec": 0.0761,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0762,
+            "global_remaining_sec": 18.2738,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.2738,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "canonical_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0762,
+            "global_remaining_sec": 18.2737,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.2737,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "locale_resolution",
+          "decision": "th",
+          "confidence": 1.0,
+          "detail": "toggle_override_th;mixed_thai_function_words",
+          "metadata": {
+            "requested": "th",
+            "detected": "mixed",
+            "effective": "th",
+            "confidence": 1.0,
+            "reason": "toggle_override_th;mixed_thai_function_words"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี Minecraft ไหม",
+            "candidate": "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี Minecraft ไหม",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "parts=1",
+          "metadata": {
+            "elapsed_ms": 28.88,
+            "elapsed_sec": 0.0289,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.1051,
+            "global_remaining_sec": 18.2449,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.2448,
+            "timing_status": "running",
+            "entry_to_split_ms": 76.18,
+            "parts": [
+              "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี Minecraft ไหม"
+            ],
+            "competition_rule_query": false
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "single clear operation does not need planner",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": true
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี minecraft ไหม",
+          "metadata": {
+            "language_hint": "mixed_th_en",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี Minecraft ไหม"
+            ],
+            "competition_name_recovery": [],
+            "elapsed_ms": 316.8,
+            "elapsed_sec": 0.3168
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 316.99,
+            "elapsed_sec": 0.317
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "games/game_availability_lookup",
+          "metadata": {
+            "elapsed_ms": 8.51,
+            "elapsed_sec": 0.0085,
+            "route_category": "games",
+            "route_intent": "game_availability_lookup",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          }
+        },
+        {
+          "stage": "target_lock",
+          "decision": "not_locked",
+          "confidence": 0.95,
+          "detail": "game_resolution_unknown",
+          "metadata": {
+            "locked": false,
+            "route_category": "games",
+            "route_intent": "game_availability_lookup",
+            "reason": "game_resolution_unknown",
+            "resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "detail",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 10,
+              "comparison_count": 64,
+              "elapsed_ms": 3.424,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            }
+          }
+        },
+        {
+          "stage": "closed_query_improvement",
+          "decision": "accepted",
+          "confidence": 0.97,
+          "detail": "recorded_game_catalog_no_answer",
+          "metadata": {
+            "game": "Minecraft",
+            "catalog_titles_checked": 42,
+            "absence_only": true,
+            "not_live_occupancy": true,
+            "validation_errors": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:recorded_game_catalog_no_answer",
+          "metadata": {
+            "elapsed_ms": 0.9,
+            "elapsed_sec": 0.0009,
+            "format_response_style_ms": 0.24,
+            "answer_language": "th",
+            "total_elapsed_ms": 689.31,
+            "total_elapsed_sec": 0.6893
+          }
+        }
+      ],
+      "log_sinks": {
+        "status": "queued"
+      }
+    }
+  },
+  {
+    "question": "Is Minecraft available to play at the studio?",
+    "locale": "en",
+    "elapsed": 0.281952099991031,
+    "response": {
+      "ok": true,
+      "request_id": "7328446233ce4b449792baf6be90ea2b",
+      "session_id": "r33-probe-3f16f46fa8f44dc59cd8e8df429169aa",
+      "answer": "I could not find Minecraft in the studio's verified game catalog. Please ask staff before booking to play this game. This does not confirm that the studio cannot offer it.\nSource: https://esports.phuket.psu.ac.th/Services/our-games",
+      "mode": "pipeline:recorded_game_catalog_no_answer",
+      "route_category": "games",
+      "route_intent": "verified_policy_unavailable",
+      "universal_intent": null,
+      "confidence": 0.97,
+      "latency_sec": 0.2638,
+      "wall_sec": 0.2765,
+      "deadline": {
+        "global_timeout_enabled": true,
+        "global_timeout_sec": 20.0,
+        "global_elapsed_sec": 0.2764,
+        "global_remaining_sec": 19.7236,
+        "finalizer_reserve_sec": 1.0,
+        "work_remaining_sec": 18.7236,
+        "timing_status": "running"
+      },
+      "timing_status": "completed",
+      "timed_out": false,
+      "timeout_stage": "",
+      "retryable": false,
+      "worker_id": 0,
+      "sources": [
+        {
+          "id": "our_games",
+          "url": "https://esports.phuket.psu.ac.th/Services/our-games"
+        },
+        {
+          "id": "Reservation",
+          "url": "https://esports.computing.psu.ac.th/reservation"
+        }
+      ],
+      "validation_ok": true,
+      "language": {
+        "requested": "en",
+        "detected": "en",
+        "effective": "en",
+        "confidence": 1.0,
+        "reason": "toggle_override_en;english_sentence_structure"
+      },
+      "experimental_rag_fallback": false,
+      "experimental_allow_llm": true,
+      "input_recovery": {
+        "score": 0.2928,
+        "language": "en",
+        "language_quality": 0.7072,
+        "should_review_intent": false,
+        "reason": "English character n-gram quality=0.707",
+        "action": "continue"
+      },
+      "server_date": {
+        "iso": "2026-10-02",
+        "label": "02/10/2026 (วันศุกร์)",
+        "time": "22:58",
+        "datetime_iso": "2026-10-02T22:58:43.335063+07:00",
+        "timezone": "Asia/Bangkok",
+        "service_slot": {
+          "date": "2026-10-02",
+          "time": "22:58",
+          "weekday": "วันศุกร์",
+          "timezone": "Asia/Bangkok",
+          "status": "outside_hours",
+          "playable": false,
+          "slot": null,
+          "next_open_slot": null,
+          "reason": "outside_regular_service_hours",
+          "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+          "source": "reservation_schedule"
+        },
+        "thai_holidays": [],
+        "upcoming_thai_holidays": [
+          {
+            "date": "2026-10-13",
+            "title": "วันนวมินทรมหาราช",
+            "type": "national_holiday",
+            "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-16",
+            "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+            "type": "bank_holiday_bangkok",
+            "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+            "source": "Bank of Thailand Financial Institutions Holidays 2026",
+            "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+          },
+          {
+            "date": "2026-10-23",
+            "title": "วันปิยมหาราช",
+            "type": "national_holiday",
+            "note": "วันหยุดประจำปีของไทย",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-31",
+            "title": "วันฮาโลวีน",
+            "type": "observance",
+            "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-12-05",
+            "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+            "type": "national_holiday",
+            "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          }
+        ]
+      },
+      "calendar": {
+        "date": "2026-10-02",
+        "label": "02/10/2026 (วันศุกร์)",
+        "weekday": "วันศุกร์",
+        "time": "22:58",
+        "datetime_iso": "2026-10-02T22:58:43.335063+07:00",
+        "timezone": "Asia/Bangkok",
+        "service_slot": {
+          "date": "2026-10-02",
+          "time": "22:58",
+          "weekday": "วันศุกร์",
+          "timezone": "Asia/Bangkok",
+          "status": "outside_hours",
+          "playable": false,
+          "slot": null,
+          "next_open_slot": null,
+          "reason": "outside_regular_service_hours",
+          "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+          "source": "reservation_schedule"
+        },
+        "service_closure": null,
+        "thai_holidays": [],
+        "upcoming_thai_holidays": [
+          {
+            "date": "2026-10-13",
+            "title": "วันนวมินทรมหาราช",
+            "type": "national_holiday",
+            "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-16",
+            "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+            "type": "bank_holiday_bangkok",
+            "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+            "source": "Bank of Thailand Financial Institutions Holidays 2026",
+            "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+          },
+          {
+            "date": "2026-10-23",
+            "title": "วันปิยมหาราช",
+            "type": "national_holiday",
+            "note": "วันหยุดประจำปีของไทย",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-31",
+            "title": "วันฮาโลวีน",
+            "type": "observance",
+            "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-12-05",
+            "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+            "type": "national_holiday",
+            "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          }
+        ]
+      },
+      "input_quality": {
+        "action": "continue",
+        "detected_action": "continue",
+        "applied_action": "continue",
+        "should_retype": false,
+        "flags": [],
+        "layout_score": 0.00133,
+        "repeat_score": 0.0,
+        "guard_status": "passed",
+        "guard_mode": "enforce",
+        "repeat_policy": "warn_and_continue",
+        "profile_version": "keyboard-profile-v1:2a863a4176572043",
+        "guard_elapsed_ms": 2.007
+      },
+      "context_resolution": {
+        "original_question": "Is Minecraft available to play at the studio?",
+        "resolved_question": "Is Minecraft available to play at the studio?",
+        "used_context": false,
+        "context_game": null,
+        "context_domain": null,
+        "context_operation": null,
+        "context_topic": null,
+        "reason": "english_context_preserved_without_rewrite"
+      },
+      "query_debug": {
+        "original_question": "Is Minecraft available to play at the studio?",
+        "resolved_question": "Is Minecraft available to play at the studio?",
+        "normalized_query": "is minecraft available to play at the studio?",
+        "query_variants": [
+          "Is Minecraft available to play at the studio?"
+        ],
+        "active_query": "Is Minecraft available to play at the studio?",
+        "active_query_changed": false,
+        "trace": [
+          {
+            "stage": "preprocess",
+            "decision": "normalized",
+            "confidence": 1.0,
+            "detail": "is minecraft available to play at the studio?",
+            "metadata": {
+              "language_hint": "en",
+              "nonsemantic_preface_removed": false,
+              "query_variants": [
+                "Is Minecraft available to play at the studio?"
+              ],
+              "competition_name_recovery": [],
+              "elapsed_ms": 101.56,
+              "elapsed_sec": 0.1016
+            }
+          }
+        ]
+      },
+      "decision_artifact": {
+        "intent": {
+          "domain": "games",
+          "operation": "verified_policy_unavailable",
+          "target": "",
+          "confidence": 0.97,
+          "method": "route"
+        },
+        "route": {
+          "category": "games",
+          "intent": "verified_policy_unavailable",
+          "confidence": 0.97,
+          "answer_type": "fact",
+          "risk": "medium",
+          "reason": "explicit query bound to stored source facts"
+        },
+        "tool_router": null,
+        "selected_candidate": null,
+        "candidates": [],
+        "rejected": [],
+        "policy": {},
+        "execution_plan": [
+          "normalize_and_extract_entities",
+          "route_and_resolve_universal_intent",
+          "generate_capability_candidates",
+          "apply_policy_and_rank",
+          "apply_tool_preconditions",
+          "answer_no_verified_data",
+          "format_validate_and_record"
+        ],
+        "final": {
+          "mode": "pipeline:recorded_game_catalog_no_answer",
+          "confidence": 0.97,
+          "execution_step": "answer_no_verified_data",
+          "executed_capability": "fallback.no_answer",
+          "selected_matches_execution": false,
+          "validation_ok": true,
+          "validation_errors": [],
+          "validation_warnings": [],
+          "evidence_count": 2,
+          "source_ids": [
+            "our_games",
+            "Reservation"
+          ]
+        },
+        "production_metrics": {
+          "policy_version": "correctness_control_flow_v2",
+          "outcome": "no_answer",
+          "quality_gate_status": "safe_abstain",
+          "candidate_margin": null,
+          "selection_status": "",
+          "ambiguity_decision": "",
+          "repair_attempted": false,
+          "repair_recovered": false,
+          "llm_call_count": 0,
+          "requires_shadow_review": true,
+          "shadow_review_reasons": [
+            "selected_execution_mismatch",
+            "no_answer"
+          ]
+        },
+        "entities": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": "general_student",
+          "duration": null,
+          "price_intent": false
+        },
+        "structured_tool": null,
+        "tool_preconditions": [],
+        "candidate_execution": [],
+        "validation": null,
+        "llm_calls": []
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": "general_student",
+        "duration": null,
+        "price_intent": false,
+        "short_answer": false,
+        "comparison_intent": false,
+        "raw": {
+          "normalized_query": "is minecraft available to play at the studio?",
+          "language_hint": "en"
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      },
+      "trace": [
+        {
+          "stage": "timing",
+          "decision": "locale_resolution",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.04,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0001,
+            "global_remaining_sec": 18.3499,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3499,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "intent_cue_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 14.07,
+            "elapsed_sec": 0.0141,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0142,
+            "global_remaining_sec": 18.3358,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3358,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "canonical_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0142,
+            "global_remaining_sec": 18.3358,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3358,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "locale_resolution",
+          "decision": "en",
+          "confidence": 1.0,
+          "detail": "toggle_override_en;english_sentence_structure",
+          "metadata": {
+            "requested": "en",
+            "detected": "en",
+            "effective": "en",
+            "confidence": 1.0,
+            "reason": "toggle_override_en;english_sentence_structure"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "Is Minecraft available to play at the studio?",
+            "candidate": "Is Minecraft available to play at the studio?",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "parts=1",
+          "metadata": {
+            "elapsed_ms": 14.14,
+            "elapsed_sec": 0.0141,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0283,
+            "global_remaining_sec": 18.3216,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3216,
+            "timing_status": "running",
+            "entry_to_split_ms": 14.15,
+            "parts": [
+              "Is Minecraft available to play at the studio?"
+            ],
+            "competition_rule_query": false
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "single clear operation does not need planner",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": true
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "is minecraft available to play at the studio?",
+          "metadata": {
+            "language_hint": "en",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "Is Minecraft available to play at the studio?"
+            ],
+            "competition_name_recovery": [],
+            "elapsed_ms": 101.56,
+            "elapsed_sec": 0.1016
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 101.75,
+            "elapsed_sec": 0.1018
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "games/games_lookup",
+          "metadata": {
+            "elapsed_ms": 11.44,
+            "elapsed_sec": 0.0114,
+            "route_category": "games",
+            "route_intent": "games_lookup",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": "general_student",
+            "duration": null,
+            "price_intent": false
+          }
+        },
+        {
+          "stage": "target_lock",
+          "decision": "not_locked",
+          "confidence": 0.88,
+          "detail": "game_resolution_unknown",
+          "metadata": {
+            "locked": false,
+            "route_category": "games",
+            "route_intent": "games_lookup",
+            "reason": "game_resolution_unknown",
+            "resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "availability",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 15,
+              "comparison_count": 64,
+              "elapsed_ms": 13.317,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            }
+          }
+        },
+        {
+          "stage": "closed_query_improvement",
+          "decision": "accepted",
+          "confidence": 0.97,
+          "detail": "recorded_game_catalog_no_answer",
+          "metadata": {
+            "game": "Minecraft",
+            "catalog_titles_checked": 42,
+            "absence_only": true,
+            "not_live_occupancy": true,
+            "validation_errors": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:recorded_game_catalog_no_answer",
+          "metadata": {
+            "elapsed_ms": 0.39,
+            "elapsed_sec": 0.0004,
+            "format_response_style_ms": 0.0,
+            "answer_language": "en",
+            "total_elapsed_ms": 263.77,
+            "total_elapsed_sec": 0.2638
+          }
+        }
+      ],
+      "log_sinks": {
+        "status": "queued"
+      }
+    }
+  },
+  {
+    "question": "Minecraft เป็นเกมแนวไหน",
+    "locale": "th",
+    "elapsed": 6.341961900005117,
+    "response": {
+      "ok": true,
+      "request_id": "dd3fa775c7a4435487e3dc64c7b9b849",
+      "session_id": "r33-probe-5bc88ac7a21e41599cae7006e82a7f05",
+      "answer": "Minecraft: Minecraft คือเกมแซนด์บ็อกซ์ที่ผู้เล่นสำรวจโลกบล็อก ขุดทรัพยากร สร้างสิ่งปลูกสร้าง คราฟต์ของ และเลือกเล่นได้ทั้งแนวเอาชีวิตรอดหรือสร้างสรรค์\nแนวเกม: เกม Sandbox / Survival / Creative\nวิธีเล่นโดยสรุป: โดยทั่วไปเริ่มจากเก็บทรัพยากร สร้างเครื่องมือ สร้างที่พัก สำรวจโลก และตั้งเป้าหมายเอง เช่น เอาชีวิตรอด สร้างเมือง เล่นกับเพื่อน หรือทำมินิเกม หมายเหตุ: คำอธิบายนี้เป็นความรู้ทั่วไปของเกม ไม่ใช่ข้อมูลยืนยันว่าเกมนี้มีให้เล่นในศูนย์\nเล่นได้ที่: ยังไม่พบในรายการเกมให้เล่นของศูนย์\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+      "mode": "pipeline:game_name_mention_detail_fast_path",
+      "route_category": "games",
+      "route_intent": "detail",
+      "universal_intent": {
+        "domain": "games",
+        "operation": "detail",
+        "target": "",
+        "filters": {},
+        "needs": [],
+        "answer_style": "direct",
+        "confidence": 0.9,
+        "method": "llm",
+        "reason": "candidate_intent:c2 router category candidate"
+      },
+      "confidence": 0.94,
+      "latency_sec": 6.3214,
+      "wall_sec": 6.3362,
+      "deadline": {
+        "global_timeout_enabled": true,
+        "global_timeout_sec": 20.0,
+        "global_elapsed_sec": 6.3362,
+        "global_remaining_sec": 13.6638,
+        "finalizer_reserve_sec": 1.0,
+        "work_remaining_sec": 12.6638,
+        "timing_status": "running"
+      },
+      "timing_status": "completed",
+      "timed_out": false,
+      "timeout_stage": "",
+      "retryable": false,
+      "worker_id": 0,
+      "sources": [
+        {
+          "id": "our_games",
+          "url": "https://esports.phuket.psu.ac.th/Services/our-games"
+        },
+        {
+          "id": "Reservation",
+          "url": "https://esports.computing.psu.ac.th/reservation"
+        }
+      ],
+      "validation_ok": true,
+      "language": {
+        "requested": "th",
+        "detected": "mixed",
+        "effective": "th",
+        "confidence": 1.0,
+        "reason": "toggle_override_th;mixed_thai_function_words"
+      },
+      "experimental_rag_fallback": false,
+      "experimental_allow_llm": true,
+      "input_recovery": {
+        "score": 0.1822,
+        "language": "mixed",
+        "language_quality": 0.8178,
+        "should_review_intent": false,
+        "reason": "Thai character n-gram quality=0.818",
+        "action": "continue"
+      },
+      "server_date": {
+        "iso": "2026-10-02",
+        "label": "02/10/2026 (วันศุกร์)",
+        "time": "22:58",
+        "datetime_iso": "2026-10-02T22:58:49.676111+07:00",
+        "timezone": "Asia/Bangkok",
+        "service_slot": {
+          "date": "2026-10-02",
+          "time": "22:58",
+          "weekday": "วันศุกร์",
+          "timezone": "Asia/Bangkok",
+          "status": "outside_hours",
+          "playable": false,
+          "slot": null,
+          "next_open_slot": null,
+          "reason": "outside_regular_service_hours",
+          "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+          "source": "reservation_schedule"
+        },
+        "thai_holidays": [],
+        "upcoming_thai_holidays": [
+          {
+            "date": "2026-10-13",
+            "title": "วันนวมินทรมหาราช",
+            "type": "national_holiday",
+            "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-16",
+            "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+            "type": "bank_holiday_bangkok",
+            "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+            "source": "Bank of Thailand Financial Institutions Holidays 2026",
+            "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+          },
+          {
+            "date": "2026-10-23",
+            "title": "วันปิยมหาราช",
+            "type": "national_holiday",
+            "note": "วันหยุดประจำปีของไทย",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-31",
+            "title": "วันฮาโลวีน",
+            "type": "observance",
+            "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-12-05",
+            "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+            "type": "national_holiday",
+            "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          }
+        ]
+      },
+      "calendar": {
+        "date": "2026-10-02",
+        "label": "02/10/2026 (วันศุกร์)",
+        "weekday": "วันศุกร์",
+        "time": "22:58",
+        "datetime_iso": "2026-10-02T22:58:49.676111+07:00",
+        "timezone": "Asia/Bangkok",
+        "service_slot": {
+          "date": "2026-10-02",
+          "time": "22:58",
+          "weekday": "วันศุกร์",
+          "timezone": "Asia/Bangkok",
+          "status": "outside_hours",
+          "playable": false,
+          "slot": null,
+          "next_open_slot": null,
+          "reason": "outside_regular_service_hours",
+          "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+          "source": "reservation_schedule"
+        },
+        "service_closure": null,
+        "thai_holidays": [],
+        "upcoming_thai_holidays": [
+          {
+            "date": "2026-10-13",
+            "title": "วันนวมินทรมหาราช",
+            "type": "national_holiday",
+            "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-16",
+            "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+            "type": "bank_holiday_bangkok",
+            "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+            "source": "Bank of Thailand Financial Institutions Holidays 2026",
+            "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+          },
+          {
+            "date": "2026-10-23",
+            "title": "วันปิยมหาราช",
+            "type": "national_holiday",
+            "note": "วันหยุดประจำปีของไทย",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-31",
+            "title": "วันฮาโลวีน",
+            "type": "observance",
+            "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-12-05",
+            "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+            "type": "national_holiday",
+            "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          }
+        ]
+      },
+      "input_quality": {
+        "action": "continue",
+        "detected_action": "continue",
+        "applied_action": "continue",
+        "should_retype": false,
+        "flags": [],
+        "layout_score": 0.005909,
+        "repeat_score": 0.0,
+        "guard_status": "passed",
+        "guard_mode": "enforce",
+        "repeat_policy": "warn_and_continue",
+        "profile_version": "keyboard-profile-v1:2a863a4176572043",
+        "guard_elapsed_ms": 0.95
+      },
+      "context_resolution": {
+        "original_question": "Minecraft เป็นเกมแนวไหน",
+        "resolved_question": "Minecraft เป็นเกมแนวไหน",
+        "used_context": false,
+        "context_game": null,
+        "context_domain": null,
+        "context_operation": null,
+        "context_topic": null,
+        "reason": "not_followup"
+      },
+      "query_debug": {
+        "original_question": "Minecraft เป็นเกมแนวไหน",
+        "resolved_question": "Minecraft เป็นเกมแนวไหน",
+        "normalized_query": "minecraft เป็นเกมแนวไหน",
+        "query_variants": [
+          "Minecraft เป็นเกมแนวไหน"
+        ],
+        "active_query": "Minecraft เป็นเกมแนวไหน",
+        "active_query_changed": false,
+        "trace": [
+          {
+            "stage": "preprocess",
+            "decision": "normalized",
+            "confidence": 1.0,
+            "detail": "minecraft เป็นเกมแนวไหน",
+            "metadata": {
+              "language_hint": "mixed_th_en",
+              "nonsemantic_preface_removed": false,
+              "query_variants": [
+                "Minecraft เป็นเกมแนวไหน"
+              ],
+              "competition_name_recovery": [],
+              "elapsed_ms": 76.6,
+              "elapsed_sec": 0.0766
+            }
+          }
+        ]
+      },
+      "decision_artifact": {
+        "intent": {
+          "domain": "games",
+          "operation": "detail",
+          "target": "",
+          "confidence": 0.9,
+          "method": "llm"
+        },
+        "route": {
+          "category": "games",
+          "intent": "detail",
+          "confidence": 0.95,
+          "answer_type": "fact",
+          "risk": "low",
+          "reason": "specific game detail terms found; universal_intent=games/detail"
+        },
+        "tool_router": {
+          "stage": "tool_router",
+          "decision": "heuristic:structured",
+          "confidence": 0.9,
+          "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        "selected_candidate": {
+          "capability_id": "structured.games",
+          "action": "structured",
+          "domain": "games",
+          "score": 0.999,
+          "status": "accepted",
+          "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; question_frame_domain_match; question_frame_operation=game_detail; precondition=specific_game_detail_allowed",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        "candidates": [
+          {
+            "capability_id": "structured.games",
+            "action": "structured",
+            "domain": "games",
+            "score": 0.999,
+            "status": "accepted",
+            "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; question_frame_domain_match; question_frame_operation=game_detail; precondition=specific_game_detail_allowed",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "fast.domain_handlers",
+            "action": "fast_path",
+            "domain": "multi",
+            "score": 0.489,
+            "status": "accepted",
+            "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "rulebase.category_rules",
+            "action": "rulebase",
+            "domain": "multi",
+            "score": 0.467,
+            "status": "accepted",
+            "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "retrieval.hybrid_guarded",
+            "action": "retrieval",
+            "domain": "multi",
+            "score": 0.456,
+            "status": "accepted",
+            "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "retrieval.vector_guarded",
+            "action": "vector",
+            "domain": "multi",
+            "score": 0.444,
+            "status": "accepted",
+            "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "llm.facts_composer",
+            "action": "rag_llm",
+            "domain": "multi",
+            "score": 0.4,
+            "status": "accepted",
+            "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "clarification.ask_user",
+            "action": "clarification",
+            "domain": "clarification",
+            "score": 0.322,
+            "status": "accepted",
+            "reason": "base=0.58; precondition=no_specific_precondition",
+            "requires_evidence": false,
+            "risk": "low"
+          },
+          {
+            "capability_id": "fallback.no_answer",
+            "action": "no_answer",
+            "domain": "no_answer",
+            "score": 0.278,
+            "status": "accepted",
+            "reason": "base=0.50; precondition=no_specific_precondition",
+            "requires_evidence": false,
+            "risk": "low"
+          }
+        ],
+        "rejected": [
+          {
+            "capability_id": "structured.members",
+            "action": "structured",
+            "domain": "members",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_member_query",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.game_controls",
+            "action": "structured",
+            "domain": "game_controls",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_game_control_query",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.equipment",
+            "action": "structured",
+            "domain": "equipment",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_an_equipment_query",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.reservation",
+            "action": "structured",
+            "domain": "reservation",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_reservation_query",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "structured.schedule",
+            "action": "structured",
+            "domain": "schedule",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_schedule_query",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "structured.service_fee",
+            "action": "structured",
+            "domain": "service_fee",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_price_query",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "fast.price_calculator",
+            "action": "fast_path",
+            "domain": "service_fee",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_price_or_calculation_query",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "retrieval.competition_fact_cards",
+            "action": "retrieval",
+            "domain": "competition_rules",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_competition_rule_query",
+            "requires_evidence": true,
+            "risk": "medium"
+          }
+        ],
+        "policy": {
+          "psu_specific": true,
+          "route_risk": "low",
+          "general_llm_requires_non_psu": true
+        },
+        "execution_plan": [
+          "normalize_and_extract_entities",
+          "route_and_resolve_universal_intent",
+          "generate_capability_candidates",
+          "apply_policy_and_rank",
+          "apply_tool_preconditions",
+          "execute_fast_path",
+          "format_validate_and_record"
+        ],
+        "final": {
+          "mode": "pipeline:game_name_mention_detail_fast_path",
+          "confidence": 0.94,
+          "execution_step": "execute_fast_path",
+          "executed_capability": "fast.domain_handlers",
+          "selected_matches_execution": false,
+          "validation_ok": true,
+          "validation_errors": [],
+          "validation_warnings": [],
+          "evidence_count": 2,
+          "source_ids": [
+            "our_games",
+            "Reservation"
+          ]
+        },
+        "production_metrics": {
+          "policy_version": "correctness_control_flow_v2",
+          "outcome": "answered",
+          "quality_gate_status": "pass",
+          "candidate_margin": 0.51,
+          "selection_status": "selected",
+          "ambiguity_decision": "allow",
+          "repair_attempted": false,
+          "repair_recovered": false,
+          "llm_call_count": 1,
+          "requires_shadow_review": true,
+          "shadow_review_reasons": [
+            "selected_execution_mismatch",
+            "llm_used"
+          ]
+        },
+        "entities": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        },
+        "structured_tool": null,
+        "tool_preconditions": [
+          {
+            "stage": "tool_precondition",
+            "decision": "allow_structured",
+            "confidence": 0.9,
+            "detail": "specific_game_detail_allowed",
+            "metadata": {
+              "capability_id": "structured.games",
+              "ok": true,
+              "reason": "specific_game_detail_allowed",
+              "severity": "policy",
+              "selector_allows_structured": true,
+              "selected_capability_id": "structured.games"
+            }
+          }
+        ],
+        "candidate_execution": [
+          {
+            "stage": "candidate_execution",
+            "decision": "structured_no_result",
+            "confidence": 0.42,
+            "detail": "structured tool passed precondition but returned no answer",
+            "metadata": {
+              "capability_id": "structured.games"
+            }
+          }
+        ],
+        "validation": {
+          "stage": "validation",
+          "decision": "ok",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {}
+        },
+        "llm_calls": [
+          {
+            "stage": "universal_intent",
+            "decision": "games/detail",
+            "llm_kind": "universal_intent",
+            "llm_model": "scb10x/typhoon2.5-qwen3-4b",
+            "llm_timeout_sec": 14.0,
+            "llm_configured_timeout_sec": 14.0,
+            "llm_num_predict": 18,
+            "llm_num_ctx": 1536,
+            "llm_cache_hit": false,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.2579,
+            "global_remaining_sec": 18.0921,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.0921,
+            "timing_status": "running",
+            "llm_health_enabled": true,
+            "llm_health_allowed": true,
+            "llm_health_status": "ok",
+            "llm_health_kind": "universal_intent",
+            "llm_health_model": "scb10x/typhoon2.5-qwen3-4b",
+            "llm_health_failures": 0,
+            "llm_health_cooldown_remaining_sec": 0.0,
+            "llm_health_last_error_type": "",
+            "llm_health_last_error": "",
+            "llm_health_failure_scope": "kind_only",
+            "llm_budget_enabled": true,
+            "llm_budget_allowed": true,
+            "llm_budget_max_calls": 2,
+            "llm_budget_used_calls": 1,
+            "llm_budget_kind": "universal_intent",
+            "llm_concurrency_allowed": true,
+            "llm_concurrency_limit": 1,
+            "llm_concurrency_wait_sec": 0.2,
+            "llm_prompt_chars": 611,
+            "llm_candidate_count": 3,
+            "llm_compact_candidates_chars": 186,
+            "llm_elapsed_ms": 491.98,
+            "llm_response_chars": 39,
+            "llm_done_reason": "stop",
+            "llm_parsed": true
+          }
+        ]
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": null,
+        "duration": null,
+        "price_intent": false,
+        "short_answer": false,
+        "comparison_intent": false,
+        "raw": {
+          "normalized_query": "minecraft เป็นเกมแนวไหน",
+          "language_hint": "mixed_th_en"
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      },
+      "trace": [
+        {
+          "stage": "timing",
+          "decision": "locale_resolution",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.04,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0001,
+            "global_remaining_sec": 18.3499,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3499,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "intent_cue_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 40.38,
+            "elapsed_sec": 0.0404,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0405,
+            "global_remaining_sec": 18.3095,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3095,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "canonical_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0405,
+            "global_remaining_sec": 18.3094,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3094,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "locale_resolution",
+          "decision": "th",
+          "confidence": 1.0,
+          "detail": "toggle_override_th;mixed_thai_function_words",
+          "metadata": {
+            "requested": "th",
+            "detected": "mixed",
+            "effective": "th",
+            "confidence": 1.0,
+            "reason": "toggle_override_th;mixed_thai_function_words"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "Minecraft เป็นเกมแนวไหน",
+            "candidate": "Minecraft เป็นเกมแนวไหน",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "parts=1",
+          "metadata": {
+            "elapsed_ms": 18.05,
+            "elapsed_sec": 0.018,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0585,
+            "global_remaining_sec": 18.2914,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.2914,
+            "timing_status": "running",
+            "entry_to_split_ms": 40.48,
+            "parts": [
+              "Minecraft เป็นเกมแนวไหน"
+            ],
+            "competition_rule_query": false
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "single clear operation does not need planner",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": true
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "minecraft เป็นเกมแนวไหน",
+          "metadata": {
+            "language_hint": "mixed_th_en",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "Minecraft เป็นเกมแนวไหน"
+            ],
+            "competition_name_recovery": [],
+            "elapsed_ms": 76.6,
+            "elapsed_sec": 0.0766
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 76.79,
+            "elapsed_sec": 0.0768
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "games/game_detail_lookup",
+          "metadata": {
+            "elapsed_ms": 3.18,
+            "elapsed_sec": 0.0032,
+            "route_category": "games",
+            "route_intent": "game_detail_lookup",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          }
+        },
+        {
+          "stage": "target_lock",
+          "decision": "not_locked",
+          "confidence": 0.95,
+          "detail": "game_resolution_unknown",
+          "metadata": {
+            "locked": false,
+            "route_category": "games",
+            "route_intent": "game_detail_lookup",
+            "reason": "game_resolution_unknown",
+            "resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "detail",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 12,
+              "comparison_count": 64,
+              "elapsed_ms": 5.522,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "semantic_route_refiner",
+          "confidence": 1.0,
+          "detail": "no_route_candidate",
+          "metadata": {
+            "elapsed_ms": 72.64,
+            "elapsed_sec": 0.0726,
+            "route_category": "games",
+            "route_intent": "game_detail_lookup",
+            "route_locked": false
+          }
+        },
+        {
+          "stage": "semantic_route_refiner",
+          "decision": "no_route_candidate",
+          "confidence": 0.95,
+          "detail": "hits=0 model=psu-bge-m3:q8_0 top=0.5267 margin=0.0036 require_current=False discover_route=True blocked=category_mismatch:230,general_margin_too_small:1",
+          "metadata": {
+            "retrieval": {
+              "model": "psu-bge-m3:q8_0",
+              "dimensions": 1024,
+              "doc_count": 289,
+              "minimum_score": 0.48,
+              "top_score": 0.526674,
+              "second_score": 0.523116,
+              "margin": 0.003558,
+              "require_current": false,
+              "discover_route": true,
+              "required_entity_ids": [],
+              "required_facets": [],
+              "locale": null,
+              "blocked": {
+                "category_mismatch": 230,
+                "general_margin_too_small": 1
+              },
+              "embedding": {
+                "model": "psu-bge-m3:q8_0",
+                "dimensions": 1024,
+                "elapsed_sec": 0.0413,
+                "total_duration_ms": 38.66,
+                "load_duration_ms": 10.27,
+                "prompt_eval_count": 7
+              },
+              "elapsed_sec": 0.0715,
+              "budget_cutoff": false
+            }
+          }
+        },
+        {
+          "stage": "freshness_guard",
+          "decision": "not_required",
+          "confidence": 0.9,
+          "detail": "query does not require live dynamic evidence",
+          "metadata": {
+            "requires_live_evidence": false
+          }
+        },
+        {
+          "stage": "boundary_guard",
+          "decision": "allow",
+          "confidence": 0.9,
+          "detail": "no high-confidence boundary matched",
+          "metadata": {
+            "flags": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "guard_scope",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0
+          }
+        },
+        {
+          "stage": "guard",
+          "decision": "domain_ok",
+          "confidence": 0.9,
+          "detail": "domain hints found",
+          "metadata": {}
+        },
+        {
+          "stage": "router",
+          "decision": "games",
+          "confidence": 0.95,
+          "detail": "specific game detail terms found",
+          "metadata": {
+            "intent": "game_detail_lookup",
+            "answer_type": "fact"
+          }
+        },
+        {
+          "stage": "model_gateway",
+          "decision": "allow_preflight_llm",
+          "confidence": 0.95,
+          "detail": "ambiguous route may benefit from model review",
+          "metadata": {
+            "allow_llm": true,
+            "preflight_allow_llm": true,
+            "route_category": "games",
+            "route_intent": "game_detail_lookup"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "universal_intent",
+          "confidence": 1.0,
+          "detail": "games/detail",
+          "metadata": {
+            "elapsed_ms": 498.47,
+            "elapsed_sec": 0.4985,
+            "method": "llm",
+            "confidence": 0.9
+          }
+        },
+        {
+          "stage": "universal_intent",
+          "decision": "games/detail",
+          "confidence": 0.9,
+          "detail": "candidate_intent:c2 router category candidate",
+          "metadata": {
+            "method": "llm",
+            "llm_attempted": true,
+            "llm_first": true,
+            "llm_first_skip_reason": "",
+            "llm_first_review_reason": "",
+            "llm_call": {
+              "llm_kind": "universal_intent",
+              "llm_model": "scb10x/typhoon2.5-qwen3-4b",
+              "llm_timeout_sec": 14.0,
+              "llm_configured_timeout_sec": 14.0,
+              "llm_num_predict": 18,
+              "llm_num_ctx": 1536,
+              "llm_cache_hit": false,
+              "global_timeout_enabled": true,
+              "global_timeout_sec": 18.35,
+              "global_elapsed_sec": 0.2579,
+              "global_remaining_sec": 18.0921,
+              "finalizer_reserve_sec": 1.0,
+              "work_remaining_sec": 17.0921,
+              "timing_status": "running",
+              "llm_health_enabled": true,
+              "llm_health_allowed": true,
+              "llm_health_status": "ok",
+              "llm_health_kind": "universal_intent",
+              "llm_health_model": "scb10x/typhoon2.5-qwen3-4b",
+              "llm_health_failures": 0,
+              "llm_health_cooldown_remaining_sec": 0.0,
+              "llm_health_last_error_type": "",
+              "llm_health_last_error": "",
+              "llm_health_failure_scope": "kind_only",
+              "llm_budget_enabled": true,
+              "llm_budget_allowed": true,
+              "llm_budget_max_calls": 2,
+              "llm_budget_used_calls": 1,
+              "llm_budget_kind": "universal_intent",
+              "llm_concurrency_allowed": true,
+              "llm_concurrency_limit": 1,
+              "llm_concurrency_wait_sec": 0.2,
+              "llm_prompt_chars": 611,
+              "llm_candidate_count": 3,
+              "llm_compact_candidates_chars": 186,
+              "llm_elapsed_ms": 491.98,
+              "llm_response_chars": 39,
+              "llm_done_reason": "stop",
+              "llm_parsed": true
+            },
+            "intent_risk_flags": [],
+            "input_recovery": {
+              "score": 0.1822,
+              "language": "mixed",
+              "language_quality": 0.8178,
+              "should_review_intent": false,
+              "reason": "Thai character n-gram quality=0.818",
+              "action": "continue"
+            },
+            "llm_rejected_reason": "",
+            "intent_candidates": [
+              {
+                "id": "c1",
+                "domain": "games",
+                "operation": "unknown",
+                "target": "",
+                "confidence": 0.45,
+                "reason": "heuristic fallback"
+              },
+              {
+                "id": "c2",
+                "domain": "games",
+                "operation": "detail",
+                "target": "",
+                "confidence": 0.95,
+                "reason": "router category candidate"
+              },
+              {
+                "id": "c3",
+                "domain": "games",
+                "operation": "list",
+                "target": "",
+                "confidence": 0.66,
+                "reason": "game-domain catalog alternative"
+              }
+            ],
+            "target": "",
+            "filters": {},
+            "needs": [],
+            "answer_style": "direct",
+            "heuristic": {
+              "domain": "games",
+              "operation": "unknown",
+              "confidence": 0.45,
+              "reason": "domain_terms=4; no clear operation terms"
+            }
+          }
+        },
+        {
+          "stage": "universal_route_refine",
+          "decision": "games/game_detail_lookup -> games/detail",
+          "confidence": 0.9,
+          "detail": "route refined by universal intent",
+          "metadata": {
+            "domain": "games",
+            "operation": "detail",
+            "method": "llm"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_router",
+          "confidence": 1.0,
+          "detail": "structured/games",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "method": "heuristic",
+            "confidence": 0.9
+          }
+        },
+        {
+          "stage": "tool_router",
+          "decision": "heuristic:structured",
+          "confidence": 0.9,
+          "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "ambiguity_gate",
+          "confidence": 1.0,
+          "detail": "allow",
+          "metadata": {
+            "elapsed_ms": 63.19,
+            "elapsed_sec": 0.0632,
+            "flags": [],
+            "confidence": 0.94
+          }
+        },
+        {
+          "stage": "ambiguity_gate",
+          "decision": "allow",
+          "confidence": 0.94,
+          "detail": "ambiguity risk acceptable",
+          "metadata": {
+            "flags": [],
+            "route": "games/detail",
+            "intent": "games/detail",
+            "has_known_game": false,
+            "has_service_or_zone": false,
+            "game_entity_resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "detail",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 0,
+              "comparison_count": 64,
+              "elapsed_ms": 0.033,
+              "request_cache_hit": true,
+              "budget_exceeded": false
+            },
+            "intent_candidates": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "question_frame",
+          "confidence": 0.94,
+          "detail": "games/game_detail",
+          "metadata": {
+            "elapsed_ms": 94.66,
+            "elapsed_sec": 0.0947,
+            "operation": "game_detail",
+            "domain": "games",
+            "expected_answer_types": [
+              "game_detail"
+            ],
+            "targets": [],
+            "target_status": "unknown",
+            "target_margin": 0.0,
+            "target_required": true,
+            "allows_multiple_targets": false,
+            "needs_clarification": true,
+            "confidence": 0.94,
+            "method": "operation_first",
+            "route_category": "games",
+            "route_intent": "detail",
+            "intent_operation": "detail",
+            "target_reason": "no_target_candidate",
+            "target_candidate_count": 0,
+            "game_family": null
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "candidate_decisions",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 99.97,
+            "elapsed_sec": 0.1
+          }
+        },
+        {
+          "stage": "decision_candidates",
+          "decision": "structured.games",
+          "confidence": 0.999,
+          "detail": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; question_frame_domain_match; question_frame_operation=game_detail; precondition=specific_game_detail_allowed",
+          "metadata": {
+            "selected": {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.999,
+              "status": "accepted",
+              "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; question_frame_domain_match; question_frame_operation=game_detail; precondition=specific_game_detail_allowed",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            "selection": {
+              "status": "selected",
+              "execution_allowed": true,
+              "margin": 0.51,
+              "same_action_as_second": false,
+              "second": {
+                "capability_id": "fast.domain_handlers",
+                "action": "fast_path",
+                "domain": "multi",
+                "score": 0.489,
+                "status": "accepted",
+                "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              }
+            },
+            "question_frame": {
+              "operation": "game_detail",
+              "domain": "games",
+              "expected_answer_types": [
+                "game_detail"
+              ],
+              "targets": [],
+              "target_status": "unknown",
+              "target_margin": 0.0,
+              "target_required": true,
+              "allows_multiple_targets": false,
+              "needs_clarification": true,
+              "confidence": 0.94,
+              "method": "operation_first",
+              "route_category": "games",
+              "route_intent": "detail",
+              "intent_operation": "detail",
+              "target_reason": "no_target_candidate",
+              "target_candidate_count": 0,
+              "game_family": null
+            },
+            "candidates": [
+              {
+                "capability_id": "structured.games",
+                "action": "structured",
+                "domain": "games",
+                "score": 0.999,
+                "status": "accepted",
+                "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; question_frame_domain_match; question_frame_operation=game_detail; precondition=specific_game_detail_allowed",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "fast.domain_handlers",
+                "action": "fast_path",
+                "domain": "multi",
+                "score": 0.489,
+                "status": "accepted",
+                "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "rulebase.category_rules",
+                "action": "rulebase",
+                "domain": "multi",
+                "score": 0.467,
+                "status": "accepted",
+                "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.hybrid_guarded",
+                "action": "retrieval",
+                "domain": "multi",
+                "score": 0.456,
+                "status": "accepted",
+                "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.vector_guarded",
+                "action": "vector",
+                "domain": "multi",
+                "score": 0.444,
+                "status": "accepted",
+                "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "llm.facts_composer",
+                "action": "rag_llm",
+                "domain": "multi",
+                "score": 0.4,
+                "status": "accepted",
+                "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "clarification.ask_user",
+                "action": "clarification",
+                "domain": "clarification",
+                "score": 0.322,
+                "status": "accepted",
+                "reason": "base=0.58; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              },
+              {
+                "capability_id": "fallback.no_answer",
+                "action": "no_answer",
+                "domain": "no_answer",
+                "score": 0.278,
+                "status": "accepted",
+                "reason": "base=0.50; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              }
+            ],
+            "rejected": [
+              {
+                "capability_id": "structured.members",
+                "action": "structured",
+                "domain": "members",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_member_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.game_controls",
+                "action": "structured",
+                "domain": "game_controls",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_game_control_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.equipment",
+                "action": "structured",
+                "domain": "equipment",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_an_equipment_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.reservation",
+                "action": "structured",
+                "domain": "reservation",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_reservation_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.schedule",
+                "action": "structured",
+                "domain": "schedule",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_schedule_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.service_fee",
+                "action": "structured",
+                "domain": "service_fee",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_price_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "fast.price_calculator",
+                "action": "fast_path",
+                "domain": "service_fee",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_price_or_calculation_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.competition_fact_cards",
+                "action": "retrieval",
+                "domain": "competition_rules",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_competition_rule_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              }
+            ],
+            "policy": {
+              "psu_specific": true,
+              "route_risk": "low",
+              "general_llm_requires_non_psu": true
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_precondition",
+          "confidence": 1.0,
+          "detail": "structured.games",
+          "metadata": {
+            "elapsed_ms": 0.39,
+            "elapsed_sec": 0.0004,
+            "ok": true
+          }
+        },
+        {
+          "stage": "tool_precondition",
+          "decision": "allow_structured",
+          "confidence": 0.9,
+          "detail": "specific_game_detail_allowed",
+          "metadata": {
+            "capability_id": "structured.games",
+            "ok": true,
+            "reason": "specific_game_detail_allowed",
+            "severity": "policy",
+            "selector_allows_structured": true,
+            "selected_capability_id": "structured.games"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "structured_tool_execution",
+          "confidence": 1.0,
+          "detail": "no_result",
+          "metadata": {
+            "elapsed_ms": 2379.38,
+            "elapsed_sec": 2.3794,
+            "precondition_ok": true,
+            "selector_allows_structured": true,
+            "selected_capability_id": "structured.games",
+            "confidence": 0.0
+          }
+        },
+        {
+          "stage": "candidate_execution",
+          "decision": "structured_no_result",
+          "confidence": 0.42,
+          "detail": "structured tool passed precondition but returned no answer",
+          "metadata": {
+            "capability_id": "structured.games"
+          }
+        },
+        {
+          "stage": "deterministic",
+          "decision": "answer_games",
+          "confidence": 0.94,
+          "detail": "game_name_mention_detail_fast_path",
+          "metadata": {}
+        },
+        {
+          "stage": "timing",
+          "decision": "deterministic",
+          "confidence": 1.0,
+          "detail": "game_name_mention_detail_fast_path",
+          "metadata": {
+            "elapsed_ms": 2833.28,
+            "elapsed_sec": 2.8333,
+            "confidence": 0.94,
+            "selector_allows_deterministic": true,
+            "selected_capability_id": "structured.games"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "format_answer",
+          "confidence": 1.0,
+          "detail": "game_name_mention_detail_fast_path",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "validation",
+          "confidence": 1.0,
+          "detail": "ok",
+          "metadata": {
+            "elapsed_ms": 82.56,
+            "elapsed_sec": 0.0826,
+            "error_count": 0,
+            "warning_count": 0
+          }
+        },
+        {
+          "stage": "validation",
+          "decision": "ok",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {}
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:game_name_mention_detail_fast_path",
+          "metadata": {
+            "elapsed_ms": 3.74,
+            "elapsed_sec": 0.0037,
+            "format_response_style_ms": 0.46,
+            "answer_language": "th",
+            "total_elapsed_ms": 6321.27,
+            "total_elapsed_sec": 6.3213
+          }
+        }
+      ],
+      "log_sinks": {
+        "status": "queued"
+      }
+    }
+  },
+  {
+    "question": "Do you ship gaming equipment to my house?",
+    "locale": "en",
+    "elapsed": 0.23270599998068064,
+    "response": {
+      "ok": true,
+      "request_id": "c81fed2bf9344047bc70f2501eaff44e",
+      "session_id": "r33-probe-73c14c0b3cd947cc86f3eb4d70da4bf3",
+      "answer": "I could not find verified information that the studio delivers gaming equipment to users at home. Please ask the studio directly about this service.",
+      "mode": "pipeline:equipment_home_delivery_no_answer",
+      "route_category": "no_answer",
+      "route_intent": "verified_policy_unavailable",
+      "universal_intent": null,
+      "confidence": 0.98,
+      "latency_sec": 0.1932,
+      "wall_sec": 0.2066,
+      "deadline": {
+        "global_timeout_enabled": true,
+        "global_timeout_sec": 20.0,
+        "global_elapsed_sec": 0.2066,
+        "global_remaining_sec": 19.7934,
+        "finalizer_reserve_sec": 1.0,
+        "work_remaining_sec": 18.7934,
+        "timing_status": "running"
+      },
+      "timing_status": "completed",
+      "timed_out": false,
+      "timeout_stage": "",
+      "retryable": false,
+      "worker_id": 0,
+      "sources": [],
+      "validation_ok": true,
+      "language": {
+        "requested": "en",
+        "detected": "en",
+        "effective": "en",
+        "confidence": 1.0,
+        "reason": "toggle_override_en;english_sentence_structure"
+      },
+      "experimental_rag_fallback": false,
+      "experimental_allow_llm": true,
+      "input_recovery": {
+        "score": 0.3655,
+        "language": "en",
+        "language_quality": 0.6345,
+        "should_review_intent": false,
+        "reason": "English character n-gram quality=0.634",
+        "action": "continue"
+      },
+      "server_date": {
+        "iso": "2026-10-02",
+        "label": "02/10/2026 (วันศุกร์)",
+        "time": "22:58",
+        "datetime_iso": "2026-10-02T22:58:49.907989+07:00",
+        "timezone": "Asia/Bangkok",
+        "service_slot": {
+          "date": "2026-10-02",
+          "time": "22:58",
+          "weekday": "วันศุกร์",
+          "timezone": "Asia/Bangkok",
+          "status": "outside_hours",
+          "playable": false,
+          "slot": null,
+          "next_open_slot": null,
+          "reason": "outside_regular_service_hours",
+          "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+          "source": "reservation_schedule"
+        },
+        "thai_holidays": [],
+        "upcoming_thai_holidays": [
+          {
+            "date": "2026-10-13",
+            "title": "วันนวมินทรมหาราช",
+            "type": "national_holiday",
+            "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-16",
+            "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+            "type": "bank_holiday_bangkok",
+            "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+            "source": "Bank of Thailand Financial Institutions Holidays 2026",
+            "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+          },
+          {
+            "date": "2026-10-23",
+            "title": "วันปิยมหาราช",
+            "type": "national_holiday",
+            "note": "วันหยุดประจำปีของไทย",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-31",
+            "title": "วันฮาโลวีน",
+            "type": "observance",
+            "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-12-05",
+            "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+            "type": "national_holiday",
+            "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          }
+        ]
+      },
+      "calendar": {
+        "date": "2026-10-02",
+        "label": "02/10/2026 (วันศุกร์)",
+        "weekday": "วันศุกร์",
+        "time": "22:58",
+        "datetime_iso": "2026-10-02T22:58:49.907989+07:00",
+        "timezone": "Asia/Bangkok",
+        "service_slot": {
+          "date": "2026-10-02",
+          "time": "22:58",
+          "weekday": "วันศุกร์",
+          "timezone": "Asia/Bangkok",
+          "status": "outside_hours",
+          "playable": false,
+          "slot": null,
+          "next_open_slot": null,
+          "reason": "outside_regular_service_hours",
+          "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+          "source": "reservation_schedule"
+        },
+        "service_closure": null,
+        "thai_holidays": [],
+        "upcoming_thai_holidays": [
+          {
+            "date": "2026-10-13",
+            "title": "วันนวมินทรมหาราช",
+            "type": "national_holiday",
+            "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-16",
+            "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+            "type": "bank_holiday_bangkok",
+            "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+            "source": "Bank of Thailand Financial Institutions Holidays 2026",
+            "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+          },
+          {
+            "date": "2026-10-23",
+            "title": "วันปิยมหาราช",
+            "type": "national_holiday",
+            "note": "วันหยุดประจำปีของไทย",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-31",
+            "title": "วันฮาโลวีน",
+            "type": "observance",
+            "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-12-05",
+            "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+            "type": "national_holiday",
+            "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          }
+        ]
+      },
+      "input_quality": {
+        "action": "continue",
+        "detected_action": "continue",
+        "applied_action": "continue",
+        "should_retype": false,
+        "flags": [],
+        "layout_score": 0.001851,
+        "repeat_score": 0.0,
+        "guard_status": "passed",
+        "guard_mode": "enforce",
+        "repeat_policy": "warn_and_continue",
+        "profile_version": "keyboard-profile-v1:2a863a4176572043",
+        "guard_elapsed_ms": 2.502
+      },
+      "context_resolution": {
+        "original_question": "Do you ship gaming equipment to my house?",
+        "resolved_question": "Do you ship gaming equipment to my house?",
+        "used_context": false,
+        "context_game": null,
+        "context_domain": null,
+        "context_operation": null,
+        "context_topic": null,
+        "reason": "english_context_preserved_without_rewrite"
+      },
+      "query_debug": {
+        "original_question": "Do you ship gaming equipment to my house?",
+        "resolved_question": "Do you ship gaming equipment to my house?",
+        "normalized_query": "do you ship gaming equipment to my house?",
+        "query_variants": [
+          "Do you ship gaming equipment to my house?"
+        ],
+        "active_query": "Do you ship gaming equipment to my house?",
+        "active_query_changed": false,
+        "trace": [
+          {
+            "stage": "preprocess",
+            "decision": "normalized",
+            "confidence": 1.0,
+            "detail": "do you ship gaming equipment to my house?",
+            "metadata": {
+              "language_hint": "en",
+              "nonsemantic_preface_removed": false,
+              "query_variants": [
+                "Do you ship gaming equipment to my house?"
+              ],
+              "competition_name_recovery": [],
+              "elapsed_ms": 17.94,
+              "elapsed_sec": 0.0179
+            }
+          }
+        ]
+      },
+      "decision_artifact": {
+        "intent": {
+          "domain": "no_answer",
+          "operation": "verified_policy_unavailable",
+          "target": "",
+          "confidence": 0.98,
+          "method": "route"
+        },
+        "route": {
+          "category": "no_answer",
+          "intent": "verified_policy_unavailable",
+          "confidence": 0.98,
+          "answer_type": "no_answer",
+          "risk": "medium",
+          "reason": "explicit query bound to stored source facts"
+        },
+        "tool_router": null,
+        "selected_candidate": null,
+        "candidates": [],
+        "rejected": [],
+        "policy": {},
+        "execution_plan": [
+          "normalize_and_extract_entities",
+          "route_and_resolve_universal_intent",
+          "generate_capability_candidates",
+          "apply_policy_and_rank",
+          "apply_tool_preconditions",
+          "answer_no_verified_data",
+          "format_validate_and_record"
+        ],
+        "final": {
+          "mode": "pipeline:equipment_home_delivery_no_answer",
+          "confidence": 0.98,
+          "execution_step": "answer_no_verified_data",
+          "executed_capability": "fallback.no_answer",
+          "selected_matches_execution": false,
+          "validation_ok": true,
+          "validation_errors": [],
+          "validation_warnings": [],
+          "evidence_count": 0,
+          "source_ids": []
+        },
+        "production_metrics": {
+          "policy_version": "correctness_control_flow_v2",
+          "outcome": "no_answer",
+          "quality_gate_status": "safe_abstain",
+          "candidate_margin": null,
+          "selection_status": "",
+          "ambiguity_decision": "",
+          "repair_attempted": false,
+          "repair_recovered": false,
+          "llm_call_count": 0,
+          "requires_shadow_review": true,
+          "shadow_review_reasons": [
+            "selected_execution_mismatch",
+            "no_answer"
+          ]
+        },
+        "entities": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        },
+        "structured_tool": null,
+        "tool_preconditions": [],
+        "candidate_execution": [],
+        "validation": null,
+        "llm_calls": []
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": null,
+        "duration": null,
+        "price_intent": false,
+        "short_answer": false,
+        "comparison_intent": false,
+        "raw": {
+          "normalized_query": "do you ship gaming equipment to my house?",
+          "language_hint": "en"
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      },
+      "trace": [
+        {
+          "stage": "timing",
+          "decision": "locale_resolution",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.03,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0001,
+            "global_remaining_sec": 18.3499,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3499,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "intent_cue_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 5.35,
+            "elapsed_sec": 0.0054,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0054,
+            "global_remaining_sec": 18.3445,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3445,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "canonical_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0055,
+            "global_remaining_sec": 18.3445,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3445,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "locale_resolution",
+          "decision": "en",
+          "confidence": 1.0,
+          "detail": "toggle_override_en;english_sentence_structure",
+          "metadata": {
+            "requested": "en",
+            "detected": "en",
+            "effective": "en",
+            "confidence": 1.0,
+            "reason": "toggle_override_en;english_sentence_structure"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "Do you ship gaming equipment to my house?",
+            "candidate": "Do you ship gaming equipment to my house?",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "parts=1",
+          "metadata": {
+            "elapsed_ms": 15.68,
+            "elapsed_sec": 0.0157,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0211,
+            "global_remaining_sec": 18.3288,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3288,
+            "timing_status": "running",
+            "entry_to_split_ms": 5.43,
+            "parts": [
+              "Do you ship gaming equipment to my house?"
+            ],
+            "competition_rule_query": false
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "single clear operation does not need planner",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": true
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "do you ship gaming equipment to my house?",
+          "metadata": {
+            "language_hint": "en",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "Do you ship gaming equipment to my house?"
+            ],
+            "competition_name_recovery": [],
+            "elapsed_ms": 17.94,
+            "elapsed_sec": 0.0179
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 18.1,
+            "elapsed_sec": 0.0181
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "general/unknown_domain_query",
+          "metadata": {
+            "elapsed_ms": 7.8,
+            "elapsed_sec": 0.0078,
+            "route_category": "general",
+            "route_intent": "unknown_domain_query",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          }
+        },
+        {
+          "stage": "target_lock",
+          "decision": "not_locked",
+          "confidence": 0.55,
+          "detail": "game_resolution_unknown",
+          "metadata": {
+            "locked": false,
+            "route_category": "general",
+            "route_intent": "unknown_domain_query",
+            "reason": "game_resolution_unknown",
+            "resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "detail",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 16,
+              "comparison_count": 64,
+              "elapsed_ms": 16.268,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            }
+          }
+        },
+        {
+          "stage": "closed_query_improvement",
+          "decision": "accepted",
+          "confidence": 0.98,
+          "detail": "equipment_home_delivery_no_answer",
+          "metadata": {
+            "missing_service": "home_equipment_delivery",
+            "validation_errors": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:equipment_home_delivery_no_answer",
+          "metadata": {
+            "elapsed_ms": 0.31,
+            "elapsed_sec": 0.0003,
+            "format_response_style_ms": 0.0,
+            "answer_language": "en",
+            "total_elapsed_ms": 193.11,
+            "total_elapsed_sec": 0.1931
+          }
+        }
+      ],
+      "log_sinks": {
+        "status": "queued"
+      }
+    }
+  },
+  {
+    "question": "Who is Mr. Stduio Man?",
+    "locale": "en",
+    "elapsed": 0.30026659998111427,
+    "response": {
+      "ok": true,
+      "request_id": "c08325f0fc964b9ea5df00535d19c3bf",
+      "session_id": "r33-probe-edf8a135bca4448396b33b872c8a1b6a",
+      "answer": "I could not find verified PSU Esports Studio - Phuket information for this question.",
+      "mode": "pipeline:english_no_answer",
+      "route_category": "no_answer",
+      "route_intent": "english_verified_evidence_unavailable",
+      "universal_intent": null,
+      "confidence": 0.52,
+      "latency_sec": 0.2846,
+      "wall_sec": 0.2958,
+      "deadline": {
+        "global_timeout_enabled": true,
+        "global_timeout_sec": 20.0,
+        "global_elapsed_sec": 0.2958,
+        "global_remaining_sec": 19.7042,
+        "finalizer_reserve_sec": 1.0,
+        "work_remaining_sec": 18.7042,
+        "timing_status": "running"
+      },
+      "timing_status": "completed",
+      "timed_out": false,
+      "timeout_stage": "",
+      "retryable": false,
+      "worker_id": 0,
+      "sources": [],
+      "validation_ok": true,
+      "language": {
+        "requested": "en",
+        "detected": "en",
+        "effective": "en",
+        "confidence": 1.0,
+        "reason": "toggle_override_en;english_sentence_structure"
+      },
+      "experimental_rag_fallback": false,
+      "experimental_allow_llm": true,
+      "input_recovery": {
+        "score": 0.5421,
+        "language": "en",
+        "language_quality": 0.4579,
+        "should_review_intent": true,
+        "reason": "English character n-gram quality=0.458",
+        "action": "bounded_llm_intent_review"
+      },
+      "server_date": {
+        "iso": "2026-10-02",
+        "label": "02/10/2026 (วันศุกร์)",
+        "time": "22:58",
+        "datetime_iso": "2026-10-02T22:58:50.209636+07:00",
+        "timezone": "Asia/Bangkok",
+        "service_slot": {
+          "date": "2026-10-02",
+          "time": "22:58",
+          "weekday": "วันศุกร์",
+          "timezone": "Asia/Bangkok",
+          "status": "outside_hours",
+          "playable": false,
+          "slot": null,
+          "next_open_slot": null,
+          "reason": "outside_regular_service_hours",
+          "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+          "source": "reservation_schedule"
+        },
+        "thai_holidays": [],
+        "upcoming_thai_holidays": [
+          {
+            "date": "2026-10-13",
+            "title": "วันนวมินทรมหาราช",
+            "type": "national_holiday",
+            "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-16",
+            "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+            "type": "bank_holiday_bangkok",
+            "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+            "source": "Bank of Thailand Financial Institutions Holidays 2026",
+            "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+          },
+          {
+            "date": "2026-10-23",
+            "title": "วันปิยมหาราช",
+            "type": "national_holiday",
+            "note": "วันหยุดประจำปีของไทย",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-31",
+            "title": "วันฮาโลวีน",
+            "type": "observance",
+            "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-12-05",
+            "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+            "type": "national_holiday",
+            "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          }
+        ]
+      },
+      "calendar": {
+        "date": "2026-10-02",
+        "label": "02/10/2026 (วันศุกร์)",
+        "weekday": "วันศุกร์",
+        "time": "22:58",
+        "datetime_iso": "2026-10-02T22:58:50.209636+07:00",
+        "timezone": "Asia/Bangkok",
+        "service_slot": {
+          "date": "2026-10-02",
+          "time": "22:58",
+          "weekday": "วันศุกร์",
+          "timezone": "Asia/Bangkok",
+          "status": "outside_hours",
+          "playable": false,
+          "slot": null,
+          "next_open_slot": null,
+          "reason": "outside_regular_service_hours",
+          "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+          "source": "reservation_schedule"
+        },
+        "service_closure": null,
+        "thai_holidays": [],
+        "upcoming_thai_holidays": [
+          {
+            "date": "2026-10-13",
+            "title": "วันนวมินทรมหาราช",
+            "type": "national_holiday",
+            "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-16",
+            "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+            "type": "bank_holiday_bangkok",
+            "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+            "source": "Bank of Thailand Financial Institutions Holidays 2026",
+            "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+          },
+          {
+            "date": "2026-10-23",
+            "title": "วันปิยมหาราช",
+            "type": "national_holiday",
+            "note": "วันหยุดประจำปีของไทย",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-31",
+            "title": "วันฮาโลวีน",
+            "type": "observance",
+            "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-12-05",
+            "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+            "type": "national_holiday",
+            "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          }
+        ]
+      },
+      "input_quality": {
+        "action": "continue",
+        "detected_action": "continue",
+        "applied_action": "continue",
+        "should_retype": false,
+        "flags": [],
+        "layout_score": 0.002423,
+        "repeat_score": 0.0,
+        "guard_status": "passed",
+        "guard_mode": "enforce",
+        "repeat_policy": "warn_and_continue",
+        "profile_version": "keyboard-profile-v1:2a863a4176572043",
+        "guard_elapsed_ms": 1.274
+      },
+      "context_resolution": {
+        "original_question": "Who is Mr. Stduio Man?",
+        "resolved_question": "Who is Mr. Stduio Man?",
+        "used_context": false,
+        "context_game": null,
+        "context_domain": null,
+        "context_operation": null,
+        "context_topic": null,
+        "reason": "english_context_preserved_without_rewrite"
+      },
+      "query_debug": {
+        "original_question": "Who is Mr. Stduio Man?",
+        "resolved_question": "Who is Mr. Stduio Man?",
+        "normalized_query": "who is mr. stduio man?",
+        "query_variants": [
+          "Who is Mr. Stduio Man?"
+        ],
+        "active_query": "Who is Mr. Stduio Man?",
+        "active_query_changed": false,
+        "trace": [
+          {
+            "stage": "preprocess",
+            "decision": "normalized",
+            "confidence": 1.0,
+            "detail": "who is mr. stduio man?",
+            "metadata": {
+              "language_hint": "en",
+              "nonsemantic_preface_removed": false,
+              "query_variants": [
+                "Who is Mr. Stduio Man?"
+              ],
+              "competition_name_recovery": [],
+              "elapsed_ms": 29.45,
+              "elapsed_sec": 0.0294
+            }
+          }
+        ]
+      },
+      "decision_artifact": {
+        "intent": {
+          "domain": "no_answer",
+          "operation": "english_verified_evidence_unavailable",
+          "target": "",
+          "confidence": 0.52,
+          "method": "route"
+        },
+        "route": {
+          "category": "no_answer",
+          "intent": "english_verified_evidence_unavailable",
+          "confidence": 0.52,
+          "answer_type": "no_answer",
+          "risk": "low",
+          "reason": "English requests never fall through to Thai-only runtime paths"
+        },
+        "tool_router": null,
+        "selected_candidate": null,
+        "candidates": [],
+        "rejected": [],
+        "policy": {},
+        "execution_plan": [
+          "normalize_and_extract_entities",
+          "route_and_resolve_universal_intent",
+          "generate_capability_candidates",
+          "apply_policy_and_rank",
+          "apply_tool_preconditions",
+          "answer_no_verified_data",
+          "format_validate_and_record"
+        ],
+        "final": {
+          "mode": "pipeline:english_no_answer",
+          "confidence": 0.52,
+          "execution_step": "answer_no_verified_data",
+          "executed_capability": "fallback.no_answer",
+          "selected_matches_execution": false,
+          "validation_ok": true,
+          "validation_errors": [],
+          "validation_warnings": [],
+          "evidence_count": 0,
+          "source_ids": []
+        },
+        "production_metrics": {
+          "policy_version": "correctness_control_flow_v2",
+          "outcome": "no_answer",
+          "quality_gate_status": "safe_abstain",
+          "candidate_margin": null,
+          "selection_status": "",
+          "ambiguity_decision": "",
+          "repair_attempted": false,
+          "repair_recovered": false,
+          "llm_call_count": 0,
+          "requires_shadow_review": true,
+          "shadow_review_reasons": [
+            "selected_execution_mismatch",
+            "no_answer"
+          ]
+        },
+        "entities": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        },
+        "structured_tool": null,
+        "tool_preconditions": [],
+        "candidate_execution": [],
+        "validation": null,
+        "llm_calls": []
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": null,
+        "duration": null,
+        "price_intent": false,
+        "short_answer": false,
+        "comparison_intent": false,
+        "raw": {
+          "normalized_query": "who is mr. stduio man?",
+          "language_hint": "en"
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      },
+      "trace": [
+        {
+          "stage": "timing",
+          "decision": "locale_resolution",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.04,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0001,
+            "global_remaining_sec": 18.3499,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3499,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "intent_cue_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 10.82,
+            "elapsed_sec": 0.0108,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0109,
+            "global_remaining_sec": 18.339,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.339,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "canonical_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0109,
+            "global_remaining_sec": 18.339,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.339,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "locale_resolution",
+          "decision": "en",
+          "confidence": 1.0,
+          "detail": "toggle_override_en;english_sentence_structure",
+          "metadata": {
+            "requested": "en",
+            "detected": "en",
+            "effective": "en",
+            "confidence": 1.0,
+            "reason": "toggle_override_en;english_sentence_structure"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "Who is Mr. Stduio Man?",
+            "candidate": "Who is Mr. Stduio Man?",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "parts=1",
+          "metadata": {
+            "elapsed_ms": 13.58,
+            "elapsed_sec": 0.0136,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0245,
+            "global_remaining_sec": 18.3254,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3254,
+            "timing_status": "running",
+            "entry_to_split_ms": 10.9,
+            "parts": [
+              "Who is Mr. Stduio Man?"
+            ],
+            "competition_rule_query": false
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "single clear operation does not need planner",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": true
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "who is mr. stduio man?",
+          "metadata": {
+            "language_hint": "en",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "Who is Mr. Stduio Man?"
+            ],
+            "competition_name_recovery": [],
+            "elapsed_ms": 29.45,
+            "elapsed_sec": 0.0294
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 29.61,
+            "elapsed_sec": 0.0296
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "general/unknown_domain_query",
+          "metadata": {
+            "elapsed_ms": 5.31,
+            "elapsed_sec": 0.0053,
+            "route_category": "general",
+            "route_intent": "unknown_domain_query",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          }
+        },
+        {
+          "stage": "target_lock",
+          "decision": "not_locked",
+          "confidence": 0.55,
+          "detail": "game_resolution_unknown",
+          "metadata": {
+            "locked": false,
+            "route_category": "general",
+            "route_intent": "unknown_domain_query",
+            "reason": "game_resolution_unknown",
+            "resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "detail",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 12,
+              "comparison_count": 44,
+              "elapsed_ms": 12.557,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            }
+          }
+        },
+        {
+          "stage": "bilingual_route",
+          "decision": "pipeline:english_no_answer",
+          "confidence": 0.52,
+          "detail": "English requests never fall through to Thai-only runtime paths",
+          "metadata": {
+            "effective_locale": "en",
+            "route_category": "no_answer",
+            "route_intent": "english_verified_evidence_unavailable",
+            "runtime_translation": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:english_no_answer",
+          "metadata": {
+            "elapsed_ms": 6.4,
+            "elapsed_sec": 0.0064,
+            "format_response_style_ms": 0.0,
+            "answer_language": "en",
+            "total_elapsed_ms": 284.48,
+            "total_elapsed_sec": 0.2845
+          }
+        }
+      ],
+      "log_sinks": {
+        "status": "queued"
+      }
+    }
+  }
+]

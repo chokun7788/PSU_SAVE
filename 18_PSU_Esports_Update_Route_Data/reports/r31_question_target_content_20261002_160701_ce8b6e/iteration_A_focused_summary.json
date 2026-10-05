@@ -1,0 +1,31 @@
+{
+  "total": 20,
+  "passed": 19,
+  "failed": [
+    {
+      "case": {
+        "id": "R31-1",
+        "question": "สถานที่จัด PSU Phuket CS2 2026 คือที่ไหน",
+        "locale": "th",
+        "must_contain": [
+          "PSU Esports Studio",
+          "Phuket"
+        ],
+        "must_not_contain": [
+          "ยังไม่พบ"
+        ],
+        "required_source": "competition_rules_cs2",
+        "outcome": null,
+        "group": "r31_source"
+      },
+      "answer": "ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน",
+      "mode": "pipeline:competition_facet_not_covered_no_answer",
+      "failures": [
+        "missing:PSU Esports Studio",
+        "missing:Phuket",
+        "forbidden:ยังไม่พบ",
+        "source_missing"
+      ]
+    }
+  ]
+}

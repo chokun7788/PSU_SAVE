@@ -1,0 +1,2123 @@
+{
+  "counts": {
+    "ground_truth_competition_all_games_v2_diverse.jsonl": {
+      "total": 184,
+      "legacy_passed": 97,
+      "without_mode_gate_passed": 97
+    },
+    "ground_truth_competition_rules_v1_228.jsonl": {
+      "total": 228,
+      "legacy_passed": 0,
+      "without_mode_gate_passed": 66
+    },
+    "ground_truth_competition_challenger_v2_real_competitor_questions.jsonl": {
+      "total": 369,
+      "legacy_passed": 192,
+      "without_mode_gate_passed": 192
+    },
+    "ground_truth_competition_challenger_v1_weird_user_questions.jsonl": {
+      "total": 80,
+      "legacy_passed": 42,
+      "without_mode_gate_passed": 42
+    }
+  },
+  "examples": {
+    "ground_truth_competition_all_games_v2_diverse.jsonl": {
+      "question": "สถานที่จัด PSU Phuket CS2 2026 คือที่ไหน",
+      "expected": {
+        "id": "competition_cs2_v2_010",
+        "category": "competition_rules",
+        "game": "Counter-Strike 2",
+        "intent": "schedule_location",
+        "question": "สถานที่จัด PSU Phuket CS2 2026 คือที่ไหน",
+        "expected_keywords": [
+          "PSU Esports Studio",
+          "Phuket"
+        ],
+        "expected_source_keywords": [
+          "competition_rules_cs2_psu_phuket_2026"
+        ],
+        "answer_type": "fact",
+        "difficulty": "medium",
+        "variant_type": "schedule_location",
+        "source_fact_key": "cs2_location_duration",
+        "expected_mode_prefix": "pipeline:"
+      },
+      "answer": "ยังไม่พบหัวข้อกติกาที่ยืนยันได้ตรงกับประเด็นที่ถามในเอกสารของเกมนี้ครับ จึงจะไม่ใช้หัวข้ออื่นมาตอบแทน",
+      "mode": "pipeline:competition_facet_not_covered_no_answer",
+      "failures": [
+        "missing_keyword:PSU Esports Studio",
+        "missing_keyword:Phuket",
+        "missing_source:competition_rules_cs2_psu_phuket_2026"
+      ],
+      "trace": [
+        {
+          "stage": "timing",
+          "decision": "locale_resolution",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.21,
+            "elapsed_sec": 0.0002,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0003,
+            "global_remaining_sec": 19.9997,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9997,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "intent_cue_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 11.12,
+            "elapsed_sec": 0.0111,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0114,
+            "global_remaining_sec": 19.9886,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9886,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "canonical_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0114,
+            "global_remaining_sec": 19.9886,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9886,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "locale_resolution",
+          "decision": "th",
+          "confidence": 1.0,
+          "detail": "toggle_override_th;mixed_thai_function_words",
+          "metadata": {
+            "requested": "th",
+            "detected": "mixed",
+            "effective": "th",
+            "confidence": 1.0,
+            "reason": "toggle_override_th;mixed_thai_function_words"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "สถานที่จัด PSU Phuket CS2 2026 คือที่ไหน",
+            "candidate": "สถานที่จัด PSU Phuket CS2 2026 คือที่ไหน",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "parts=1",
+          "metadata": {
+            "elapsed_ms": 22.39,
+            "elapsed_sec": 0.0224,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0338,
+            "global_remaining_sec": 19.9662,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9662,
+            "timing_status": "running",
+            "entry_to_split_ms": 11.39,
+            "parts": [
+              "สถานที่จัด PSU Phuket CS2 2026 คือที่ไหน"
+            ],
+            "competition_rule_query": false
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "experimental_allow_llm is false; single clear operation does not need planner",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": false
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "สถานที่จัด psu phuket cs2 2026 คือที่ไหน",
+          "metadata": {
+            "language_hint": "mixed_th_en",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "สถานที่จัด PSU Phuket CS2 2026 คือที่ไหน"
+            ],
+            "elapsed_ms": 63.59,
+            "elapsed_sec": 0.0636
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 63.67,
+            "elapsed_sec": 0.0637
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "competition_rules/competition_rules_lookup",
+          "metadata": {
+            "elapsed_ms": 7.58,
+            "elapsed_sec": 0.0076,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": "psu",
+            "duration": null,
+            "price_intent": false
+          }
+        },
+        {
+          "stage": "target_lock",
+          "decision": "not_locked",
+          "confidence": 0.97,
+          "detail": "game_resolution_unknown",
+          "metadata": {
+            "locked": false,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "reason": "game_resolution_unknown",
+            "resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "detail",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 13,
+              "comparison_count": 64,
+              "elapsed_ms": 7.661,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "semantic_route_refiner",
+          "confidence": 1.0,
+          "detail": "skipped",
+          "metadata": {
+            "elapsed_ms": 0.04,
+            "elapsed_sec": 0.0,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "route_locked": false
+          }
+        },
+        {
+          "stage": "semantic_route_refiner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "semantic retrieval disabled",
+          "metadata": {}
+        },
+        {
+          "stage": "freshness_guard",
+          "decision": "not_required",
+          "confidence": 0.9,
+          "detail": "query does not require live dynamic evidence",
+          "metadata": {
+            "requires_live_evidence": false
+          }
+        },
+        {
+          "stage": "boundary_guard",
+          "decision": "allow",
+          "confidence": 0.9,
+          "detail": "no high-confidence boundary matched",
+          "metadata": {
+            "flags": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "guard_scope",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0
+          }
+        },
+        {
+          "stage": "guard",
+          "decision": "domain_ok",
+          "confidence": 0.9,
+          "detail": "domain hints found",
+          "metadata": {}
+        },
+        {
+          "stage": "router",
+          "decision": "competition_rules",
+          "confidence": 0.97,
+          "detail": "competition rule terms found before reservation/check-in",
+          "metadata": {
+            "intent": "competition_rules_lookup",
+            "answer_type": "fact"
+          }
+        },
+        {
+          "stage": "model_gateway",
+          "decision": "skip_preflight_llm",
+          "confidence": 0.97,
+          "detail": "request did not allow LLM",
+          "metadata": {
+            "allow_llm": false,
+            "preflight_allow_llm": false,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "universal_intent",
+          "confidence": 1.0,
+          "detail": "competition_rules/rule_lookup",
+          "metadata": {
+            "elapsed_ms": 3.99,
+            "elapsed_sec": 0.004,
+            "method": "heuristic",
+            "confidence": 0.9
+          }
+        },
+        {
+          "stage": "universal_intent",
+          "decision": "competition_rules/rule_lookup",
+          "confidence": 0.9,
+          "detail": "domain_terms=2; competition route overrides game/count ambiguity; no clear operation terms; competition route forces rule lookup",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false,
+            "llm_first": false,
+            "llm_first_skip_reason": "",
+            "llm_first_review_reason": "",
+            "llm_call": {},
+            "intent_risk_flags": [],
+            "input_recovery": {
+              "score": 0.1549,
+              "language": "mixed",
+              "language_quality": 0.8451,
+              "should_review_intent": false,
+              "reason": "Thai character n-gram quality=0.845",
+              "action": "continue"
+            },
+            "llm_rejected_reason": "",
+            "intent_candidates": [
+              {
+                "id": "c1",
+                "domain": "competition_rules",
+                "operation": "rule_lookup",
+                "target": "",
+                "confidence": 0.9,
+                "reason": "heuristic fallback"
+              },
+              {
+                "id": "c2",
+                "domain": "games",
+                "operation": "list",
+                "target": "",
+                "confidence": 0.66,
+                "reason": "game-domain catalog alternative"
+              },
+              {
+                "id": "c3",
+                "domain": "games",
+                "operation": "rule_lookup",
+                "target": "",
+                "confidence": 0.66,
+                "reason": "domain keyword score=1"
+              }
+            ],
+            "target": "",
+            "filters": {},
+            "needs": [
+              "lookup_competition_rule"
+            ],
+            "answer_style": "direct",
+            "heuristic": {
+              "domain": "competition_rules",
+              "operation": "rule_lookup",
+              "confidence": 0.9,
+              "reason": "domain_terms=2; competition route overrides game/count ambiguity; no clear operation terms; competition route forces rule lookup"
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_router",
+          "confidence": 1.0,
+          "detail": "retrieval/competition_rules",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "method": "heuristic",
+            "confidence": 0.9
+          }
+        },
+        {
+          "stage": "tool_router",
+          "decision": "heuristic:retrieval",
+          "confidence": 0.9,
+          "detail": "experimental_allow_llm is false",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "ambiguity_gate",
+          "confidence": 1.0,
+          "detail": "allow",
+          "metadata": {
+            "elapsed_ms": 116.22,
+            "elapsed_sec": 0.1162,
+            "flags": [],
+            "confidence": 0.94
+          }
+        },
+        {
+          "stage": "ambiguity_gate",
+          "decision": "allow",
+          "confidence": 0.94,
+          "detail": "ambiguity risk acceptable",
+          "metadata": {
+            "flags": [],
+            "route": "competition_rules/competition_rules_lookup",
+            "intent": "competition_rules/rule_lookup",
+            "has_known_game": true,
+            "has_service_or_zone": false,
+            "game_entity_resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 13,
+              "comparison_count": 64,
+              "elapsed_ms": 4.914,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            },
+            "intent_candidates": [
+              {
+                "domain": "games",
+                "operation": "detail",
+                "score": 0.3,
+                "reasons": [
+                  "known_game_target"
+                ]
+              },
+              {
+                "domain": "service_fee",
+                "operation": "price_calculate",
+                "score": 0.1,
+                "reasons": [
+                  "price_filters"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "question_frame",
+          "confidence": 0.96,
+          "detail": "competition_rules/competition_rule_lookup",
+          "metadata": {
+            "elapsed_ms": 37.2,
+            "elapsed_sec": 0.0372,
+            "operation": "competition_rule_lookup",
+            "domain": "competition_rules",
+            "expected_answer_types": [
+              "competition_rule"
+            ],
+            "targets": [
+              {
+                "target_id": "cs2",
+                "target_type": "competition_game",
+                "domain": "competition_rules",
+                "label": "Counter-Strike 2",
+                "score": 1.0
+              }
+            ],
+            "target_status": "exact",
+            "target_margin": 1.0,
+            "target_required": true,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.96,
+            "method": "competition_target_first",
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "intent_operation": "rule_lookup",
+            "competition_game_ids": [
+              "cs2"
+            ],
+            "competition_game_labels": [
+              "Counter-Strike 2"
+            ],
+            "competition_rulebook_ids": [
+              "competition_rules_cs2_psu_phuket_2026"
+            ],
+            "competition_facet": null,
+            "competition_target_reason": "registered_competition_alias",
+            "competition_explicit_mentions": [
+              "cs2"
+            ],
+            "target_reason": "registered_competition_alias",
+            "target_candidate_count": 1,
+            "game_family": ""
+          }
+        },
+        {
+          "stage": "target_context",
+          "decision": "enrich_universal_intent",
+          "confidence": 1.0,
+          "detail": "exact Question Frame target propagated to structured execution",
+          "metadata": {
+            "target_id": "cs2",
+            "target_type": "competition_game",
+            "domain": "competition_rules",
+            "label": "Counter-Strike 2",
+            "score": 1.0
+          }
+        },
+        {
+          "stage": "operation_route_refine",
+          "decision": "competition_rules/competition_rules_lookup -> competition_rules/competition_rules_lookup",
+          "confidence": 0.96,
+          "detail": "question frame supplied a clear PSU operation domain",
+          "metadata": {
+            "operation": "competition_rule_lookup",
+            "domain": "competition_rules",
+            "expected_answer_types": [
+              "competition_rule"
+            ],
+            "targets": [
+              {
+                "target_id": "cs2",
+                "target_type": "competition_game",
+                "domain": "competition_rules",
+                "label": "Counter-Strike 2",
+                "score": 1.0
+              }
+            ],
+            "target_status": "exact",
+            "target_margin": 1.0,
+            "target_required": true,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.96,
+            "method": "competition_target_first",
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "intent_operation": "rule_lookup",
+            "competition_game_ids": [
+              "cs2"
+            ],
+            "competition_game_labels": [
+              "Counter-Strike 2"
+            ],
+            "competition_rulebook_ids": [
+              "competition_rules_cs2_psu_phuket_2026"
+            ],
+            "competition_facet": null,
+            "competition_target_reason": "registered_competition_alias",
+            "competition_explicit_mentions": [
+              "cs2"
+            ],
+            "target_reason": "registered_competition_alias",
+            "target_candidate_count": 1,
+            "game_family": ""
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "candidate_decisions",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 44.74,
+            "elapsed_sec": 0.0447
+          }
+        },
+        {
+          "stage": "decision_candidates",
+          "decision": "retrieval.competition_fact_cards",
+          "confidence": 0.9388888888888889,
+          "detail": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority; question_frame_domain_match; precondition=competition_rule_retrieval_applicable",
+          "metadata": {
+            "selected": {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.939,
+              "status": "accepted",
+              "reason": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority; question_frame_domain_match; precondition=competition_rule_retrieval_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            "selection": {
+              "status": "selected",
+              "execution_allowed": true,
+              "margin": 0.433,
+              "same_action_as_second": true,
+              "second": {
+                "capability_id": "retrieval.hybrid_guarded",
+                "action": "retrieval",
+                "domain": "multi",
+                "score": 0.506,
+                "status": "accepted",
+                "reason": "base=0.72; multi_domain; answer_type_match; tool_router_action=retrieval; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              }
+            },
+            "question_frame": {
+              "operation": "competition_rule_lookup",
+              "domain": "competition_rules",
+              "expected_answer_types": [
+                "competition_rule"
+              ],
+              "targets": [
+                {
+                  "target_id": "cs2",
+                  "target_type": "competition_game",
+                  "domain": "competition_rules",
+                  "label": "Counter-Strike 2",
+                  "score": 1.0
+                }
+              ],
+              "target_status": "exact",
+              "target_margin": 1.0,
+              "target_required": true,
+              "allows_multiple_targets": false,
+              "needs_clarification": false,
+              "confidence": 0.96,
+              "method": "competition_target_first",
+              "route_category": "competition_rules",
+              "route_intent": "competition_rules_lookup",
+              "intent_operation": "rule_lookup",
+              "competition_game_ids": [
+                "cs2"
+              ],
+              "competition_game_labels": [
+                "Counter-Strike 2"
+              ],
+              "competition_rulebook_ids": [
+                "competition_rules_cs2_psu_phuket_2026"
+              ],
+              "competition_facet": null,
+              "competition_target_reason": "registered_competition_alias",
+              "competition_explicit_mentions": [
+                "cs2"
+              ],
+              "target_reason": "registered_competition_alias",
+              "target_candidate_count": 1,
+              "game_family": ""
+            },
+            "candidates": [
+              {
+                "capability_id": "retrieval.competition_fact_cards",
+                "action": "retrieval",
+                "domain": "competition_rules",
+                "score": 0.939,
+                "status": "accepted",
+                "reason": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority; question_frame_domain_match; precondition=competition_rule_retrieval_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.hybrid_guarded",
+                "action": "retrieval",
+                "domain": "multi",
+                "score": 0.506,
+                "status": "accepted",
+                "reason": "base=0.72; multi_domain; answer_type_match; tool_router_action=retrieval; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "fast.domain_handlers",
+                "action": "fast_path",
+                "domain": "multi",
+                "score": 0.489,
+                "status": "accepted",
+                "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "rulebase.category_rules",
+                "action": "rulebase",
+                "domain": "multi",
+                "score": 0.467,
+                "status": "accepted",
+                "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.vector_guarded",
+                "action": "vector",
+                "domain": "multi",
+                "score": 0.444,
+                "status": "accepted",
+                "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "llm.facts_composer",
+                "action": "rag_llm",
+                "domain": "multi",
+                "score": 0.4,
+                "status": "accepted",
+                "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "clarification.ask_user",
+                "action": "clarification",
+                "domain": "clarification",
+                "score": 0.322,
+                "status": "accepted",
+                "reason": "base=0.58; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              },
+              {
+                "capability_id": "fallback.no_answer",
+                "action": "no_answer",
+                "domain": "no_answer",
+                "score": 0.278,
+                "status": "accepted",
+                "reason": "base=0.50; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              }
+            ],
+            "rejected": [
+              {
+                "capability_id": "structured.members",
+                "action": "structured",
+                "domain": "members",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: competition_query_must_not_use_member_directory",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.games",
+                "action": "structured",
+                "domain": "games",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_game_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.game_controls",
+                "action": "structured",
+                "domain": "game_controls",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_game_control_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.equipment",
+                "action": "structured",
+                "domain": "equipment",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_an_equipment_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.reservation",
+                "action": "structured",
+                "domain": "reservation",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_reservation_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.schedule",
+                "action": "structured",
+                "domain": "schedule",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_schedule_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.service_fee",
+                "action": "structured",
+                "domain": "service_fee",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_price_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "fast.price_calculator",
+                "action": "fast_path",
+                "domain": "service_fee",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_price_or_calculation_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              }
+            ],
+            "policy": {
+              "psu_specific": true,
+              "route_risk": "medium",
+              "general_llm_requires_non_psu": true
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_precondition",
+          "confidence": 1.0,
+          "detail": "structured.unknown",
+          "metadata": {
+            "elapsed_ms": 0.17,
+            "elapsed_sec": 0.0002,
+            "ok": false
+          }
+        },
+        {
+          "stage": "tool_precondition",
+          "decision": "reject_structured",
+          "confidence": 0.2,
+          "detail": "candidate_selector_preferred_non_structured_action",
+          "metadata": {
+            "capability_id": "structured.unknown",
+            "ok": false,
+            "reason": "no_structured_capability_for_route",
+            "severity": "policy",
+            "selector_allows_structured": false,
+            "selected_capability_id": "retrieval.competition_fact_cards"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "structured_tool_execution",
+          "confidence": 1.0,
+          "detail": "no_result",
+          "metadata": {
+            "elapsed_ms": 0.0,
+            "elapsed_sec": 0.0,
+            "precondition_ok": false,
+            "selector_allows_structured": false,
+            "selected_capability_id": "retrieval.competition_fact_cards",
+            "confidence": 0.0
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "deterministic",
+          "confidence": 1.0,
+          "detail": "no_match",
+          "metadata": {
+            "elapsed_ms": 0.0,
+            "elapsed_sec": 0.0,
+            "confidence": 0.0,
+            "selector_allows_deterministic": false,
+            "selected_capability_id": "retrieval.competition_fact_cards"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "competition_source_retrieval",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 29.45,
+            "elapsed_sec": 0.0295,
+            "hit_count": 8,
+            "target_game_ids": [
+              "cs2"
+            ],
+            "facet": null
+          }
+        },
+        {
+          "stage": "rag_retrieval",
+          "decision": "curated_lexical",
+          "confidence": 0.84,
+          "detail": "hits=8 game=Counter-Strike 2 intent=schedule_location",
+          "metadata": {
+            "category": "competition_rules",
+            "game": "Counter-Strike 2",
+            "intent": "schedule_location"
+          }
+        },
+        {
+          "stage": "competition_contract_retrieval",
+          "decision": "skipped",
+          "confidence": 1.0,
+          "detail": "target or canonical facet is unresolved",
+          "metadata": {
+            "facet": null,
+            "target_status": "exact"
+          }
+        },
+        {
+          "stage": "competition_source_grounding",
+          "decision": "facet_not_covered_safe_no_answer",
+          "confidence": 0.92,
+          "detail": "retrieved_source_does_not_prove_requested_facet",
+          "metadata": {
+            "hit_count": 8,
+            "covered": false,
+            "facet": "unspecified",
+            "target_game_ids": [
+              "cs2"
+            ],
+            "matched_chunk_ids": [
+              "competition_rules_cs2_psu_phuket_2026_s04_c01",
+              "competition_rules_cs2_psu_phuket_2026_s26_c01",
+              "competition_rules_cs2_psu_phuket_2026_s49_c01",
+              "competition_rules_cs2_psu_phuket_2026_s57_c01",
+              "competition_rules_cs2_psu_phuket_2026_s51_c01",
+              "competition_rules_cs2_psu_phuket_2026_s31_c01",
+              "competition_rules_cs2_psu_phuket_2026_s43_c01",
+              "competition_rules_cs2_psu_phuket_2026_s56_c01"
+            ],
+            "reason": "retrieved_source_does_not_prove_requested_facet"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:competition_facet_not_covered_no_answer",
+          "metadata": {
+            "elapsed_ms": 0.71,
+            "elapsed_sec": 0.0007,
+            "format_response_style_ms": 0.12,
+            "answer_language": "th",
+            "total_elapsed_ms": 461.37,
+            "total_elapsed_sec": 0.4614
+          }
+        }
+      ]
+    },
+    "ground_truth_competition_rules_v1_228.jsonl": {
+      "question": "RoV ใช้สกินพิเศษได้หรือเปล่า",
+      "expected": {
+        "id": "competition_v1_128",
+        "category": "competition_rules",
+        "game": "Arena of Valor (RoV)",
+        "intent": "skin",
+        "question": "RoV ใช้สกินพิเศษได้หรือเปล่า",
+        "expected_keywords": [
+          "Default Skin"
+        ],
+        "expected_source_keywords": [
+          "competition_rules_rov_blueket_2025_men"
+        ],
+        "answer_type": "fact",
+        "difficulty": "medium",
+        "variant_type": "competition_skin",
+        "source_fact_key": "rov_skin",
+        "expected_mode_prefix": "pipeline:competition_fact_card"
+      },
+      "answer": "คำตอบ: 4.2.5.ในส่วนของสกิน ห้ามใช้สกินนอกจากสกิน Default เท่านั้น\n\nอ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+      "mode": "pipeline:competition_rule_detail_source",
+      "failures": [
+        "missing_keyword:Default Skin"
+      ],
+      "trace": [
+        {
+          "stage": "timing",
+          "decision": "locale_resolution",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.19,
+            "elapsed_sec": 0.0002,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0002,
+            "global_remaining_sec": 19.9998,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9998,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "intent_cue_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 8.41,
+            "elapsed_sec": 0.0084,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0086,
+            "global_remaining_sec": 19.9914,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9913,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "canonical_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0087,
+            "global_remaining_sec": 19.9913,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9913,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "locale_resolution",
+          "decision": "th",
+          "confidence": 1.0,
+          "detail": "toggle_override_th;mixed_thai_function_words",
+          "metadata": {
+            "requested": "th",
+            "detected": "mixed",
+            "effective": "th",
+            "confidence": 1.0,
+            "reason": "toggle_override_th;mixed_thai_function_words"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "RoV ใช้สกินพิเศษได้หรือเปล่า",
+            "candidate": "RoV ใช้สกินพิเศษได้หรือเปล่า",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "competition_rule_single_target",
+          "metadata": {
+            "elapsed_ms": 12.91,
+            "elapsed_sec": 0.0129,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0216,
+            "global_remaining_sec": 19.9784,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9784,
+            "timing_status": "running",
+            "entry_to_split_ms": 8.66,
+            "parts": [
+              "RoV ใช้สกินพิเศษได้หรือเปล่า"
+            ],
+            "competition_rule_query": true
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "experimental_allow_llm is false; competition_rule_target_grounded_retrieval",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": false
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "rov ใช้สกินพิเศษได้หรือเปล่า",
+          "metadata": {
+            "language_hint": "mixed_th_en",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "RoV ใช้สกินพิเศษได้หรือเปล่า"
+            ],
+            "elapsed_ms": 15.85,
+            "elapsed_sec": 0.0159
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 15.91,
+            "elapsed_sec": 0.0159
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "competition_rules/competition_rules_lookup",
+          "metadata": {
+            "elapsed_ms": 0.54,
+            "elapsed_sec": 0.0005,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          }
+        },
+        {
+          "stage": "target_lock",
+          "decision": "not_locked",
+          "confidence": 0.97,
+          "detail": "game_resolution_unknown",
+          "metadata": {
+            "locked": false,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "reason": "game_resolution_unknown",
+            "resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "detail",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 8,
+              "comparison_count": 63,
+              "elapsed_ms": 7.657,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "competition_detail_lookup",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 34.81,
+            "elapsed_sec": 0.0348
+          }
+        },
+        {
+          "stage": "competition_detail",
+          "decision": "accepted",
+          "confidence": 0.97,
+          "detail": "one rulebook, literal complete clauses, no inferred policies",
+          "metadata": {
+            "concepts": [
+              "skins"
+            ],
+            "source_ids": [
+              "competition_rules_rov_blueket_2025_men_s06_c01"
+            ],
+            "validation_errors": [],
+            "outcome": "answer",
+            "reasons": []
+          }
+        },
+        {
+          "stage": "semantic_route",
+          "decision": "skipped_exact_competition_facet",
+          "confidence": 0.97,
+          "detail": "explicit detail propositions already bound to source clauses",
+          "metadata": {}
+        },
+        {
+          "stage": "competition_source_grounding",
+          "decision": "detail_clauses_covered",
+          "confidence": 0.97,
+          "detail": "supported clauses retained; source gaps/conflicts explicitly reported",
+          "metadata": {
+            "concepts": [
+              "skins"
+            ],
+            "source_ids": [
+              "competition_rules_rov_blueket_2025_men_s06_c01"
+            ],
+            "outcome": "answer",
+            "reasons": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:competition_rule_detail_source",
+          "metadata": {
+            "elapsed_ms": 0.8,
+            "elapsed_sec": 0.0008,
+            "format_response_style_ms": 0.32,
+            "answer_language": "th",
+            "total_elapsed_ms": 132.74,
+            "total_elapsed_sec": 0.1327
+          }
+        }
+      ]
+    },
+    "ground_truth_competition_challenger_v1_weird_user_questions.jsonl": {
+      "question": "CS2 timeout ตอน freeze time ได้กี่วิกี่ครั้ง",
+      "expected": {
+        "id": "competition_challenger_cs2_009",
+        "category": "competition_rules",
+        "game": "Counter-Strike 2",
+        "intent": "pause",
+        "question": "CS2 timeout ตอน freeze time ได้กี่วิกี่ครั้ง",
+        "expected_keywords": [
+          "4 ครั้ง",
+          "30 วินาที",
+          "Freeze time"
+        ],
+        "expected_source_keywords": [
+          "competition_rules_cs2_psu_phuket_2026"
+        ],
+        "answer_type": "fact",
+        "difficulty": "medium",
+        "variant_type": "weird_user_question",
+        "source_fact_key": "cs2_tactical_timeout",
+        "expected_mode_prefix": "pipeline:"
+      },
+      "answer": "คำตอบ: 2. เวลาต่อรอบ 1:55 นาที | Freeze time: 15 วินาที\n\nอ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+      "mode": "pipeline:competition_rule_detail_source",
+      "failures": [
+        "missing_keyword:4 ครั้ง",
+        "missing_keyword:30 วินาที"
+      ],
+      "trace": [
+        {
+          "stage": "timing",
+          "decision": "locale_resolution",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.19,
+            "elapsed_sec": 0.0002,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0002,
+            "global_remaining_sec": 19.9998,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9998,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "intent_cue_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 11.24,
+            "elapsed_sec": 0.0112,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0115,
+            "global_remaining_sec": 19.9885,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9885,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "canonical_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0115,
+            "global_remaining_sec": 19.9885,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9885,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "locale_resolution",
+          "decision": "th",
+          "confidence": 1.0,
+          "detail": "toggle_override_th;mixed_thai_function_words",
+          "metadata": {
+            "requested": "th",
+            "detected": "mixed",
+            "effective": "th",
+            "confidence": 1.0,
+            "reason": "toggle_override_th;mixed_thai_function_words"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "CS2 timeout ตอน freeze time ได้กี่วิกี่ครั้ง",
+            "candidate": "CS2 timeout ตอน freeze time ได้กี่วิกี่ครั้ง",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "competition_rule_single_target",
+          "metadata": {
+            "elapsed_ms": 18.64,
+            "elapsed_sec": 0.0186,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0301,
+            "global_remaining_sec": 19.9699,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9699,
+            "timing_status": "running",
+            "entry_to_split_ms": 11.47,
+            "parts": [
+              "CS2 timeout ตอน freeze time ได้กี่วิกี่ครั้ง"
+            ],
+            "competition_rule_query": true
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "experimental_allow_llm is false; competition_rule_target_grounded_retrieval",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": false
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "cs2 timeout ตอน freeze time ได้กี่วิธี่ครั้ง",
+          "metadata": {
+            "language_hint": "mixed_th_en",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "CS2 timeout ตอน freeze time ได้กี่วิกี่ครั้ง",
+              "cs2 timeout ตอน freeze time ได้กี่วิธี่ครั้ง"
+            ],
+            "elapsed_ms": 18.98,
+            "elapsed_sec": 0.019
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 19.03,
+            "elapsed_sec": 0.019
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "competition_rules/competition_rules_lookup",
+          "metadata": {
+            "elapsed_ms": 0.39,
+            "elapsed_sec": 0.0004,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          }
+        },
+        {
+          "stage": "target_lock",
+          "decision": "not_locked",
+          "confidence": 0.97,
+          "detail": "game_resolution_unknown",
+          "metadata": {
+            "locked": false,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "reason": "game_resolution_unknown",
+            "resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "detail",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 10,
+              "comparison_count": 64,
+              "elapsed_ms": 11.887,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "competition_detail_lookup",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 40.55,
+            "elapsed_sec": 0.0405
+          }
+        },
+        {
+          "stage": "competition_detail",
+          "decision": "accepted",
+          "confidence": 0.97,
+          "detail": "one rulebook, literal complete clauses, no inferred policies",
+          "metadata": {
+            "concepts": [
+              "round_time"
+            ],
+            "source_ids": [
+              "competition_rules_cs2_psu_phuket_2026_s24_c01"
+            ],
+            "validation_errors": [],
+            "outcome": "answer",
+            "reasons": []
+          }
+        },
+        {
+          "stage": "semantic_route",
+          "decision": "skipped_exact_competition_facet",
+          "confidence": 0.97,
+          "detail": "explicit detail propositions already bound to source clauses",
+          "metadata": {}
+        },
+        {
+          "stage": "competition_source_grounding",
+          "decision": "detail_clauses_covered",
+          "confidence": 0.97,
+          "detail": "supported clauses retained; source gaps/conflicts explicitly reported",
+          "metadata": {
+            "concepts": [
+              "round_time"
+            ],
+            "source_ids": [
+              "competition_rules_cs2_psu_phuket_2026_s24_c01"
+            ],
+            "outcome": "answer",
+            "reasons": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:competition_rule_detail_source",
+          "metadata": {
+            "elapsed_ms": 0.59,
+            "elapsed_sec": 0.0006,
+            "format_response_style_ms": 0.16,
+            "answer_language": "th",
+            "total_elapsed_ms": 164.4,
+            "total_elapsed_sec": 0.1644
+          }
+        }
+      ]
+    },
+    "ground_truth_competition_challenger_v2_real_competitor_questions.jsonl": {
+      "question": "เทคเคนแต่ละเกมแข่งกี่รอบ",
+      "expected": {
+        "category": "competition_rules",
+        "game": "Tekken 8",
+        "intent": "game_setting",
+        "question": "เทคเคนแต่ละเกมแข่งกี่รอบ",
+        "expected_keywords": [
+          "3 รอบ"
+        ],
+        "expected_source_keywords": [
+          "competition_rules_tekken8_psu_esports"
+        ],
+        "answer_type": "fact",
+        "difficulty": "challenger",
+        "variant_type": "real_competitor_edge",
+        "source_fact_key": "tekken8_round_3",
+        "expected_mode_prefix": "pipeline:",
+        "id": "competition_challenger_v2_edge_082"
+      },
+      "answer": "คำตอบ: ตามเอกสารกติกา Tekken 8 ที่มี: จำนวนรอบต่อเกม (Round): 3\n\nอ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+      "mode": "pipeline:competition_rule_detail_source",
+      "failures": [
+        "missing_keyword:3 รอบ"
+      ],
+      "trace": [
+        {
+          "stage": "timing",
+          "decision": "locale_resolution",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.09,
+            "elapsed_sec": 0.0001,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0001,
+            "global_remaining_sec": 19.9999,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9999,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "intent_cue_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 6.51,
+            "elapsed_sec": 0.0065,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0066,
+            "global_remaining_sec": 19.9934,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9933,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "canonical_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0067,
+            "global_remaining_sec": 19.9933,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9933,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "locale_resolution",
+          "decision": "th",
+          "confidence": 1.0,
+          "detail": "toggle_override_th;thai_script",
+          "metadata": {
+            "requested": "th",
+            "detected": "th",
+            "effective": "th",
+            "confidence": 1.0,
+            "reason": "toggle_override_th;thai_script"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "เทคเคนแต่ละเกมแข่งกี่รอบ",
+            "candidate": "เทคเคนแต่ละเกมแข่งกี่รอบ",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "competition_rule_single_target",
+          "metadata": {
+            "elapsed_ms": 11.58,
+            "elapsed_sec": 0.0116,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0183,
+            "global_remaining_sec": 19.9817,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9817,
+            "timing_status": "running",
+            "entry_to_split_ms": 6.65,
+            "parts": [
+              "เทคเคนแต่ละเกมแข่งกี่รอบ"
+            ],
+            "competition_rule_query": true
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "experimental_allow_llm is false; competition_rule_target_grounded_retrieval",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": false
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "เทคเคนแต่ละเกมแข่งกี่รอบ",
+          "metadata": {
+            "language_hint": "th",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "เทคเคนแต่ละเกมแข่งกี่รอบ"
+            ],
+            "elapsed_ms": 11.25,
+            "elapsed_sec": 0.0112
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 11.29,
+            "elapsed_sec": 0.0113
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "competition_rules/competition_rules_lookup",
+          "metadata": {
+            "elapsed_ms": 1.36,
+            "elapsed_sec": 0.0014,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "competition_detail_lookup",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 24.1,
+            "elapsed_sec": 0.0241
+          }
+        },
+        {
+          "stage": "competition_detail",
+          "decision": "accepted",
+          "confidence": 0.97,
+          "detail": "one rulebook, literal complete clauses, no inferred policies",
+          "metadata": {
+            "concepts": [
+              "tekken_round_count"
+            ],
+            "source_ids": [
+              "competition_rules_tekken8_psu_esports_s04_c01"
+            ],
+            "validation_errors": [],
+            "outcome": "answer",
+            "reasons": []
+          }
+        },
+        {
+          "stage": "semantic_route",
+          "decision": "skipped_exact_competition_facet",
+          "confidence": 0.97,
+          "detail": "explicit detail propositions already bound to source clauses",
+          "metadata": {}
+        },
+        {
+          "stage": "competition_source_grounding",
+          "decision": "detail_clauses_covered",
+          "confidence": 0.97,
+          "detail": "supported clauses retained; source gaps/conflicts explicitly reported",
+          "metadata": {
+            "concepts": [
+              "tekken_round_count"
+            ],
+            "source_ids": [
+              "competition_rules_tekken8_psu_esports_s04_c01"
+            ],
+            "outcome": "answer",
+            "reasons": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:competition_rule_detail_source",
+          "metadata": {
+            "elapsed_ms": 0.58,
+            "elapsed_sec": 0.0006,
+            "format_response_style_ms": 0.15,
+            "answer_language": "th",
+            "total_elapsed_ms": 91.93,
+            "total_elapsed_sec": 0.0919
+          }
+        }
+      ]
+    }
+  },
+  "failure_counts": {
+    "legacy_mode_prefix:pipeline:competition_fact_card": 228,
+    "missing_keyword:PSU Esports Studio": 8,
+    "missing_keyword:Phuket": 2,
+    "missing_source:competition_rules_cs2_psu_phuket_2026": 32,
+    "missing_keyword:ล่วงหน้า": 2,
+    "missing_keyword:1 วัน": 2,
+    "missing_keyword:รอบชิง": 3,
+    "missing_keyword:1:55": 1,
+    "missing_keyword:15 วินาที": 1,
+    "wrong_category:service_fee": 3,
+    "missing_keyword:$800": 2,
+    "missing_keyword:40 วินาที": 2,
+    "missing_keyword:24 รอบ": 2,
+    "missing_keyword:12 รอบ": 2,
+    "missing_keyword:Mirage": 2,
+    "missing_keyword:Nuke": 2,
+    "missing_keyword:PC": 1,
+    "missing_keyword:จอภาพ": 1,
+    "missing_keyword:โต๊ะ": 1,
+    "missing_keyword:เก้าอี้": 1,
+    "missing_keyword:Crosshair": 2,
+    "missing_keyword:Resolution": 2,
+    "missing_keyword:Brightness": 2,
+    "missing_keyword:สคริปต์": 2,
+    "missing_keyword:มาโคร": 2,
+    "missing_keyword:ไม่เกิน 6 คน": 1,
+    "missing_keyword:หัวหน้าทีม": 6,
+    "missing_keyword:กรรมการ": 15,
+    "missing_keyword:อาคาร 5": 4,
+    "missing_keyword:ชั้น 1": 2,
+    "missing_source:competition_rules_rov_blueket_2025_men": 68,
+    "missing_keyword:BO3": 9,
+    "missing_keyword:ทุกรอบ": 6,
+    "missing_keyword:หมายเลขห้อง": 2,
+    "missing_keyword:18 ตัว": 2,
+    "missing_keyword:Default Skin": 16,
+    "missing_keyword:5 ครั้ง": 13,
+    "missing_keyword:1 นาที": 13,
+    "missing_keyword:Resume": 4,
+    "missing_keyword:แจ้งทีมงาน": 5,
+    "missing_keyword:ดุลยพินิจ": 3,
+    "wrong_category:no_answer": 5,
+    "missing_keyword:First Blood": 12,
+    "missing_keyword:2 นาที": 8,
+    "missing_keyword:เริ่มเกมใหม่": 4,
+    "missing_keyword:อนุญาต": 7,
+    "missing_keyword:คู่แข่ง": 2,
+    "missing_keyword:ปรับ": 6,
+    "missing_keyword:แพ้": 6,
+    "missing_keyword:10 นาที": 16,
+    "wrong_category:overview": 2,
+    "missing_keyword:เครื่องร้อน": 2,
+    "missing_keyword:ปรับแพ้": 15,
+    "missing_keyword:ตัดสิทธิ์": 4,
+    "missing_keyword:เล่นแทน": 2,
+    "missing_keyword:ห้าม": 33,
+    "missing_keyword:ออฟไลน์": 5,
+    "missing_keyword:pause": 2,
+    "missing_keyword:5v5": 8,
+    "missing_keyword:5 คน": 18,
+    "missing_source:competition_rules_valorant_psu_phuket_2026": 75,
+    "missing_keyword:ตัวจริง 5 คน": 2,
+    "missing_keyword:ไม่เกิน 6": 2,
+    "wrong_category:games": 136,
+    "missing_keyword:น้ำดื่ม": 4,
+    "missing_keyword:ปิดสนิท": 4,
+    "missing_keyword:หมากฝรั่ง": 4,
+    "wrong_category:rules": 2,
+    "missing_keyword:2 สัปดาห์": 8,
+    "missing_keyword:เลือด": 2,
+    "missing_keyword:ศพ": 2,
+    "missing_keyword:OFF": 2,
+    "missing_keyword:Abyss": 16,
+    "missing_keyword:Sunset": 16,
+    "missing_keyword:Haven": 2,
+    "missing_keyword:Lotus": 2,
+    "missing_keyword:โยนเหรียญ": 4,
+    "missing_keyword:เจ้าหน้าที่": 2,
+    "missing_keyword:บันทึกผล": 2,
+    "missing_keyword:13-0": 2,
+    "missing_keyword:Tactical": 4,
+    "missing_keyword:Emergency": 14,
+    "missing_keyword:ไม่ส่งผลกระทบ": 2,
+    "missing_keyword:เล่นต่อ": 3,
+    "missing_keyword:Major Bug": 1,
+    "missing_keyword:Challenge": 3,
+    "missing_keyword:Game-Breaking": 2,
+    "missing_keyword:ย้อนรอบ": 4,
+    "missing_keyword:ก่อน": 2,
+    "missing_keyword:ดาเมจ": 2,
+    "missing_keyword:damage": 2,
+    "missing_keyword:ไม่": 1,
+    "missing_keyword:ผิด": 2,
+    "missing_keyword:ได้เปรียบ": 1,
+    "missing_keyword:Cypher": 4,
+    "missing_keyword:นอกขอบเขต": 1,
+    "missing_keyword:KAY/O": 2,
+    "missing_keyword:ZERO/POINT": 2,
+    "missing_keyword:Texture": 3,
+    "missing_keyword:กระโดด": 2,
+    "missing_keyword:Warning": 1,
+    "missing_keyword:ตักเตือน": 3,
+    "missing_keyword:ช่องโหว่": 2,
+    "missing_keyword:Snap Tap": 4,
+    "missing_keyword:SOCD": 4,
+    "missing_keyword:permitted": 2,
+    "missing_keyword:Macros": 3,
+    "missing_keyword:social media": 7,
+    "missing_keyword:Agent": 7,
+    "missing_keyword:ชนะครบ 2 เกม": 4,
+    "missing_source:competition_rules_tekken8_psu_esports": 83,
+    "missing_keyword:เกมตัดสิน": 7,
+    "missing_keyword:3 รอบ": 7,
+    "missing_keyword:60 วินาที": 12,
+    "missing_keyword:No advantage": 2,
+    "missing_keyword:Random": 9,
+    "missing_keyword:ยกเว้น": 3,
+    "missing_keyword:DLC": 7,
+    "missing_keyword:ทุกตัว": 2,
+    "missing_keyword:ปรับแต่ง": 4,
+    "missing_keyword:สกินมาตรฐาน": 1,
+    "missing_keyword:Assist": 2,
+    "missing_keyword:Bug": 1,
+    "missing_keyword:Glitch": 1,
+    "missing_keyword:ยินยอม": 4,
+    "missing_keyword:อุปกรณ์ขัดข้อง": 6,
+    "missing_keyword:เหตุฉุกเฉิน": 5,
+    "missing_keyword:ปรับแพ้ทันที": 3,
+    "missing_keyword:ออกจากเกมก่อนจบ": 1,
+    "missing_keyword:คำตัดสิน": 5,
+    "missing_keyword:ปรับเปลี่ยนกฎ": 2,
+    "missing_keyword:ไม่ต้องแจ้ง": 4,
+    "missing_keyword:ถือเป็นที่สิ้นสุด": 2,
+    "missing_keyword:ผู้ดูแล": 2,
+    "missing_keyword:ผู้จัดการแข่งขัน": 1,
+    "missing_keyword:ทันที": 1,
+    "missing_keyword:เอฟเฟกต์": 1,
+    "missing_keyword:ออร่า": 1,
+    "missing_keyword:เปลี่ยนแปลง": 4,
+    "missing_keyword:กฎระเบียบ": 2,
+    "missing_keyword:เดี่ยว": 2,
+    "missing_keyword:4 ครั้ง": 5,
+    "missing_keyword:30 วินาที": 4,
+    "missing_keyword:แมตช์": 4,
+    "missing_keyword:Technical": 2,
+    "missing_keyword:2 ครั้ง": 11,
+    "missing_keyword:ผู้เล่น 5 คน": 4,
+    "missing_keyword:15 นาที": 9,
+    "wrong_category:penalty": 2,
+    "missing_keyword:หยาบคาย": 2,
+    "missing_keyword:เสียดสี": 2,
+    "missing_keyword:คีย์บอร์ด": 2,
+    "missing_keyword:เมาส์": 2,
+    "missing_keyword:เว็บไซต์สื่อสาร": 2,
+    "missing_keyword:เอกสาร": 3,
+    "missing_keyword:Play Through": 1,
+    "missing_keyword:R3": 3,
+    "missing_keyword:Customization": 17,
+    "missing_keyword:ชุด": 2,
+    "missing_keyword:สงวนสิทธิ์": 2,
+    "missing_keyword:FT2": 13,
+    "missing_keyword:PlayStation 5": 12,
+    "missing_keyword:CS2": 4,
+    "missing_keyword:ล่าสุด": 1,
+    "missing_keyword:Steam": 1,
+    "missing_keyword:ภาษาไทย": 1,
+    "missing_keyword:Discord": 1,
+    "missing_keyword:ถอนตัว": 2,
+    "missing_keyword:ทีมเดียว": 1,
+    "missing_keyword:Single Elimination": 7,
+    "missing_keyword:Competitive": 1,
+    "missing_keyword:ไม่จำกัด": 1,
+    "missing_keyword:MAPBAN.GG": 1,
+    "missing_keyword:ดวลมีด": 1,
+    "missing_keyword:เลือกฝั่ง": 1,
+    "missing_keyword:Freeze time": 1,
+    "missing_keyword:มาเองได้": 1,
+    "missing_keyword:ติดตั้งโปรแกรม": 1,
+    "missing_keyword:8.30": 1,
+    "missing_keyword:8.40": 1,
+    "missing_keyword:14.00": 1,
+    "missing_keyword:15.30": 2,
+    "missing_keyword:Global Ban/Pick": 2,
+    "wrong_category:clarification": 4,
+    "missing_keyword:ครั้งที่ 2": 1,
+    "missing_keyword:เพิ่มสิทธิการแบนฮีโร่": 1,
+    "missing_keyword:1 ครั้ง": 7,
+    "missing_keyword:ปลั๊กพ่วง": 1,
+    "missing_keyword:อุปกรณ์ชาร์จ": 1,
+    "missing_keyword:ลงทะเบียน": 1,
+    "missing_keyword:รอบรอง": 1,
+    "missing_keyword:1v1": 6,
+    "missing_keyword:ดูสตรีม": 1,
+    "missing_keyword:สีน้ำเงิน": 1,
+    "missing_keyword:ด้านบน": 1,
+    "missing_keyword:รูน": 1,
+    "missing_keyword:พลังเสริม": 1,
+    "missing_keyword:5 นาที": 1,
+    "missing_keyword:17.00": 1,
+    "missing_keyword:ไม่มีการเปลี่ยนแปลง": 1,
+    "missing_keyword:สมาชิก": 1,
+    "missing_keyword:ไม่อนุญาต": 14,
+    "missing_keyword:ปิดรับสมัคร": 1,
+    "missing_keyword:สตรีม": 1,
+    "missing_keyword:เกลียดชัง": 1,
+    "missing_keyword:เซิร์ฟเวอร์": 2,
+    "missing_keyword:แบนฮีโร่": 2,
+    "missing_keyword:อาคาร": 3,
+    "missing_keyword:5102A": 3,
+    "missing_keyword:คำหยาบ": 3,
+    "missing_keyword:Blood": 1,
+    "missing_keyword:Bodies": 1,
+    "missing_keyword:Off": 1,
+    "missing_keyword:หมดสิทธิ์": 1,
+    "missing_keyword:ตัวสำรอง": 1,
+    "missing_keyword:Stage": 3,
+    "missing_keyword:สิ้นสุด": 3,
+    "missing_keyword:Ancient": 8,
+    "missing_keyword:Anubis": 8,
+    "missing_keyword:Dust 2": 8,
+    "missing_keyword:Train": 8,
+    "missing_keyword:Technical Pause": 12,
+    "missing_keyword:Tactical Timeout": 20,
+    "missing_keyword:VALORANT": 11,
+    "missing_keyword:Ascent": 12,
+    "missing_keyword:Overtime": 5,
+    "missing_keyword:4 สัปดาห์": 7,
+    "missing_keyword:ฝ่ายละ 5 คน": 6,
+    "missing_keyword:ยังไม่พบจำนวนสมาชิกทีม": 6,
+    "missing_keyword:โทรศัพท์มือถือ": 1,
+    "missing_keyword:Tablet": 1,
+    "missing_keyword:iPad": 1,
+    "missing_keyword:ยกเว้นตัวละคร DLC": 12,
+    "missing_keyword:แพ้ 1 Round": 12,
+    "missing_keyword:Pause": 2
+  },
+  "mode_removed_grade_scope": "diagnostic only; content keyword grade still does not establish semantic equivalence"
+}

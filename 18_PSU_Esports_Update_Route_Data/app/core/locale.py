@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 import os
+import json
+from functools import lru_cache
+from pathlib import Path
 import re
 from dataclasses import asdict, dataclass
 from typing import Any, Iterable
@@ -115,8 +118,45 @@ def _has_natural_thai_signal(text: str) -> bool:
     return any(term in clean for term in _THAI_NATURAL_TERMS)
 
 
+@lru_cache(maxsize=1)
+def _catalog_title_pattern() -> re.Pattern[str] | None:
+    """Source names are protected spans, not English sentence evidence.
+
+    Use exact multiword names/aliases of currently listed games. No fuzzy
+    correction, inferred title, or user-log training enters locale selection.
+    """
+    curated = Path(__file__).resolve().parents[2] / 'data' / 'curated'
+    def rows(name):
+        file = curated / name
+        if not file.exists():
+            return []
+        return [json.loads(line) for line in file.read_text(encoding='utf-8-sig').splitlines() if line.strip()]
+    def key(value):
+        return re.sub(r'[^a-z0-9]', '', value.casefold())
+    titles = {str(game) for row in rows('service_game_availability.jsonl') for game in row.get('games', [])}
+    active_keys = {key(title) for title in titles}
+    for row in rows('game_title_aliases.jsonl'):
+        if key(str(row.get('game') or '')) in active_keys:
+            titles.update(str(alias) for alias in row.get('aliases', []))
+    names = [title for title in titles if title.isascii() and len(_LATIN_TOKEN_RE.findall(title)) >= 2]
+    if not names:
+        return None
+    alternatives = [re.escape(name).replace(r'\ ', r'\s+') for name in sorted(names, key=len, reverse=True)]
+    return re.compile(r'(?<![a-z0-9])(?:' + '|'.join(alternatives) + r')(?![a-z0-9])', re.I)
+
+
 def _detected_from_text(text: str) -> tuple[str, float, str]:
     clean = _without_protected_spans(text)
+    # In mixed input, words such as "The", "of", and "It" inside a game
+    # name must not outvote the language of the user's actual question.
+    # Latin-only input retains the existing English/identifier behavior.
+    named_title_removed = False
+    if _THAI_RE.search(clean) and _LATIN_TOKEN_RE.search(clean):
+        title_pattern = _catalog_title_pattern()
+        if title_pattern is not None:
+            without_titles = title_pattern.sub(' ', clean)
+            named_title_removed = without_titles != clean
+            clean = without_titles
     thai_chars = len(_THAI_RE.findall(clean))
     latin_tokens = [token.lower() for token in _LATIN_TOKEN_RE.findall(clean)]
     latin_chars = sum(len(token) for token in latin_tokens)
@@ -130,6 +170,8 @@ def _detected_from_text(text: str) -> tuple[str, float, str]:
             return "mixed", 0.88, "mixed_thai_function_words"
         return "mixed", 0.62, "mixed_scripts_uncertain"
     if thai_chars:
+        if named_title_removed:
+            return "mixed", 0.88, "mixed_named_title_thai_script"
         return "th", min(0.99, 0.82 + min(thai_chars, 20) / 120), "thai_script"
     if latin_chars:
         if en_function_count:
@@ -183,7 +225,7 @@ def resolve_locale(
     elif detected == "mixed":
         if reason == "mixed_english_function_words":
             effective = "en"
-        elif reason == "mixed_thai_function_words":
+        elif reason in {"mixed_thai_function_words", "mixed_named_title_thai_script"}:
             effective = "th"
         else:
             effective = history_language or "th"

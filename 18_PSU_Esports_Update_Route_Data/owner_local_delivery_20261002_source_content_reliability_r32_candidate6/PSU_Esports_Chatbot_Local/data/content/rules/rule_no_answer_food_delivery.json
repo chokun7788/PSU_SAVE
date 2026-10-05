@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_no_answer_food_delivery",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "จัดส่งอาหาร",
+      "ส่งอาหาร",
+      "อาหาร.*ถึงโต๊ะ"
+    ],
+    "en": [
+      "delivery.*food",
+      "food.*delivery"
+    ]
+  },
+  "facts": {
+    "route_category": "no_answer",
+    "intent": "no_answer_food_delivery",
+    "patterns": [
+      "จัดส่งอาหาร",
+      "ส่งอาหาร",
+      "อาหาร.*ถึงโต๊ะ",
+      "delivery.*food",
+      "food.*delivery"
+    ],
+    "priority": 120
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ยังไม่พบข้อมูลว่ามีบริการจัดส่งอาหารถึงโต๊ะเล่นเกมในฐานข้อมูลที่มี และตามกฎที่มี อาหารและเครื่องดื่มควรรับประทานเฉพาะในพื้นที่ที่กำหนดเท่านั้น จึงไม่ควรสรุปว่าสามารถส่งหรือทานที่โต๊ะเล่นเกมได้"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "No information about food delivery to gaming desks was found in the available knowledge base. The available rules say food and drinks are allowed only in designated areas, so it should not be assumed that delivery or eating at gaming desks is allowed."
+      },
+      "source_sha256": "55e88d10d07bd7dc174c0b2f207022058274743e7e9fb30e2f51efed6c8192de",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/no_answer_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_rule_food_drinks"
+    ],
+    "last_verified_at": ""
+  }
+}

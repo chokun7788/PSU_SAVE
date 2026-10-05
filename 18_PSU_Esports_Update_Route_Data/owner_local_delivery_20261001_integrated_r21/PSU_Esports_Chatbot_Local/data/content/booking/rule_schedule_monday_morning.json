@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_schedule_monday_morning",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "วันจันทร์.*ช่วงเช้า"
+    ],
+    "en": [
+      "monday.*morning"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "schedule_monday_morning",
+    "patterns": [
+      "วันจันทร์.*ช่วงเช้า",
+      "monday.*morning"
+    ],
+    "priority": 110
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "วัน Monday ช่วง Morning 09:00–12:00 เป็น Maintenance* ไม่ใช่ช่วง Open for Service"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "On Monday morning, 09:00-12:00 is Maintenance*, not Open for Service."
+      },
+      "source_sha256": "7a9bcee78d21f2214822a43096469bb6e8008faa9ff745e7ce0e782c476d9890",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/reservation_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_reservation_schedule_monday_morning",
+      "reservation-intro-schedule"
+    ],
+    "last_verified_at": ""
+  }
+}

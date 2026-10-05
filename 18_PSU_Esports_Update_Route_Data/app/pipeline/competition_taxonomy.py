@@ -93,6 +93,7 @@ FACET_ALIASES: tuple[tuple[str, tuple[str, ...]], ...] = (
         "เวอร์ชันเกมและการตั้งค่าแมตช์",
     )),
     ("match_settings", (
+        "การตั้งค่าเกม",
         "match settings", "in-game settings", "default settings", "ตั้งค่าในเกม",
         "ค่าตั้งต้นของแมตช์", "รายละเอียดการตั้งค่า",
     )),
@@ -113,7 +114,8 @@ FACET_ALIASES: tuple[tuple[str, tuple[str, ...]], ...] = (
         "พักเกม", "เวลานอก",
     )),
     ("equipment", (
-        "อุปกรณ์ที่ใช้แข่งขัน", "อุปกรณ์ของตัวเอง", "equipment rules", "own equipment",
+        "tablet", "ipad", "keyboard", "mouse", "controller", "snap tap", "socd",
+        "อุปกรณ์", "equipment", "อุปกรณ์ที่ใช้แข่งขัน", "อุปกรณ์ของตัวเอง", "equipment rules", "own equipment",
         "which devices", "provided computers", "competition equipment", "equipment and devices",
     )),
     ("eligibility_registration", (
@@ -133,7 +135,7 @@ FACET_ALIASES: tuple[tuple[str, tuple[str, ...]], ...] = (
         "conduct", "behavior", "behaviour", "profanity", "inappropriate conduct", "toxic",
     )),
     ("competition_format", (
-        "รูปแบบการแข่งขัน", "competition format", "single elimination", "bracket", "best of", "bo3", "bo5",
+        "รูปแบบการแข่งขัน", "competition format", "tournament format", "single elimination", "bracket", "best of", "bo3", "bo5",
         "แพ้คัดออก",
     )),
     ("schedule", (

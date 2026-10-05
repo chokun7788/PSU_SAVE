@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PSU Esports Booking Status v26</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="panel hero-main">
+        <div class="eyebrow"><span class="pulse"></span> PSU Esports Booking Dashboard</div>
+        <h1>PSU Esports Booking Board v26</h1>
+        <p class="lead">หน้าแสดงสถานะการจองสำหรับผู้ใช้งานจริง พร้อมตารางเปิด/ปิดอัตโนมัติ: จันทร์เปิดบ่าย, อังคาร–พฤหัสเปิดเต็มวัน, ศุกร์เปิดเช้า, เสาร์–อาทิตย์ปิด</p>
+        <div class="hero-actions">
+          <button class="btn primary" id="refreshBtn">ดึง CSV ใหม่ตอนนี้</button>
+          <button class="btn lang-btn lang-pill" id="langToggle" type="button"><span class="lang-current">ไทย</span><span class="lang-next">EN</span></button>
+          <button class="btn" id="diagBtn">ดูการเชื่อมต่อ</button>
+          <button class="btn" id="rawBtn">เปิด raw-check</button>
+        </div>
+      </div>
+      <aside class="panel hero-side">
+        <div class="pill"><span class="pulse"></span><span id="connectionText">กำลังเชื่อมต่อ...</span></div>
+        <div>
+          <div class="clock" id="clock">--:--:--</div>
+          <div class="muted" id="updated">ยังไม่ได้อัปเดต</div>
+        </div>
+        <div class="minirow">
+          <div class="pill mini" id="sourceText">source: loading</div>
+          <div class="pill mini" id="refreshText">Auto refresh ทุก 10 วินาที</div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="metrics" id="metrics"></section>
+
+    <section class="toolbar">
+      <div class="controls">
+        <input class="field" id="dateInput" type="date">
+        <input class="field" id="timeInput" type="time" step="1800">
+        <select class="field" id="availabilityFilter">
+          <option value="all">ทุกสถานะ</option>
+          <option value="available">มีเครื่องว่างอยู่ตอนนี้</option>
+          <option value="busy">เต็ม / ไม่ว่างตอนนี้</option>
+          <option value="hasBooking">มี Booking วันนี้</option>
+        </select>
+      </div>
+      <div class="muted" id="messageHint">เลือกหมวดทางซ้ายเพื่อดูรายละเอียด</div>
+    </section>
+
+    <div id="message"></div>
+    <section class="center-status panel" id="centerStatusBox"></section>
+
+    <section class="quick-guide panel">
+      <div class="guide-item guide-green">
+        <div class="guide-icon">✅</div>
+        <div><b>ว่าง / จองได้</b><span>สีเขียว 0/1</span></div>
+      </div>
+      <div class="guide-item guide-red">
+        <div class="guide-icon">🔒</div>
+        <div><b>ถูกจองแล้ว</b><span>สีแดง 1/1</span></div>
+      </div>
+      <div class="guide-item guide-purple">
+        <div class="guide-icon">🚫</div>
+        <div><b>No Show</b><span>สีม่วง 1/1 จองไม่ได้</span></div>
+      </div>
+      <div class="guide-item guide-gray">
+        <div class="guide-icon">⏳</div>
+        <div><b>ผ่านเวลา / ปิด / Maintenance</b><span>สีเทา 0/1</span></div>
+      </div>
+    </section>
+
+
+    <section class="layout">
+      <aside class="panel sidebar">
+        <h2 class="side-title">หมวดอุปกรณ์</h2>
+        <p class="side-sub">กด All เพื่อดูทุก booking ที่ทำให้เลข Booking วันนี้ขึ้น</p>
+        <div class="cat-list" id="categoryList"></div>
+      </aside>
+
+      <section class="main">
+        <article class="panel">
+          <div class="detail-head">
+            <div class="title-row">
+              <div>
+                <h2 id="detailTitle">กำลังโหลด...</h2>
+                <p id="detailDesc">ระบบกำลังดึงข้อมูลจาก CSV</p>
+              </div>
+              <div class="pill" id="detailPill">-</div>
+            </div>
+            <div class="stat-row" id="categoryStats"></div>
+          </div>
+          <div class="detail-body">
+            <div class="grid2">
+              <section class="card">
+                <h3>อุปกรณ์ในหมวดนี้</h3>
+                <div class="helper">แสดงสถานะปัจจุบันของแต่ละอุปกรณ์</div>
+                <div class="unit-grid" id="unitGrid"></div>
+              </section>
+
+              <section class="card">
+                <h3>ตรวจสอบช่วงเวลาที่ต้องการ</h3>
+                <div class="helper">เลือกวันและเวลาเพื่อดูว่าอุปกรณ์ในหมวดนี้ว่างกี่เครื่อง</div>
+                <div class="time-inspector">
+                  <div class="time-fields">
+                    <input class="field" id="inspectDateInput" type="date">
+                    <input class="field" id="inspectTimeInput" type="time" step="1800">
+                  </div>
+                  <button class="btn" id="inspectBtn">ตรวจสอบ</button>
+                </div>
+                <div class="time-box" id="inspectResult">ยังไม่ได้ตรวจสอบ</div>
+              </section>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel card">
+          <h3>รายการจองวันนี้</h3>
+          <div class="helper">ถ้า Booking วันนี้ขึ้น 16 รายการ ให้กด All / ทั้งหมด แล้วดูรายการตรงนี้ว่าอยู่เครื่องไหน เวลาไหน</div>
+          <div class="booking-list" id="todayBookingList"></div>
+        </article>
+
+        <article class="panel card">
+          <h3>สรุปสถานะตามเวลา</h3>
+          <div class="helper">สรุปเป็นช่วงเวลา สีแดงหมายถึงช่วงนั้นมี booking อย่างน้อย 1 รายการ</div>
+          <div class="slot-grid" id="slotSummary"></div>
+        </article>
+
+        <article class="panel card">
+          <h3>ตารางเครื่องรายตัว 09:00–16:00</h3>
+          <div class="helper">สีแดง/ม่วงจะค้างไว้ถ้าช่วงนั้นถูกจองหรือ No Show ส่วน Cancel จะเปิดให้ว่าง</div>
+          <div class="legend">
+            <span class="badge bad">1/1 • ถูกจองแล้ว</span>
+            <span class="badge noshow">1/1 • No Show / จองไม่ได้</span>
+            <span class="badge ok">0/1 • ว่าง / จองได้</span>
+            <span class="badge past">0/1 • ผ่านไปแล้ว ไม่ถูกจอง</span>
+          </div>
+          <div id="timeline"></div>
+        </article>
+
+        <article class="panel card hide" id="diagPanel">
+          <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap">
+            <h3 style="margin:0">Diagnostic</h3>
+            <button class="btn" id="closeDiagBtn">ปิด</button>
+          </div>
+          <div class="diag" id="diagOut"></div>
+        </article>
+      </section>
+    </section>
+  </main>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

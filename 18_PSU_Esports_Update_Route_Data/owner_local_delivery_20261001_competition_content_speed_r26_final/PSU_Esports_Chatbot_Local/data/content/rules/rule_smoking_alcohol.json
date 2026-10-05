@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_smoking_alcohol",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "สูบบุหรี่",
+      "บุหรี่",
+      "แอลกอฮอล์",
+      "เหล้า"
+    ],
+    "en": [
+      "smoking",
+      "alcohol"
+    ]
+  },
+  "facts": {
+    "route_category": "rules",
+    "intent": "smoking_alcohol_rule",
+    "patterns": [
+      "สูบบุหรี่",
+      "บุหรี่",
+      "แอลกอฮอล์",
+      "เหล้า",
+      "smoking",
+      "alcohol"
+    ],
+    "priority": 100
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ศูนย์ห้ามสูบบุหรี่ เสพสารเสพติด หรือดื่มเครื่องดื่มแอลกอฮอล์ภายในศูนย์"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Smoking, drug use, and alcohol consumption are strictly prohibited inside the studio."
+      },
+      "source_sha256": "b50a28159c45289be4caa1e043a255440257c6753ece56f2fdd4e79539ed1ed8",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/misc_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_rule_smoking_alcohol_drugs"
+    ],
+    "last_verified_at": ""
+  }
+}

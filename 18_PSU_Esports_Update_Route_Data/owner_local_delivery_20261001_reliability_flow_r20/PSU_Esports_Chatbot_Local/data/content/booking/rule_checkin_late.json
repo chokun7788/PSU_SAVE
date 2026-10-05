@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_checkin_late",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "ไม่เช็คอิน",
+      "ไม่เชคอิน",
+      "เช็คอินไม่ทัน",
+      "เชคอินไม่ทัน",
+      "check.?in.*ไม่ทัน"
+    ],
+    "en": [
+      "late check.?in",
+      "miss.*check"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "late_checkin_cancel",
+    "patterns": [
+      "ไม่เช็คอิน",
+      "ไม่เชคอิน",
+      "เช็คอินไม่ทัน",
+      "เชคอินไม่ทัน",
+      "check.?in.*ไม่ทัน",
+      "late check.?in",
+      "miss.*check"
+    ],
+    "priority": 100
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ถ้าไม่เช็คอินก่อนเวลาเริ่มต้นของรอบ ระบบจะยกเลิกการจองทันที และไม่มีการคืนเงิน"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "If users fail to check in before the reserved time slot begins, the booking will be automatically cancelled with no refund."
+      },
+      "source_sha256": "9c898017ca395628ab93aaf4fa5596cd421fd37c6bbf6b7d44daf8761056acd6",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/reservation_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "curated_checkin_late_cancel"
+    ],
+    "last_verified_at": ""
+  }
+}

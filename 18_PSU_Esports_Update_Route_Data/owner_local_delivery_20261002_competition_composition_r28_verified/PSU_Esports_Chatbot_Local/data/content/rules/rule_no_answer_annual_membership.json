@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_no_answer_annual_membership",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "สมัครสมาชิก.*รายปี",
+      "สมาชิกรายปี"
+    ],
+    "en": [
+      "membership.*annual",
+      "annual.*membership"
+    ]
+  },
+  "facts": {
+    "route_category": "no_answer",
+    "intent": "no_answer_annual_membership",
+    "patterns": [
+      "สมัครสมาชิก.*รายปี",
+      "สมาชิกรายปี",
+      "membership.*annual",
+      "annual.*membership"
+    ],
+    "priority": 120
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ยังไม่พบข้อมูลเรื่องค่าสมัครสมาชิกศูนย์รายปีในฐานข้อมูลที่มี ข้อมูลราคาที่มีตอนนี้เป็นค่าบริการตามประเภทอุปกรณ์และกลุ่มผู้ใช้ เช่น PSU Student and Staff, PSU Alumni and General Student และ General Adult"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "No information about an annual membership fee was found in the available knowledge base. The available pricing is service-based by equipment type and user group, such as PSU Student and Staff, PSU Alumni and General Student, and General Adult."
+      },
+      "source_sha256": "05cd4651eeaceaae2acacec28903a748d1139a5dfdca0c3a2462292d00194e87",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/no_answer_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+    "source_ids": [
+      "service_fee"
+    ],
+    "last_verified_at": ""
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_schedule_afternoon_time",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "รอบบ่าย.*ปิด",
+      "รอบบ่าย.*13",
+      "รอบบ่าย.*16",
+      "ช่วงบ่าย.*เวลา",
+      "ช่วงบ่าย.*กี่โมง",
+      "Afternoon คือ"
+    ],
+    "en": [
+      "afternoon.*session.*time",
+      "afternoon.*slot.*time",
+      "afternoon.*time"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "schedule_afternoon_time",
+    "patterns": [
+      "รอบบ่าย.*ปิด",
+      "รอบบ่าย.*13",
+      "รอบบ่าย.*16",
+      "ช่วงบ่าย.*เวลา",
+      "ช่วงบ่าย.*กี่โมง",
+      "afternoon.*session.*time",
+      "afternoon.*slot.*time",
+      "afternoon.*time",
+      "Afternoon คือ"
+    ],
+    "priority": 122
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "รอบบ่าย Afternoon คือ 13:00–16:00 แต่ถ้าไม่ได้ระบุวันต้องดู timeline ด้วย: วันจันทร์ (Monday) ช่วงเช้า 09:00–12:00 เป็น Maintenance* และเปิดเล่นช่วงบ่าย 13:00–16:00; วันอังคาร-พฤหัสบดี (Tuesday-Thursday) เปิดทั้งรอบเช้า 09:00–12:00 และรอบบ่าย 13:00–16:00; วันศุกร์ (Friday) เปิดช่วงเช้า 09:00–12:00 แต่ช่วงบ่าย 13:00–16:00 เป็น Maintenance** สำหรับ Weekly hardware inspection and cleaning จึงไม่ใช่ช่วงเล่น"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "The Afternoon slot is 13:00-16:00, but if no day is specified you should check the weekly timeline: Monday morning 09:00-12:00 is Maintenance* and Monday afternoon 13:00-16:00 is open; Tuesday-Thursday are open in both slots 09:00-12:00 and 13:00-16:00; Friday morning 09:00-12:00 is open, but Friday afternoon 13:00-16:00 is Maintenance** for weekly hardware inspection and cleaning, so it is not playable."
+      },
+      "source_sha256": "b1130980161e817f73930fe1619d06a5ccfd5e715767820db8381d741c024899",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/reservation_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_schedule_morning",
+      "curated_schedule_afternoon",
+      "curated_reservation_schedule_monday_morning",
+      "curated_reservation_schedule_friday_maintenance",
+      "reservation-intro-schedule"
+    ],
+    "last_verified_at": ""
+  }
+}

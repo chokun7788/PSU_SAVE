@@ -1,0 +1,45 @@
+{
+  "schema_version": "competition_rule_canonical_v1",
+  "release": {
+    "release_id": "competition_rules_<game>_<event>_<yyyy>",
+    "status": "draft",
+    "scope": "tournament_specific",
+    "game_id": "<game_slug>",
+    "game": "<official_game_name>",
+    "tournament": "<official_event_name>",
+    "effective_from": "<ISO-8601 date or null>",
+    "effective_to": "<ISO-8601 date or null>",
+    "source_url": "<official_source_url_or_local_reference>",
+    "owner_review": {
+      "status": "pending",
+      "reviewed_by": null,
+      "reviewed_at": null
+    }
+  },
+  "common_sections": {
+    "rulebook_identity": [],
+    "eligibility_registration": [],
+    "competition_format": [],
+    "match_configuration": [],
+    "pre_match_on_site": [],
+    "in_match_operations": [],
+    "fair_play_conduct": [],
+    "penalty_matrix": [],
+    "protest_dispute": [],
+    "references_change_history": []
+  },
+  "optional_game_modules": [
+    {
+      "module": "<game_specific_module_slug>",
+      "module_label_th": "<ชื่อโมดูลเฉพาะเกม>",
+      "rules": []
+    }
+  ],
+  "rule_record_shape": {
+    "facet": "<stable_facet_name>",
+    "title_th": "<หัวข้อกติกา>",
+    "content_th": "<ข้อความกติกาเต็มจากต้นทาง>",
+    "source_text_sha256": "<sha256 of content_th>",
+    "source_reference": "<section/page/heading in the source>"
+  }
+}

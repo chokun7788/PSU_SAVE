@@ -1,0 +1,115 @@
+--- before/app/core/keyboard_input_anomaly.py
++++ after/app/core/keyboard_input_anomaly.py
+@@ -28,6 +28,7 @@
+ )
+ 
+ THAI_NON_BASE = frozenset("\u0e31\u0e34\u0e35\u0e36\u0e37\u0e38\u0e39\u0e47\u0e48\u0e49\u0e4a\u0e4b\u0e4c\u0e4d")
++LAYOUT_SCORING_REVISION = 'context-r29-v1'
+ 
+ # This is a language prior, not a list of typo aliases. It protects ordinary
+ # English prose when the clean Thai benchmark contains few English-only rows.
+@@ -47,6 +48,8 @@
+     he him himself she her herself it its itself we us our ours ourselves
+     you your yours yourself yourselves they them their theirs themselves
+     who whom whose why not nor neither either both each every
++    me could may might must should shall will would be been being did doing
++    was were had having help question explain answer understand
+     """.split()
+ )
+ 
+@@ -200,6 +203,7 @@
+             self.latin_counts.update(words)
+ 
+         self.latin_counts.update({word: 2 for word in GENERIC_ENGLISH_WORDS})
++        self._english_neighbor_cache: dict[str, bool] = {}
+         latin_sequences.extend(GENERIC_ENGLISH_WORDS)
+         self.thai_profile.fit(thai_sequences)
+         self.english_profile.fit(latin_sequences)
+@@ -253,10 +257,27 @@
+             return True
+         return False
+ 
+-    def _score_en_to_th_span(self, text: str, match: re.Match[str], protected: Sequence[tuple[int, int]]) -> SpanEvidence:
++    def _one_edit_english_neighbor(self, value: str) -> bool:
++        word = value.casefold().split("'")[0]
++        if not 3 <= len(word) <= 32 or not word.isalpha() or not word.isascii():
++            return False
++        if word in self._english_neighbor_cache:
++            return self._english_neighbor_cache[word]
++        splits = [(word[:i], word[i:]) for i in range(len(word) + 1)]
++        candidates = {a + b[1:] for a, b in splits if b}
++        candidates.update(a + b[1] + b[0] + b[2:] for a, b in splits if len(b) > 1)
++        candidates.update(a + ch + b[1:] for a, b in splits if b for ch in 'abcdefghijklmnopqrstuvwxyz')
++        candidates.update(a + ch + b for a, b in splits for ch in 'abcdefghijklmnopqrstuvwxyz')
++        result = any(self.latin_counts.get(c, 0) > 0 for c in candidates)
++        self._english_neighbor_cache[word] = result
++        return result
++
++    def _score_en_to_th_span(self, text: str, match: re.Match[str], protected: Sequence[tuple[int, int]], english_context: bool = False) -> SpanEvidence:
+         source = match.group(0)
+         range_protected = self._overlaps(match.start(), match.end(), protected)
+-        source_protected = range_protected or self._is_protected_ascii(source)
++        ascii_protected = self._is_protected_ascii(source)
++        lexical_neighbor = bool(english_context and not range_protected and not ascii_protected and re.fullmatch(r"[A-Za-z]+(?:[-'][A-Za-z]+)*", source.strip(".,!?;:()[]{}<>\"'")) and self._one_edit_english_neighbor(source.strip(".,!?;:()[]{}<>\"'")))
++        source_protected = range_protected or ascii_protected or lexical_neighbor
+         mapped = translate_keyboard_layout(source, KEYBOARD_EN_TO_THAI)
+         source_quality = self.english_profile.quality(source)
+         target_quality = self.thai_profile.quality(mapped)
+@@ -270,11 +291,17 @@
+             score *= 0.78 if target_seen else 0.45
+         if source_protected:
+             score *= 0.08
++        if source_quality >= target_quality:
++            score *= 0.08
+         if target_quality < 0.24:
+             score *= 0.45
+         reason = (
+-            "protected ASCII/entity span"
++            "English one-edit lexical neighbor supported by sentence context"
++            if lexical_neighbor
++            else "protected ASCII/entity span"
+             if source_protected
++            else "source English profile is at least as strong as mapped Thai"
++            if source_quality >= target_quality
+             else f"English-key span maps to Thai quality={target_quality:.3f}, gain={gain:.3f}, seen={target_seen}"
+         )
+         return SpanEvidence(
+@@ -299,6 +326,9 @@
+         target_quality = self.english_profile.quality(mapped)
+         target_seen = self._latin_known(mapped)
+         gain = max(0.0, target_quality - source_quality)
++        latin_letters = sum('a' <= c.lower() <= 'z' for c in mapped)
++        plausible_english = latin_letters >= 3 and latin_letters / max(1, len(mapped)) >= 0.70
++        weak_mapping = not plausible_english or source_quality >= target_quality or (not target_seen and source_quality >= 0.65 and gain < 0.30)
+         score = (0.57 * target_quality) + (0.22 * gain)
+         if target_seen:
+             score += 0.20
+@@ -312,10 +342,14 @@
+             score *= 0.78 if target_seen else 0.45
+         if range_protected:
+             score *= 0.08
++        if weak_mapping:
++            score *= 0.08
+         if target_quality < 0.24:
+             score *= 0.45
+         reason = (
+-            "protected span"
++            "mapping lacks stronger English orthographic/lexical evidence"
++            if weak_mapping
++            else "protected span"
+             if range_protected
+             else f"Thai-key span maps to English quality={target_quality:.3f}, gain={gain:.3f}, known={target_seen}"
+         )
+@@ -358,8 +392,11 @@
+ 
+     def _layout_features(self, text: str) -> tuple[float, str | None, str | None, str, tuple[SpanEvidence, ...]]:
+         protected = self._protected_ranges(text)
++        words = [m.group(0) for m in LATIN_WORD_RE.finditer(text)]
++        known = sum(self._latin_known(w) for w in words)
++        english_context = known >= 3 and known / max(1, len(words)) >= 0.55
+         en_to_th = tuple(
+-            self._score_en_to_th_span(text, match, protected)
++            self._score_en_to_th_span(text, match, protected, english_context)
+             for match in ASCII_KEY_RUN_RE.finditer(text)
+         )
+         th_to_en = tuple(

@@ -1,5 +1,6 @@
 param(
     [string]$OutputRoot = "owner_local_package",
+    [string]$RuntimeVersion = "2026.09.29-multi-error-recovery-r15",
     [switch]$CreateZip
 )
 
@@ -88,15 +89,27 @@ foreach ($template in @(
     Copy-Item -LiteralPath $source -Destination (Join-Path $packageRoot $template)
 }
 
+$launcherPath = Join-Path $packageRoot "Start-PSU-Esports-Chatbot.ps1"
+$launcherText = Get-Content -LiteralPath $launcherPath -Raw
+$originalVersionLine = '$env:PSU_RUNTIME_VERSION = "2026.09.29-multi-error-recovery-r15"'
+if (-not $launcherText.Contains($originalVersionLine)) {
+    throw "Could not locate the launcher runtime version in the copied template."
+}
+$launcherText = $launcherText.Replace(
+    $originalVersionLine,
+    ('$env:PSU_RUNTIME_VERSION = "' + $RuntimeVersion + '"')
+)
+Set-Content -LiteralPath $launcherPath -Value $launcherText -Encoding UTF8
+
 New-Item -ItemType Directory -Force -Path (Join-Path $packageRoot "tools") | Out-Null
 Copy-Item -LiteralPath (Join-Path $projectRoot "tools\export_local_chat_logs.py") -Destination (Join-Path $packageRoot "tools\export_local_chat_logs.py")
 
 @{
     package_name = $packageName
     built_at = (Get-Date).ToUniversalTime().ToString("o")
-    runtime_version = "2026.09.29-multi-error-recovery-r15"
+    runtime_version = $RuntimeVersion
     included_data_directories = $runtimeDataDirectories
-    local_runtime_features = @("per_page_anonymous_sessions", "sqlite_transcript", "append_only_daily_jsonl_log", "owner_html_log_report", "loopback_only_server", "live_booking_status_aggregate_only")
+    local_runtime_features = @("per_page_anonymous_sessions", "sqlite_transcript", "append_only_daily_jsonl_log", "owner_html_log_report", "loopback_only_server", "live_booking_status_aggregate_only", "bounded_intent_cue_recovery")
     excluded = @("reports", "tests", "tools except export_local_chat_logs.py", "notebooks", "data/eval", "data/ground_truth", "data/human_review", "data/logs", "Ollama model weights")
     required_local_models = @("scb10x/typhoon2.5-qwen3-4b", "psu-bge-m3:q8_0")
 } | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $packageRoot "package_manifest.json") -Encoding UTF8

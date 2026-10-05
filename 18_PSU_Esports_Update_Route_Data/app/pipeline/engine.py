@@ -23,6 +23,7 @@ from app.pipeline.hybrid_retrieval import (
 )
 from app.pipeline.llm_tool_router import resolve_tool_routing
 from app.pipeline.preprocess import extract_entities, preprocess_input
+from app.core.intent_cue_recovery import recover_intent_cues, recover_intent_cue_sequence
 from app.pipeline.query_planner import (
     QueryPlanTask,
     plan_query,
@@ -36,6 +37,7 @@ from app.pipeline.query_signals import (
 )
 from app.pipeline.question_frame import build_question_frame
 from app.pipeline.competition_targets import looks_like_competition_rule_query, resolve_competition_targets
+from app.pipeline.competition_fast_route import exact_competition_intent
 from app.pipeline.competition_coverage import assess_competition_evidence
 from app.pipeline.target_lock import lock_explicit_game_target
 from app.pipeline.request_deadline import allow_stage, deadline_exceeded, deadline_metadata, request_deadline
@@ -283,7 +285,7 @@ def _looks_like_unclear_game_meta_query(query: str) -> bool:
 _ENGLISH_COMPOUND_INTENT_PATTERNS = {
     "price": re.compile(r"\b(?:how\s+much|price|cost|fee|charge|different\s+from|difference\s+between)\b", re.IGNORECASE),
     "booking": re.compile(r"\b(?:book|booking|reserve|reservation|sessions?\s+can\s+be\s+booked)\b", re.IGNORECASE),
-    "schedule": re.compile(r"\b(?:open|opening|hours|schedule|close|closing)\b", re.IGNORECASE),
+    "schedule": re.compile(r"\b(?:opens?|opening|hours|schedule|closes?|closing)\b", re.IGNORECASE),
     "available_days": re.compile(r"\b(?:what|which)\s+days?\s+(?:are|is)\s+available\b", re.IGNORECASE),
     "controls": re.compile(r"\b(?:buttons?|controls?|keys?|gas\s+pedal|shooting)\b", re.IGNORECASE),
     "game_detail": re.compile(r"\b(?:how\s+(?:do|can)\s+(?:you|i)\s+play|how\s+to\s+play|overview|summary)\b", re.IGNORECASE),
@@ -295,6 +297,20 @@ _ENGLISH_COMPOUND_INTENT_PATTERNS = {
 
 
 def _english_compound_intent(part: str) -> str:
+    from app.pipeline.source_task_signals import fee_comparison_query, payment_method_query
+    if fee_comparison_query(part):
+        return "price"
+    if re.search(r"\b(?:pay|payment)\b", part or "", re.I) and re.search(
+        r"\b(?:how\s+many\s+minutes?|deadline|timeout|within\s+\d+)\b", part, re.I,
+    ):
+        return "booking_payment_deadline"
+    if payment_method_query(part or ""):
+        return "booking_payment_method"
+    if re.search(r"\b(?:book|booking|reserve|reservation)\b", part or "", re.I):
+        if re.search(r"\b(?:information|details|fields)\b", part, re.I):
+            return "booking_information"
+        if re.search(r"\b(?:pay|payment)\b", part, re.I):
+            return "booking_payment"
     for intent, pattern in _ENGLISH_COMPOUND_INTENT_PATTERNS.items():
         if pattern.search(part or ""):
             return "schedule" if intent == "available_days" else intent
@@ -357,7 +373,7 @@ def _split_english_compound_question(query: str) -> list[str]:
         return [f"{prefix} {first} have?", f"{prefix} {second} have?"]
 
     two_service_games = re.fullmatch(
-        r"\s*(what\s+games?\s+are\s+available\s+for)\s+(.+?)\s+and\s+(.+?)\s*\??\s*",
+        r"\s*(what\s+games?\s+are\s+available\s+(?:for|in|on))\s+(.+?)\s+and\s+(.+?)\s*\??\s*",
         clean,
         flags=re.IGNORECASE,
     )
@@ -400,14 +416,41 @@ def _split_english_compound_question(query: str) -> list[str]:
     return [left, right]
 
 
+def _ambiguous_game_pay_target(query: str) -> str | None:
+    """A real-word play/pay collision should request the intended action."""
+    if os.getenv("PSU_INTENT_CUE_RECOVERY", "1").casefold() in {"0", "false", "off", "no"}:
+        return None
+    if not re.search(r"\b(?:how\s+(?:to|(?:do|can)\s+(?:you|i|we))|where\s+can\s+(?:you|i|we))\s+pay\s+(?!for\b|to\b)", query, re.I):
+        return None
+    from app.pipeline.entity_resolver import resolve_game_entity
+
+    resolution = resolve_game_entity(query, operation="gameplay")
+    if resolution.is_exact and resolution.top_candidate is not None:
+        return resolution.top_candidate.title
+    return None
+
+
 def _split_multi_question(query: str) -> list[str]:
-    clean = re.sub(r"\s+", " ", query or "").strip()
+    clean = re.sub(r"\s+", " ", recover_intent_cues(query or "")).strip()
     if not clean:
         return []
+    uncertain_followup = re.fullmatch(r"(.+?)\s*แล้ว\s*(ของ(?:ยังไง|อย่างไร))\s*[?]?", clean)
+    if uncertain_followup:
+        left, fragment = uncertain_followup.groups()
+        service = _english_shared_service(left)
+        if service and _has(normalize_text(left), "ราคา", "กี่บาท", "ค่าบริการ"):
+            return [left, f"{service} {fragment}"]
     normalized = normalize_text(clean)
     if _has(normalized, "จองแล้ว") and _has(normalized, "เช็คอิน", "เชคอิน", "ลืม"):
         return [clean]
     if _has(normalized, "จองแล้ว") and _has(normalized, "ยกเลิก", "ไม่สามารถยกเลิก", "แก้ไข", "แก้ข้อมูล"):
+        return [clean]
+    from app.pipeline.source_task_signals import fee_comparison_query
+    if fee_comparison_query(clean) and not re.search(
+        r'จอง|เช็กอิน|เช็คอิน|ยกเลิก|เปิดกี่|ปิดกี่|มีเกม|ปุ่ม|\b(?:book|booking|reserve|reservation|check.in|cancel|games?|controls?|payment|open|close)\b', clean, re.I,
+    ):
+        # Two services joined by "and/และ" are operands of one price operation.
+        # A separate booking/control/schedule operation must still be split.
         return [clean]
     boundary_parts = _split_boundary_compound_question(clean)
     if len(boundary_parts) > 1:
@@ -797,6 +840,7 @@ class AnswerQualityPipeline:
     ) -> PipelineAnswer:
         with request_deadline(global_timeout_sec):
             started = time.perf_counter()
+            locale_started = time.perf_counter()
             resolved_locale = locale_from_mapping(locale_decision) or resolve_locale(
                 question,
                 requested=locale,
@@ -804,21 +848,29 @@ class AnswerQualityPipeline:
                 keyboard_layout_direction=keyboard_layout_direction,
             )
             set_current_locale_decision(resolved_locale)
+            entry_timings = [_timing_trace("locale_resolution", locale_started, metadata=deadline_metadata())]
             experimental_rag_fallback = env_experimental_rag_fallback_default() if experimental_rag_fallback is None else experimental_rag_fallback
             experimental_allow_llm = env_experimental_llm_default() if experimental_allow_llm is None else experimental_allow_llm
-            if resolved_locale.effective == "th" and os.getenv("PSU_CANONICAL_KNOWLEDGE", "0").lower() in {"1", "true", "on"}:
+            cue_started = time.perf_counter()
+            cue_preflight, cue_recoveries = recover_intent_cue_sequence(question)
+            entry_timings.append(_timing_trace("intent_cue_preflight", cue_started, metadata=deadline_metadata()))
+            canonical_started = time.perf_counter()
+            if cue_preflight == question and resolved_locale.effective == "th" and os.getenv("PSU_CANONICAL_KNOWLEDGE", "0").lower() in {"1", "true", "on"}:
                 from app.knowledge.answer import try_canonical_answer
 
                 canonical = try_canonical_answer(question, allow_llm=experimental_allow_llm)
                 if canonical is not None:
                     return canonical
+            entry_timings.append(_timing_trace("canonical_preflight", canonical_started, metadata=deadline_metadata()))
             split_started = time.perf_counter()
             # Competition rule prompts often contain conjunctions in the name
             # of a facet (for example, "conduct and sportsmanship"). They are
             # one target-grounded retrieval request, not independent questions.
-            competition_rule_query = looks_like_competition_rule_query(question)
+            competition_rule_query = looks_like_competition_rule_query(cue_preflight)
             parts = [question] if competition_rule_query or is_damage_policy_query(question) else _split_multi_question(question)
-            initial_trace = [
+            if len(parts) == 1:
+                parts = [question]  # Keep the raw text for the single-question trace.
+            initial_trace = [*entry_timings,
                 PipelineTrace(
                     "locale_resolution",
                     resolved_locale.effective,
@@ -826,11 +878,19 @@ class AnswerQualityPipeline:
                     resolved_locale.reason,
                     resolved_locale.to_dict(),
                 ),
+                PipelineTrace(
+                    "intent_cue_preflight", "recovered" if cue_recoveries else "unchanged",
+                    0.85 if cue_recoveries else 1.0,
+                    "bounded task cues; offsets refer to each intermediate input",
+                    {"raw": question, "candidate": cue_preflight,
+                     "recoveries": [vars(item) for item in cue_recoveries],
+                     "span_budget": 3, "edit_budget": 4},
+                ),
                 _timing_trace(
                     "split_multi_question",
                     split_started,
                     detail=("competition_rule_single_target" if competition_rule_query else f"parts={len(parts)}"),
-                    metadata={**deadline_metadata(), "parts": parts[:3], "competition_rule_query": competition_rule_query},
+                    metadata={**deadline_metadata(), "entry_to_split_ms": round((split_started - started) * 1000, 2), "parts": parts[:3], "competition_rule_query": competition_rule_query},
                 )
             ]
             compound_profile = classify_compound(question, parts)
@@ -888,6 +948,7 @@ class AnswerQualityPipeline:
                         return self._answer_single(
                             planned_parts[0],
                             planned_task=planner.tasks[0],
+                            recent_history=recent_history,
                             experimental_rag_fallback=experimental_rag_fallback,
                             experimental_allow_llm=experimental_allow_llm,
                             pipeline_started=started,
@@ -907,6 +968,7 @@ class AnswerQualityPipeline:
                 )
             return self._answer_single(
                 question,
+                recent_history=recent_history,
                 experimental_rag_fallback=experimental_rag_fallback,
                 experimental_allow_llm=experimental_allow_llm,
                 pipeline_started=started,
@@ -1082,6 +1144,9 @@ class AnswerQualityPipeline:
                 part,
                 {
                     "mode": result.mode,
+                    "answer_type": result.route.answer_type,
+                    "validation_ok": result.validation.ok,
+                    "validation_errors": list(result.validation.errors),
                     "elapsed": result.elapsed,
                     "universal_intent_method": (child_intent_trace.metadata or {}).get("method") if child_intent_trace else "",
                     "universal_intent_llm_attempted": (child_intent_trace.metadata or {}).get("llm_attempted") if child_intent_trace else False,
@@ -1226,6 +1291,7 @@ class AnswerQualityPipeline:
         question: str,
         *,
         planned_task: QueryPlanTask | None = None,
+        recent_history=None,
         experimental_rag_fallback: bool,
         experimental_allow_llm: bool,
         pipeline_started: float | None = None,
@@ -1249,6 +1315,7 @@ class AnswerQualityPipeline:
                 "language_hint": original_pre.language_hint,
                 "nonsemantic_preface_removed": main_question != question,
                 "query_variants": list(original_pre.query_variants),
+                "competition_name_recovery": list(original_pre.name_recoveries),
                 "elapsed_ms": round(preprocess_elapsed * 1000, 2),
                 "elapsed_sec": round(preprocess_elapsed, 4),
             },
@@ -1306,6 +1373,23 @@ class AnswerQualityPipeline:
             )
 
         locale = current_locale_decision()
+        if locale is None or locale.effective == "th":
+            # Keep the original operation here: preprocessing may have
+            # proposed ของ -> จอง before the clarification guard runs.
+            raw_scope = main_question.strip()
+            unresolved_reference = bool(re.fullmatch(
+                r"(?:อันนี้|อันนั้น|เครื่องนี้|เครื่องนั้น|ช่องนี้|ช่องนั้น)\s*(?:จอ|จอง|ใช้|เล่น)(?:ได้)?(?:ไหม|มั้ย|ได้ไหม|ได้มั้ย)\s*[?]?", raw_scope,
+            ))
+            unclear_booking_followup = bool(re.fullmatch(r"(?:PC|PS5|PlayStation 5|Nintendo Switch|Cockpit|VR)\s+ของ(?:ยังไง|อย่างไร)\s*[?]?", raw_scope, re.I))
+            if unresolved_reference or unclear_booking_followup:
+                scope_answer = (
+                    "หมายถึงวิธีจองบริการนี้ใช่ไหมครับ หรืออยากทราบรายละเอียดเรื่องใด?"
+                    if unclear_booking_followup else
+                    "หมายถึงบริการหรืออุปกรณ์ไหนครับ เช่น PC เครื่องใด, PS5, Nintendo Switch, Cockpit หรือ VR?"
+                )
+                scope_route = PipelineRoute("clarification", "unresolved_reference_or_operation", 0.8, "clarification", "low", "specific target or follow-up operation is unresolved")
+                trace.append(PipelineTrace("scope_guard", "specific_clarification", 0.8, "preserve a valid word instead of guessing its intended operation"))
+                return self._build_result(scope_answer, [], started, "pipeline:scope_clarification", 0.8, scope_route, entities, ValidationResult(ok=True), trace)
         social_reply = social_dialogue_reply(
             original_pre.clean_query,
             locale=locale.effective if locale is not None else "th",
@@ -1323,11 +1407,32 @@ class AnswerQualityPipeline:
                 social_answer, [], started, "pipeline:social_dialogue_fast_path",
                 0.99, social_route, entities, ValidationResult(ok=True), trace,
             )
+        if locale is not None and locale.effective == "en":
+            pay_target = _ambiguous_game_pay_target(pre.clean_query)
+            if pay_target:
+                clarification_route = PipelineRoute(
+                    "clarification", "game_pay_or_play", 0.8, "clarification", "low",
+                    "pay/play are both plausible actions for the named game",
+                )
+                clarification = (
+                    f"Do you mean how to play {pay_target}, or the service fee "
+                    "for the zone where it is available?"
+                )
+                trace.append(PipelineTrace(
+                    "real_word_ambiguity", "pay_or_play", 0.8,
+                    "ask before changing a valid English word",
+                    {"target": pay_target},
+                ))
+                return self._build_result(
+                    clarification, [], started, "pipeline:game_pay_or_play_clarification",
+                    0.8, clarification_route, entities, ValidationResult(ok=True), trace,
+                )
         protected = answer_protected_intent(
             pre.clean_query,
             locale=locale.effective if locale is not None else "th",
             service=entities.service,
             rules=self.matcher.rules,
+            price_intent=entities.price_intent,
         )
         if protected is not None:
             protected_route = PipelineRoute(
@@ -1359,6 +1464,13 @@ class AnswerQualityPipeline:
             )
 
         competition_signal = looks_like_competition_rule_query(pre.clean_query)
+        from app.pipeline.competition_overview import build_rulebook_catalog
+        catalog_locale = current_locale_decision()
+        catalog = build_rulebook_catalog(pre.clean_query, catalog_locale.effective if catalog_locale is not None else 'th')
+        if catalog is not None:
+            catalog_route = PipelineRoute('competition_rules', 'competition_rulebook_catalog', 0.98, 'fact', 'low', 'recorded rulebook catalogue, no current registration claim')
+            trace.append(PipelineTrace('competition_catalog', 'recorded_rulebooks', 0.98, 'explicit catalogue request precedes broad semantic retrieval', {'source_ids': list(catalog.section_ids)}))
+            return self._build_result(catalog.answer, catalog.hits, started, 'pipeline:competition_rulebook_catalog', 0.98, catalog_route, entities, ValidationResult(ok=True), trace)
         target_lock = lock_explicit_game_target(pre.clean_query, route)
         if target_lock.locked and not competition_signal:
             route = target_lock.route
@@ -1393,6 +1505,13 @@ class AnswerQualityPipeline:
         # "check" or "available". An explicit rulebook request must reach
         # the target guard before the live booking adapter is considered.
         competition_target = resolve_competition_targets(pre.clean_query)
+        if competition_signal and competition_target.status == "absent":
+            locale_value = current_locale_decision()
+            english = locale_value is not None and locale_value.effective == "en"
+            answer = ("Which game's competition rules would you like to check: Counter-Strike 2, RoV, Tekken 8, or VALORANT?" if english else "ต้องการดูกติกาของเกมใดครับ เช่น Counter-Strike 2, RoV, Tekken 8 หรือ VALORANT")
+            clarification_route = PipelineRoute("competition_rules", "competition_rules_lookup", 0.98, "clarification", "low", "explicit rule request requires a game target")
+            trace.append(PipelineTrace("competition_target_guard", "target_absent_clarification", 0.98, "missing rulebook target resolved before semantic and intent models"))
+            return self._build_result(answer, [], started, "pipeline:competition_target_clarification_en" if english else "pipeline:competition_target_clarification", 0.98, clarification_route, entities, ValidationResult(ok=True, warnings=("competition_target_clarification",)), trace)
         live_booking = None
         if not competition_signal and competition_target.status != "unknown_explicit":
             live_booking = answer_live_booking_status(pre.clean_query, started)
@@ -1410,7 +1529,7 @@ class AnswerQualityPipeline:
                 live_booking.mode,
                 live_booking.confidence,
                 live_route.reason,
-                {"privacy": "aggregate_only", "source": "booking_dashboard"},
+                {"privacy": "aggregate_only", **(live_booking.diagnostics or {})},
             ))
             return self._build_result(
                 live_booking.answer,
@@ -1425,9 +1544,56 @@ class AnswerQualityPipeline:
             )
 
         locale = current_locale_decision()
+        if not competition_signal:
+            from app.pipeline.closed_query_improvements import answer_closed_query_improvement
+
+            improvement = answer_closed_query_improvement(pre.clean_query, locale.effective if locale is not None else 'th')
+            if improvement is not None:
+                improved_category, improved = improvement
+                improved_route = PipelineRoute(improved_category, 'service_fee_query' if improved_category == 'service_fee' else 'booking_policy' if improved_category == 'reservation' else 'verified_policy_unavailable', improved.confidence,
+                    'clarification' if improved_category == 'clarification' else 'no_answer' if improved_category == 'no_answer' else 'fact', 'medium', 'explicit query bound to stored source facts')
+                improved_mode = 'pipeline:' + improved.mode
+                improved_intent = UniversalIntent(domain=improved_category,
+                    operation='price_calculate' if improved_category == 'service_fee' else 'booking' if improved_category == 'reservation' else 'unknown',
+                    confidence=improved.confidence)
+                improved_validation = validate_answer(pre.clean_query, improved.answer, improved_route, entities,
+                    hits=improved.hits, mode=improved_mode, intent=improved_intent)
+                trace.append(PipelineTrace('closed_query_improvement', 'accepted' if improved_validation.ok else 'rejected',
+                    improved.confidence, improved.mode, {**improved.evidence, 'validation_errors': list(improved_validation.errors)}))
+                if improved_validation.ok:
+                    return self._build_result(improved.answer, improved.hits, started, improved_mode,
+                        improved.confidence, improved_route, entities, improved_validation, trace)
+        if competition_signal and competition_target.status == "exact":
+            from app.pipeline.competition_source_gaps import lookup_competition_reply
+            from app.pipeline.retrieval import hit_from_curated
+            detail_started = time.perf_counter()
+            detail = lookup_competition_reply(pre.clean_query, locale.effective if locale is not None else "th")
+            trace.append(_timing_trace("competition_detail_lookup", detail_started))
+            if detail is not None:
+                detail_mode = {"no_answer":"pipeline:competition_rule_detail_no_answer", "partial":"pipeline:competition_rule_detail_partial_source", "conflict":"pipeline:competition_rule_source_conflict"}.get(detail.outcome,"pipeline:competition_rule_detail_source")
+                detail_route = PipelineRoute("competition_rules", "competition_rules_lookup", 0.97, "fact", "medium", "complete source clauses for explicit requested propositions")
+                detail_hits = [hit_from_curated(row) for row in detail.rows]
+                detail_validation = validate_answer(pre.clean_query, detail.answer, detail_route, entities, hits=detail_hits, mode=detail_mode)
+                trace.append(PipelineTrace("competition_detail", "accepted" if detail_validation.ok else "rejected", 0.97, "one rulebook, literal complete clauses, no inferred policies", {"concepts":list(detail.concepts),"source_ids":[row['id'] for row in detail.rows],"validation_errors":list(detail_validation.errors),"outcome":detail.outcome,"reasons":list(detail.reasons)}))
+                if detail_validation.ok:
+                    trace.append(PipelineTrace("semantic_route", "skipped_exact_competition_facet", 0.97, "explicit detail propositions already bound to source clauses"))
+                    trace.append(PipelineTrace("competition_source_grounding", "detail_clauses_covered", 0.97, "supported clauses retained; source gaps/conflicts explicitly reported", {"concepts":list(detail.concepts),"source_ids":[row['id'] for row in detail.rows],"outcome":detail.outcome,"reasons":list(detail.reasons)}))
+                    return self._build_result(detail.answer, detail_hits, started, detail_mode, 0.97, detail_route, entities, detail_validation, trace)
         english_deferred_for_intent = False
         english_direct_general = False
         english_initial_result = None
+        if competition_signal and looks_like_broad_competition_rules_query(pre.clean_query):
+            from app.pipeline.competition_overview import build_competition_overview
+
+            overview = build_competition_overview(pre.clean_query, locale.effective if locale is not None else "th", recent_history=recent_history)
+            if overview is not None:
+                overview_route = PipelineRoute("competition_rules", "competition_rules_overview", 0.98, "fact", "medium", "substantive clauses from the explicit rulebook target")
+                overview_frame = build_question_frame(pre.clean_query, overview_route)
+                overview_mode = "pipeline:competition_rule_detail_no_answer" if overview.no_further_clauses else "pipeline:competition_rule_overview_source"
+                validation = validate_answer(pre.clean_query, overview.answer, overview_route, entities, hits=overview.hits, mode=overview_mode, frame=overview_frame)
+                trace.append(PipelineTrace("competition_overview", "accepted" if validation.ok else "rejected", 0.98, "source clauses across sections; headings alone are insufficient", {"section_ids": list(overview.section_ids), "game_ids": [target.game_id for target in competition_target.targets], "validation_errors": list(validation.errors), "history_answer_count": overview.history_answer_count, "excluded_clause_count": overview.excluded_clause_count, "no_further_clauses": overview.no_further_clauses}))
+                if validation.ok:
+                    return self._build_result(overview.answer, overview.hits, started, overview_mode, 0.98, overview_route, entities, validation, trace)
         if locale is not None and locale.effective == "en":
             english_result = answer_english_supported(
                 pre.clean_query,
@@ -1504,9 +1670,18 @@ class AnswerQualityPipeline:
             else None
         )
         member_closed_route = initial_frame is not None and initial_frame.operation == "member_lookup"
+        competition_closed_intent = exact_competition_intent(pre.clean_query)
         booking_policy_original_route = None
         booking_policy_original_intent = None
-        if target_lock.locked:
+        if competition_closed_intent is not None:
+            route = PipelineRoute('competition_rules', 'competition_rules_lookup', 0.97, 'fact', 'medium', competition_closed_intent.reason)
+            semantic_route_locked = None
+            trace.append(PipelineTrace(
+                'semantic_route_refiner', 'skipped_exact_competition_facet', 0.97,
+                competition_closed_intent.reason,
+                {'game_id': competition_closed_intent.target, **competition_closed_intent.filters, 'answer_coverage_deferred': True},
+            ))
+        elif target_lock.locked:
             semantic_route_locked = None
             trace.append(PipelineTrace(
                 "semantic_route_refiner",
@@ -1755,6 +1930,9 @@ class AnswerQualityPipeline:
         if english_deferred_for_intent and experimental_allow_llm and not english_direct_general:
             preflight_allow_llm = True
             preflight_reason = "broad English structured response requests bounded intent review"
+        if competition_closed_intent is not None:
+            preflight_allow_llm = False
+            preflight_reason = 'exact competition game/facet already determines lookup; source contract still required'
         trace.append(PipelineTrace(
             "model_gateway",
             "allow_preflight_llm" if preflight_allow_llm else "skip_preflight_llm",
@@ -1767,7 +1945,15 @@ class AnswerQualityPipeline:
                 "route_intent": route.intent,
             },
         ))
-        if (
+        if competition_closed_intent is not None:
+            universal_intent = competition_closed_intent
+            universal_trace = PipelineTrace(
+                'universal_intent', 'competition_rules/rule_lookup', universal_intent.confidence,
+                universal_intent.reason,
+                {'method': universal_intent.method, 'llm_attempted': False, 'target': universal_intent.target,
+                 'filters': universal_intent.filters, 'answer_coverage_deferred': True},
+            )
+        elif (
             (not english_deferred_for_intent or english_direct_general)
             and planned_task is not None
             and planned_task.operation != "unknown"
@@ -2732,6 +2918,18 @@ class AnswerQualityPipeline:
                 "structured tool passed precondition but returned no answer",
                 {"capability_id": structured_precondition.capability_id},
             ))
+        if structured is not None and structured.mode == "structured_members_role_clarification":
+            clarification_route = self._route_for_structured_result(route, universal_intent, structured.mode)
+            trace.append(PipelineTrace(
+                "member_role_target", "ask_for_whole_role", structured.confidence,
+                "do not assign a person using a shorter role embedded in an unresolved target",
+                structured.evidence,
+            ))
+            return self._build_result(
+                structured.answer, [], started, "pipeline:" + structured.mode,
+                structured.confidence, clarification_route, entities,
+                ValidationResult(ok=True), trace,
+            )
         if structured is not None and structured.confidence >= 0.82:
             structured_route = self._route_for_structured_result(route, universal_intent, structured.mode)
             composer_started = time.perf_counter()
@@ -2823,7 +3021,7 @@ class AnswerQualityPipeline:
             # can execute the next deterministic candidate.
             structured = None
 
-        if _looks_like_unclear_game_meta_query(pre.clean_query) and not has_explicit_game_hint(pre.clean_query):
+        if not competition_signal and _looks_like_unclear_game_meta_query(pre.clean_query) and not has_explicit_game_hint(pre.clean_query):
             game_route = PipelineRoute("games", "game_meta_clarification", 0.74, "clarification", "low", "broad game meta query without specific game")
             answer = (
                 "ถามเรื่องเกมได้ครับ แต่คำถามนี้ยังกว้างเกินไป เลยไม่ขอดึงเกมใดเกมหนึ่งมาตอบแทน\n\n"
@@ -3119,6 +3317,11 @@ class AnswerQualityPipeline:
                 )
             source_answer, source_raw_hits, source_confidence = answer_from_curated_hits(source_hits, pre.clean_query)
             if source_answer and source_confidence >= 0.65:
+                from app.pipeline.competition_presentation import pause_rows_for_query, requested_pause_kind, focused_pause_lines
+                # Public hits omit source text; inspect the retained source rows.
+                pause_evidence = pause_rows_for_query(pre.clean_query, source_hits) if requested_pause_kind(pre.clean_query) else []
+                pause_detail_missing = bool(pause_evidence) and all(focused_pause_lines(pre.clean_query, str(row.get('text') or '')) == [] for row in pause_evidence)
+                source_mode = 'pipeline:competition_facet_not_covered_no_answer' if pause_detail_missing else 'pipeline:competition_source_rag'
                 formatted = format_answer(source_answer, source_raw_hits, route, entities)
                 validation = validate_answer(
                     pre.clean_query,
@@ -3126,27 +3329,27 @@ class AnswerQualityPipeline:
                     route,
                     entities,
                     hits=source_raw_hits,
-                    mode="pipeline:competition_source_rag",
+                    mode=source_mode,
                     intent=universal_intent,
                     frame=question_frame,
                 )
                 trace.append(PipelineTrace(
                     "competition_source_grounding",
-                    "accepted" if validation.ok else "rejected_by_answer_contract",
+                    ("pause_detail_not_covered_safe_no_answer" if pause_detail_missing else "accepted") if validation.ok else "rejected_by_answer_contract",
                     source_confidence,
                     "target-filtered source chunks are preferred over summary fact cards",
-                    {"hit_count": len(source_raw_hits), "validation_errors": list(validation.errors)},
+                    {"hit_count": len(source_raw_hits), "validation_errors": list(validation.errors), 'pause_detail_missing': pause_detail_missing},
                 ))
                 if validation.ok:
                     return self._build_result(
                         formatted,
                         source_raw_hits,
                         started,
-                        "pipeline:competition_source_rag",
+                        source_mode,
                         source_confidence,
                         route,
                         entities,
-                        validation,
+                        ValidationResult(ok=True, warnings=validation.warnings + ('competition_pause_detail_not_covered',)) if pause_detail_missing else validation,
                         trace,
                     )
         if route.category == "competition_rules" and question_frame.allows_multiple_targets:
@@ -3154,11 +3357,12 @@ class AnswerQualityPipeline:
             comparison_hits: list[dict] = []
             comparison_confidences: list[float] = []
             for target in question_frame.targets:
-                target_hits, target_trace = retrieve_competition_fact_cards(
-                    pre.clean_query,
-                    limit=1,
-                    target_game_ids=(target.target_id,),
-                )
+                from app.pipeline.competition_targets import competition_query_for_target
+
+                target_query = competition_query_for_target(pre.clean_query, target.target_id)
+                target_hits, target_trace = retrieve_competition_contract_rows(target_query, limit=8)
+                if not target_hits:
+                    target_hits, target_trace = retrieve_curated(target_query, "competition_rules", limit=8, exclude_canonical_projection=True)
                 trace.append(PipelineTrace(
                     "competition_comparison_retrieval",
                     target.target_id,
@@ -3166,11 +3370,9 @@ class AnswerQualityPipeline:
                     target_trace.detail,
                     target_trace.metadata,
                 ))
-                target_answer, target_raw_hits, target_confidence = answer_from_competition_fact_hits(
-                    target_hits,
-                    pre.clean_query,
-                )
-                if not target_answer or not target_raw_hits or target_confidence < 0.72:
+                target_answer, target_raw_hits, target_confidence = answer_from_curated_hits(target_hits, target_query)
+                coverage = assess_competition_evidence(target_query, target_hits)
+                if not coverage.covered or not target_answer or not target_raw_hits or target_confidence < 0.65:
                     comparison_parts = []
                     break
                 comparison_parts.append(f"{target.label}: {target_answer}")
@@ -3188,7 +3390,7 @@ class AnswerQualityPipeline:
                     route,
                     entities,
                     hits=comparison_hits,
-                    mode="pipeline:competition_fact_card_comparison",
+                        mode="pipeline:competition_rule_source_comparison",
                     intent=universal_intent,
                     frame=question_frame,
                 )
@@ -3203,7 +3405,7 @@ class AnswerQualityPipeline:
                         formatted,
                         comparison_hits,
                         started,
-                        "pipeline:competition_fact_card_comparison",
+                        "pipeline:competition_rule_source_comparison",
                         min(comparison_confidences),
                         route,
                         entities,
@@ -3862,6 +4064,11 @@ class AnswerQualityPipeline:
 
     @staticmethod
     def _route_for_structured_result(route: PipelineRoute, intent: UniversalIntent, mode: str) -> PipelineRoute:
+        if mode == "structured_members_role_clarification":
+            return PipelineRoute(
+                "clarification", "member_role_target", 0.60, "clarification", "low",
+                "whole role target is ambiguous or absent from verified member data",
+            )
         if mode == "structured_game_detail" and intent.operation == "availability":
             return PipelineRoute(
                 "games",

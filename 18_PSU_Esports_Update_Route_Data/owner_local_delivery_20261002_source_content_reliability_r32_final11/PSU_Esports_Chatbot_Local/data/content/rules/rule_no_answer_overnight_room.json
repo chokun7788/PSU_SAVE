@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_no_answer_overnight_room",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "ห้องนอน",
+      "พักค้างคืน",
+      "ค้างคืน"
+    ],
+    "en": [
+      "overnight",
+      "sleeping room"
+    ]
+  },
+  "facts": {
+    "route_category": "no_answer",
+    "intent": "no_answer_overnight_room",
+    "patterns": [
+      "ห้องนอน",
+      "พักค้างคืน",
+      "ค้างคืน",
+      "overnight",
+      "sleeping room"
+    ],
+    "priority": 130
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ยังไม่พบข้อมูลเรื่องห้องนอนหรือบริการพักค้างคืนในฐานข้อมูลที่มี ข้อมูลเวลาที่มีระบุการใช้งานเป็นรอบเวลาในช่วง 09:00-16:00 และมีช่วง Maintenance ตามตาราง จึงไม่ควรสรุปว่ามีบริการพักค้างคืน"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "No information about sleeping rooms or overnight stays was found in the available knowledge base. The available schedule describes time-slot usage between 09:00-16:00 with maintenance periods, so overnight service should not be assumed."
+      },
+      "source_sha256": "8f6ed0acf4130630fc20bea2b5a4f1b68e7fd0e9a48b4cabce4f200e05922b17",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/no_answer_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_schedule_weekly"
+    ],
+    "last_verified_at": ""
+  }
+}

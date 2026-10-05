@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_lost_personal_items",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "ทรัพย์สินส่วนตัว.*สูญหาย",
+      "สูญหาย.*รับผิดชอบ",
+      "ของหาย"
+    ],
+    "en": []
+  },
+  "facts": {
+    "route_category": "rules",
+    "intent": "lost_personal_items",
+    "patterns": [
+      "ทรัพย์สินส่วนตัว.*สูญหาย",
+      "สูญหาย.*รับผิดชอบ",
+      "ของหาย"
+    ],
+    "priority": 110
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "กรุณาตรวจสอบทรัพย์สินของท่านทุกครั้งระหว่างการใช้บริการ หากมีการสูญหาย ศูนย์ขอสงวนสิทธิ์ไม่รับผิดชอบในทุกกรณี"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Users should check their belongings during service use. The center reserves the right not to be responsible for any loss."
+      },
+      "source_sha256": "08c305ca363b925dd4aaf2b1bcb22116133a097ef4331b596b4b7b8f8051b0c3",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/misc_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_rule_lost_items",
+      "reservation-studio-rules"
+    ],
+    "last_verified_at": ""
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_no_answer_pets",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "สัตว์เลี้ยง",
+      "นำสัตว์",
+      "แมว",
+      "หมา"
+    ],
+    "en": [
+      "pet",
+      "pets"
+    ]
+  },
+  "facts": {
+    "route_category": "no_answer",
+    "intent": "no_answer_pets",
+    "patterns": [
+      "สัตว์เลี้ยง",
+      "นำสัตว์",
+      "แมว",
+      "หมา",
+      "pet",
+      "pets"
+    ],
+    "priority": 120
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ยังไม่พบข้อมูลเรื่องการนำสัตว์เลี้ยงเข้าศูนย์ในฐานข้อมูลที่มี จึงยังไม่ควรตอบว่าอนุญาต หากจำเป็นต้องนำสัตว์เลี้ยงมาด้วยควรติดต่อเจ้าหน้าที่ศูนย์ก่อนเข้าใช้บริการ"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "No information about bringing pets into the studio was found in the available knowledge base, so it should not be treated as allowed. Please contact staff before visiting if this is necessary."
+      },
+      "source_sha256": "c2309a9a81a18899e3febbbb62982071b084abfa5ce24ff259e0922a58f09f21",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/no_answer_rules.jsonl",
+    "url": "",
+    "source_ids": [],
+    "last_verified_at": ""
+  }
+}

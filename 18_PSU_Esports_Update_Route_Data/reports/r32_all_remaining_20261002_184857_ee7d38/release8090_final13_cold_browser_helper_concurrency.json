@@ -1,0 +1,2229 @@
+{
+  "scope": "Actual ten simultaneous HTTP requests through the same retry helper used by the webpage; simple catalog locale/count oracle, not WordPress load SLA",
+  "url": "http://127.0.0.1:8090",
+  "total": 10,
+  "passed": 10,
+  "retries": 8,
+  "rows": [
+    {
+      "i": 0,
+      "locale": "en",
+      "retries": 1,
+      "elapsed_ms": 4622,
+      "http_status": 200,
+      "passed": true,
+      "errors": [],
+      "response": {
+        "ok": true,
+        "request_id": "79a6e86614a44b458a0bfcebfbc6eff1",
+        "session_id": "r32-client-1790949417856-0",
+        "answer": "There are currently 42 verified games available.\n\nPC Zone (6 games)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\n\nPlayStation 5 Zone (17 games)\n•    Call of Duty: Modern Warfare III\n•    Delta Force\n•    EA Sports FC 24\n•    eFootball\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Hogwarts Legacy\n•    Marvel's Spider-Man 2\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Resident Evil 4\n•    Resident Evil Village\n•    TEKKEN 8\n•    THE FINALS\n•    The Last of Us Part I\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (17 games)\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    Little Nightmares II\n•    Luigi's Mansion 3\n•    Mario Kart 8 Deluxe\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Nintendo Switch Sports\n•    Overcooked!\n•    Overcooked! 2\n•    Pokémon Champions\n•    Ring Fit Adventure\n•    Super Mario Odyssey\n•    Super Smash Bros Ultimate\n•    The Legend of Zelda: Breath of The Wild\n\nCockpit Zone (1 game)\n•    Gran Turismo 7\n\nVR Zone (4 games)\n•    Beat Saber\n•    Horizon Call of the Mountain\n•    Resident Evil 4\n•    Resident Evil Village\nSource: https://esports.phuket.psu.ac.th/Services/our-games (original source in Thai)",
+        "mode": "pipeline:structured_games_catalog_en",
+        "route_category": "games",
+        "route_intent": "games_lookup",
+        "universal_intent": null,
+        "confidence": 0.98,
+        "latency_sec": 0.1364,
+        "wall_sec": 1.0596,
+        "deadline": {
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20,
+          "global_elapsed_sec": 1.0596,
+          "global_remaining_sec": 18.9404,
+          "finalizer_reserve_sec": 1,
+          "work_remaining_sec": 17.9404,
+          "timing_status": "running"
+        },
+        "timing_status": "completed",
+        "timed_out": false,
+        "timeout_stage": "",
+        "retryable": false,
+        "worker_id": 0,
+        "sources": [
+          {
+            "id": "availability_pc_01_02",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_pc_03_10",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_ps5_01_02",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_nintendo_1_2",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_nintendo_1_4",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_cockpit_01_02",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_vr_30",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_vr_60",
+            "url": "https://esports.computing.psu.ac.th/"
+          }
+        ],
+        "validation_ok": true,
+        "language": {
+          "requested": "auto",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 0.92,
+          "reason": "english_sentence_structure"
+        },
+        "experimental_rag_fallback": false,
+        "experimental_allow_llm": true,
+        "input_recovery": {
+          "score": 0.2785,
+          "language": "en",
+          "language_quality": 0.7215,
+          "should_review_intent": false,
+          "reason": "English character n-gram quality=0.721",
+          "action": "continue"
+        },
+        "server_date": {
+          "iso": "2026-10-02",
+          "label": "02/10/2026 (วันศุกร์)",
+          "time": "20:57",
+          "datetime_iso": "2026-10-02T20:57:02.471271+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-02",
+            "time": "20:57",
+            "weekday": "วันศุกร์",
+            "timezone": "Asia/Bangkok",
+            "status": "outside_hours",
+            "playable": false,
+            "slot": null,
+            "next_open_slot": null,
+            "reason": "outside_regular_service_hours",
+            "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+            "source": "reservation_schedule"
+          },
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "calendar": {
+          "date": "2026-10-02",
+          "label": "02/10/2026 (วันศุกร์)",
+          "weekday": "วันศุกร์",
+          "time": "20:57",
+          "datetime_iso": "2026-10-02T20:57:02.471271+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-02",
+            "time": "20:57",
+            "weekday": "วันศุกร์",
+            "timezone": "Asia/Bangkok",
+            "status": "outside_hours",
+            "playable": false,
+            "slot": null,
+            "next_open_slot": null,
+            "reason": "outside_regular_service_hours",
+            "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+            "source": "reservation_schedule"
+          },
+          "service_closure": null,
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "input_quality": {
+          "action": "continue",
+          "detected_action": "continue",
+          "applied_action": "continue",
+          "should_retype": false,
+          "flags": [],
+          "layout_score": 0.001194,
+          "repeat_score": 0,
+          "guard_status": "passed",
+          "guard_mode": "enforce",
+          "repeat_policy": "warn_and_continue",
+          "profile_version": "keyboard-profile-v1:2a863a4176572043",
+          "guard_elapsed_ms": 0.805
+        }
+      }
+    },
+    {
+      "i": 1,
+      "locale": "th",
+      "retries": 1,
+      "elapsed_ms": 4275,
+      "http_status": 200,
+      "passed": true,
+      "errors": [],
+      "response": {
+        "ok": true,
+        "request_id": "19cd4f0d4c83447ca35cc27d70e2ddd5",
+        "session_id": "r32-client-1790949417859-1",
+        "answer": "ตอนนี้มีเกมที่ยืนยันได้ทั้งหมด 42 เกมครับ\n\nPC Zone (6 เกม)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\n\nPlayStation 5 Zone (17 เกม)\n•    Call of Duty: Modern Warfare III\n•    Delta Force\n•    EA Sports FC 24\n•    eFootball\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Hogwarts Legacy\n•    Marvel's Spider-Man 2\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Resident Evil 4\n•    Resident Evil Village\n•    TEKKEN 8\n•    THE FINALS\n•    The Last of Us Part I\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (17 เกม)\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    Little Nightmares II\n•    Luigi's Mansion 3\n•    Mario Kart 8 Deluxe\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Nintendo Switch Sports\n•    Overcooked!\n•    Overcooked! 2\n•    Pokémon Champions\n•    Ring Fit Adventure\n•    Super Mario Odyssey\n•    Super Smash Bros Ultimate\n•    The Legend of Zelda: Breath of The Wild\n\nCockpit Zone (1 เกม)\n•    Gran Turismo 7\n\nVR Zone (4 เกม)\n•    Beat Saber\n•    Horizon Call of the Mountain\n•    Resident Evil 4\n•    Resident Evil Village\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+        "mode": "pipeline:structured_games_catalog",
+        "route_category": "games",
+        "route_intent": "list",
+        "universal_intent": {
+          "domain": "games",
+          "operation": "list",
+          "target": "",
+          "filters": {},
+          "needs": [
+            "list_items"
+          ],
+          "answer_style": "summary_bullets",
+          "confidence": 0.82,
+          "method": "heuristic",
+          "reason": "game catalog/count terms override zone/equipment domain; list terms found"
+        },
+        "confidence": 0.95,
+        "latency_sec": 0.2261,
+        "wall_sec": 0.7456,
+        "deadline": {
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20,
+          "global_elapsed_sec": 0.7456,
+          "global_remaining_sec": 19.2544,
+          "finalizer_reserve_sec": 1,
+          "work_remaining_sec": 18.2544,
+          "timing_status": "running"
+        },
+        "timing_status": "completed",
+        "timed_out": false,
+        "timeout_stage": "",
+        "retryable": false,
+        "worker_id": 0,
+        "sources": [
+          {
+            "id": "our_games",
+            "url": "https://esports.phuket.psu.ac.th/Services/our-games"
+          }
+        ],
+        "validation_ok": true,
+        "language": {
+          "requested": "auto",
+          "detected": "th",
+          "effective": "th",
+          "confidence": 0.9283,
+          "reason": "thai_script"
+        },
+        "experimental_rag_fallback": false,
+        "experimental_allow_llm": true,
+        "input_recovery": {
+          "score": 0.2126,
+          "language": "th",
+          "language_quality": 0.7874,
+          "should_review_intent": false,
+          "reason": "Thai character n-gram quality=0.787",
+          "action": "continue"
+        },
+        "server_date": {
+          "iso": "2026-10-02",
+          "label": "02/10/2026 (วันศุกร์)",
+          "time": "20:57",
+          "datetime_iso": "2026-10-02T20:57:02.125221+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-02",
+            "time": "20:57",
+            "weekday": "วันศุกร์",
+            "timezone": "Asia/Bangkok",
+            "status": "outside_hours",
+            "playable": false,
+            "slot": null,
+            "next_open_slot": null,
+            "reason": "outside_regular_service_hours",
+            "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+            "source": "reservation_schedule"
+          },
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "calendar": {
+          "date": "2026-10-02",
+          "label": "02/10/2026 (วันศุกร์)",
+          "weekday": "วันศุกร์",
+          "time": "20:57",
+          "datetime_iso": "2026-10-02T20:57:02.125221+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-02",
+            "time": "20:57",
+            "weekday": "วันศุกร์",
+            "timezone": "Asia/Bangkok",
+            "status": "outside_hours",
+            "playable": false,
+            "slot": null,
+            "next_open_slot": null,
+            "reason": "outside_regular_service_hours",
+            "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+            "source": "reservation_schedule"
+          },
+          "service_closure": null,
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "input_quality": {
+          "action": "continue",
+          "detected_action": "continue",
+          "applied_action": "continue",
+          "should_retype": false,
+          "flags": [],
+          "layout_score": 0.004683,
+          "repeat_score": 0,
+          "guard_status": "passed",
+          "guard_mode": "enforce",
+          "repeat_policy": "warn_and_continue",
+          "profile_version": "keyboard-profile-v1:2a863a4176572043",
+          "guard_elapsed_ms": 0.281
+        }
+      }
+    },
+    {
+      "i": 2,
+      "locale": "en",
+      "retries": 1,
+      "elapsed_ms": 3626,
+      "http_status": 200,
+      "passed": true,
+      "errors": [],
+      "response": {
+        "ok": true,
+        "request_id": "c157ef8aeff142068d1da9f117a79269",
+        "session_id": "r32-client-1790949417860-2",
+        "answer": "There are currently 42 verified games available.\n\nPC Zone (6 games)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\n\nPlayStation 5 Zone (17 games)\n•    Call of Duty: Modern Warfare III\n•    Delta Force\n•    EA Sports FC 24\n•    eFootball\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Hogwarts Legacy\n•    Marvel's Spider-Man 2\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Resident Evil 4\n•    Resident Evil Village\n•    TEKKEN 8\n•    THE FINALS\n•    The Last of Us Part I\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (17 games)\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    Little Nightmares II\n•    Luigi's Mansion 3\n•    Mario Kart 8 Deluxe\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Nintendo Switch Sports\n•    Overcooked!\n•    Overcooked! 2\n•    Pokémon Champions\n•    Ring Fit Adventure\n•    Super Mario Odyssey\n•    Super Smash Bros Ultimate\n•    The Legend of Zelda: Breath of The Wild\n\nCockpit Zone (1 game)\n•    Gran Turismo 7\n\nVR Zone (4 games)\n•    Beat Saber\n•    Horizon Call of the Mountain\n•    Resident Evil 4\n•    Resident Evil Village\nSource: https://esports.phuket.psu.ac.th/Services/our-games (original source in Thai)",
+        "mode": "pipeline:structured_games_catalog_en",
+        "route_category": "games",
+        "route_intent": "games_lookup",
+        "universal_intent": null,
+        "confidence": 0.98,
+        "latency_sec": 0.1346,
+        "wall_sec": 0.1454,
+        "deadline": {
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20,
+          "global_elapsed_sec": 0.1453,
+          "global_remaining_sec": 19.8547,
+          "finalizer_reserve_sec": 1,
+          "work_remaining_sec": 18.8547,
+          "timing_status": "running"
+        },
+        "timing_status": "completed",
+        "timed_out": false,
+        "timeout_stage": "",
+        "retryable": false,
+        "worker_id": 0,
+        "sources": [
+          {
+            "id": "availability_pc_01_02",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_pc_03_10",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_ps5_01_02",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_nintendo_1_2",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_nintendo_1_4",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_cockpit_01_02",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_vr_30",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_vr_60",
+            "url": "https://esports.computing.psu.ac.th/"
+          }
+        ],
+        "validation_ok": true,
+        "language": {
+          "requested": "auto",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 0.92,
+          "reason": "english_sentence_structure"
+        },
+        "experimental_rag_fallback": false,
+        "experimental_allow_llm": true,
+        "input_recovery": {
+          "score": 0.2785,
+          "language": "en",
+          "language_quality": 0.7215,
+          "should_review_intent": false,
+          "reason": "English character n-gram quality=0.721",
+          "action": "continue"
+        },
+        "server_date": {
+          "iso": "2026-10-02",
+          "label": "02/10/2026 (วันศุกร์)",
+          "time": "20:57",
+          "datetime_iso": "2026-10-02T20:57:01.477108+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-02",
+            "time": "20:57",
+            "weekday": "วันศุกร์",
+            "timezone": "Asia/Bangkok",
+            "status": "outside_hours",
+            "playable": false,
+            "slot": null,
+            "next_open_slot": null,
+            "reason": "outside_regular_service_hours",
+            "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+            "source": "reservation_schedule"
+          },
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "calendar": {
+          "date": "2026-10-02",
+          "label": "02/10/2026 (วันศุกร์)",
+          "weekday": "วันศุกร์",
+          "time": "20:57",
+          "datetime_iso": "2026-10-02T20:57:01.477108+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-02",
+            "time": "20:57",
+            "weekday": "วันศุกร์",
+            "timezone": "Asia/Bangkok",
+            "status": "outside_hours",
+            "playable": false,
+            "slot": null,
+            "next_open_slot": null,
+            "reason": "outside_regular_service_hours",
+            "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+            "source": "reservation_schedule"
+          },
+          "service_closure": null,
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "input_quality": {
+          "action": "continue",
+          "detected_action": "continue",
+          "applied_action": "continue",
+          "should_retype": false,
+          "flags": [],
+          "layout_score": 0.001194,
+          "repeat_score": 0,
+          "guard_status": "passed",
+          "guard_mode": "enforce",
+          "repeat_policy": "warn_and_continue",
+          "profile_version": "keyboard-profile-v1:2a863a4176572043",
+          "guard_elapsed_ms": 0.841
+        }
+      }
+    },
+    {
+      "i": 3,
+      "locale": "th",
+      "retries": 1,
+      "elapsed_ms": 3905,
+      "http_status": 200,
+      "passed": true,
+      "errors": [],
+      "response": {
+        "ok": true,
+        "request_id": "4220645ec0e14623b8e5c2070424f2e3",
+        "session_id": "r32-client-1790949417860-3",
+        "answer": "ตอนนี้มีเกมที่ยืนยันได้ทั้งหมด 42 เกมครับ\n\nPC Zone (6 เกม)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\n\nPlayStation 5 Zone (17 เกม)\n•    Call of Duty: Modern Warfare III\n•    Delta Force\n•    EA Sports FC 24\n•    eFootball\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Hogwarts Legacy\n•    Marvel's Spider-Man 2\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Resident Evil 4\n•    Resident Evil Village\n•    TEKKEN 8\n•    THE FINALS\n•    The Last of Us Part I\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (17 เกม)\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    Little Nightmares II\n•    Luigi's Mansion 3\n•    Mario Kart 8 Deluxe\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Nintendo Switch Sports\n•    Overcooked!\n•    Overcooked! 2\n•    Pokémon Champions\n•    Ring Fit Adventure\n•    Super Mario Odyssey\n•    Super Smash Bros Ultimate\n•    The Legend of Zelda: Breath of The Wild\n\nCockpit Zone (1 เกม)\n•    Gran Turismo 7\n\nVR Zone (4 เกม)\n•    Beat Saber\n•    Horizon Call of the Mountain\n•    Resident Evil 4\n•    Resident Evil Village\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+        "mode": "pipeline:structured_games_catalog",
+        "route_category": "games",
+        "route_intent": "list",
+        "universal_intent": {
+          "domain": "games",
+          "operation": "list",
+          "target": "",
+          "filters": {},
+          "needs": [
+            "list_items"
+          ],
+          "answer_style": "summary_bullets",
+          "confidence": 0.82,
+          "method": "heuristic",
+          "reason": "game catalog/count terms override zone/equipment domain; list terms found"
+        },
+        "confidence": 0.95,
+        "latency_sec": 0.2147,
+        "wall_sec": 0.2975,
+        "deadline": {
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20,
+          "global_elapsed_sec": 0.2974,
+          "global_remaining_sec": 19.7026,
+          "finalizer_reserve_sec": 1,
+          "work_remaining_sec": 18.7026,
+          "timing_status": "running"
+        },
+        "timing_status": "completed",
+        "timed_out": false,
+        "timeout_stage": "",
+        "retryable": false,
+        "worker_id": 0,
+        "sources": [
+          {
+            "id": "our_games",
+            "url": "https://esports.phuket.psu.ac.th/Services/our-games"
+          }
+        ],
+        "validation_ok": true,
+        "language": {
+          "requested": "auto",
+          "detected": "th",
+          "effective": "th",
+          "confidence": 0.9283,
+          "reason": "thai_script"
+        },
+        "experimental_rag_fallback": false,
+        "experimental_allow_llm": true,
+        "input_recovery": {
+          "score": 0.2126,
+          "language": "th",
+          "language_quality": 0.7874,
+          "should_review_intent": false,
+          "reason": "Thai character n-gram quality=0.787",
+          "action": "continue"
+        },
+        "server_date": {
+          "iso": "2026-10-02",
+          "label": "02/10/2026 (วันศุกร์)",
+          "time": "20:57",
+          "datetime_iso": "2026-10-02T20:57:01.756791+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-02",
+            "time": "20:57",
+            "weekday": "วันศุกร์",
+            "timezone": "Asia/Bangkok",
+            "status": "outside_hours",
+            "playable": false,
+            "slot": null,
+            "next_open_slot": null,
+            "reason": "outside_regular_service_hours",
+            "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+            "source": "reservation_schedule"
+          },
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "calendar": {
+          "date": "2026-10-02",
+          "label": "02/10/2026 (วันศุกร์)",
+          "weekday": "วันศุกร์",
+          "time": "20:57",
+          "datetime_iso": "2026-10-02T20:57:01.756791+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-02",
+            "time": "20:57",
+            "weekday": "วันศุกร์",
+            "timezone": "Asia/Bangkok",
+            "status": "outside_hours",
+            "playable": false,
+            "slot": null,
+            "next_open_slot": null,
+            "reason": "outside_regular_service_hours",
+            "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+            "source": "reservation_schedule"
+          },
+          "service_closure": null,
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "input_quality": {
+          "action": "continue",
+          "detected_action": "continue",
+          "applied_action": "continue",
+          "should_retype": false,
+          "flags": [],
+          "layout_score": 0.004683,
+          "repeat_score": 0,
+          "guard_status": "passed",
+          "guard_mode": "enforce",
+          "repeat_policy": "warn_and_continue",
+          "profile_version": "keyboard-profile-v1:2a863a4176572043",
+          "guard_elapsed_ms": 0.403
+        }
+      }
+    },
+    {
+      "i": 4,
+      "locale": "en",
+      "retries": 1,
+      "elapsed_ms": 3682,
+      "http_status": 200,
+      "passed": true,
+      "errors": [],
+      "response": {
+        "ok": true,
+        "request_id": "39c35dbe8b1747548dc103ff4134e15f",
+        "session_id": "r32-client-1790949417862-4",
+        "answer": "There are currently 42 verified games available.\n\nPC Zone (6 games)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\n\nPlayStation 5 Zone (17 games)\n•    Call of Duty: Modern Warfare III\n•    Delta Force\n•    EA Sports FC 24\n•    eFootball\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Hogwarts Legacy\n•    Marvel's Spider-Man 2\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Resident Evil 4\n•    Resident Evil Village\n•    TEKKEN 8\n•    THE FINALS\n•    The Last of Us Part I\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (17 games)\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    Little Nightmares II\n•    Luigi's Mansion 3\n•    Mario Kart 8 Deluxe\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Nintendo Switch Sports\n•    Overcooked!\n•    Overcooked! 2\n•    Pokémon Champions\n•    Ring Fit Adventure\n•    Super Mario Odyssey\n•    Super Smash Bros Ultimate\n•    The Legend of Zelda: Breath of The Wild\n\nCockpit Zone (1 game)\n•    Gran Turismo 7\n\nVR Zone (4 games)\n•    Beat Saber\n•    Horizon Call of the Mountain\n•    Resident Evil 4\n•    Resident Evil Village\nSource: https://esports.phuket.psu.ac.th/Services/our-games (original source in Thai)",
+        "mode": "pipeline:structured_games_catalog_en",
+        "route_category": "games",
+        "route_intent": "games_lookup",
+        "universal_intent": null,
+        "confidence": 0.98,
+        "latency_sec": 0.057,
+        "wall_sec": 0.1395,
+        "deadline": {
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20,
+          "global_elapsed_sec": 0.1395,
+          "global_remaining_sec": 19.8605,
+          "finalizer_reserve_sec": 1,
+          "work_remaining_sec": 18.8605,
+          "timing_status": "running"
+        },
+        "timing_status": "completed",
+        "timed_out": false,
+        "timeout_stage": "",
+        "retryable": false,
+        "worker_id": 0,
+        "sources": [
+          {
+            "id": "availability_pc_01_02",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_pc_03_10",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_ps5_01_02",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_nintendo_1_2",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_nintendo_1_4",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_cockpit_01_02",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_vr_30",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_vr_60",
+            "url": "https://esports.computing.psu.ac.th/"
+          }
+        ],
+        "validation_ok": true,
+        "language": {
+          "requested": "auto",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 0.92,
+          "reason": "english_sentence_structure"
+        },
+        "experimental_rag_fallback": false,
+        "experimental_allow_llm": true,
+        "input_recovery": {
+          "score": 0.2785,
+          "language": "en",
+          "language_quality": 0.7215,
+          "should_review_intent": false,
+          "reason": "English character n-gram quality=0.721",
+          "action": "continue"
+        },
+        "server_date": {
+          "iso": "2026-10-02",
+          "label": "02/10/2026 (วันศุกร์)",
+          "time": "20:57",
+          "datetime_iso": "2026-10-02T20:57:01.536809+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-02",
+            "time": "20:57",
+            "weekday": "วันศุกร์",
+            "timezone": "Asia/Bangkok",
+            "status": "outside_hours",
+            "playable": false,
+            "slot": null,
+            "next_open_slot": null,
+            "reason": "outside_regular_service_hours",
+            "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+            "source": "reservation_schedule"
+          },
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "calendar": {
+          "date": "2026-10-02",
+          "label": "02/10/2026 (วันศุกร์)",
+          "weekday": "วันศุกร์",
+          "time": "20:57",
+          "datetime_iso": "2026-10-02T20:57:01.536809+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-02",
+            "time": "20:57",
+            "weekday": "วันศุกร์",
+            "timezone": "Asia/Bangkok",
+            "status": "outside_hours",
+            "playable": false,
+            "slot": null,
+            "next_open_slot": null,
+            "reason": "outside_regular_service_hours",
+            "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+            "source": "reservation_schedule"
+          },
+          "service_closure": null,
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "input_quality": {
+          "action": "continue",
+          "detected_action": "continue",
+          "applied_action": "continue",
+          "should_retype": false,
+          "flags": [],
+          "layout_score": 0.001194,
+          "repeat_score": 0,
+          "guard_status": "passed",
+          "guard_mode": "enforce",
+          "repeat_policy": "warn_and_continue",
+          "profile_version": "keyboard-profile-v1:2a863a4176572043",
+          "guard_elapsed_ms": 0.87
+        }
+      }
+    },
+    {
+      "i": 5,
+      "locale": "th",
+      "retries": 0,
+      "elapsed_ms": 3374,
+      "http_status": 200,
+      "passed": true,
+      "errors": [],
+      "response": {
+        "ok": true,
+        "request_id": "d0b538d9be2641e1a8d1945aa98a8a65",
+        "session_id": "r32-client-1790949417862-5",
+        "answer": "ตอนนี้มีเกมที่ยืนยันได้ทั้งหมด 42 เกมครับ\n\nPC Zone (6 เกม)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\n\nPlayStation 5 Zone (17 เกม)\n•    Call of Duty: Modern Warfare III\n•    Delta Force\n•    EA Sports FC 24\n•    eFootball\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Hogwarts Legacy\n•    Marvel's Spider-Man 2\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Resident Evil 4\n•    Resident Evil Village\n•    TEKKEN 8\n•    THE FINALS\n•    The Last of Us Part I\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (17 เกม)\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    Little Nightmares II\n•    Luigi's Mansion 3\n•    Mario Kart 8 Deluxe\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Nintendo Switch Sports\n•    Overcooked!\n•    Overcooked! 2\n•    Pokémon Champions\n•    Ring Fit Adventure\n•    Super Mario Odyssey\n•    Super Smash Bros Ultimate\n•    The Legend of Zelda: Breath of The Wild\n\nCockpit Zone (1 เกม)\n•    Gran Turismo 7\n\nVR Zone (4 เกม)\n•    Beat Saber\n•    Horizon Call of the Mountain\n•    Resident Evil 4\n•    Resident Evil Village\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+        "mode": "pipeline:structured_games_catalog",
+        "route_category": "games",
+        "route_intent": "list",
+        "universal_intent": {
+          "domain": "games",
+          "operation": "list",
+          "target": "",
+          "filters": {},
+          "needs": [
+            "list_items"
+          ],
+          "answer_style": "summary_bullets",
+          "confidence": 0.82,
+          "method": "heuristic",
+          "reason": "game catalog/count terms override zone/equipment domain; list terms found"
+        },
+        "confidence": 0.95,
+        "latency_sec": 2.071,
+        "wall_sec": 3.349,
+        "deadline": {
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20,
+          "global_elapsed_sec": 3.3489,
+          "global_remaining_sec": 16.6511,
+          "finalizer_reserve_sec": 1,
+          "work_remaining_sec": 15.6511,
+          "timing_status": "running"
+        },
+        "timing_status": "completed",
+        "timed_out": false,
+        "timeout_stage": "",
+        "retryable": false,
+        "worker_id": 0,
+        "sources": [
+          {
+            "id": "our_games",
+            "url": "https://esports.phuket.psu.ac.th/Services/our-games"
+          }
+        ],
+        "validation_ok": true,
+        "language": {
+          "requested": "auto",
+          "detected": "th",
+          "effective": "th",
+          "confidence": 0.9283,
+          "reason": "thai_script"
+        },
+        "experimental_rag_fallback": false,
+        "experimental_allow_llm": true,
+        "input_recovery": {
+          "score": 0.2126,
+          "language": "th",
+          "language_quality": 0.7874,
+          "should_review_intent": false,
+          "reason": "Thai character n-gram quality=0.787",
+          "action": "continue"
+        },
+        "server_date": {
+          "iso": "2026-10-02",
+          "label": "02/10/2026 (วันศุกร์)",
+          "time": "20:57",
+          "datetime_iso": "2026-10-02T20:57:01.229239+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-02",
+            "time": "20:57",
+            "weekday": "วันศุกร์",
+            "timezone": "Asia/Bangkok",
+            "status": "outside_hours",
+            "playable": false,
+            "slot": null,
+            "next_open_slot": null,
+            "reason": "outside_regular_service_hours",
+            "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+            "source": "reservation_schedule"
+          },
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "calendar": {
+          "date": "2026-10-02",
+          "label": "02/10/2026 (วันศุกร์)",
+          "weekday": "วันศุกร์",
+          "time": "20:57",
+          "datetime_iso": "2026-10-02T20:57:01.229239+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-02",
+            "time": "20:57",
+            "weekday": "วันศุกร์",
+            "timezone": "Asia/Bangkok",
+            "status": "outside_hours",
+            "playable": false,
+            "slot": null,
+            "next_open_slot": null,
+            "reason": "outside_regular_service_hours",
+            "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+            "source": "reservation_schedule"
+          },
+          "service_closure": null,
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "input_quality": {
+          "action": "continue",
+          "detected_action": "continue",
+          "applied_action": "continue",
+          "should_retype": false,
+          "flags": [],
+          "layout_score": 0.004683,
+          "repeat_score": 0,
+          "guard_status": "passed",
+          "guard_mode": "enforce",
+          "repeat_policy": "warn_and_continue",
+          "profile_version": "keyboard-profile-v1:2a863a4176572043",
+          "guard_elapsed_ms": 0.208
+        }
+      }
+    },
+    {
+      "i": 6,
+      "locale": "en",
+      "retries": 0,
+      "elapsed_ms": 1307,
+      "http_status": 200,
+      "passed": true,
+      "errors": [],
+      "response": {
+        "ok": true,
+        "request_id": "88a15067ee9d474bbd173429f4378687",
+        "session_id": "r32-client-1790949417863-6",
+        "answer": "There are currently 42 verified games available.\n\nPC Zone (6 games)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\n\nPlayStation 5 Zone (17 games)\n•    Call of Duty: Modern Warfare III\n•    Delta Force\n•    EA Sports FC 24\n•    eFootball\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Hogwarts Legacy\n•    Marvel's Spider-Man 2\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Resident Evil 4\n•    Resident Evil Village\n•    TEKKEN 8\n•    THE FINALS\n•    The Last of Us Part I\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (17 games)\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    Little Nightmares II\n•    Luigi's Mansion 3\n•    Mario Kart 8 Deluxe\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Nintendo Switch Sports\n•    Overcooked!\n•    Overcooked! 2\n•    Pokémon Champions\n•    Ring Fit Adventure\n•    Super Mario Odyssey\n•    Super Smash Bros Ultimate\n•    The Legend of Zelda: Breath of The Wild\n\nCockpit Zone (1 game)\n•    Gran Turismo 7\n\nVR Zone (4 games)\n•    Beat Saber\n•    Horizon Call of the Mountain\n•    Resident Evil 4\n•    Resident Evil Village\nSource: https://esports.phuket.psu.ac.th/Services/our-games (original source in Thai)",
+        "mode": "pipeline:structured_games_catalog_en",
+        "route_category": "games",
+        "route_intent": "games_lookup",
+        "universal_intent": null,
+        "confidence": 0.98,
+        "latency_sec": 0.9777,
+        "wall_sec": 1.2771,
+        "deadline": {
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20,
+          "global_elapsed_sec": 1.277,
+          "global_remaining_sec": 18.723,
+          "finalizer_reserve_sec": 1,
+          "work_remaining_sec": 17.7229,
+          "timing_status": "running"
+        },
+        "timing_status": "completed",
+        "timed_out": false,
+        "timeout_stage": "",
+        "retryable": false,
+        "worker_id": 0,
+        "sources": [
+          {
+            "id": "availability_pc_01_02",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_pc_03_10",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_ps5_01_02",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_nintendo_1_2",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_nintendo_1_4",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_cockpit_01_02",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_vr_30",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_vr_60",
+            "url": "https://esports.computing.psu.ac.th/"
+          }
+        ],
+        "validation_ok": true,
+        "language": {
+          "requested": "auto",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 0.92,
+          "reason": "english_sentence_structure"
+        },
+        "experimental_rag_fallback": false,
+        "experimental_allow_llm": true,
+        "input_recovery": {
+          "score": 0.2785,
+          "language": "en",
+          "language_quality": 0.7215,
+          "should_review_intent": false,
+          "reason": "English character n-gram quality=0.721",
+          "action": "continue"
+        },
+        "server_date": {
+          "iso": "2026-10-02",
+          "label": "02/10/2026 (วันศุกร์)",
+          "time": "20:56",
+          "datetime_iso": "2026-10-02T20:56:59.156123+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-02",
+            "time": "20:56",
+            "weekday": "วันศุกร์",
+            "timezone": "Asia/Bangkok",
+            "status": "outside_hours",
+            "playable": false,
+            "slot": null,
+            "next_open_slot": null,
+            "reason": "outside_regular_service_hours",
+            "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+            "source": "reservation_schedule"
+          },
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "calendar": {
+          "date": "2026-10-02",
+          "label": "02/10/2026 (วันศุกร์)",
+          "weekday": "วันศุกร์",
+          "time": "20:56",
+          "datetime_iso": "2026-10-02T20:56:59.156123+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-02",
+            "time": "20:56",
+            "weekday": "วันศุกร์",
+            "timezone": "Asia/Bangkok",
+            "status": "outside_hours",
+            "playable": false,
+            "slot": null,
+            "next_open_slot": null,
+            "reason": "outside_regular_service_hours",
+            "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+            "source": "reservation_schedule"
+          },
+          "service_closure": null,
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "input_quality": {
+          "action": "continue",
+          "detected_action": "continue",
+          "applied_action": "continue",
+          "should_retype": false,
+          "flags": [],
+          "layout_score": 0.001194,
+          "repeat_score": 0,
+          "guard_status": "passed",
+          "guard_mode": "enforce",
+          "repeat_policy": "warn_and_continue",
+          "profile_version": "keyboard-profile-v1:2a863a4176572043",
+          "guard_elapsed_ms": 0.923
+        }
+      }
+    },
+    {
+      "i": 7,
+      "locale": "th",
+      "retries": 1,
+      "elapsed_ms": 4472,
+      "http_status": 200,
+      "passed": true,
+      "errors": [],
+      "response": {
+        "ok": true,
+        "request_id": "ef762f059b4a400e902e72e40a49c661",
+        "session_id": "r32-client-1790949417863-7",
+        "answer": "ตอนนี้มีเกมที่ยืนยันได้ทั้งหมด 42 เกมครับ\n\nPC Zone (6 เกม)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\n\nPlayStation 5 Zone (17 เกม)\n•    Call of Duty: Modern Warfare III\n•    Delta Force\n•    EA Sports FC 24\n•    eFootball\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Hogwarts Legacy\n•    Marvel's Spider-Man 2\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Resident Evil 4\n•    Resident Evil Village\n•    TEKKEN 8\n•    THE FINALS\n•    The Last of Us Part I\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (17 เกม)\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    Little Nightmares II\n•    Luigi's Mansion 3\n•    Mario Kart 8 Deluxe\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Nintendo Switch Sports\n•    Overcooked!\n•    Overcooked! 2\n•    Pokémon Champions\n•    Ring Fit Adventure\n•    Super Mario Odyssey\n•    Super Smash Bros Ultimate\n•    The Legend of Zelda: Breath of The Wild\n\nCockpit Zone (1 เกม)\n•    Gran Turismo 7\n\nVR Zone (4 เกม)\n•    Beat Saber\n•    Horizon Call of the Mountain\n•    Resident Evil 4\n•    Resident Evil Village\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+        "mode": "pipeline:structured_games_catalog",
+        "route_category": "games",
+        "route_intent": "list",
+        "universal_intent": {
+          "domain": "games",
+          "operation": "list",
+          "target": "",
+          "filters": {},
+          "needs": [
+            "list_items"
+          ],
+          "answer_style": "summary_bullets",
+          "confidence": 0.82,
+          "method": "heuristic",
+          "reason": "game catalog/count terms override zone/equipment domain; list terms found"
+        },
+        "confidence": 0.95,
+        "latency_sec": 0.1991,
+        "wall_sec": 0.8649,
+        "deadline": {
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20,
+          "global_elapsed_sec": 0.8649,
+          "global_remaining_sec": 19.1351,
+          "finalizer_reserve_sec": 1,
+          "work_remaining_sec": 18.1351,
+          "timing_status": "running"
+        },
+        "timing_status": "completed",
+        "timed_out": false,
+        "timeout_stage": "",
+        "retryable": false,
+        "worker_id": 0,
+        "sources": [
+          {
+            "id": "our_games",
+            "url": "https://esports.phuket.psu.ac.th/Services/our-games"
+          }
+        ],
+        "validation_ok": true,
+        "language": {
+          "requested": "auto",
+          "detected": "th",
+          "effective": "th",
+          "confidence": 0.9283,
+          "reason": "thai_script"
+        },
+        "experimental_rag_fallback": false,
+        "experimental_allow_llm": true,
+        "input_recovery": {
+          "score": 0.2126,
+          "language": "th",
+          "language_quality": 0.7874,
+          "should_review_intent": false,
+          "reason": "Thai character n-gram quality=0.787",
+          "action": "continue"
+        },
+        "server_date": {
+          "iso": "2026-10-02",
+          "label": "02/10/2026 (วันศุกร์)",
+          "time": "20:57",
+          "datetime_iso": "2026-10-02T20:57:02.327430+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-02",
+            "time": "20:57",
+            "weekday": "วันศุกร์",
+            "timezone": "Asia/Bangkok",
+            "status": "outside_hours",
+            "playable": false,
+            "slot": null,
+            "next_open_slot": null,
+            "reason": "outside_regular_service_hours",
+            "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+            "source": "reservation_schedule"
+          },
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "calendar": {
+          "date": "2026-10-02",
+          "label": "02/10/2026 (วันศุกร์)",
+          "weekday": "วันศุกร์",
+          "time": "20:57",
+          "datetime_iso": "2026-10-02T20:57:02.327430+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-02",
+            "time": "20:57",
+            "weekday": "วันศุกร์",
+            "timezone": "Asia/Bangkok",
+            "status": "outside_hours",
+            "playable": false,
+            "slot": null,
+            "next_open_slot": null,
+            "reason": "outside_regular_service_hours",
+            "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+            "source": "reservation_schedule"
+          },
+          "service_closure": null,
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "input_quality": {
+          "action": "continue",
+          "detected_action": "continue",
+          "applied_action": "continue",
+          "should_retype": false,
+          "flags": [],
+          "layout_score": 0.004683,
+          "repeat_score": 0,
+          "guard_status": "passed",
+          "guard_mode": "enforce",
+          "repeat_policy": "warn_and_continue",
+          "profile_version": "keyboard-profile-v1:2a863a4176572043",
+          "guard_elapsed_ms": 0.225
+        }
+      }
+    },
+    {
+      "i": 8,
+      "locale": "en",
+      "retries": 1,
+      "elapsed_ms": 4040,
+      "http_status": 200,
+      "passed": true,
+      "errors": [],
+      "response": {
+        "ok": true,
+        "request_id": "86bf3d090f434755960ebc21b94b71fe",
+        "session_id": "r32-client-1790949417864-8",
+        "answer": "There are currently 42 verified games available.\n\nPC Zone (6 games)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\n\nPlayStation 5 Zone (17 games)\n•    Call of Duty: Modern Warfare III\n•    Delta Force\n•    EA Sports FC 24\n•    eFootball\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Hogwarts Legacy\n•    Marvel's Spider-Man 2\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Resident Evil 4\n•    Resident Evil Village\n•    TEKKEN 8\n•    THE FINALS\n•    The Last of Us Part I\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (17 games)\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    Little Nightmares II\n•    Luigi's Mansion 3\n•    Mario Kart 8 Deluxe\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Nintendo Switch Sports\n•    Overcooked!\n•    Overcooked! 2\n•    Pokémon Champions\n•    Ring Fit Adventure\n•    Super Mario Odyssey\n•    Super Smash Bros Ultimate\n•    The Legend of Zelda: Breath of The Wild\n\nCockpit Zone (1 game)\n•    Gran Turismo 7\n\nVR Zone (4 games)\n•    Beat Saber\n•    Horizon Call of the Mountain\n•    Resident Evil 4\n•    Resident Evil Village\nSource: https://esports.phuket.psu.ac.th/Services/our-games (original source in Thai)",
+        "mode": "pipeline:structured_games_catalog_en",
+        "route_category": "games",
+        "route_intent": "games_lookup",
+        "universal_intent": null,
+        "confidence": 0.98,
+        "latency_sec": 0.1325,
+        "wall_sec": 0.4219,
+        "deadline": {
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20,
+          "global_elapsed_sec": 0.4219,
+          "global_remaining_sec": 19.5781,
+          "finalizer_reserve_sec": 1,
+          "work_remaining_sec": 18.5781,
+          "timing_status": "running"
+        },
+        "timing_status": "completed",
+        "timed_out": false,
+        "timeout_stage": "",
+        "retryable": false,
+        "worker_id": 0,
+        "sources": [
+          {
+            "id": "availability_pc_01_02",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_pc_03_10",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_ps5_01_02",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_nintendo_1_2",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_nintendo_1_4",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_cockpit_01_02",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_vr_30",
+            "url": "https://esports.computing.psu.ac.th/"
+          },
+          {
+            "id": "availability_vr_60",
+            "url": "https://esports.computing.psu.ac.th/"
+          }
+        ],
+        "validation_ok": true,
+        "language": {
+          "requested": "auto",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 0.92,
+          "reason": "english_sentence_structure"
+        },
+        "experimental_rag_fallback": false,
+        "experimental_allow_llm": true,
+        "input_recovery": {
+          "score": 0.2785,
+          "language": "en",
+          "language_quality": 0.7215,
+          "should_review_intent": false,
+          "reason": "English character n-gram quality=0.721",
+          "action": "continue"
+        },
+        "server_date": {
+          "iso": "2026-10-02",
+          "label": "02/10/2026 (วันศุกร์)",
+          "time": "20:57",
+          "datetime_iso": "2026-10-02T20:57:01.894938+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-02",
+            "time": "20:57",
+            "weekday": "วันศุกร์",
+            "timezone": "Asia/Bangkok",
+            "status": "outside_hours",
+            "playable": false,
+            "slot": null,
+            "next_open_slot": null,
+            "reason": "outside_regular_service_hours",
+            "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+            "source": "reservation_schedule"
+          },
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "calendar": {
+          "date": "2026-10-02",
+          "label": "02/10/2026 (วันศุกร์)",
+          "weekday": "วันศุกร์",
+          "time": "20:57",
+          "datetime_iso": "2026-10-02T20:57:01.894938+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-02",
+            "time": "20:57",
+            "weekday": "วันศุกร์",
+            "timezone": "Asia/Bangkok",
+            "status": "outside_hours",
+            "playable": false,
+            "slot": null,
+            "next_open_slot": null,
+            "reason": "outside_regular_service_hours",
+            "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+            "source": "reservation_schedule"
+          },
+          "service_closure": null,
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "input_quality": {
+          "action": "continue",
+          "detected_action": "continue",
+          "applied_action": "continue",
+          "should_retype": false,
+          "flags": [],
+          "layout_score": 0.001194,
+          "repeat_score": 0,
+          "guard_status": "passed",
+          "guard_mode": "enforce",
+          "repeat_policy": "warn_and_continue",
+          "profile_version": "keyboard-profile-v1:2a863a4176572043",
+          "guard_elapsed_ms": 0.83
+        }
+      }
+    },
+    {
+      "i": 9,
+      "locale": "th",
+      "retries": 1,
+      "elapsed_ms": 4832,
+      "http_status": 200,
+      "passed": true,
+      "errors": [],
+      "response": {
+        "ok": true,
+        "request_id": "746f0034eb19496aa831c0b562f87a8a",
+        "session_id": "r32-client-1790949417865-9",
+        "answer": "ตอนนี้มีเกมที่ยืนยันได้ทั้งหมด 42 เกมครับ\n\nPC Zone (6 เกม)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\n\nPlayStation 5 Zone (17 เกม)\n•    Call of Duty: Modern Warfare III\n•    Delta Force\n•    EA Sports FC 24\n•    eFootball\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Hogwarts Legacy\n•    Marvel's Spider-Man 2\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Resident Evil 4\n•    Resident Evil Village\n•    TEKKEN 8\n•    THE FINALS\n•    The Last of Us Part I\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (17 เกม)\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    Little Nightmares II\n•    Luigi's Mansion 3\n•    Mario Kart 8 Deluxe\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Nintendo Switch Sports\n•    Overcooked!\n•    Overcooked! 2\n•    Pokémon Champions\n•    Ring Fit Adventure\n•    Super Mario Odyssey\n•    Super Smash Bros Ultimate\n•    The Legend of Zelda: Breath of The Wild\n\nCockpit Zone (1 เกม)\n•    Gran Turismo 7\n\nVR Zone (4 เกม)\n•    Beat Saber\n•    Horizon Call of the Mountain\n•    Resident Evil 4\n•    Resident Evil Village\nแหล่งข้อมูล: https://esports.phuket.psu.ac.th/Services/our-games",
+        "mode": "pipeline:structured_games_catalog",
+        "route_category": "games",
+        "route_intent": "list",
+        "universal_intent": {
+          "domain": "games",
+          "operation": "list",
+          "target": "",
+          "filters": {},
+          "needs": [
+            "list_items"
+          ],
+          "answer_style": "summary_bullets",
+          "confidence": 0.82,
+          "method": "heuristic",
+          "reason": "game catalog/count terms override zone/equipment domain; list terms found"
+        },
+        "confidence": 0.95,
+        "latency_sec": 0.2153,
+        "wall_sec": 1.3408,
+        "deadline": {
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20,
+          "global_elapsed_sec": 1.3407,
+          "global_remaining_sec": 18.6593,
+          "finalizer_reserve_sec": 1,
+          "work_remaining_sec": 17.6593,
+          "timing_status": "running"
+        },
+        "timing_status": "completed",
+        "timed_out": false,
+        "timeout_stage": "",
+        "retryable": false,
+        "worker_id": 0,
+        "sources": [
+          {
+            "id": "our_games",
+            "url": "https://esports.phuket.psu.ac.th/Services/our-games"
+          }
+        ],
+        "validation_ok": true,
+        "language": {
+          "requested": "auto",
+          "detected": "th",
+          "effective": "th",
+          "confidence": 0.9283,
+          "reason": "thai_script"
+        },
+        "experimental_rag_fallback": false,
+        "experimental_allow_llm": true,
+        "input_recovery": {
+          "score": 0.2126,
+          "language": "th",
+          "language_quality": 0.7874,
+          "should_review_intent": false,
+          "reason": "Thai character n-gram quality=0.787",
+          "action": "continue"
+        },
+        "server_date": {
+          "iso": "2026-10-02",
+          "label": "02/10/2026 (วันศุกร์)",
+          "time": "20:57",
+          "datetime_iso": "2026-10-02T20:57:02.689029+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-02",
+            "time": "20:57",
+            "weekday": "วันศุกร์",
+            "timezone": "Asia/Bangkok",
+            "status": "outside_hours",
+            "playable": false,
+            "slot": null,
+            "next_open_slot": null,
+            "reason": "outside_regular_service_hours",
+            "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+            "source": "reservation_schedule"
+          },
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "calendar": {
+          "date": "2026-10-02",
+          "label": "02/10/2026 (วันศุกร์)",
+          "weekday": "วันศุกร์",
+          "time": "20:57",
+          "datetime_iso": "2026-10-02T20:57:02.689029+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-02",
+            "time": "20:57",
+            "weekday": "วันศุกร์",
+            "timezone": "Asia/Bangkok",
+            "status": "outside_hours",
+            "playable": false,
+            "slot": null,
+            "next_open_slot": null,
+            "reason": "outside_regular_service_hours",
+            "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+            "source": "reservation_schedule"
+          },
+          "service_closure": null,
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "input_quality": {
+          "action": "continue",
+          "detected_action": "continue",
+          "applied_action": "continue",
+          "should_retype": false,
+          "flags": [],
+          "layout_score": 0.004683,
+          "repeat_score": 0,
+          "guard_status": "passed",
+          "guard_mode": "enforce",
+          "repeat_policy": "warn_and_continue",
+          "profile_version": "keyboard-profile-v1:2a863a4176572043",
+          "guard_elapsed_ms": 0.394
+        }
+      }
+    }
+  ]
+}

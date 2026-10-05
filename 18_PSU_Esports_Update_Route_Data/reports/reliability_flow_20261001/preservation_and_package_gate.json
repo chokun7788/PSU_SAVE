@@ -1,0 +1,131 @@
+{
+  "owner_and_fixture_files_checked": 154,
+  "changed_paths": [],
+  "runtime_modules": [
+    {
+      "path": "app/core/intent_cue_recovery.py",
+      "matches_gate_manifest": true,
+      "matches_package": true
+    },
+    {
+      "path": "app/pipeline/engine.py",
+      "matches_gate_manifest": true,
+      "matches_package": true
+    },
+    {
+      "path": "app/pipeline/protected_intents.py",
+      "matches_gate_manifest": true,
+      "matches_package": true
+    },
+    {
+      "path": "app/pipeline/bilingual_english.py",
+      "matches_gate_manifest": true,
+      "matches_package": true
+    },
+    {
+      "path": "app/booking/live_status.py",
+      "matches_gate_manifest": true,
+      "matches_package": true
+    }
+  ],
+  "api_runtime": {
+    "profile": "owner-local-r20-test",
+    "version": "2026.10.01-reliability-flow-r20",
+    "started_at": "2026-09-30T17:23:19.429661+00:00",
+    "answer_timeout_sec": 9.0,
+    "pipeline_timeout_sec": 9.0,
+    "intent_timeout_sec": 5.5,
+    "local_llm": {
+      "enabled": false,
+      "model": "scb10x/typhoon2.5-qwen3-4b",
+      "intent_timeout_sec": 5.5,
+      "planner_timeout_sec": 1.2,
+      "general_timeout_sec": 4.0,
+      "high_assist_profile": false
+    },
+    "semantic_rag": {
+      "enabled": false,
+      "embedding_model": "psu-bge-m3:q8_0"
+    },
+    "english": {
+      "enabled": true,
+      "draft_preview": false
+    },
+    "input_quality": {
+      "mode": "shadow",
+      "keyboard_layout": "request_retype",
+      "repeated_characters": "ask_retype"
+    }
+  },
+  "api_features": {
+    "bilingual_english": true,
+    "local_llm_assist": false,
+    "semantic_rag": false,
+    "embedding_model": "psu-bge-m3:q8_0",
+    "live_booking_status": false
+  },
+  "startup_llm_preflight": {
+    "ok": true,
+    "model": "scb10x/typhoon2.5-qwen3-4b",
+    "kind": "preflight",
+    "elapsed_ms": 6611.3,
+    "response_chars": 2,
+    "done_reason": "length",
+    "num_ctx": 3072,
+    "load_duration": 6365046900,
+    "prompt_eval_duration": 170889000,
+    "eval_duration": 1000,
+    "health": {
+      "llm_health_enabled": true,
+      "llm_health_status": "ok",
+      "llm_health_failures": 0,
+      "llm_health_failure_scope": "model_and_kind"
+    }
+  },
+  "package_manifest": {
+    "built_at": "2026-09-30T17:20:42.9100579Z",
+    "included_data_directories": [
+      "calendar",
+      "competition_rules",
+      "content",
+      "control_game",
+      "control_game_split",
+      "curated",
+      "intent",
+      "knowledge_inbox",
+      "locales",
+      "manifests",
+      "routing",
+      "rules",
+      "sources",
+      "style",
+      "vector"
+    ],
+    "excluded": [
+      "reports",
+      "tests",
+      "tools except export_local_chat_logs.py",
+      "notebooks",
+      "data/eval",
+      "data/ground_truth",
+      "data/human_review",
+      "data/logs",
+      "Ollama model weights"
+    ],
+    "local_runtime_features": [
+      "per_page_anonymous_sessions",
+      "sqlite_transcript",
+      "append_only_daily_jsonl_log",
+      "owner_html_log_report",
+      "loopback_only_server",
+      "live_booking_status_aggregate_only",
+      "bounded_intent_cue_recovery"
+    ],
+    "runtime_version": "2026.10.01-reliability-flow-r20",
+    "required_local_models": [
+      "scb10x/typhoon2.5-qwen3-4b",
+      "psu-bge-m3:q8_0"
+    ],
+    "package_name": "PSU_Esports_Chatbot_Local"
+  }
+}

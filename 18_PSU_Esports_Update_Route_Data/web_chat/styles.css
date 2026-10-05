@@ -391,7 +391,18 @@ h2 {
 .assistant .bubble {
   background: var(--assistant);
   border-color: var(--line);
+  white-space: normal;
 }
+
+.answer-paragraph { margin: 0 0 0.55em; white-space: pre-wrap; }
+.answer-heading { margin: 0.9em 0 0.3em; font-size: 1em; line-height: 1.5; }
+.answer-heading:first-child { margin-top: 0; }
+.answer-list { margin: 0.3em 0 0.8em; padding-left: 1.5em; }
+.answer-list li { margin: 0.25em 0; white-space: pre-wrap; }
+.answer-table-wrap { overflow-x: auto; margin: 0.65em 0; }
+.answer-table { width: 100%; border-collapse: collapse; font-size: 0.95em; }
+.answer-table th, .answer-table td { border: 1px solid var(--line); padding: 0.5em 0.65em; text-align: left; vertical-align: top; }
+.answer-table th { background: var(--accent-soft); }
 
 .system .bubble {
   background: #fff7e8;

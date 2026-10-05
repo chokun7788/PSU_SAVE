@@ -1,0 +1,732 @@
+{
+  "health": {
+    "ok": true,
+    "service": "psu-esports-chat-web",
+    "time": "2026-10-01T08:44:17.159249+00:00",
+    "warmup": {
+      "ok": true,
+      "elapsed_sec": 10.5919,
+      "warmed": [
+        "game_title_aliases",
+        "structured_tools",
+        "game_resolver",
+        "routing_data",
+        "retrieval_data",
+        "probe_queries",
+        "semantic_embedding"
+      ],
+      "errors": [],
+      "timings": {
+        "game_title_aliases": 0.7598,
+        "structured_tools": 0.5604,
+        "game_resolver": 0.152,
+        "routing_data": 0.1664,
+        "retrieval_data": 2.3856,
+        "probe_queries": 6.4253,
+        "semantic_embedding": 0.1423
+      }
+    },
+    "llm_preflight": {
+      "ok": true,
+      "model": "scb10x/typhoon2.5-qwen3-4b",
+      "kind": "preflight",
+      "elapsed_ms": 155.22,
+      "response_chars": 2,
+      "done_reason": "length",
+      "num_ctx": 3072,
+      "load_duration": 10345200,
+      "prompt_eval_duration": 123420000,
+      "eval_duration": 1000,
+      "health": {
+        "llm_health_enabled": true,
+        "llm_health_status": "ok",
+        "llm_health_failures": 0,
+        "llm_health_failure_scope": "model_and_kind"
+      }
+    },
+    "input_quality_guard": {
+      "enabled": true,
+      "mode": "enforce",
+      "repeat_policy": "warn_and_continue",
+      "layout_threshold": 0.39,
+      "repeat_threshold": 0.55,
+      "corpus_size": 4023,
+      "profile_version": "keyboard-profile-v1:5cb1f63359ca84bf"
+    },
+    "llm_health": {
+      "enabled": true,
+      "failure_threshold": 2,
+      "failure_window_sec": 30.0,
+      "cooldown_sec": 90.0,
+      "states": [
+        {
+          "kind": "model",
+          "model": "scb10x/typhoon2.5-qwen3-4b",
+          "status": "ok",
+          "failures": 0,
+          "successes": 1,
+          "cooldown_remaining_sec": 0.0,
+          "last_error_type": "",
+          "last_error": "",
+          "last_elapsed_ms": 155.22,
+          "last_checked_at": 1790843964.1483946,
+          "last_success_at": 1790843964.1483946,
+          "half_open_probe_in_flight": false,
+          "events": [
+            {
+              "event": "success",
+              "kind": "preflight",
+              "elapsed_ms": 155.22,
+              "detail": "preflight_ok",
+              "at": 1790843964.148
+            }
+          ]
+        },
+        {
+          "kind": "preflight",
+          "model": "scb10x/typhoon2.5-qwen3-4b",
+          "status": "ok",
+          "failures": 0,
+          "successes": 1,
+          "cooldown_remaining_sec": 0.0,
+          "last_error_type": "",
+          "last_error": "",
+          "last_elapsed_ms": 155.22,
+          "last_checked_at": 1790843964.1483746,
+          "last_success_at": 1790843964.1483746,
+          "half_open_probe_in_flight": false,
+          "events": [
+            {
+              "event": "success",
+              "kind": "preflight",
+              "elapsed_ms": 155.22,
+              "detail": "preflight_ok",
+              "at": 1790843964.148
+            }
+          ]
+        }
+      ]
+    },
+    "pipeline_workers": {
+      "enabled": true,
+      "started": true,
+      "worker_count": 1,
+      "workers": [
+        {
+          "worker_id": 0,
+          "pid": 38336,
+          "alive": true,
+          "ready": true,
+          "completed_requests": 6,
+          "busy": false
+        }
+      ],
+      "performance": {
+        "run_id": "20261001T083910Z",
+        "path": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\owner_local_delivery_20261001_available_equipment_r23\\PSU_Esports_Chatbot_Local\\data\\logs\\performance\\pipeline_20261001T083910Z.jsonl",
+        "events_written": 92,
+        "events_dropped": 0
+      }
+    },
+    "runtime": {
+      "profile": "owner-local-rag-assist",
+      "version": "2026.10.01-available-equipment-r23",
+      "started_at": "2026-10-01T08:39:09.740887+00:00",
+      "answer_timeout_sec": 20.0,
+      "pipeline_timeout_sec": 19.0,
+      "intent_timeout_sec": 14.0,
+      "local_llm": {
+        "enabled": true,
+        "model": "scb10x/typhoon2.5-qwen3-4b",
+        "intent_timeout_sec": 14.0,
+        "planner_timeout_sec": 1.2,
+        "general_timeout_sec": 4.0,
+        "high_assist_profile": true
+      },
+      "semantic_rag": {
+        "enabled": true,
+        "embedding_model": "psu-bge-m3:q8_0"
+      },
+      "english": {
+        "enabled": true,
+        "draft_preview": false
+      },
+      "booking": {
+        "enabled": true,
+        "fetch_mode": "dashboard",
+        "cache_seconds": 0.0,
+        "dashboard_required": true,
+        "read_only": true
+      },
+      "input_quality": {
+        "mode": "enforce",
+        "keyboard_layout": "request_retype",
+        "repeated_characters": "warn_and_continue"
+      }
+    },
+    "features": {
+      "bilingual_english": true,
+      "local_llm_assist": true,
+      "semantic_rag": true,
+      "embedding_model": "psu-bge-m3:q8_0",
+      "live_booking_status": true
+    }
+  },
+  "payload": {
+    "question": "ตอนบ่าย3มีอุปกรณ์อะไรว่างให้เล่นบ้าง",
+    "locale": "th",
+    "client_session_id": "r23-exact-retry-ff6e4aa17fb3421b88fd07d8d26ccf65",
+    "recent_history": [],
+    "experimental_allow_llm": true,
+    "experimental_rag_fallback": true,
+    "debug": true
+  },
+  "http_wall_sec": 2.0543,
+  "checks": {
+    "version_r23": true,
+    "live_route": true,
+    "fresh_selected_source": true,
+    "time_15_to_16": true,
+    "free_only_format": true,
+    "count_matches_list": true,
+    "under_20_seconds": true
+  },
+  "response": {
+    "ok": true,
+    "request_id": "ddfcdc473fd84b0994a0163a1da71549",
+    "session_id": "r23-exact-retry-ff6e4aa17fb3421b88fd07d8d26ccf65",
+    "answer": "อุปกรณ์ที่ว่างในวันที่ 2026-10-01 ช่วง 15:00-16:00 น. (เวลาไทย): 7 รายการ\nโซน Nintendo Switch\n•    Nintendo Switch (Morning) (1-2 Persons)\nโซน Cockpit\n•    Cockpit #2 (1 Person)\nโซน VR\n•    VR Station (Afternoon) (1-5 Persons) 1 Hour\n•    VR Station (Morning) (1-5 Persons) 30 Mins\nโซน PC\n•    PC #03 (1 Person)\n•    PC #08 (1 Person)\n•    PC #09 (1 Person)\nอัปเดต: 2026-10-01 15:44:19\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+    "mode": "pipeline:live_booking_status_fast_path",
+    "route_category": "schedule",
+    "route_intent": "live_booking_status",
+    "universal_intent": null,
+    "confidence": 0.99,
+    "latency_sec": 2.0414,
+    "wall_sec": 2.0499,
+    "deadline": {
+      "global_timeout_enabled": true,
+      "global_timeout_sec": 20.0,
+      "global_elapsed_sec": 2.0499,
+      "global_remaining_sec": 17.9501,
+      "finalizer_reserve_sec": 1.0,
+      "work_remaining_sec": 16.9501,
+      "timing_status": "running"
+    },
+    "timing_status": "completed",
+    "timed_out": false,
+    "timeout_stage": "",
+    "retryable": false,
+    "worker_id": 0,
+    "sources": [
+      {
+        "id": "Reservation",
+        "url": "https://esports.computing.psu.ac.th/reservation"
+      }
+    ],
+    "validation_ok": true,
+    "language": {
+      "requested": "th",
+      "detected": "th",
+      "effective": "th",
+      "confidence": 1.0,
+      "reason": "toggle_override_th;thai_script"
+    },
+    "experimental_rag_fallback": true,
+    "experimental_allow_llm": true,
+    "input_recovery": {
+      "score": 0.2419,
+      "language": "th",
+      "language_quality": 0.7581,
+      "should_review_intent": false,
+      "reason": "Thai character n-gram quality=0.758",
+      "action": "continue"
+    },
+    "server_date": {
+      "iso": "2026-10-01",
+      "label": "01/10/2026 (วันพฤหัสบดี)",
+      "time": "15:44",
+      "datetime_iso": "2026-10-01T15:44:19.208072+07:00",
+      "timezone": "Asia/Bangkok",
+      "service_slot": {
+        "date": "2026-10-01",
+        "time": "15:44",
+        "weekday": "วันพฤหัสบดี",
+        "timezone": "Asia/Bangkok",
+        "status": "open",
+        "playable": true,
+        "slot": {
+          "code": "afternoon",
+          "label": "Afternoon",
+          "start": "13:00",
+          "end": "16:00",
+          "time_range": "13:00-16:00",
+          "state": "open",
+          "note": "เปิดให้บริการ"
+        },
+        "next_open_slot": null,
+        "reason": "open",
+        "note": "เปิดให้บริการ",
+        "source": "reservation_schedule"
+      },
+      "thai_holidays": [],
+      "upcoming_thai_holidays": [
+        {
+          "date": "2026-10-13",
+          "title": "วันนวมินทรมหาราช",
+          "type": "national_holiday",
+          "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        },
+        {
+          "date": "2026-10-16",
+          "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+          "type": "bank_holiday_bangkok",
+          "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+          "source": "Bank of Thailand Financial Institutions Holidays 2026",
+          "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+        },
+        {
+          "date": "2026-10-23",
+          "title": "วันปิยมหาราช",
+          "type": "national_holiday",
+          "note": "วันหยุดประจำปีของไทย",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        },
+        {
+          "date": "2026-10-31",
+          "title": "วันฮาโลวีน",
+          "type": "observance",
+          "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        },
+        {
+          "date": "2026-12-05",
+          "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+          "type": "national_holiday",
+          "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        }
+      ]
+    },
+    "calendar": {
+      "date": "2026-10-01",
+      "label": "01/10/2026 (วันพฤหัสบดี)",
+      "weekday": "วันพฤหัสบดี",
+      "time": "15:44",
+      "datetime_iso": "2026-10-01T15:44:19.208072+07:00",
+      "timezone": "Asia/Bangkok",
+      "service_slot": {
+        "date": "2026-10-01",
+        "time": "15:44",
+        "weekday": "วันพฤหัสบดี",
+        "timezone": "Asia/Bangkok",
+        "status": "open",
+        "playable": true,
+        "slot": {
+          "code": "afternoon",
+          "label": "Afternoon",
+          "start": "13:00",
+          "end": "16:00",
+          "time_range": "13:00-16:00",
+          "state": "open",
+          "note": "เปิดให้บริการ"
+        },
+        "next_open_slot": null,
+        "reason": "open",
+        "note": "เปิดให้บริการ",
+        "source": "reservation_schedule"
+      },
+      "service_closure": null,
+      "thai_holidays": [],
+      "upcoming_thai_holidays": [
+        {
+          "date": "2026-10-13",
+          "title": "วันนวมินทรมหาราช",
+          "type": "national_holiday",
+          "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        },
+        {
+          "date": "2026-10-16",
+          "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+          "type": "bank_holiday_bangkok",
+          "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+          "source": "Bank of Thailand Financial Institutions Holidays 2026",
+          "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+        },
+        {
+          "date": "2026-10-23",
+          "title": "วันปิยมหาราช",
+          "type": "national_holiday",
+          "note": "วันหยุดประจำปีของไทย",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        },
+        {
+          "date": "2026-10-31",
+          "title": "วันฮาโลวีน",
+          "type": "observance",
+          "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        },
+        {
+          "date": "2026-12-05",
+          "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+          "type": "national_holiday",
+          "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        }
+      ]
+    },
+    "input_quality": {
+      "action": "continue",
+      "detected_action": "continue",
+      "applied_action": "continue",
+      "should_retype": false,
+      "flags": [],
+      "layout_score": 0.064523,
+      "repeat_score": 0.0,
+      "guard_status": "passed",
+      "guard_mode": "enforce",
+      "repeat_policy": "warn_and_continue",
+      "profile_version": "keyboard-profile-v1:5cb1f63359ca84bf",
+      "guard_elapsed_ms": 0.617
+    },
+    "context_resolution": {
+      "original_question": "ตอนบ่าย3มีอุปกรณ์อะไรว่างให้เล่นบ้าง",
+      "resolved_question": "ตอนบ่าย3มีอุปกรณ์อะไรว่างให้เล่นบ้าง",
+      "used_context": false,
+      "context_game": null,
+      "context_domain": null,
+      "context_operation": null,
+      "context_topic": null,
+      "reason": "not_followup"
+    },
+    "query_debug": {
+      "original_question": "ตอนบ่าย3มีอุปกรณ์อะไรว่างให้เล่นบ้าง",
+      "resolved_question": "ตอนบ่าย3มีอุปกรณ์อะไรว่างให้เล่นบ้าง",
+      "normalized_query": "ตอนบ่าย3มีอุปกรณ์อะไรว่างให้เล่นบ้าง",
+      "query_variants": [
+        "ตอนบ่าย3มีอุปกรณ์อะไรว่างให้เล่นบ้าง"
+      ],
+      "active_query": "ตอนบ่าย3มีอุปกรณ์อะไรว่างให้เล่นบ้าง",
+      "active_query_changed": false,
+      "trace": [
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "ตอนบ่าย3มีอุปกรณ์อะไรว่างให้เล่นบ้าง",
+          "metadata": {
+            "language_hint": "th",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "ตอนบ่าย3มีอุปกรณ์อะไรว่างให้เล่นบ้าง"
+            ],
+            "elapsed_ms": 0.71,
+            "elapsed_sec": 0.0007
+          }
+        }
+      ]
+    },
+    "decision_artifact": {
+      "intent": {
+        "domain": "schedule",
+        "operation": "live_booking_status",
+        "target": "",
+        "confidence": 0.99,
+        "method": "route"
+      },
+      "route": {
+        "category": "schedule",
+        "intent": "live_booking_status",
+        "confidence": 0.99,
+        "answer_type": "fact",
+        "risk": "medium",
+        "reason": "aggregate-only live booking dashboard"
+      },
+      "tool_router": null,
+      "selected_candidate": null,
+      "candidates": [],
+      "rejected": [],
+      "policy": {},
+      "execution_plan": [
+        "normalize_and_extract_entities",
+        "route_and_resolve_universal_intent",
+        "generate_capability_candidates",
+        "apply_policy_and_rank",
+        "apply_tool_preconditions",
+        "execute_fast_path",
+        "format_validate_and_record"
+      ],
+      "final": {
+        "mode": "pipeline:live_booking_status_fast_path",
+        "confidence": 0.99,
+        "execution_step": "execute_fast_path",
+        "executed_capability": "fast.domain_handlers",
+        "selected_matches_execution": false,
+        "validation_ok": true,
+        "validation_errors": [],
+        "validation_warnings": [],
+        "evidence_count": 1,
+        "source_ids": [
+          "Reservation"
+        ]
+      },
+      "production_metrics": {
+        "policy_version": "correctness_control_flow_v2",
+        "outcome": "answered",
+        "quality_gate_status": "pass",
+        "candidate_margin": null,
+        "selection_status": "",
+        "ambiguity_decision": "",
+        "repair_attempted": false,
+        "repair_recovered": false,
+        "llm_call_count": 0,
+        "requires_shadow_review": true,
+        "shadow_review_reasons": [
+          "selected_execution_mismatch"
+        ]
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [
+          "afternoon"
+        ],
+        "service": null,
+        "user_group": null,
+        "duration": null,
+        "price_intent": false
+      },
+      "structured_tool": null,
+      "tool_preconditions": [],
+      "candidate_execution": [],
+      "validation": null,
+      "llm_calls": []
+    },
+    "entities": {
+      "day": null,
+      "time_slots": [
+        "afternoon"
+      ],
+      "service": null,
+      "user_group": null,
+      "duration": null,
+      "price_intent": false,
+      "short_answer": false,
+      "comparison_intent": false,
+      "raw": {
+        "normalized_query": "ตอนบ่าย3มีอุปกรณ์อะไรว่างให้เล่นบ้าง",
+        "language_hint": "th"
+      }
+    },
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "th",
+        "confidence": 1.0,
+        "detail": "toggle_override_th;thai_script",
+        "metadata": {
+          "requested": "th",
+          "detected": "th",
+          "effective": "th",
+          "confidence": 1.0,
+          "reason": "toggle_override_th;thai_script"
+        }
+      },
+      {
+        "stage": "intent_cue_preflight",
+        "decision": "unchanged",
+        "confidence": 1.0,
+        "detail": "bounded task cues; offsets refer to each intermediate input",
+        "metadata": {
+          "raw": "ตอนบ่าย3มีอุปกรณ์อะไรว่างให้เล่นบ้าง",
+          "candidate": "ตอนบ่าย3มีอุปกรณ์อะไรว่างให้เล่นบ้าง",
+          "recoveries": [],
+          "span_budget": 3,
+          "edit_budget": 4
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "confidence": 1.0,
+        "detail": "parts=1",
+        "metadata": {
+          "elapsed_ms": 17.72,
+          "elapsed_sec": 0.0177,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 18.35,
+          "global_elapsed_sec": 0.0179,
+          "global_remaining_sec": 18.332,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 17.332,
+          "timing_status": "running",
+          "parts": [
+            "ตอนบ่าย3มีอุปกรณ์อะไรว่างให้เล่นบ้าง"
+          ],
+          "competition_rule_query": false
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "confidence": 0.0,
+        "detail": "single question",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "confidence": 0.0,
+        "detail": "single clear operation does not need planner",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": true
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "ตอนบ่าย3มีอุปกรณ์อะไรว่างให้เล่นบ้าง",
+        "metadata": {
+          "language_hint": "th",
+          "nonsemantic_preface_removed": false,
+          "query_variants": [
+            "ตอนบ่าย3มีอุปกรณ์อะไรว่างให้เล่นบ้าง"
+          ],
+          "elapsed_ms": 0.71,
+          "elapsed_sec": 0.0007
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.82,
+          "elapsed_sec": 0.0008
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "confidence": 1.0,
+        "detail": "equipment/equipment_item_lookup",
+        "metadata": {
+          "elapsed_ms": 6.16,
+          "elapsed_sec": 0.0062,
+          "route_category": "equipment",
+          "route_intent": "equipment_item_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [
+            "afternoon"
+          ],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "not_locked",
+        "confidence": 0.94,
+        "detail": "game_resolution_unknown",
+        "metadata": {
+          "locked": false,
+          "route_category": "equipment",
+          "route_intent": "equipment_item_lookup",
+          "reason": "game_resolution_unknown",
+          "resolution": {
+            "status": "unknown",
+            "entity_type": "game",
+            "top_candidate": null,
+            "candidates": [],
+            "top_score": 0.0,
+            "margin": 0.0,
+            "reason": "shortlist_below_threshold",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "trigram_fuzzy",
+            "candidate_count": 8,
+            "comparison_count": 64,
+            "elapsed_ms": 5.507,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "live_booking_status",
+        "decision": "live_booking_status_fast_path",
+        "confidence": 0.99,
+        "detail": "aggregate-only live booking dashboard",
+        "metadata": {
+          "privacy": "aggregate_only",
+          "source": "remote_csv_live",
+          "transport": "dashboard",
+          "cached": false,
+          "generated_at": "2026-10-01 15:44:19",
+          "error_code": "",
+          "fetch_elapsed_ms": 1993.71
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:live_booking_status_fast_path",
+        "metadata": {
+          "elapsed_ms": 0.95,
+          "elapsed_sec": 0.0009,
+          "format_response_style_ms": 0.31,
+          "answer_language": "th",
+          "total_elapsed_ms": 2041.34,
+          "total_elapsed_sec": 2.0413
+        }
+      }
+    ],
+    "log_sinks": {
+      "status": "queued"
+    }
+  }
+}

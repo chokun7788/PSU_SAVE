@@ -7,6 +7,7 @@ from app.core.customer_group import excludes_student_group
 from app.core.keyboard_neighbor_recovery import recover_keyboard_neighbor_query
 from app.core.thai_transposition_recovery import recover_thai_transposition_query
 from app.core.multi_error_phrase_recovery import recover_multi_error_phrase_query
+from app.core.intent_cue_recovery import recover_intent_cues
 from app.pipeline.game_title_correction import build_game_title_query_variants
 from app.pipeline.schemas import EntityBundle, PreprocessedInput
 
@@ -118,11 +119,33 @@ def _should_build_game_title_variants(query: str) -> bool:
 def preprocess_input(query: str) -> PreprocessedInput:
     raw = query or ""
     original_clean = re.sub(r"\s+", " ", raw).strip()
-    keyboard_recovered = recover_keyboard_neighbor_query(original_clean)
+    from dataclasses import asdict
+    from app.pipeline.competition_targets import recover_competition_game_names
+    name_query,name_recoveries=recover_competition_game_names(original_clean)
+    # Two typed sara-e characters visually resemble sara-ae. Normalize this
+    # orthographic form before intent detection, retaining the raw question.
+    vowel_normalized = name_query.replace("เเ", "แ")
+    keyboard_recovered = recover_keyboard_neighbor_query(vowel_normalized)
     transposition_recovered = recover_thai_transposition_query(keyboard_recovered)
     multi_error_recovered = recover_multi_error_phrase_query(transposition_recovered)
-    game_variants = build_game_title_query_variants(multi_error_recovered) if _should_build_game_title_variants(multi_error_recovered) else ()
-    clean = game_variants[0] if game_variants else multi_error_recovered
+    intent_recovered = recover_intent_cues(multi_error_recovered)
+    from app.pipeline.competition_targets import looks_like_competition_rule_query, resolve_competition_targets
+
+    raw_competition = resolve_competition_targets(vowel_normalized)
+    explicit_competition = raw_competition.status in {"exact", "multiple"} and (
+        looks_like_competition_rule_query(vowel_normalized)
+        or looks_like_competition_rule_query(intent_recovered)
+    )
+    if explicit_competition:
+        raw_games = {target.game_id for target in raw_competition.targets}
+        recovered_games = {target.game_id for target in resolve_competition_targets(intent_recovered).targets}
+        if raw_games != recovered_games:
+            intent_recovered = recover_intent_cues(vowel_normalized)
+    # Fuzzy title expansion once mistook a Thai connective for VALORANT and
+    # appended that game to an explicit CS2 request. Exact rulebook targets
+    # already resolve through the competition registry and need no expansion.
+    game_variants = build_game_title_query_variants(intent_recovered) if not explicit_competition and not looks_like_competition_rule_query(intent_recovered) and _should_build_game_title_variants(intent_recovered) else ()
+    clean = game_variants[0] if game_variants else intent_recovered
 
     variant_candidates: list[str] = [clean, original_clean]
     variant_candidates.extend(build_query_variants(original_clean))
@@ -145,6 +168,7 @@ def preprocess_input(query: str) -> PreprocessedInput:
         normalized_query=normalize_text(clean),
         language_hint=language_hint(clean),
         query_variants=tuple(variants),
+        name_recoveries=tuple({'input_text':original_clean,**asdict(item)} for item in name_recoveries),
     )
 
 

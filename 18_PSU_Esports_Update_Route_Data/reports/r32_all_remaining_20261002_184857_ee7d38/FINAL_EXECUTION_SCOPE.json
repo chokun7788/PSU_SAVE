@@ -1,0 +1,48 @@
+{
+  "runtime": "2026.10.02-source-content-reliability-r32",
+  "final_package": "owner_local_delivery_20261002_source_content_reliability_r32_final13/PSU_Esports_Chatbot_Local",
+  "scope": "Full C6 plus affected replays; not a fresh full final13 run. Query pipeline labels retained from scripts have the actual scopes listed here. HTTP final13 937 requests ran fresh separately.",
+  "runs": [
+    {
+      "run": "candidate6",
+      "scope": "full initial sweep",
+      "executions": 20327,
+      "results_file": "candidate6_all_results.jsonl",
+      "results_sha256": "665699d1ff5af19ff3a295c225d85fc2c5ab4295d53e0ee2d780323b51376c75"
+    },
+    {
+      "run": "candidate7_replay",
+      "scope": "all bilingual pairs and competition/named-game contexts",
+      "executions": 8526,
+      "results_file": "candidate7_replay_results.jsonl",
+      "results_sha256": "97ca4be681ddcd4d2ab1ceabb9079e62da646b1ec2dd879b182d919fffabc456"
+    },
+    {
+      "run": "final10_replay",
+      "scope": "every source-detail no-answer/rejected no-answer trace; no old corpus query contains a standalone Gregorian year",
+      "executions": 17,
+      "results_file": "final10_replay_results.jsonl",
+      "results_sha256": "e3796b3e8226505fcc222d9a8822e937d3d8a9c080e2d7b23afebd367f3f9ce1"
+    },
+    {
+      "run": "final12_replay",
+      "scope": "same 17 source-gap/no-answer queries after age partial fix",
+      "executions": 17,
+      "results_file": "final12_replay_results.jsonl",
+      "results_sha256": "9ae7632a48b0b9277b220b2d70b52db7366bc90968fe6da7271de9c09b9f0908"
+    },
+    {
+      "run": "final13_replay",
+      "scope": "every recorded registered-facet recovery overlapping และ/กับ/and; same-facet conjunction-bound rescore",
+      "executions": 3,
+      "results_file": "final13_replay_results.jsonl",
+      "results_sha256": "2f7eb783bd28411d2fd719a803a7b376ecbc94d36a1821dac3cb7141515bfacd"
+    }
+  ],
+  "final_results_sha256": "1584848a0b2a5c6b5c14af55586410934cb54cdd9ed89e0885f5dea883c01750",
+  "known_artifact_errors": [
+    "Copied early HTTP summary labels r31; actual health and package confirm r32. See API_EXECUTION_PROVENANCE_FINAL13.json.",
+    "C12 merge completed full results and summary before failing to exclusively create a changes sidecar whose copied filename already existed. Whole result count/identities were verified by the full comparison.",
+    "Some replay provenance text copied the source-abstention wording to the conjunction-only run; use explicit scopes/keys above."
+  ]
+}

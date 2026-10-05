@@ -9,7 +9,7 @@
 - บริบทการสนทนาต่อเนื่องภายในหน้าเว็บ/Session เดียว; refresh จะเริ่ม Session ใหม่แต่เก็บ audit log เดิมครบ
 - Log, Session ID, transcript และรายงานสำหรับผู้ดูแลในเครื่อง
 - ข้อมูลตารางการให้บริการและ Maintenance ที่อยู่ใน release นี้
-- การอ่านสถานะ Slot จาก Booking Dashboard แบบ read-only เมื่อ WordPress CSV สดพร้อมใช้งาน โดยไม่ส่งข้อมูลผู้จองเข้า Chatbot
+- การดึง WordPress CSV เมื่อถามสถานะ Slot โดยใช้ตัวคำนวณ Booking Dashboard แบบอ่านอย่างเดียว ไม่ต้องเปิด Dashboard เพิ่มสำหรับชุด Chatbot; ตัวเชื่อมต่อตัดข้อมูลผู้จองก่อนส่งสถานะเข้าระบบตอบ
 
 ## สิ่งที่ยังไม่ใช่บริการจริงในชุดนี้
 

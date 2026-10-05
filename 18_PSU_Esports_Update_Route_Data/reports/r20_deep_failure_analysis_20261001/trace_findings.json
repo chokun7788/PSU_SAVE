@@ -1,0 +1,52 @@
+{
+  "replay_count": 369,
+  "failed_noisy_count": 345,
+  "clean_probe_count": 24,
+  "same_mode_count": 369,
+  "same_answer_count": 369,
+  "central_candidate_trace": {
+    "True": 158,
+    "False": 187
+  },
+  "validation_ok": {
+    "True": 345
+  },
+  "scorer_v2_outcome_labels": {
+    "no_answer": 148,
+    "answer": 47,
+    "clarification": 58,
+    "localization_pending": 92
+  },
+  "cue_preflight": {
+    "unchanged": 345
+  },
+  "candidate_clarification_selection": {
+    "abstain_low_score": 40
+  },
+  "notes": "Outcome labels and gate failures are mechanical symptoms, not a semantic truth tally. Confirmed causal notes refer to inspected cases; other cases remain root-cause review pending.",
+  "inspected_case_notes": {
+    "MASTER-GT-TH-00032": "entities.price_intent=True but protected exact price cue misses กี่บบาท; public-access returns before central scoring. Confirmed conflicting cue definitions and early return.",
+    "MASTER-GT-TH-04611": "Damaged person prefix and operation remain unchanged; operation=unknown; hybrid candidate 0.433 below 0.45; member capability rejected by general-route veto. Generic clarification omits known person topic.",
+    "MASTER-GT-TH-03829": "Damaged policy noun misses direct protected policy; unknown operation, hybrid0.433 below0.45; no execution. Clean gives source-supported property-loss policy.",
+    "MASTER-GT-TH-01667": "Broken เล่นได้ที่ไหน misses game availability operation; broad เล่นได้ hits schedule; score boosts repeat mistaken route/frame; schedule wins0.926.",
+    "MASTER-GT-TH-01622": "Broken duration qualifier leaves VR target but unknown requested fact; equipment wins0.990; catalog instead of session duration.",
+    "MASTER-GT-TH-02611": "Clean also fails: helper source probe maps polite เลย to เพลย์0.857>0.84; local zone resolver inserts PS5 although central game target and sources point PC.",
+    "MASTER-GT-TH-00024": "Comparison qualifier duplication removes comparison_intent; clean calculator0.999, noisy hybrid0.456; no anchored factual answer.",
+    "MASTER-GT-TH-02476": "Exact game retained and structured.games0.999 wins; local detail predicate misses เกมอะไน, returns catalog; validator rejects type, then slow deterministic/fallback also rejected. Profile proves repeated normalization/fuzzy comparison CPU work.",
+    "MASTER-GT-TH-04896": "ของยังไง is real-word-looking corruption of จองยังไง; preflight/split remain one part, price answer excludes booking task. Contract needs each task plus correct price, not OR of booking words.",
+    "MASTER-GT-TH-02213": "Title exact but detail cue corrupted; substring Sports in title drives genre list; source-backed facts do not answer requested game detail.",
+    "MASTER-GT-TH-04785": "Ambiguous anaphora อันนี้ persists; จอง becomes จอ and broad equipment handler returns all inventory. Clean also answers booking without identifying referent.",
+    "MASTER-GT-TH-03957": "Standard safe no_answer satisfies status but general route is absent from expected route set. Route-label failure needs review, not forcing unsupported recording policy.",
+    "MASTER-GT-TH-04944": "Expected no_answer plus required จอง does not match generic refusal. Needs scope/contract review; clean also fails, not caused solely by typo.",
+    "MASTER-GT-EN-04874": "Exact members? regex fails memberss; no split; president always maps อธิการบดี. Missing numeric count handler/contract even on clean; ambiguous institutional versus club scope.",
+    "MASTER-GT-EN-04820": "Wrong accommodation noun cue bypasses exact rule; offer alone triggers inventory, bilingual early return0.97 before central selection; source facts unrelated to requested service.",
+    "MASTER-GT-EN-00531": "sessioons bypasses exact session limit rule and returns generic booking steps; route remains reservation and fixed rule confidence0.99 but numeric limit absent.",
+    "MASTER-GT-EN-01405": "afteronon loses time_slots/afternoon qualifier; schedule family recognized but generic weekly hours instead of13:00-16:00. Same confidence0.98 in both branches.",
+    "MASTER-GT-EN-04469": "Clean and noisy both localization_pending. Selected Tekken8 dispute card exists in Thai; text/section_title missing in active approved registry. No LLM rewrite/translation preview.",
+    "MASTER-GT-EN-03401": "PS5 controller model absent in selected equipment source. Safe unverified result conflicts with answer_available candidate label; do not infer DualSense from generic product knowledge.",
+    "MASTER-GT-EN-01715": "play->pay becomes another valid word; price handler returns service fee. User meaning ambiguous; source-grounded price cannot certify intended game location.",
+    "MASTER-GT-EN-02394": "play->pay real-word collision similarly returns Nintendo fee instead of game how-to; label requires review and scoped ambiguity guard.",
+    "MASTER-GT-EN-04891": "rice is a valid word; non-correction is intentional. Better clarification needs context; cannot certify user meant Price from synthetic edit alone.",
+    "MASTER-GT-EN-00143": "rice removes price task and sends exact game toward detail localization. Missing localization is downstream symptom; primary intent ambiguity is pay/play-like collision."
+  }
+}

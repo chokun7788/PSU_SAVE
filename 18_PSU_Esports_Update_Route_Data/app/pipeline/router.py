@@ -32,6 +32,10 @@ def _looks_like_schedule_date_query(q: str) -> bool:
 
 
 def _looks_like_competition_rule_query(q: str) -> bool:
+    # Changing an in-game character or skin is not changing team members.
+    # Explicit tournament wording can still ask a skin/customization rule.
+    if re.search(r"เปลี่ยน(?:ตัวละคร|สกิน)|change.{0,15}(?:character|skin)", q, re.I) and not _has(q, "แข่ง", "กฎ", "กฏ", "กติกา", "tournament", "competition", "rules", "rulebook"):
+        return False
     # "เกมแข่งรถ" names a genre, not a tournament. Keep explicit questions
     # about tournament rules eligible for the competition route.
     if _has(q, "เกมแข่งรถ", "เกมขับรถ") and _has(q, "มีเกม", "มีให้เล่น", "เกมไหน", "เกมอะไร") and not _has(

@@ -1,0 +1,4895 @@
+{
+  "safe_abstention_vs_gold_or_missing_data_review": {
+    "question": "Mario Kart Live ปุ่มเร่งกดอะไร",
+    "locale": "auto",
+    "answer": "ตอนนี้ยังไม่พบ Mario Kart Live: Home Circuit ในรายการเกมปัจจุบันของ PSU Esports Studio - Phuket ครับ\nจึงไม่ดึงปุ่มของเกมอื่น เช่น Mario Kart 8 Deluxe มาตอบแทน\nเกมตระกูล Mario ที่อยู่ในรายการปัจจุบันคือ: Mario Kart 8 Deluxe, Mario Party Superstars, New Super Mario Bros. U Deluxe, Super Mario Odyssey\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "mode": "pipeline:structured_game_controls_no_current_game",
+    "route": {
+      "category": "games",
+      "intent": "game_control_lookup",
+      "confidence": 0.97,
+      "answer_type": "fact",
+      "risk": "low",
+      "reason": "exact game target locked: Mario Kart 8 Deluxe"
+    },
+    "confidence": 0.93,
+    "hits": [
+      {
+        "id": "service_game_availability",
+        "metadata": {
+          "source_url": "https://esports.computing.psu.ac.th/",
+          "category": "games",
+          "source_type": "games",
+          "title": "Current service game availability",
+          "source_ids": [
+            "service_game_availability"
+          ]
+        }
+      }
+    ],
+    "expected": {
+      "id": "AQ-CTRL-002",
+      "question": "Mario Kart Live ปุ่มเร่งกดอะไร",
+      "expected_category": "games",
+      "must_contain": [
+        "Mario Kart",
+        "เร่ง"
+      ],
+      "must_not_contain": [],
+      "source_keywords": [
+        "local://control_game"
+      ],
+      "format_rules": [],
+      "notes": "",
+      "min_score": 8.0,
+      "locale": "auto"
+    },
+    "failures": [
+      "quality_score_or_required_gate_failed",
+      "เร่ง"
+    ],
+    "trace": [
+      {
+        "stage": "timing",
+        "decision": "locale_resolution",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0001,
+          "global_remaining_sec": 19.9999,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9999,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "intent_cue_preflight",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 6.84,
+          "elapsed_sec": 0.0068,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0069,
+          "global_remaining_sec": 19.9931,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9931,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "canonical_preflight",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.007,
+          "global_remaining_sec": 19.993,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.993,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "locale_resolution",
+        "decision": "th",
+        "confidence": 0.88,
+        "detail": "mixed_thai_function_words",
+        "metadata": {
+          "requested": "auto",
+          "detected": "mixed",
+          "effective": "th",
+          "confidence": 0.88,
+          "reason": "mixed_thai_function_words"
+        }
+      },
+      {
+        "stage": "intent_cue_preflight",
+        "decision": "unchanged",
+        "confidence": 1.0,
+        "detail": "bounded task cues; offsets refer to each intermediate input",
+        "metadata": {
+          "raw": "Mario Kart Live ปุ่มเร่งกดอะไร",
+          "candidate": "Mario Kart Live ปุ่มเร่งกดอะไร",
+          "recoveries": [],
+          "span_budget": 3,
+          "edit_budget": 4
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "confidence": 1.0,
+        "detail": "parts=1",
+        "metadata": {
+          "elapsed_ms": 12.73,
+          "elapsed_sec": 0.0127,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0197,
+          "global_remaining_sec": 19.9803,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9803,
+          "timing_status": "running",
+          "entry_to_split_ms": 6.9,
+          "parts": [
+            "Mario Kart Live ปุ่มเร่งกดอะไร"
+          ],
+          "competition_rule_query": false
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "confidence": 0.0,
+        "detail": "single question",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "confidence": 0.0,
+        "detail": "experimental_allow_llm is false; single clear operation does not need planner",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "mario kart live ปุ่มเร่งกดอะไร",
+        "metadata": {
+          "language_hint": "mixed_th_en",
+          "nonsemantic_preface_removed": false,
+          "query_variants": [
+            "Mario Kart Live ปุ่มเร่งกดอะไร"
+          ],
+          "elapsed_ms": 19.09,
+          "elapsed_sec": 0.0191
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 19.14,
+          "elapsed_sec": 0.0191
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "confidence": 1.0,
+        "detail": "games/game_control_lookup",
+        "metadata": {
+          "elapsed_ms": 22.8,
+          "elapsed_sec": 0.0228,
+          "route_category": "games",
+          "route_intent": "game_control_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "exact_game_target_locked",
+        "confidence": 0.97,
+        "detail": "exact_known_game_target",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_control_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "mariokart8deluxe",
+              "title": "Mario Kart 8 Deluxe",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Mario Kart",
+              "sources": [
+                "availability_nintendo_1_2",
+                "availability_nintendo_1_4"
+              ],
+              "zones": [
+                "Nintendo Switch Zone"
+              ],
+              "has_controls": true,
+              "reasons": [
+                "operation_has_controls"
+              ]
+            },
+            "candidates": [
+              {
+                "entity_id": "mariokart8deluxe",
+                "title": "Mario Kart 8 Deluxe",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Mario Kart",
+                "sources": [
+                  "availability_nintendo_1_2",
+                  "availability_nintendo_1_4"
+                ],
+                "zones": [
+                  "Nintendo Switch Zone"
+                ],
+                "has_controls": true,
+                "reasons": [
+                  "operation_has_controls"
+                ]
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "controls",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 12.585,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "semantic_route_refiner",
+        "decision": "skipped_exact_target_lock",
+        "confidence": 0.97,
+        "detail": "an exact game target is resolved before semantic route discovery",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_control_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "mariokart8deluxe",
+              "title": "Mario Kart 8 Deluxe",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Mario Kart",
+              "sources": [
+                "availability_nintendo_1_2",
+                "availability_nintendo_1_4"
+              ],
+              "zones": [
+                "Nintendo Switch Zone"
+              ],
+              "has_controls": true,
+              "reasons": [
+                "operation_has_controls"
+              ]
+            },
+            "candidates": [
+              {
+                "entity_id": "mariokart8deluxe",
+                "title": "Mario Kart 8 Deluxe",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Mario Kart",
+                "sources": [
+                  "availability_nintendo_1_2",
+                  "availability_nintendo_1_4"
+                ],
+                "zones": [
+                  "Nintendo Switch Zone"
+                ],
+                "has_controls": true,
+                "reasons": [
+                  "operation_has_controls"
+                ]
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "controls",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 12.585,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "freshness_guard",
+        "decision": "not_required",
+        "confidence": 0.9,
+        "detail": "query does not require live dynamic evidence",
+        "metadata": {
+          "requires_live_evidence": false
+        }
+      },
+      {
+        "stage": "boundary_guard",
+        "decision": "allow",
+        "confidence": 0.9,
+        "detail": "no high-confidence boundary matched",
+        "metadata": {
+          "flags": []
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "guard_scope",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.03,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "guard",
+        "decision": "weak_domain_signal",
+        "confidence": 0.35,
+        "detail": "no clear PSU Esports domain hint",
+        "metadata": {}
+      },
+      {
+        "stage": "router",
+        "decision": "games",
+        "confidence": 0.97,
+        "detail": "game control terms found before member/role routing",
+        "metadata": {
+          "intent": "game_control_lookup",
+          "answer_type": "fact"
+        }
+      },
+      {
+        "stage": "model_gateway",
+        "decision": "skip_preflight_llm",
+        "confidence": 0.97,
+        "detail": "request did not allow LLM",
+        "metadata": {
+          "allow_llm": false,
+          "preflight_allow_llm": false,
+          "route_category": "games",
+          "route_intent": "game_control_lookup"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "universal_intent",
+        "confidence": 1.0,
+        "detail": "game_controls/control",
+        "metadata": {
+          "elapsed_ms": 2.04,
+          "elapsed_sec": 0.002,
+          "method": "heuristic",
+          "confidence": 0.9
+        }
+      },
+      {
+        "stage": "universal_intent",
+        "decision": "game_controls/control",
+        "confidence": 0.9,
+        "detail": "known game alias found; control operation overrides domain; control terms found",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "competing_domain_signals"
+          ],
+          "input_recovery": {
+            "score": 0.2604,
+            "language": "mixed",
+            "language_quality": 0.7396,
+            "should_review_intent": false,
+            "reason": "Thai character n-gram quality=0.740",
+            "action": "continue"
+          },
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "game_controls",
+              "operation": "control",
+              "target": "",
+              "confidence": 0.9,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "games",
+              "operation": "unknown",
+              "target": "",
+              "confidence": 0.97,
+              "reason": "router category candidate"
+            },
+            {
+              "id": "c3",
+              "domain": "games",
+              "operation": "list",
+              "target": "",
+              "confidence": 0.66,
+              "reason": "game-domain catalog alternative"
+            },
+            {
+              "id": "c4",
+              "domain": "equipment",
+              "operation": "how_to",
+              "target": "",
+              "confidence": 0.72,
+              "reason": "controller equipment phrase"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "list_controls"
+          ],
+          "answer_style": "direct_then_details",
+          "heuristic": {
+            "domain": "game_controls",
+            "operation": "control",
+            "confidence": 0.9,
+            "reason": "known game alias found; control operation overrides domain; control terms found"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/game_controls",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.9
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.9,
+        "detail": "experimental_allow_llm is false",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 76.6,
+          "elapsed_sec": 0.0766,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "games/game_control_lookup",
+          "intent": "game_controls/control",
+          "has_known_game": true,
+          "has_service_or_zone": false,
+          "game_entity_resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "mariokart8deluxe",
+              "title": "Mario Kart 8 Deluxe",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Mario Kart",
+              "sources": [
+                "availability_nintendo_1_2",
+                "availability_nintendo_1_4"
+              ],
+              "zones": [
+                "Nintendo Switch Zone"
+              ],
+              "has_controls": true,
+              "reasons": [
+                "operation_has_controls"
+              ]
+            },
+            "candidates": [
+              {
+                "entity_id": "mariokart8deluxe",
+                "title": "Mario Kart 8 Deluxe",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Mario Kart",
+                "sources": [
+                  "availability_nintendo_1_2",
+                  "availability_nintendo_1_4"
+                ],
+                "zones": [
+                  "Nintendo Switch Zone"
+                ],
+                "has_controls": true,
+                "reasons": [
+                  "operation_has_controls"
+                ]
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "controls",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 0.056,
+            "request_cache_hit": true,
+            "budget_exceeded": false
+          },
+          "intent_candidates": [
+            {
+              "domain": "game_controls",
+              "operation": "control",
+              "score": 0.99,
+              "reasons": [
+                "control_terms",
+                "control_game_target",
+                "route_prior",
+                "intent_domain_prior",
+                "intent_operation_prior"
+              ]
+            },
+            {
+              "domain": "games",
+              "operation": "detail",
+              "score": 0.3,
+              "reasons": [
+                "known_game_target"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "question_frame",
+        "confidence": 0.97,
+        "detail": "game_controls/control_lookup",
+        "metadata": {
+          "elapsed_ms": 88.97,
+          "elapsed_sec": 0.089,
+          "operation": "control_lookup",
+          "domain": "game_controls",
+          "expected_answer_types": [
+            "controls"
+          ],
+          "targets": [
+            {
+              "target_id": "mariokart8deluxe",
+              "target_type": "game",
+              "domain": "games",
+              "label": "Mario Kart 8 Deluxe",
+              "score": 1.0
+            }
+          ],
+          "target_status": "exact",
+          "target_margin": 0.09,
+          "target_required": true,
+          "allows_multiple_targets": false,
+          "needs_clarification": false,
+          "confidence": 0.97,
+          "method": "operation_first",
+          "route_category": "games",
+          "route_intent": "game_control_lookup",
+          "intent_operation": "control",
+          "target_reason": "top_exact_alias_overrides_parent_match",
+          "target_candidate_count": 4,
+          "game_family": ""
+        }
+      },
+      {
+        "stage": "target_context",
+        "decision": "enrich_universal_intent",
+        "confidence": 1.0,
+        "detail": "exact Question Frame target propagated to structured execution",
+        "metadata": {
+          "target_id": "mariokart8deluxe",
+          "target_type": "game",
+          "domain": "games",
+          "label": "Mario Kart 8 Deluxe",
+          "score": 1.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "candidate_decisions",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 110.33,
+          "elapsed_sec": 0.1103
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "structured.game_controls",
+        "confidence": 0.999,
+        "detail": "base=0.90; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=game_controls; game_control_priority; question_frame_domain_match; question_frame_operation=control_lookup; precondition=game_control_query_applicable",
+        "metadata": {
+          "selected": {
+            "capability_id": "structured.game_controls",
+            "action": "structured",
+            "domain": "game_controls",
+            "score": 0.999,
+            "status": "accepted",
+            "reason": "base=0.90; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=game_controls; game_control_priority; question_frame_domain_match; question_frame_operation=control_lookup; precondition=game_control_query_applicable",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          "selection": {
+            "status": "selected",
+            "execution_allowed": true,
+            "margin": 0.51,
+            "same_action_as_second": false,
+            "second": {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.489,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          },
+          "question_frame": {
+            "operation": "control_lookup",
+            "domain": "game_controls",
+            "expected_answer_types": [
+              "controls"
+            ],
+            "targets": [
+              {
+                "target_id": "mariokart8deluxe",
+                "target_type": "game",
+                "domain": "games",
+                "label": "Mario Kart 8 Deluxe",
+                "score": 1.0
+              }
+            ],
+            "target_status": "exact",
+            "target_margin": 0.09,
+            "target_required": true,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.97,
+            "method": "operation_first",
+            "route_category": "games",
+            "route_intent": "game_control_lookup",
+            "intent_operation": "control",
+            "target_reason": "top_exact_alias_overrides_parent_match",
+            "target_candidate_count": 4,
+            "game_family": ""
+          },
+          "candidates": [
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.999,
+              "status": "accepted",
+              "reason": "base=0.90; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=game_controls; game_control_priority; question_frame_domain_match; question_frame_operation=control_lookup; precondition=game_control_query_applicable",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.489,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.467,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.456,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.444,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.4,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.322,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.278,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_member_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: control_query_must_not_use_game_detail",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_an_equipment_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_reservation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_schedule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_or_calculation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_competition_rule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "low",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_precondition",
+        "confidence": 1.0,
+        "detail": "structured.game_controls",
+        "metadata": {
+          "elapsed_ms": 0.25,
+          "elapsed_sec": 0.0002,
+          "ok": true
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "allow_structured",
+        "confidence": 0.9,
+        "detail": "game_control_query_applicable",
+        "metadata": {
+          "capability_id": "structured.game_controls",
+          "ok": true,
+          "reason": "game_control_query_applicable",
+          "severity": "policy",
+          "selector_allows_structured": true,
+          "selected_capability_id": "structured.game_controls"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "structured_tool_execution",
+        "confidence": 1.0,
+        "detail": "structured_game_controls_no_current_game",
+        "metadata": {
+          "elapsed_ms": 72.13,
+          "elapsed_sec": 0.0721,
+          "precondition_ok": true,
+          "selector_allows_structured": true,
+          "selected_capability_id": "structured.game_controls",
+          "confidence": 0.93
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "facts_composer",
+        "confidence": 1.0,
+        "detail": "disabled",
+        "metadata": {
+          "elapsed_ms": 0.24,
+          "elapsed_sec": 0.0002,
+          "used_llm": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "structured_game_controls_no_current_game",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 105.67,
+          "elapsed_sec": 0.1057,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "structured_tool",
+        "decision": "structured_game_controls_no_current_game",
+        "confidence": 0.93,
+        "detail": "current_game_availability_guard",
+        "metadata": {
+          "tool": "current_game_availability_guard",
+          "game": "Mario Kart Live: Home Circuit",
+          "elapsed": 0.4919,
+          "facts_composer_used": false
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:structured_game_controls_no_current_game",
+        "metadata": {
+          "elapsed_ms": 1.41,
+          "elapsed_sec": 0.0014,
+          "format_response_style_ms": 0.78,
+          "answer_language": "th",
+          "total_elapsed_ms": 599.41,
+          "total_elapsed_sec": 0.5994
+        }
+      }
+    ],
+    "raw_line": 8
+  },
+  "metadata_or_mode_assertion_review": {
+    "question": "มี TEKKEN 8 ไหม",
+    "locale": "auto",
+    "answer": "ได้ครับ TEKKEN 8 เล่นได้ที่ PC Zone - PC #01-#02, PlayStation 5 Zone - PlayStation 5 #01-#02\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "mode": "pipeline:structured_service_game_availability",
+    "route": {
+      "category": "games",
+      "intent": "game_detail_lookup",
+      "confidence": 0.95,
+      "answer_type": "fact",
+      "risk": "low",
+      "reason": "exact game target locked: TEKKEN 8"
+    },
+    "confidence": 0.97,
+    "hits": [
+      {
+        "id": "availability_pc_01_02",
+        "metadata": {
+          "source_url": "https://esports.computing.psu.ac.th/",
+          "category": "games",
+          "source_type": "games",
+          "title": "PC #01-#02",
+          "source_ids": [
+            "availability_pc_01_02"
+          ]
+        }
+      },
+      {
+        "id": "availability_ps5_01_02",
+        "metadata": {
+          "source_url": "https://esports.computing.psu.ac.th/",
+          "category": "games",
+          "source_type": "games",
+          "title": "PlayStation 5 #01-#02",
+          "source_ids": [
+            "availability_ps5_01_02"
+          ]
+        }
+      }
+    ],
+    "expected": {
+      "id": "RT-GM-004",
+      "question": "มี TEKKEN 8 ไหม",
+      "expected_category": "games",
+      "expected_intent": "game_availability_lookup",
+      "expected_domain": "games",
+      "expected_operation": "availability",
+      "must_not_category": [
+        "game_controls",
+        "service_fee"
+      ],
+      "notes": "availability",
+      "locale": "auto"
+    },
+    "failures": [
+      "intent:game_detail_lookup expected:game_availability_lookup"
+    ],
+    "trace": [
+      {
+        "stage": "timing",
+        "decision": "locale_resolution",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0001,
+          "global_remaining_sec": 19.9999,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9999,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "intent_cue_preflight",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 5.83,
+          "elapsed_sec": 0.0058,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0059,
+          "global_remaining_sec": 19.9941,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9941,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "canonical_preflight",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0059,
+          "global_remaining_sec": 19.9941,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.994,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "locale_resolution",
+        "decision": "th",
+        "confidence": 0.88,
+        "detail": "mixed_thai_function_words",
+        "metadata": {
+          "requested": "auto",
+          "detected": "mixed",
+          "effective": "th",
+          "confidence": 0.88,
+          "reason": "mixed_thai_function_words"
+        }
+      },
+      {
+        "stage": "intent_cue_preflight",
+        "decision": "unchanged",
+        "confidence": 1.0,
+        "detail": "bounded task cues; offsets refer to each intermediate input",
+        "metadata": {
+          "raw": "มี TEKKEN 8 ไหม",
+          "candidate": "มี TEKKEN 8 ไหม",
+          "recoveries": [],
+          "span_budget": 3,
+          "edit_budget": 4
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "confidence": 1.0,
+        "detail": "parts=1",
+        "metadata": {
+          "elapsed_ms": 13.27,
+          "elapsed_sec": 0.0133,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0192,
+          "global_remaining_sec": 19.9808,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9808,
+          "timing_status": "running",
+          "entry_to_split_ms": 5.91,
+          "parts": [
+            "มี TEKKEN 8 ไหม"
+          ],
+          "competition_rule_query": false
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "confidence": 0.0,
+        "detail": "single question",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "confidence": 0.0,
+        "detail": "experimental_allow_llm is false; single clear operation does not need planner",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "มี tekken 8 ไหม",
+        "metadata": {
+          "language_hint": "mixed_th_en",
+          "nonsemantic_preface_removed": false,
+          "query_variants": [
+            "มี TEKKEN 8 ไหม"
+          ],
+          "elapsed_ms": 1118.73,
+          "elapsed_sec": 1.1187
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 1118.77,
+          "elapsed_sec": 1.1188
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "confidence": 1.0,
+        "detail": "games/game_availability_lookup",
+        "metadata": {
+          "elapsed_ms": 6.78,
+          "elapsed_sec": 0.0068,
+          "route_category": "games",
+          "route_intent": "game_availability_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "exact_game_target_locked",
+        "confidence": 0.95,
+        "detail": "exact_known_game_target",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "tekken8",
+              "title": "TEKKEN 8",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "TEKKEN 8",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_ps5_01_02"
+              ],
+              "zones": [
+                "PC Zone",
+                "PlayStation 5 Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "tekken8",
+                "title": "TEKKEN 8",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "TEKKEN 8",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_ps5_01_02"
+                ],
+                "zones": [
+                  "PC Zone",
+                  "PlayStation 5 Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 11.543,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "semantic_route_refiner",
+        "decision": "skipped_exact_target_lock",
+        "confidence": 0.95,
+        "detail": "an exact game target is resolved before semantic route discovery",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "tekken8",
+              "title": "TEKKEN 8",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "TEKKEN 8",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_ps5_01_02"
+              ],
+              "zones": [
+                "PC Zone",
+                "PlayStation 5 Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "tekken8",
+                "title": "TEKKEN 8",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "TEKKEN 8",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_ps5_01_02"
+                ],
+                "zones": [
+                  "PC Zone",
+                  "PlayStation 5 Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 11.543,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "freshness_guard",
+        "decision": "not_required",
+        "confidence": 0.9,
+        "detail": "query does not require live dynamic evidence",
+        "metadata": {
+          "requires_live_evidence": false
+        }
+      },
+      {
+        "stage": "boundary_guard",
+        "decision": "allow",
+        "confidence": 0.9,
+        "detail": "no high-confidence boundary matched",
+        "metadata": {
+          "flags": []
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "guard_scope",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.03,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "guard",
+        "decision": "weak_domain_signal",
+        "confidence": 0.35,
+        "detail": "no clear PSU Esports domain hint",
+        "metadata": {}
+      },
+      {
+        "stage": "router",
+        "decision": "games",
+        "confidence": 0.95,
+        "detail": "game availability terms found before schedule",
+        "metadata": {
+          "intent": "game_availability_lookup",
+          "answer_type": "fact"
+        }
+      },
+      {
+        "stage": "model_gateway",
+        "decision": "skip_preflight_llm",
+        "confidence": 0.95,
+        "detail": "request did not allow LLM",
+        "metadata": {
+          "allow_llm": false,
+          "preflight_allow_llm": false,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "universal_intent",
+        "confidence": 1.0,
+        "detail": "games/availability",
+        "metadata": {
+          "elapsed_ms": 2.36,
+          "elapsed_sec": 0.0024,
+          "method": "heuristic",
+          "confidence": 0.88
+        }
+      },
+      {
+        "stage": "universal_intent",
+        "decision": "games/availability",
+        "confidence": 0.88,
+        "detail": "known game alias found; named game availability terms found",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [],
+          "input_recovery": {
+            "score": 0.3329,
+            "language": "mixed",
+            "language_quality": 0.6671,
+            "should_review_intent": false,
+            "reason": "Thai character n-gram quality=0.667",
+            "action": "continue"
+          },
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "games",
+              "operation": "availability",
+              "target": "",
+              "confidence": 0.88,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "games",
+              "operation": "list",
+              "target": "",
+              "confidence": 0.66,
+              "reason": "game-domain catalog alternative"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "check_availability"
+          ],
+          "answer_style": "direct",
+          "heuristic": {
+            "domain": "games",
+            "operation": "availability",
+            "confidence": 0.88,
+            "reason": "known game alias found; named game availability terms found"
+          }
+        }
+      },
+      {
+        "stage": "universal_route_refine",
+        "decision": "games/game_detail_lookup -> games/game_availability_lookup",
+        "confidence": 0.88,
+        "detail": "route refined by universal intent",
+        "metadata": {
+          "domain": "games",
+          "operation": "availability",
+          "method": "heuristic"
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "restored_exact_game_target",
+        "confidence": 0.95,
+        "detail": "universal intent proposed games/game_availability_lookup; restored games/game_detail_lookup",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "tekken8",
+              "title": "TEKKEN 8",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "TEKKEN 8",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_ps5_01_02"
+              ],
+              "zones": [
+                "PC Zone",
+                "PlayStation 5 Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "tekken8",
+                "title": "TEKKEN 8",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "TEKKEN 8",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_ps5_01_02"
+                ],
+                "zones": [
+                  "PC Zone",
+                  "PlayStation 5 Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 11.543,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/games",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.88
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.88,
+        "detail": "experimental_allow_llm is false",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 30.85,
+          "elapsed_sec": 0.0308,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "games/game_detail_lookup",
+          "intent": "games/availability",
+          "has_known_game": true,
+          "has_service_or_zone": false,
+          "game_entity_resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "tekken8",
+              "title": "TEKKEN 8",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "TEKKEN 8",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_ps5_01_02"
+              ],
+              "zones": [
+                "PC Zone",
+                "PlayStation 5 Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "tekken8",
+                "title": "TEKKEN 8",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "TEKKEN 8",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_ps5_01_02"
+                ],
+                "zones": [
+                  "PC Zone",
+                  "PlayStation 5 Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 0.049,
+            "request_cache_hit": true,
+            "budget_exceeded": false
+          },
+          "intent_candidates": [
+            {
+              "domain": "games",
+              "operation": "detail",
+              "score": 0.6,
+              "reasons": [
+                "known_game_target",
+                "route_prior",
+                "intent_domain_prior"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "question_frame",
+        "confidence": 0.95,
+        "detail": "games/game_detail",
+        "metadata": {
+          "elapsed_ms": 59.46,
+          "elapsed_sec": 0.0595,
+          "operation": "game_detail",
+          "domain": "games",
+          "expected_answer_types": [
+            "game_detail"
+          ],
+          "targets": [
+            {
+              "target_id": "tekken8",
+              "target_type": "game",
+              "domain": "games",
+              "label": "TEKKEN 8",
+              "score": 1.0
+            }
+          ],
+          "target_status": "exact",
+          "target_margin": 1.0,
+          "target_required": true,
+          "allows_multiple_targets": false,
+          "needs_clarification": false,
+          "confidence": 0.95,
+          "method": "operation_first",
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "intent_operation": "availability",
+          "target_reason": "explicit_canonical_title_overrides_normalized_alias_tie",
+          "target_candidate_count": 1,
+          "game_family": null
+        }
+      },
+      {
+        "stage": "target_context",
+        "decision": "enrich_universal_intent",
+        "confidence": 1.0,
+        "detail": "exact Question Frame target propagated to structured execution",
+        "metadata": {
+          "target_id": "tekken8",
+          "target_type": "game",
+          "domain": "games",
+          "label": "TEKKEN 8",
+          "score": 1.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "candidate_decisions",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 60.4,
+          "elapsed_sec": 0.0604
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "structured.games",
+        "confidence": 0.999,
+        "detail": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; question_frame_domain_match; question_frame_operation=game_detail; precondition=game_domain_or_catalog_query",
+        "metadata": {
+          "selected": {
+            "capability_id": "structured.games",
+            "action": "structured",
+            "domain": "games",
+            "score": 0.999,
+            "status": "accepted",
+            "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; question_frame_domain_match; question_frame_operation=game_detail; precondition=game_domain_or_catalog_query",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          "selection": {
+            "status": "selected",
+            "execution_allowed": true,
+            "margin": 0.51,
+            "same_action_as_second": false,
+            "second": {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.489,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          },
+          "question_frame": {
+            "operation": "game_detail",
+            "domain": "games",
+            "expected_answer_types": [
+              "game_detail"
+            ],
+            "targets": [
+              {
+                "target_id": "tekken8",
+                "target_type": "game",
+                "domain": "games",
+                "label": "TEKKEN 8",
+                "score": 1.0
+              }
+            ],
+            "target_status": "exact",
+            "target_margin": 1.0,
+            "target_required": true,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.95,
+            "method": "operation_first",
+            "route_category": "games",
+            "route_intent": "game_detail_lookup",
+            "intent_operation": "availability",
+            "target_reason": "explicit_canonical_title_overrides_normalized_alias_tie",
+            "target_candidate_count": 1,
+            "game_family": null
+          },
+          "candidates": [
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.999,
+              "status": "accepted",
+              "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; question_frame_domain_match; question_frame_operation=game_detail; precondition=game_domain_or_catalog_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.489,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.467,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.456,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.444,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.4,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.322,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.278,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_member_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_control_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_an_equipment_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_reservation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_schedule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_or_calculation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_competition_rule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "low",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_precondition",
+        "confidence": 1.0,
+        "detail": "structured.games",
+        "metadata": {
+          "elapsed_ms": 0.43,
+          "elapsed_sec": 0.0004,
+          "ok": true
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "allow_structured",
+        "confidence": 0.9,
+        "detail": "game_domain_or_catalog_query",
+        "metadata": {
+          "capability_id": "structured.games",
+          "ok": true,
+          "reason": "game_domain_or_catalog_query",
+          "severity": "policy",
+          "selector_allows_structured": true,
+          "selected_capability_id": "structured.games"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "structured_tool_execution",
+        "confidence": 1.0,
+        "detail": "structured_service_game_availability",
+        "metadata": {
+          "elapsed_ms": 22.31,
+          "elapsed_sec": 0.0223,
+          "precondition_ok": true,
+          "selector_allows_structured": true,
+          "selected_capability_id": "structured.games",
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "facts_composer",
+        "confidence": 1.0,
+        "detail": "disabled",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "used_llm": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "structured_service_game_availability",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 80.28,
+          "elapsed_sec": 0.0803,
+          "error_count": 0,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "structured_tool",
+        "decision": "structured_service_game_availability",
+        "confidence": 0.97,
+        "detail": "get_service_game_availability",
+        "metadata": {
+          "tool": "get_service_game_availability",
+          "game": "TEKKEN 8",
+          "services": [
+            "availability_pc_01_02",
+            "availability_ps5_01_02"
+          ],
+          "elapsed": 1.3739,
+          "facts_composer_used": false
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "ok",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:structured_service_game_availability",
+        "metadata": {
+          "elapsed_ms": 0.82,
+          "elapsed_sec": 0.0008,
+          "format_response_style_ms": 0.18,
+          "answer_language": "th",
+          "total_elapsed_ms": 1455.25,
+          "total_elapsed_sec": 1.4552
+        }
+      }
+    ],
+    "raw_line": 10
+  },
+  "route_content_or_source_selection_review": {
+    "question": "เอาอาหารเข้าได้ไหม",
+    "locale": "auto",
+    "answer": "นำอาหารหรือเครื่องดื่มเข้ามาได้ครับ แต่รับประทานหรือดื่มได้เฉพาะพื้นที่ที่ศูนย์กำหนด ไม่ใช่ทุกจุดในห้องเล่นเกม\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+    "mode": "pipeline:protected_food_bring_permission",
+    "route": {
+      "category": "rules",
+      "intent": "food_bring_permission",
+      "confidence": 0.98,
+      "answer_type": "answer",
+      "risk": "low",
+      "reason": "requested answer facet protected from unrelated catalog and booking handlers"
+    },
+    "confidence": 0.98,
+    "hits": [
+      {
+        "id": "food_bring_reviewed_20260924",
+        "metadata": {
+          "source_url": "https://esports.computing.psu.ac.th/",
+          "category": "rules",
+          "title": "food_bring_reviewed_20260924",
+          "source_ids": [
+            "food_bring_reviewed_20260924"
+          ]
+        }
+      }
+    ],
+    "expected": {
+      "id": "AQ-RULE-001",
+      "question": "เอาอาหารเข้าได้ไหม",
+      "expected_category": "rules",
+      "must_contain": [
+        "อาหาร",
+        "เครื่องดื่ม",
+        "พื้นที่ที่กำหนด"
+      ],
+      "must_not_contain": [],
+      "source_keywords": [
+        "reservation"
+      ],
+      "format_rules": [],
+      "notes": "",
+      "min_score": 8.0,
+      "locale": "auto"
+    },
+    "failures": [
+      "quality_score_or_required_gate_failed",
+      "พื้นที่ที่กำหนด"
+    ],
+    "trace": [
+      {
+        "stage": "timing",
+        "decision": "locale_resolution",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0001,
+          "global_remaining_sec": 19.9999,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9999,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "intent_cue_preflight",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 3.78,
+          "elapsed_sec": 0.0038,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0038,
+          "global_remaining_sec": 19.9961,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9961,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "canonical_preflight",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0039,
+          "global_remaining_sec": 19.9961,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9961,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "locale_resolution",
+        "decision": "th",
+        "confidence": 0.97,
+        "detail": "thai_script",
+        "metadata": {
+          "requested": "auto",
+          "detected": "th",
+          "effective": "th",
+          "confidence": 0.97,
+          "reason": "thai_script"
+        }
+      },
+      {
+        "stage": "intent_cue_preflight",
+        "decision": "unchanged",
+        "confidence": 1.0,
+        "detail": "bounded task cues; offsets refer to each intermediate input",
+        "metadata": {
+          "raw": "เอาอาหารเข้าได้ไหม",
+          "candidate": "เอาอาหารเข้าได้ไหม",
+          "recoveries": [],
+          "span_budget": 3,
+          "edit_budget": 4
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "confidence": 1.0,
+        "detail": "parts=1",
+        "metadata": {
+          "elapsed_ms": 13.09,
+          "elapsed_sec": 0.0131,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.017,
+          "global_remaining_sec": 19.983,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.983,
+          "timing_status": "running",
+          "entry_to_split_ms": 3.85,
+          "parts": [
+            "เอาอาหารเข้าได้ไหม"
+          ],
+          "competition_rule_query": false
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "confidence": 0.0,
+        "detail": "single question",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "confidence": 0.0,
+        "detail": "experimental_allow_llm is false; single clear operation does not need planner",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "เอาอาหารเข้าได้ไหม",
+        "metadata": {
+          "language_hint": "th",
+          "nonsemantic_preface_removed": false,
+          "query_variants": [
+            "เอาอาหารเข้าได้ไหม"
+          ],
+          "elapsed_ms": 21.63,
+          "elapsed_sec": 0.0216
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 21.71,
+          "elapsed_sec": 0.0217
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "confidence": 1.0,
+        "detail": "rules/studio_rules",
+        "metadata": {
+          "elapsed_ms": 3.43,
+          "elapsed_sec": 0.0034,
+          "route_category": "rules",
+          "route_intent": "studio_rules",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "protected_intent",
+        "decision": "food_bring_permission",
+        "confidence": 0.98,
+        "detail": "requested answer facet protected from unrelated catalog and booking handlers",
+        "metadata": {
+          "status": "answer",
+          "source_id": "food_bring_reviewed_20260924",
+          "basis": "reviewer_interpretation_with_site_context"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:protected_food_bring_permission",
+        "metadata": {
+          "elapsed_ms": 0.62,
+          "elapsed_sec": 0.0006,
+          "format_response_style_ms": 0.14,
+          "answer_language": "th",
+          "total_elapsed_ms": 57.45,
+          "total_elapsed_sec": 0.0574
+        }
+      }
+    ],
+    "raw_line": 18
+  },
+  "allowed_evidence_ids_need_source_review": {
+    "question": "May players use their own equipment in Counter-Strike 2?",
+    "locale": "en",
+    "answer": "Answer: Players may bring their own keyboard (wired or wireless), mouse (wired or wireless), mouse cord holder (mouse bungee), mouse pad, wired in-ear headphones, and wired headset.\n\nRulebook: Counter-Strike 2\nSource: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "mode": "pipeline:competition_rule_detail_source",
+    "route": {
+      "category": "competition_rules",
+      "intent": "competition_rules_lookup",
+      "confidence": 0.97,
+      "answer_type": "fact",
+      "risk": "medium",
+      "reason": "complete source clauses for explicit requested propositions"
+    },
+    "confidence": 0.97,
+    "hits": [
+      {
+        "id": "competition_rules_cs2_psu_phuket_2026_s41_c01",
+        "metadata": {
+          "source_url": "local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+          "category": "competition_rules",
+          "title": "Counter-Strike 2: 1. ผู้เล่นสามารถนำคีย์บอร์ด (มีสาย/ไร้สาย), เมาส์(มีสาย/ไร้สาย), ตัวยึดสายเมาส์ (mouse bungee), แผ่นรองเมาส์ หูฟังแบบ In-ear (มีสาย), Headset (มีสาย) มาเองได้",
+          "source_ids": [
+            "competition_rules_cs2_psu_phuket_2026",
+            "competition_rules_cs2_psu_phuket_2026_s41_c01"
+          ],
+          "game": "Counter-Strike 2",
+          "intent": "",
+          "facets": [
+            "competition_rules",
+            "competition_rules_cs2_psu_phuket_2026",
+            "counter strike 2",
+            "counter-strike 2",
+            "cs2",
+            "eligibility",
+            "equipment",
+            "psu phuket cs2 2026",
+            "tournament_rules"
+          ],
+          "rule_id": "canonical::competition_rules_cs2_psu_phuket_2026_s41_c01"
+        }
+      }
+    ],
+    "expected": {
+      "allowed_evidence_fact_ids": [],
+      "allowed_evidence_rule_ids": [
+        "canonical::competition_rules_cs2_psu_phuket_2026_s39_c01",
+        "canonical::competition_rules_cs2_psu_phuket_2026_s40_c01",
+        "canonical::competition_rules_cs2_psu_phuket_2026_s42_c01"
+      ],
+      "allowed_source_urls": [
+        "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+      ],
+      "answer_language_requirement": "source_grounded_en_or_translation_pending",
+      "case_type": "facet_targeted_retrieval",
+      "evidence_statuses": [
+        "pending_owner_review"
+      ],
+      "expected_answer_status": "answer_available",
+      "expected_facet": "equipment",
+      "expected_game_id": "cs2",
+      "expected_route_categories": [
+        "competition_rules"
+      ],
+      "expected_rulebook_ids": [
+        "competition_rules_cs2_psu_phuket_2026"
+      ],
+      "generation": {
+        "strategy": "facet_prompt_v2",
+        "variant": 1
+      },
+      "id": "COMP-RAG-V2-EN-013",
+      "latency_ceiling_sec": 20.0,
+      "locale": "en",
+      "parent_gold_id": "COMP-RAG-EN-025",
+      "question": "May players use their own equipment in Counter-Strike 2?",
+      "question_style": "participant_natural_paraphrase",
+      "rag_required": true,
+      "review_status": "source_preserving_paraphrase_candidate",
+      "suite": "competition_rules_rag_ground_truth_v2_expanded",
+      "target_locked": true
+    },
+    "failures": [
+      "retrieval evidence did not match the allowed canonical fact/rule IDs"
+    ],
+    "trace": [
+      {
+        "stage": "timing",
+        "decision": "locale_resolution",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0001,
+          "global_remaining_sec": 19.9999,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9999,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "intent_cue_preflight",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 6.56,
+          "elapsed_sec": 0.0066,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0066,
+          "global_remaining_sec": 19.9934,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9934,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "canonical_preflight",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.01,
+          "elapsed_sec": 0.0,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0067,
+          "global_remaining_sec": 19.9933,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9933,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "confidence": 1.0,
+        "detail": "toggle_override_en;english_sentence_structure",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "intent_cue_preflight",
+        "decision": "unchanged",
+        "confidence": 1.0,
+        "detail": "bounded task cues; offsets refer to each intermediate input",
+        "metadata": {
+          "raw": "May players use their own equipment in Counter-Strike 2?",
+          "candidate": "May players use their own equipment in Counter-Strike 2?",
+          "recoveries": [],
+          "span_budget": 3,
+          "edit_budget": 4
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "confidence": 1.0,
+        "detail": "competition_rule_single_target",
+        "metadata": {
+          "elapsed_ms": 9.14,
+          "elapsed_sec": 0.0091,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0158,
+          "global_remaining_sec": 19.9842,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9842,
+          "timing_status": "running",
+          "entry_to_split_ms": 6.62,
+          "parts": [
+            "May players use their own equipment in Counter-Strike 2?"
+          ],
+          "competition_rule_query": true
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "confidence": 0.0,
+        "detail": "single question",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "confidence": 0.0,
+        "detail": "experimental_allow_llm is false; competition_rule_target_grounded_retrieval",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "may players use their own equipment in counter-strike 2?",
+        "metadata": {
+          "language_hint": "en",
+          "nonsemantic_preface_removed": false,
+          "query_variants": [
+            "May players use their own equipment in Counter-Strike 2?"
+          ],
+          "elapsed_ms": 10.35,
+          "elapsed_sec": 0.0103
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 10.39,
+          "elapsed_sec": 0.0104
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "confidence": 1.0,
+        "detail": "competition_rules/competition_rules_lookup",
+        "metadata": {
+          "elapsed_ms": 0.38,
+          "elapsed_sec": 0.0004,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "vetoed_for_competition_rule_query",
+        "confidence": 0.97,
+        "detail": "explicit game is a competition evidence target, not a Games-route override",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "counterstrike2",
+              "title": "Counter-Strike 2",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Counter-Strike 2",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "counterstrike2",
+                "title": "Counter-Strike 2",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Counter-Strike 2",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 11.921,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "competition_detail_lookup",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 22.3,
+          "elapsed_sec": 0.0223
+        }
+      },
+      {
+        "stage": "competition_detail",
+        "decision": "accepted",
+        "confidence": 0.97,
+        "detail": "one rulebook, literal complete clauses, no inferred policies",
+        "metadata": {
+          "concepts": [
+            "own_equipment"
+          ],
+          "source_ids": [
+            "competition_rules_cs2_psu_phuket_2026_s41_c01"
+          ],
+          "validation_errors": [],
+          "outcome": "answer",
+          "reasons": []
+        }
+      },
+      {
+        "stage": "semantic_route",
+        "decision": "skipped_exact_competition_facet",
+        "confidence": 0.97,
+        "detail": "explicit detail propositions already bound to source clauses",
+        "metadata": {}
+      },
+      {
+        "stage": "competition_source_grounding",
+        "decision": "detail_clauses_covered",
+        "confidence": 0.97,
+        "detail": "supported clauses retained; source gaps/conflicts explicitly reported",
+        "metadata": {
+          "concepts": [
+            "own_equipment"
+          ],
+          "source_ids": [
+            "competition_rules_cs2_psu_phuket_2026_s41_c01"
+          ],
+          "outcome": "answer",
+          "reasons": []
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:competition_rule_detail_source",
+        "metadata": {
+          "elapsed_ms": 0.46,
+          "elapsed_sec": 0.0005,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 95.05,
+          "total_elapsed_sec": 0.095
+        }
+      }
+    ],
+    "raw_line": 1952
+  },
+  "legacy_heading_assertion": {
+    "question": "What games are available?",
+    "locale": "en",
+    "answer": "There are currently 42 verified games available.\n\nPC Zone (6 games)\n•    Call of Duty: Warzone\n•    Counter-Strike 2\n•    League of Legends\n•    PUBG: BATTLEGROUNDS\n•    TEKKEN 8\n•    VALORANT\n\nPlayStation 5 Zone (17 games)\n•    Call of Duty: Modern Warfare III\n•    Delta Force\n•    EA Sports FC 24\n•    eFootball\n•    FINAL FANTASY XVI\n•    Fortnite\n•    God of War Ragnarok\n•    Hogwarts Legacy\n•    Marvel's Spider-Man 2\n•    NARUTO X BORUTO Ultimate Ninja Storm Connections\n•    Resident Evil 4\n•    Resident Evil Village\n•    TEKKEN 8\n•    THE FINALS\n•    The Last of Us Part I\n•    The Last of Us Part II (Remastered)\n•    Uncharted: Legacy of Thieves Collection\n\nNintendo Switch Zone (17 games)\n•    Animal Crossing: New Horizons\n•    It Takes Two\n•    Little Nightmares II\n•    Luigi's Mansion 3\n•    Mario Kart 8 Deluxe\n•    Mario Party Superstars\n•    Monster Hunter Rise\n•    Moving Out 2\n•    New Super Mario Bros. U Deluxe\n•    Nintendo Switch Sports\n•    Overcooked!\n•    Overcooked! 2\n•    Pokémon Champions\n•    Ring Fit Adventure\n•    Super Mario Odyssey\n•    Super Smash Bros Ultimate\n•    The Legend of Zelda: Breath of The Wild\n\nCockpit Zone (1 game)\n•    Gran Turismo 7\n\nVR Zone (4 games)\n•    Beat Saber\n•    Horizon Call of the Mountain\n•    Resident Evil 4\n•    Resident Evil Village\nSource: https://esports.phuket.psu.ac.th/Services/our-games (original source in Thai)",
+    "mode": "pipeline:structured_games_catalog_en",
+    "route": {
+      "category": "games",
+      "intent": "games_lookup",
+      "confidence": 0.98,
+      "answer_type": "fact",
+      "risk": "low",
+      "reason": "shared game availability records rendered by English template"
+    },
+    "confidence": 0.98,
+    "hits": [
+      {
+        "id": "availability_pc_01_02",
+        "metadata": {
+          "source_url": "https://esports.computing.psu.ac.th/",
+          "category": "games",
+          "source_type": "games",
+          "title": "PC Zone",
+          "source_ids": [
+            "availability_pc_01_02"
+          ],
+          "source_language": "th"
+        }
+      },
+      {
+        "id": "availability_pc_03_10",
+        "metadata": {
+          "source_url": "https://esports.computing.psu.ac.th/",
+          "category": "games",
+          "source_type": "games",
+          "title": "PC Zone",
+          "source_ids": [
+            "availability_pc_03_10"
+          ],
+          "source_language": "th"
+        }
+      },
+      {
+        "id": "availability_ps5_01_02",
+        "metadata": {
+          "source_url": "https://esports.computing.psu.ac.th/",
+          "category": "games",
+          "source_type": "games",
+          "title": "PlayStation 5 Zone",
+          "source_ids": [
+            "availability_ps5_01_02"
+          ],
+          "source_language": "th"
+        }
+      },
+      {
+        "id": "availability_nintendo_1_2",
+        "metadata": {
+          "source_url": "https://esports.computing.psu.ac.th/",
+          "category": "games",
+          "source_type": "games",
+          "title": "Nintendo Switch Zone",
+          "source_ids": [
+            "availability_nintendo_1_2"
+          ],
+          "source_language": "th"
+        }
+      },
+      {
+        "id": "availability_nintendo_1_4",
+        "metadata": {
+          "source_url": "https://esports.computing.psu.ac.th/",
+          "category": "games",
+          "source_type": "games",
+          "title": "Nintendo Switch Zone",
+          "source_ids": [
+            "availability_nintendo_1_4"
+          ],
+          "source_language": "th"
+        }
+      },
+      {
+        "id": "availability_cockpit_01_02",
+        "metadata": {
+          "source_url": "https://esports.computing.psu.ac.th/",
+          "category": "games",
+          "source_type": "games",
+          "title": "Cockpit Zone",
+          "source_ids": [
+            "availability_cockpit_01_02"
+          ],
+          "source_language": "th"
+        }
+      },
+      {
+        "id": "availability_vr_30",
+        "metadata": {
+          "source_url": "https://esports.computing.psu.ac.th/",
+          "category": "games",
+          "source_type": "games",
+          "title": "VR Zone",
+          "source_ids": [
+            "availability_vr_30"
+          ],
+          "source_language": "th"
+        }
+      },
+      {
+        "id": "availability_vr_60",
+        "metadata": {
+          "source_url": "https://esports.computing.psu.ac.th/",
+          "category": "games",
+          "source_type": "games",
+          "title": "VR Zone",
+          "source_ids": [
+            "availability_vr_60"
+          ],
+          "source_language": "th"
+        }
+      }
+    ],
+    "expected": {
+      "id": "EN-GOLD-0096",
+      "suite": "english_gold",
+      "group": "games",
+      "locale": "en",
+      "review_status": "gold_candidate",
+      "question": "What games are available?",
+      "base_question": "What games are available?",
+      "expected_categories": [
+        "games"
+      ],
+      "must_contain": [
+        "Verified game catalog"
+      ],
+      "must_contain_any": [],
+      "must_not_contain": [],
+      "expected_answer_status": "answer_available",
+      "critical_fact": false,
+      "latency_ceiling_sec": 10.0
+    },
+    "failures": [
+      "missing required: Verified game catalog"
+    ],
+    "trace": [
+      {
+        "stage": "timing",
+        "decision": "locale_resolution",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0001,
+          "global_remaining_sec": 19.9999,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9999,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "intent_cue_preflight",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 5.07,
+          "elapsed_sec": 0.0051,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0051,
+          "global_remaining_sec": 19.9949,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9949,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "canonical_preflight",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.01,
+          "elapsed_sec": 0.0,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0052,
+          "global_remaining_sec": 19.9948,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9948,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "confidence": 1.0,
+        "detail": "toggle_override_en;english_sentence_structure",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "intent_cue_preflight",
+        "decision": "unchanged",
+        "confidence": 1.0,
+        "detail": "bounded task cues; offsets refer to each intermediate input",
+        "metadata": {
+          "raw": "What games are available?",
+          "candidate": "What games are available?",
+          "recoveries": [],
+          "span_budget": 3,
+          "edit_budget": 4
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "confidence": 1.0,
+        "detail": "parts=1",
+        "metadata": {
+          "elapsed_ms": 12.56,
+          "elapsed_sec": 0.0126,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0177,
+          "global_remaining_sec": 19.9823,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9823,
+          "timing_status": "running",
+          "entry_to_split_ms": 5.14,
+          "parts": [
+            "What games are available?"
+          ],
+          "competition_rule_query": false
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "confidence": 0.0,
+        "detail": "single question",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "confidence": 0.0,
+        "detail": "experimental_allow_llm is false; single clear operation does not need planner",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "what games are available?",
+        "metadata": {
+          "language_hint": "en",
+          "nonsemantic_preface_removed": false,
+          "query_variants": [
+            "What games are available?"
+          ],
+          "elapsed_ms": 27.18,
+          "elapsed_sec": 0.0272
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 27.23,
+          "elapsed_sec": 0.0272
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "confidence": 1.0,
+        "detail": "games/game_catalog_lookup",
+        "metadata": {
+          "elapsed_ms": 2.62,
+          "elapsed_sec": 0.0026,
+          "route_category": "games",
+          "route_intent": "game_catalog_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "not_locked",
+        "confidence": 0.96,
+        "detail": "game_resolution_unknown",
+        "metadata": {
+          "locked": false,
+          "route_category": "games",
+          "route_intent": "game_catalog_lookup",
+          "reason": "game_resolution_unknown",
+          "resolution": {
+            "status": "unknown",
+            "entity_type": "game",
+            "top_candidate": null,
+            "candidates": [],
+            "top_score": 0.0,
+            "margin": 0.0,
+            "reason": "shortlist_below_threshold",
+            "operation": "availability",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "trigram_fuzzy",
+            "candidate_count": 17,
+            "comparison_count": 64,
+            "elapsed_ms": 9.369,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:structured_games_catalog_en",
+        "confidence": 0.98,
+        "detail": "shared game availability records rendered by English template",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "games",
+          "route_intent": "games_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation_final",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 1.6,
+          "elapsed_sec": 0.0016,
+          "added_error_count": 0,
+          "added_warning_count": 1,
+          "added_errors": [],
+          "added_warnings": [
+            "fact_answer_may_be_too_verbose"
+          ],
+          "merged_error_count": 0,
+          "merged_warning_count": 1
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:structured_games_catalog_en",
+        "metadata": {
+          "elapsed_ms": 1.77,
+          "elapsed_sec": 0.0018,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 113.96,
+          "total_elapsed_sec": 0.114
+        }
+      }
+    ],
+    "raw_line": 3771
+  },
+  "controlled_live_dependency_unavailable": {
+    "question": "Which PC is available now?",
+    "locale": "en",
+    "answer": "For 2026-10-02 (Asia/Bangkok), I cannot confirm the live opening or booking status because the booking connection is unavailable. I will not present a saved schedule as live availability. Please check the reservation page or try again shortly.\nSource: https://esports.computing.psu.ac.th/reservation",
+    "mode": "pipeline:live_booking_status_unavailable",
+    "route": {
+      "category": "schedule",
+      "intent": "live_booking_status",
+      "confidence": 0.94,
+      "answer_type": "no_answer",
+      "risk": "medium",
+      "reason": "aggregate-only live booking dashboard"
+    },
+    "confidence": 0.94,
+    "hits": [
+      {
+        "id": "Reservation",
+        "metadata": {
+          "source_url": "https://esports.computing.psu.ac.th/reservation",
+          "category": "reservation",
+          "title": "Reservation",
+          "source_ids": [
+            "Reservation"
+          ]
+        }
+      }
+    ],
+    "expected": {
+      "id": "EN-GOLD-0209",
+      "suite": "english_gold",
+      "group": "booking",
+      "locale": "en",
+      "review_status": "gold_candidate",
+      "question": "Which PC is available now?",
+      "base_question": "Which PC is available now?",
+      "expected_categories": [
+        "no_answer"
+      ],
+      "must_contain": [
+        "not connected"
+      ],
+      "must_contain_any": [],
+      "must_not_contain": [],
+      "expected_answer_status": "safe_no_answer",
+      "critical_fact": true,
+      "latency_ceiling_sec": 10.0
+    },
+    "failures": [
+      "route:schedule expected:['no_answer']",
+      "missing required: not connected"
+    ],
+    "trace": [
+      {
+        "stage": "timing",
+        "decision": "locale_resolution",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0,
+          "global_remaining_sec": 19.9999,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9999,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "intent_cue_preflight",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 5.01,
+          "elapsed_sec": 0.005,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0051,
+          "global_remaining_sec": 19.9949,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9949,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "canonical_preflight",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.01,
+          "elapsed_sec": 0.0,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0051,
+          "global_remaining_sec": 19.9949,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9949,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "confidence": 1.0,
+        "detail": "toggle_override_en;english_sentence_structure",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "intent_cue_preflight",
+        "decision": "unchanged",
+        "confidence": 1.0,
+        "detail": "bounded task cues; offsets refer to each intermediate input",
+        "metadata": {
+          "raw": "Which PC is available now?",
+          "candidate": "Which PC is available now?",
+          "recoveries": [],
+          "span_budget": 3,
+          "edit_budget": 4
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "confidence": 1.0,
+        "detail": "parts=1",
+        "metadata": {
+          "elapsed_ms": 11.01,
+          "elapsed_sec": 0.011,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0161,
+          "global_remaining_sec": 19.9839,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9839,
+          "timing_status": "running",
+          "entry_to_split_ms": 5.07,
+          "parts": [
+            "Which PC is available now?"
+          ],
+          "competition_rule_query": false
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "confidence": 0.0,
+        "detail": "single question",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "confidence": 0.0,
+        "detail": "experimental_allow_llm is false; single clear operation does not need planner",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "which pc is available now?",
+        "metadata": {
+          "language_hint": "en",
+          "nonsemantic_preface_removed": false,
+          "query_variants": [
+            "Which PC is available now?"
+          ],
+          "elapsed_ms": 22.31,
+          "elapsed_sec": 0.0223
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 22.35,
+          "elapsed_sec": 0.0223
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "confidence": 1.0,
+        "detail": "general/unknown_domain_query",
+        "metadata": {
+          "elapsed_ms": 9.99,
+          "elapsed_sec": 0.01,
+          "route_category": "general",
+          "route_intent": "unknown_domain_query",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": "pc",
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "not_locked",
+        "confidence": 0.55,
+        "detail": "game_resolution_unknown",
+        "metadata": {
+          "locked": false,
+          "route_category": "general",
+          "route_intent": "unknown_domain_query",
+          "reason": "game_resolution_unknown",
+          "resolution": {
+            "status": "unknown",
+            "entity_type": "game",
+            "top_candidate": null,
+            "candidates": [],
+            "top_score": 0.0,
+            "margin": 0.0,
+            "reason": "shortlist_below_threshold",
+            "operation": "availability",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "trigram_fuzzy",
+            "candidate_count": 5,
+            "comparison_count": 36,
+            "elapsed_ms": 4.725,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "live_booking_status",
+        "decision": "live_booking_status_unavailable",
+        "confidence": 0.94,
+        "detail": "aggregate-only live booking dashboard",
+        "metadata": {
+          "privacy": "aggregate_only",
+          "source": "unavailable",
+          "transport": "dashboard",
+          "cached": false,
+          "generated_at": "",
+          "error_code": "dashboard_unavailable",
+          "fetch_elapsed_ms": 47.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:live_booking_status_unavailable",
+        "metadata": {
+          "elapsed_ms": 0.67,
+          "elapsed_sec": 0.0007,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 150.37,
+          "total_elapsed_sec": 0.1504
+        }
+      }
+    ],
+    "raw_line": 3887
+  },
+  "proper_names_or_language_leak_review": {
+    "question": "Who are the studio members?",
+    "locale": "en",
+    "answer": "Verified PSU Esports Studio - Phuket member directory:\nNames retain the exact spelling in the official Thai source; role labels are translated.\n- ผศ.ดร.นิวัติ แก้วประดับ: University President (อธิการบดี) - Prince of Songkla University\n- รศ.ดร.พันธ์ ทองชุมนุม: Vice President (รองอธิการบดี) - Prince of Songkla University, Phuket Campus\n- รศ.ดร.อซีส นันทอมรพงศ์: Dean (คณบดี) - College of Computing, Prince of Songkla University, Phuket Campus\n- ผศ.ดร.ณัฐพงศ์ ทองเทพ: Assistant to the President for Academic Affairs (ผู้ช่วยอธิการบดีฝ่ายวิชาการ) - Prince of Songkla University, Phuket Campus\n- นายพฤทธิ์ เกษตรสมบูรณ์: Computer technical officer (นักวิชาการคอมพิวเตอร์) - College of Computing, Prince of Songkla University, Phuket Campus\n- นายณัฐวัฒน์ นิธิคุณานนต์: Computer technical officer (นักวิชาการคอมพิวเตอร์) - College of Computing, Prince of Songkla University, Phuket Campus\n- นายชนะชัย สิริพันธ์วราภรณ์: Manager (ผู้จัดการ) - PSU Esports Studio - Phuket, College of Computing, Prince of Songkla University, Phuket Campus\n- นายณภัทร เชื้อเหล่าวานิช: Cooperative education student — Game and 3D Developer (นักศึกษาสหกิจ Game and 3D Developer) - College of Computing, Prince of Songkla University, Phuket Campus\n- Mr. Amine Abidellaoui: Internship Student - High School Bristol Cannes, France\n- นายสุพศิน อะนะฝรั่ง: Cooperative education student — Web & AI Developer (นักศึกษาสหกิจ Web & AI Developer) - College of Computing, Prince of Songkla University, Phuket Campus\n- Mr. Yanis Igoudjil: Internship Student - Industrial Engineering and Information Systems, EPF Graduate School of Engineering, Cachan Val-De-Marne, France\n- นายภาสวุฒิ ชูติประชากิจ: Super AI SS6 project intern — AI Chat Bot Developer (นักศึกษาฝึกงานโครงการ Super AI SS6 ตำแหน่ง AI Chat Bot Developer) - IoT System and Information Engineering, King Mongkut's Institute of Technology Ladkrabang\n- นายษุภากรณ์ จิราจินดากุล: Chairperson (ประธาน)\n- นายนพัทธ์ ฝอยทอง: Vice Chairperson (รองประธาน)\n- นายปัณณวิชญ์ หนูเรือง: Secretary (เลขานุการ)\n- นายภูจิตร จิรวิริยาภรณ์: Treasurer (เหรัญญิก)\n- นายธนชาติ เอ่งฉ้วน: Public relations officer (ประชาสัมพันธ์)\n- นางสาวกมลวรรณ นวลสาย: Committee member (กรรมการ)\n- นางสาวชญาภา จันทร์เอิบ: Committee member (กรรมการ)\n- นางสาวณัฐธิดา คำทะเนตร์: Committee member (กรรมการ)\n- นางสาวสุภาสินี ธนภพ: Committee member (กรรมการ)\n- นางสาวอาทิตยา แดงประดับ: Committee member (กรรมการ)\n- นายณัฐพนธ์ อินทรสังขนาวิน: Committee member (กรรมการ)\n- นายอภิวิชญ์ เลิศกมลรักษ์: Committee member (กรรมการ)\n- นายอรรถนนท์ สุขแก้ว: Committee member (กรรมการ)\nSource: https://esports.phuket.psu.ac.th/about-us/Members (original source in Thai)",
+    "mode": "pipeline:structured_members_source_th",
+    "route": {
+      "category": "overview",
+      "intent": "members_lookup",
+      "confidence": 0.98,
+      "answer_type": "fact",
+      "risk": "low",
+      "reason": "English member localization overlay matched current Thai source hashes"
+    },
+    "confidence": 0.98,
+    "hits": [
+      {
+        "id": "Members",
+        "metadata": {
+          "source_url": "https://esports.phuket.psu.ac.th/about-us/Members",
+          "category": "members",
+          "source_type": "members",
+          "title": "Members",
+          "source_ids": [
+            "Members"
+          ],
+          "source_language": "th"
+        }
+      }
+    ],
+    "expected": {
+      "id": "EN-GOLD-0340",
+      "suite": "english_gold",
+      "group": "members_about_contact",
+      "locale": "en",
+      "review_status": "gold_candidate",
+      "question": "Who are the studio members?",
+      "base_question": "Who are the studio members?",
+      "expected_categories": [
+        "overview"
+      ],
+      "must_contain": [
+        "English localization"
+      ],
+      "must_contain_any": [],
+      "must_not_contain": [],
+      "expected_answer_status": "localization_pending",
+      "critical_fact": false,
+      "latency_ceiling_sec": 10.0
+    },
+    "failures": [
+      "missing required: English localization",
+      "legacy_english_thai_prose_flag"
+    ],
+    "trace": [
+      {
+        "stage": "timing",
+        "decision": "locale_resolution",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.03,
+          "elapsed_sec": 0.0,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0001,
+          "global_remaining_sec": 19.9999,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9999,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "intent_cue_preflight",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 4.42,
+          "elapsed_sec": 0.0044,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0046,
+          "global_remaining_sec": 19.9954,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9954,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "canonical_preflight",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.01,
+          "elapsed_sec": 0.0,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0046,
+          "global_remaining_sec": 19.9954,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9954,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "locale_resolution",
+        "decision": "en",
+        "confidence": 1.0,
+        "detail": "toggle_override_en;english_sentence_structure",
+        "metadata": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        }
+      },
+      {
+        "stage": "intent_cue_preflight",
+        "decision": "unchanged",
+        "confidence": 1.0,
+        "detail": "bounded task cues; offsets refer to each intermediate input",
+        "metadata": {
+          "raw": "Who are the studio members?",
+          "candidate": "Who are the studio members?",
+          "recoveries": [],
+          "span_budget": 3,
+          "edit_budget": 4
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "confidence": 1.0,
+        "detail": "parts=1",
+        "metadata": {
+          "elapsed_ms": 12.59,
+          "elapsed_sec": 0.0126,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0172,
+          "global_remaining_sec": 19.9828,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9828,
+          "timing_status": "running",
+          "entry_to_split_ms": 4.49,
+          "parts": [
+            "Who are the studio members?"
+          ],
+          "competition_rule_query": false
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "confidence": 0.0,
+        "detail": "single question",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "confidence": 0.0,
+        "detail": "experimental_allow_llm is false; single clear operation does not need planner",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "who are the studio members?",
+        "metadata": {
+          "language_hint": "en",
+          "nonsemantic_preface_removed": false,
+          "query_variants": [
+            "Who are the studio members?"
+          ],
+          "elapsed_ms": 13.11,
+          "elapsed_sec": 0.0131
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 13.16,
+          "elapsed_sec": 0.0132
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "confidence": 1.0,
+        "detail": "overview/members_lookup",
+        "metadata": {
+          "elapsed_ms": 3.51,
+          "elapsed_sec": 0.0035,
+          "route_category": "overview",
+          "route_intent": "members_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": "general_student",
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "not_locked",
+        "confidence": 0.92,
+        "detail": "game_resolution_unknown",
+        "metadata": {
+          "locked": false,
+          "route_category": "overview",
+          "route_intent": "members_lookup",
+          "reason": "game_resolution_unknown",
+          "resolution": {
+            "status": "unknown",
+            "entity_type": "game",
+            "top_candidate": null,
+            "candidates": [],
+            "top_score": 0.0,
+            "margin": 0.0,
+            "reason": "shortlist_below_threshold",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "trigram_fuzzy",
+            "candidate_count": 22,
+            "comparison_count": 40,
+            "elapsed_ms": 27.461,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "bilingual_route",
+        "decision": "pipeline:structured_members_source_th",
+        "confidence": 0.98,
+        "detail": "English member localization overlay matched current Thai source hashes",
+        "metadata": {
+          "effective_locale": "en",
+          "route_category": "overview",
+          "route_intent": "members_lookup",
+          "runtime_translation": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation_final",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 2.79,
+          "elapsed_sec": 0.0028,
+          "added_error_count": 0,
+          "added_warning_count": 1,
+          "added_errors": [],
+          "added_warnings": [
+            "fact_answer_may_be_too_verbose"
+          ],
+          "merged_error_count": 0,
+          "merged_warning_count": 2
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:structured_members_source_th",
+        "metadata": {
+          "elapsed_ms": 2.95,
+          "elapsed_sec": 0.003,
+          "format_response_style_ms": 0.0,
+          "answer_language": "en",
+          "total_elapsed_ms": 140.42,
+          "total_elapsed_sec": 0.1404
+        }
+      }
+    ],
+    "raw_line": 4012
+  },
+  "deadline_or_loaded_machine_latency": {
+    "question": "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี Minecraft ไหม",
+    "locale": "th",
+    "answer": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับหมวด games ตอนนี้ครับ",
+    "mode": "pipeline:no_answer",
+    "route": {
+      "category": "games",
+      "intent": "game_availability_lookup",
+      "confidence": 0.95,
+      "answer_type": "fact",
+      "risk": "low",
+      "reason": "game availability terms found before schedule"
+    },
+    "confidence": 0.56,
+    "hits": [
+      {
+        "id": "Reservation",
+        "metadata": {
+          "source_url": "https://esports.computing.psu.ac.th/reservation",
+          "category": "reservation",
+          "title": "Reservation",
+          "source_ids": [
+            "Reservation"
+          ]
+        }
+      }
+    ],
+    "expected": {
+      "answer_contract": {
+        "must_contain": [],
+        "must_contain_any": [],
+        "must_not_contain": []
+      },
+      "critical": true,
+      "domain": "games_catalog_availability",
+      "expected_answer_status": "no_answer_expected",
+      "expected_facet": "",
+      "expected_intent": "",
+      "expected_route_categories": [
+        "games",
+        "no_answer"
+      ],
+      "expected_target": "Minecraft",
+      "generation_version": "master-gt-builder-v1-20260922",
+      "id": "MASTER-GT-TH-01977",
+      "latency_ceiling_sec": 20.0,
+      "locale": "th",
+      "metadata": {
+        "behavior_tags": [
+          "unknown_entity"
+        ],
+        "scenario_id": "games_minecraft_unknown"
+      },
+      "origin": "rag_robustness_v1",
+      "origin_id": "RAG-ROBUST-TH-034",
+      "question": "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี Minecraft ไหม",
+      "question_style": "paraphrase_wrapper_01",
+      "review_status": "generated_paraphrase_pending_review",
+      "source_contract": {
+        "live_dependency": false,
+        "requirement": "verified_catalog",
+        "source_ids": [
+          "verified_catalog"
+        ],
+        "source_urls": []
+      },
+      "suite": "psu_esports_master_ground_truth_candidate_v1"
+    },
+    "failures": [
+      "latency_ceiling"
+    ],
+    "trace": [
+      {
+        "stage": "timing",
+        "decision": "locale_resolution",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0001,
+          "global_remaining_sec": 19.9999,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9999,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "intent_cue_preflight",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 13.23,
+          "elapsed_sec": 0.0132,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0133,
+          "global_remaining_sec": 19.9867,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9867,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "canonical_preflight",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0134,
+          "global_remaining_sec": 19.9866,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9866,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "locale_resolution",
+        "decision": "th",
+        "confidence": 1.0,
+        "detail": "toggle_override_th;mixed_thai_function_words",
+        "metadata": {
+          "requested": "th",
+          "detected": "mixed",
+          "effective": "th",
+          "confidence": 1.0,
+          "reason": "toggle_override_th;mixed_thai_function_words"
+        }
+      },
+      {
+        "stage": "intent_cue_preflight",
+        "decision": "unchanged",
+        "confidence": 1.0,
+        "detail": "bounded task cues; offsets refer to each intermediate input",
+        "metadata": {
+          "raw": "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี Minecraft ไหม",
+          "candidate": "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี Minecraft ไหม",
+          "recoveries": [],
+          "span_budget": 3,
+          "edit_budget": 4
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "confidence": 1.0,
+        "detail": "parts=1",
+        "metadata": {
+          "elapsed_ms": 27.23,
+          "elapsed_sec": 0.0272,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.0406,
+          "global_remaining_sec": 19.9594,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.9594,
+          "timing_status": "running",
+          "entry_to_split_ms": 13.32,
+          "parts": [
+            "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี Minecraft ไหม"
+          ],
+          "competition_rule_query": false
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "confidence": 0.0,
+        "detail": "single question",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "confidence": 0.0,
+        "detail": "experimental_allow_llm is false; single clear operation does not need planner",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี minecraft ไหม",
+        "metadata": {
+          "language_hint": "mixed_th_en",
+          "nonsemantic_preface_removed": false,
+          "query_variants": [
+            "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี Minecraft ไหม"
+          ],
+          "elapsed_ms": 272.69,
+          "elapsed_sec": 0.2727
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 272.74,
+          "elapsed_sec": 0.2727
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "confidence": 1.0,
+        "detail": "games/game_availability_lookup",
+        "metadata": {
+          "elapsed_ms": 1.57,
+          "elapsed_sec": 0.0016,
+          "route_category": "games",
+          "route_intent": "game_availability_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "not_locked",
+        "confidence": 0.95,
+        "detail": "game_resolution_unknown",
+        "metadata": {
+          "locked": false,
+          "route_category": "games",
+          "route_intent": "game_availability_lookup",
+          "reason": "game_resolution_unknown",
+          "resolution": {
+            "status": "unknown",
+            "entity_type": "game",
+            "top_candidate": null,
+            "candidates": [],
+            "top_score": 0.0,
+            "margin": 0.0,
+            "reason": "shortlist_below_threshold",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "trigram_fuzzy",
+            "candidate_count": 10,
+            "comparison_count": 64,
+            "elapsed_ms": 6.521,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "semantic_route_refiner",
+        "confidence": 1.0,
+        "detail": "skipped",
+        "metadata": {
+          "elapsed_ms": 0.04,
+          "elapsed_sec": 0.0,
+          "route_category": "games",
+          "route_intent": "game_availability_lookup",
+          "route_locked": false
+        }
+      },
+      {
+        "stage": "semantic_route_refiner",
+        "decision": "skipped",
+        "confidence": 0.0,
+        "detail": "semantic retrieval disabled",
+        "metadata": {}
+      },
+      {
+        "stage": "freshness_guard",
+        "decision": "not_required",
+        "confidence": 0.9,
+        "detail": "query does not require live dynamic evidence",
+        "metadata": {
+          "requires_live_evidence": false
+        }
+      },
+      {
+        "stage": "boundary_guard",
+        "decision": "allow",
+        "confidence": 0.9,
+        "detail": "no high-confidence boundary matched",
+        "metadata": {
+          "flags": []
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "guard_scope",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.03,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "guard",
+        "decision": "domain_ok",
+        "confidence": 0.9,
+        "detail": "domain hints found",
+        "metadata": {}
+      },
+      {
+        "stage": "router",
+        "decision": "games",
+        "confidence": 0.95,
+        "detail": "game availability terms found before schedule",
+        "metadata": {
+          "intent": "game_availability_lookup",
+          "answer_type": "fact"
+        }
+      },
+      {
+        "stage": "model_gateway",
+        "decision": "skip_preflight_llm",
+        "confidence": 0.95,
+        "detail": "request did not allow LLM",
+        "metadata": {
+          "allow_llm": false,
+          "preflight_allow_llm": false,
+          "route_category": "games",
+          "route_intent": "game_availability_lookup"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "universal_intent",
+        "confidence": 1.0,
+        "detail": "games/availability",
+        "metadata": {
+          "elapsed_ms": 2.72,
+          "elapsed_sec": 0.0027,
+          "method": "heuristic",
+          "confidence": 0.82
+        }
+      },
+      {
+        "stage": "universal_intent",
+        "decision": "games/availability",
+        "confidence": 0.82,
+        "detail": "domain_terms=3; named game availability terms found",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [],
+          "input_recovery": {
+            "score": 0.2865,
+            "language": "mixed",
+            "language_quality": 0.7135,
+            "should_review_intent": false,
+            "reason": "Thai character n-gram quality=0.713",
+            "action": "continue"
+          },
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "games",
+              "operation": "availability",
+              "target": "",
+              "confidence": 0.82,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "games",
+              "operation": "list",
+              "target": "",
+              "confidence": 0.66,
+              "reason": "game-domain catalog alternative"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "check_availability"
+          ],
+          "answer_style": "direct",
+          "heuristic": {
+            "domain": "games",
+            "operation": "availability",
+            "confidence": 0.82,
+            "reason": "domain_terms=3; named game availability terms found"
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/games",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.82
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.82,
+        "detail": "experimental_allow_llm is false",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 244.27,
+          "elapsed_sec": 0.2443,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "games/game_availability_lookup",
+          "intent": "games/availability",
+          "has_known_game": false,
+          "has_service_or_zone": false,
+          "game_entity_resolution": {
+            "status": "unknown",
+            "entity_type": "game",
+            "top_candidate": null,
+            "candidates": [],
+            "top_score": 0.0,
+            "margin": 0.0,
+            "reason": "shortlist_below_threshold",
+            "operation": "availability",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "trigram_fuzzy",
+            "candidate_count": 10,
+            "comparison_count": 64,
+            "elapsed_ms": 4.064,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          },
+          "intent_candidates": []
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "question_frame",
+        "confidence": 0.95,
+        "detail": "games/game_detail",
+        "metadata": {
+          "elapsed_ms": 164.26,
+          "elapsed_sec": 0.1643,
+          "operation": "game_detail",
+          "domain": "games",
+          "expected_answer_types": [
+            "game_detail"
+          ],
+          "targets": [],
+          "target_status": "unknown",
+          "target_margin": 0.0,
+          "target_required": true,
+          "allows_multiple_targets": false,
+          "needs_clarification": true,
+          "confidence": 0.95,
+          "method": "operation_first",
+          "route_category": "games",
+          "route_intent": "game_availability_lookup",
+          "intent_operation": "availability",
+          "target_reason": "no_target_candidate",
+          "target_candidate_count": 0,
+          "game_family": null
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "candidate_decisions",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 152.31,
+          "elapsed_sec": 0.1523
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "structured.games",
+        "confidence": 0.999,
+        "detail": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; question_frame_domain_match; question_frame_operation=game_detail; precondition=game_domain_or_catalog_query",
+        "metadata": {
+          "selected": {
+            "capability_id": "structured.games",
+            "action": "structured",
+            "domain": "games",
+            "score": 0.999,
+            "status": "accepted",
+            "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; question_frame_domain_match; question_frame_operation=game_detail; precondition=game_domain_or_catalog_query",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          "selection": {
+            "status": "selected",
+            "execution_allowed": true,
+            "margin": 0.51,
+            "same_action_as_second": false,
+            "second": {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.489,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          },
+          "question_frame": {
+            "operation": "game_detail",
+            "domain": "games",
+            "expected_answer_types": [
+              "game_detail"
+            ],
+            "targets": [],
+            "target_status": "unknown",
+            "target_margin": 0.0,
+            "target_required": true,
+            "allows_multiple_targets": false,
+            "needs_clarification": true,
+            "confidence": 0.95,
+            "method": "operation_first",
+            "route_category": "games",
+            "route_intent": "game_availability_lookup",
+            "intent_operation": "availability",
+            "target_reason": "no_target_candidate",
+            "target_candidate_count": 0,
+            "game_family": null
+          },
+          "candidates": [
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.999,
+              "status": "accepted",
+              "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; question_frame_domain_match; question_frame_operation=game_detail; precondition=game_domain_or_catalog_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.489,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.467,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.456,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.444,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.4,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.322,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.278,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_member_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_control_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_an_equipment_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_reservation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_schedule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_or_calculation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_competition_rule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "low",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_precondition",
+        "confidence": 1.0,
+        "detail": "structured.games",
+        "metadata": {
+          "elapsed_ms": 0.34,
+          "elapsed_sec": 0.0003,
+          "ok": true
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "allow_structured",
+        "confidence": 0.9,
+        "detail": "game_domain_or_catalog_query",
+        "metadata": {
+          "capability_id": "structured.games",
+          "ok": true,
+          "reason": "game_domain_or_catalog_query",
+          "severity": "policy",
+          "selector_allows_structured": true,
+          "selected_capability_id": "structured.games"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "structured_tool_execution",
+        "confidence": 1.0,
+        "detail": "no_result",
+        "metadata": {
+          "elapsed_ms": 10521.25,
+          "elapsed_sec": 10.5213,
+          "precondition_ok": true,
+          "selector_allows_structured": true,
+          "selected_capability_id": "structured.games",
+          "confidence": 0.0
+        }
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "structured_no_result",
+        "confidence": 0.42,
+        "detail": "structured tool passed precondition but returned no answer",
+        "metadata": {
+          "capability_id": "structured.games"
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "no_match",
+        "confidence": 0.0,
+        "detail": "games",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "deterministic",
+        "confidence": 1.0,
+        "detail": "no_match",
+        "metadata": {
+          "elapsed_ms": 890.69,
+          "elapsed_sec": 0.8907,
+          "confidence": 0.0,
+          "selector_allows_deterministic": true,
+          "selected_capability_id": "structured.games"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "hybrid_retrieval",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 10605.08,
+          "elapsed_sec": 10.6051,
+          "hit_count": 4
+        }
+      },
+      {
+        "stage": "hybrid_retrieval",
+        "decision": "guarded_candidate_rerank",
+        "confidence": 0.91,
+        "detail": "hits=4 curated=8 vector=0 semantic=0 top=our_games_scraped_new_super_mario_bros_u_deluxe score=27.32 origins=curated",
+        "metadata": {
+          "category": "games",
+          "intent": "game_availability_lookup",
+          "question_frame_constraints": {
+            "entity_ids": [],
+            "facets": [
+              "overview",
+              "gameplay"
+            ],
+            "strict_target": false
+          },
+          "locale": "th",
+          "retrieval_budget": {
+            "candidate_limit": 8,
+            "final_limit": 4,
+            "broad_or_complex": false,
+            "rerank_requested": true,
+            "reason": "clear_retrieval_budget"
+          },
+          "source_quality": {
+            "source_ids": [
+              "our_games_scraped_new_super_mario_bros_u_deluxe",
+              "our_games_scraped_gran_turismo_7_standard_edition",
+              "our_games_scraped_hogwarts_legacy",
+              "our_games_scraped_naruto_x_boruto_ultimate_ninja_storm_connections"
+            ],
+            "authority_rank": 0,
+            "conflict": true,
+            "stale": false,
+            "warnings": [
+              "same_claim_has_multiple_numeric_values_need_source_review"
+            ]
+          },
+          "curated_trace": "hits=8",
+          "vector_trace": "hits=0 backend=local_hash_char_ngram_v1 blocked=category_mismatch:482, game_controls_requires_control_terms:567, weak_game_route_match:224",
+          "semantic_trace": {
+            "stage": "semantic_retrieval",
+            "decision": "skipped",
+            "confidence": 0.0,
+            "detail": "disabled",
+            "metadata": {}
+          },
+          "timings_ms": {
+            "hybrid_curated_retrieval": 751.29,
+            "hybrid_vector_retrieval": 9852.83,
+            "hybrid_semantic_retrieval": 0.03,
+            "hybrid_merge_and_score": 0.32,
+            "hybrid_document_reranker": 0.03
+          },
+          "rerank_trace": {
+            "stage": "document_reranker",
+            "decision": "skipped",
+            "confidence": 0.0,
+            "detail": "disabled",
+            "metadata": {}
+          },
+          "canonical_competition_shadow": null
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "hybrid_curated_retrieval",
+        "confidence": 0.7,
+        "detail": "hybrid retrieval substage",
+        "metadata": {
+          "elapsed_ms": 751.29
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "hybrid_vector_retrieval",
+        "confidence": 0.7,
+        "detail": "hybrid retrieval substage",
+        "metadata": {
+          "elapsed_ms": 9852.83
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "hybrid_semantic_retrieval",
+        "confidence": 0.7,
+        "detail": "hybrid retrieval substage",
+        "metadata": {
+          "elapsed_ms": 0.03
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "hybrid_merge_and_score",
+        "confidence": 0.7,
+        "detail": "hybrid retrieval substage",
+        "metadata": {
+          "elapsed_ms": 0.32
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "hybrid_document_reranker",
+        "confidence": 0.7,
+        "detail": "hybrid retrieval substage",
+        "metadata": {
+          "elapsed_ms": 0.03
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "hybrid_answer",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.38,
+          "elapsed_sec": 0.0004,
+          "raw_hit_count": 4,
+          "confidence": 0.89
+        }
+      },
+      {
+        "stage": "model_gateway",
+        "decision": "deterministic_rag",
+        "confidence": 0.76,
+        "detail": "request did not allow LLM",
+        "metadata": {
+          "path": "deterministic_rag",
+          "use_llm": false,
+          "use_rag": true,
+          "use_rerank": false,
+          "reason": "request did not allow LLM",
+          "min_remaining_sec": 6.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "evidence_packer",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 1.65,
+          "elapsed_sec": 0.0016,
+          "item_count": 4
+        }
+      },
+      {
+        "stage": "evidence_packer",
+        "decision": "packed",
+        "confidence": 0.95,
+        "detail": "items=4 chars=2056",
+        "metadata": {
+          "query": "ขอสอบถามหน่อยครับ ขอข้อมูลที่ยืนยันได้หน่อยครับ: ที่ศูนย์มี Minecraft ไหม",
+          "items": [
+            {
+              "source_id": "our_games_scraped_new_super_mario_bros_u_deluxe",
+              "title": "New Super Mario Bros. U Deluxe",
+              "text": "New Super Mario Bros. U Deluxe: ร่วมมือกับ Mario และ Luigi พร้อมผองเพื่อน เพื่อสนุกไปกับการเล่นคนเดียวหรือหลายคนได้ทุกที่ทุกเวลา สนุกกับการผจญภัยทั้ง 2 ในรูปแบบ Side-Scrolling ที่เหมาะกับทุกคนในครอบครัวได้สูงสุดถึง 3 คน* เพื่อปกป้อง Mushroom Kingdom เกมนี้รวมเกม New Super Mario Bros. U และเกม New Super Luigi U ที่มีความรวดเร็วและยากมากกว่าเดิม โดยทั้งสองเกมจะมีตัวละคร Nabbit และ Toadette เพิ่มขึ้นให้คุณเล่นได้ สองภาคในเกมเดียว เพื่อความสนุกเป็นสองเท่า! การควบคุมที่เข้าใจง่าย ไม่ซับซ้อน...\nอยู่ในรายการเกมหน้า Our Games ส่วน: Nintendo Switch",
+              "category": "games",
+              "source_url": "https://esports.phuket.psu.ac.th/Services/our-games",
+              "trust_level": "",
+              "updated_at": "",
+              "score": 27.32
+            },
+            {
+              "source_id": "our_games_scraped_gran_turismo_7_standard_edition",
+              "title": "Gran Turismo 7: Standard Edition",
+              "text": "Gran Turismo 7: Standard Edition: \"Gran Turismo\" วางจำหน่ายครั้งแรกเป็น \"เกมจำลองการแข่งรถยนต์อย่างสมจริง\" ในปี 1997 โดยรถในเกมจะมาจากรถที่ผลิตเพื่อจำหน่ายของบริษัทผู้ผลิตซึ่งมีตัวตนในชีวิตจริง และความสามารถด้านการขับขี่ในโลกเสมือนที่สมจริง ล้วนได้รับคำชมเชยเป็นอย่างสูง ซึ่งไม่ใช่แค่จากเหล่าคนเล่นเกม แต่บรรดาคนรักรถทั่วโลกเองก็ชื่นชมด้วย หลังจากเวลาผ่านไป 25 ปีและมีการทำออกมาอีกหลายภาค ในที่สุด Gran Turismo ก็กลับมาพร้อมที่สุดแห่งแนวคิดหลักของซีรีส์ คือ ขับขี่ สะสม ปรับแต่ง...\nอยู่ในรายการเกมหน้า Our Games ส่วน: PlayStation 5",
+              "category": "games",
+              "source_url": "https://esports.phuket.psu.ac.th/Services/our-games",
+              "trust_level": "",
+              "updated_at": "",
+              "score": 24.32
+            },
+            {
+              "source_id": "our_games_scraped_hogwarts_legacy",
+              "title": "Hogwarts Legacy",
+              "text": "Hogwarts Legacy: Hogwarts Legacy เป็นเกมแอ็กชัน RPG แบบโลกเปิดที่ตั้งอยู่ในจักรวาลนิยายชุดแฮร์รี่ พอตเตอร์ เดินทางสู่สถานที่แสนคุ้นเคยและสำรวจสถานที่ใหม่ๆ เพื่อพบกับเหล่าสัตว์มหัศจรรย์ รวมถึงปรับแต่งตัวละครของคุณ ปรุงยา ฝึกฝนการร่ายคาถาให้เชี่ยวชาญ ยกระดับทักษะต่างๆ และกลายเป็นพ่อมดแม่มดในแบบที่คุณต้องการ ดำดิ่งเข้าสู่ฮอกวอตส์ในช่วงปลายยุค 1800 โดยตัวละครของคุณคือผู้กุมความลับโบราณที่อาจจะทำให้โลกแห่งเวทมนตร์ต้องสูญสิ้น นอกจากนี้...\nอยู่ในรายการเกมหน้า Our Games ส่วน: PlayStation 5",
+              "category": "games",
+              "source_url": "https://esports.phuket.psu.ac.th/Services/our-games",
+              "trust_level": "",
+              "updated_at": "",
+              "score": 23.32
+            },
+            {
+              "source_id": "our_games_scraped_naruto_x_boruto_ultimate_ninja_storm_connections",
+              "title": "Naruto X Boruto Ultimate Ninja Storm Connections",
+              "text": "Naruto X Boruto Ultimate Ninja Storm Connections: สัมผัสกับเนื้อเรื่องของ Naruto และ Sasuke อย่างเต็มรูปแบบเป็นครั้งแรกในการเฉลิมฉลองครบรอบ 20 ปีการเปิดตัวอนิเมะ Naruto ที่ครอบคลุมไปทั้งหมดนี้ NARUTO X BORUTO Ultimate Ninja STORM CONNECTIONS ปล่อยให้คุณได้สัมผัสกับพลังของ Ninjutsu อย่างที่ไม่เคยมีมาก่อน โดยมีนักสู้ที่สามารถเล่นได้จำนวนมากกว่า 130 ตัว เชี่ยวชาญกลไกการต่อสู้ที่อัพเดตในโหมดการต่อสู้ออฟไลน์และออนไลน์ที่น่าตื่นเต้นจำนวนมากมาย...\nอยู่ในรายการเกมหน้า Our Games ส่วน: PlayStation 5",
+              "category": "games",
+              "source_url": "https://esports.phuket.psu.ac.th/Services/our-games",
+              "trust_level": "",
+              "updated_at": "",
+              "score": 23.32
+            }
+          ],
+          "source_ids": [
+            "our_games_scraped_new_super_mario_bros_u_deluxe",
+            "our_games_scraped_gran_turismo_7_standard_edition",
+            "our_games_scraped_hogwarts_legacy",
+            "our_games_scraped_naruto_x_boruto_ultimate_ninja_storm_connections"
+          ],
+          "top_score": 27.32,
+          "score_margin": 3.0,
+          "item_count": 4,
+          "max_chars": 4200,
+          "packing": "source_labelled_compact_v1"
+        }
+      },
+      {
+        "stage": "llm_rewrite",
+        "decision": "skipped_hybrid_rerank",
+        "confidence": 0.89,
+        "detail": "RAG evidence was packed and optionally composed by the gated Local LLM",
+        "metadata": {
+          "composer_used": false
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "failed",
+        "confidence": 0.3,
+        "detail": "answer_contract_type_mismatch:expected=game_detail;actual=fact,summary; answer_contract_ambiguous_target_must_clarify",
+        "metadata": {}
+      },
+      {
+        "stage": "fallback",
+        "decision": "hybrid_guard_no_verified_context",
+        "confidence": 0.56,
+        "detail": "high-risk category skips legacy curated direct answer when hybrid guard fails",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "validation_final",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 10.03,
+          "elapsed_sec": 0.01,
+          "added_error_count": 0,
+          "added_warning_count": 1,
+          "added_errors": [],
+          "added_warnings": [
+            "high_confidence_route_returned_no_answer"
+          ],
+          "merged_error_count": 0,
+          "merged_warning_count": 2
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:no_answer",
+        "metadata": {
+          "elapsed_ms": 10.39,
+          "elapsed_sec": 0.0104,
+          "format_response_style_ms": 0.13,
+          "answer_language": "th",
+          "total_elapsed_ms": 23013.73,
+          "total_elapsed_sec": 23.0137
+        }
+      }
+    ],
+    "raw_line": 8679
+  }
+}

@@ -1,0 +1,222 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "competition_rule_claim_v2_review.schema.json",
+  "title": "Competition Rule Claim V2 Review Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "claim_id",
+    "status",
+    "source",
+    "claim",
+    "retrieval",
+    "evidence",
+    "quality",
+    "approval"
+  ],
+  "properties": {
+    "schema_version": { "const": "competition_rule_claim_v2" },
+    "claim_id": { "type": "string", "pattern": "^review::[^\\s]+$" },
+    "status": {
+      "enum": ["draft", "needs_owner_review", "approved", "rejected", "retired"]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_chunk_id",
+        "document_id",
+        "source_url",
+        "source_file",
+        "section_index",
+        "chunk_index",
+        "heading_th",
+        "clause_th",
+        "clause_sha256"
+      ],
+      "properties": {
+        "source_chunk_id": { "type": "string", "minLength": 1 },
+        "document_id": { "type": "string", "minLength": 1 },
+        "source_url": { "type": "string", "minLength": 1 },
+        "source_file": { "type": "string", "minLength": 1 },
+        "section_index": { "type": "integer", "minimum": 0 },
+        "chunk_index": { "type": "integer", "minimum": 0 },
+        "heading_th": { "type": "string" },
+        "clause_th": { "type": "string", "minLength": 1 },
+        "clause_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["statement_th", "answer_th", "answer_en", "answer_en_status"],
+      "properties": {
+        "statement_th": { "type": "string", "minLength": 1 },
+        "answer_th": { "type": "string" },
+        "answer_en": { "type": "string" },
+        "answer_en_status": {
+          "enum": ["missing", "draft", "approved", "stale", "rejected"]
+        },
+        "structured_values": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/structuredValue" }
+        }
+      }
+    },
+    "retrieval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "game",
+        "game_id",
+        "canonical_section_proposed",
+        "module_proposed",
+        "facet_proposed",
+        "aliases_th",
+        "aliases_en",
+        "question_patterns_th",
+        "question_patterns_en"
+      ],
+      "properties": {
+        "game": { "type": "string", "minLength": 1 },
+        "game_id": { "enum": ["cs2", "rov", "tekken8", "valorant"] },
+        "canonical_section_proposed": { "$ref": "#/$defs/canonicalFacet" },
+        "module_proposed": {
+          "enum": [
+            "common",
+            "cs2_map_veto_and_side_selection",
+            "cs2_overtime",
+            "rov_break_time",
+            "rov_hero_and_skin",
+            "tekken8_character_and_stage",
+            "valorant_agent_selection",
+            "valorant_pause_taxonomy"
+          ]
+        },
+        "facet_proposed": { "$ref": "#/$defs/canonicalFacet" },
+        "aliases_th": { "$ref": "#/$defs/stringArray" },
+        "aliases_en": { "$ref": "#/$defs/stringArray" },
+        "question_patterns_th": { "$ref": "#/$defs/stringArray" },
+        "question_patterns_en": { "$ref": "#/$defs/stringArray" }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["support_mode", "source_span_th", "source_refs", "evidence_links"],
+      "properties": {
+        "support_mode": { "const": "exact_source_clause_required" },
+        "source_span_th": { "type": "string", "minLength": 1 },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "evidence_links": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["atomicity", "heading_clause_relation", "provenance", "review_notes"],
+      "properties": {
+        "atomicity": { "enum": ["review_required", "verified", "rejected"] },
+        "heading_clause_relation": {
+          "enum": ["distinct", "same_field_ambiguous", "heading_only", "separated"]
+        },
+        "provenance": { "enum": ["source_hash_verified", "source_hash_mismatch"] },
+        "review_notes": { "$ref": "#/$defs/stringArray" }
+      }
+    },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_status",
+        "approved_by",
+        "approved_at",
+        "effective_from",
+        "effective_to"
+      ],
+      "properties": {
+        "review_status": {
+          "enum": ["pending_owner_review", "approved", "changes_requested", "rejected"]
+        },
+        "approved_by": { "type": "string" },
+        "approved_at": { "type": "string" },
+        "effective_from": { "type": "string" },
+        "effective_to": { "type": "string" }
+        ,
+        "english_review_status": {
+          "enum": ["not_reviewed", "pending_review", "approved", "changes_requested", "rejected", "stale"]
+        },
+        "english_approved_by": { "type": "string" },
+        "english_approved_at": { "type": "string" },
+        "supersedes_claim_id": { "type": ["string", "null"] },
+        "conflicts_with": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "completeness": { "enum": ["direct", "complete_list", "partial_list"] },
+        "source_priority": {
+          "enum": [
+            "owner_approved_rulebook",
+            "official_organizer_announcement",
+            "official_website",
+            "imported_legacy_document"
+          ]
+        }
+      }
+    }
+  },
+  "$defs": {
+    "stringArray": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "structuredValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "value"],
+      "properties": {
+        "key": { "type": "string", "minLength": 1 },
+        "value": { "type": ["string", "number", "integer", "boolean"] },
+        "unit": { "type": ["string", "null"] },
+        "condition": { "type": ["string", "null"] }
+      }
+    },
+    "canonicalFacet": {
+      "enum": [
+        "rulebook_identity",
+        "eligibility_registration",
+        "registration",
+        "pre_match_on_site",
+        "team_size",
+        "roster_composition",
+        "competition_format",
+        "match_configuration",
+        "match_settings",
+        "map_pool",
+        "equipment",
+        "in_match_operations",
+        "pause_timeout",
+        "disconnect",
+        "fair_play_conduct",
+        "conduct",
+        "penalty",
+        "penalty_matrix",
+        "dispute",
+        "protest_dispute",
+        "schedule"
+      ]
+    }
+  }
+}

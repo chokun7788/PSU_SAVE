@@ -5,7 +5,7 @@ import os
 import re
 import threading
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import date, datetime, timedelta
 from typing import Any
 from urllib.error import URLError
@@ -50,6 +50,17 @@ def _cache_sec() -> float:
 
 def _status_url() -> str:
     return os.getenv("PSU_LIVE_BOOKING_STATUS_URL", DEFAULT_STATUS_URL).strip() or DEFAULT_STATUS_URL
+
+
+def live_booking_runtime_config() -> dict[str, Any]:
+    mode = os.getenv("PSU_LIVE_BOOKING_FETCH_MODE", "dashboard").strip().lower()
+    return {
+        "enabled": live_booking_enabled(),
+        "fetch_mode": mode,
+        "cache_seconds": _cache_sec(),
+        "dashboard_required": mode == "dashboard",
+        "read_only": True,
+    }
 
 
 @dataclass(frozen=True)
@@ -105,6 +116,9 @@ class LiveBookingSnapshot:
     resources: tuple[LiveResource, ...]
     error: str = ""
     cached: bool = False
+    transport: str = "dashboard"
+    error_code: str = ""
+    fetch_elapsed_ms: float = 0.0
 
     def as_public_dict(self) -> dict[str, Any]:
         """Return only aggregate booking facts. Never return appointment or user fields."""
@@ -121,6 +135,9 @@ class LiveBookingSnapshot:
             },
             "resources": [resource.as_dict() for resource in self.resources],
             "cached": self.cached,
+            "transport": self.transport,
+            "error_code": self.error_code or None,
+            "fetch_elapsed_ms": self.fetch_elapsed_ms,
             "error": self.error or None,
             "privacy": "aggregate_only",
         }
@@ -228,7 +245,7 @@ def _snapshot_from_payload(payload: dict[str, Any]) -> LiveBookingSnapshot:
     )
 
 
-def _unavailable(selected_date: str, error: str) -> LiveBookingSnapshot:
+def _unavailable(selected_date: str, error: str, *, error_code: str = "dashboard_unavailable", transport: str = "dashboard") -> LiveBookingSnapshot:
     return LiveBookingSnapshot(
         ok=False,
         date=selected_date,
@@ -240,19 +257,25 @@ def _unavailable(selected_date: str, error: str) -> LiveBookingSnapshot:
         open_periods=(),
         resources=(),
         error=error[:240],
+        error_code=error_code,
+        transport=transport,
     )
 
 
 def get_live_booking_status(selected_date: str) -> LiveBookingSnapshot:
-    """Fetch a sanitized snapshot with a short, per-date in-process cache."""
+    """Fetch on demand through the configured read-only booking transport."""
+    mode = str(live_booking_runtime_config()["fetch_mode"])
     if not live_booking_enabled():
-        return _unavailable(selected_date, "live booking integration is disabled")
+        return _unavailable(selected_date, "live booking integration is disabled", error_code="disabled", transport=mode)
+    if mode not in {"dashboard", "wordpress"}:
+        return _unavailable(selected_date, "invalid live booking fetch mode", error_code="configuration", transport=mode)
 
     cache_seconds = _cache_sec()
+    cache_key = f"{mode}|{_status_url() if mode == 'dashboard' else ''}|{selected_date}"
     now_mono = time.monotonic()
     with _CACHE_LOCK:
-        cached = _CACHE.get(selected_date)
-        if cached and now_mono - cached[0] <= cache_seconds:
+        cached = _CACHE.get(cache_key)
+        if cache_seconds > 0 and cached and now_mono - cached[0] <= cache_seconds:
             snapshot = cached[1]
             return LiveBookingSnapshot(**{**snapshot.__dict__, "cached": True})
 
@@ -262,32 +285,50 @@ def get_live_booking_status(selected_date: str) -> LiveBookingSnapshot:
     with _FETCH_LOCK:
         now_mono = time.monotonic()
         with _CACHE_LOCK:
-            cached = _CACHE.get(selected_date)
-            if cached and now_mono - cached[0] <= cache_seconds:
+            cached = _CACHE.get(cache_key)
+            if cache_seconds > 0 and cached and now_mono - cached[0] <= cache_seconds:
                 snapshot = cached[1]
                 return LiveBookingSnapshot(**{**snapshot.__dict__, "cached": True})
+        fetch_started = time.monotonic()
         try:
-            request = Request(
-                _build_url(_status_url(), selected_date),
-                headers={"Accept": "application/json", "Cache-Control": "no-cache"},
-                method="GET",
-            )
-            with urlopen(request, timeout=_timeout_sec()) as response:  # noqa: S310 - URL is local-owner configuration.
-                raw = response.read(2_000_000)
-            payload = json.loads(raw.decode("utf-8"))
+            if mode == "wordpress":
+                from app.booking.wordpress_status import fetch_wordpress_status
+
+                payload = fetch_wordpress_status(selected_date, _timeout_sec())
+            else:
+                request = Request(
+                    _build_url(_status_url(), selected_date),
+                    headers={"Accept": "application/json", "Cache-Control": "no-cache"},
+                    method="GET",
+                )
+                with urlopen(request, timeout=_timeout_sec()) as response:  # noqa: S310 - URL is local-owner configuration.
+                    raw = response.read(2_000_000)
+                payload = json.loads(raw.decode("utf-8"))
             if not isinstance(payload, dict):
                 raise ValueError("booking dashboard returned a non-object payload")
             returned_date = str(payload.get("date") or "")
             if returned_date != selected_date:
                 raise ValueError(f"booking dashboard returned date {returned_date!r}, expected {selected_date!r}")
-            snapshot = _snapshot_from_payload(payload)
-        except (OSError, TimeoutError, URLError, ValueError, json.JSONDecodeError) as exc:
-            snapshot = _unavailable(selected_date, f"{type(exc).__name__}: {exc}")
+            snapshot = replace(_snapshot_from_payload(payload), transport=mode)
         except Exception as exc:  # pragma: no cover - safe boundary around external adapter.
-            snapshot = _unavailable(selected_date, f"{type(exc).__name__}: {exc}")
+            code = getattr(exc, "code", "")
+            if not isinstance(code, str) or not code:
+                reason = getattr(exc, "reason", exc)
+                code = (
+                    "network_permission" if getattr(reason, "winerror", None) == 10013
+                    else "timeout" if isinstance(reason, TimeoutError)
+                    else "non_live_data" if "source is not live" in str(exc)
+                    else "invalid_payload" if isinstance(exc, ValueError)
+                    else "upstream_unavailable" if mode == "wordpress"
+                    else "dashboard_unavailable"
+                )
+            snapshot = _unavailable(selected_date, f"{type(exc).__name__}: {exc}", error_code=code, transport=mode)
+        snapshot = replace(snapshot, fetch_elapsed_ms=round((time.monotonic() - fetch_started) * 1000, 2))
 
         with _CACHE_LOCK:
-            _CACHE[selected_date] = (time.monotonic(), snapshot)
+            # A transient failure must be retried on the next question.
+            if snapshot.ok and cache_seconds > 0:
+                _CACHE[cache_key] = (time.monotonic(), snapshot)
         return snapshot
 
 
@@ -300,7 +341,37 @@ def _normalized_tokens(value: str) -> set[str]:
     return set(re.findall(r"[a-z0-9]+|[\u0E00-\u0E7F]+", normalize_text(value)))
 
 
+def _is_equipment_vacancy_request(query: str) -> bool:
+    q = normalize_text(query)
+    generic_resource = bool(re.search(r"\b(?:equipment|devices?|stations?|resources?)\b", q)) or any(
+        term in q for term in ("อุปกรณ์", "เครื่องไหน", "เครื่องอะไร", "อะไรว่าง", "อะไรที่ว่าง")
+    )
+    if not generic_resource:
+        return False
+    vacancy = "ว่าง" in q or bool(re.search(r"\b(?:available|availability|free|vacant)\b", q))
+    # Bare English "equipment available" is also inventory wording. A time,
+    # live cue, play context or the explicit vacancy word "free" resolves it.
+    explicit_time = requested_time_window(q, _unavailable("", "")) is not None
+    live_context = explicit_time or any(term in q for term in ("ตอนนี้", "ขณะนี้", "วันนี้", "พรุ่งนี้", "เมื่อวาน")) or bool(re.search(
+        r"\b(?:now|currently|today|tomorrow|yesterday|to\s+play)\b", q,
+    ))
+    return vacancy and ("ว่าง" in q or live_context or bool(re.search(r"\b(?:free|vacant)\b", q)))
+
+
+def _asks_available_equipment_only(query: str) -> bool:
+    q = normalize_text(query)
+    if not _is_equipment_vacancy_request(q) or any(term in q for term in ("ไม่ว่าง", "ถูกจอง", "not available", "booked", "occupied", "busy")):
+        return False
+    explicit_only = bool(re.search(r"เฉพาะ.*ว่าง|\bonly\b.*\b(?:available|free|vacant)\b", q))
+    # Zone checks keep their existing complete station status. Broad equipment
+    # discovery, or an explicit "only free" request, lists just free resources.
+    return explicit_only or not _resource_scopes(q)
+
+
 def is_live_booking_question(query: str) -> bool:
+    from app.core.intent_cue_recovery import recover_intent_cues
+
+    query = recover_intent_cues(query)
     q = normalize_text(query)
     if is_weekly_booking_window_query(q):
         return False
@@ -312,7 +383,8 @@ def is_live_booking_question(query: str) -> bool:
         r"\b(?:what|which)\s+equipment\b|\bequipment\s+(?:is|are)\s+available\b",
         q,
     )) or any(phrase in q for phrase in ("อุปกรณ์อะไร", "มีอุปกรณ์", "อุปกรณ์มีอะไร"))
-    if inventory_question:
+    equipment_vacancy = _is_equipment_vacancy_request(q)
+    if inventory_question and not equipment_vacancy:
         return False
     broad_catalog_question = bool(re.search(
         r"\bwhat\s+(?:pc\s+)?hardware\b"
@@ -344,6 +416,20 @@ def is_live_booking_question(query: str) -> bool:
     )) or any(phrase in q for phrase in ("รอบละกี่นาที", "หนึ่งรอบกี่นาที", "slot นานเท่าไหร่"))
     if game_catalog_question or booking_duration_question:
         return False
+    # A booking schedule/slot query asks for live facts even without the
+    # literal word "available". Keep booking procedures and personal
+    # reservation tracking outside this aggregate-only capability.
+    personal_booking = any(term in q for term in ("การจองของฉัน", "รายการจองของฉัน", "my booking", "my reservation"))
+    if personal_booking:
+        return False
+    booking_slots = bool(re.search(
+        r"(?:มี)?(?:ช่วง|รอบ|สล็อต|slot).*?(?:ให้จอง|จองได้)"
+        r"|(?:ดู|เช็ค|ตรวจ|ขอ).*?(?:ตารางจอง|สถานะการจอง)"
+        r"|จอง.*?(?:ช่วงไหน|รอบไหน|กี่โมง).*?ได้"
+        r"|\b(?:what|which)\s+(?:[a-z]+\s+){0,3}slots?\b.*\b(?:book|reserve|today|tomorrow)\b"
+        r"|\b(?:check|show)\b.*\b(?:booking\s+(?:schedule|availability)|reservation\s+availability)\b",
+        q,
+    ))
     price_question = any(term in q for term in (
         "ราคา", "ค่าบริการ", "ค่าใช้จ่าย", "ค่าใช้บริการ", "กี่บาท", "ต้องจ่าย", "เสียเงิน", "ฟรีไหม",
         "how much", "price", "cost", "fee", "pay", "for free", "free of charge", "free to use",
@@ -351,6 +437,12 @@ def is_live_booking_question(query: str) -> bool:
     explicit_slot = any(term in q for term in ("ว่าง", "ถูกจอง", "จองแล้ว", "available", "availability", "booked", "vacant"))
     if price_question and not explicit_slot:
         return False
+    resource_booking = bool(_resource_scopes(q)) and bool(re.search(
+        r"\bcan\s+(?:i|we)\s+(?:book|reserve)\b"
+        r"|จอง.{1,35}ได้(?:ไหม|มั้ย|หรือเปล่า|รึเปล่า)", q,
+    ))
+    if booking_slots or resource_booking:
+        return True
     current_signals = (
         "ตอนนี้", "ขณะนี้", "เวลานี้", "current", "currently", "right now", "now",
     )
@@ -380,7 +472,7 @@ def is_live_booking_question(query: str) -> bool:
         bool(re.search(r"(?:ใช้|เล่น).{0,24}(?:ตอนนี้|ขณะนี้).{0,12}ได้(?:ไหม|มั้ย|หรือเปล่า)?", q))
         or bool(re.search(r"\bcan\b.{0,35}\b(?:use|play)\b.{0,35}\b(?:now|right now)\b", q))
     )
-    return asks_resource_availability or asks_use_now or asks_center_use_now or (asks_live and asks_availability) or asks_time_availability or (
+    return equipment_vacancy or asks_resource_availability or asks_use_now or asks_center_use_now or (asks_live and asks_availability) or asks_time_availability or (
         asks_live and bool(tokens & {"open", "closed", "เปิด", "ปิด"})
     )
 
@@ -1061,22 +1153,131 @@ def _targeted_group_answer(
     return "\n".join(lines)
 
 
+def _render_available_equipment_only(query: str, snapshot: LiveBookingSnapshot, locale: str) -> str:
+    english = locale == "en"
+    resources = tuple(resource for _, group in _resource_groups_for_query(snapshot, query) for resource in group)
+    window = _slot_window_for_resources(resources, requested_time_window(query, snapshot))
+    context = _time_context(snapshot, window, locale)
+    footer = [f"Updated: {snapshot.generated_at or snapshot.now}" if english else f"อัปเดต: {snapshot.generated_at or snapshot.now}", f"Source: {BOOKING_SOURCE_URL}" if english else f"แหล่งข้อมูล: {BOOKING_SOURCE_URL}"]
+    if window is None:
+        body = "The requested time could not be determined, so availability cannot be confirmed." if english else "ยังระบุช่วงเวลาที่ต้องการตรวจสอบไม่ได้ จึงยังยืนยันอุปกรณ์ว่างไม่ได้ครับ"
+        return "\n".join([body, *footer])
+    if not is_open_for_window(snapshot, window):
+        body = f"At {context}, the studio is closed; no equipment is bookable then." if english else f"{context}: ศูนย์ไม่เปิดให้บริการ จึงไม่มีอุปกรณ์ที่เปิดให้จองในช่วงนี้ครับ"
+        return "\n".join([body, *footer])
+    historical = _historical_window(snapshot, window)
+    available: list[LiveResource] = []
+    uncertain = False
+    for resource in resources:
+        if historical and window.is_range:
+            reason = _resource_booking_history_for_range(resource, window)
+            free = reason == "not_booked"
+        elif window.is_range:
+            free, _, reason = _resource_is_free_for_range(resource, window)
+        else:
+            slot = _point_slot_status(resource, window)
+            reason = "no_matching_slot" if slot is None else slot.status
+            free = slot is not None and slot.available_count > 0 and slot.status not in {"closed", "past", "no_show"}
+        if free:
+            available.append(resource)
+        if reason in {"no_matching_slot", "incomplete_coverage"}:
+            uncertain = True
+    if historical:
+        heading = f"Resources with no booking recorded during {context} (past period):" if english else f"อุปกรณ์ที่ไม่มีรายการจองใน{context} (ช่วงเวลาที่ผ่านมาแล้ว):"
+    else:
+        heading = f"Available equipment for {context}: {len(available)} resources" if english else f"อุปกรณ์ที่ว่างใน{context}: {len(available)} รายการ"
+    lines = [heading]
+    for family, _, en_label, th_label in _RESOURCE_GROUPS:
+        group = [resource for resource in available if _resource_family(resource) == family]
+        if group:
+            lines.append(en_label if english else th_label)
+            lines.extend(f"•    {resource.resource_name}" for resource in group)
+    other = [resource for resource in available if _resource_family(resource) is None]
+    lines.extend(f"•    {resource.resource_name}" for resource in other)
+    if not available:
+        lines.append("No resource was confirmed free for this period." if english else "ไม่พบอุปกรณ์ที่ยืนยันได้ว่าว่างในช่วงนี้ครับ")
+    if uncertain:
+        lines.append("Some slot data is incomplete; availability for those resources cannot be confirmed." if english else "บางอุปกรณ์มีข้อมูล Slot ไม่ครบ จึงยังยืนยันความว่างของรายการเหล่านั้นไม่ได้ครับ")
+    if historical:
+        lines.append("This is past booking history, not a slot that can be booked now." if english else "ข้อมูลนี้เป็นประวัติการจอง ไม่ใช่ Slot ที่ยังจองได้ตอนนี้ครับ")
+    return "\n".join([*lines, *footer])
+
+
+def _render_booking_slot_schedule(query: str, snapshot: LiveBookingSnapshot, locale: str) -> str | None:
+    """List day-wide slot facts only when no specific time was requested."""
+    q = normalize_text(query)
+    asks_schedule = any(term in q for term in ("ช่วงไหน", "รอบไหน", "ตารางจอง", "ช่วงให้จอง")) or bool(re.search(
+        r"\b(?:what|which)\s+(?:[a-z]+\s+){0,3}slots?\b|\bbooking\s+schedule\b", q,
+    ))
+    window = requested_time_window(query, snapshot)
+    asks_now = any(term in q for term in ("ตอนนี้", "ขณะนี้", "เวลานี้")) or bool(re.search(r"\b(?:now|currently)\b", q))
+    if not asks_schedule or asks_now or (window is not None and window.explicit):
+        return None
+    english = locale == "en"
+    lines = [f"Booking slots on {snapshot.date} (Asia/Bangkok):" if english else f"รอบจองวันที่ {snapshot.date} (เวลาไทย):"]
+    for family, resources in _resource_groups_for_query(snapshot, query):
+        label = _scope_label(family, locale) or ("All zones" if english else "ทุกโซน")
+        lines.append(label)
+        boundaries = sorted({(slot.start, slot.end) for resource in resources for slot in resource.slots})
+        if not boundaries:
+            lines.append("•    No matching slots returned; cannot confirm availability." if english else "•    ไม่พบรอบที่ตรงกับอุปกรณ์ จึงยังยืนยันไม่ได้ครับ")
+        for start, end in boundaries:
+            period = TimeWindow(start, end, explicit=True)
+            if not is_open_for_window(snapshot, period):
+                state = "closed / not bookable" if english else "ปิด / จองไม่ได้"
+            elif live_booking_calendar_conflict(f"{query} {snapshot.date} {start}-{end}", snapshot):
+                state = "calendar conflict; cannot confirm" if english else "ปฏิทินขัดกัน / ยังยืนยันไม่ได้"
+            elif _historical_window(snapshot, period):
+                state = "past slot / no longer bookable" if english else "ช่วงเวลาผ่านแล้ว / จองไม่ได้"
+            else:
+                free = [resource.resource_name for resource in resources if _resource_is_free_for_range(resource, period)[0]]
+                state = (f"{len(free)}/{len(resources)} available" if english else f"ว่าง {len(free)}/{len(resources)} รายการ")
+                if free:
+                    state += ": " + ", ".join(free)
+            lines.append(f"•    {start}-{end}: {state}")
+    lines.extend((f"Updated: {snapshot.generated_at or snapshot.now}" if english else f"อัปเดต: {snapshot.generated_at or snapshot.now}", f"Source: {BOOKING_SOURCE_URL}" if english else f"แหล่งข้อมูล: {BOOKING_SOURCE_URL}"))
+    return "\n".join(lines)
+
+
 def render_live_booking_answer(query: str, snapshot: LiveBookingSnapshot, locale: str) -> str:
     """Render only aggregate facts. The request is read-only and cannot reserve a slot."""
     english = locale == "en"
     if not snapshot.ok:
+        th_reasons = {
+            "upstream_unavailable": "ดึงข้อมูลจองสดจาก WordPress ไม่สำเร็จ",
+            "network_permission": "การเชื่อมต่อไปยัง WordPress ถูกจำกัดสิทธิ์เครือข่าย",
+            "timeout": "การดึงข้อมูลจองสดใช้เวลานานเกินกำหนด",
+            "non_live_data": "Dashboard เชื่อมต่อได้ แต่ยังไม่ได้ข้อมูลสดจาก WordPress",
+            "invalid_export": "ข้อมูลจองที่ WordPress ส่งกลับมีรูปแบบไม่ถูกต้อง",
+            "invalid_payload": "ข้อมูลสถานะที่ระบบจองส่งกลับไม่ครบหรือไม่ตรงกับวันที่ถาม",
+            "calendar_unavailable": "ไม่พบปฏิทินบริการที่บันทึกไว้หรือไฟล์ปฏิทินไม่ถูกต้อง",
+        }
+        en_reasons = {
+            "upstream_unavailable": "live booking data could not be fetched from WordPress",
+            "network_permission": "network permissions blocked the connection to WordPress",
+            "timeout": "the live booking request timed out",
+            "non_live_data": "the Dashboard is reachable but did not return live WordPress data",
+            "invalid_export": "WordPress returned an invalid booking export",
+            "invalid_payload": "the booking response is incomplete or does not match the requested date",
+            "calendar_unavailable": "the recorded service calendar is missing or invalid",
+        }
         if english:
+            reason = en_reasons.get(snapshot.error_code, "the booking connection is unavailable")
             return (
-                f"For {snapshot.date} (Asia/Bangkok), I cannot confirm the live opening or booking status because the Booking Dashboard is unavailable. "
+                f"For {snapshot.date} (Asia/Bangkok), I cannot confirm the live opening or booking status because {reason}. "
                 "I will not present a saved schedule as live availability. Please check the reservation page or try again shortly.\n"
                 f"Source: {BOOKING_SOURCE_URL}"
             )
+        reason = th_reasons.get(snapshot.error_code, "การเชื่อมต่อระบบจองยังไม่พร้อมใช้งาน")
         return (
-            f"วันที่ {snapshot.date} (เวลาไทย) ยังยืนยันสถานะเปิด-ปิดและ Slot แบบสดไม่ได้ เพราะ Booking Dashboard ไม่พร้อมใช้งานครับ\n"
+            f"วันที่ {snapshot.date} (เวลาไทย) ยังยืนยันสถานะเปิด-ปิดและ Slot แบบสดไม่ได้ เพราะ{reason}ครับ\n"
             "ผมจะไม่เอาตารางเก่ามาแสดงว่าเป็นข้อมูลจองแบบสด กรุณาลองใหม่อีกครั้งหรือดูหน้าจองโดยตรง\n"
             f"แหล่งข้อมูล: {BOOKING_SOURCE_URL}"
         )
 
+    slot_schedule = _render_booking_slot_schedule(query, snapshot, locale)
+    if slot_schedule is not None:
+        return slot_schedule
     conflict = live_booking_calendar_conflict(query, snapshot)
     if conflict is not None:
         window = requested_time_window(query, snapshot)
@@ -1096,6 +1297,8 @@ def render_live_booking_answer(query: str, snapshot: LiveBookingSnapshot, locale
     window = requested_time_window(query, snapshot)
     resource_groups = _resource_groups_for_query(snapshot, query)
     requested_scopes = _resource_scopes(query)
+    if _asks_available_equipment_only(query):
+        return _render_available_equipment_only(query, snapshot, locale)
     # For direct availability questions, answer only the requested targets.
     # Lists remain available for wording such as "มีอะไรบ้าง" / "which
     # stations" and use the detailed rendering below.

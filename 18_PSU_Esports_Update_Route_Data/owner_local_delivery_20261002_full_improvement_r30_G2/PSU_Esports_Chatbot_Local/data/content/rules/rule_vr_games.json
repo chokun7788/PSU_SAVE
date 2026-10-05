@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_vr_games",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "vr.*เกม",
+      "เกม.*vr"
+    ],
+    "en": [
+      "vr station.*game",
+      "vr games"
+    ]
+  },
+  "facts": {
+    "route_category": "games",
+    "intent": "vr_games",
+    "patterns": [
+      "vr.*เกม",
+      "เกม.*vr",
+      "vr station.*game",
+      "vr games"
+    ],
+    "priority": 100
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "เกม VR Station ที่มีในรายการ ได้แก่ Beat Saber และ Horizon Call of the Mountain"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "VR Station games include Beat Saber and Horizon Call of the Mountain."
+      },
+      "source_sha256": "a609210e552d0f9f99efe3648b14ab141171a302b14896f89b1dcfac02c6ef38",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/games_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_games_vr",
+      "reservation-service-vr"
+    ],
+    "last_verified_at": ""
+  }
+}

@@ -133,6 +133,14 @@ def is_chatbot_identity_query(value: str) -> bool:
     query = normalize_text(value).strip()
     if not query:
         return False
+    # The creator is a person target. Mentioning "bot" and "who" must not
+    # turn a developer lookup into the bot's self-description.
+    if re.search(
+        r"(?:คน|ผู้)(?:ที่)?(?:ทำ|สร้าง|พัฒนา|เขียน|ออกแบบ)\s*(?:แชท\s*บอท|บอท|chat\s*bot|bot)"
+        r"|ใคร(?:เป็นคน)?(?:ทำ|สร้าง|พัฒนา)\s*(?:แชท\s*บอท|บอท|chat\s*bot|bot)",
+        query,
+    ):
+        return False
     short_who_question = (
         len(query) <= 14 and query.startswith(("นาย", "คุน", "คุณ"))
         and bool(re.search(r"(?:ใค|ไค|ใคร|คัย)$", query))

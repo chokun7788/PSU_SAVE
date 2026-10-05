@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_no_answer_steam_purchase",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "ซื้อเกม steam",
+      "steam.*ผ่านศูนย์"
+    ],
+    "en": [
+      "buy.*steam"
+    ]
+  },
+  "facts": {
+    "route_category": "no_answer",
+    "intent": "no_answer_steam_purchase",
+    "patterns": [
+      "ซื้อเกม steam",
+      "steam.*ผ่านศูนย์",
+      "buy.*steam"
+    ],
+    "priority": 130
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ยังไม่พบข้อมูลว่าศูนย์มีบริการซื้อเกม Steam ผ่านศูนย์ในฐานข้อมูลที่มี ข้อมูลที่มีตอนนี้เป็นรายการเกมและบริการใช้อุปกรณ์ภายในศูนย์ ไม่ใช่บริการจำหน่ายเกม"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "No information about buying Steam games through the studio was found in the available knowledge base. The available data covers the studio's games and equipment services, not game sales."
+      },
+      "source_sha256": "22c8d1ab5c5129675338e0297cd93c30e5bb00c1f32bc27b83dfc128ff1d9306",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/no_answer_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation"
+    ],
+    "last_verified_at": ""
+  }
+}

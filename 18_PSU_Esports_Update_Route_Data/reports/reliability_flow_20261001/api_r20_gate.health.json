@@ -1,0 +1,126 @@
+{
+  "ok": true,
+  "service": "psu-esports-chat-web",
+  "time": "2026-09-30T17:24:01.081284+00:00",
+  "warmup": null,
+  "llm_preflight": {
+    "ok": true,
+    "model": "scb10x/typhoon2.5-qwen3-4b",
+    "kind": "preflight",
+    "elapsed_ms": 6611.3,
+    "response_chars": 2,
+    "done_reason": "length",
+    "num_ctx": 3072,
+    "load_duration": 6365046900,
+    "prompt_eval_duration": 170889000,
+    "eval_duration": 1000,
+    "health": {
+      "llm_health_enabled": true,
+      "llm_health_status": "ok",
+      "llm_health_failures": 0,
+      "llm_health_failure_scope": "model_and_kind"
+    }
+  },
+  "input_quality_guard": {
+    "enabled": true,
+    "mode": "shadow",
+    "repeat_policy": "ask_retype",
+    "layout_threshold": 0.39,
+    "repeat_threshold": 0.55,
+    "corpus_size": 4023,
+    "profile_version": "keyboard-profile-v1:5cb1f63359ca84bf"
+  },
+  "llm_health": {
+    "enabled": true,
+    "failure_threshold": 2,
+    "failure_window_sec": 30.0,
+    "cooldown_sec": 90.0,
+    "states": [
+      {
+        "kind": "model",
+        "model": "scb10x/typhoon2.5-qwen3-4b",
+        "status": "ok",
+        "failures": 0,
+        "successes": 1,
+        "cooldown_remaining_sec": 0.0,
+        "last_error_type": "",
+        "last_error": "",
+        "last_elapsed_ms": 6611.3,
+        "last_checked_at": 1790789007.1620643,
+        "last_success_at": 1790789007.1620643,
+        "half_open_probe_in_flight": false,
+        "events": [
+          {
+            "event": "success",
+            "kind": "preflight",
+            "elapsed_ms": 6611.3,
+            "detail": "preflight_ok",
+            "at": 1790789007.162
+          }
+        ]
+      },
+      {
+        "kind": "preflight",
+        "model": "scb10x/typhoon2.5-qwen3-4b",
+        "status": "ok",
+        "failures": 0,
+        "successes": 1,
+        "cooldown_remaining_sec": 0.0,
+        "last_error_type": "",
+        "last_error": "",
+        "last_elapsed_ms": 6611.3,
+        "last_checked_at": 1790789007.1620643,
+        "last_success_at": 1790789007.1620643,
+        "half_open_probe_in_flight": false,
+        "events": [
+          {
+            "event": "success",
+            "kind": "preflight",
+            "elapsed_ms": 6611.3,
+            "detail": "preflight_ok",
+            "at": 1790789007.162
+          }
+        ]
+      }
+    ]
+  },
+  "pipeline_workers": {
+    "enabled": false
+  },
+  "runtime": {
+    "profile": "owner-local-r20-test",
+    "version": "2026.10.01-reliability-flow-r20",
+    "started_at": "2026-09-30T17:23:19.429661+00:00",
+    "answer_timeout_sec": 9.0,
+    "pipeline_timeout_sec": 9.0,
+    "intent_timeout_sec": 5.5,
+    "local_llm": {
+      "enabled": false,
+      "model": "scb10x/typhoon2.5-qwen3-4b",
+      "intent_timeout_sec": 5.5,
+      "planner_timeout_sec": 1.2,
+      "general_timeout_sec": 4.0,
+      "high_assist_profile": false
+    },
+    "semantic_rag": {
+      "enabled": false,
+      "embedding_model": "psu-bge-m3:q8_0"
+    },
+    "english": {
+      "enabled": true,
+      "draft_preview": false
+    },
+    "input_quality": {
+      "mode": "shadow",
+      "keyboard_layout": "request_retype",
+      "repeated_characters": "ask_retype"
+    }
+  },
+  "features": {
+    "bilingual_english": true,
+    "local_llm_assist": false,
+    "semantic_rag": false,
+    "embedding_model": "psu-bge-m3:q8_0",
+    "live_booking_status": false
+  }
+}

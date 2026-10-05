@@ -1,0 +1,30 @@
+{
+  "tests": 125,
+  "failures": [
+    [
+      "test_score_is_a_real_word_not_scope_typo (tests.test_competition_contract_r27_20261001.AtomicGraderTests.test_score_is_a_real_word_not_scope_typo)",
+      "Traceback (most recent call last):\n  File \"C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\tests\\test_competition_contract_r27_20261001.py\", line 32, in test_score_is_a_real_word_not_scope_typo\n    self.assertEqual(recover_intent_cues(q)[0],q)\nAssertionError: 'W' != 'What score is recorded for a forfeited map in the VALORANT tournament?'\n- W\n+ What score is recorded for a forfeited map in the VALORANT tournament?\n\n"
+    ]
+  ],
+  "errors": [
+    [
+      "test_detail_lookup_does_not_invent_missing_clause (tests.test_competition_contract_r27_20261001.AtomicGraderTests.test_detail_lookup_does_not_invent_missing_clause)",
+      "Traceback (most recent call last):\n  File \"C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\tests\\test_competition_contract_r27_20261001.py\", line 44, in test_detail_lookup_does_not_invent_missing_clause\n    rows=[r for r in load_curated_rows() if not r['id'].endswith('_s58_c01')]\n                                                ~^^^^^^\nKeyError: 'id'\n"
+    ]
+  ],
+  "success": false,
+  "modules": [
+    "tests.test_competition_contract_r27_20261001",
+    "tests.test_competition_content_speed_r26_20261001",
+    "tests.test_competition_format_r25_20261001",
+    "tests.test_competition_user_questions_r24_20261001",
+    "tests.test_competition_target_grounding",
+    "tests.test_competition_source_facets",
+    "tests.test_competition_taxonomy_contract",
+    "tests.test_intent_cue_recovery_20260930",
+    "tests.test_integrated_improvement_r21_20261001",
+    "tests.test_booking_on_demand_20261001",
+    "tests.test_available_equipment_only_20261001",
+    "tests.test_keyboard_neighbor_recovery_20260929"
+  ]
+}

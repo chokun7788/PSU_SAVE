@@ -92,39 +92,17 @@ if (Test-LocalPortInUse $Port) {
 }
 
 $ownerDashboardAt8080 = $Port -ne 8080 -and (Test-BookingDashboardIdentity -BaseUrl "http://127.0.0.1:8080")
-$bookingDashboardPort = if ($ownerDashboardAt8080) { 8080 } else { 8091 }
-$bookingDashboardBase = "http://127.0.0.1:$bookingDashboardPort"
-$bookingDashboardUrl = "$bookingDashboardBase/api/chatbot-status"
-$dashboardProbe = Get-BookingDashboardProbe -BaseUrl $bookingDashboardBase
-if ((Test-Path $bookingDashboardRoot) -and -not $dashboardProbe.Ready -and -not $ownerDashboardAt8080) {
-    if (Test-LocalPortInUse 8091) {
-        Write-Warning "Port 8091 is occupied but booking data could not be verified ($($dashboardProbe.Reason)). Chatbot will start without live availability."
-    } else {
-        $bookingLogDir = Join-Path $projectRoot "data\logs"
-        New-Item -ItemType Directory -Force -Path $bookingLogDir | Out-Null
-        $runId = (Get-Date -Format "yyyyMMdd_HHmmss_fff") + "_" + [guid]::NewGuid().ToString("N").Substring(0, 8)
-        Start-Process -FilePath $python.Source -ArgumentList @("server.py", "--no-browser", "--port", "8091") `
-            -WorkingDirectory $bookingDashboardRoot -WindowStyle Hidden `
-            -RedirectStandardOutput (Join-Path $bookingLogDir "booking_dashboard_8091_$runId.out.log") `
-            -RedirectStandardError (Join-Path $bookingLogDir "booking_dashboard_8091_$runId.err.log")
-        for ($attempt = 1; $attempt -le 10 -and -not $dashboardProbe.Ready; $attempt++) {
-            Start-Sleep -Milliseconds 500
-            $dashboardProbe = Get-BookingDashboardProbe -BaseUrl $bookingDashboardBase
-        }
-        if (-not $dashboardProbe.Ready) {
-            Write-Warning "Dashboard did not become ready. Check the new booking_dashboard_8091_$runId log files. Chatbot will start without live availability."
-        }
-    }
-}
-
-$env:PSU_LIVE_BOOKING_ENABLED = $(if ($dashboardProbe.Ready) { "1" } else { "0" })
-$env:PSU_LIVE_BOOKING_STATUS_URL = $bookingDashboardUrl
+# The standalone Chatbot fetches the WordPress exports on demand. An
+# already-running owner Dashboard remains authoritative for its own calendar.
+$env:PSU_LIVE_BOOKING_FETCH_MODE = if ($ownerDashboardAt8080) { "dashboard" } else { "wordpress" }
+$env:PSU_LIVE_BOOKING_ENABLED = "1"
+$env:PSU_LIVE_BOOKING_STATUS_URL = if ($ownerDashboardAt8080) { "http://127.0.0.1:8080/api/chatbot-status" } else { "http://127.0.0.1:8091/api/chatbot-status" }
 $env:PSU_LIVE_BOOKING_TIMEOUT_SEC = "5"
-$env:PSU_LIVE_BOOKING_CACHE_SEC = "10"
+$env:PSU_LIVE_BOOKING_CACHE_SEC = "0"
 
 $url = "http://127.0.0.1:$Port/"
 Write-Host "Starting PSU Esports Chatbot"
-Write-Host $(if ($env:PSU_LIVE_BOOKING_ENABLED -eq "1") { "Dashboard connection: $($dashboardProbe.Kind) on port $bookingDashboardPort; live CSV data is checked for each question" } else { "Dashboard connection: unavailable on port $bookingDashboardPort; live availability cannot be confirmed" })
+Write-Host $(if ($ownerDashboardAt8080) { "Booking: read owner Dashboard at port 8080 on each status question" } else { "Booking: fetch WordPress directly on each status question; no separate Dashboard process required" })
 Write-Host "Open: $url"
 Write-Host "Keep this window open while the chatbot is in use."
 

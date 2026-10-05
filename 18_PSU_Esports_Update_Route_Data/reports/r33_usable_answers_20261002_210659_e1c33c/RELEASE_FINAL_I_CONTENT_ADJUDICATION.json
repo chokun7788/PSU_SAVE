@@ -1,0 +1,1613 @@
+{
+  "original_literal_passed": 9,
+  "original_total": 10,
+  "reviewed_case": "สามารถถามอะไรดไ้บ้าง",
+  "source_review_passed": true,
+  "reason": "The original new smoke oracle required ราคา literally. The approved capability answer says ค่าบริการ, includes booking, and the typo input returns exactly the clean capability answer. Runtime and old Gold are unchanged; preserve the original 9/10 literal result.",
+  "clean_response": {
+    "ok": true,
+    "request_id": "e0729c5dc6ac4b0e961e12e45d10d042",
+    "session_id": "r33-release-control-20bc084206b34dd7bcd426f254ee2147",
+    "answer": "ผมคือ PSU Esports Assistant แชทบอทผู้ช่วยของ PSU Esports Studio - Phuket ครับ\n\nผมช่วยตอบคำถามเกี่ยวกับ:\n•    เกมที่มีให้เล่นและเกมที่เกี่ยวข้องกับการแข่งขัน\n•    ปุ่มควบคุมและวิธีเล่นของเกมที่มีข้อมูลยืนยัน\n•    อุปกรณ์และโซนบริการ เช่น PC, PS5, Nintendo Switch, VR และ Cockpit\n•    วิธีจอง เช็คอิน ค่าบริการ เวลาเปิด-ปิด และกฎการใช้งาน\n•    สมาชิกทีม ตำแหน่ง และหมวดสมาชิกของ PSU Esports Studio - Phuket\n\nถ้าเป็นข้อมูลของศูนย์ ผมจะตอบจากฐานข้อมูลที่ยืนยันได้ก่อนเสมอ ถ้ายังไม่มีข้อมูลยืนยัน ผมจะบอกตรง ๆ ครับ",
+    "mode": "pipeline:chatbot_identity_fast_path",
+    "route_category": "knowledge",
+    "route_intent": "chatbot_identity",
+    "universal_intent": {
+      "domain": "knowledge",
+      "operation": "detail",
+      "target": "chatbot_identity",
+      "filters": {},
+      "needs": [
+        "describe_capabilities",
+        "state_scope"
+      ],
+      "answer_style": "summary_bullets",
+      "confidence": 0.97,
+      "method": "heuristic",
+      "reason": "chatbot identity route is locked to assistant role"
+    },
+    "confidence": 0.98,
+    "latency_sec": 0.1116,
+    "wall_sec": 0.1258,
+    "deadline": {
+      "global_timeout_enabled": true,
+      "global_timeout_sec": 20.0,
+      "global_elapsed_sec": 0.1258,
+      "global_remaining_sec": 19.8742,
+      "finalizer_reserve_sec": 1.0,
+      "work_remaining_sec": 18.8742,
+      "timing_status": "running"
+    },
+    "timing_status": "completed",
+    "timed_out": false,
+    "timeout_stage": "",
+    "retryable": false,
+    "worker_id": 0,
+    "sources": [
+      {
+        "id": "home",
+        "url": "https://esports.phuket.psu.ac.th/home"
+      }
+    ],
+    "validation_ok": true,
+    "language": {
+      "requested": "th",
+      "detected": "th",
+      "effective": "th",
+      "confidence": 1.0,
+      "reason": "toggle_override_th;thai_script"
+    },
+    "experimental_rag_fallback": false,
+    "experimental_allow_llm": true,
+    "input_recovery": {
+      "score": 0.238,
+      "language": "th",
+      "language_quality": 0.762,
+      "should_review_intent": false,
+      "reason": "Thai character n-gram quality=0.762",
+      "action": "continue"
+    },
+    "server_date": {
+      "iso": "2026-10-02",
+      "label": "02/10/2026 (วันศุกร์)",
+      "time": "23:09",
+      "datetime_iso": "2026-10-02T23:09:49.272164+07:00",
+      "timezone": "Asia/Bangkok",
+      "service_slot": {
+        "date": "2026-10-02",
+        "time": "23:09",
+        "weekday": "วันศุกร์",
+        "timezone": "Asia/Bangkok",
+        "status": "outside_hours",
+        "playable": false,
+        "slot": null,
+        "next_open_slot": null,
+        "reason": "outside_regular_service_hours",
+        "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+        "source": "reservation_schedule"
+      },
+      "thai_holidays": [],
+      "upcoming_thai_holidays": [
+        {
+          "date": "2026-10-13",
+          "title": "วันนวมินทรมหาราช",
+          "type": "national_holiday",
+          "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        },
+        {
+          "date": "2026-10-16",
+          "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+          "type": "bank_holiday_bangkok",
+          "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+          "source": "Bank of Thailand Financial Institutions Holidays 2026",
+          "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+        },
+        {
+          "date": "2026-10-23",
+          "title": "วันปิยมหาราช",
+          "type": "national_holiday",
+          "note": "วันหยุดประจำปีของไทย",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        },
+        {
+          "date": "2026-10-31",
+          "title": "วันฮาโลวีน",
+          "type": "observance",
+          "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        },
+        {
+          "date": "2026-12-05",
+          "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+          "type": "national_holiday",
+          "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        }
+      ]
+    },
+    "calendar": {
+      "date": "2026-10-02",
+      "label": "02/10/2026 (วันศุกร์)",
+      "weekday": "วันศุกร์",
+      "time": "23:09",
+      "datetime_iso": "2026-10-02T23:09:49.272164+07:00",
+      "timezone": "Asia/Bangkok",
+      "service_slot": {
+        "date": "2026-10-02",
+        "time": "23:09",
+        "weekday": "วันศุกร์",
+        "timezone": "Asia/Bangkok",
+        "status": "outside_hours",
+        "playable": false,
+        "slot": null,
+        "next_open_slot": null,
+        "reason": "outside_regular_service_hours",
+        "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+        "source": "reservation_schedule"
+      },
+      "service_closure": null,
+      "thai_holidays": [],
+      "upcoming_thai_holidays": [
+        {
+          "date": "2026-10-13",
+          "title": "วันนวมินทรมหาราช",
+          "type": "national_holiday",
+          "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        },
+        {
+          "date": "2026-10-16",
+          "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+          "type": "bank_holiday_bangkok",
+          "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+          "source": "Bank of Thailand Financial Institutions Holidays 2026",
+          "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+        },
+        {
+          "date": "2026-10-23",
+          "title": "วันปิยมหาราช",
+          "type": "national_holiday",
+          "note": "วันหยุดประจำปีของไทย",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        },
+        {
+          "date": "2026-10-31",
+          "title": "วันฮาโลวีน",
+          "type": "observance",
+          "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        },
+        {
+          "date": "2026-12-05",
+          "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+          "type": "national_holiday",
+          "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        }
+      ]
+    },
+    "input_quality": {
+      "action": "request_retype",
+      "detected_action": "request_retype",
+      "applied_action": "warn_and_continue",
+      "should_retype": false,
+      "flags": [
+        "repeated_character_typo"
+      ],
+      "layout_score": 0.00169,
+      "repeat_score": 0.555232,
+      "guard_status": "flagged",
+      "guard_mode": "enforce",
+      "repeat_policy": "warn_and_continue",
+      "profile_version": "keyboard-profile-v1:2a863a4176572043",
+      "guard_elapsed_ms": 1.406,
+      "notice": "ข้อความนี้อาจมีตัวอักษรซ้ำโดยไม่ตั้งใจ กรุณาตรวจสอบและพิมพ์คำถามใหม่อีกครั้งครับ"
+    },
+    "context_resolution": {
+      "original_question": "สามารถถามอะไรได้บ้าง",
+      "resolved_question": "สามารถถามอะไรได้บ้าง",
+      "used_context": false,
+      "context_game": null,
+      "context_domain": null,
+      "context_operation": null,
+      "context_topic": null,
+      "reason": "not_followup"
+    },
+    "query_debug": {
+      "original_question": "สามารถถามอะไรได้บ้าง",
+      "resolved_question": "สามารถถามอะไรได้บ้าง",
+      "normalized_query": "สามารถถามอะไรได้บ้าง",
+      "query_variants": [
+        "สามารถถามอะไรได้บ้าง"
+      ],
+      "active_query": "สามารถถามอะไรได้บ้าง",
+      "active_query_changed": false,
+      "trace": [
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "สามารถถามอะไรได้บ้าง",
+          "metadata": {
+            "language_hint": "th",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "สามารถถามอะไรได้บ้าง"
+            ],
+            "competition_name_recovery": [],
+            "elapsed_ms": 14.74,
+            "elapsed_sec": 0.0147
+          }
+        }
+      ]
+    },
+    "decision_artifact": {
+      "intent": {
+        "domain": "knowledge",
+        "operation": "detail",
+        "target": "chatbot_identity",
+        "confidence": 0.97,
+        "method": "heuristic"
+      },
+      "route": {
+        "category": "knowledge",
+        "intent": "chatbot_identity",
+        "confidence": 0.97,
+        "answer_type": "summary",
+        "risk": "low",
+        "reason": "chatbot identity/capability terms found"
+      },
+      "tool_router": null,
+      "selected_candidate": null,
+      "candidates": [],
+      "rejected": [],
+      "policy": {},
+      "execution_plan": [
+        "normalize_and_extract_entities",
+        "route_and_resolve_universal_intent",
+        "generate_capability_candidates",
+        "apply_policy_and_rank",
+        "apply_tool_preconditions",
+        "execute_fast_path",
+        "format_validate_and_record"
+      ],
+      "final": {
+        "mode": "pipeline:chatbot_identity_fast_path",
+        "confidence": 0.98,
+        "execution_step": "execute_fast_path",
+        "executed_capability": "fast.domain_handlers",
+        "selected_matches_execution": false,
+        "validation_ok": true,
+        "validation_errors": [],
+        "validation_warnings": [
+          "service_fee_answer_missing_service_fee_source"
+        ],
+        "evidence_count": 1,
+        "source_ids": [
+          "home"
+        ]
+      },
+      "production_metrics": {
+        "policy_version": "correctness_control_flow_v2",
+        "outcome": "answered",
+        "quality_gate_status": "pass",
+        "candidate_margin": null,
+        "selection_status": "",
+        "ambiguity_decision": "",
+        "repair_attempted": false,
+        "repair_recovered": false,
+        "llm_call_count": 0,
+        "requires_shadow_review": true,
+        "shadow_review_reasons": [
+          "selected_execution_mismatch",
+          "validation_warning"
+        ]
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": null,
+        "duration": null,
+        "price_intent": false
+      },
+      "structured_tool": null,
+      "tool_preconditions": [],
+      "candidate_execution": [],
+      "validation": null,
+      "llm_calls": []
+    },
+    "entities": {
+      "day": null,
+      "time_slots": [],
+      "service": null,
+      "user_group": null,
+      "duration": null,
+      "price_intent": false,
+      "short_answer": false,
+      "comparison_intent": false,
+      "raw": {
+        "normalized_query": "สามารถถามอะไรได้บ้าง",
+        "language_hint": "th"
+      }
+    },
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "service_fee_answer_missing_service_fee_source"
+      ]
+    },
+    "trace": [
+      {
+        "stage": "timing",
+        "decision": "locale_resolution",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.04,
+          "elapsed_sec": 0.0,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 18.35,
+          "global_elapsed_sec": 0.0001,
+          "global_remaining_sec": 18.3499,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 17.3499,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "intent_cue_preflight",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 5.76,
+          "elapsed_sec": 0.0058,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 18.35,
+          "global_elapsed_sec": 0.0059,
+          "global_remaining_sec": 18.3441,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 17.3441,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "canonical_preflight",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 18.35,
+          "global_elapsed_sec": 0.0059,
+          "global_remaining_sec": 18.3441,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 17.3441,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "locale_resolution",
+        "decision": "th",
+        "confidence": 1.0,
+        "detail": "toggle_override_th;thai_script",
+        "metadata": {
+          "requested": "th",
+          "detected": "th",
+          "effective": "th",
+          "confidence": 1.0,
+          "reason": "toggle_override_th;thai_script"
+        }
+      },
+      {
+        "stage": "intent_cue_preflight",
+        "decision": "unchanged",
+        "confidence": 1.0,
+        "detail": "bounded task cues; offsets refer to each intermediate input",
+        "metadata": {
+          "raw": "สามารถถามอะไรได้บ้าง",
+          "candidate": "สามารถถามอะไรได้บ้าง",
+          "recoveries": [],
+          "span_budget": 3,
+          "edit_budget": 4
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "confidence": 1.0,
+        "detail": "parts=1",
+        "metadata": {
+          "elapsed_ms": 13.25,
+          "elapsed_sec": 0.0133,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 18.35,
+          "global_elapsed_sec": 0.0191,
+          "global_remaining_sec": 18.3308,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 17.3308,
+          "timing_status": "running",
+          "entry_to_split_ms": 5.85,
+          "parts": [
+            "สามารถถามอะไรได้บ้าง"
+          ],
+          "competition_rule_query": false
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "confidence": 0.0,
+        "detail": "single question",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "confidence": 0.0,
+        "detail": "single clear operation does not need planner",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": true
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "สามารถถามอะไรได้บ้าง",
+        "metadata": {
+          "language_hint": "th",
+          "nonsemantic_preface_removed": false,
+          "query_variants": [
+            "สามารถถามอะไรได้บ้าง"
+          ],
+          "competition_name_recovery": [],
+          "elapsed_ms": 14.74,
+          "elapsed_sec": 0.0147
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 14.89,
+          "elapsed_sec": 0.0149
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "confidence": 1.0,
+        "detail": "knowledge/chatbot_identity",
+        "metadata": {
+          "elapsed_ms": 1.48,
+          "elapsed_sec": 0.0015,
+          "route_category": "knowledge",
+          "route_intent": "chatbot_identity",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "not_locked",
+        "confidence": 0.97,
+        "detail": "game_resolution_unknown",
+        "metadata": {
+          "locked": false,
+          "route_category": "knowledge",
+          "route_intent": "chatbot_identity",
+          "reason": "game_resolution_unknown",
+          "resolution": {
+            "status": "unknown",
+            "entity_type": "game",
+            "top_candidate": null,
+            "candidates": [],
+            "top_score": 0.0,
+            "margin": 0.0,
+            "reason": "shortlist_below_threshold",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "trigram_fuzzy",
+            "candidate_count": 13,
+            "comparison_count": 60,
+            "elapsed_ms": 5.459,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "semantic_route_refiner",
+        "confidence": 1.0,
+        "detail": "no_route_candidate",
+        "metadata": {
+          "elapsed_ms": 32.83,
+          "elapsed_sec": 0.0328,
+          "route_category": "knowledge",
+          "route_intent": "chatbot_identity",
+          "route_locked": false
+        }
+      },
+      {
+        "stage": "semantic_route_refiner",
+        "decision": "no_route_candidate",
+        "confidence": 0.97,
+        "detail": "hits=0 model=psu-bge-m3:q8_0 top=0.4821 margin=0.0019 require_current=False discover_route=True blocked=category_mismatch:230,general_margin_too_small:1",
+        "metadata": {
+          "retrieval": {
+            "model": "psu-bge-m3:q8_0",
+            "dimensions": 1024,
+            "doc_count": 289,
+            "minimum_score": 0.48,
+            "top_score": 0.482131,
+            "second_score": 0.480207,
+            "margin": 0.001924,
+            "require_current": false,
+            "discover_route": true,
+            "required_entity_ids": [],
+            "required_facets": [],
+            "locale": null,
+            "blocked": {
+              "category_mismatch": 230,
+              "general_margin_too_small": 1
+            },
+            "embedding": {
+              "model": "psu-bge-m3:q8_0",
+              "dimensions": 1024,
+              "elapsed_sec": 0.1471,
+              "total_duration_ms": 144.23,
+              "load_duration_ms": 9.61,
+              "prompt_eval_count": 7
+            },
+            "elapsed_sec": 0.0325,
+            "budget_cutoff": false
+          }
+        }
+      },
+      {
+        "stage": "freshness_guard",
+        "decision": "not_required",
+        "confidence": 0.9,
+        "detail": "query does not require live dynamic evidence",
+        "metadata": {
+          "requires_live_evidence": false
+        }
+      },
+      {
+        "stage": "boundary_guard",
+        "decision": "allow",
+        "confidence": 0.9,
+        "detail": "no high-confidence boundary matched",
+        "metadata": {
+          "flags": []
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "guard_scope",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.03,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "guard",
+        "decision": "domain_ok",
+        "confidence": 0.9,
+        "detail": "domain hints found",
+        "metadata": {}
+      },
+      {
+        "stage": "router",
+        "decision": "knowledge",
+        "confidence": 0.97,
+        "detail": "chatbot identity/capability terms found",
+        "metadata": {
+          "intent": "chatbot_identity",
+          "answer_type": "summary"
+        }
+      },
+      {
+        "stage": "model_gateway",
+        "decision": "skip_preflight_llm",
+        "confidence": 0.97,
+        "detail": "model-first RAG reserves budget for evidence and grounded composition",
+        "metadata": {
+          "allow_llm": true,
+          "preflight_allow_llm": false,
+          "route_category": "knowledge",
+          "route_intent": "chatbot_identity"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "universal_intent",
+        "confidence": 1.0,
+        "detail": "knowledge/detail",
+        "metadata": {
+          "elapsed_ms": 0.93,
+          "elapsed_sec": 0.0009,
+          "method": "heuristic",
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "universal_intent",
+        "decision": "knowledge/detail",
+        "confidence": 0.97,
+        "detail": "chatbot identity route is locked to assistant role",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "low_candidate_margin"
+          ],
+          "input_recovery": {
+            "score": 0.238,
+            "language": "th",
+            "language_quality": 0.762,
+            "should_review_intent": false,
+            "reason": "Thai character n-gram quality=0.762",
+            "action": "continue"
+          },
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "knowledge",
+              "operation": "detail",
+              "target": "",
+              "confidence": 0.97,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "knowledge",
+              "operation": "list",
+              "target": "",
+              "confidence": 0.97,
+              "reason": "router category candidate"
+            }
+          ],
+          "target": "chatbot_identity",
+          "filters": {},
+          "needs": [
+            "describe_capabilities",
+            "state_scope"
+          ],
+          "answer_style": "summary_bullets",
+          "heuristic": {
+            "domain": "knowledge",
+            "operation": "detail",
+            "confidence": 0.97,
+            "reason": "chatbot identity route is locked to assistant role"
+          }
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_static_domain",
+        "confidence": 0.98,
+        "detail": "chatbot_identity_fast_path",
+        "metadata": {}
+      },
+      {
+        "stage": "chatbot_role",
+        "decision": "deterministic_fast_path",
+        "confidence": 0.98,
+        "detail": "chatbot_identity",
+        "metadata": {
+          "mode": "chatbot_identity_fast_path",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation_final",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 2.73,
+          "elapsed_sec": 0.0027,
+          "added_error_count": 0,
+          "added_warning_count": 1,
+          "added_errors": [],
+          "added_warnings": [
+            "service_fee_answer_missing_service_fee_source"
+          ],
+          "merged_error_count": 0,
+          "merged_warning_count": 1
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:chatbot_identity_fast_path",
+        "metadata": {
+          "elapsed_ms": 3.41,
+          "elapsed_sec": 0.0034,
+          "format_response_style_ms": 0.44,
+          "answer_language": "th",
+          "total_elapsed_ms": 111.54,
+          "total_elapsed_sec": 0.1115
+        }
+      }
+    ],
+    "log_sinks": {
+      "status": "queued"
+    }
+  },
+  "noisy_response": {
+    "ok": true,
+    "request_id": "fccc2c84e8ac4a7595ca19af396108e8",
+    "session_id": "r33-release-3c70af9cfd0d40f79483105daaf89d4b",
+    "answer": "ผมคือ PSU Esports Assistant แชทบอทผู้ช่วยของ PSU Esports Studio - Phuket ครับ\n\nผมช่วยตอบคำถามเกี่ยวกับ:\n•    เกมที่มีให้เล่นและเกมที่เกี่ยวข้องกับการแข่งขัน\n•    ปุ่มควบคุมและวิธีเล่นของเกมที่มีข้อมูลยืนยัน\n•    อุปกรณ์และโซนบริการ เช่น PC, PS5, Nintendo Switch, VR และ Cockpit\n•    วิธีจอง เช็คอิน ค่าบริการ เวลาเปิด-ปิด และกฎการใช้งาน\n•    สมาชิกทีม ตำแหน่ง และหมวดสมาชิกของ PSU Esports Studio - Phuket\n\nถ้าเป็นข้อมูลของศูนย์ ผมจะตอบจากฐานข้อมูลที่ยืนยันได้ก่อนเสมอ ถ้ายังไม่มีข้อมูลยืนยัน ผมจะบอกตรง ๆ ครับ",
+    "mode": "pipeline:chatbot_identity_fast_path",
+    "route_category": "knowledge",
+    "route_intent": "chatbot_identity",
+    "universal_intent": {
+      "domain": "knowledge",
+      "operation": "detail",
+      "target": "chatbot_identity",
+      "filters": {},
+      "needs": [
+        "describe_capabilities",
+        "state_scope"
+      ],
+      "answer_style": "summary_bullets",
+      "confidence": 0.97,
+      "method": "heuristic",
+      "reason": "chatbot identity route is locked to assistant role"
+    },
+    "confidence": 0.98,
+    "latency_sec": 0.5732,
+    "wall_sec": 0.5845,
+    "deadline": {
+      "global_timeout_enabled": true,
+      "global_timeout_sec": 20.0,
+      "global_elapsed_sec": 0.5844,
+      "global_remaining_sec": 19.4155,
+      "finalizer_reserve_sec": 1.0,
+      "work_remaining_sec": 18.4155,
+      "timing_status": "running"
+    },
+    "timing_status": "completed",
+    "timed_out": false,
+    "timeout_stage": "",
+    "retryable": false,
+    "worker_id": 0,
+    "sources": [
+      {
+        "id": "home",
+        "url": "https://esports.phuket.psu.ac.th/home"
+      }
+    ],
+    "validation_ok": true,
+    "language": {
+      "requested": "th",
+      "detected": "th",
+      "effective": "th",
+      "confidence": 1.0,
+      "reason": "toggle_override_th;thai_script"
+    },
+    "experimental_rag_fallback": false,
+    "experimental_allow_llm": true,
+    "input_recovery": {
+      "score": 0.3868,
+      "language": "th",
+      "language_quality": 0.6132,
+      "should_review_intent": false,
+      "reason": "Thai character n-gram quality=0.613",
+      "action": "continue"
+    },
+    "server_date": {
+      "iso": "2026-10-02",
+      "label": "02/10/2026 (วันศุกร์)",
+      "time": "23:08",
+      "datetime_iso": "2026-10-02T23:08:50.299736+07:00",
+      "timezone": "Asia/Bangkok",
+      "service_slot": {
+        "date": "2026-10-02",
+        "time": "23:08",
+        "weekday": "วันศุกร์",
+        "timezone": "Asia/Bangkok",
+        "status": "outside_hours",
+        "playable": false,
+        "slot": null,
+        "next_open_slot": null,
+        "reason": "outside_regular_service_hours",
+        "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+        "source": "reservation_schedule"
+      },
+      "thai_holidays": [],
+      "upcoming_thai_holidays": [
+        {
+          "date": "2026-10-13",
+          "title": "วันนวมินทรมหาราช",
+          "type": "national_holiday",
+          "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        },
+        {
+          "date": "2026-10-16",
+          "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+          "type": "bank_holiday_bangkok",
+          "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+          "source": "Bank of Thailand Financial Institutions Holidays 2026",
+          "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+        },
+        {
+          "date": "2026-10-23",
+          "title": "วันปิยมหาราช",
+          "type": "national_holiday",
+          "note": "วันหยุดประจำปีของไทย",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        },
+        {
+          "date": "2026-10-31",
+          "title": "วันฮาโลวีน",
+          "type": "observance",
+          "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        },
+        {
+          "date": "2026-12-05",
+          "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+          "type": "national_holiday",
+          "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        }
+      ]
+    },
+    "calendar": {
+      "date": "2026-10-02",
+      "label": "02/10/2026 (วันศุกร์)",
+      "weekday": "วันศุกร์",
+      "time": "23:08",
+      "datetime_iso": "2026-10-02T23:08:50.299736+07:00",
+      "timezone": "Asia/Bangkok",
+      "service_slot": {
+        "date": "2026-10-02",
+        "time": "23:08",
+        "weekday": "วันศุกร์",
+        "timezone": "Asia/Bangkok",
+        "status": "outside_hours",
+        "playable": false,
+        "slot": null,
+        "next_open_slot": null,
+        "reason": "outside_regular_service_hours",
+        "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+        "source": "reservation_schedule"
+      },
+      "service_closure": null,
+      "thai_holidays": [],
+      "upcoming_thai_holidays": [
+        {
+          "date": "2026-10-13",
+          "title": "วันนวมินทรมหาราช",
+          "type": "national_holiday",
+          "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        },
+        {
+          "date": "2026-10-16",
+          "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+          "type": "bank_holiday_bangkok",
+          "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+          "source": "Bank of Thailand Financial Institutions Holidays 2026",
+          "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+        },
+        {
+          "date": "2026-10-23",
+          "title": "วันปิยมหาราช",
+          "type": "national_holiday",
+          "note": "วันหยุดประจำปีของไทย",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        },
+        {
+          "date": "2026-10-31",
+          "title": "วันฮาโลวีน",
+          "type": "observance",
+          "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        },
+        {
+          "date": "2026-12-05",
+          "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+          "type": "national_holiday",
+          "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+          "source": "Time and Date Thailand holidays 2026",
+          "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+        }
+      ]
+    },
+    "input_quality": {
+      "action": "continue",
+      "detected_action": "continue",
+      "applied_action": "continue",
+      "should_retype": false,
+      "flags": [],
+      "layout_score": 0.001913,
+      "repeat_score": 0.508573,
+      "guard_status": "passed",
+      "guard_mode": "enforce",
+      "repeat_policy": "warn_and_continue",
+      "profile_version": "keyboard-profile-v1:2a863a4176572043",
+      "guard_elapsed_ms": 0.912
+    },
+    "context_resolution": {
+      "original_question": "สามารถถามอะไรดไ้บ้าง",
+      "resolved_question": "สามารถถามอะไรดไ้บ้าง",
+      "used_context": false,
+      "context_game": null,
+      "context_domain": null,
+      "context_operation": null,
+      "context_topic": null,
+      "reason": "not_followup"
+    },
+    "query_debug": {
+      "original_question": "สามารถถามอะไรดไ้บ้าง",
+      "resolved_question": "สามารถถามอะไรดไ้บ้าง",
+      "normalized_query": "สามารถถามอะไรได้บ้าง",
+      "query_variants": [
+        "สามารถถามอะไรได้บ้าง",
+        "สามารถถามอะไรดไ้บ้าง"
+      ],
+      "active_query": "สามารถถามอะไรดไ้บ้าง",
+      "active_query_changed": false,
+      "trace": [
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "สามารถถามอะไรได้บ้าง",
+          "metadata": {
+            "language_hint": "th",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "สามารถถามอะไรได้บ้าง",
+              "สามารถถามอะไรดไ้บ้าง"
+            ],
+            "competition_name_recovery": [],
+            "elapsed_ms": 34.64,
+            "elapsed_sec": 0.0346
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "kept_original_query",
+          "confidence": 0.97,
+          "detail": "สามารถถามอะไรได้บ้าง",
+          "metadata": {
+            "candidates": [
+              {
+                "query": "สามารถถามอะไรดไ้บ้าง",
+                "category": "knowledge",
+                "intent": "chatbot_identity",
+                "confidence": 0.97
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "decision_artifact": {
+      "intent": {
+        "domain": "knowledge",
+        "operation": "detail",
+        "target": "chatbot_identity",
+        "confidence": 0.97,
+        "method": "heuristic"
+      },
+      "route": {
+        "category": "knowledge",
+        "intent": "chatbot_identity",
+        "confidence": 0.97,
+        "answer_type": "summary",
+        "risk": "low",
+        "reason": "chatbot identity/capability terms found"
+      },
+      "tool_router": null,
+      "selected_candidate": null,
+      "candidates": [],
+      "rejected": [],
+      "policy": {},
+      "execution_plan": [
+        "normalize_and_extract_entities",
+        "route_and_resolve_universal_intent",
+        "generate_capability_candidates",
+        "apply_policy_and_rank",
+        "apply_tool_preconditions",
+        "execute_fast_path",
+        "format_validate_and_record"
+      ],
+      "final": {
+        "mode": "pipeline:chatbot_identity_fast_path",
+        "confidence": 0.98,
+        "execution_step": "execute_fast_path",
+        "executed_capability": "fast.domain_handlers",
+        "selected_matches_execution": false,
+        "validation_ok": true,
+        "validation_errors": [],
+        "validation_warnings": [
+          "service_fee_answer_missing_service_fee_source"
+        ],
+        "evidence_count": 1,
+        "source_ids": [
+          "home"
+        ]
+      },
+      "production_metrics": {
+        "policy_version": "correctness_control_flow_v2",
+        "outcome": "answered",
+        "quality_gate_status": "pass",
+        "candidate_margin": null,
+        "selection_status": "",
+        "ambiguity_decision": "",
+        "repair_attempted": false,
+        "repair_recovered": false,
+        "llm_call_count": 0,
+        "requires_shadow_review": true,
+        "shadow_review_reasons": [
+          "selected_execution_mismatch",
+          "validation_warning"
+        ]
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": null,
+        "duration": null,
+        "price_intent": false
+      },
+      "structured_tool": null,
+      "tool_preconditions": [],
+      "candidate_execution": [],
+      "validation": null,
+      "llm_calls": []
+    },
+    "entities": {
+      "day": null,
+      "time_slots": [],
+      "service": null,
+      "user_group": null,
+      "duration": null,
+      "price_intent": false,
+      "short_answer": false,
+      "comparison_intent": false,
+      "raw": {
+        "normalized_query": "สามารถถามอะไรได้บ้าง",
+        "language_hint": "th"
+      }
+    },
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "service_fee_answer_missing_service_fee_source"
+      ]
+    },
+    "trace": [
+      {
+        "stage": "timing",
+        "decision": "locale_resolution",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.03,
+          "elapsed_sec": 0.0,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 18.35,
+          "global_elapsed_sec": 0.0001,
+          "global_remaining_sec": 18.3499,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 17.3499,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "intent_cue_preflight",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 36.91,
+          "elapsed_sec": 0.0369,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 18.35,
+          "global_elapsed_sec": 0.037,
+          "global_remaining_sec": 18.313,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 17.313,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "canonical_preflight",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 18.35,
+          "global_elapsed_sec": 0.037,
+          "global_remaining_sec": 18.313,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 17.313,
+          "timing_status": "running"
+        }
+      },
+      {
+        "stage": "locale_resolution",
+        "decision": "th",
+        "confidence": 1.0,
+        "detail": "toggle_override_th;thai_script",
+        "metadata": {
+          "requested": "th",
+          "detected": "th",
+          "effective": "th",
+          "confidence": 1.0,
+          "reason": "toggle_override_th;thai_script"
+        }
+      },
+      {
+        "stage": "intent_cue_preflight",
+        "decision": "unchanged",
+        "confidence": 1.0,
+        "detail": "bounded task cues; offsets refer to each intermediate input",
+        "metadata": {
+          "raw": "สามารถถามอะไรดไ้บ้าง",
+          "candidate": "สามารถถามอะไรดไ้บ้าง",
+          "recoveries": [],
+          "span_budget": 3,
+          "edit_budget": 4
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "confidence": 1.0,
+        "detail": "parts=1",
+        "metadata": {
+          "elapsed_ms": 11.59,
+          "elapsed_sec": 0.0116,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 18.35,
+          "global_elapsed_sec": 0.0486,
+          "global_remaining_sec": 18.3014,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 17.3014,
+          "timing_status": "running",
+          "entry_to_split_ms": 36.99,
+          "parts": [
+            "สามารถถามอะไรดไ้บ้าง"
+          ],
+          "competition_rule_query": false
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "confidence": 0.0,
+        "detail": "single question",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "confidence": 0.0,
+        "detail": "single clear operation does not need planner",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": true
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "สามารถถามอะไรได้บ้าง",
+        "metadata": {
+          "language_hint": "th",
+          "nonsemantic_preface_removed": false,
+          "query_variants": [
+            "สามารถถามอะไรได้บ้าง",
+            "สามารถถามอะไรดไ้บ้าง"
+          ],
+          "competition_name_recovery": [],
+          "elapsed_ms": 34.64,
+          "elapsed_sec": 0.0346
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 34.78,
+          "elapsed_sec": 0.0348
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "confidence": 1.0,
+        "detail": "knowledge/chatbot_identity",
+        "metadata": {
+          "elapsed_ms": 17.54,
+          "elapsed_sec": 0.0175,
+          "route_category": "knowledge",
+          "route_intent": "chatbot_identity",
+          "variant_count": 1
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "kept_original_query",
+        "confidence": 0.97,
+        "detail": "สามารถถามอะไรได้บ้าง",
+        "metadata": {
+          "candidates": [
+            {
+              "query": "สามารถถามอะไรดไ้บ้าง",
+              "category": "knowledge",
+              "intent": "chatbot_identity",
+              "confidence": 0.97
+            }
+          ]
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "not_locked",
+        "confidence": 0.97,
+        "detail": "game_resolution_unknown",
+        "metadata": {
+          "locked": false,
+          "route_category": "knowledge",
+          "route_intent": "chatbot_identity",
+          "reason": "game_resolution_unknown",
+          "resolution": {
+            "status": "unknown",
+            "entity_type": "game",
+            "top_candidate": null,
+            "candidates": [],
+            "top_score": 0.0,
+            "margin": 0.0,
+            "reason": "shortlist_below_threshold",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "trigram_fuzzy",
+            "candidate_count": 13,
+            "comparison_count": 60,
+            "elapsed_ms": 3.912,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "semantic_route_refiner",
+        "confidence": 1.0,
+        "detail": "no_route_candidate",
+        "metadata": {
+          "elapsed_ms": 423.57,
+          "elapsed_sec": 0.4236,
+          "route_category": "knowledge",
+          "route_intent": "chatbot_identity",
+          "route_locked": false
+        }
+      },
+      {
+        "stage": "semantic_route_refiner",
+        "decision": "no_route_candidate",
+        "confidence": 0.97,
+        "detail": "hits=0 model=psu-bge-m3:q8_0 top=0.4821 margin=0.0019 require_current=False discover_route=True blocked=category_mismatch:230,general_margin_too_small:1",
+        "metadata": {
+          "retrieval": {
+            "model": "psu-bge-m3:q8_0",
+            "dimensions": 1024,
+            "doc_count": 289,
+            "minimum_score": 0.48,
+            "top_score": 0.482131,
+            "second_score": 0.480207,
+            "margin": 0.001924,
+            "require_current": false,
+            "discover_route": true,
+            "required_entity_ids": [],
+            "required_facets": [],
+            "locale": null,
+            "blocked": {
+              "category_mismatch": 230,
+              "general_margin_too_small": 1
+            },
+            "embedding": {
+              "model": "psu-bge-m3:q8_0",
+              "dimensions": 1024,
+              "elapsed_sec": 0.1471,
+              "total_duration_ms": 144.23,
+              "load_duration_ms": 9.61,
+              "prompt_eval_count": 7
+            },
+            "elapsed_sec": 0.297,
+            "budget_cutoff": false
+          }
+        }
+      },
+      {
+        "stage": "freshness_guard",
+        "decision": "not_required",
+        "confidence": 0.9,
+        "detail": "query does not require live dynamic evidence",
+        "metadata": {
+          "requires_live_evidence": false
+        }
+      },
+      {
+        "stage": "boundary_guard",
+        "decision": "allow",
+        "confidence": 0.9,
+        "detail": "no high-confidence boundary matched",
+        "metadata": {
+          "flags": []
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "guard_scope",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "guard",
+        "decision": "domain_ok",
+        "confidence": 0.9,
+        "detail": "domain hints found",
+        "metadata": {}
+      },
+      {
+        "stage": "router",
+        "decision": "knowledge",
+        "confidence": 0.97,
+        "detail": "chatbot identity/capability terms found",
+        "metadata": {
+          "intent": "chatbot_identity",
+          "answer_type": "summary"
+        }
+      },
+      {
+        "stage": "model_gateway",
+        "decision": "skip_preflight_llm",
+        "confidence": 0.97,
+        "detail": "model-first RAG reserves budget for evidence and grounded composition",
+        "metadata": {
+          "allow_llm": true,
+          "preflight_allow_llm": false,
+          "route_category": "knowledge",
+          "route_intent": "chatbot_identity"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "universal_intent",
+        "confidence": 1.0,
+        "detail": "knowledge/detail",
+        "metadata": {
+          "elapsed_ms": 2.33,
+          "elapsed_sec": 0.0023,
+          "method": "heuristic",
+          "confidence": 0.97
+        }
+      },
+      {
+        "stage": "universal_intent",
+        "decision": "knowledge/detail",
+        "confidence": 0.97,
+        "detail": "chatbot identity route is locked to assistant role",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [
+            "low_candidate_margin"
+          ],
+          "input_recovery": {
+            "score": 0.238,
+            "language": "th",
+            "language_quality": 0.762,
+            "should_review_intent": false,
+            "reason": "Thai character n-gram quality=0.762",
+            "action": "continue"
+          },
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "knowledge",
+              "operation": "detail",
+              "target": "",
+              "confidence": 0.97,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "knowledge",
+              "operation": "list",
+              "target": "",
+              "confidence": 0.97,
+              "reason": "router category candidate"
+            }
+          ],
+          "target": "chatbot_identity",
+          "filters": {},
+          "needs": [
+            "describe_capabilities",
+            "state_scope"
+          ],
+          "answer_style": "summary_bullets",
+          "heuristic": {
+            "domain": "knowledge",
+            "operation": "detail",
+            "confidence": 0.97,
+            "reason": "chatbot identity route is locked to assistant role"
+          }
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_static_domain",
+        "confidence": 0.98,
+        "detail": "chatbot_identity_fast_path",
+        "metadata": {}
+      },
+      {
+        "stage": "chatbot_role",
+        "decision": "deterministic_fast_path",
+        "confidence": 0.98,
+        "detail": "chatbot_identity",
+        "metadata": {
+          "mode": "chatbot_identity_fast_path",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation_final",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 1.81,
+          "elapsed_sec": 0.0018,
+          "added_error_count": 0,
+          "added_warning_count": 1,
+          "added_errors": [],
+          "added_warnings": [
+            "service_fee_answer_missing_service_fee_source"
+          ],
+          "merged_error_count": 0,
+          "merged_warning_count": 1
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:chatbot_identity_fast_path",
+        "metadata": {
+          "elapsed_ms": 3.6,
+          "elapsed_sec": 0.0036,
+          "format_response_style_ms": 1.62,
+          "answer_language": "th",
+          "total_elapsed_ms": 573.16,
+          "total_elapsed_sec": 0.5732
+        }
+      }
+    ],
+    "log_sinks": {
+      "status": "queued"
+    }
+  },
+  "reviewed_smoke_passed": 10,
+  "reviewer": "assistant source/clean-control review, not human or owner approval"
+}

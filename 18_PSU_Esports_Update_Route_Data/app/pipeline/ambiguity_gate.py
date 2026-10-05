@@ -77,7 +77,7 @@ _PRICE_TERMS = (
 _BOOKING_TERMS = ("จอง", "booking", "book", "เข้าใช้", "ใช้บริการ", "เข้าเล่น", "จะเล่นต้องทำไง", "เล่นต้องทำไง")
 _CANCEL_TERMS = ("ยกเลิก", "คืนเงิน", "cancel")
 _GAME_LIST_TERMS = ("มีเกม", "เกมอะไร", "รายชื่อเกม", "รายการเกม", "เกมทั้งหมด", "กี่เกม")
-_GAME_DETAIL_TERMS = ("รายละเอียดเกม", "ข้อมูลเกม", "อยู่โซนไหน", "อยู่เครื่องไหน", "เครื่องไหน", "โซนไหน", "เล่นที่ไหน", "เล่นได้ที่ไหน")
+_GAME_DETAIL_TERMS = ("รายละเอียดเกม", "ข้อมูลเกม", "คือเกมอะไร", "อยู่โซนไหน", "อยู่เครื่องไหน", "เครื่องไหน", "โซนไหน", "เล่นที่ไหน", "เล่นได้ที่ไหน")
 _CONTROL_TERMS = ("ปุ่ม", "กดอะไร", "controls", "control", "จอย", "คอนโทรล", "บังคับ")
 _EQUIPMENT_TERMS = ("อุปกรณ์", "เครื่อง", "สเปค", "spec", "หน้าจอ", "มอนิเตอร์", "monitor", "เมาส์", "คีย์บอร์ด", "หูฟัง", "เก้าอี้")
 _SCHEDULE_TERMS = ("เปิด", "ปิด", "กี่โมง", "เวลา", "วันไหน", "วันนี้", "พรุ่งนี้", "จันทร์", "อังคาร", "พุธ", "พฤหัส", "ศุกร์", "เสาร์", "อาทิตย์")
@@ -398,7 +398,7 @@ def _score_intent_candidates(
 
     if looks_like_game_zone_ranking_query(query):
         _add_candidate(scores, "games", "list", 0.80, "game_zone_ranking_terms")
-    elif _has(query, *_GAME_LIST_TERMS):
+    elif _has(query, *_GAME_LIST_TERMS) and not (has_known_game and _has(query, "คือเกมอะไร")):
         _add_candidate(scores, "games", "list", 0.45, "game_list_terms")
     if _has(query, *_GAME_DETAIL_TERMS):
         _add_candidate(scores, "games", "detail", 0.35, "game_detail_terms")

@@ -1,0 +1,4614 @@
+{
+  "price-01": {
+    "case": {
+      "id": "price-01",
+      "group": "price",
+      "question": "จอสอบถามหน่อยครับ กำลังวางแผนจะไปใช้บริการ พอดีอยากรู้ว่า PC กับ VR อันไหนพงกว่า",
+      "locale": "th",
+      "required": [
+        [
+          "PC"
+        ],
+        [
+          "VR"
+        ],
+        [
+          "25"
+        ],
+        [
+          "70"
+        ],
+        [
+          "190"
+        ],
+        [
+          "525"
+        ],
+        [
+          "380"
+        ],
+        [
+          "1050",
+          "1,050"
+        ]
+      ],
+      "source": [
+        "service_fee"
+      ],
+      "forbidden": []
+    },
+    "response": {
+      "answer": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับหมวด equipment ตอนนี้ครับ",
+      "hits": [
+        {
+          "id": "Reservation",
+          "metadata": {
+            "source_url": "https://esports.computing.psu.ac.th/reservation",
+            "category": "reservation",
+            "title": "Reservation",
+            "source_ids": [
+              "Reservation"
+            ]
+          }
+        }
+      ],
+      "elapsed": 9.6007,
+      "mode": "pipeline:no_answer",
+      "confidence": 0.56,
+      "route": {
+        "category": "equipment",
+        "intent": "compare",
+        "confidence": 0.94,
+        "answer_type": "fact",
+        "risk": "low",
+        "reason": "zone/equipment terms found; universal_intent=equipment/compare"
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": "vr",
+        "user_group": null,
+        "duration": null,
+        "price_intent": false,
+        "short_answer": false,
+        "comparison_intent": true,
+        "raw": {
+          "normalized_query": "จอสอบถามหน่อยครับ กำลังวางแผนจะไปใช้บริการ พอดีอยากรู้ว่า pc กับ vr อันไหนแพงกว่า",
+          "language_hint": "mixed_th_en"
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "hybrid_guard_no_verified_context",
+          "high_confidence_route_returned_no_answer"
+        ]
+      },
+      "trace": [
+        {
+          "stage": "timing",
+          "decision": "locale_resolution",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.03,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0007,
+            "global_remaining_sec": 19.9993,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9993,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "intent_cue_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 663.42,
+            "elapsed_sec": 0.6634,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.6642,
+            "global_remaining_sec": 19.3358,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.3358,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "canonical_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.6642,
+            "global_remaining_sec": 19.3358,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.3358,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "locale_resolution",
+          "decision": "th",
+          "confidence": 1.0,
+          "detail": "toggle_override_th;thai_script",
+          "metadata": {
+            "requested": "th",
+            "detected": "th",
+            "effective": "th",
+            "confidence": 1.0,
+            "reason": "toggle_override_th;thai_script"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "recovered",
+          "confidence": 0.85,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "จอสอบถามหน่อยครับ กำลังวางแผนจะไปใช้บริการ พอดีอยากรู้ว่า PC กับ VR อันไหนพงกว่า",
+            "candidate": "จอสอบถามหน่อยครับ กำลังวางแผนจะไปใช้บริการ พอดีอยากรู้ว่า PC กับ VR อันไหนแพงกว่า",
+            "recoveries": [
+              {
+                "raw": "จอสอบถามหน่อยครับ กำลังวางแผนจะไปใช้บริการ พอดีอยากรู้ว่า PC กับ VR อันไหนพงกว่า",
+                "recovered": "จอสอบถามหน่อยครับ กำลังวางแผนจะไปใช้บริการ พอดีอยากรู้ว่า PC กับ VR อันไหนแพงกว่า",
+                "observed": "อันไหนพงกว่า",
+                "intended": "อันไหนแพงกว่า",
+                "start": 68,
+                "distance": 1,
+                "reason": "supported Thai operator aligned to independent topic"
+              }
+            ],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "parts=1",
+          "metadata": {
+            "elapsed_ms": 22.36,
+            "elapsed_sec": 0.0224,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.6865,
+            "global_remaining_sec": 19.3135,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.3135,
+            "timing_status": "running",
+            "entry_to_split_ms": 663.49,
+            "parts": [
+              "จอสอบถามหน่อยครับ กำลังวางแผนจะไปใช้บริการ พอดีอยากรู้ว่า PC กับ VR อันไหนพงกว่า"
+            ],
+            "competition_rule_query": false
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "experimental_allow_llm is false; single clear operation does not need planner",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": false
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "จอสอบถามหน่อยครับ กำลังวางแผนจะไปใช้บริการ พอดีอยากรู้ว่า pc กับ vr อันไหนแพงกว่า",
+          "metadata": {
+            "language_hint": "mixed_th_en",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "จอสอบถามหน่อยครับ กำลังวางแผนจะไปใช้บริการ พอดีอยากรู้ว่า PC กับ VR อันไหนแพงกว่า",
+              "จอสอบถามหน่อยครับ กำลังวางแผนจะไปใช้บริการ พอดีอยากรู้ว่า PC กับ VR อันไหนพงกว่า"
+            ],
+            "competition_name_recovery": [],
+            "elapsed_ms": 802.26,
+            "elapsed_sec": 0.8023
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 802.3,
+            "elapsed_sec": 0.8023
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "equipment/zone_equipment_lookup",
+          "metadata": {
+            "elapsed_ms": 62.45,
+            "elapsed_sec": 0.0624,
+            "route_category": "equipment",
+            "route_intent": "zone_equipment_lookup",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": "vr",
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          }
+        },
+        {
+          "stage": "target_lock",
+          "decision": "not_locked",
+          "confidence": 0.94,
+          "detail": "game_resolution_unknown",
+          "metadata": {
+            "locked": false,
+            "route_category": "equipment",
+            "route_intent": "zone_equipment_lookup",
+            "reason": "game_resolution_unknown",
+            "resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "detail",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 10,
+              "comparison_count": 64,
+              "elapsed_ms": 2.55,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            }
+          }
+        },
+        {
+          "stage": "closed_query_improvement",
+          "decision": "rejected",
+          "confidence": 0.98,
+          "detail": "structured_service_fee_comparison",
+          "metadata": {
+            "services": [
+              "vr",
+              "pc"
+            ],
+            "source_rates_only": true,
+            "no_assumed_group_or_duration": true,
+            "validation_errors": [
+              "answer_contract_type_mismatch:expected=equipment,list;actual=booking,calculation,how_to,price",
+              "answer_contract_source_domain_mismatch:expected=equipment;actual=local_fact_update,official_image,service_fee"
+            ]
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "semantic_route_refiner",
+          "confidence": 1.0,
+          "detail": "skipped",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "route_category": "equipment",
+            "route_intent": "zone_equipment_lookup",
+            "route_locked": false
+          }
+        },
+        {
+          "stage": "semantic_route_refiner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "semantic retrieval disabled",
+          "metadata": {}
+        },
+        {
+          "stage": "freshness_guard",
+          "decision": "not_required",
+          "confidence": 0.9,
+          "detail": "query does not require live dynamic evidence",
+          "metadata": {
+            "requires_live_evidence": false
+          }
+        },
+        {
+          "stage": "boundary_guard",
+          "decision": "allow",
+          "confidence": 0.9,
+          "detail": "no high-confidence boundary matched",
+          "metadata": {
+            "flags": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "guard_scope",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0
+          }
+        },
+        {
+          "stage": "guard",
+          "decision": "domain_ok",
+          "confidence": 0.9,
+          "detail": "domain hints found",
+          "metadata": {}
+        },
+        {
+          "stage": "router",
+          "decision": "equipment",
+          "confidence": 0.94,
+          "detail": "zone/equipment terms found",
+          "metadata": {
+            "intent": "zone_equipment_lookup",
+            "answer_type": "fact"
+          }
+        },
+        {
+          "stage": "model_gateway",
+          "decision": "skip_preflight_llm",
+          "confidence": 0.94,
+          "detail": "request did not allow LLM",
+          "metadata": {
+            "allow_llm": false,
+            "preflight_allow_llm": false,
+            "route_category": "equipment",
+            "route_intent": "zone_equipment_lookup"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "universal_intent",
+          "confidence": 1.0,
+          "detail": "equipment/compare",
+          "metadata": {
+            "elapsed_ms": 3.07,
+            "elapsed_sec": 0.0031,
+            "method": "heuristic",
+            "confidence": 0.86
+          }
+        },
+        {
+          "stage": "universal_intent",
+          "decision": "equipment/compare",
+          "confidence": 0.86,
+          "detail": "domain_terms=5; compare terms found",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false,
+            "llm_first": false,
+            "llm_first_skip_reason": "",
+            "llm_first_review_reason": "",
+            "llm_call": {},
+            "intent_risk_flags": [],
+            "input_recovery": {
+              "score": 0.3297,
+              "language": "mixed",
+              "language_quality": 0.6703,
+              "should_review_intent": false,
+              "reason": "Thai character n-gram quality=0.670",
+              "action": "continue"
+            },
+            "llm_rejected_reason": "",
+            "intent_candidates": [
+              {
+                "id": "c1",
+                "domain": "equipment",
+                "operation": "compare",
+                "target": "",
+                "confidence": 0.86,
+                "reason": "heuristic fallback"
+              }
+            ],
+            "target": "",
+            "filters": {},
+            "needs": [
+              "compare_items"
+            ],
+            "answer_style": "summary_bullets",
+            "heuristic": {
+              "domain": "equipment",
+              "operation": "compare",
+              "confidence": 0.86,
+              "reason": "domain_terms=5; compare terms found"
+            }
+          }
+        },
+        {
+          "stage": "universal_route_refine",
+          "decision": "equipment/zone_equipment_lookup -> equipment/compare",
+          "confidence": 0.86,
+          "detail": "route refined by universal intent",
+          "metadata": {
+            "domain": "equipment",
+            "operation": "compare",
+            "method": "heuristic"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_router",
+          "confidence": 1.0,
+          "detail": "structured/equipment",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0,
+            "method": "heuristic",
+            "confidence": 0.86
+          }
+        },
+        {
+          "stage": "tool_router",
+          "decision": "heuristic:structured",
+          "confidence": 0.86,
+          "detail": "experimental_allow_llm is false",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "ambiguity_gate",
+          "confidence": 1.0,
+          "detail": "allow",
+          "metadata": {
+            "elapsed_ms": 21.61,
+            "elapsed_sec": 0.0216,
+            "flags": [],
+            "confidence": 0.94
+          }
+        },
+        {
+          "stage": "ambiguity_gate",
+          "decision": "allow",
+          "confidence": 0.94,
+          "detail": "ambiguity risk acceptable",
+          "metadata": {
+            "flags": [],
+            "route": "equipment/compare",
+            "intent": "equipment/compare",
+            "has_known_game": false,
+            "has_service_or_zone": true,
+            "game_entity_resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "price",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 10,
+              "comparison_count": 64,
+              "elapsed_ms": 2.929,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            },
+            "intent_candidates": [
+              {
+                "domain": "reservation",
+                "operation": "booking_policy",
+                "score": 0.65,
+                "reasons": [
+                  "booking_terms",
+                  "booking_target"
+                ]
+              },
+              {
+                "domain": "service_fee",
+                "operation": "price_calculate",
+                "score": 0.63,
+                "reasons": [
+                  "price_terms",
+                  "service_or_zone_target"
+                ]
+              },
+              {
+                "domain": "equipment",
+                "operation": "list",
+                "score": 0.46,
+                "reasons": [
+                  "service_or_zone_target",
+                  "route_prior",
+                  "intent_domain_prior"
+                ]
+              },
+              {
+                "domain": "games",
+                "operation": "list",
+                "score": 0.15,
+                "reasons": [
+                  "service_or_zone_target"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "question_frame",
+          "confidence": 0.92,
+          "detail": "equipment/equipment_lookup",
+          "metadata": {
+            "elapsed_ms": 88.42,
+            "elapsed_sec": 0.0884,
+            "operation": "equipment_lookup",
+            "domain": "equipment",
+            "expected_answer_types": [
+              "equipment",
+              "list"
+            ],
+            "targets": [
+              {
+                "target_id": "availability_pc_01_02",
+                "target_type": "service",
+                "domain": "service_fee",
+                "label": "PC #01-#02",
+                "score": 0.9
+              }
+            ],
+            "target_status": "ambiguous",
+            "target_margin": 0.0,
+            "target_required": false,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.92,
+            "method": "operation_first",
+            "route_category": "equipment",
+            "route_intent": "compare",
+            "intent_operation": "compare",
+            "target_reason": "top_targets_low_margin",
+            "target_candidate_count": 4,
+            "game_family": ""
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "candidate_decisions",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 96.49,
+            "elapsed_sec": 0.0965
+          }
+        },
+        {
+          "stage": "decision_candidates",
+          "decision": "fast.price_calculator",
+          "confidence": 0.6055555555555556,
+          "detail": "base=0.93; precondition=price_calculator_applicable",
+          "metadata": {
+            "selected": {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.606,
+              "status": "accepted",
+              "reason": "base=0.93; precondition=price_calculator_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            "selection": {
+              "status": "selected",
+              "execution_allowed": true,
+              "margin": 0.102,
+              "same_action_as_second": false,
+              "second": {
+                "capability_id": "structured.service_fee",
+                "action": "structured",
+                "domain": "service_fee",
+                "score": 0.503,
+                "status": "accepted",
+                "reason": "base=0.86; answer_type_match; tool_router_action=structured; question_frame_domain_mismatch; precondition=service_fee_or_price_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              }
+            },
+            "question_frame": {
+              "operation": "equipment_lookup",
+              "domain": "equipment",
+              "expected_answer_types": [
+                "equipment",
+                "list"
+              ],
+              "targets": [
+                {
+                  "target_id": "availability_pc_01_02",
+                  "target_type": "service",
+                  "domain": "service_fee",
+                  "label": "PC #01-#02",
+                  "score": 0.9
+                }
+              ],
+              "target_status": "ambiguous",
+              "target_margin": 0.0,
+              "target_required": false,
+              "allows_multiple_targets": false,
+              "needs_clarification": false,
+              "confidence": 0.92,
+              "method": "operation_first",
+              "route_category": "equipment",
+              "route_intent": "compare",
+              "intent_operation": "compare",
+              "target_reason": "top_targets_low_margin",
+              "target_candidate_count": 4,
+              "game_family": ""
+            },
+            "candidates": [
+              {
+                "capability_id": "fast.price_calculator",
+                "action": "fast_path",
+                "domain": "service_fee",
+                "score": 0.606,
+                "status": "accepted",
+                "reason": "base=0.93; precondition=price_calculator_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.service_fee",
+                "action": "structured",
+                "domain": "service_fee",
+                "score": 0.503,
+                "status": "accepted",
+                "reason": "base=0.86; answer_type_match; tool_router_action=structured; question_frame_domain_mismatch; precondition=service_fee_or_price_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "fast.domain_handlers",
+                "action": "fast_path",
+                "domain": "multi",
+                "score": 0.489,
+                "status": "accepted",
+                "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "rulebase.category_rules",
+                "action": "rulebase",
+                "domain": "multi",
+                "score": 0.467,
+                "status": "accepted",
+                "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.hybrid_guarded",
+                "action": "retrieval",
+                "domain": "multi",
+                "score": 0.456,
+                "status": "accepted",
+                "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.vector_guarded",
+                "action": "vector",
+                "domain": "multi",
+                "score": 0.444,
+                "status": "accepted",
+                "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "llm.facts_composer",
+                "action": "rag_llm",
+                "domain": "multi",
+                "score": 0.4,
+                "status": "accepted",
+                "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "clarification.ask_user",
+                "action": "clarification",
+                "domain": "clarification",
+                "score": 0.322,
+                "status": "accepted",
+                "reason": "base=0.58; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              }
+            ],
+            "rejected": [
+              {
+                "capability_id": "structured.members",
+                "action": "structured",
+                "domain": "members",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_member_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.games",
+                "action": "structured",
+                "domain": "games",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: price_query_must_not_use_game_tool",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.game_controls",
+                "action": "structured",
+                "domain": "game_controls",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_game_control_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.equipment",
+                "action": "structured",
+                "domain": "equipment",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: price_query_must_not_use_equipment_tool",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.reservation",
+                "action": "structured",
+                "domain": "reservation",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: price_query_should_use_calculator_or_service_fee",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.schedule",
+                "action": "structured",
+                "domain": "schedule",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: price_query_must_not_use_schedule_tool",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.competition_fact_cards",
+                "action": "retrieval",
+                "domain": "competition_rules",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_competition_rule_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "llm.general_answer",
+                "action": "general_llm",
+                "domain": "general",
+                "score": 0.139,
+                "status": "rejected",
+                "reason": "policy_veto: PSU-specific or medium/high-risk route cannot use general LLM",
+                "requires_evidence": false,
+                "risk": "low"
+              }
+            ],
+            "policy": {
+              "psu_specific": true,
+              "route_risk": "low",
+              "general_llm_requires_non_psu": true
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_precondition",
+          "confidence": 1.0,
+          "detail": "structured.equipment",
+          "metadata": {
+            "elapsed_ms": 0.3,
+            "elapsed_sec": 0.0003,
+            "ok": false
+          }
+        },
+        {
+          "stage": "tool_precondition",
+          "decision": "reject_structured",
+          "confidence": 0.2,
+          "detail": "candidate_selector_preferred_non_structured_action",
+          "metadata": {
+            "capability_id": "structured.equipment",
+            "ok": false,
+            "reason": "price_query_must_not_use_equipment_tool",
+            "severity": "policy",
+            "selector_allows_structured": false,
+            "selected_capability_id": "fast.price_calculator"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "structured_tool_execution",
+          "confidence": 1.0,
+          "detail": "no_result",
+          "metadata": {
+            "elapsed_ms": 0.0,
+            "elapsed_sec": 0.0,
+            "precondition_ok": false,
+            "selector_allows_structured": false,
+            "selected_capability_id": "fast.price_calculator",
+            "confidence": 0.0
+          }
+        },
+        {
+          "stage": "deterministic",
+          "decision": "answer_games",
+          "confidence": 0.9,
+          "detail": "games_fast_path",
+          "metadata": {}
+        },
+        {
+          "stage": "timing",
+          "decision": "deterministic",
+          "confidence": 1.0,
+          "detail": "games_fast_path",
+          "metadata": {
+            "elapsed_ms": 709.18,
+            "elapsed_sec": 0.7092,
+            "confidence": 0.9,
+            "selector_allows_deterministic": true,
+            "selected_capability_id": "fast.price_calculator"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "format_answer",
+          "confidence": 1.0,
+          "detail": "games_fast_path",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "validation",
+          "confidence": 0.3,
+          "detail": "failed",
+          "metadata": {
+            "elapsed_ms": 102.77,
+            "elapsed_sec": 0.1028,
+            "error_count": 4,
+            "warning_count": 2
+          }
+        },
+        {
+          "stage": "validation",
+          "decision": "failed",
+          "confidence": 0.3,
+          "detail": "price_question_answered_as_game_catalog; pc_price_answer_missing_pc_local_update_source; answer_contract_type_mismatch:expected=equipment,list;actual=fact,summary; answer_contract_source_domain_mismatch:expected=equipment;actual=games,reservation; price_question_may_have_wrong_route; service_fee_answer_missing_service_fee_source",
+          "metadata": {}
+        },
+        {
+          "stage": "timing",
+          "decision": "hybrid_retrieval",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 6632.26,
+            "elapsed_sec": 6.6323,
+            "hit_count": 4
+          }
+        },
+        {
+          "stage": "hybrid_retrieval",
+          "decision": "guarded_candidate_rerank",
+          "confidence": 0.6333333333333333,
+          "detail": "hits=4 curated=6 vector=0 semantic=0 top=rule_equipment_pc_zone::th::answer score=3.2 origins=curated",
+          "metadata": {
+            "category": "equipment",
+            "intent": "compare",
+            "question_frame_constraints": {
+              "entity_ids": [
+                "availability_pc_01_02"
+              ],
+              "facets": [
+                "overview",
+                "equipment"
+              ],
+              "strict_target": false
+            },
+            "locale": "th",
+            "retrieval_budget": {
+              "candidate_limit": 8,
+              "final_limit": 4,
+              "broad_or_complex": false,
+              "rerank_requested": true,
+              "reason": "clear_retrieval_budget"
+            },
+            "source_quality": {
+              "source_ids": [
+                "rule_equipment_pc_zone::th::answer",
+                "curated_home_equipment_pc_zone",
+                "curated_home_equipment_vr_zone",
+                "curated_home_equipment_cockpit_zone"
+              ],
+              "authority_rank": 2,
+              "conflict": false,
+              "stale": false,
+              "warnings": []
+            },
+            "curated_trace": "hits=6",
+            "vector_trace": "hits=0 backend=local_hash_char_ngram_v1 blocked=below_threshold:6, category_mismatch:700, game_controls_requires_control_terms:567",
+            "semantic_trace": {
+              "stage": "semantic_retrieval",
+              "decision": "skipped",
+              "confidence": 0.0,
+              "detail": "disabled",
+              "metadata": {}
+            },
+            "timings_ms": {
+              "hybrid_curated_retrieval": 48.55,
+              "hybrid_vector_retrieval": 6583.23,
+              "hybrid_semantic_retrieval": 0.02,
+              "hybrid_merge_and_score": 0.13,
+              "hybrid_document_reranker": 0.01
+            },
+            "rerank_trace": {
+              "stage": "document_reranker",
+              "decision": "skipped",
+              "confidence": 0.0,
+              "detail": "disabled",
+              "metadata": {}
+            },
+            "canonical_competition_shadow": null
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "hybrid_curated_retrieval",
+          "confidence": 0.7,
+          "detail": "hybrid retrieval substage",
+          "metadata": {
+            "elapsed_ms": 48.55
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "hybrid_vector_retrieval",
+          "confidence": 0.7,
+          "detail": "hybrid retrieval substage",
+          "metadata": {
+            "elapsed_ms": 6583.23
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "hybrid_semantic_retrieval",
+          "confidence": 0.7,
+          "detail": "hybrid retrieval substage",
+          "metadata": {
+            "elapsed_ms": 0.02
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "hybrid_merge_and_score",
+          "confidence": 0.7,
+          "detail": "hybrid retrieval substage",
+          "metadata": {
+            "elapsed_ms": 0.13
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "hybrid_document_reranker",
+          "confidence": 0.7,
+          "detail": "hybrid retrieval substage",
+          "metadata": {
+            "elapsed_ms": 0.01
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "hybrid_answer",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0,
+            "raw_hit_count": 0,
+            "confidence": 0.26666666666666666
+          }
+        },
+        {
+          "stage": "fallback",
+          "decision": "hybrid_guard_no_verified_context",
+          "confidence": 0.56,
+          "detail": "high-risk category skips legacy curated direct answer when hybrid guard fails",
+          "metadata": {}
+        },
+        {
+          "stage": "timing",
+          "decision": "validation_final",
+          "confidence": 1.0,
+          "detail": "ok",
+          "metadata": {
+            "elapsed_ms": 6.49,
+            "elapsed_sec": 0.0065,
+            "added_error_count": 0,
+            "added_warning_count": 1,
+            "added_errors": [],
+            "added_warnings": [
+              "high_confidence_route_returned_no_answer"
+            ],
+            "merged_error_count": 0,
+            "merged_warning_count": 2
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:no_answer",
+          "metadata": {
+            "elapsed_ms": 11.62,
+            "elapsed_sec": 0.0116,
+            "format_response_style_ms": 4.98,
+            "answer_language": "th",
+            "total_elapsed_ms": 9600.7,
+            "total_elapsed_sec": 9.6007
+          }
+        }
+      ],
+      "universal_intent": {
+        "domain": "equipment",
+        "operation": "compare",
+        "target": "",
+        "filters": {},
+        "needs": [
+          "compare_items"
+        ],
+        "answer_style": "summary_bullets",
+        "confidence": 0.86,
+        "method": "heuristic",
+        "reason": "domain_terms=5; compare terms found"
+      },
+      "decision_artifact": {
+        "intent": {
+          "domain": "equipment",
+          "operation": "compare",
+          "target": "",
+          "confidence": 0.86,
+          "method": "heuristic"
+        },
+        "route": {
+          "category": "equipment",
+          "intent": "compare",
+          "confidence": 0.94,
+          "answer_type": "fact",
+          "risk": "low",
+          "reason": "zone/equipment terms found; universal_intent=equipment/compare"
+        },
+        "tool_router": {
+          "stage": "tool_router",
+          "decision": "heuristic:structured",
+          "confidence": 0.86,
+          "detail": "experimental_allow_llm is false",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        "selected_candidate": {
+          "capability_id": "fast.price_calculator",
+          "action": "fast_path",
+          "domain": "service_fee",
+          "score": 0.606,
+          "status": "accepted",
+          "reason": "base=0.93; precondition=price_calculator_applicable",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        "candidates": [
+          {
+            "capability_id": "fast.price_calculator",
+            "action": "fast_path",
+            "domain": "service_fee",
+            "score": 0.606,
+            "status": "accepted",
+            "reason": "base=0.93; precondition=price_calculator_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "structured.service_fee",
+            "action": "structured",
+            "domain": "service_fee",
+            "score": 0.503,
+            "status": "accepted",
+            "reason": "base=0.86; answer_type_match; tool_router_action=structured; question_frame_domain_mismatch; precondition=service_fee_or_price_query",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "fast.domain_handlers",
+            "action": "fast_path",
+            "domain": "multi",
+            "score": 0.489,
+            "status": "accepted",
+            "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "rulebase.category_rules",
+            "action": "rulebase",
+            "domain": "multi",
+            "score": 0.467,
+            "status": "accepted",
+            "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "retrieval.hybrid_guarded",
+            "action": "retrieval",
+            "domain": "multi",
+            "score": 0.456,
+            "status": "accepted",
+            "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "retrieval.vector_guarded",
+            "action": "vector",
+            "domain": "multi",
+            "score": 0.444,
+            "status": "accepted",
+            "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "llm.facts_composer",
+            "action": "rag_llm",
+            "domain": "multi",
+            "score": 0.4,
+            "status": "accepted",
+            "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "clarification.ask_user",
+            "action": "clarification",
+            "domain": "clarification",
+            "score": 0.322,
+            "status": "accepted",
+            "reason": "base=0.58; precondition=no_specific_precondition",
+            "requires_evidence": false,
+            "risk": "low"
+          }
+        ],
+        "rejected": [
+          {
+            "capability_id": "structured.members",
+            "action": "structured",
+            "domain": "members",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_member_query",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.games",
+            "action": "structured",
+            "domain": "games",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: price_query_must_not_use_game_tool",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.game_controls",
+            "action": "structured",
+            "domain": "game_controls",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_game_control_query",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.equipment",
+            "action": "structured",
+            "domain": "equipment",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: price_query_must_not_use_equipment_tool",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.reservation",
+            "action": "structured",
+            "domain": "reservation",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: price_query_should_use_calculator_or_service_fee",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "structured.schedule",
+            "action": "structured",
+            "domain": "schedule",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: price_query_must_not_use_schedule_tool",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "retrieval.competition_fact_cards",
+            "action": "retrieval",
+            "domain": "competition_rules",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_competition_rule_query",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "llm.general_answer",
+            "action": "general_llm",
+            "domain": "general",
+            "score": 0.139,
+            "status": "rejected",
+            "reason": "policy_veto: PSU-specific or medium/high-risk route cannot use general LLM",
+            "requires_evidence": false,
+            "risk": "low"
+          }
+        ],
+        "policy": {
+          "psu_specific": true,
+          "route_risk": "low",
+          "general_llm_requires_non_psu": true
+        },
+        "execution_plan": [
+          "normalize_and_extract_entities",
+          "route_and_resolve_universal_intent",
+          "generate_capability_candidates",
+          "apply_policy_and_rank",
+          "apply_tool_preconditions",
+          "answer_no_verified_data",
+          "format_validate_and_record"
+        ],
+        "final": {
+          "mode": "pipeline:no_answer",
+          "confidence": 0.56,
+          "execution_step": "answer_no_verified_data",
+          "executed_capability": "fallback.no_answer",
+          "selected_matches_execution": false,
+          "validation_ok": true,
+          "validation_errors": [],
+          "validation_warnings": [
+            "hybrid_guard_no_verified_context",
+            "high_confidence_route_returned_no_answer"
+          ],
+          "evidence_count": 1,
+          "source_ids": [
+            "Reservation"
+          ]
+        },
+        "production_metrics": {
+          "policy_version": "correctness_control_flow_v2",
+          "outcome": "no_answer",
+          "quality_gate_status": "safe_abstain",
+          "candidate_margin": 0.102,
+          "selection_status": "selected",
+          "ambiguity_decision": "allow",
+          "repair_attempted": false,
+          "repair_recovered": false,
+          "llm_call_count": 0,
+          "requires_shadow_review": true,
+          "shadow_review_reasons": [
+            "selected_execution_mismatch",
+            "no_answer",
+            "validation_warning"
+          ]
+        },
+        "entities": {
+          "day": null,
+          "time_slots": [],
+          "service": "vr",
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        },
+        "structured_tool": null,
+        "tool_preconditions": [
+          {
+            "stage": "tool_precondition",
+            "decision": "reject_structured",
+            "confidence": 0.2,
+            "detail": "candidate_selector_preferred_non_structured_action",
+            "metadata": {
+              "capability_id": "structured.equipment",
+              "ok": false,
+              "reason": "price_query_must_not_use_equipment_tool",
+              "severity": "policy",
+              "selector_allows_structured": false,
+              "selected_capability_id": "fast.price_calculator"
+            }
+          }
+        ],
+        "candidate_execution": [],
+        "validation": {
+          "stage": "validation",
+          "decision": "failed",
+          "confidence": 0.3,
+          "detail": "price_question_answered_as_game_catalog; pc_price_answer_missing_pc_local_update_source; answer_contract_type_mismatch:expected=equipment,list;actual=fact,summary; answer_contract_source_domain_mismatch:expected=equipment;actual=games,reservation; price_question_may_have_wrong_route; service_fee_answer_missing_service_fee_source",
+          "metadata": {}
+        },
+        "llm_calls": []
+      },
+      "language": {
+        "requested": "th",
+        "detected": "th",
+        "effective": "th",
+        "confidence": 1.0,
+        "reason": "toggle_override_th;thai_script"
+      }
+    },
+    "exception": null,
+    "passed": false,
+    "failures": [
+      "missing:['PC']",
+      "missing:['VR']",
+      "missing:['25']",
+      "missing:['70']",
+      "missing:['190']",
+      "missing:['525']",
+      "missing:['380']",
+      "missing:['1050', '1,050']",
+      "wrong_source"
+    ]
+  },
+  "payment-01": {
+    "case": {
+      "id": "payment-01",
+      "group": "payment",
+      "question": "รบกวนเช็กข้อมูลของศนย์ให้หน่อยครับ จ่ายเงินยังไงตอนของ อะ",
+      "locale": "th",
+      "required": [
+        [
+          "795-276244-1"
+        ],
+        [
+          "Siam Commercial Bank",
+          "ไทยพาณิชย์"
+        ],
+        [
+          "สลิป",
+          "slip"
+        ]
+      ],
+      "source": [
+        "payment_bank",
+        "rule_payment_bank"
+      ],
+      "forbidden": [
+        "cannot be transferred",
+        "ไม่สามารถโอนสิทธิ์"
+      ]
+    },
+    "response": {
+      "answer": "ยังไม่พบข้อมูลที่ยืนยันคำตอบเรื่องนี้ได้ชัดในหมวด ภาพรวม/ข้อมูลทั่วไป ครับ\nกรุณาระบุคำถามให้เจาะจงขึ้น หรือตรวจสอบกับศูนย์โดยตรงครับ",
+      "hits": [],
+      "elapsed": 6.9567,
+      "mode": "pipeline:experimental_rag_no_context",
+      "confidence": 0.42,
+      "route": {
+        "category": "no_answer",
+        "intent": "experimental_rag_no_context",
+        "confidence": 0.42,
+        "answer_type": "no_answer",
+        "risk": "low",
+        "reason": "no verified PSU evidence for the requested claim"
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": null,
+        "duration": null,
+        "price_intent": false,
+        "short_answer": false,
+        "comparison_intent": false,
+        "raw": {
+          "normalized_query": "รบกวนเช็กข้อมูลของศนย์ให้หน่อยครับ จ่ายเงินยังไงตอนของ อะ",
+          "language_hint": "th"
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "experimental_rag_fallback_no_verified_psu_evidence"
+        ]
+      },
+      "trace": [
+        {
+          "stage": "timing",
+          "decision": "locale_resolution",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0,
+            "global_remaining_sec": 20.0,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 19.0,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "intent_cue_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 27.95,
+            "elapsed_sec": 0.028,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.028,
+            "global_remaining_sec": 19.972,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.972,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "canonical_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.028,
+            "global_remaining_sec": 19.972,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.972,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "locale_resolution",
+          "decision": "th",
+          "confidence": 1.0,
+          "detail": "toggle_override_th;thai_script",
+          "metadata": {
+            "requested": "th",
+            "detected": "th",
+            "effective": "th",
+            "confidence": 1.0,
+            "reason": "toggle_override_th;thai_script"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "รบกวนเช็กข้อมูลของศนย์ให้หน่อยครับ จ่ายเงินยังไงตอนของ อะ",
+            "candidate": "รบกวนเช็กข้อมูลของศนย์ให้หน่อยครับ จ่ายเงินยังไงตอนของ อะ",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "parts=1",
+          "metadata": {
+            "elapsed_ms": 13.43,
+            "elapsed_sec": 0.0134,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0414,
+            "global_remaining_sec": 19.9586,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9586,
+            "timing_status": "running",
+            "entry_to_split_ms": 27.99,
+            "parts": [
+              "รบกวนเช็กข้อมูลของศนย์ให้หน่อยครับ จ่ายเงินยังไงตอนของ อะ"
+            ],
+            "competition_rule_query": false
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "experimental_allow_llm is false; single clear operation does not need planner",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": false
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "รบกวนเช็กข้อมูลของศนย์ให้หน่อยครับ จ่ายเงินยังไงตอนของ อะ",
+          "metadata": {
+            "language_hint": "th",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "รบกวนเช็กข้อมูลของศนย์ให้หน่อยครับ จ่ายเงินยังไงตอนของ อะ"
+            ],
+            "competition_name_recovery": [],
+            "elapsed_ms": 19.66,
+            "elapsed_sec": 0.0197
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 19.69,
+            "elapsed_sec": 0.0197
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "general/unknown_domain_query",
+          "metadata": {
+            "elapsed_ms": 12.51,
+            "elapsed_sec": 0.0125,
+            "route_category": "general",
+            "route_intent": "unknown_domain_query",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          }
+        },
+        {
+          "stage": "target_lock",
+          "decision": "not_locked",
+          "confidence": 0.55,
+          "detail": "game_resolution_unknown",
+          "metadata": {
+            "locked": false,
+            "route_category": "general",
+            "route_intent": "unknown_domain_query",
+            "reason": "game_resolution_unknown",
+            "resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "detail",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 8,
+              "comparison_count": 64,
+              "elapsed_ms": 2.758,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "semantic_route_refiner",
+          "confidence": 1.0,
+          "detail": "skipped",
+          "metadata": {
+            "elapsed_ms": 0.04,
+            "elapsed_sec": 0.0,
+            "route_category": "general",
+            "route_intent": "unknown_domain_query",
+            "route_locked": false
+          }
+        },
+        {
+          "stage": "semantic_route_refiner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "semantic retrieval disabled",
+          "metadata": {}
+        },
+        {
+          "stage": "freshness_guard",
+          "decision": "not_required",
+          "confidence": 0.9,
+          "detail": "query does not require live dynamic evidence",
+          "metadata": {
+            "requires_live_evidence": false
+          }
+        },
+        {
+          "stage": "boundary_guard",
+          "decision": "allow",
+          "confidence": 0.9,
+          "detail": "no high-confidence boundary matched",
+          "metadata": {
+            "flags": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "guard_scope",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0
+          }
+        },
+        {
+          "stage": "guard",
+          "decision": "weak_domain_signal",
+          "confidence": 0.35,
+          "detail": "no clear PSU Esports domain hint",
+          "metadata": {}
+        },
+        {
+          "stage": "router",
+          "decision": "general",
+          "confidence": 0.55,
+          "detail": "domain query but no strong category",
+          "metadata": {
+            "intent": "unknown_domain_query",
+            "answer_type": "fact"
+          }
+        },
+        {
+          "stage": "model_gateway",
+          "decision": "skip_preflight_llm",
+          "confidence": 0.55,
+          "detail": "request did not allow LLM",
+          "metadata": {
+            "allow_llm": false,
+            "preflight_allow_llm": false,
+            "route_category": "general",
+            "route_intent": "unknown_domain_query"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "universal_intent",
+          "confidence": 1.0,
+          "detail": "general/how_to",
+          "metadata": {
+            "elapsed_ms": 2.18,
+            "elapsed_sec": 0.0022,
+            "method": "heuristic",
+            "confidence": 0.74
+          }
+        },
+        {
+          "stage": "universal_intent",
+          "decision": "general/how_to",
+          "confidence": 0.74,
+          "detail": "domain_terms=2; how-to terms found",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false,
+            "llm_first": false,
+            "llm_first_skip_reason": "",
+            "llm_first_review_reason": "",
+            "llm_call": {},
+            "intent_risk_flags": [],
+            "input_recovery": {
+              "score": 0.3045,
+              "language": "th",
+              "language_quality": 0.6955,
+              "should_review_intent": false,
+              "reason": "Thai character n-gram quality=0.696",
+              "action": "continue"
+            },
+            "llm_rejected_reason": "",
+            "intent_candidates": [
+              {
+                "id": "c1",
+                "domain": "general",
+                "operation": "how_to",
+                "target": "",
+                "confidence": 0.74,
+                "reason": "heuristic fallback"
+              }
+            ],
+            "target": "",
+            "filters": {},
+            "needs": [
+              "steps",
+              "controls_if_game"
+            ],
+            "answer_style": "direct_then_details",
+            "heuristic": {
+              "domain": "general",
+              "operation": "how_to",
+              "confidence": 0.74,
+              "reason": "domain_terms=2; how-to terms found"
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_router",
+          "confidence": 1.0,
+          "detail": "general_llm/general",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0,
+            "method": "heuristic",
+            "confidence": 0.74
+          }
+        },
+        {
+          "stage": "tool_router",
+          "decision": "heuristic:general_llm",
+          "confidence": 0.74,
+          "detail": "experimental_allow_llm is false",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "ambiguity_gate",
+          "confidence": 1.0,
+          "detail": "allow",
+          "metadata": {
+            "elapsed_ms": 113.47,
+            "elapsed_sec": 0.1135,
+            "flags": [],
+            "confidence": 0.94
+          }
+        },
+        {
+          "stage": "ambiguity_gate",
+          "decision": "allow",
+          "confidence": 0.94,
+          "detail": "ambiguity risk acceptable",
+          "metadata": {
+            "flags": [],
+            "route": "general/unknown_domain_query",
+            "intent": "general/how_to",
+            "has_known_game": false,
+            "has_service_or_zone": false,
+            "game_entity_resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 8,
+              "comparison_count": 64,
+              "elapsed_ms": 2.619,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            },
+            "intent_candidates": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "question_frame",
+          "confidence": 0.74,
+          "detail": "general/how_to",
+          "metadata": {
+            "elapsed_ms": 66.4,
+            "elapsed_sec": 0.0664,
+            "operation": "how_to",
+            "domain": "general",
+            "expected_answer_types": [
+              "fact",
+              "summary"
+            ],
+            "targets": [],
+            "target_status": "unknown",
+            "target_margin": 0.0,
+            "target_required": false,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.74,
+            "method": "operation_first",
+            "route_category": "general",
+            "route_intent": "unknown_domain_query",
+            "intent_operation": "how_to",
+            "target_reason": "no_target_candidate",
+            "target_candidate_count": 0,
+            "game_family": ""
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "candidate_decisions",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 66.98,
+            "elapsed_sec": 0.067
+          }
+        },
+        {
+          "stage": "decision_candidates",
+          "decision": "retrieval.hybrid_guarded",
+          "confidence": 0.43333333333333335,
+          "detail": "base=0.72; answer_type_match; precondition=no_specific_precondition",
+          "metadata": {
+            "selected": {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.433,
+              "status": "accepted",
+              "reason": "base=0.72; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            "selection": {
+              "status": "abstain_low_score",
+              "execution_allowed": false,
+              "margin": 0.111,
+              "same_action_as_second": false,
+              "second": {
+                "capability_id": "clarification.ask_user",
+                "action": "clarification",
+                "domain": "clarification",
+                "score": 0.322,
+                "status": "accepted",
+                "reason": "base=0.58; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              }
+            },
+            "question_frame": {
+              "operation": "how_to",
+              "domain": "general",
+              "expected_answer_types": [
+                "fact",
+                "summary"
+              ],
+              "targets": [],
+              "target_status": "unknown",
+              "target_margin": 0.0,
+              "target_required": false,
+              "allows_multiple_targets": false,
+              "needs_clarification": false,
+              "confidence": 0.74,
+              "method": "operation_first",
+              "route_category": "general",
+              "route_intent": "unknown_domain_query",
+              "intent_operation": "how_to",
+              "target_reason": "no_target_candidate",
+              "target_candidate_count": 0,
+              "game_family": ""
+            },
+            "candidates": [
+              {
+                "capability_id": "retrieval.hybrid_guarded",
+                "action": "retrieval",
+                "domain": "multi",
+                "score": 0.433,
+                "status": "accepted",
+                "reason": "base=0.72; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "clarification.ask_user",
+                "action": "clarification",
+                "domain": "clarification",
+                "score": 0.322,
+                "status": "accepted",
+                "reason": "base=0.58; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              },
+              {
+                "capability_id": "fallback.no_answer",
+                "action": "no_answer",
+                "domain": "no_answer",
+                "score": 0.278,
+                "status": "accepted",
+                "reason": "base=0.50; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              }
+            ],
+            "rejected": [
+              {
+                "capability_id": "structured.members",
+                "action": "structured",
+                "domain": "members",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.games",
+                "action": "structured",
+                "domain": "games",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.game_controls",
+                "action": "structured",
+                "domain": "game_controls",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.equipment",
+                "action": "structured",
+                "domain": "equipment",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.reservation",
+                "action": "structured",
+                "domain": "reservation",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.schedule",
+                "action": "structured",
+                "domain": "schedule",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.service_fee",
+                "action": "structured",
+                "domain": "service_fee",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "fast.price_calculator",
+                "action": "fast_path",
+                "domain": "service_fee",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "medium"
+              }
+            ],
+            "policy": {
+              "psu_specific": true,
+              "route_risk": "medium",
+              "general_llm_requires_non_psu": true
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_precondition",
+          "confidence": 1.0,
+          "detail": "structured.unknown",
+          "metadata": {
+            "elapsed_ms": 0.15,
+            "elapsed_sec": 0.0001,
+            "ok": false
+          }
+        },
+        {
+          "stage": "tool_precondition",
+          "decision": "reject_structured",
+          "confidence": 0.2,
+          "detail": "candidate_selector_preferred_non_structured_action",
+          "metadata": {
+            "capability_id": "structured.unknown",
+            "ok": false,
+            "reason": "no_structured_capability_for_route",
+            "severity": "policy",
+            "selector_allows_structured": false,
+            "selected_capability_id": "retrieval.hybrid_guarded"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "structured_tool_execution",
+          "confidence": 1.0,
+          "detail": "no_result",
+          "metadata": {
+            "elapsed_ms": 0.0,
+            "elapsed_sec": 0.0,
+            "precondition_ok": false,
+            "selector_allows_structured": false,
+            "selected_capability_id": "retrieval.hybrid_guarded",
+            "confidence": 0.0
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "deterministic",
+          "confidence": 1.0,
+          "detail": "no_match",
+          "metadata": {
+            "elapsed_ms": 0.0,
+            "elapsed_sec": 0.0,
+            "confidence": 0.0,
+            "selector_allows_deterministic": false,
+            "selected_capability_id": "retrieval.hybrid_guarded"
+          }
+        },
+        {
+          "stage": "general_semantic_retrieval",
+          "decision": "skipped_unanchored_general",
+          "confidence": 1.0,
+          "detail": "no PSU semantic anchor; use the guarded Local LLM general-answer path directly",
+          "metadata": {}
+        },
+        {
+          "stage": "timing",
+          "decision": "experimental_fallback",
+          "confidence": 1.0,
+          "detail": "experimental_rag_no_context",
+          "metadata": {
+            "elapsed_ms": 6538.46,
+            "elapsed_sec": 6.5385,
+            "confidence": 0.42
+          }
+        },
+        {
+          "stage": "experimental_rag_fallback",
+          "decision": "no_context",
+          "confidence": 0.42,
+          "detail": "hybrid_guarded:hits=0 curated=8 vector=0 semantic=0 blocked=category_mismatch:8",
+          "metadata": {
+            "allow_llm": false
+          }
+        },
+        {
+          "stage": "validation",
+          "decision": "ok",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {}
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:experimental_rag_no_context",
+          "metadata": {
+            "elapsed_ms": 7.03,
+            "elapsed_sec": 0.007,
+            "format_response_style_ms": 0.1,
+            "answer_language": "th",
+            "total_elapsed_ms": 6956.69,
+            "total_elapsed_sec": 6.9567
+          }
+        }
+      ],
+      "universal_intent": {
+        "domain": "general",
+        "operation": "how_to",
+        "target": "",
+        "filters": {},
+        "needs": [
+          "steps",
+          "controls_if_game"
+        ],
+        "answer_style": "direct_then_details",
+        "confidence": 0.74,
+        "method": "heuristic",
+        "reason": "domain_terms=2; how-to terms found"
+      },
+      "decision_artifact": {
+        "intent": {
+          "domain": "general",
+          "operation": "how_to",
+          "target": "",
+          "confidence": 0.74,
+          "method": "heuristic"
+        },
+        "route": {
+          "category": "no_answer",
+          "intent": "experimental_rag_no_context",
+          "confidence": 0.42,
+          "answer_type": "no_answer",
+          "risk": "low",
+          "reason": "no verified PSU evidence for the requested claim"
+        },
+        "tool_router": {
+          "stage": "tool_router",
+          "decision": "heuristic:general_llm",
+          "confidence": 0.74,
+          "detail": "experimental_allow_llm is false",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        "selected_candidate": {
+          "capability_id": "retrieval.hybrid_guarded",
+          "action": "retrieval",
+          "domain": "multi",
+          "score": 0.433,
+          "status": "accepted",
+          "reason": "base=0.72; answer_type_match; precondition=no_specific_precondition",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        "candidates": [
+          {
+            "capability_id": "retrieval.hybrid_guarded",
+            "action": "retrieval",
+            "domain": "multi",
+            "score": 0.433,
+            "status": "accepted",
+            "reason": "base=0.72; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "clarification.ask_user",
+            "action": "clarification",
+            "domain": "clarification",
+            "score": 0.322,
+            "status": "accepted",
+            "reason": "base=0.58; precondition=no_specific_precondition",
+            "requires_evidence": false,
+            "risk": "low"
+          },
+          {
+            "capability_id": "fallback.no_answer",
+            "action": "no_answer",
+            "domain": "no_answer",
+            "score": 0.278,
+            "status": "accepted",
+            "reason": "base=0.50; precondition=no_specific_precondition",
+            "requires_evidence": false,
+            "risk": "low"
+          }
+        ],
+        "rejected": [
+          {
+            "capability_id": "structured.members",
+            "action": "structured",
+            "domain": "members",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.games",
+            "action": "structured",
+            "domain": "games",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.game_controls",
+            "action": "structured",
+            "domain": "game_controls",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.equipment",
+            "action": "structured",
+            "domain": "equipment",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.reservation",
+            "action": "structured",
+            "domain": "reservation",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "structured.schedule",
+            "action": "structured",
+            "domain": "schedule",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "structured.service_fee",
+            "action": "structured",
+            "domain": "service_fee",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "fast.price_calculator",
+            "action": "fast_path",
+            "domain": "service_fee",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "medium"
+          }
+        ],
+        "policy": {
+          "psu_specific": true,
+          "route_risk": "medium",
+          "general_llm_requires_non_psu": true
+        },
+        "execution_plan": [
+          "normalize_and_extract_entities",
+          "route_and_resolve_universal_intent",
+          "generate_capability_candidates",
+          "apply_policy_and_rank",
+          "apply_tool_preconditions",
+          "execute_retrieval",
+          "format_validate_and_record"
+        ],
+        "final": {
+          "mode": "pipeline:experimental_rag_no_context",
+          "confidence": 0.42,
+          "execution_step": "execute_retrieval",
+          "executed_capability": "retrieval.hybrid_guarded",
+          "selected_matches_execution": true,
+          "validation_ok": true,
+          "validation_errors": [],
+          "validation_warnings": [
+            "experimental_rag_fallback_no_verified_psu_evidence"
+          ],
+          "evidence_count": 0,
+          "source_ids": []
+        },
+        "production_metrics": {
+          "policy_version": "correctness_control_flow_v2",
+          "outcome": "answered",
+          "quality_gate_status": "pass",
+          "candidate_margin": 0.111,
+          "selection_status": "abstain_low_score",
+          "ambiguity_decision": "allow",
+          "repair_attempted": false,
+          "repair_recovered": false,
+          "llm_call_count": 0,
+          "requires_shadow_review": true,
+          "shadow_review_reasons": [
+            "validation_warning"
+          ]
+        },
+        "entities": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        },
+        "structured_tool": null,
+        "tool_preconditions": [
+          {
+            "stage": "tool_precondition",
+            "decision": "reject_structured",
+            "confidence": 0.2,
+            "detail": "candidate_selector_preferred_non_structured_action",
+            "metadata": {
+              "capability_id": "structured.unknown",
+              "ok": false,
+              "reason": "no_structured_capability_for_route",
+              "severity": "policy",
+              "selector_allows_structured": false,
+              "selected_capability_id": "retrieval.hybrid_guarded"
+            }
+          }
+        ],
+        "candidate_execution": [],
+        "validation": {
+          "stage": "validation",
+          "decision": "ok",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {}
+        },
+        "llm_calls": []
+      },
+      "language": {
+        "requested": "th",
+        "detected": "th",
+        "effective": "th",
+        "confidence": 1.0,
+        "reason": "toggle_override_th;thai_script"
+      }
+    },
+    "exception": null,
+    "passed": false,
+    "failures": [
+      "missing:['795-276244-1']",
+      "missing:['Siam Commercial Bank', 'ไทยพาณิชย์']",
+      "missing:['สลิป', 'slip']",
+      "wrong_source"
+    ]
+  },
+  "speech-01": {
+    "case": {
+      "id": "speech-01",
+      "group": "speech",
+      "question": "ช่วยอธิบายให้เข้าใจง่ายหน่อยว่า ขอข้อมูลเรื่องคำพูไดม่เหมาะสม",
+      "locale": "th",
+      "required": [
+        [
+          "ห้าม",
+          "must not",
+          "Avoid",
+          "avoid",
+          "prohibited"
+        ],
+        [
+          "ดูหมิ่น",
+          "เสียดสี",
+          "insult",
+          "mock",
+          "sarcastic"
+        ]
+      ],
+      "source": [
+        "noise_language",
+        "noise_language_rule",
+        "noise_language"
+      ],
+      "forbidden": []
+    },
+    "response": {
+      "answer": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับคำถามนี้ครับ",
+      "hits": [],
+      "elapsed": 0.4511,
+      "mode": "pipeline:no_answer",
+      "confidence": 0.55,
+      "route": {
+        "category": "general",
+        "intent": "detail",
+        "confidence": 0.94,
+        "answer_type": "general",
+        "risk": "low",
+        "reason": "general concept definition found before equipment inventory routing; universal_intent=general/detail"
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": null,
+        "duration": null,
+        "price_intent": false,
+        "short_answer": false,
+        "comparison_intent": false,
+        "raw": {
+          "normalized_query": "ช่วยอธิบายให้เข้าใจง่ายหน่อยว่า ขอข้อมูลเรื่องคำพูไดม่เหมาะสม",
+          "language_hint": "th"
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "fallback_general_route_no_curated_guessing"
+        ]
+      },
+      "trace": [
+        {
+          "stage": "timing",
+          "decision": "locale_resolution",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0001,
+            "global_remaining_sec": 19.9999,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9999,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "intent_cue_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 52.36,
+            "elapsed_sec": 0.0524,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0524,
+            "global_remaining_sec": 19.9476,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9476,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "canonical_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0525,
+            "global_remaining_sec": 19.9475,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9475,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "locale_resolution",
+          "decision": "th",
+          "confidence": 1.0,
+          "detail": "toggle_override_th;thai_script",
+          "metadata": {
+            "requested": "th",
+            "detected": "th",
+            "effective": "th",
+            "confidence": 1.0,
+            "reason": "toggle_override_th;thai_script"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "ช่วยอธิบายให้เข้าใจง่ายหน่อยว่า ขอข้อมูลเรื่องคำพูไดม่เหมาะสม",
+            "candidate": "ช่วยอธิบายให้เข้าใจง่ายหน่อยว่า ขอข้อมูลเรื่องคำพูไดม่เหมาะสม",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "parts=1",
+          "metadata": {
+            "elapsed_ms": 19.3,
+            "elapsed_sec": 0.0193,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0717,
+            "global_remaining_sec": 19.9282,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9282,
+            "timing_status": "running",
+            "entry_to_split_ms": 52.42,
+            "parts": [
+              "ช่วยอธิบายให้เข้าใจง่ายหน่อยว่า ขอข้อมูลเรื่องคำพูไดม่เหมาะสม"
+            ],
+            "competition_rule_query": false
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "experimental_allow_llm is false; single clear operation does not need planner",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": false
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "ช่วยอธิบายให้เข้าใจง่ายหน่อยว่า ขอข้อมูลเรื่องคำพูไดม่เหมาะสม",
+          "metadata": {
+            "language_hint": "th",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "ช่วยอธิบายให้เข้าใจง่ายหน่อยว่า ขอข้อมูลเรื่องคำพูไดม่เหมาะสม"
+            ],
+            "competition_name_recovery": [],
+            "elapsed_ms": 18.28,
+            "elapsed_sec": 0.0183
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 18.31,
+            "elapsed_sec": 0.0183
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "general/general_knowledge_query",
+          "metadata": {
+            "elapsed_ms": 6.99,
+            "elapsed_sec": 0.007,
+            "route_category": "general",
+            "route_intent": "general_knowledge_query",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          }
+        },
+        {
+          "stage": "target_lock",
+          "decision": "not_locked",
+          "confidence": 0.94,
+          "detail": "game_resolution_unknown",
+          "metadata": {
+            "locked": false,
+            "route_category": "general",
+            "route_intent": "general_knowledge_query",
+            "reason": "game_resolution_unknown",
+            "resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "detail",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 8,
+              "comparison_count": 64,
+              "elapsed_ms": 3.192,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "semantic_route_refiner",
+          "confidence": 1.0,
+          "detail": "skipped",
+          "metadata": {
+            "elapsed_ms": 0.03,
+            "elapsed_sec": 0.0,
+            "route_category": "general",
+            "route_intent": "general_knowledge_query",
+            "route_locked": false
+          }
+        },
+        {
+          "stage": "semantic_route_refiner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "semantic retrieval disabled",
+          "metadata": {}
+        },
+        {
+          "stage": "freshness_guard",
+          "decision": "not_required",
+          "confidence": 0.9,
+          "detail": "query does not require live dynamic evidence",
+          "metadata": {
+            "requires_live_evidence": false
+          }
+        },
+        {
+          "stage": "boundary_guard",
+          "decision": "allow",
+          "confidence": 0.9,
+          "detail": "no high-confidence boundary matched",
+          "metadata": {
+            "flags": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "guard_scope",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0
+          }
+        },
+        {
+          "stage": "guard",
+          "decision": "weak_domain_signal",
+          "confidence": 0.35,
+          "detail": "no clear PSU Esports domain hint",
+          "metadata": {}
+        },
+        {
+          "stage": "router",
+          "decision": "general",
+          "confidence": 0.94,
+          "detail": "general concept definition found before equipment inventory routing",
+          "metadata": {
+            "intent": "general_knowledge_query",
+            "answer_type": "general"
+          }
+        },
+        {
+          "stage": "model_gateway",
+          "decision": "skip_preflight_llm",
+          "confidence": 0.94,
+          "detail": "request did not allow LLM",
+          "metadata": {
+            "allow_llm": false,
+            "preflight_allow_llm": false,
+            "route_category": "general",
+            "route_intent": "general_knowledge_query"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "universal_intent",
+          "confidence": 1.0,
+          "detail": "general/detail",
+          "metadata": {
+            "elapsed_ms": 3.39,
+            "elapsed_sec": 0.0034,
+            "method": "heuristic",
+            "confidence": 0.94
+          }
+        },
+        {
+          "stage": "universal_intent",
+          "decision": "general/detail",
+          "confidence": 0.94,
+          "detail": "general concept definition overrides equipment entity words",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false,
+            "llm_first": false,
+            "llm_first_skip_reason": "",
+            "llm_first_review_reason": "",
+            "llm_call": {},
+            "intent_risk_flags": [],
+            "input_recovery": {
+              "score": 0.2523,
+              "language": "th",
+              "language_quality": 0.7477,
+              "should_review_intent": false,
+              "reason": "Thai character n-gram quality=0.748",
+              "action": "continue"
+            },
+            "llm_rejected_reason": "",
+            "intent_candidates": [
+              {
+                "id": "c1",
+                "domain": "general",
+                "operation": "detail",
+                "target": "",
+                "confidence": 0.94,
+                "reason": "heuristic fallback"
+              }
+            ],
+            "target": "general_concept",
+            "filters": {},
+            "needs": [
+              "answer_general_question"
+            ],
+            "answer_style": "direct",
+            "heuristic": {
+              "domain": "general",
+              "operation": "detail",
+              "confidence": 0.94,
+              "reason": "general concept definition overrides equipment entity words"
+            }
+          }
+        },
+        {
+          "stage": "universal_route_refine",
+          "decision": "general/general_knowledge_query -> general/detail",
+          "confidence": 0.94,
+          "detail": "route refined by universal intent",
+          "metadata": {
+            "domain": "general",
+            "operation": "detail",
+            "method": "heuristic"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_router",
+          "confidence": 1.0,
+          "detail": "general_llm/general",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "method": "heuristic",
+            "confidence": 0.94
+          }
+        },
+        {
+          "stage": "tool_router",
+          "decision": "heuristic:general_llm",
+          "confidence": 0.94,
+          "detail": "experimental_allow_llm is false",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "ambiguity_gate",
+          "confidence": 1.0,
+          "detail": "allow",
+          "metadata": {
+            "elapsed_ms": 127.34,
+            "elapsed_sec": 0.1273,
+            "flags": [],
+            "confidence": 0.94
+          }
+        },
+        {
+          "stage": "ambiguity_gate",
+          "decision": "allow",
+          "confidence": 0.94,
+          "detail": "ambiguity risk acceptable",
+          "metadata": {
+            "flags": [],
+            "route": "general/detail",
+            "intent": "general/detail",
+            "has_known_game": false,
+            "has_service_or_zone": false,
+            "game_entity_resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 8,
+              "comparison_count": 64,
+              "elapsed_ms": 3.119,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            },
+            "intent_candidates": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "question_frame",
+          "confidence": 0.94,
+          "detail": "general/detail",
+          "metadata": {
+            "elapsed_ms": 71.95,
+            "elapsed_sec": 0.0719,
+            "operation": "detail",
+            "domain": "general",
+            "expected_answer_types": [
+              "fact",
+              "summary"
+            ],
+            "targets": [],
+            "target_status": "unknown",
+            "target_margin": 0.0,
+            "target_required": false,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.94,
+            "method": "operation_first",
+            "route_category": "general",
+            "route_intent": "detail",
+            "intent_operation": "detail",
+            "target_reason": "no_target_candidate",
+            "target_candidate_count": 0,
+            "game_family": ""
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "candidate_decisions",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 75.18,
+            "elapsed_sec": 0.0752
+          }
+        },
+        {
+          "stage": "decision_candidates",
+          "decision": "llm.general_answer",
+          "confidence": 0.7633333333333332,
+          "detail": "base=0.66; domain_match; answer_type_match; tool_router_action=general_llm; tool_router_domain=general; general_route_priority; question_frame_domain_match; precondition=general_llm_applicable",
+          "metadata": {
+            "selected": {
+              "capability_id": "llm.general_answer",
+              "action": "general_llm",
+              "domain": "general",
+              "score": 0.763,
+              "status": "accepted",
+              "reason": "base=0.66; domain_match; answer_type_match; tool_router_action=general_llm; tool_router_domain=general; general_route_priority; question_frame_domain_match; precondition=general_llm_applicable",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            "selection": {
+              "status": "selected",
+              "execution_allowed": true,
+              "margin": 0.363,
+              "same_action_as_second": false,
+              "second": {
+                "capability_id": "retrieval.hybrid_guarded",
+                "action": "retrieval",
+                "domain": "multi",
+                "score": 0.4,
+                "status": "accepted",
+                "reason": "base=0.72; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              }
+            },
+            "question_frame": {
+              "operation": "detail",
+              "domain": "general",
+              "expected_answer_types": [
+                "fact",
+                "summary"
+              ],
+              "targets": [],
+              "target_status": "unknown",
+              "target_margin": 0.0,
+              "target_required": false,
+              "allows_multiple_targets": false,
+              "needs_clarification": false,
+              "confidence": 0.94,
+              "method": "operation_first",
+              "route_category": "general",
+              "route_intent": "detail",
+              "intent_operation": "detail",
+              "target_reason": "no_target_candidate",
+              "target_candidate_count": 0,
+              "game_family": ""
+            },
+            "candidates": [
+              {
+                "capability_id": "llm.general_answer",
+                "action": "general_llm",
+                "domain": "general",
+                "score": 0.763,
+                "status": "accepted",
+                "reason": "base=0.66; domain_match; answer_type_match; tool_router_action=general_llm; tool_router_domain=general; general_route_priority; question_frame_domain_match; precondition=general_llm_applicable",
+                "requires_evidence": false,
+                "risk": "low"
+              },
+              {
+                "capability_id": "retrieval.hybrid_guarded",
+                "action": "retrieval",
+                "domain": "multi",
+                "score": 0.4,
+                "status": "accepted",
+                "reason": "base=0.72; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "clarification.ask_user",
+                "action": "clarification",
+                "domain": "clarification",
+                "score": 0.322,
+                "status": "accepted",
+                "reason": "base=0.58; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              },
+              {
+                "capability_id": "fallback.no_answer",
+                "action": "no_answer",
+                "domain": "no_answer",
+                "score": 0.278,
+                "status": "accepted",
+                "reason": "base=0.50; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              }
+            ],
+            "rejected": [
+              {
+                "capability_id": "structured.members",
+                "action": "structured",
+                "domain": "members",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.games",
+                "action": "structured",
+                "domain": "games",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.game_controls",
+                "action": "structured",
+                "domain": "game_controls",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.equipment",
+                "action": "structured",
+                "domain": "equipment",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.reservation",
+                "action": "structured",
+                "domain": "reservation",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.schedule",
+                "action": "structured",
+                "domain": "schedule",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.service_fee",
+                "action": "structured",
+                "domain": "service_fee",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "fast.price_calculator",
+                "action": "fast_path",
+                "domain": "service_fee",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "medium"
+              }
+            ],
+            "policy": {
+              "psu_specific": false,
+              "route_risk": "low",
+              "general_llm_requires_non_psu": true
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_precondition",
+          "confidence": 1.0,
+          "detail": "structured.unknown",
+          "metadata": {
+            "elapsed_ms": 0.15,
+            "elapsed_sec": 0.0001,
+            "ok": false
+          }
+        },
+        {
+          "stage": "tool_precondition",
+          "decision": "reject_structured",
+          "confidence": 0.2,
+          "detail": "candidate_selector_preferred_non_structured_action",
+          "metadata": {
+            "capability_id": "structured.unknown",
+            "ok": false,
+            "reason": "no_structured_capability_for_route",
+            "severity": "policy",
+            "selector_allows_structured": false,
+            "selected_capability_id": "llm.general_answer"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "structured_tool_execution",
+          "confidence": 1.0,
+          "detail": "no_result",
+          "metadata": {
+            "elapsed_ms": 0.0,
+            "elapsed_sec": 0.0,
+            "precondition_ok": false,
+            "selector_allows_structured": false,
+            "selected_capability_id": "llm.general_answer",
+            "confidence": 0.0
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "deterministic",
+          "confidence": 1.0,
+          "detail": "no_match",
+          "metadata": {
+            "elapsed_ms": 0.0,
+            "elapsed_sec": 0.0,
+            "confidence": 0.0,
+            "selector_allows_deterministic": false,
+            "selected_capability_id": "llm.general_answer"
+          }
+        },
+        {
+          "stage": "general_semantic_retrieval",
+          "decision": "skipped_unanchored_general",
+          "confidence": 1.0,
+          "detail": "no PSU semantic anchor; use the guarded Local LLM general-answer path directly",
+          "metadata": {}
+        },
+        {
+          "stage": "timing",
+          "decision": "experimental_fallback",
+          "confidence": 1.0,
+          "detail": "general_llm_disabled",
+          "metadata": {
+            "elapsed_ms": 0.22,
+            "elapsed_sec": 0.0002,
+            "confidence": 0.6
+          }
+        },
+        {
+          "stage": "experimental_rag_fallback",
+          "decision": "general_llm_disabled",
+          "confidence": 0.6,
+          "detail": "clear_non_psu_general_request; skipped_unanchored_rag; request did not allow LLM",
+          "metadata": {
+            "allow_llm": false,
+            "llm_attempted": false
+          }
+        },
+        {
+          "stage": "validation",
+          "decision": "failed",
+          "confidence": 0.3,
+          "detail": "answer_contract_type_mismatch:expected=fact,summary;actual=competition_rule; service_fee_answer_missing_service_fee_source",
+          "metadata": {}
+        },
+        {
+          "stage": "fallback",
+          "decision": "general_route_no_curated_guessing",
+          "confidence": 0.55,
+          "detail": "general route skips curated retrieval to avoid weak-context guessing",
+          "metadata": {}
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:no_answer",
+          "metadata": {
+            "elapsed_ms": 6.34,
+            "elapsed_sec": 0.0063,
+            "format_response_style_ms": 1.2,
+            "answer_language": "th",
+            "total_elapsed_ms": 451.05,
+            "total_elapsed_sec": 0.451
+          }
+        }
+      ],
+      "universal_intent": {
+        "domain": "general",
+        "operation": "detail",
+        "target": "general_concept",
+        "filters": {},
+        "needs": [
+          "answer_general_question"
+        ],
+        "answer_style": "direct",
+        "confidence": 0.94,
+        "method": "heuristic",
+        "reason": "general concept definition overrides equipment entity words"
+      },
+      "decision_artifact": {
+        "intent": {
+          "domain": "general",
+          "operation": "detail",
+          "target": "general_concept",
+          "confidence": 0.94,
+          "method": "heuristic"
+        },
+        "route": {
+          "category": "general",
+          "intent": "detail",
+          "confidence": 0.94,
+          "answer_type": "general",
+          "risk": "low",
+          "reason": "general concept definition found before equipment inventory routing; universal_intent=general/detail"
+        },
+        "tool_router": {
+          "stage": "tool_router",
+          "decision": "heuristic:general_llm",
+          "confidence": 0.94,
+          "detail": "experimental_allow_llm is false",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        "selected_candidate": {
+          "capability_id": "llm.general_answer",
+          "action": "general_llm",
+          "domain": "general",
+          "score": 0.763,
+          "status": "accepted",
+          "reason": "base=0.66; domain_match; answer_type_match; tool_router_action=general_llm; tool_router_domain=general; general_route_priority; question_frame_domain_match; precondition=general_llm_applicable",
+          "requires_evidence": false,
+          "risk": "low"
+        },
+        "candidates": [
+          {
+            "capability_id": "llm.general_answer",
+            "action": "general_llm",
+            "domain": "general",
+            "score": 0.763,
+            "status": "accepted",
+            "reason": "base=0.66; domain_match; answer_type_match; tool_router_action=general_llm; tool_router_domain=general; general_route_priority; question_frame_domain_match; precondition=general_llm_applicable",
+            "requires_evidence": false,
+            "risk": "low"
+          },
+          {
+            "capability_id": "retrieval.hybrid_guarded",
+            "action": "retrieval",
+            "domain": "multi",
+            "score": 0.4,
+            "status": "accepted",
+            "reason": "base=0.72; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "clarification.ask_user",
+            "action": "clarification",
+            "domain": "clarification",
+            "score": 0.322,
+            "status": "accepted",
+            "reason": "base=0.58; precondition=no_specific_precondition",
+            "requires_evidence": false,
+            "risk": "low"
+          },
+          {
+            "capability_id": "fallback.no_answer",
+            "action": "no_answer",
+            "domain": "no_answer",
+            "score": 0.278,
+            "status": "accepted",
+            "reason": "base=0.50; precondition=no_specific_precondition",
+            "requires_evidence": false,
+            "risk": "low"
+          }
+        ],
+        "rejected": [
+          {
+            "capability_id": "structured.members",
+            "action": "structured",
+            "domain": "members",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.games",
+            "action": "structured",
+            "domain": "games",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.game_controls",
+            "action": "structured",
+            "domain": "game_controls",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.equipment",
+            "action": "structured",
+            "domain": "equipment",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.reservation",
+            "action": "structured",
+            "domain": "reservation",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "structured.schedule",
+            "action": "structured",
+            "domain": "schedule",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "structured.service_fee",
+            "action": "structured",
+            "domain": "service_fee",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "fast.price_calculator",
+            "action": "fast_path",
+            "domain": "service_fee",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "medium"
+          }
+        ],
+        "policy": {
+          "psu_specific": false,
+          "route_risk": "low",
+          "general_llm_requires_non_psu": true
+        },
+        "execution_plan": [
+          "normalize_and_extract_entities",
+          "route_and_resolve_universal_intent",
+          "generate_capability_candidates",
+          "apply_policy_and_rank",
+          "apply_tool_preconditions",
+          "answer_no_verified_data",
+          "format_validate_and_record"
+        ],
+        "final": {
+          "mode": "pipeline:no_answer",
+          "confidence": 0.55,
+          "execution_step": "answer_no_verified_data",
+          "executed_capability": "fallback.no_answer",
+          "selected_matches_execution": false,
+          "validation_ok": true,
+          "validation_errors": [],
+          "validation_warnings": [
+            "fallback_general_route_no_curated_guessing"
+          ],
+          "evidence_count": 0,
+          "source_ids": []
+        },
+        "production_metrics": {
+          "policy_version": "correctness_control_flow_v2",
+          "outcome": "no_answer",
+          "quality_gate_status": "safe_abstain",
+          "candidate_margin": 0.363,
+          "selection_status": "selected",
+          "ambiguity_decision": "allow",
+          "repair_attempted": false,
+          "repair_recovered": false,
+          "llm_call_count": 0,
+          "requires_shadow_review": true,
+          "shadow_review_reasons": [
+            "selected_execution_mismatch",
+            "no_answer",
+            "validation_warning"
+          ]
+        },
+        "entities": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        },
+        "structured_tool": null,
+        "tool_preconditions": [
+          {
+            "stage": "tool_precondition",
+            "decision": "reject_structured",
+            "confidence": 0.2,
+            "detail": "candidate_selector_preferred_non_structured_action",
+            "metadata": {
+              "capability_id": "structured.unknown",
+              "ok": false,
+              "reason": "no_structured_capability_for_route",
+              "severity": "policy",
+              "selector_allows_structured": false,
+              "selected_capability_id": "llm.general_answer"
+            }
+          }
+        ],
+        "candidate_execution": [],
+        "validation": {
+          "stage": "validation",
+          "decision": "failed",
+          "confidence": 0.3,
+          "detail": "answer_contract_type_mismatch:expected=fact,summary;actual=competition_rule; service_fee_answer_missing_service_fee_source",
+          "metadata": {}
+        },
+        "llm_calls": []
+      },
+      "language": {
+        "requested": "th",
+        "detected": "th",
+        "effective": "th",
+        "confidence": 1.0,
+        "reason": "toggle_override_th;thai_script"
+      }
+    },
+    "exception": null,
+    "passed": false,
+    "failures": [
+      "missing:['ห้าม', 'must not', 'Avoid', 'avoid', 'prohibited']",
+      "missing:['ดูหมิ่น', 'เสียดสี', 'insult', 'mock', 'sarcastic']",
+      "wrong_source"
+    ]
+  },
+  "competition-01": {
+    "case": {
+      "id": "competition-01",
+      "group": "competition",
+      "question": "ขอสอบถามหน่อยครับ ขออ้างอิงติกา อารีน่าออฟเวเลอร์ ในหัวข้อจำนวยผู้เล่นต่อทีม หน่อย",
+      "locale": "th",
+      "required": [
+        [
+          "5v5",
+          "5 v 5",
+          "5 คน",
+          "5 players"
+        ]
+      ],
+      "source": [
+        "competition_rules_rov_blueket_2025_men"
+      ],
+      "forbidden": [
+        "PSU Phuket CS2",
+        "VALORANT 2026",
+        "Tekken 8"
+      ]
+    },
+    "response": {
+      "answer": "ขอรายละเอียดเพิ่มนิดนึงครับ ต้องการถามเรื่องเกม ปุ่ม ราคา การจอง อุปกรณ์ หรือตารางเวลา?",
+      "hits": [],
+      "elapsed": 0.7756,
+      "mode": "pipeline:candidate_margin_clarification",
+      "confidence": 0.62,
+      "route": {
+        "category": "clarification",
+        "intent": "candidate_margin_clarification",
+        "confidence": 0.62,
+        "answer_type": "clarification",
+        "risk": "low",
+        "reason": "capability candidates are too close and operation is unknown"
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": null,
+        "duration": null,
+        "price_intent": false,
+        "short_answer": false,
+        "comparison_intent": false,
+        "raw": {
+          "normalized_query": "ขอสอบถามหน่อยครับ ขออ้างอิงติกา อารีน่าออฟเวเลอร์ ในหัวข้อจำนวยผู้เล่นต่อทีม หน่อย",
+          "language_hint": "th"
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "candidate_selection_abstained",
+          "service_fee_answer_missing_service_fee_source"
+        ]
+      },
+      "trace": [
+        {
+          "stage": "timing",
+          "decision": "locale_resolution",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0,
+            "global_remaining_sec": 20.0,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 19.0,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "intent_cue_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 67.61,
+            "elapsed_sec": 0.0676,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0677,
+            "global_remaining_sec": 19.9323,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9323,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "canonical_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0677,
+            "global_remaining_sec": 19.9323,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9323,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "locale_resolution",
+          "decision": "th",
+          "confidence": 1.0,
+          "detail": "toggle_override_th;thai_script",
+          "metadata": {
+            "requested": "th",
+            "detected": "th",
+            "effective": "th",
+            "confidence": 1.0,
+            "reason": "toggle_override_th;thai_script"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "ขอสอบถามหน่อยครับ ขออ้างอิงติกา อารีน่าออฟเวเลอร์ ในหัวข้อจำนวยผู้เล่นต่อทีม หน่อย",
+            "candidate": "ขอสอบถามหน่อยครับ ขออ้างอิงติกา อารีน่าออฟเวเลอร์ ในหัวข้อจำนวยผู้เล่นต่อทีม หน่อย",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "parts=1",
+          "metadata": {
+            "elapsed_ms": 21.49,
+            "elapsed_sec": 0.0215,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 20.0,
+            "global_elapsed_sec": 0.0892,
+            "global_remaining_sec": 19.9108,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 18.9108,
+            "timing_status": "running",
+            "entry_to_split_ms": 67.65,
+            "parts": [
+              "ขอสอบถามหน่อยครับ ขออ้างอิงติกา อารีน่าออฟเวเลอร์ ในหัวข้อจำนวยผู้เล่นต่อทีม หน่อย"
+            ],
+            "competition_rule_query": false
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "experimental_allow_llm is false; single clear operation does not need planner",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": false
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "ขอสอบถามหน่อยครับ ขออ้างอิงติกา อารีน่าออฟเวเลอร์ ในหัวข้อจำนวยผู้เล่นต่อทีม หน่อย",
+          "metadata": {
+            "language_hint": "th",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "ขอสอบถามหน่อยครับ ขออ้างอิงติกา อารีน่าออฟเวเลอร์ ในหัวข้อจำนวยผู้เล่นต่อทีม หน่อย"
+            ],
+            "competition_name_recovery": [],
+            "elapsed_ms": 59.54,
+            "elapsed_sec": 0.0595
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 59.57,
+            "elapsed_sec": 0.0596
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "general/unknown_domain_query",
+          "metadata": {
+            "elapsed_ms": 15.1,
+            "elapsed_sec": 0.0151,
+            "route_category": "general",
+            "route_intent": "unknown_domain_query",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          }
+        },
+        {
+          "stage": "target_lock",
+          "decision": "not_locked",
+          "confidence": 0.55,
+          "detail": "game_resolution_unknown",
+          "metadata": {
+            "locked": false,
+            "route_category": "general",
+            "route_intent": "unknown_domain_query",
+            "reason": "game_resolution_unknown",
+            "resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "detail",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 17,
+              "comparison_count": 64,
+              "elapsed_ms": 3.731,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "semantic_route_refiner",
+          "confidence": 1.0,
+          "detail": "skipped",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "route_category": "general",
+            "route_intent": "unknown_domain_query",
+            "route_locked": false
+          }
+        },
+        {
+          "stage": "semantic_route_refiner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "semantic retrieval disabled",
+          "metadata": {}
+        },
+        {
+          "stage": "freshness_guard",
+          "decision": "not_required",
+          "confidence": 0.9,
+          "detail": "query does not require live dynamic evidence",
+          "metadata": {
+            "requires_live_evidence": false
+          }
+        },
+        {
+          "stage": "boundary_guard",
+          "decision": "allow",
+          "confidence": 0.9,
+          "detail": "no high-confidence boundary matched",
+          "metadata": {
+            "flags": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "guard_scope",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0
+          }
+        },
+        {
+          "stage": "guard",
+          "decision": "domain_ok",
+          "confidence": 0.9,
+          "detail": "domain hints found",
+          "metadata": {}
+        },
+        {
+          "stage": "router",
+          "decision": "general",
+          "confidence": 0.55,
+          "detail": "domain query but no strong category",
+          "metadata": {
+            "intent": "unknown_domain_query",
+            "answer_type": "fact"
+          }
+        },
+        {
+          "stage": "model_gateway",
+          "decision": "skip_preflight_llm",
+          "confidence": 0.55,
+          "detail": "request did not allow LLM",
+          "metadata": {
+            "allow_llm": false,
+            "preflight_allow_llm": false,
+            "route_category": "general",
+            "route_intent": "unknown_domain_query"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "universal_intent",
+          "confidence": 1.0,
+          "detail": "general/unknown",
+          "metadata": {
+            "elapsed_ms": 4.19,
+            "elapsed_sec": 0.0042,
+            "method": "heuristic",
+            "confidence": 0.45
+          }
+        },
+        {
+          "stage": "universal_intent",
+          "decision": "general/unknown",
+          "confidence": 0.45,
+          "detail": "domain_terms=2; no clear operation terms",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false,
+            "llm_first": false,
+            "llm_first_skip_reason": "",
+            "llm_first_review_reason": "",
+            "llm_call": {},
+            "intent_risk_flags": [
+              "low_candidate_margin"
+            ],
+            "input_recovery": {
+              "score": 0.2931,
+              "language": "th",
+              "language_quality": 0.7069,
+              "should_review_intent": false,
+              "reason": "Thai character n-gram quality=0.707",
+              "action": "continue"
+            },
+            "llm_rejected_reason": "",
+            "intent_candidates": [
+              {
+                "id": "c1",
+                "domain": "general",
+                "operation": "unknown",
+                "target": "",
+                "confidence": 0.45,
+                "reason": "heuristic fallback"
+              },
+              {
+                "id": "c2",
+                "domain": "general",
+                "operation": "detail",
+                "target": "",
+                "confidence": 0.55,
+                "reason": "router category candidate"
+              }
+            ],
+            "target": "",
+            "filters": {},
+            "needs": [],
+            "answer_style": "direct",
+            "heuristic": {
+              "domain": "general",
+              "operation": "unknown",
+              "confidence": 0.45,
+              "reason": "domain_terms=2; no clear operation terms"
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_router",
+          "confidence": 1.0,
+          "detail": "general_llm/general",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0,
+            "method": "heuristic",
+            "confidence": 0.55
+          }
+        },
+        {
+          "stage": "tool_router",
+          "decision": "heuristic:general_llm",
+          "confidence": 0.55,
+          "detail": "experimental_allow_llm is false",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "ambiguity_gate",
+          "confidence": 1.0,
+          "detail": "allow",
+          "metadata": {
+            "elapsed_ms": 199.87,
+            "elapsed_sec": 0.1999,
+            "flags": [],
+            "confidence": 0.94
+          }
+        },
+        {
+          "stage": "ambiguity_gate",
+          "decision": "allow",
+          "confidence": 0.94,
+          "detail": "ambiguity risk acceptable",
+          "metadata": {
+            "flags": [],
+            "route": "general/unknown_domain_query",
+            "intent": "general/unknown",
+            "has_known_game": false,
+            "has_service_or_zone": false,
+            "game_entity_resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 17,
+              "comparison_count": 64,
+              "elapsed_ms": 3.563,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            },
+            "intent_candidates": [
+              {
+                "domain": "members",
+                "operation": "list",
+                "score": 0.45,
+                "reasons": [
+                  "member_terms"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "question_frame",
+          "confidence": 0.35,
+          "detail": "general/unknown",
+          "metadata": {
+            "elapsed_ms": 222.9,
+            "elapsed_sec": 0.2229,
+            "operation": "unknown",
+            "domain": "general",
+            "expected_answer_types": [
+              "fact",
+              "summary"
+            ],
+            "targets": [],
+            "target_status": "unknown",
+            "target_margin": 0.0,
+            "target_required": false,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.35,
+            "method": "operation_first",
+            "route_category": "general",
+            "route_intent": "unknown_domain_query",
+            "intent_operation": "unknown",
+            "target_reason": "no_target_candidate",
+            "target_candidate_count": 0,
+            "game_family": ""
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "candidate_decisions",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 98.78,
+            "elapsed_sec": 0.0988
+          }
+        },
+        {
+          "stage": "decision_candidates",
+          "decision": "retrieval.hybrid_guarded",
+          "confidence": 0.43333333333333335,
+          "detail": "base=0.72; answer_type_match; precondition=no_specific_precondition",
+          "metadata": {
+            "selected": {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.433,
+              "status": "accepted",
+              "reason": "base=0.72; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            "selection": {
+              "status": "abstain_low_score",
+              "execution_allowed": false,
+              "margin": 0.111,
+              "same_action_as_second": false,
+              "second": {
+                "capability_id": "clarification.ask_user",
+                "action": "clarification",
+                "domain": "clarification",
+                "score": 0.322,
+                "status": "accepted",
+                "reason": "base=0.58; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              }
+            },
+            "question_frame": {
+              "operation": "unknown",
+              "domain": "general",
+              "expected_answer_types": [
+                "fact",
+                "summary"
+              ],
+              "targets": [],
+              "target_status": "unknown",
+              "target_margin": 0.0,
+              "target_required": false,
+              "allows_multiple_targets": false,
+              "needs_clarification": false,
+              "confidence": 0.35,
+              "method": "operation_first",
+              "route_category": "general",
+              "route_intent": "unknown_domain_query",
+              "intent_operation": "unknown",
+              "target_reason": "no_target_candidate",
+              "target_candidate_count": 0,
+              "game_family": ""
+            },
+            "candidates": [
+              {
+                "capability_id": "retrieval.hybrid_guarded",
+                "action": "retrieval",
+                "domain": "multi",
+                "score": 0.433,
+                "status": "accepted",
+                "reason": "base=0.72; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "clarification.ask_user",
+                "action": "clarification",
+                "domain": "clarification",
+                "score": 0.322,
+                "status": "accepted",
+                "reason": "base=0.58; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              },
+              {
+                "capability_id": "fallback.no_answer",
+                "action": "no_answer",
+                "domain": "no_answer",
+                "score": 0.278,
+                "status": "accepted",
+                "reason": "base=0.50; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              }
+            ],
+            "rejected": [
+              {
+                "capability_id": "structured.members",
+                "action": "structured",
+                "domain": "members",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.games",
+                "action": "structured",
+                "domain": "games",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.game_controls",
+                "action": "structured",
+                "domain": "game_controls",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.equipment",
+                "action": "structured",
+                "domain": "equipment",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.reservation",
+                "action": "structured",
+                "domain": "reservation",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.schedule",
+                "action": "structured",
+                "domain": "schedule",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.service_fee",
+                "action": "structured",
+                "domain": "service_fee",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "fast.price_calculator",
+                "action": "fast_path",
+                "domain": "service_fee",
+                "score": 0.194,
+                "status": "rejected",
+                "reason": "policy_veto: general route has no verified PSU evidence target",
+                "requires_evidence": true,
+                "risk": "medium"
+              }
+            ],
+            "policy": {
+              "psu_specific": true,
+              "route_risk": "medium",
+              "general_llm_requires_non_psu": true
+            }
+          }
+        },
+        {
+          "stage": "candidate_selector",
+          "decision": "abstain_and_clarify",
+          "confidence": 0.62,
+          "detail": "abstain_low_score",
+          "metadata": {
+            "selected_capability_id": "retrieval.hybrid_guarded",
+            "selection": {
+              "status": "abstain_low_score",
+              "execution_allowed": false,
+              "margin": 0.111,
+              "same_action_as_second": false,
+              "second": {
+                "capability_id": "clarification.ask_user",
+                "action": "clarification",
+                "domain": "clarification",
+                "score": 0.322,
+                "status": "accepted",
+                "reason": "base=0.58; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              }
+            },
+            "input_recovery": {
+              "score": 0.2931,
+              "language": "th",
+              "language_quality": 0.7069,
+              "should_review_intent": false,
+              "reason": "Thai character n-gram quality=0.707",
+              "action": "continue"
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "validation_final",
+          "confidence": 1.0,
+          "detail": "ok",
+          "metadata": {
+            "elapsed_ms": 4.97,
+            "elapsed_sec": 0.005,
+            "added_error_count": 0,
+            "added_warning_count": 1,
+            "added_errors": [],
+            "added_warnings": [
+              "service_fee_answer_missing_service_fee_source"
+            ],
+            "merged_error_count": 0,
+            "merged_warning_count": 2
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:candidate_margin_clarification",
+          "metadata": {
+            "elapsed_ms": 6.23,
+            "elapsed_sec": 0.0062,
+            "format_response_style_ms": 1.17,
+            "answer_language": "th",
+            "total_elapsed_ms": 775.58,
+            "total_elapsed_sec": 0.7756
+          }
+        }
+      ],
+      "universal_intent": {
+        "domain": "general",
+        "operation": "unknown",
+        "target": "",
+        "filters": {},
+        "needs": [],
+        "answer_style": "direct",
+        "confidence": 0.45,
+        "method": "heuristic",
+        "reason": "domain_terms=2; no clear operation terms"
+      },
+      "decision_artifact": {
+        "intent": {
+          "domain": "general",
+          "operation": "unknown",
+          "target": "",
+          "confidence": 0.45,
+          "method": "heuristic"
+        },
+        "route": {
+          "category": "clarification",
+          "intent": "candidate_margin_clarification",
+          "confidence": 0.62,
+          "answer_type": "clarification",
+          "risk": "low",
+          "reason": "capability candidates are too close and operation is unknown"
+        },
+        "tool_router": {
+          "stage": "tool_router",
+          "decision": "heuristic:general_llm",
+          "confidence": 0.55,
+          "detail": "experimental_allow_llm is false",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        "selected_candidate": {
+          "capability_id": "retrieval.hybrid_guarded",
+          "action": "retrieval",
+          "domain": "multi",
+          "score": 0.433,
+          "status": "accepted",
+          "reason": "base=0.72; answer_type_match; precondition=no_specific_precondition",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        "candidates": [
+          {
+            "capability_id": "retrieval.hybrid_guarded",
+            "action": "retrieval",
+            "domain": "multi",
+            "score": 0.433,
+            "status": "accepted",
+            "reason": "base=0.72; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "clarification.ask_user",
+            "action": "clarification",
+            "domain": "clarification",
+            "score": 0.322,
+            "status": "accepted",
+            "reason": "base=0.58; precondition=no_specific_precondition",
+            "requires_evidence": false,
+            "risk": "low"
+          },
+          {
+            "capability_id": "fallback.no_answer",
+            "action": "no_answer",
+            "domain": "no_answer",
+            "score": 0.278,
+            "status": "accepted",
+            "reason": "base=0.50; precondition=no_specific_precondition",
+            "requires_evidence": false,
+            "risk": "low"
+          }
+        ],
+        "rejected": [
+          {
+            "capability_id": "structured.members",
+            "action": "structured",
+            "domain": "members",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.games",
+            "action": "structured",
+            "domain": "games",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.game_controls",
+            "action": "structured",
+            "domain": "game_controls",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.equipment",
+            "action": "structured",
+            "domain": "equipment",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.reservation",
+            "action": "structured",
+            "domain": "reservation",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "structured.schedule",
+            "action": "structured",
+            "domain": "schedule",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "structured.service_fee",
+            "action": "structured",
+            "domain": "service_fee",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "fast.price_calculator",
+            "action": "fast_path",
+            "domain": "service_fee",
+            "score": 0.194,
+            "status": "rejected",
+            "reason": "policy_veto: general route has no verified PSU evidence target",
+            "requires_evidence": true,
+            "risk": "medium"
+          }
+        ],
+        "policy": {
+          "psu_specific": true,
+          "route_risk": "medium",
+          "general_llm_requires_non_psu": true
+        },
+        "execution_plan": [
+          "normalize_and_extract_entities",
+          "route_and_resolve_universal_intent",
+          "generate_capability_candidates",
+          "apply_policy_and_rank",
+          "apply_tool_preconditions",
+          "ask_clarification",
+          "format_validate_and_record"
+        ],
+        "final": {
+          "mode": "pipeline:candidate_margin_clarification",
+          "confidence": 0.62,
+          "execution_step": "ask_clarification",
+          "executed_capability": "clarification.ask_user",
+          "selected_matches_execution": false,
+          "validation_ok": true,
+          "validation_errors": [],
+          "validation_warnings": [
+            "candidate_selection_abstained",
+            "service_fee_answer_missing_service_fee_source"
+          ],
+          "evidence_count": 0,
+          "source_ids": []
+        },
+        "production_metrics": {
+          "policy_version": "correctness_control_flow_v2",
+          "outcome": "clarification",
+          "quality_gate_status": "safe_abstain",
+          "candidate_margin": 0.111,
+          "selection_status": "abstain_low_score",
+          "ambiguity_decision": "allow",
+          "repair_attempted": false,
+          "repair_recovered": false,
+          "llm_call_count": 0,
+          "requires_shadow_review": true,
+          "shadow_review_reasons": [
+            "selected_execution_mismatch",
+            "clarification",
+            "validation_warning"
+          ]
+        },
+        "entities": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        },
+        "structured_tool": null,
+        "tool_preconditions": [],
+        "candidate_execution": [],
+        "validation": null,
+        "llm_calls": []
+      },
+      "language": {
+        "requested": "th",
+        "detected": "th",
+        "effective": "th",
+        "confidence": 1.0,
+        "reason": "toggle_override_th;thai_script"
+      }
+    },
+    "exception": null,
+    "passed": false,
+    "failures": [
+      "missing:['5v5', '5 v 5', '5 คน', '5 players']",
+      "wrong_source"
+    ]
+  }
+}

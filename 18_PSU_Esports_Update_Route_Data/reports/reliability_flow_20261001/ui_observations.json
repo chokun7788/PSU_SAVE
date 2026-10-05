@@ -1,0 +1,31 @@
+{
+  "method": "cua_repl browser actions, observed AX/DOM and screenshot; no owner feedback buttons clicked",
+  "runtime_version": "2026.10.01-reliability-flow-r20",
+  "cases": [
+    {
+      "question": "What gmes are available in Cockpit",
+      "locale": "auto",
+      "visible_route": "games/games_lookup",
+      "visible_mode": "pipeline:structured_games_catalog_en",
+      "observed_answer": "Gran Turismo 7; Cockpit Zone (1 game)",
+      "pipeline_latency_ms": 73,
+      "passed": true
+    },
+    {
+      "question": "PS5 ราคาเท่าไหร่ อล้วมีเกมะไรบ้าง แล้วจองยังไง",
+      "locale": "th",
+      "visible_route": "multi_question/multi_question_split",
+      "visible_mode": "pipeline:multi_question_splitter",
+      "observed_sections": [
+        "คำถามที่ 1: PS5 ราคาเท่าไหร่",
+        "คำถามที่ 2: PS5 มีเกมอะไรบ้าง",
+        "คำถามที่ 3: จะเล่น PS5 จองยังไง"
+      ],
+      "pipeline_latency_ms": 853,
+      "passed": true
+    }
+  ],
+  "style_issue_pending": "English catalog heading uses There are currently 1 verified games; facts/list correct but singular grammar should be polished later.",
+  "screenshot": "Captured in the browser tool output in this chat; no local screenshot file exported.",
+  "cleanup": "Agent test tab closed; test HTTP process stopped; existing user runtime untouched."
+}

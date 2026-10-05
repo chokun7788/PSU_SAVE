@@ -1,0 +1,396 @@
+{
+  "health": {
+    "ok": true,
+    "service": "psu-esports-chat-web",
+    "time": "2026-10-02T13:14:54.785219+00:00",
+    "warmup": {
+      "ok": true,
+      "elapsed_sec": 15.0736,
+      "warmed": [
+        "game_title_aliases",
+        "structured_tools",
+        "game_resolver",
+        "routing_data",
+        "retrieval_data",
+        "probe_queries",
+        "semantic_embedding"
+      ],
+      "errors": [],
+      "timings": {
+        "game_title_aliases": 1.0513,
+        "structured_tools": 0.7944,
+        "game_resolver": 0.2219,
+        "routing_data": 0.2688,
+        "retrieval_data": 3.2342,
+        "probe_queries": 9.4195,
+        "semantic_embedding": 0.0834
+      }
+    },
+    "llm_preflight": {
+      "ok": true,
+      "model": "scb10x/typhoon2.5-qwen3-4b",
+      "kind": "preflight",
+      "elapsed_ms": 180.12,
+      "response_chars": 2,
+      "done_reason": "length",
+      "num_ctx": 3072,
+      "load_duration": 11272300,
+      "prompt_eval_duration": 159828000,
+      "eval_duration": 1000,
+      "health": {
+        "llm_health_enabled": true,
+        "llm_health_status": "ok",
+        "llm_health_failures": 0,
+        "llm_health_failure_scope": "model_and_kind"
+      }
+    },
+    "input_quality_guard": {
+      "enabled": true,
+      "mode": "enforce",
+      "repeat_policy": "warn_and_continue",
+      "layout_threshold": 0.39,
+      "repeat_threshold": 0.55,
+      "corpus_size": 4023,
+      "profile_version": "keyboard-profile-v1:2a863a4176572043"
+    },
+    "llm_health": {
+      "enabled": true,
+      "failure_threshold": 2,
+      "failure_window_sec": 30.0,
+      "cooldown_sec": 90.0,
+      "states": [
+        {
+          "kind": "model",
+          "model": "scb10x/typhoon2.5-qwen3-4b",
+          "status": "ok",
+          "failures": 0,
+          "successes": 1,
+          "cooldown_remaining_sec": 0.0,
+          "last_error_type": "",
+          "last_error": "",
+          "last_elapsed_ms": 180.12,
+          "last_checked_at": 1790946892.642308,
+          "last_success_at": 1790946892.642308,
+          "half_open_probe_in_flight": false,
+          "events": [
+            {
+              "event": "success",
+              "kind": "preflight",
+              "elapsed_ms": 180.12,
+              "detail": "preflight_ok",
+              "at": 1790946892.642
+            }
+          ]
+        },
+        {
+          "kind": "preflight",
+          "model": "scb10x/typhoon2.5-qwen3-4b",
+          "status": "ok",
+          "failures": 0,
+          "successes": 1,
+          "cooldown_remaining_sec": 0.0,
+          "last_error_type": "",
+          "last_error": "",
+          "last_elapsed_ms": 180.12,
+          "last_checked_at": 1790946892.6422913,
+          "last_success_at": 1790946892.6422913,
+          "half_open_probe_in_flight": false,
+          "events": [
+            {
+              "event": "success",
+              "kind": "preflight",
+              "elapsed_ms": 180.12,
+              "detail": "preflight_ok",
+              "at": 1790946892.642
+            }
+          ]
+        }
+      ]
+    },
+    "pipeline_workers": {
+      "enabled": true,
+      "started": true,
+      "worker_count": 1,
+      "workers": [
+        {
+          "worker_id": 0,
+          "pid": 32020,
+          "alive": true,
+          "ready": true,
+          "completed_requests": 0,
+          "busy": false,
+          "replacement_warming": false
+        }
+      ],
+      "performance": {
+        "run_id": "20261002T131433Z",
+        "path": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\owner_local_delivery_20261002_source_content_reliability_r32_final9\\PSU_Esports_Chatbot_Local\\data\\logs\\performance\\pipeline_20261002T131433Z.jsonl",
+        "events_written": 0,
+        "events_dropped": 0
+      }
+    },
+    "runtime": {
+      "profile": "owner-local-rag-assist",
+      "version": "2026.10.02-source-content-reliability-r32",
+      "started_at": "2026-10-02T13:14:31.699237+00:00",
+      "answer_timeout_sec": 20.0,
+      "pipeline_timeout_sec": 19.0,
+      "intent_timeout_sec": 14.0,
+      "local_llm": {
+        "enabled": true,
+        "model": "scb10x/typhoon2.5-qwen3-4b",
+        "intent_timeout_sec": 14.0,
+        "planner_timeout_sec": 1.2,
+        "general_timeout_sec": 4.0,
+        "high_assist_profile": true
+      },
+      "semantic_rag": {
+        "enabled": true,
+        "embedding_model": "psu-bge-m3:q8_0"
+      },
+      "english": {
+        "enabled": true,
+        "draft_preview": false
+      },
+      "booking": {
+        "enabled": true,
+        "fetch_mode": "wordpress",
+        "cache_seconds": 0.0,
+        "dashboard_required": false,
+        "read_only": true
+      },
+      "input_quality": {
+        "mode": "enforce",
+        "keyboard_layout": "request_retype",
+        "repeated_characters": "warn_and_continue"
+      }
+    },
+    "features": {
+      "bilingual_english": true,
+      "local_llm_assist": true,
+      "semantic_rag": true,
+      "embedding_model": "psu-bge-m3:q8_0",
+      "live_booking_status": true
+    }
+  },
+  "total": 24,
+  "passed": 24,
+  "cases": [
+    {
+      "question": "กติกา CS2 ปี 2026 มีอะไรบ้าง",
+      "locale": "th",
+      "recorded_year": 2026,
+      "requested_year": 2026,
+      "passed": true,
+      "errors": [],
+      "elapsed": 1.2986258000601083
+    },
+    {
+      "question": "กติกา CS2 ปี 2027 มีอะไรบ้าง",
+      "locale": "th",
+      "recorded_year": 2026,
+      "requested_year": 2027,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.23796940001193434
+    },
+    {
+      "question": "กติกา CS2 ปี 2024 มีอะไรบ้าง",
+      "locale": "th",
+      "recorded_year": 2026,
+      "requested_year": 2024,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.266617999994196
+    },
+    {
+      "question": "กติกา CS2 ปี 2025 มีอะไรบ้าง",
+      "locale": "th",
+      "recorded_year": 2026,
+      "requested_year": 2025,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.2135808999883011
+    },
+    {
+      "question": "What are the CS2 tournament rules for 2026?",
+      "locale": "en",
+      "recorded_year": 2026,
+      "requested_year": 2026,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.3149049000348896
+    },
+    {
+      "question": "What are the CS2 tournament rules for 2027?",
+      "locale": "en",
+      "recorded_year": 2026,
+      "requested_year": 2027,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.19382480008061975
+    },
+    {
+      "question": "What are the CS2 tournament rules for 2024?",
+      "locale": "en",
+      "recorded_year": 2026,
+      "requested_year": 2024,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.17674550006631762
+    },
+    {
+      "question": "What are the CS2 tournament rules for 2025?",
+      "locale": "en",
+      "recorded_year": 2026,
+      "requested_year": 2025,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.23149069992359728
+    },
+    {
+      "question": "กติกา RoV ปี 2025 มีอะไรบ้าง",
+      "locale": "th",
+      "recorded_year": 2025,
+      "requested_year": 2025,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.3101353000383824
+    },
+    {
+      "question": "กติกา RoV ปี 2027 มีอะไรบ้าง",
+      "locale": "th",
+      "recorded_year": 2025,
+      "requested_year": 2027,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.22668299998622388
+    },
+    {
+      "question": "กติกา RoV ปี 2024 มีอะไรบ้าง",
+      "locale": "th",
+      "recorded_year": 2025,
+      "requested_year": 2024,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.2475873000221327
+    },
+    {
+      "question": "กติกา RoV ปี 2024 มีอะไรบ้าง",
+      "locale": "th",
+      "recorded_year": 2025,
+      "requested_year": 2024,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.13101130002178252
+    },
+    {
+      "question": "What are the RoV tournament rules for 2025?",
+      "locale": "en",
+      "recorded_year": 2025,
+      "requested_year": 2025,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.24265860009472817
+    },
+    {
+      "question": "What are the RoV tournament rules for 2027?",
+      "locale": "en",
+      "recorded_year": 2025,
+      "requested_year": 2027,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.1922412000130862
+    },
+    {
+      "question": "What are the RoV tournament rules for 2024?",
+      "locale": "en",
+      "recorded_year": 2025,
+      "requested_year": 2024,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.19113880000077188
+    },
+    {
+      "question": "What are the RoV tournament rules for 2024?",
+      "locale": "en",
+      "recorded_year": 2025,
+      "requested_year": 2024,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.10807439999189228
+    },
+    {
+      "question": "กติกา VALORANT ปี 2026 มีอะไรบ้าง",
+      "locale": "th",
+      "recorded_year": 2026,
+      "requested_year": 2026,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.46811810007784516
+    },
+    {
+      "question": "กติกา VALORANT ปี 2027 มีอะไรบ้าง",
+      "locale": "th",
+      "recorded_year": 2026,
+      "requested_year": 2027,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.2665897000115365
+    },
+    {
+      "question": "กติกา VALORANT ปี 2024 มีอะไรบ้าง",
+      "locale": "th",
+      "recorded_year": 2026,
+      "requested_year": 2024,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.23048709996510297
+    },
+    {
+      "question": "กติกา VALORANT ปี 2025 มีอะไรบ้าง",
+      "locale": "th",
+      "recorded_year": 2026,
+      "requested_year": 2025,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.24081059999298304
+    },
+    {
+      "question": "What are the VALORANT tournament rules for 2026?",
+      "locale": "en",
+      "recorded_year": 2026,
+      "requested_year": 2026,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.2676546999718994
+    },
+    {
+      "question": "What are the VALORANT tournament rules for 2027?",
+      "locale": "en",
+      "recorded_year": 2026,
+      "requested_year": 2027,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.21362189995124936
+    },
+    {
+      "question": "What are the VALORANT tournament rules for 2024?",
+      "locale": "en",
+      "recorded_year": 2026,
+      "requested_year": 2024,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.2079503999557346
+    },
+    {
+      "question": "What are the VALORANT tournament rules for 2025?",
+      "locale": "en",
+      "recorded_year": 2026,
+      "requested_year": 2025,
+      "passed": true,
+      "errors": [],
+      "elapsed": 0.1990860999794677
+    }
+  ]
+}

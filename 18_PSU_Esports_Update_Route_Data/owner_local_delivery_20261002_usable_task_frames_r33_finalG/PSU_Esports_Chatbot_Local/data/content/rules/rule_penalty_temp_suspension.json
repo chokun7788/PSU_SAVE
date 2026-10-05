@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_penalty_temp_suspension",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "แบนชั่วคราว",
+      "โดนแบนชั่วคราว",
+      "ระงับสิทธิ์ชั่วคราว",
+      "ระงับสิทธิ์.*กี่วัน",
+      "ละเมิดกฎ.*กี่วัน"
+    ],
+    "en": [
+      "temporary suspension"
+    ]
+  },
+  "facts": {
+    "route_category": "penalty",
+    "intent": "temporary_suspension",
+    "patterns": [
+      "แบนชั่วคราว",
+      "โดนแบนชั่วคราว",
+      "ระงับสิทธิ์ชั่วคราว",
+      "ระงับสิทธิ์.*กี่วัน",
+      "ละเมิดกฎ.*กี่วัน",
+      "temporary suspension"
+    ],
+    "priority": 122
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "หากผู้ใช้งานละเมิดกฎซ้ำหรือกระทำการรุนแรง อาจถูกระงับสิทธิ์การใช้งานชั่วคราวเป็นระยะเวลา 1-7 วัน ขึ้นอยู่กับลักษณะของการละเมิด"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "For repeated or serious violations, users may receive a temporary suspension for 1-7 days depending on the violation."
+      },
+      "source_sha256": "2276a2956867b50a42966a4d80d436bce62390a9c0ee13663a47c2e2430cdd97",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/penalty_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_penalty_temp_suspension",
+      "reservation-penalty-001"
+    ],
+    "last_verified_at": ""
+  }
+}

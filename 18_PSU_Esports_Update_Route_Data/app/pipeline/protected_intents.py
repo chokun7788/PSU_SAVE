@@ -73,11 +73,19 @@ def is_weekly_booking_window_query(query: str) -> bool:
     asks_current_slot = asks_current_slot or bool(re.search(r"\b\d{4}-\d{2}-\d{2}\b|\b\d{1,2}:\d{2}\b", q))
     # A named weekday is a concrete slot request only with an availability
     # predicate and a time; otherwise it asks about the regular schedule.
-    asks_slot = _has(q, "ว่างไหม", "ว่างหรือเปล่า", "ถูกจอง", "slotว่าง", "slot available") or bool(re.search(
+    asks_slot = _has(q, "ว่างไหม", "ว่างหรือเปล่า", "ถูกจอง", "slotว่าง", "slot available", "ให้จอง", "ตารางจอง", "ช่วงไหน", "รอบไหน", "booking availability") or bool(re.search(
         r"\b(?:is|are|which)\b.{0,45}\b(?:free|booked|vacant|slot\s+available)\b",
         q,
     ))
-    return asks_booking and asks_weekly_period and not (asks_slot and asks_current_slot)
+    # A generic weekly maintenance question can use the recorded schedule;
+    # adding a station/status, date, or current-time request still needs live
+    # data. Do not allow the new period vocabulary to swallow that request.
+    numbered_resource = bool(re.search(r'\b(?:pc|ps5|vr|cockpit|nintendo|equipment|station)\s*#?\s*\d+\b', q, re.I))
+    generic_periods = not asks_current_slot and not numbered_resource and bool(re.search(r'\b(?:which|what)\s+(?:days?|hours?|time\s+periods?)\b|\b(?:days?\s+and\s+time\s+periods?|weekly\s+schedule)\b', q, re.I))
+    status_predicate = bool(re.search(r'ว่าง|ถูกจอง|\b(?:free|booked|vacant)\b', q, re.I)) or (not generic_periods and bool(re.search(r'\bavailable\b', q, re.I)))
+    resource_status = status_predicate and bool(re.search(r'เครื่อง|อุปกรณ์|\b(?:pc|ps5|vr|cockpit|nintendo|equipment|station)(?:\s*#?\s*\d+)?\b', q, re.I))
+    added_policy_period = not asks_current_slot and not resource_status and _has(q, 'ช่วงเช้า', 'ช่วงบ่าย', 'ปิดดูแลเครื่อง', 'บำรุงรักษา')
+    return asks_booking and (asks_weekly_period or added_policy_period or generic_periods) and not (asks_slot and asks_current_slot) and not resource_status
 
 
 def _weekly_schedule(locale: str) -> str:
@@ -181,7 +189,7 @@ def _asks_personal_power(q: str) -> bool:
 
 
 def _asks_alcohol(q: str) -> bool:
-    return _has(q, "แอลกอฮอล์", "เหล้า", "เบียร์", "ไวน์") or bool(_tokens(q) & {"alcohol", "beer", "wine", "liquor"})
+    return _has(q, "แอลกอฮอล์", "เหล้า", "เบียร์", "ไวน์") or bool(_tokens(q) & {"alcohol", "alcoholic", "beer", "wine", "liquor"})
 
 
 def _asks_open_eligibility(q: str) -> bool:
@@ -208,9 +216,8 @@ def _asks_visit_only_fee(q: str) -> bool:
 
 
 def _payment_rule_id(q: str) -> str:
-    method = _has(q, "จ่ายยังไง", "จ่ายอย่างไร", "วิธีชำระ", "วิธีจ่าย", "โอนเงิน", "เลขบัญชี") or bool(re.search(
-        r"\b(?:how\s+(?:do|can)\s+(?:i|we)\s+pay|payment\s+method|bank\s+account)\b", q
-    ))
+    from app.pipeline.source_task_signals import payment_method_query
+    method = payment_method_query(q)
     if method:
         return "rule_payment_bank"
     if _has(q, "ชำระเงินหลัง booking", "ชำระเงินหลังจอง", "หลังจองต้องชำระ"):
@@ -236,7 +243,8 @@ def _single_studio_rule(q: str) -> str:
         return "rule_lost_personal_items"
     if bool(re.search(r"\b(?:lost|missing)\b.{0,30}\b(?:belongings|property|items)\b", q)):
         return "rule_lost_personal_items"
-    if _has(q, "คำพูดไม่เหมาะสม", "พูดจาดูหมิ่น", "เสียงดังเกิน") or bool(re.search(r"\b(?:offensive\s+language|insulting\s+speech)\b", q)):
+    from app.pipeline.source_task_signals import speech_rule_query
+    if speech_rule_query(q):
         return "rule_noise_language"
     if (_has(q, "คืน", "นำมาคืน") and _has(q, "อุปกรณ์", "แผ่นเกม")) or bool(re.search(r"\breturn\b.{0,35}\b(?:equipment|game\s+discs?|games)\b", q)):
         return "rule_return_equipment_games"
@@ -252,6 +260,9 @@ def _asks_checkin_required(q: str) -> bool:
 
 def _is_price_without_service(q: str, service: str | None) -> bool:
     if service:
+        return False
+    # An explicit all-service table request is complete in scope.
+    if re.search(r'แต่ละ(?:เครื่อง|โซน|บริการ)|ตาราง.*ราคา|ค่าบริการ.*ทั้งหมด|ราคา.*ทั้งหมด|ค่าเล่น.*(?:เครื่อง|โซน).*บ้าง|\b(?:each|all)\s+(?:service|zone|device|station)s?\b',q,re.I):
         return False
     price = _has_price_signal(q)
     usage = _has(q, "เล่น", "ใช้", "เข้าศูนย์", "อุปกรณ์", "เครื่อง") or bool(_tokens(q) & {"play", "use", "enter", "access", "visit", "equipment", "studio", "service", "station", "rate", "rates"})
@@ -305,7 +316,11 @@ def _policy_result(claim_id: str, *, locale: str, variant: str, service: str | N
     )
 
 
-def answer_protected_intent(query: str, *, locale: str, service: str | None, rules: list[dict]) -> ProtectedAnswer | None:
+def answer_protected_intent(query: str, *, locale: str, service: str | None, rules: list[dict], price_intent: bool = False) -> ProtectedAnswer | None:
+    from app.pipeline.competition_targets import looks_like_competition_rule_query
+
+    if looks_like_competition_rule_query(query):
+        return None
     q = normalize_text(query)
     english = locale == "en"
     if _is_unverified_advice_or_fabrication(q):
@@ -494,8 +509,11 @@ def answer_protected_intent(query: str, *, locale: str, service: str | None, rul
             "ต้องการทราบค่าบริการของ PC, PlayStation 5, Nintendo Switch, Cockpit หรือ VR ครับ? ราคาแตกต่างตามบริการและกลุ่มผู้ใช้ จึงยังระบุราคาเดียวไม่ได้ครับ"
         )
         return ProtectedAnswer("price_missing_service", "clarification", "clarification", answer)
-    explicit_price = _has_price_signal(q)
-    if not explicit_price and not _asks_temporal_access(q) and (_is_public_access(q) or _asks_open_eligibility(q) or _has(q, "มีข้อจำกัดว่าใครเข้าใช้", "who can use the studio equipment") or bool(re.search(r"\bwho\s+is\s+eligible\s+to\s+use\b", q))):
+    explicit_price = price_intent or _has_price_signal(q)
+    specific_booking_steps = _has(q, "จองยังไง", "จองอย่างไร", "วิธีจอง", "ขั้นตอนจอง") or bool(re.search(
+        r"\bhow\s+(?:to\s+(?:book|reserve)|(?:do|can)\s+(?:i|we)\s+(?:book|reserve))\b", q,
+    ))
+    if not explicit_price and not specific_booking_steps and not _asks_temporal_access(q) and (_is_public_access(q) or _asks_open_eligibility(q) or _has(q, "มีข้อจำกัดว่าใครเข้าใช้", "who can use the studio equipment") or bool(re.search(r"\bwho\s+is\s+eligible\s+to\s+use\b", q))):
         documents = _has(q, "เอกสาร", "บัตร", "รหัสนักศึกษา", "student id", "national id") or bool(re.search(r"\b(?:what|which)\s+(?:id|documents?|identification)\b", q))
         membership = _has(q, "ต้องเป็นสมาชิก", "สมัครสมาชิก") or bool(re.search(r"\b(?:need|require|have)\s+(?:a\s+)?membership\b", q))
         booking = _has(q, "จอง") or bool(_tokens(q) & {"book", "booking", "reserve", "reservation"})

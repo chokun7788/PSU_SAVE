@@ -1,0 +1,20 @@
+OK pipeline:structured_service_game_availability_no_match games/game_detail_lookup 2.5903s | PC #01 มี Call of Duty: Warzone ไหม
+OK pipeline:structured_service_game_availability_no_match games/game_detail_lookup 1.3818s | PC #03 มี TEKKEN 8 ไหม
+OK pipeline:structured_service_capacity reservation/count 0.4652s | PC #01-#02 เล่นได้กี่คน
+OK pipeline:structured_service_capacity reservation/count 0.5477s | PlayStation 5 #01-#02 เล่นได้กี่คน
+OK pipeline:structured_service_capacity reservation/count 0.5920s | VR Station 30 นาที เล่นได้กี่คน
+OK pipeline:structured_service_game_availability games/list 0.4530s | PC Zone รายการเกมมีอะไรบ้าง
+OK pipeline:structured_service_game_availability games/list 0.4629s | PC เครื่อง 1 รายการเกมมีอะไรบ้าง
+OK pipeline:penalty_fast_path penalty/penalty_policy 2.8757s | ทำจอยพังโดนปรับเท่าไหร่
+OK pipeline:studio_rules_overview_fast_path rules/studio_rules 0.4454s | กติกาในศูนย์มีอะไรบ้าง
+OK pipeline:studio_rules_overview_fast_path rules/studio_rules 0.4009s | ในศูนย์ห้ามอะไรบ้าง
+Traceback (most recent call last):
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tests\smoke_test_availability_policy_regressions.py", line 135, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tests\smoke_test_availability_policy_regressions.py", line 116, in main
+    check(
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tests\smoke_test_availability_policy_regressions.py", line 33, in check
+    raise AssertionError(f"{question}: category {result.route.category} != {category}\n{result.answer}")
+AssertionError: ถ้าจะเล่น Call of Duty ต้องจองอะไร: category clarification != reservation
+กรุณาระบุชื่อเกมและภาคให้ชัดเจนครับ ยังเลือกบริการให้ไม่ได้จนกว่าจะพบเกมที่ตรงกับรายการบริการที่ยืนยันได้

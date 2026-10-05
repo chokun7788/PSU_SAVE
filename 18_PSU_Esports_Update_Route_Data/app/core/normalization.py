@@ -162,7 +162,7 @@ CUSTOMER_GROUP_ALIASES = {
 
 
 PRICE_WORD_ALIASES = [
-    "ราคา", "ค่าบริการ", "เสียกี่บาท", "กี่บาท", "เท่าไหร่", "เท่าไร", "fee", "price", "cost", "บาท",
+    "ราคา", "ค่าบริการ", "ค่าเล่น", "เสียกี่บาท", "กี่บาท", "เท่าไหร่", "เท่าไร", "fee", "price", "cost", "บาท",
 ]
 
 
@@ -600,7 +600,7 @@ def detect_from_aliases(query: str, alias_map: dict[str, list[str]], *, threshol
 
 
 def has_price_intent(query: str) -> bool:
-    return contains_alias(query, PRICE_WORD_ALIASES, fuzzy=False)[0]
+    return contains_alias(query, PRICE_WORD_ALIASES, fuzzy=False)[0] or any(word in normalize_text(query) for word in ("แพงกว่า", "ถูกกว่า"))
 
 
 def detect_external_institution_label(query: str) -> str | None:

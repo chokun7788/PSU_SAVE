@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_minor_damage",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "เสียหายเล็กน้อย",
+      "รอยเปื้อน",
+      "คราบน้ำ",
+      "รอยขีดข่วน"
+    ],
+    "en": [
+      "minor damage"
+    ]
+  },
+  "facts": {
+    "route_category": "penalty",
+    "intent": "minor_damage_fine",
+    "patterns": [
+      "เสียหายเล็กน้อย",
+      "รอยเปื้อน",
+      "คราบน้ำ",
+      "รอยขีดข่วน",
+      "minor damage"
+    ],
+    "priority": 100
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ความเสียหายเล็กน้อย เช่น รอยเปื้อน คราบน้ำ รอยขีดข่วน ฝาปิดหลุด หรือปุ่มหลวม มีค่าปรับ 100–500 บาท"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Minor damage such as stains, watermarks, scratches, loose lids, or loose buttons has a fine of 100–500 THB."
+      },
+      "source_sha256": "c0db89350ef09b5cd3ed7c8256693d5d3270a1bd94fd49a867587d6db0aa9542",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/penalty_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "curated_damage_minor"
+    ],
+    "last_verified_at": ""
+  }
+}

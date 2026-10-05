@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_booking_steps",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "วิธีจอง",
+      "จองยังไง",
+      "ขั้นตอนจอง"
+    ],
+    "en": [
+      "how to book",
+      "how.*reservation"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "booking_steps",
+    "patterns": [
+      "วิธีจอง",
+      "จองยังไง",
+      "ขั้นตอนจอง",
+      "how to book",
+      "how.*reservation"
+    ],
+    "priority": 95
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ขั้นตอนจองคือ เลือกบริการ เลือกวันและเวลา กรอกข้อมูลผู้ใช้ ตรวจสอบข้อมูล ชำระเงินโดยโอนเข้าบัญชี และแนบสลิปการโอนเงิน"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "The booking steps are: select a service, choose date and time, fill in user information, review the details, make payment by bank transfer, and upload the payment slip."
+      },
+      "source_sha256": "3bb6942508d3cb1e3e3ebbadb1e79a7041cc75cb115fa15d19fb86df10da12a7",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/reservation_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "curated_booking_steps"
+    ],
+    "last_verified_at": ""
+  }
+}

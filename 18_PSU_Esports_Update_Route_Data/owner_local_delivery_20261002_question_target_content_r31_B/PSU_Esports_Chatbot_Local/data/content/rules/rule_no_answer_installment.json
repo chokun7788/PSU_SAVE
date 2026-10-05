@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_no_answer_installment",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "ผ่อนชำระ",
+      "ผ่อนค่าเล่น"
+    ],
+    "en": [
+      "installment"
+    ]
+  },
+  "facts": {
+    "route_category": "no_answer",
+    "intent": "no_answer_installment",
+    "patterns": [
+      "ผ่อนชำระ",
+      "ผ่อนค่าเล่น",
+      "installment"
+    ],
+    "priority": 130
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ยังไม่พบข้อมูลเรื่องการผ่อนชำระค่าใช้บริการในฐานข้อมูลที่มี ข้อมูลที่มีระบุว่าหลังจองต้องชำระเงินทันที และหากไม่ชำระภายใน 10 นาที การจองจะถูกยกเลิก จึงควรยึดตามการชำระเงินตามรอบจองก่อน"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "No information about installment payment for service fees was found in the available knowledge base. The available booking policy says payment must be made immediately after booking, and unpaid bookings are cancelled after 10 minutes."
+      },
+      "source_sha256": "706865ec43459a94a4d8cf20486ad56755b8b7e364e341a37f22f156117fa8ed",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/no_answer_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_payment_10_minutes"
+    ],
+    "last_verified_at": ""
+  }
+}

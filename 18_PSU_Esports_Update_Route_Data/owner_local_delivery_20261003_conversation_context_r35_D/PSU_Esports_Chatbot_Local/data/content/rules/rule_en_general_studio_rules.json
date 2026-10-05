@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_en_general_studio_rules",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [],
+    "en": [
+      "what\\s+are\\s+the\\s+(?:studio|usage|house)\\s+rules",
+      "rules\\s+(?:for|at|inside)\\s+(?:the\\s+)?studio",
+      "what\\s+is\\s+(?:allowed|not allowed)\\s+(?:at|in)\\s+(?:the\\s+)?studio"
+    ]
+  },
+  "facts": {
+    "route_category": "rules",
+    "intent": "studio_rules_summary",
+    "patterns": [
+      "what\\s+are\\s+the\\s+(?:studio|usage|house)\\s+rules",
+      "rules\\s+(?:for|at|inside)\\s+(?:the\\s+)?studio",
+      "what\\s+is\\s+(?:allowed|not allowed)\\s+(?:at|in)\\s+(?:the\\s+)?studio"
+    ],
+    "priority": 129
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "กฎหลักคือรับประทานอาหารเฉพาะพื้นที่ที่กำหนด ห้ามสูบบุหรี่ แอลกอฮอล์ อาวุธ การพนัน และควรหลีกเลี่ยงเสียงดังหรือคำพูดไม่เหมาะสม"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Key studio rules: food and drinks are limited to designated areas; smoking, alcohol, weapons, fighting, and gambling are prohibited; excessive noise and insulting language are not allowed; report problems to staff immediately."
+      },
+      "source_sha256": "8bfd99add739d7bc0cf6baf652460ea284e6b77274ae01e8e16aa3a3fc898269",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/english_support_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_rule_food_drinks",
+      "curated_rule_smoking_alcohol",
+      "curated_rule_weapons_gambling",
+      "curated_rule_noise_language",
+      "curated_rule_report_problem"
+    ],
+    "last_verified_at": ""
+  }
+}

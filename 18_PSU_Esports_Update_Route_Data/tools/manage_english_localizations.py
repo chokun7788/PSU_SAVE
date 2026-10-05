@@ -309,7 +309,7 @@ def _projection_rows(approved: list[dict[str, Any]]) -> tuple[list[dict[str, Any
     return structured, rag
 
 
-def publish(candidate: Path, *, build_vector: bool = False) -> Path:
+def publish(candidate: Path, *, build_vector: bool = False, mirror_registry: bool = True) -> Path:
     rows, errors = validate_candidate(candidate)
     if errors:
         raise SystemExit("\n".join(errors))
@@ -349,7 +349,8 @@ def publish(candidate: Path, *, build_vector: bool = False) -> Path:
     os.replace(current_tmp, LOCALE_ROOT / "CURRENT")
     # Keep the requested registry path as a human-readable mirror. Runtime uses
     # CURRENT, so a mirror failure cannot expose half a release.
-    _write_jsonl(LOCALE_ROOT / "approved_localizations.jsonl", approved)
+    if mirror_registry:
+        _write_jsonl(LOCALE_ROOT / "approved_localizations.jsonl", approved)
     return release
 
 

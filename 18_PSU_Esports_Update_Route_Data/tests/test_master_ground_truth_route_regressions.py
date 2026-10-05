@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import unittest
+from unittest.mock import patch
 from datetime import date
 
 os.environ["PSU_BILINGUAL_EN_ENABLED"] = "1"
@@ -172,7 +173,10 @@ class MasterGroundTruthRouteRegressionTests(unittest.TestCase):
         self.assertIn("Gaming Headset", headsets.answer)
 
     def test_missing_english_game_detail_names_target(self) -> None:
-        result = self.answer("How do you play Animal Crossing: New Horizons")
+        # Exercise the missing-overlay condition explicitly. The active
+        # release may legitimately contain a reviewed translation now.
+        with patch("app.pipeline.bilingual_english.approved_localization", return_value=None):
+            result = self.answer("How do you play Animal Crossing: New Horizons")
         self.assertEqual("games", result.route.category)
         self.assertIn("Animal Crossing: New Horizons", result.answer)
         self.assertIn("approved English localization", result.answer)

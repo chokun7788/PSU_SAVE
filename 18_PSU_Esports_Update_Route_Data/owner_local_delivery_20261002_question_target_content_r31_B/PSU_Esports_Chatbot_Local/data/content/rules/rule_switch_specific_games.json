@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_switch_specific_games",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "นินเทนโด.*overcooked",
+      "นินเทนโด.*มาริโอ",
+      "นินเทนโด.*sports"
+    ],
+    "en": [
+      "switch.*sports",
+      "switch.*smash",
+      "switch.*overcooked",
+      "switch.*mario kart",
+      "nintendo.*sports",
+      "nintendo.*smash",
+      "nintendo.*overcooked",
+      "nintendo.*mario kart",
+      "super smash",
+      "smash bros"
+    ]
+  },
+  "facts": {
+    "route_category": "games",
+    "intent": "switch_specific_games",
+    "patterns": [
+      "switch.*sports",
+      "switch.*smash",
+      "switch.*overcooked",
+      "switch.*mario kart",
+      "nintendo.*sports",
+      "nintendo.*smash",
+      "nintendo.*overcooked",
+      "nintendo.*mario kart",
+      "super smash",
+      "smash bros",
+      "นินเทนโด.*overcooked",
+      "นินเทนโด.*มาริโอ",
+      "นินเทนโด.*sports"
+    ],
+    "priority": 125
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "เกม Nintendo Switch ที่มีในรายการรวมถึง Mario Kart 8 Deluxe, Overcooked 2, Nintendo Switch Sports และ Super Smash Bros Ultimate"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "The Nintendo Switch list includes Mario Kart 8 Deluxe, Overcooked 2, Nintendo Switch Sports, and Super Smash Bros Ultimate."
+      },
+      "source_sha256": "15680565af322764c183726ec8d89e63a601dc137be824384975774df3d3b873",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/games_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_games_switch",
+      "reservation-service-nintendo"
+    ],
+    "last_verified_at": ""
+  }
+}

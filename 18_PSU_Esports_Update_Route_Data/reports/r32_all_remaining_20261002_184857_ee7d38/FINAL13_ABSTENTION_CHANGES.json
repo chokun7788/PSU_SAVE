@@ -1,0 +1,77 @@
+[
+  {
+    "question": "กติกา CS2 เรื่องเวแร์ชันเกมและการตั้งค่าแมตช์ ว่าอย่างไร",
+    "locale": "th",
+    "previous": "คำตอบ: 2. เวอร์ชันของเกม การแข่งขันทั้งหมดจะใช้เวอร์ชันล่าสุดของ CS2 บนแพลตฟอร์ม Steam ห้ามใช้การดัดแปลงตัวเกมที่ไม่ได้รับอนุญาตโดยเด็ดขาด\n\nอ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "actual": "คำตอบ: 6. อุปกรณ์และการตั้งค่าเกม\n\nอ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "grades": [
+      {
+        "corpus": "master_gt_bilingual_multi_error_2000_20260929_r15.jsonl",
+        "row_index": 896,
+        "id": "MASTER-GT-TH-04049",
+        "variant": "noisy",
+        "expected": {
+          "answer_contract": {
+            "must_contain": [],
+            "must_contain_any": [],
+            "must_not_contain": []
+          },
+          "clean_question": "กติกา CS2 เรื่องเวอร์ชันเกมและการตั้งค่าแมตช์ ว่าอย่างไร",
+          "domain": "competition_rules",
+          "edit_actions": [
+            "neighbor"
+          ],
+          "edit_recipe": "neighbor",
+          "expected_answer_status": "answer_available",
+          "expected_route_categories": [
+            "competition_rules"
+          ],
+          "expected_target": "cs2",
+          "id": "MASTER-GT-TH-04049",
+          "latency_ceiling_sec": 20.0,
+          "locale": "th",
+          "metadata": {
+            "case_type": "facet_targeted_retrieval",
+            "rag_required": true,
+            "source_gap_manifest_key": ""
+          },
+          "noisy_question": "กติกา CS2 เรื่องเวแร์ชันเกมและการตั้งค่าแมตช์ ว่าอย่างไร",
+          "protected_literals": [
+            "CS2"
+          ],
+          "review_status": "source_grounded_gold_candidate",
+          "source_contract": {
+            "live_dependency": false,
+            "requirement": "target_and_facet_grounded_rulebook",
+            "source_ids": [
+              "canonical::competition_rules_cs2_psu_phuket_2026_s05_c01",
+              "canonical::competition_rules_cs2_psu_phuket_2026_s22_c01",
+              "canonical::competition_rules_cs2_psu_phuket_2026_s23_c01",
+              "canonical::competition_rules_cs2_psu_phuket_2026_s24_c01",
+              "canonical::competition_rules_cs2_psu_phuket_2026_s25_c01",
+              "canonical::competition_rules_cs2_psu_phuket_2026_s26_c01",
+              "canonical::competition_rules_cs2_psu_phuket_2026_s27_c01",
+              "canonical::competition_rules_cs2_psu_phuket_2026_s34_c01",
+              "canonical::competition_rules_cs2_psu_phuket_2026_s39_c01",
+              "canonical::competition_rules_cs2_psu_phuket_2026_s44_c01",
+              "competition_rules_cs2_psu_phuket_2026"
+            ],
+            "source_urls": [
+              "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+            ]
+          },
+          "source_fixture": "master_ground_truth_bilingual_10000_v2.jsonl",
+          "synthetic_seed": 20260929,
+          "question": "กติกา CS2 เรื่องเวแร์ชันเกมและการตั้งค่าแมตช์ ว่าอย่างไร"
+        },
+        "passed": true,
+        "failures": [],
+        "evidence_level": "route_outcome_only",
+        "grader_detail": {
+          "strong_outcome_matches": true,
+          "positive_content_asserted": false
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,238 @@
+{
+  "health": {
+    "ok": true,
+    "service": "psu-esports-chat-web",
+    "time": "2026-10-02T14:01:18.459658+00:00",
+    "warmup": {
+      "ok": true,
+      "elapsed_sec": 8.0994,
+      "warmed": [
+        "game_title_aliases",
+        "structured_tools",
+        "game_resolver",
+        "routing_data",
+        "retrieval_data",
+        "probe_queries",
+        "semantic_embedding"
+      ],
+      "errors": [],
+      "timings": {
+        "game_title_aliases": 0.5925,
+        "structured_tools": 0.409,
+        "game_resolver": 0.1115,
+        "routing_data": 0.134,
+        "retrieval_data": 1.6885,
+        "probe_queries": 5.1358,
+        "semantic_embedding": 0.028
+      }
+    },
+    "llm_preflight": {
+      "ok": true,
+      "model": "scb10x/typhoon2.5-qwen3-4b",
+      "kind": "preflight",
+      "elapsed_ms": 55.15,
+      "response_chars": 2,
+      "done_reason": "length",
+      "num_ctx": 3072,
+      "load_duration": 10698400,
+      "prompt_eval_duration": 35821000,
+      "eval_duration": 1000,
+      "health": {
+        "llm_health_enabled": true,
+        "llm_health_status": "ok",
+        "llm_health_failures": 0,
+        "llm_health_failure_scope": "model_and_kind"
+      }
+    },
+    "input_quality_guard": {
+      "enabled": true,
+      "mode": "enforce",
+      "repeat_policy": "warn_and_continue",
+      "layout_threshold": 0.39,
+      "repeat_threshold": 0.55,
+      "corpus_size": 4023,
+      "profile_version": "keyboard-profile-v1:2a863a4176572043"
+    },
+    "llm_health": {
+      "enabled": true,
+      "failure_threshold": 2,
+      "failure_window_sec": 30.0,
+      "cooldown_sec": 90.0,
+      "states": [
+        {
+          "kind": "model",
+          "model": "scb10x/typhoon2.5-qwen3-4b",
+          "status": "ok",
+          "failures": 0,
+          "successes": 1,
+          "cooldown_remaining_sec": 0.0,
+          "last_error_type": "",
+          "last_error": "",
+          "last_elapsed_ms": 55.15,
+          "last_checked_at": 1790949324.7207394,
+          "last_success_at": 1790949324.7207394,
+          "half_open_probe_in_flight": false,
+          "events": [
+            {
+              "event": "success",
+              "kind": "preflight",
+              "elapsed_ms": 55.15,
+              "detail": "preflight_ok",
+              "at": 1790949324.721
+            }
+          ]
+        },
+        {
+          "kind": "preflight",
+          "model": "scb10x/typhoon2.5-qwen3-4b",
+          "status": "ok",
+          "failures": 0,
+          "successes": 1,
+          "cooldown_remaining_sec": 0.0,
+          "last_error_type": "",
+          "last_error": "",
+          "last_elapsed_ms": 55.15,
+          "last_checked_at": 1790949324.720726,
+          "last_success_at": 1790949324.720726,
+          "half_open_probe_in_flight": false,
+          "events": [
+            {
+              "event": "success",
+              "kind": "preflight",
+              "elapsed_ms": 55.15,
+              "detail": "preflight_ok",
+              "at": 1790949324.721
+            }
+          ]
+        }
+      ]
+    },
+    "pipeline_workers": {
+      "enabled": true,
+      "started": true,
+      "worker_count": 1,
+      "workers": [
+        {
+          "worker_id": 0,
+          "pid": 26700,
+          "alive": true,
+          "ready": true,
+          "completed_requests": 72,
+          "busy": false,
+          "replacement_warming": false
+        }
+      ],
+      "performance": {
+        "run_id": "20261002T135510Z",
+        "path": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\owner_local_delivery_20261002_source_content_reliability_r32_final13\\PSU_Esports_Chatbot_Local\\data\\logs\\performance\\pipeline_20261002T135510Z.jsonl",
+        "events_written": 1049,
+        "events_dropped": 0
+      }
+    },
+    "runtime": {
+      "profile": "owner-local-rag-assist",
+      "version": "2026.10.02-source-content-reliability-r32",
+      "started_at": "2026-10-02T13:55:10.142757+00:00",
+      "answer_timeout_sec": 20.0,
+      "pipeline_timeout_sec": 19.0,
+      "intent_timeout_sec": 14.0,
+      "local_llm": {
+        "enabled": true,
+        "model": "scb10x/typhoon2.5-qwen3-4b",
+        "intent_timeout_sec": 14.0,
+        "planner_timeout_sec": 1.2,
+        "general_timeout_sec": 4.0,
+        "high_assist_profile": true
+      },
+      "semantic_rag": {
+        "enabled": true,
+        "embedding_model": "psu-bge-m3:q8_0"
+      },
+      "english": {
+        "enabled": true,
+        "draft_preview": false
+      },
+      "booking": {
+        "enabled": true,
+        "fetch_mode": "wordpress",
+        "cache_seconds": 0.0,
+        "dashboard_required": false,
+        "read_only": true
+      },
+      "input_quality": {
+        "mode": "enforce",
+        "keyboard_layout": "request_retype",
+        "repeated_characters": "warn_and_continue"
+      }
+    },
+    "features": {
+      "bilingual_english": true,
+      "local_llm_assist": true,
+      "semantic_rag": true,
+      "embedding_model": "psu-bge-m3:q8_0",
+      "live_booking_status": true
+    }
+  },
+  "web_url": "http://127.0.0.1:8090/",
+  "launcher_record": "C:\\Users\\Chokhun\\Documents\\Codex\\2026-09-25\\psu-esports-studio-phuket-chatbot-c-2\\web_chat_runs\\r32_ready_8090_dccd2b12eb.json",
+  "static_assets": [
+    {
+      "file": "index.html",
+      "sha256": "555d45c20dc0d366cdd01a33ea5302caf59e046083e83f005c171e0b62e5041d",
+      "matches_project": true
+    },
+    {
+      "file": "app.js",
+      "sha256": "d95765c229708c85495b1ddb8a45bcb5ce7076e6de89f77669e2500c71a96e7e",
+      "matches_project": true
+    },
+    {
+      "file": "chat_request.js",
+      "sha256": "9c21c6eddacc2276330fa260e99ca77227b68f139efef05c242c9e87ac8b8b16",
+      "matches_project": true
+    }
+  ],
+  "unit": {
+    "total": 464,
+    "passed": 464
+  },
+  "postrelease_source": {
+    "total": 30,
+    "passed": 30
+  },
+  "postrelease_editions": {
+    "total": 24,
+    "passed": 24
+  },
+  "postrelease_partial": {
+    "total": 8,
+    "passed": 8
+  },
+  "postrelease_burst": {
+    "total": 10,
+    "passed": 10,
+    "retries": 8,
+    "elapsed_ms": [
+      4622,
+      4275,
+      3626,
+      3905,
+      3682,
+      3374,
+      1307,
+      4472,
+      4040,
+      4832
+    ]
+  },
+  "http_frozen": {
+    "total": 937,
+    "passed": 935,
+    "status_differences": 2
+  },
+  "protected_hashes_verified": 584,
+  "preexisting_test_files_unchanged": 140,
+  "package_runtime_hashes_match": 128,
+  "real_occupancy_verified": false,
+  "owner_policy_confirmed": false
+}

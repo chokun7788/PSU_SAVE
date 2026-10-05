@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import unittest
+from unittest.mock import patch
 
 from app.pipeline.competition_targets import resolve_competition_targets
 from app.pipeline.competition_coverage import assess_competition_evidence
@@ -272,13 +273,14 @@ class CompetitionTargetGroundingTests(unittest.TestCase):
         self.assertNotIn("Play-Through Bug", result.answer)
 
     def test_english_comparison_keeps_both_targets_before_localization_check(self) -> None:
-        result = answer_question_pipeline_debug(
-            "How do CS2 and VALORANT technical pause rules differ?",
-            experimental_rag_fallback=True,
-            experimental_allow_llm=False,
-            global_timeout_sec=5,
-            locale="en",
-        )
+        with patch("app.pipeline.bilingual_english.approved_localization", return_value=None):
+            result = answer_question_pipeline_debug(
+                "How do CS2 and VALORANT technical pause rules differ?",
+                experimental_rag_fallback=True,
+                experimental_allow_llm=False,
+                global_timeout_sec=5,
+                locale="en",
+            )
 
         self.assertEqual(result.mode, "pipeline:competition_source_localization_pending_en")
         self.assertIn("Counter-Strike 2 and VALORANT", result.answer)

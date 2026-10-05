@@ -36,9 +36,11 @@ const localeCopy = {
     waiting: "รอคำตอบ",
     pending: "กำลังค้นข้อมูลและตรวจคำตอบ...",
     answering: "กำลังตอบ",
+    queueWaiting: "มีผู้ใช้งานพร้อมกัน กำลังรอคิวและลองส่งคำถามอีกครั้ง...",
     user: "คุณ",
     retype: "กรุณาพิมพ์ใหม่",
-    checkAgain: "ตรวจคำอีกครั้ง",
+    checkAgain: "พบตัวอักษรซ้ำ",
+    continuedTypoNotice: "พบตัวอักษรซ้ำ ระบบประมวลผลคำถามต่อแล้ว กรุณาตรวจว่าคำตอบตรงกับสิ่งที่ต้องการถาม",
     debug: "ดู JSON debug ล่าสุด",
     noDebug: "ยังไม่มีข้อมูล",
     apiFailure: "เรียก API ไม่สำเร็จ",
@@ -65,9 +67,11 @@ const localeCopy = {
     waiting: "Waiting",
     pending: "Finding evidence and checking the answer...",
     answering: "Answering",
+    queueWaiting: "Other requests are being answered. Waiting briefly and retrying your question...",
     user: "You",
     retype: "Please retype",
-    checkAgain: "Check the text",
+    checkAgain: "Repeated characters detected",
+    continuedTypoNotice: "Repeated characters detected. Your question was processed; please check whether the answer matches what you meant.",
     debug: "View latest JSON debug data",
     noDebug: "No data yet",
     apiFailure: "API request failed",
@@ -217,6 +221,87 @@ function renderSources(sources) {
   }
 }
 
+function appendAnswerInline(parent, text) {
+  // Text nodes preserve literal HTML; only a bounded bold marker is parsed.
+  const parts = String(text).split(/(\*\*[^*\n]+\*\*)/g);
+  for (const part of parts) {
+    if (part.startsWith('**') && part.endsWith('**') && part.length > 4) {
+      const strong = document.createElement('strong');
+      strong.textContent = part.slice(2, -2);
+      parent.appendChild(strong);
+    } else {
+      parent.appendChild(document.createTextNode(part));
+    }
+  }
+}
+
+function answerTableCells(line) {
+  return line.trim().replace(/^\|/, '').replace(/\|$/, '').split(/(?<!\\)\|/).map(cell => cell.trim().replace(/\\\|/g, '|'));
+}
+
+function renderAssistantAnswer(bubble, text) {
+  const lines = String(text).split('\n');
+  let list = null;
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index].trim();
+    if (!line) { list = null; continue; }
+    if (line.startsWith('|') && index + 1 < lines.length && /^\s*\|(?:\s*:?-+:?\s*\|)+\s*$/.test(lines[index + 1])) {
+      list = null;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'answer-table-wrap';
+      const table = document.createElement('table');
+      table.className = 'answer-table';
+      const head = document.createElement('thead');
+      const headRow = document.createElement('tr');
+      for (const value of answerTableCells(line)) {
+        const cell = document.createElement('th');
+        cell.scope = 'col';
+        appendAnswerInline(cell, value);
+        headRow.appendChild(cell);
+      }
+      head.appendChild(headRow);
+      table.appendChild(head);
+      const body = document.createElement('tbody');
+      index += 2;
+      while (index < lines.length && lines[index].trim().startsWith('|')) {
+        const row = document.createElement('tr');
+        for (const value of answerTableCells(lines[index])) {
+          const cell = document.createElement('td');
+          appendAnswerInline(cell, value);
+          row.appendChild(cell);
+        }
+        body.appendChild(row);
+        index += 1;
+      }
+      index -= 1;
+      table.appendChild(body);
+      wrapper.appendChild(table);
+      bubble.appendChild(wrapper);
+    } else if (/^\*\*[^*]+\*\*$/.test(line)) {
+      list = null;
+      const heading = document.createElement('h3');
+      heading.className = 'answer-heading';
+      appendAnswerInline(heading, line);
+      bubble.appendChild(heading);
+    } else if (/^(?:[•*·-])\s+/.test(line)) {
+      if (!list) {
+        list = document.createElement('ul');
+        list.className = 'answer-list';
+        bubble.appendChild(list);
+      }
+      const item = document.createElement('li');
+      appendAnswerInline(item, line.replace(/^(?:[•*·-])\s+/, ''));
+      list.appendChild(item);
+    } else {
+      list = null;
+      const paragraph = document.createElement('p');
+      paragraph.className = 'answer-paragraph';
+      appendAnswerInline(paragraph, line);
+      bubble.appendChild(paragraph);
+    }
+  }
+}
+
 function renderMessages() {
   messagesEl.innerHTML = "";
   if (messages.length === 0) {
@@ -234,7 +319,8 @@ function renderMessages() {
 
     const bubble = document.createElement("div");
     bubble.className = "bubble";
-    bubble.textContent = item.text;
+    if (item.role === 'assistant') renderAssistantAnswer(bubble, item.text);
+    else bubble.textContent = item.text;
 
     const meta = document.createElement("div");
     meta.className = "meta";
@@ -418,28 +504,19 @@ async function ask(question) {
   setStatus(true, copy().answering);
 
   try {
-    const response = await fetch("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        question: cleanQuestion,
-        client_session_id: clientSessionId,
-        recent_history: outgoingHistory,
-        locale: selectedLocale,
-        debug: true,
-        experimental_rag_fallback: experimentalRagFallback,
-        experimental_allow_llm: experimentalAllowLlm,
-      }),
-    });
+    const {response, data} = await PSUChatRequest.requestChat({
+      question: cleanQuestion,
+      client_session_id: clientSessionId,
+      recent_history: outgoingHistory,
+      locale: selectedLocale,
+      debug: true,
+      experimental_rag_fallback: experimentalRagFallback,
+      experimental_allow_llm: experimentalAllowLlm,
+    }, {onRetry: (busy) => {
+      const lang = busy.language?.effective || uiLocale;
+      setStatus(true, (localeCopy[lang] || copy()).queueWaiting);
+    }});
 
-    const rawResponse = await response.text();
-    let data;
-    try {
-      data = rawResponse ? JSON.parse(rawResponse) : {};
-    } catch (_error) {
-      const preview = rawResponse ? rawResponse.slice(0, 160) : "empty response";
-      throw new Error(`API returned non-JSON (${response.status}): ${preview}`);
-    }
     if (!response.ok || !data.ok) {
       throw new Error(data.message || data.detail || data.error || "API error");
     }
@@ -474,7 +551,7 @@ async function ask(question) {
       routeIntent: data.route_intent || "",
       resolvedText: data.context_resolution ? data.context_resolution.resolved_question : "",
       contextEligible: !inputContextExcluded,
-      notice: inputQuality && inputQuality.applied_action === "warn_and_continue" ? inputQuality.notice || "" : "",
+      notice: inputQuality && inputQuality.applied_action === "warn_and_continue" ? (localeCopy[data.language?.effective || uiLocale] || copy()).continuedTypoNotice : "",
       answerLanguage: data.language?.effective || uiLocale,
       requestId: data.request_id || "",
       question: cleanQuestion,

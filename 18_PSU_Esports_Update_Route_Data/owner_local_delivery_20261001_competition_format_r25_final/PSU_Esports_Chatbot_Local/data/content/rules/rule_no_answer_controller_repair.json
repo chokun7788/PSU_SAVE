@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_no_answer_controller_repair",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "ซ่อมจอย",
+      "รับซ่อมจอย",
+      "จอย ps5.*ซ่อม",
+      "ซ่อม.*controller"
+    ],
+    "en": [
+      "controller repair"
+    ]
+  },
+  "facts": {
+    "route_category": "no_answer",
+    "intent": "no_answer_controller_repair",
+    "patterns": [
+      "ซ่อมจอย",
+      "รับซ่อมจอย",
+      "จอย ps5.*ซ่อม",
+      "ซ่อม.*controller",
+      "controller repair"
+    ],
+    "priority": 130
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ยังไม่พบข้อมูลว่าศูนย์รับซ่อมจอย PS5 หรือคอนโทรลเลอร์ส่วนตัวในฐานข้อมูลที่มี ข้อมูลที่มีเป็นการจองใช้อุปกรณ์และกฎการรับผิดชอบเมื่อทำอุปกรณ์ของศูนย์เสียหาย หากต้องการซ่อมอุปกรณ์ส่วนตัวควรสอบถามเจ้าหน้าที่โดยตรง"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "No information about PS5 controller or personal controller repair service was found in the available knowledge base. The available data covers booking studio equipment and responsibility for damage to studio equipment, so personal repair requests should be confirmed with staff."
+      },
+      "source_sha256": "271887503ebb525ece9d51de4ad7d8fd9af4babe7877ab2c6a51029f9fea695d",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/no_answer_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_damage_moderate",
+      "curated_damage_severe"
+    ],
+    "last_verified_at": ""
+  }
+}

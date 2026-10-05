@@ -1,0 +1,2017 @@
+{
+  "question": "ช่วยตอบจาข้อมูลที่ยืนยันได้หน่อย: Counter-Strike 2 คือเกมอะไน",
+  "result": {
+    "answer": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับหมวด games ตอนนี้ครับ",
+    "hits": [
+      {
+        "id": "Reservation",
+        "metadata": {
+          "source_url": "https://esports.computing.psu.ac.th/reservation",
+          "category": "reservation",
+          "title": "Reservation",
+          "source_ids": [
+            "Reservation"
+          ]
+        }
+      }
+    ],
+    "elapsed": 43.0324,
+    "mode": "pipeline:no_answer",
+    "confidence": 0.56,
+    "route": {
+      "category": "games",
+      "intent": "game_detail_lookup",
+      "confidence": 0.97,
+      "answer_type": "fact",
+      "risk": "low",
+      "reason": "exact game target locked: Counter-Strike 2"
+    },
+    "entities": {
+      "day": null,
+      "time_slots": [],
+      "service": null,
+      "user_group": null,
+      "duration": null,
+      "price_intent": false,
+      "short_answer": false,
+      "comparison_intent": false,
+      "raw": {
+        "normalized_query": "ช่วยตอบจาข้อมูลที่ยืนยันได้หน่อย: counter-strike 2 คือเกมอะไน",
+        "language_hint": "mixed_th_en"
+      }
+    },
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "hybrid_guard_no_verified_context",
+        "high_confidence_route_returned_no_answer"
+      ]
+    },
+    "trace": [
+      {
+        "stage": "locale_resolution",
+        "decision": "th",
+        "confidence": 1.0,
+        "detail": "toggle_override_th;mixed_thai_function_words",
+        "metadata": {
+          "requested": "th",
+          "detected": "mixed",
+          "effective": "th",
+          "confidence": 1.0,
+          "reason": "toggle_override_th;mixed_thai_function_words"
+        }
+      },
+      {
+        "stage": "intent_cue_preflight",
+        "decision": "unchanged",
+        "confidence": 1.0,
+        "detail": "bounded task cues; offsets refer to each intermediate input",
+        "metadata": {
+          "raw": "ช่วยตอบจาข้อมูลที่ยืนยันได้หน่อย: Counter-Strike 2 คือเกมอะไน",
+          "candidate": "ช่วยตอบจาข้อมูลที่ยืนยันได้หน่อย: Counter-Strike 2 คือเกมอะไน",
+          "recoveries": [],
+          "span_budget": 3,
+          "edit_budget": 4
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "split_multi_question",
+        "confidence": 1.0,
+        "detail": "parts=1",
+        "metadata": {
+          "elapsed_ms": 39.41,
+          "elapsed_sec": 0.0394,
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.041,
+          "global_remaining_sec": 19.959,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.959,
+          "timing_status": "running",
+          "parts": [
+            "ช่วยตอบจาข้อมูลที่ยืนยันได้หน่อย: Counter-Strike 2 คือเกมอะไน"
+          ],
+          "competition_rule_query": false
+        }
+      },
+      {
+        "stage": "compound_complexity",
+        "decision": "simple",
+        "confidence": 0.0,
+        "detail": "single question",
+        "metadata": {
+          "level": "simple",
+          "score": 0.0,
+          "signals": [],
+          "can_parallelize": false,
+          "requires_planner": false,
+          "max_workers": 1,
+          "reason": "single question"
+        }
+      },
+      {
+        "stage": "query_planner",
+        "decision": "skipped",
+        "confidence": 0.0,
+        "detail": "experimental_allow_llm is false; single clear operation does not need planner",
+        "metadata": {
+          "method": "gated",
+          "llm_attempted": false,
+          "allow_llm": false
+        }
+      },
+      {
+        "stage": "preprocess",
+        "decision": "normalized",
+        "confidence": 1.0,
+        "detail": "ช่วยตอบจาข้อมูลที่ยืนยันได้หน่อย: counter-strike 2 คือเกมอะไน",
+        "metadata": {
+          "language_hint": "mixed_th_en",
+          "nonsemantic_preface_removed": false,
+          "query_variants": [
+            "ช่วยตอบจาข้อมูลที่ยืนยันได้หน่อย: Counter-Strike 2 คือเกมอะไน"
+          ],
+          "elapsed_ms": 2.22,
+          "elapsed_sec": 0.0022
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "preprocess",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 2.28,
+          "elapsed_sec": 0.0023
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "active_route_selection",
+        "confidence": 1.0,
+        "detail": "competition_rules/competition_rules_lookup",
+        "metadata": {
+          "elapsed_ms": 0.55,
+          "elapsed_sec": 0.0005,
+          "route_category": "competition_rules",
+          "route_intent": "competition_rules_lookup",
+          "variant_count": 0
+        }
+      },
+      {
+        "stage": "entities",
+        "decision": "extracted",
+        "confidence": 0.9,
+        "detail": "",
+        "metadata": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "exact_game_target_locked",
+        "confidence": 0.97,
+        "detail": "exact_known_game_target",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "counterstrike2",
+              "title": "Counter-Strike 2",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Counter-Strike 2",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "counterstrike2",
+                "title": "Counter-Strike 2",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Counter-Strike 2",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 21.234,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "semantic_route_refiner",
+        "decision": "skipped_exact_target_lock",
+        "confidence": 0.97,
+        "detail": "an exact game target is resolved before semantic route discovery",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "counterstrike2",
+              "title": "Counter-Strike 2",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Counter-Strike 2",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "counterstrike2",
+                "title": "Counter-Strike 2",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Counter-Strike 2",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 21.234,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "freshness_guard",
+        "decision": "not_required",
+        "confidence": 0.9,
+        "detail": "query does not require live dynamic evidence",
+        "metadata": {
+          "requires_live_evidence": false
+        }
+      },
+      {
+        "stage": "boundary_guard",
+        "decision": "allow",
+        "confidence": 0.9,
+        "detail": "no high-confidence boundary matched",
+        "metadata": {
+          "flags": []
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "guard_scope",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.04,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "guard",
+        "decision": "domain_ok",
+        "confidence": 0.9,
+        "detail": "domain hints found",
+        "metadata": {}
+      },
+      {
+        "stage": "router",
+        "decision": "competition_rules",
+        "confidence": 0.97,
+        "detail": "competition rule terms found before reservation/check-in",
+        "metadata": {
+          "intent": "competition_rules_lookup",
+          "answer_type": "fact"
+        }
+      },
+      {
+        "stage": "model_gateway",
+        "decision": "skip_preflight_llm",
+        "confidence": 0.97,
+        "detail": "request did not allow LLM",
+        "metadata": {
+          "allow_llm": false,
+          "preflight_allow_llm": false,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "universal_intent",
+        "confidence": 1.0,
+        "detail": "games/count",
+        "metadata": {
+          "elapsed_ms": 3.04,
+          "elapsed_sec": 0.003,
+          "method": "heuristic",
+          "confidence": 0.84
+        }
+      },
+      {
+        "stage": "universal_intent",
+        "decision": "games/count",
+        "confidence": 0.84,
+        "detail": "known game alias found; count terms found",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false,
+          "llm_first": false,
+          "llm_first_skip_reason": "",
+          "llm_first_review_reason": "",
+          "llm_call": {},
+          "intent_risk_flags": [],
+          "input_recovery": {
+            "score": 0.2503,
+            "language": "mixed",
+            "language_quality": 0.7497,
+            "should_review_intent": false,
+            "reason": "Thai character n-gram quality=0.750",
+            "action": "continue"
+          },
+          "llm_rejected_reason": "",
+          "intent_candidates": [
+            {
+              "id": "c1",
+              "domain": "games",
+              "operation": "count",
+              "target": "",
+              "confidence": 0.84,
+              "reason": "heuristic fallback"
+            },
+            {
+              "id": "c2",
+              "domain": "games",
+              "operation": "list",
+              "target": "",
+              "confidence": 0.66,
+              "reason": "game-domain catalog alternative"
+            }
+          ],
+          "target": "",
+          "filters": {},
+          "needs": [
+            "count_items"
+          ],
+          "answer_style": "direct",
+          "heuristic": {
+            "domain": "games",
+            "operation": "count",
+            "confidence": 0.84,
+            "reason": "known game alias found; count terms found"
+          }
+        }
+      },
+      {
+        "stage": "universal_route_refine",
+        "decision": "games/game_detail_lookup -> games/count",
+        "confidence": 0.84,
+        "detail": "route refined by universal intent",
+        "metadata": {
+          "domain": "games",
+          "operation": "count",
+          "method": "heuristic"
+        }
+      },
+      {
+        "stage": "target_lock",
+        "decision": "restored_exact_game_target",
+        "confidence": 0.97,
+        "detail": "universal intent proposed games/count; restored games/game_detail_lookup",
+        "metadata": {
+          "locked": true,
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "reason": "exact_known_game_target",
+          "resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "counterstrike2",
+              "title": "Counter-Strike 2",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Counter-Strike 2",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "counterstrike2",
+                "title": "Counter-Strike 2",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Counter-Strike 2",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 21.234,
+            "request_cache_hit": false,
+            "budget_exceeded": false,
+            "reranker": {
+              "enabled": false,
+              "action": "skipped",
+              "reason": "disabled"
+            }
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_router",
+        "confidence": 1.0,
+        "detail": "structured/games",
+        "metadata": {
+          "elapsed_ms": 0.03,
+          "elapsed_sec": 0.0,
+          "method": "heuristic",
+          "confidence": 0.84
+        }
+      },
+      {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.84,
+        "detail": "experimental_allow_llm is false",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "ambiguity_gate",
+        "confidence": 1.0,
+        "detail": "allow",
+        "metadata": {
+          "elapsed_ms": 396.75,
+          "elapsed_sec": 0.3968,
+          "flags": [],
+          "confidence": 0.94
+        }
+      },
+      {
+        "stage": "ambiguity_gate",
+        "decision": "allow",
+        "confidence": 0.94,
+        "detail": "ambiguity risk acceptable",
+        "metadata": {
+          "flags": [],
+          "route": "games/game_detail_lookup",
+          "intent": "games/count",
+          "has_known_game": true,
+          "has_service_or_zone": false,
+          "game_entity_resolution": {
+            "status": "exact",
+            "entity_type": "game",
+            "top_candidate": {
+              "entity_id": "counterstrike2",
+              "title": "Counter-Strike 2",
+              "score": 1.0,
+              "match_type": "exact_alias",
+              "matched_alias": "Counter-Strike 2",
+              "sources": [
+                "availability_pc_01_02",
+                "availability_pc_03_10"
+              ],
+              "zones": [
+                "PC Zone"
+              ],
+              "has_controls": true,
+              "reasons": []
+            },
+            "candidates": [
+              {
+                "entity_id": "counterstrike2",
+                "title": "Counter-Strike 2",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "Counter-Strike 2",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              }
+            ],
+            "top_score": 1.0,
+            "margin": 1.0,
+            "reason": "direct_alias_match",
+            "operation": "detail",
+            "resolver": "bounded_trigram_v1",
+            "catalog_version": "bacdf919d5e4323c",
+            "method": "exact",
+            "candidate_count": 1,
+            "comparison_count": 0,
+            "elapsed_ms": 0.045,
+            "request_cache_hit": true,
+            "budget_exceeded": false
+          },
+          "intent_candidates": [
+            {
+              "domain": "games",
+              "operation": "detail",
+              "score": 0.6,
+              "reasons": [
+                "known_game_target",
+                "route_prior",
+                "intent_domain_prior"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "question_frame",
+        "confidence": 0.97,
+        "detail": "games/game_detail",
+        "metadata": {
+          "elapsed_ms": 193.16,
+          "elapsed_sec": 0.1932,
+          "operation": "game_detail",
+          "domain": "games",
+          "expected_answer_types": [
+            "game_detail"
+          ],
+          "targets": [
+            {
+              "target_id": "counterstrike2",
+              "target_type": "game",
+              "domain": "games",
+              "label": "Counter-Strike 2",
+              "score": 1.0
+            }
+          ],
+          "target_status": "exact",
+          "target_margin": 1.0,
+          "target_required": true,
+          "allows_multiple_targets": false,
+          "needs_clarification": false,
+          "confidence": 0.97,
+          "method": "operation_first",
+          "route_category": "games",
+          "route_intent": "game_detail_lookup",
+          "intent_operation": "count",
+          "target_reason": "explicit_canonical_title_overrides_normalized_alias_tie",
+          "target_candidate_count": 1,
+          "game_family": null
+        }
+      },
+      {
+        "stage": "target_context",
+        "decision": "enrich_universal_intent",
+        "confidence": 1.0,
+        "detail": "exact Question Frame target propagated to structured execution",
+        "metadata": {
+          "target_id": "counterstrike2",
+          "target_type": "game",
+          "domain": "games",
+          "label": "Counter-Strike 2",
+          "score": 1.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "candidate_decisions",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 212.58,
+          "elapsed_sec": 0.2126
+        }
+      },
+      {
+        "stage": "decision_candidates",
+        "decision": "structured.games",
+        "confidence": 0.999,
+        "detail": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; structured_operation_priority; question_frame_domain_match; question_frame_operation=game_detail; precondition=game_domain_or_catalog_query",
+        "metadata": {
+          "selected": {
+            "capability_id": "structured.games",
+            "action": "structured",
+            "domain": "games",
+            "score": 0.999,
+            "status": "accepted",
+            "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; structured_operation_priority; question_frame_domain_match; question_frame_operation=game_detail; precondition=game_domain_or_catalog_query",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          "selection": {
+            "status": "selected",
+            "execution_allowed": true,
+            "margin": 0.51,
+            "same_action_as_second": false,
+            "second": {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.489,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          },
+          "question_frame": {
+            "operation": "game_detail",
+            "domain": "games",
+            "expected_answer_types": [
+              "game_detail"
+            ],
+            "targets": [
+              {
+                "target_id": "counterstrike2",
+                "target_type": "game",
+                "domain": "games",
+                "label": "Counter-Strike 2",
+                "score": 1.0
+              }
+            ],
+            "target_status": "exact",
+            "target_margin": 1.0,
+            "target_required": true,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.97,
+            "method": "operation_first",
+            "route_category": "games",
+            "route_intent": "game_detail_lookup",
+            "intent_operation": "count",
+            "target_reason": "explicit_canonical_title_overrides_normalized_alias_tie",
+            "target_candidate_count": 1,
+            "game_family": null
+          },
+          "candidates": [
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.999,
+              "status": "accepted",
+              "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; structured_operation_priority; question_frame_domain_match; question_frame_operation=game_detail; precondition=game_domain_or_catalog_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.489,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.467,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.456,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.444,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.4,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.322,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.278,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_member_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_control_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_an_equipment_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_reservation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_schedule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_or_calculation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_competition_rule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "low",
+            "general_llm_requires_non_psu": true
+          }
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "tool_precondition",
+        "confidence": 1.0,
+        "detail": "structured.games",
+        "metadata": {
+          "elapsed_ms": 0.56,
+          "elapsed_sec": 0.0006,
+          "ok": true
+        }
+      },
+      {
+        "stage": "tool_precondition",
+        "decision": "allow_structured",
+        "confidence": 0.9,
+        "detail": "game_domain_or_catalog_query",
+        "metadata": {
+          "capability_id": "structured.games",
+          "ok": true,
+          "reason": "game_domain_or_catalog_query",
+          "severity": "policy",
+          "selector_allows_structured": true,
+          "selected_capability_id": "structured.games"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "structured_tool_execution",
+        "confidence": 1.0,
+        "detail": "structured_games_catalog",
+        "metadata": {
+          "elapsed_ms": 1041.46,
+          "elapsed_sec": 1.0415,
+          "precondition_ok": true,
+          "selector_allows_structured": true,
+          "selected_capability_id": "structured.games",
+          "confidence": 0.95
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "facts_composer",
+        "confidence": 1.0,
+        "detail": "disabled",
+        "metadata": {
+          "elapsed_ms": 0.03,
+          "elapsed_sec": 0.0,
+          "used_llm": false
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "structured_games_catalog",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 0.3,
+        "detail": "failed",
+        "metadata": {
+          "elapsed_ms": 248.24,
+          "elapsed_sec": 0.2482,
+          "error_count": 1,
+          "warning_count": 1
+        }
+      },
+      {
+        "stage": "structured_tool",
+        "decision": "structured_games_catalog",
+        "confidence": 0.95,
+        "detail": "get_games_by_zone",
+        "metadata": {
+          "tool": "get_games_by_zone",
+          "zone": "all",
+          "count": 45,
+          "elapsed": 1.9694,
+          "facts_composer_used": false
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "failed",
+        "confidence": 0.3,
+        "detail": "answer_contract_type_mismatch:expected=fact,summary;actual=controls,game_catalog,how_to,list; fact_answer_may_be_too_verbose",
+        "metadata": {}
+      },
+      {
+        "stage": "candidate_execution",
+        "decision": "structured_rejected_by_validator",
+        "confidence": 0.3,
+        "detail": "answer_contract_type_mismatch:expected=fact,summary;actual=controls,game_catalog,how_to,list",
+        "metadata": {
+          "mode": "structured_games_catalog",
+          "capability_id": "structured.games",
+          "validation_errors": [
+            "answer_contract_type_mismatch:expected=fact,summary;actual=controls,game_catalog,how_to,list"
+          ],
+          "validation_warnings": [
+            "fact_answer_may_be_too_verbose"
+          ]
+        }
+      },
+      {
+        "stage": "repair_controller",
+        "decision": "retry_next_candidate",
+        "confidence": 0.55,
+        "detail": "structured draft rejected by answer contract",
+        "metadata": {
+          "attempt": 1,
+          "max_attempts": 1,
+          "rejected_capability_id": "structured.games",
+          "errors": [
+            "answer_contract_type_mismatch:expected=fact,summary;actual=controls,game_catalog,how_to,list"
+          ]
+        }
+      },
+      {
+        "stage": "deterministic",
+        "decision": "answer_games",
+        "confidence": 0.94,
+        "detail": "game_name_mention_detail_fast_path",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "deterministic",
+        "confidence": 1.0,
+        "detail": "game_name_mention_detail_fast_path",
+        "metadata": {
+          "elapsed_ms": 16543.18,
+          "elapsed_sec": 16.5432,
+          "confidence": 0.94,
+          "selector_allows_deterministic": true,
+          "selected_capability_id": "structured.games"
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "format_answer",
+        "confidence": 1.0,
+        "detail": "game_name_mention_detail_fast_path",
+        "metadata": {
+          "elapsed_ms": 0.02,
+          "elapsed_sec": 0.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "validation",
+        "confidence": 0.3,
+        "detail": "failed",
+        "metadata": {
+          "elapsed_ms": 214.23,
+          "elapsed_sec": 0.2142,
+          "error_count": 1,
+          "warning_count": 0
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "failed",
+        "confidence": 0.3,
+        "detail": "answer_contract_source_domain_mismatch:expected=competition_rules,games,knowledge;actual=reservation",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "hybrid_retrieval",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 23962.91,
+          "elapsed_sec": 23.9629,
+          "hit_count": 4
+        }
+      },
+      {
+        "stage": "hybrid_retrieval",
+        "decision": "guarded_candidate_rerank",
+        "confidence": 0.91,
+        "detail": "hits=4 curated=8 vector=5 semantic=0 top=our_games_scraped_gran_turismo_7_standard_edition score=23.32 origins=curated",
+        "metadata": {
+          "category": "games",
+          "intent": "game_detail_lookup",
+          "question_frame_constraints": {
+            "entity_ids": [
+              "counterstrike2"
+            ],
+            "facets": [
+              "overview",
+              "gameplay"
+            ],
+            "strict_target": true
+          },
+          "locale": "th",
+          "retrieval_budget": {
+            "candidate_limit": 8,
+            "final_limit": 4,
+            "broad_or_complex": false,
+            "rerank_requested": true,
+            "reason": "clear_retrieval_budget"
+          },
+          "source_quality": {
+            "source_ids": [
+              "our_games_scraped_gran_turismo_7_standard_edition",
+              "game_detail_cs2::th::summary_th",
+              "game_detail_cs2::th::how_to_play_th",
+              "game_detail_cs2::th::genre"
+            ],
+            "authority_rank": 2,
+            "conflict": true,
+            "stale": false,
+            "warnings": [
+              "same_claim_has_multiple_numeric_values_need_source_review"
+            ]
+          },
+          "curated_trace": "hits=8",
+          "vector_trace": "hits=5 backend=local_hash_char_ngram_v1 top=game_detail_cs2::th::summary_th score=12.578 v=0.514 e=1.1875",
+          "semantic_trace": {
+            "stage": "semantic_retrieval",
+            "decision": "skipped",
+            "confidence": 0.0,
+            "detail": "disabled",
+            "metadata": {}
+          },
+          "timings_ms": {
+            "hybrid_curated_retrieval": 2115.77,
+            "hybrid_vector_retrieval": 21838.44,
+            "hybrid_semantic_retrieval": 0.07,
+            "hybrid_merge_and_score": 7.2,
+            "hybrid_document_reranker": 0.35
+          },
+          "rerank_trace": {
+            "stage": "document_reranker",
+            "decision": "skipped",
+            "confidence": 0.0,
+            "detail": "disabled",
+            "metadata": {}
+          },
+          "canonical_competition_shadow": null
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "hybrid_curated_retrieval",
+        "confidence": 0.7,
+        "detail": "hybrid retrieval substage",
+        "metadata": {
+          "elapsed_ms": 2115.77
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "hybrid_vector_retrieval",
+        "confidence": 0.7,
+        "detail": "hybrid retrieval substage",
+        "metadata": {
+          "elapsed_ms": 21838.44
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "hybrid_semantic_retrieval",
+        "confidence": 0.7,
+        "detail": "hybrid retrieval substage",
+        "metadata": {
+          "elapsed_ms": 0.07
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "hybrid_merge_and_score",
+        "confidence": 0.7,
+        "detail": "hybrid retrieval substage",
+        "metadata": {
+          "elapsed_ms": 7.2
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "hybrid_document_reranker",
+        "confidence": 0.7,
+        "detail": "hybrid retrieval substage",
+        "metadata": {
+          "elapsed_ms": 0.35
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "hybrid_answer",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 0.65,
+          "elapsed_sec": 0.0007,
+          "raw_hit_count": 4,
+          "confidence": 0.89
+        }
+      },
+      {
+        "stage": "model_gateway",
+        "decision": "deterministic_rag",
+        "confidence": 0.76,
+        "detail": "request did not allow LLM",
+        "metadata": {
+          "path": "deterministic_rag",
+          "use_llm": false,
+          "use_rag": true,
+          "use_rerank": false,
+          "reason": "request did not allow LLM",
+          "min_remaining_sec": 6.0
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "evidence_packer",
+        "confidence": 1.0,
+        "detail": "",
+        "metadata": {
+          "elapsed_ms": 66.65,
+          "elapsed_sec": 0.0667,
+          "item_count": 4
+        }
+      },
+      {
+        "stage": "evidence_packer",
+        "decision": "packed",
+        "confidence": 0.95,
+        "detail": "items=4 chars=770",
+        "metadata": {
+          "query": "ช่วยตอบจาข้อมูลที่ยืนยันได้หน่อย: Counter-Strike 2 คือเกมอะไน",
+          "items": [
+            {
+              "source_id": "our_games_scraped_gran_turismo_7_standard_edition",
+              "title": "Gran Turismo 7: Standard Edition",
+              "text": "Gran Turismo 7: Standard Edition: \"Gran Turismo\" วางจำหน่ายครั้งแรกเป็น \"เกมจำลองการแข่งรถยนต์อย่างสมจริง\" ในปี 1997 โดยรถในเกมจะมาจากรถที่ผลิตเพื่อจำหน่ายของบริษัทผู้ผลิตซึ่งมีตัวตนในชีวิตจริง และความสามารถด้านการขับขี่ในโลกเสมือนที่สมจริง ล้วนได้รับคำชมเชยเป็นอย่างสูง ซึ่งไม่ใช่แค่จากเหล่าคนเล่นเกม แต่บรรดาคนรักรถทั่วโลกเองก็ชื่นชมด้วย หลังจากเวลาผ่านไป 25 ปีและมีการทำออกมาอีกหลายภาค ในที่สุด Gran Turismo ก็กลับมาพร้อมที่สุดแห่งแนวคิดหลักของซีรีส์ คือ ขับขี่ สะสม ปรับแต่ง...\nอยู่ในรายการเกมหน้า Our Games ส่วน: PlayStation 5",
+              "category": "games",
+              "source_url": "https://esports.phuket.psu.ac.th/Services/our-games",
+              "trust_level": "",
+              "updated_at": "",
+              "score": 23.32
+            },
+            {
+              "source_id": "game_detail_cs2::th::summary_th",
+              "title": "Counter-Strike 2",
+              "text": "Counter-Strike 2 คือเกมยิงแข่งขันแบบทีมที่แบ่งเป็นฝ่ายบุกและฝ่ายรับ โดยมีเป้าหมายหลักเกี่ยวกับการวาง/กู้ระเบิดหรือจัดการฝ่ายตรงข้าม",
+              "category": "games",
+              "source_url": "https://esports.computing.psu.ac.th/reservation",
+              "trust_level": "internal_verified",
+              "updated_at": "",
+              "score": 23.099
+            },
+            {
+              "source_id": "game_detail_cs2::th::how_to_play_th",
+              "title": "Counter-Strike 2",
+              "text": "เล่นเป็นรอบ ๆ ต้องซื้ออาวุธ วางแผนกับทีม คุมพื้นที่ และใช้การเล็งกับการสื่อสารเพื่อชนะรอบ",
+              "category": "games",
+              "source_url": "https://esports.computing.psu.ac.th/reservation",
+              "trust_level": "internal_verified",
+              "updated_at": "",
+              "score": 22.951
+            },
+            {
+              "source_id": "game_detail_cs2::th::genre",
+              "title": "Counter-Strike 2",
+              "text": "เกมยิง Tactical FPS",
+              "category": "games",
+              "source_url": "https://esports.computing.psu.ac.th/reservation",
+              "trust_level": "internal_verified",
+              "updated_at": "",
+              "score": 22.794
+            }
+          ],
+          "source_ids": [
+            "our_games_scraped_gran_turismo_7_standard_edition",
+            "game_detail_cs2::th::summary_th",
+            "game_detail_cs2::th::how_to_play_th",
+            "game_detail_cs2::th::genre"
+          ],
+          "top_score": 23.32,
+          "score_margin": 0.221,
+          "item_count": 4,
+          "max_chars": 4200,
+          "packing": "source_labelled_compact_v1"
+        }
+      },
+      {
+        "stage": "llm_rewrite",
+        "decision": "skipped_hybrid_rerank",
+        "confidence": 0.89,
+        "detail": "RAG evidence was packed and optionally composed by the gated Local LLM",
+        "metadata": {
+          "composer_used": false
+        }
+      },
+      {
+        "stage": "validation",
+        "decision": "failed",
+        "confidence": 0.3,
+        "detail": "answer_contract_type_mismatch:expected=game_detail;actual=fact,summary; answer_contract_target_missing:counterstrike2",
+        "metadata": {}
+      },
+      {
+        "stage": "fallback",
+        "decision": "hybrid_guard_no_verified_context",
+        "confidence": 0.56,
+        "detail": "high-risk category skips legacy curated direct answer when hybrid guard fails",
+        "metadata": {}
+      },
+      {
+        "stage": "timing",
+        "decision": "validation_final",
+        "confidence": 1.0,
+        "detail": "ok",
+        "metadata": {
+          "elapsed_ms": 21.27,
+          "elapsed_sec": 0.0213,
+          "added_error_count": 0,
+          "added_warning_count": 1,
+          "added_errors": [],
+          "added_warnings": [
+            "high_confidence_route_returned_no_answer"
+          ],
+          "merged_error_count": 0,
+          "merged_warning_count": 2
+        }
+      },
+      {
+        "stage": "timing",
+        "decision": "build_result",
+        "confidence": 1.0,
+        "detail": "pipeline:no_answer",
+        "metadata": {
+          "elapsed_ms": 21.78,
+          "elapsed_sec": 0.0218,
+          "format_response_style_ms": 0.17,
+          "answer_language": "th",
+          "total_elapsed_ms": 43032.33,
+          "total_elapsed_sec": 43.0323
+        }
+      }
+    ],
+    "universal_intent": {
+      "domain": "games",
+      "operation": "count",
+      "target": "Counter-Strike 2",
+      "filters": {
+        "resolved_target_id": "counterstrike2",
+        "resolved_target_type": "game"
+      },
+      "needs": [
+        "count_items"
+      ],
+      "answer_style": "direct",
+      "confidence": 0.84,
+      "method": "heuristic",
+      "reason": "known game alias found; count terms found"
+    },
+    "decision_artifact": {
+      "intent": {
+        "domain": "games",
+        "operation": "count",
+        "target": "Counter-Strike 2",
+        "confidence": 0.84,
+        "method": "heuristic"
+      },
+      "route": {
+        "category": "games",
+        "intent": "game_detail_lookup",
+        "confidence": 0.97,
+        "answer_type": "fact",
+        "risk": "low",
+        "reason": "exact game target locked: Counter-Strike 2"
+      },
+      "tool_router": {
+        "stage": "tool_router",
+        "decision": "heuristic:structured",
+        "confidence": 0.84,
+        "detail": "experimental_allow_llm is false",
+        "metadata": {
+          "method": "heuristic",
+          "llm_attempted": false
+        }
+      },
+      "selected_candidate": {
+        "capability_id": "structured.games",
+        "action": "structured",
+        "domain": "games",
+        "score": 0.999,
+        "status": "accepted",
+        "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; structured_operation_priority; question_frame_domain_match; question_frame_operation=game_detail; precondition=game_domain_or_catalog_query",
+        "requires_evidence": true,
+        "risk": "low"
+      },
+      "candidates": [
+        {
+          "capability_id": "structured.games",
+          "action": "structured",
+          "domain": "games",
+          "score": 0.999,
+          "status": "accepted",
+          "reason": "base=0.88; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=games; structured_operation_priority; question_frame_domain_match; question_frame_operation=game_detail; precondition=game_domain_or_catalog_query",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "fast.domain_handlers",
+          "action": "fast_path",
+          "domain": "multi",
+          "score": 0.489,
+          "status": "accepted",
+          "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "rulebase.category_rules",
+          "action": "rulebase",
+          "domain": "multi",
+          "score": 0.467,
+          "status": "accepted",
+          "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "retrieval.hybrid_guarded",
+          "action": "retrieval",
+          "domain": "multi",
+          "score": 0.456,
+          "status": "accepted",
+          "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "retrieval.vector_guarded",
+          "action": "vector",
+          "domain": "multi",
+          "score": 0.444,
+          "status": "accepted",
+          "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "llm.facts_composer",
+          "action": "rag_llm",
+          "domain": "multi",
+          "score": 0.4,
+          "status": "accepted",
+          "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "clarification.ask_user",
+          "action": "clarification",
+          "domain": "clarification",
+          "score": 0.322,
+          "status": "accepted",
+          "reason": "base=0.58; precondition=no_specific_precondition",
+          "requires_evidence": false,
+          "risk": "low"
+        },
+        {
+          "capability_id": "fallback.no_answer",
+          "action": "no_answer",
+          "domain": "no_answer",
+          "score": 0.278,
+          "status": "accepted",
+          "reason": "base=0.50; precondition=no_specific_precondition",
+          "requires_evidence": false,
+          "risk": "low"
+        }
+      ],
+      "rejected": [
+        {
+          "capability_id": "structured.members",
+          "action": "structured",
+          "domain": "members",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_a_member_query",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "structured.game_controls",
+          "action": "structured",
+          "domain": "game_controls",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_a_game_control_query",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "structured.equipment",
+          "action": "structured",
+          "domain": "equipment",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_an_equipment_query",
+          "requires_evidence": true,
+          "risk": "low"
+        },
+        {
+          "capability_id": "structured.reservation",
+          "action": "structured",
+          "domain": "reservation",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_a_reservation_query",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "structured.schedule",
+          "action": "structured",
+          "domain": "schedule",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_a_schedule_query",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "structured.service_fee",
+          "action": "structured",
+          "domain": "service_fee",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_a_price_query",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "fast.price_calculator",
+          "action": "fast_path",
+          "domain": "service_fee",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_a_price_or_calculation_query",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        {
+          "capability_id": "retrieval.competition_fact_cards",
+          "action": "retrieval",
+          "domain": "competition_rules",
+          "score": 0.156,
+          "status": "rejected",
+          "reason": "precondition_veto: not_a_competition_rule_query",
+          "requires_evidence": true,
+          "risk": "medium"
+        }
+      ],
+      "policy": {
+        "psu_specific": true,
+        "route_risk": "low",
+        "general_llm_requires_non_psu": true
+      },
+      "execution_plan": [
+        "normalize_and_extract_entities",
+        "route_and_resolve_universal_intent",
+        "generate_capability_candidates",
+        "apply_policy_and_rank",
+        "apply_tool_preconditions",
+        "answer_no_verified_data",
+        "format_validate_and_record"
+      ],
+      "final": {
+        "mode": "pipeline:no_answer",
+        "confidence": 0.56,
+        "execution_step": "answer_no_verified_data",
+        "executed_capability": "fallback.no_answer",
+        "selected_matches_execution": false,
+        "validation_ok": true,
+        "validation_errors": [],
+        "validation_warnings": [
+          "hybrid_guard_no_verified_context",
+          "high_confidence_route_returned_no_answer"
+        ],
+        "evidence_count": 1,
+        "source_ids": [
+          "Reservation"
+        ]
+      },
+      "production_metrics": {
+        "policy_version": "correctness_control_flow_v2",
+        "outcome": "no_answer",
+        "quality_gate_status": "safe_abstain",
+        "candidate_margin": 0.51,
+        "selection_status": "selected",
+        "ambiguity_decision": "allow",
+        "repair_attempted": true,
+        "repair_recovered": false,
+        "llm_call_count": 0,
+        "requires_shadow_review": true,
+        "shadow_review_reasons": [
+          "repair_attempted",
+          "selected_execution_mismatch",
+          "no_answer",
+          "validation_warning"
+        ]
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": null,
+        "duration": null,
+        "price_intent": false
+      },
+      "structured_tool": {
+        "stage": "structured_tool",
+        "decision": "structured_games_catalog",
+        "confidence": 0.95,
+        "detail": "get_games_by_zone",
+        "metadata": {
+          "tool": "get_games_by_zone",
+          "zone": "all",
+          "count": 45,
+          "elapsed": 1.9694,
+          "facts_composer_used": false
+        }
+      },
+      "tool_preconditions": [
+        {
+          "stage": "tool_precondition",
+          "decision": "allow_structured",
+          "confidence": 0.9,
+          "detail": "game_domain_or_catalog_query",
+          "metadata": {
+            "capability_id": "structured.games",
+            "ok": true,
+            "reason": "game_domain_or_catalog_query",
+            "severity": "policy",
+            "selector_allows_structured": true,
+            "selected_capability_id": "structured.games"
+          }
+        }
+      ],
+      "candidate_execution": [
+        {
+          "stage": "candidate_execution",
+          "decision": "structured_rejected_by_validator",
+          "confidence": 0.3,
+          "detail": "answer_contract_type_mismatch:expected=fact,summary;actual=controls,game_catalog,how_to,list",
+          "metadata": {
+            "mode": "structured_games_catalog",
+            "capability_id": "structured.games",
+            "validation_errors": [
+              "answer_contract_type_mismatch:expected=fact,summary;actual=controls,game_catalog,how_to,list"
+            ],
+            "validation_warnings": [
+              "fact_answer_may_be_too_verbose"
+            ]
+          }
+        }
+      ],
+      "validation": {
+        "stage": "validation",
+        "decision": "failed",
+        "confidence": 0.3,
+        "detail": "answer_contract_type_mismatch:expected=game_detail;actual=fact,summary; answer_contract_target_missing:counterstrike2",
+        "metadata": {}
+      },
+      "llm_calls": []
+    },
+    "language": {
+      "requested": "th",
+      "detected": "mixed",
+      "effective": "th",
+      "confidence": 1.0,
+      "reason": "toggle_override_th;mixed_thai_function_words"
+    }
+  },
+  "profile_total_sec": 43.03217159999996,
+  "top_cumulative": [
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\pipeline\\engine.py",
+      "line": 4243,
+      "function": "answer_question_pipeline_debug",
+      "primitive_calls": 1,
+      "calls": 1,
+      "self_sec": 2.7e-05,
+      "cumulative_sec": 43.033051
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\pipeline\\engine.py",
+      "line": 806,
+      "function": "answer",
+      "primitive_calls": 1,
+      "calls": 1,
+      "self_sec": 0.000307,
+      "cumulative_sec": 43.033024
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\pipeline\\engine.py",
+      "line": 1258,
+      "function": "_answer_single",
+      "primitive_calls": 1,
+      "calls": 1,
+      "self_sec": 0.000733,
+      "cumulative_sec": 42.97623
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\pipeline\\hybrid_retrieval.py",
+      "line": 184,
+      "function": "retrieve_hybrid_guarded",
+      "primitive_calls": 1,
+      "calls": 1,
+      "self_sec": 0.000493,
+      "cumulative_sec": 23.96284
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\core\\normalization.py",
+      "line": 320,
+      "function": "normalize_text",
+      "primitive_calls": 5300,
+      "calls": 5300,
+      "self_sec": 0.41136,
+      "cumulative_sec": 23.223686
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\core\\normalization.py",
+      "line": 307,
+      "function": "_fuzzy_normalize_intent_keywords",
+      "primitive_calls": 3985,
+      "calls": 3985,
+      "self_sec": 0.063346,
+      "cumulative_sec": 22.146585
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\core\\normalization.py",
+      "line": 262,
+      "function": "_fuzzy_replace_keyword",
+      "primitive_calls": 55459,
+      "calls": 55459,
+      "self_sec": 7.376446,
+      "cumulative_sec": 22.011249
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\pipeline\\vector_retrieval.py",
+      "line": 287,
+      "function": "retrieve_vector_guarded",
+      "primitive_calls": 1,
+      "calls": 1,
+      "self_sec": 0.012602,
+      "cumulative_sec": 21.838422
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\core\\normalization.py",
+      "line": 526,
+      "function": "contains_alias",
+      "primitive_calls": 70,
+      "calls": 70,
+      "self_sec": 0.015403,
+      "cumulative_sec": 17.687495
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\pipeline\\vector_retrieval.py",
+      "line": 179,
+      "function": "_entity_score",
+      "primitive_calls": 1273,
+      "calls": 1273,
+      "self_sec": 0.11834,
+      "cumulative_sec": 17.466814
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\core\\normalization.py",
+      "line": 510,
+      "function": "_best_compact_window_ratio",
+      "primitive_calls": 1181,
+      "calls": 1181,
+      "self_sec": 0.394766,
+      "cumulative_sec": 16.950273
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\core\\normalization.py",
+      "line": 494,
+      "function": "_ratio",
+      "primitive_calls": 266194,
+      "calls": 266194,
+      "self_sec": 0.479111,
+      "cumulative_sec": 16.847788
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\pipeline\\engine.py",
+      "line": 3862,
+      "function": "_try_deterministic",
+      "primitive_calls": 1,
+      "calls": 1,
+      "self_sec": 3.4e-05,
+      "cumulative_sec": 16.543167
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\runtime\\fast_answer.py",
+      "line": 4285,
+      "function": "answer_games",
+      "primitive_calls": 1,
+      "calls": 1,
+      "self_sec": 0.000128,
+      "cumulative_sec": 16.543064
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\runtime\\fast_answer.py",
+      "line": 3483,
+      "function": "_game_name_mention_answer",
+      "primitive_calls": 1,
+      "calls": 1,
+      "self_sec": 4.4e-05,
+      "cumulative_sec": 16.009066
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\runtime\\fast_answer.py",
+      "line": 3460,
+      "function": "_match_all_game_details",
+      "primitive_calls": 1,
+      "calls": 1,
+      "self_sec": 0.000321,
+      "cumulative_sec": 16.008698
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\runtime\\fast_answer.py",
+      "line": 1132,
+      "function": "_game_alias_match",
+      "primitive_calls": 39,
+      "calls": 39,
+      "self_sec": 0.001373,
+      "cumulative_sec": 15.764659
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\difflib.py",
+      "line": 597,
+      "function": "ratio",
+      "primitive_calls": 269574,
+      "calls": 269574,
+      "self_sec": 0.638588,
+      "cumulative_sec": 12.825835
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.any>",
+      "primitive_calls": 3613469,
+      "calls": 3621535,
+      "self_sec": 3.488735,
+      "cumulative_sec": 11.729244
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\difflib.py",
+      "line": 421,
+      "function": "get_matching_blocks",
+      "primitive_calls": 269574,
+      "calls": 269574,
+      "self_sec": 2.288385,
+      "cumulative_sec": 11.517743
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\pipeline\\vector_retrieval.py",
+      "line": 69,
+      "function": "_word_tokens",
+      "primitive_calls": 20618,
+      "calls": 20618,
+      "self_sec": 0.061585,
+      "cumulative_sec": 10.346786
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\core\\normalization.py",
+      "line": 280,
+      "function": "<genexpr>",
+      "primitive_calls": 18788847,
+      "calls": 18788847,
+      "self_sec": 5.892386,
+      "cumulative_sec": 8.509131
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\difflib.py",
+      "line": 305,
+      "function": "find_longest_match",
+      "primitive_calls": 713763,
+      "calls": 713763,
+      "self_sec": 5.368808,
+      "cumulative_sec": 7.928229
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\difflib.py",
+      "line": 120,
+      "function": "__init__",
+      "primitive_calls": 269574,
+      "calls": 269574,
+      "self_sec": 0.172495,
+      "cumulative_sec": 4.15958
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\difflib.py",
+      "line": 184,
+      "function": "set_seqs",
+      "primitive_calls": 269574,
+      "calls": 269574,
+      "self_sec": 0.230488,
+      "cumulative_sec": 3.987084
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\difflib.py",
+      "line": 222,
+      "function": "set_seq2",
+      "primitive_calls": 269574,
+      "calls": 269574,
+      "self_sec": 0.177281,
+      "cumulative_sec": 3.675816
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\difflib.py",
+      "line": 266,
+      "function": "__chain_b",
+      "primitive_calls": 269574,
+      "calls": 269574,
+      "self_sec": 2.049095,
+      "cumulative_sec": 3.498535
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\pipeline\\vector_retrieval.py",
+      "line": 207,
+      "function": "_lexical_overlap",
+      "primitive_calls": 1273,
+      "calls": 1273,
+      "self_sec": 0.009164,
+      "cumulative_sec": 3.472172
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\pipeline\\vector_retrieval.py",
+      "line": 168,
+      "function": "_query_terms",
+      "primitive_calls": 3819,
+      "calls": 3819,
+      "self_sec": 0.066382,
+      "cumulative_sec": 3.441908
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'isspace' of 'str' objects>",
+      "primitive_calls": 15173986,
+      "calls": 15173986,
+      "self_sec": 2.616745,
+      "cumulative_sec": 2.616745
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\pipeline\\retrieval.py",
+      "line": 686,
+      "function": "retrieve_curated",
+      "primitive_calls": 1,
+      "calls": 1,
+      "self_sec": 0.005561,
+      "cumulative_sec": 2.115699
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'get' of 'dict' objects>",
+      "primitive_calls": 7070146,
+      "calls": 7070146,
+      "self_sec": 1.779534,
+      "cumulative_sec": 1.779534
+    },
+    {
+      "file": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\app\\pipeline\\retrieval.py",
+      "line": 493,
+      "function": "_tokens",
+      "primitive_calls": 225,
+      "calls": 225,
+      "self_sec": 0.018249,
+      "cumulative_sec": 1.594774
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'startswith' of 'str' objects>",
+      "primitive_calls": 3564109,
+      "calls": 3564109,
+      "self_sec": 1.116786,
+      "cumulative_sec": 1.116786
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.len>",
+      "primitive_calls": 6795837,
+      "calls": 6796033,
+      "self_sec": 1.115928,
+      "cumulative_sec": 1.116014
+    }
+  ],
+  "notes": "Single profiled warmup probe; profiling overhead changes timing. Not the original 15.1089s request."
+}

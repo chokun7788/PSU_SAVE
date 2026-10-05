@@ -1,0 +1,3478 @@
+{
+  "format-th-0": {
+    "case": {
+      "id": "format-th-0",
+      "anchor": "format-th",
+      "locale": "th",
+      "question": "กติกา Tekken 8 รูปแบบการแข่งขันเป็นอย่างไร",
+      "game": "tekken8_psu_esports",
+      "required": [
+        "FT2",
+        "2 เกม"
+      ],
+      "forbidden": [
+        "VALORANT"
+      ],
+      "first": []
+    },
+    "elapsed_sec": 0.276,
+    "failures": [],
+    "response": {
+      "answer": "คำตอบ: รูปแบบการแข่งขัน:\n\nรายละเอียดที่เกี่ยวข้อง:\n•    แข่งขันแบบ เดี่ยว (1v1)\n•    หากเสมอกันที่ 1-1 จะต้องแข่งขัน เกมตัดสิน\n•    ในแต่ละเกมใช้กติกา R3 (แข่ง 3 รอบต่อเกม) และ 60S (จำกัดเวลา 60 วินาทีต่อรอบ)\n•    FT2: ผู้ชนะคือผู้ที่ชนะครบ 2 เกมก่อน\n\nอ้างอิงจากกติกา: Tekken 8 / PSU Esports ปะทะมันส์ สนั่นจอ\nแหล่งข้อมูล: local://competition_rules/competition_rules_tekken8_psu_esports",
+      "mode": "pipeline:competition_source_rag",
+      "route_category": "competition_rules",
+      "hits": [
+        {
+          "id": "competition_rules_tekken8_psu_esports_s02_c01",
+          "metadata": {
+            "source_url": "local://competition_rules/competition_rules_tekken8_psu_esports",
+            "category": "competition_rules",
+            "title": "Tekken 8: กติกาการแข่งขัน",
+            "source_ids": [
+              "competition_rules_tekken8_psu_esports",
+              "competition_rules_tekken8_psu_esports_s02_c01"
+            ],
+            "game": "Tekken 8",
+            "intent": "",
+            "facets": [
+              "competition_rules",
+              "competition_rules_tekken8_psu_esports",
+              "equipment",
+              "format",
+              "psu esports ปะทะมันส์",
+              "schedule",
+              "tekken 8",
+              "tekken8",
+              "tournament_rules"
+            ],
+            "rule_id": "canonical::competition_rules_tekken8_psu_esports_s02_c01"
+          }
+        }
+      ],
+      "trace": [
+        {
+          "stage": "locale_resolution",
+          "decision": "th",
+          "confidence": 1.0,
+          "detail": "toggle_override_th;mixed_thai_function_words",
+          "metadata": {
+            "requested": "th",
+            "detected": "mixed",
+            "effective": "th",
+            "confidence": 1.0,
+            "reason": "toggle_override_th;mixed_thai_function_words"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "กติกา Tekken 8 รูปแบบการแข่งขันเป็นอย่างไร",
+            "candidate": "กติกา Tekken 8 รูปแบบการแข่งขันเป็นอย่างไร",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "competition_rule_single_target",
+          "metadata": {
+            "elapsed_ms": 10.88,
+            "elapsed_sec": 0.0109,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 12.0,
+            "global_elapsed_sec": 0.0158,
+            "global_remaining_sec": 11.9842,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 10.9842,
+            "timing_status": "running",
+            "parts": [
+              "กติกา Tekken 8 รูปแบบการแข่งขันเป็นอย่างไร"
+            ],
+            "competition_rule_query": true
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "experimental_allow_llm is false; competition_rule_target_grounded_retrieval",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": false
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "กติกา tekken 8 รูปแบบการแข่งขันเป็นอย่างไร",
+          "metadata": {
+            "language_hint": "mixed_th_en",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "กติกา Tekken 8 รูปแบบการแข่งขันเป็นอย่างไร"
+            ],
+            "elapsed_ms": 10.46,
+            "elapsed_sec": 0.0105
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 10.5,
+            "elapsed_sec": 0.0105
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "competition_rules/competition_rules_lookup",
+          "metadata": {
+            "elapsed_ms": 0.27,
+            "elapsed_sec": 0.0003,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "semantic_route_refiner",
+          "confidence": 1.0,
+          "detail": "skipped",
+          "metadata": {
+            "elapsed_ms": 0.03,
+            "elapsed_sec": 0.0,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "route_locked": false
+          }
+        },
+        {
+          "stage": "semantic_route_refiner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "semantic retrieval disabled",
+          "metadata": {}
+        },
+        {
+          "stage": "freshness_guard",
+          "decision": "not_required",
+          "confidence": 0.9,
+          "detail": "query does not require live dynamic evidence",
+          "metadata": {
+            "requires_live_evidence": false
+          }
+        },
+        {
+          "stage": "boundary_guard",
+          "decision": "allow",
+          "confidence": 0.9,
+          "detail": "no high-confidence boundary matched",
+          "metadata": {
+            "flags": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "guard_scope",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0
+          }
+        },
+        {
+          "stage": "guard",
+          "decision": "weak_domain_signal",
+          "confidence": 0.35,
+          "detail": "no clear PSU Esports domain hint",
+          "metadata": {}
+        },
+        {
+          "stage": "router",
+          "decision": "competition_rules",
+          "confidence": 0.97,
+          "detail": "competition rule terms found before reservation/check-in",
+          "metadata": {
+            "intent": "competition_rules_lookup",
+            "answer_type": "fact"
+          }
+        },
+        {
+          "stage": "model_gateway",
+          "decision": "skip_preflight_llm",
+          "confidence": 0.97,
+          "detail": "request did not allow LLM",
+          "metadata": {
+            "allow_llm": false,
+            "preflight_allow_llm": false,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "universal_intent",
+          "confidence": 1.0,
+          "detail": "competition_rules/rule_lookup",
+          "metadata": {
+            "elapsed_ms": 1.69,
+            "elapsed_sec": 0.0017,
+            "method": "heuristic",
+            "confidence": 0.9
+          }
+        },
+        {
+          "stage": "universal_intent",
+          "decision": "competition_rules/rule_lookup",
+          "confidence": 0.9,
+          "detail": "known game alias found; competition route overrides game/count ambiguity; rule terms found; competition route forces rule lookup",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false,
+            "llm_first": false,
+            "llm_first_skip_reason": "",
+            "llm_first_review_reason": "",
+            "llm_call": {},
+            "intent_risk_flags": [
+              "competing_domain_signals"
+            ],
+            "input_recovery": {
+              "score": 0.086,
+              "language": "mixed",
+              "language_quality": 0.914,
+              "should_review_intent": false,
+              "reason": "Thai character n-gram quality=0.914",
+              "action": "continue"
+            },
+            "llm_rejected_reason": "",
+            "intent_candidates": [
+              {
+                "id": "c1",
+                "domain": "competition_rules",
+                "operation": "rule_lookup",
+                "target": "",
+                "confidence": 0.9,
+                "reason": "heuristic fallback"
+              },
+              {
+                "id": "c2",
+                "domain": "games",
+                "operation": "list",
+                "target": "",
+                "confidence": 0.66,
+                "reason": "game-domain catalog alternative"
+              },
+              {
+                "id": "c3",
+                "domain": "games",
+                "operation": "rule_lookup",
+                "target": "",
+                "confidence": 0.66,
+                "reason": "domain keyword score=1"
+              },
+              {
+                "id": "c4",
+                "domain": "competition_rules",
+                "operation": "how_to",
+                "target": "",
+                "confidence": 0.66,
+                "reason": "operation keyword score=1"
+              }
+            ],
+            "target": "",
+            "filters": {},
+            "needs": [
+              "lookup_competition_rule"
+            ],
+            "answer_style": "direct",
+            "heuristic": {
+              "domain": "competition_rules",
+              "operation": "rule_lookup",
+              "confidence": 0.9,
+              "reason": "known game alias found; competition route overrides game/count ambiguity; rule terms found; competition route forces rule lookup"
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_router",
+          "confidence": 1.0,
+          "detail": "retrieval/competition_rules",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0,
+            "method": "heuristic",
+            "confidence": 0.9
+          }
+        },
+        {
+          "stage": "tool_router",
+          "decision": "heuristic:retrieval",
+          "confidence": 0.9,
+          "detail": "experimental_allow_llm is false",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "ambiguity_gate",
+          "confidence": 1.0,
+          "detail": "allow",
+          "metadata": {
+            "elapsed_ms": 90.94,
+            "elapsed_sec": 0.0909,
+            "flags": [],
+            "confidence": 0.94
+          }
+        },
+        {
+          "stage": "ambiguity_gate",
+          "decision": "allow",
+          "confidence": 0.94,
+          "detail": "ambiguity risk acceptable",
+          "metadata": {
+            "flags": [],
+            "route": "competition_rules/competition_rules_lookup",
+            "intent": "competition_rules/rule_lookup",
+            "has_known_game": true,
+            "has_service_or_zone": false,
+            "game_entity_resolution": {
+              "status": "exact",
+              "entity_type": "game",
+              "top_candidate": {
+                "entity_id": "tekken8",
+                "title": "TEKKEN 8",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "TEKKEN 8",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_ps5_01_02"
+                ],
+                "zones": [
+                  "PC Zone",
+                  "PlayStation 5 Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              },
+              "candidates": [
+                {
+                  "entity_id": "tekken8",
+                  "title": "TEKKEN 8",
+                  "score": 1.0,
+                  "match_type": "exact_alias",
+                  "matched_alias": "TEKKEN 8",
+                  "sources": [
+                    "availability_pc_01_02",
+                    "availability_ps5_01_02"
+                  ],
+                  "zones": [
+                    "PC Zone",
+                    "PlayStation 5 Zone"
+                  ],
+                  "has_controls": true,
+                  "reasons": []
+                }
+              ],
+              "top_score": 1.0,
+              "margin": 1.0,
+              "reason": "direct_alias_match",
+              "operation": "",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "exact",
+              "candidate_count": 1,
+              "comparison_count": 0,
+              "elapsed_ms": 4.509,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            },
+            "intent_candidates": [
+              {
+                "domain": "competition_rules",
+                "operation": "competition_rules_lookup",
+                "score": 0.99,
+                "reasons": [
+                  "competition_terms",
+                  "competition_target",
+                  "route_prior",
+                  "intent_domain_prior"
+                ]
+              },
+              {
+                "domain": "games",
+                "operation": "detail",
+                "score": 0.3,
+                "reasons": [
+                  "known_game_target"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "question_frame",
+          "confidence": 0.97,
+          "detail": "competition_rules/competition_rule_lookup",
+          "metadata": {
+            "elapsed_ms": 10.33,
+            "elapsed_sec": 0.0103,
+            "operation": "competition_rule_lookup",
+            "domain": "competition_rules",
+            "expected_answer_types": [
+              "competition_rule"
+            ],
+            "targets": [
+              {
+                "target_id": "tekken8",
+                "target_type": "competition_game",
+                "domain": "competition_rules",
+                "label": "Tekken 8",
+                "score": 1.0
+              }
+            ],
+            "target_status": "exact",
+            "target_margin": 1.0,
+            "target_required": true,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.97,
+            "method": "competition_target_first",
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "intent_operation": "rule_lookup",
+            "competition_game_ids": [
+              "tekken8"
+            ],
+            "competition_game_labels": [
+              "Tekken 8"
+            ],
+            "competition_rulebook_ids": [
+              "competition_rules_tekken8_psu_esports"
+            ],
+            "competition_facet": "competition_format",
+            "competition_target_reason": "registered_competition_alias",
+            "competition_explicit_mentions": [
+              "tekken 8"
+            ],
+            "target_reason": "registered_competition_alias",
+            "target_candidate_count": 1,
+            "game_family": ""
+          }
+        },
+        {
+          "stage": "target_context",
+          "decision": "enrich_universal_intent",
+          "confidence": 1.0,
+          "detail": "exact Question Frame target propagated to structured execution",
+          "metadata": {
+            "target_id": "tekken8",
+            "target_type": "competition_game",
+            "domain": "competition_rules",
+            "label": "Tekken 8",
+            "score": 1.0
+          }
+        },
+        {
+          "stage": "operation_route_refine",
+          "decision": "competition_rules/competition_rules_lookup -> competition_rules/competition_rules_lookup",
+          "confidence": 0.97,
+          "detail": "question frame supplied a clear PSU operation domain",
+          "metadata": {
+            "operation": "competition_rule_lookup",
+            "domain": "competition_rules",
+            "expected_answer_types": [
+              "competition_rule"
+            ],
+            "targets": [
+              {
+                "target_id": "tekken8",
+                "target_type": "competition_game",
+                "domain": "competition_rules",
+                "label": "Tekken 8",
+                "score": 1.0
+              }
+            ],
+            "target_status": "exact",
+            "target_margin": 1.0,
+            "target_required": true,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.97,
+            "method": "competition_target_first",
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "intent_operation": "rule_lookup",
+            "competition_game_ids": [
+              "tekken8"
+            ],
+            "competition_game_labels": [
+              "Tekken 8"
+            ],
+            "competition_rulebook_ids": [
+              "competition_rules_tekken8_psu_esports"
+            ],
+            "competition_facet": "competition_format",
+            "competition_target_reason": "registered_competition_alias",
+            "competition_explicit_mentions": [
+              "tekken 8"
+            ],
+            "target_reason": "registered_competition_alias",
+            "target_candidate_count": 1,
+            "game_family": ""
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "candidate_decisions",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 11.8,
+            "elapsed_sec": 0.0118
+          }
+        },
+        {
+          "stage": "decision_candidates",
+          "decision": "retrieval.competition_fact_cards",
+          "confidence": 0.9388888888888889,
+          "detail": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority; question_frame_domain_match; precondition=competition_rule_retrieval_applicable",
+          "metadata": {
+            "selected": {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.939,
+              "status": "accepted",
+              "reason": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority; question_frame_domain_match; precondition=competition_rule_retrieval_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            "selection": {
+              "status": "selected",
+              "execution_allowed": true,
+              "margin": 0.361,
+              "same_action_as_second": false,
+              "second": {
+                "capability_id": "fast.domain_handlers",
+                "action": "fast_path",
+                "domain": "multi",
+                "score": 0.578,
+                "status": "accepted",
+                "reason": "base=0.78; multi_domain; answer_type_match; precondition=competition_fast_handler_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              }
+            },
+            "question_frame": {
+              "operation": "competition_rule_lookup",
+              "domain": "competition_rules",
+              "expected_answer_types": [
+                "competition_rule"
+              ],
+              "targets": [
+                {
+                  "target_id": "tekken8",
+                  "target_type": "competition_game",
+                  "domain": "competition_rules",
+                  "label": "Tekken 8",
+                  "score": 1.0
+                }
+              ],
+              "target_status": "exact",
+              "target_margin": 1.0,
+              "target_required": true,
+              "allows_multiple_targets": false,
+              "needs_clarification": false,
+              "confidence": 0.97,
+              "method": "competition_target_first",
+              "route_category": "competition_rules",
+              "route_intent": "competition_rules_lookup",
+              "intent_operation": "rule_lookup",
+              "competition_game_ids": [
+                "tekken8"
+              ],
+              "competition_game_labels": [
+                "Tekken 8"
+              ],
+              "competition_rulebook_ids": [
+                "competition_rules_tekken8_psu_esports"
+              ],
+              "competition_facet": "competition_format",
+              "competition_target_reason": "registered_competition_alias",
+              "competition_explicit_mentions": [
+                "tekken 8"
+              ],
+              "target_reason": "registered_competition_alias",
+              "target_candidate_count": 1,
+              "game_family": ""
+            },
+            "candidates": [
+              {
+                "capability_id": "retrieval.competition_fact_cards",
+                "action": "retrieval",
+                "domain": "competition_rules",
+                "score": 0.939,
+                "status": "accepted",
+                "reason": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority; question_frame_domain_match; precondition=competition_rule_retrieval_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "fast.domain_handlers",
+                "action": "fast_path",
+                "domain": "multi",
+                "score": 0.578,
+                "status": "accepted",
+                "reason": "base=0.78; multi_domain; answer_type_match; precondition=competition_fast_handler_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.hybrid_guarded",
+                "action": "retrieval",
+                "domain": "multi",
+                "score": 0.506,
+                "status": "accepted",
+                "reason": "base=0.72; multi_domain; answer_type_match; tool_router_action=retrieval; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "rulebase.category_rules",
+                "action": "rulebase",
+                "domain": "multi",
+                "score": 0.467,
+                "status": "accepted",
+                "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.vector_guarded",
+                "action": "vector",
+                "domain": "multi",
+                "score": 0.444,
+                "status": "accepted",
+                "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "llm.facts_composer",
+                "action": "rag_llm",
+                "domain": "multi",
+                "score": 0.4,
+                "status": "accepted",
+                "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "clarification.ask_user",
+                "action": "clarification",
+                "domain": "clarification",
+                "score": 0.322,
+                "status": "accepted",
+                "reason": "base=0.58; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              },
+              {
+                "capability_id": "fallback.no_answer",
+                "action": "no_answer",
+                "domain": "no_answer",
+                "score": 0.278,
+                "status": "accepted",
+                "reason": "base=0.50; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              }
+            ],
+            "rejected": [
+              {
+                "capability_id": "structured.members",
+                "action": "structured",
+                "domain": "members",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: competition_query_must_not_use_member_directory",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.games",
+                "action": "structured",
+                "domain": "games",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: competition_rule_query_must_not_use_game_catalog",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.game_controls",
+                "action": "structured",
+                "domain": "game_controls",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_game_control_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.equipment",
+                "action": "structured",
+                "domain": "equipment",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: competition_query_must_not_use_equipment_tool",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.reservation",
+                "action": "structured",
+                "domain": "reservation",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_reservation_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.schedule",
+                "action": "structured",
+                "domain": "schedule",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: competition_round_query_must_not_use_schedule_tool",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.service_fee",
+                "action": "structured",
+                "domain": "service_fee",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_price_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "fast.price_calculator",
+                "action": "fast_path",
+                "domain": "service_fee",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_price_or_calculation_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              }
+            ],
+            "policy": {
+              "psu_specific": true,
+              "route_risk": "medium",
+              "general_llm_requires_non_psu": true
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_precondition",
+          "confidence": 1.0,
+          "detail": "structured.unknown",
+          "metadata": {
+            "elapsed_ms": 0.08,
+            "elapsed_sec": 0.0001,
+            "ok": false
+          }
+        },
+        {
+          "stage": "tool_precondition",
+          "decision": "reject_structured",
+          "confidence": 0.2,
+          "detail": "candidate_selector_preferred_non_structured_action",
+          "metadata": {
+            "capability_id": "structured.unknown",
+            "ok": false,
+            "reason": "no_structured_capability_for_route",
+            "severity": "policy",
+            "selector_allows_structured": false,
+            "selected_capability_id": "retrieval.competition_fact_cards"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "structured_tool_execution",
+          "confidence": 1.0,
+          "detail": "no_result",
+          "metadata": {
+            "elapsed_ms": 0.0,
+            "elapsed_sec": 0.0,
+            "precondition_ok": false,
+            "selector_allows_structured": false,
+            "selected_capability_id": "retrieval.competition_fact_cards",
+            "confidence": 0.0
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "deterministic",
+          "confidence": 1.0,
+          "detail": "no_match",
+          "metadata": {
+            "elapsed_ms": 0.0,
+            "elapsed_sec": 0.0,
+            "confidence": 0.0,
+            "selector_allows_deterministic": false,
+            "selected_capability_id": "retrieval.competition_fact_cards"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "competition_source_retrieval",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 65.64,
+            "elapsed_sec": 0.0656,
+            "hit_count": 1,
+            "target_game_ids": [
+              "tekken8"
+            ],
+            "facet": "competition_format"
+          }
+        },
+        {
+          "stage": "rag_retrieval",
+          "decision": "curated_lexical",
+          "confidence": 0.84,
+          "detail": "hits=8 game=Tekken 8 intent=format",
+          "metadata": {
+            "category": "competition_rules",
+            "game": "Tekken 8",
+            "intent": "format"
+          }
+        },
+        {
+          "stage": "competition_contract_retrieval",
+          "decision": "target_facet_source_index",
+          "confidence": 0.98,
+          "detail": "hits=1 facet=competition_format",
+          "metadata": {
+            "facet": "competition_format",
+            "target_game_ids": [
+              "tekken8"
+            ],
+            "rulebook_ids": [
+              "competition_rules_tekken8_psu_esports"
+            ],
+            "hit_ids": [
+              "competition_rules_tekken8_psu_esports_s02_c01"
+            ]
+          }
+        },
+        {
+          "stage": "competition_source_grounding",
+          "decision": "accepted",
+          "confidence": 0.84,
+          "detail": "target-filtered source chunks are preferred over summary fact cards",
+          "metadata": {
+            "hit_count": 1,
+            "validation_errors": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:competition_source_rag",
+          "metadata": {
+            "elapsed_ms": 2.18,
+            "elapsed_sec": 0.0022,
+            "format_response_style_ms": 1.71,
+            "answer_language": "th",
+            "total_elapsed_ms": 275.76,
+            "total_elapsed_sec": 0.2758
+          }
+        }
+      ],
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      }
+    }
+  },
+  "format-en-4": {
+    "case": {
+      "id": "format-en-4",
+      "anchor": "format-en",
+      "locale": "en",
+      "question": "Hi, What is the Tekken 8 tournamment format?",
+      "game": "tekken8_psu_esports",
+      "required": [
+        "FT2",
+        "two games"
+      ],
+      "forbidden": [
+        "VALORANT"
+      ],
+      "first": []
+    },
+    "elapsed_sec": 0.1294,
+    "failures": [
+      "missing:FT2",
+      "missing:two games",
+      "wrong_category",
+      "wrong_source"
+    ],
+    "response": {
+      "answer": "Verified English information:\nTEKKEN 8\nGenre: Fighting game 1v1\nOverview: TEKKEN 8 is a one-on-one fighting game where players select characters and win by using combos, blocking, and counterattacks against their opponent.\nHow to play: Play in rounds. Choose a character. Practice basic moves/combo sequences. Read your opponent's timing and reduce their health to zero before them.\nAvailable at: PC Zone, PlayStation 5 Zone\nSource: https://esports.phuket.psu.ac.th/Services/our-games (original source in Thai)",
+      "mode": "pipeline:structured_game_detail_en",
+      "route_category": "games",
+      "hits": [
+        {
+          "id": "game_detail_tekken_8",
+          "metadata": {
+            "source_url": "https://esports.phuket.psu.ac.th/Services/our-games",
+            "category": "games",
+            "source_type": "games",
+            "title": "TEKKEN 8",
+            "source_ids": [
+              "game_detail_tekken_8"
+            ],
+            "source_language": "th"
+          }
+        }
+      ],
+      "trace": [
+        {
+          "stage": "locale_resolution",
+          "decision": "en",
+          "confidence": 1.0,
+          "detail": "toggle_override_en;english_sentence_structure",
+          "metadata": {
+            "requested": "en",
+            "detected": "en",
+            "effective": "en",
+            "confidence": 1.0,
+            "reason": "toggle_override_en;english_sentence_structure"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "Hi, What is the Tekken 8 tournamment format?",
+            "candidate": "Hi, What is the Tekken 8 tournamment format?",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "parts=1",
+          "metadata": {
+            "elapsed_ms": 10.86,
+            "elapsed_sec": 0.0109,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 12.0,
+            "global_elapsed_sec": 0.0165,
+            "global_remaining_sec": 11.9835,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 10.9835,
+            "timing_status": "running",
+            "parts": [
+              "Hi, What is the Tekken 8 tournamment format?"
+            ],
+            "competition_rule_query": false
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "experimental_allow_llm is false; single clear operation does not need planner",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": false
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "hi, what is the tekken 8 tournamment format?",
+          "metadata": {
+            "language_hint": "en",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "Hi, What is the Tekken 8 tournamment format?"
+            ],
+            "elapsed_ms": 27.38,
+            "elapsed_sec": 0.0274
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 27.41,
+            "elapsed_sec": 0.0274
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "competition_rules/competition_rules_lookup",
+          "metadata": {
+            "elapsed_ms": 0.22,
+            "elapsed_sec": 0.0002,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          }
+        },
+        {
+          "stage": "target_lock",
+          "decision": "exact_game_target_locked",
+          "confidence": 0.97,
+          "detail": "exact_known_game_target",
+          "metadata": {
+            "locked": true,
+            "route_category": "games",
+            "route_intent": "game_detail_lookup",
+            "reason": "exact_known_game_target",
+            "resolution": {
+              "status": "exact",
+              "entity_type": "game",
+              "top_candidate": {
+                "entity_id": "tekken8",
+                "title": "TEKKEN 8",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "TEKKEN 8",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_ps5_01_02"
+                ],
+                "zones": [
+                  "PC Zone",
+                  "PlayStation 5 Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              },
+              "candidates": [
+                {
+                  "entity_id": "tekken8",
+                  "title": "TEKKEN 8",
+                  "score": 1.0,
+                  "match_type": "exact_alias",
+                  "matched_alias": "TEKKEN 8",
+                  "sources": [
+                    "availability_pc_01_02",
+                    "availability_ps5_01_02"
+                  ],
+                  "zones": [
+                    "PC Zone",
+                    "PlayStation 5 Zone"
+                  ],
+                  "has_controls": true,
+                  "reasons": []
+                }
+              ],
+              "top_score": 1.0,
+              "margin": 1.0,
+              "reason": "direct_alias_match",
+              "operation": "detail",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "exact",
+              "candidate_count": 1,
+              "comparison_count": 0,
+              "elapsed_ms": 9.958,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            }
+          }
+        },
+        {
+          "stage": "bilingual_route",
+          "decision": "pipeline:structured_game_detail_en",
+          "confidence": 0.98,
+          "detail": "approved localization overlay matched current Thai source hash",
+          "metadata": {
+            "effective_locale": "en",
+            "route_category": "games",
+            "route_intent": "game_detail_lookup",
+            "runtime_translation": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:structured_game_detail_en",
+          "metadata": {
+            "elapsed_ms": 1.53,
+            "elapsed_sec": 0.0015,
+            "format_response_style_ms": 0.0,
+            "answer_language": "en",
+            "total_elapsed_ms": 129.26,
+            "total_elapsed_sec": 0.1293
+          }
+        }
+      ],
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      }
+    }
+  },
+  "ipad-th-0": {
+    "case": {
+      "id": "ipad-th-0",
+      "anchor": "ipad-th",
+      "locale": "th",
+      "question": "กติกา RoV ใช้ Tablet หรือ iPad ได้ไหม",
+      "game": "rov_blueket_2025_men",
+      "required": [
+        "ไม่สามารถ",
+        "ตัดสิทธิ์"
+      ],
+      "forbidden": [
+        "Global Ban"
+      ],
+      "first": []
+    },
+    "elapsed_sec": 0.2695,
+    "failures": [
+      "missing:ไม่สามารถ"
+    ],
+    "response": {
+      "answer": "คำตอบ: 5.3. ไม่อนุญาตให้ใช้ Tablet หรือ iPad รวมถึงอุปกรณ์อื่นใดที่มิใช่โทรศัพท์มือถือ (Mobile Phone) ในการแข่งขัน หากตรวจสอบพบ ทีมงานจะตัดสิทธิ์ทันที\n\nอ้างอิงจากกติกา: Arena of Valor (RoV) / Blueket Games 2025 ประเภททีมชาย\nแหล่งข้อมูล: local://competition_rules/competition_rules_rov_blueket_2025_men",
+      "mode": "pipeline:competition_source_rag",
+      "route_category": "competition_rules",
+      "hits": [
+        {
+          "id": "competition_rules_rov_blueket_2025_men_s07_c01",
+          "metadata": {
+            "source_url": "local://competition_rules/competition_rules_rov_blueket_2025_men",
+            "category": "competition_rules",
+            "title": "Arena of Valor (RoV): 5. ชุดแข่งขันและอุปกรณ์การแข่งขัน",
+            "source_ids": [
+              "competition_rules_rov_blueket_2025_men",
+              "competition_rules_rov_blueket_2025_men_s07_c01"
+            ],
+            "game": "Arena of Valor (RoV)",
+            "intent": "",
+            "facets": [
+              "aov",
+              "arena of valor",
+              "arena of valor (rov)",
+              "blueket games 2025",
+              "competition_rules",
+              "competition_rules_rov_blueket_2025_men",
+              "eligibility",
+              "equipment",
+              "penalty",
+              "rov",
+              "tournament_rules"
+            ],
+            "rule_id": "canonical::competition_rules_rov_blueket_2025_men_s07_c01"
+          }
+        }
+      ],
+      "trace": [
+        {
+          "stage": "locale_resolution",
+          "decision": "th",
+          "confidence": 1.0,
+          "detail": "toggle_override_th;mixed_thai_function_words",
+          "metadata": {
+            "requested": "th",
+            "detected": "mixed",
+            "effective": "th",
+            "confidence": 1.0,
+            "reason": "toggle_override_th;mixed_thai_function_words"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "กติกา RoV ใช้ Tablet หรือ iPad ได้ไหม",
+            "candidate": "กติกา RoV ใช้ Tablet หรือ iPad ได้ไหม",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "competition_rule_single_target",
+          "metadata": {
+            "elapsed_ms": 10.73,
+            "elapsed_sec": 0.0107,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 12.0,
+            "global_elapsed_sec": 0.0142,
+            "global_remaining_sec": 11.9858,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 10.9858,
+            "timing_status": "running",
+            "parts": [
+              "กติกา RoV ใช้ Tablet หรือ iPad ได้ไหม"
+            ],
+            "competition_rule_query": true
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "experimental_allow_llm is false; competition_rule_target_grounded_retrieval",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": false
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "กติกา rov ใช้ tablet หรือ ipad ได้ไหม",
+          "metadata": {
+            "language_hint": "mixed_th_en",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "กติกา RoV ใช้ Tablet หรือ iPad ได้ไหม"
+            ],
+            "elapsed_ms": 11.18,
+            "elapsed_sec": 0.0112
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 11.36,
+            "elapsed_sec": 0.0114
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "competition_rules/competition_rules_lookup",
+          "metadata": {
+            "elapsed_ms": 0.48,
+            "elapsed_sec": 0.0005,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "semantic_route_refiner",
+          "confidence": 1.0,
+          "detail": "skipped",
+          "metadata": {
+            "elapsed_ms": 0.04,
+            "elapsed_sec": 0.0,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "route_locked": false
+          }
+        },
+        {
+          "stage": "semantic_route_refiner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "semantic retrieval disabled",
+          "metadata": {}
+        },
+        {
+          "stage": "freshness_guard",
+          "decision": "not_required",
+          "confidence": 0.9,
+          "detail": "query does not require live dynamic evidence",
+          "metadata": {
+            "requires_live_evidence": false
+          }
+        },
+        {
+          "stage": "boundary_guard",
+          "decision": "allow",
+          "confidence": 0.9,
+          "detail": "no high-confidence boundary matched",
+          "metadata": {
+            "flags": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "guard_scope",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0
+          }
+        },
+        {
+          "stage": "guard",
+          "decision": "weak_domain_signal",
+          "confidence": 0.35,
+          "detail": "no clear PSU Esports domain hint",
+          "metadata": {}
+        },
+        {
+          "stage": "router",
+          "decision": "competition_rules",
+          "confidence": 0.97,
+          "detail": "competition rule terms found before reservation/check-in",
+          "metadata": {
+            "intent": "competition_rules_lookup",
+            "answer_type": "fact"
+          }
+        },
+        {
+          "stage": "model_gateway",
+          "decision": "skip_preflight_llm",
+          "confidence": 0.97,
+          "detail": "request did not allow LLM",
+          "metadata": {
+            "allow_llm": false,
+            "preflight_allow_llm": false,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "universal_intent",
+          "confidence": 1.0,
+          "detail": "competition_rules/rule_lookup",
+          "metadata": {
+            "elapsed_ms": 1.5,
+            "elapsed_sec": 0.0015,
+            "method": "heuristic",
+            "confidence": 0.9
+          }
+        },
+        {
+          "stage": "universal_intent",
+          "decision": "competition_rules/rule_lookup",
+          "confidence": 0.9,
+          "detail": "domain_terms=3; competition route overrides game/count ambiguity; named game availability terms found; competition route forces rule lookup",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false,
+            "llm_first": false,
+            "llm_first_skip_reason": "",
+            "llm_first_review_reason": "",
+            "llm_call": {},
+            "intent_risk_flags": [
+              "competing_domain_signals"
+            ],
+            "input_recovery": {
+              "score": 0.1493,
+              "language": "mixed",
+              "language_quality": 0.8507,
+              "should_review_intent": false,
+              "reason": "Thai character n-gram quality=0.851",
+              "action": "continue"
+            },
+            "llm_rejected_reason": "",
+            "intent_candidates": [
+              {
+                "id": "c1",
+                "domain": "competition_rules",
+                "operation": "rule_lookup",
+                "target": "",
+                "confidence": 0.9,
+                "reason": "heuristic fallback"
+              },
+              {
+                "id": "c2",
+                "domain": "games",
+                "operation": "list",
+                "target": "",
+                "confidence": 0.66,
+                "reason": "game-domain catalog alternative"
+              },
+              {
+                "id": "c3",
+                "domain": "games",
+                "operation": "rule_lookup",
+                "target": "",
+                "confidence": 0.66,
+                "reason": "domain keyword score=1"
+              }
+            ],
+            "target": "",
+            "filters": {},
+            "needs": [
+              "lookup_competition_rule"
+            ],
+            "answer_style": "direct",
+            "heuristic": {
+              "domain": "competition_rules",
+              "operation": "rule_lookup",
+              "confidence": 0.9,
+              "reason": "domain_terms=3; competition route overrides game/count ambiguity; named game availability terms found; competition route forces rule lookup"
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_router",
+          "confidence": 1.0,
+          "detail": "retrieval/competition_rules",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0,
+            "method": "heuristic",
+            "confidence": 0.9
+          }
+        },
+        {
+          "stage": "tool_router",
+          "decision": "heuristic:retrieval",
+          "confidence": 0.9,
+          "detail": "experimental_allow_llm is false",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "ambiguity_gate",
+          "confidence": 1.0,
+          "detail": "allow",
+          "metadata": {
+            "elapsed_ms": 62.08,
+            "elapsed_sec": 0.0621,
+            "flags": [],
+            "confidence": 0.94
+          }
+        },
+        {
+          "stage": "ambiguity_gate",
+          "decision": "allow",
+          "confidence": 0.94,
+          "detail": "ambiguity risk acceptable",
+          "metadata": {
+            "flags": [],
+            "route": "competition_rules/competition_rules_lookup",
+            "intent": "competition_rules/rule_lookup",
+            "has_known_game": false,
+            "has_service_or_zone": false,
+            "game_entity_resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 7,
+              "comparison_count": 56,
+              "elapsed_ms": 6.676,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            },
+            "intent_candidates": [
+              {
+                "domain": "competition_rules",
+                "operation": "competition_rules_lookup",
+                "score": 0.8,
+                "reasons": [
+                  "competition_terms",
+                  "route_prior",
+                  "intent_domain_prior"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "question_frame",
+          "confidence": 0.97,
+          "detail": "competition_rules/competition_rule_lookup",
+          "metadata": {
+            "elapsed_ms": 11.59,
+            "elapsed_sec": 0.0116,
+            "operation": "competition_rule_lookup",
+            "domain": "competition_rules",
+            "expected_answer_types": [
+              "competition_rule"
+            ],
+            "targets": [
+              {
+                "target_id": "rov",
+                "target_type": "competition_game",
+                "domain": "competition_rules",
+                "label": "Arena of Valor (RoV)",
+                "score": 1.0
+              }
+            ],
+            "target_status": "exact",
+            "target_margin": 1.0,
+            "target_required": true,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.97,
+            "method": "competition_target_first",
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "intent_operation": "rule_lookup",
+            "competition_game_ids": [
+              "rov"
+            ],
+            "competition_game_labels": [
+              "Arena of Valor (RoV)"
+            ],
+            "competition_rulebook_ids": [
+              "competition_rules_rov_blueket_2025_men"
+            ],
+            "competition_facet": "equipment",
+            "competition_target_reason": "registered_competition_alias",
+            "competition_explicit_mentions": [
+              "rov"
+            ],
+            "target_reason": "registered_competition_alias",
+            "target_candidate_count": 1,
+            "game_family": ""
+          }
+        },
+        {
+          "stage": "target_context",
+          "decision": "enrich_universal_intent",
+          "confidence": 1.0,
+          "detail": "exact Question Frame target propagated to structured execution",
+          "metadata": {
+            "target_id": "rov",
+            "target_type": "competition_game",
+            "domain": "competition_rules",
+            "label": "Arena of Valor (RoV)",
+            "score": 1.0
+          }
+        },
+        {
+          "stage": "operation_route_refine",
+          "decision": "competition_rules/competition_rules_lookup -> competition_rules/competition_rules_lookup",
+          "confidence": 0.97,
+          "detail": "question frame supplied a clear PSU operation domain",
+          "metadata": {
+            "operation": "competition_rule_lookup",
+            "domain": "competition_rules",
+            "expected_answer_types": [
+              "competition_rule"
+            ],
+            "targets": [
+              {
+                "target_id": "rov",
+                "target_type": "competition_game",
+                "domain": "competition_rules",
+                "label": "Arena of Valor (RoV)",
+                "score": 1.0
+              }
+            ],
+            "target_status": "exact",
+            "target_margin": 1.0,
+            "target_required": true,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.97,
+            "method": "competition_target_first",
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "intent_operation": "rule_lookup",
+            "competition_game_ids": [
+              "rov"
+            ],
+            "competition_game_labels": [
+              "Arena of Valor (RoV)"
+            ],
+            "competition_rulebook_ids": [
+              "competition_rules_rov_blueket_2025_men"
+            ],
+            "competition_facet": "equipment",
+            "competition_target_reason": "registered_competition_alias",
+            "competition_explicit_mentions": [
+              "rov"
+            ],
+            "target_reason": "registered_competition_alias",
+            "target_candidate_count": 1,
+            "game_family": ""
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "candidate_decisions",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 12.84,
+            "elapsed_sec": 0.0128
+          }
+        },
+        {
+          "stage": "decision_candidates",
+          "decision": "retrieval.competition_fact_cards",
+          "confidence": 0.9388888888888889,
+          "detail": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority; question_frame_domain_match; precondition=competition_rule_retrieval_applicable",
+          "metadata": {
+            "selected": {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.939,
+              "status": "accepted",
+              "reason": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority; question_frame_domain_match; precondition=competition_rule_retrieval_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            "selection": {
+              "status": "selected",
+              "execution_allowed": true,
+              "margin": 0.361,
+              "same_action_as_second": false,
+              "second": {
+                "capability_id": "fast.domain_handlers",
+                "action": "fast_path",
+                "domain": "multi",
+                "score": 0.578,
+                "status": "accepted",
+                "reason": "base=0.78; multi_domain; answer_type_match; precondition=competition_fast_handler_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              }
+            },
+            "question_frame": {
+              "operation": "competition_rule_lookup",
+              "domain": "competition_rules",
+              "expected_answer_types": [
+                "competition_rule"
+              ],
+              "targets": [
+                {
+                  "target_id": "rov",
+                  "target_type": "competition_game",
+                  "domain": "competition_rules",
+                  "label": "Arena of Valor (RoV)",
+                  "score": 1.0
+                }
+              ],
+              "target_status": "exact",
+              "target_margin": 1.0,
+              "target_required": true,
+              "allows_multiple_targets": false,
+              "needs_clarification": false,
+              "confidence": 0.97,
+              "method": "competition_target_first",
+              "route_category": "competition_rules",
+              "route_intent": "competition_rules_lookup",
+              "intent_operation": "rule_lookup",
+              "competition_game_ids": [
+                "rov"
+              ],
+              "competition_game_labels": [
+                "Arena of Valor (RoV)"
+              ],
+              "competition_rulebook_ids": [
+                "competition_rules_rov_blueket_2025_men"
+              ],
+              "competition_facet": "equipment",
+              "competition_target_reason": "registered_competition_alias",
+              "competition_explicit_mentions": [
+                "rov"
+              ],
+              "target_reason": "registered_competition_alias",
+              "target_candidate_count": 1,
+              "game_family": ""
+            },
+            "candidates": [
+              {
+                "capability_id": "retrieval.competition_fact_cards",
+                "action": "retrieval",
+                "domain": "competition_rules",
+                "score": 0.939,
+                "status": "accepted",
+                "reason": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority; question_frame_domain_match; precondition=competition_rule_retrieval_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "fast.domain_handlers",
+                "action": "fast_path",
+                "domain": "multi",
+                "score": 0.578,
+                "status": "accepted",
+                "reason": "base=0.78; multi_domain; answer_type_match; precondition=competition_fast_handler_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.hybrid_guarded",
+                "action": "retrieval",
+                "domain": "multi",
+                "score": 0.506,
+                "status": "accepted",
+                "reason": "base=0.72; multi_domain; answer_type_match; tool_router_action=retrieval; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "rulebase.category_rules",
+                "action": "rulebase",
+                "domain": "multi",
+                "score": 0.467,
+                "status": "accepted",
+                "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.vector_guarded",
+                "action": "vector",
+                "domain": "multi",
+                "score": 0.444,
+                "status": "accepted",
+                "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "llm.facts_composer",
+                "action": "rag_llm",
+                "domain": "multi",
+                "score": 0.4,
+                "status": "accepted",
+                "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "clarification.ask_user",
+                "action": "clarification",
+                "domain": "clarification",
+                "score": 0.322,
+                "status": "accepted",
+                "reason": "base=0.58; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              },
+              {
+                "capability_id": "fallback.no_answer",
+                "action": "no_answer",
+                "domain": "no_answer",
+                "score": 0.278,
+                "status": "accepted",
+                "reason": "base=0.50; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              }
+            ],
+            "rejected": [
+              {
+                "capability_id": "structured.members",
+                "action": "structured",
+                "domain": "members",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: competition_query_must_not_use_member_directory",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.games",
+                "action": "structured",
+                "domain": "games",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: competition_rule_query_must_not_use_game_catalog",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.game_controls",
+                "action": "structured",
+                "domain": "game_controls",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_game_control_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.equipment",
+                "action": "structured",
+                "domain": "equipment",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: competition_query_must_not_use_equipment_tool",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.reservation",
+                "action": "structured",
+                "domain": "reservation",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_reservation_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.schedule",
+                "action": "structured",
+                "domain": "schedule",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: competition_round_query_must_not_use_schedule_tool",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.service_fee",
+                "action": "structured",
+                "domain": "service_fee",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_price_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "fast.price_calculator",
+                "action": "fast_path",
+                "domain": "service_fee",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_price_or_calculation_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              }
+            ],
+            "policy": {
+              "psu_specific": true,
+              "route_risk": "medium",
+              "general_llm_requires_non_psu": true
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_precondition",
+          "confidence": 1.0,
+          "detail": "structured.unknown",
+          "metadata": {
+            "elapsed_ms": 0.08,
+            "elapsed_sec": 0.0001,
+            "ok": false
+          }
+        },
+        {
+          "stage": "tool_precondition",
+          "decision": "reject_structured",
+          "confidence": 0.2,
+          "detail": "candidate_selector_preferred_non_structured_action",
+          "metadata": {
+            "capability_id": "structured.unknown",
+            "ok": false,
+            "reason": "no_structured_capability_for_route",
+            "severity": "policy",
+            "selector_allows_structured": false,
+            "selected_capability_id": "retrieval.competition_fact_cards"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "structured_tool_execution",
+          "confidence": 1.0,
+          "detail": "no_result",
+          "metadata": {
+            "elapsed_ms": 0.0,
+            "elapsed_sec": 0.0,
+            "precondition_ok": false,
+            "selector_allows_structured": false,
+            "selected_capability_id": "retrieval.competition_fact_cards",
+            "confidence": 0.0
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "deterministic",
+          "confidence": 1.0,
+          "detail": "no_match",
+          "metadata": {
+            "elapsed_ms": 0.0,
+            "elapsed_sec": 0.0,
+            "confidence": 0.0,
+            "selector_allows_deterministic": false,
+            "selected_capability_id": "retrieval.competition_fact_cards"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "competition_source_retrieval",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 97.82,
+            "elapsed_sec": 0.0978,
+            "hit_count": 1,
+            "target_game_ids": [
+              "rov"
+            ],
+            "facet": "equipment"
+          }
+        },
+        {
+          "stage": "rag_retrieval",
+          "decision": "curated_lexical",
+          "confidence": 0.84,
+          "detail": "hits=8 game=Arena of Valor (RoV) intent=equipment",
+          "metadata": {
+            "category": "competition_rules",
+            "game": "Arena of Valor (RoV)",
+            "intent": "equipment"
+          }
+        },
+        {
+          "stage": "competition_contract_retrieval",
+          "decision": "target_facet_source_index",
+          "confidence": 0.98,
+          "detail": "hits=1 facet=equipment",
+          "metadata": {
+            "facet": "equipment",
+            "target_game_ids": [
+              "rov"
+            ],
+            "rulebook_ids": [
+              "competition_rules_rov_blueket_2025_men"
+            ],
+            "hit_ids": [
+              "competition_rules_rov_blueket_2025_men_s07_c01"
+            ]
+          }
+        },
+        {
+          "stage": "competition_source_grounding",
+          "decision": "accepted",
+          "confidence": 0.84,
+          "detail": "target-filtered source chunks are preferred over summary fact cards",
+          "metadata": {
+            "hit_count": 1,
+            "validation_errors": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:competition_source_rag",
+          "metadata": {
+            "elapsed_ms": 2.1,
+            "elapsed_sec": 0.0021,
+            "format_response_style_ms": 1.53,
+            "answer_language": "th",
+            "total_elapsed_ms": 269.32,
+            "total_elapsed_sec": 0.2693
+          }
+        }
+      ],
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      }
+    }
+  },
+  "ipad-en-4": {
+    "case": {
+      "id": "ipad-en-4",
+      "anchor": "ipad-en",
+      "locale": "en",
+      "question": "Hi, Can I use a tablet or iPad in the RoV tournamment?",
+      "game": "rov_blueket_2025_men",
+      "required": [
+        "may not be used",
+        "disqualification"
+      ],
+      "forbidden": [
+        "Global Ban"
+      ],
+      "first": [
+        "may not be used",
+        "disqualification"
+      ]
+    },
+    "elapsed_sec": 0.1735,
+    "failures": [
+      "missing:may not be used",
+      "missing:disqualification",
+      "missing_first:may not be used",
+      "missing_first:disqualification",
+      "wrong_scope:Global Ban"
+    ],
+    "response": {
+      "answer": "Verified information:\n- Competition Rules 4. Regulations and Competition Rules 4.1. Basic Rules 4.1.1. Prohibited to use character names or phrases that are offensive or disrespectful toward others. 4.1.2. In the first match, the team on the upper side of the bracket will play as the blue team; in the next match, the team that lost the previous match will have the right to choose their side. 4.1.3. The referees will announce the room number so both teams can enter the designated room. * The blue team is on top * The red team is on bottom 4.1.4. If a team starts the match more than 15 minutes after the scheduled time, the delayed team will be immediately forfeited. 4.2. Competition Rules 4.2.1. All participants must have at least 18 heroes for the \"5v5\" mode (formerly known as Tournament Mode). 4.2.2. Use Global Ban/Pick hero selection. 4.2.3. Runes and enhancement systems may be used as desired. 4.2.4. In competition, all participants may choose any hero they wish. 4.2.5. Regarding skins, only Default skins may be used. 4.2.6. No duplicate hero selection or any other actions that cause system issues are permitted under any circumstances. 4.3. Disconnection and Rematch 4.3.1. If a participant disconnects during the match, the game will be paused temporarily. Each team may pause the game up to five times, each pause not exceeding one minute. If the time limit is exceeded, the other team may immediately resume the game and continue playing normally.\n- 4.5.1.2 In cases where the game is paused due to technical issues, not caused by player actions, the event staff may order a pause and require players to rejoin the game after all disconnected players have reconnected. 4.5.2 If the game is paused for more than 10 minutes, the event staff may order a restart of the game, unless one team has a significantly larger score than the other; in such cases, the event staff may use their discretion to declare the higher-scoring team as the winner of the interrupted game. 4.5.3 After reconnection, the event staff may order both competing teams to immediately restart the game and/or continue playing anew, as they deem appropriate. 4.5.4 The referee may pause the game for any reason. 4.5.5 Unintentional disconnections. 4.5.5.1 If a player is in a life-threatening situation, such as being unsafe in the competition area or facing other circumstances that prevent continued gameplay. 4.5.5.2 Natural disasters causing game interruptions. 4.5.6 Player-initiated game pauses. 4.5.6.1 A player may pause the game following any of the following events, and must immediately signal the referee upon pausing the game to explain the reason for the pause.\n- 6.2. Use of assistive software during gameplay, and/or any action that creates an advantage or disadvantage to oneself or another competitor 6.2.1. No competitor may use any assistive software or tools during gameplay. 6.2.2. No competitor may perform any action involving exploiting in-game errors. 6.2.3. No competitor may intentionally disengage from the competition. 6.2.4. No competitor may take any action that constitutes allowing the opposing team to win. 6.2.4.1. Penalty: If staff verify such violations or receive complaints from others, staff will impose penalties on offending competitors by disqualifying them from the competition.\nSources: local://competition_rules/competition_rules_rov_blueket_2025_men (original sources in Thai)",
+      "mode": "pipeline:approved_english_semantic_rag",
+      "route_category": "competition_rules",
+      "hits": [
+        {
+          "id": "competition_rules_rov_blueket_2025_men_s06_c01:text",
+          "metadata": {
+            "source_url": "local://competition_rules/competition_rules_rov_blueket_2025_men",
+            "category": "competition_rules",
+            "source_type": "competition_rules",
+            "title": "Arena of Valor (RoV): 4. ระเบียบและกติกาการแข่งขัน",
+            "source_ids": [
+              "competition_rules_rov_blueket_2025_men_s06_c01:text"
+            ],
+            "source_language": "th"
+          }
+        },
+        {
+          "id": "competition_rules_rov_blueket_2025_men_s06_c03:text",
+          "metadata": {
+            "source_url": "local://competition_rules/competition_rules_rov_blueket_2025_men",
+            "category": "competition_rules",
+            "source_type": "competition_rules",
+            "title": "Arena of Valor (RoV): 4. ระเบียบและกติกาการแข่งขัน",
+            "source_ids": [
+              "competition_rules_rov_blueket_2025_men_s06_c03:text"
+            ],
+            "source_language": "th"
+          }
+        },
+        {
+          "id": "competition_rules_rov_blueket_2025_men_s08_c02:text",
+          "metadata": {
+            "source_url": "local://competition_rules/competition_rules_rov_blueket_2025_men",
+            "category": "competition_rules",
+            "source_type": "competition_rules",
+            "title": "Arena of Valor (RoV): 6. การกระทำความผิดและบทลงโทษ",
+            "source_ids": [
+              "competition_rules_rov_blueket_2025_men_s08_c02:text"
+            ],
+            "source_language": "th"
+          }
+        }
+      ],
+      "trace": [
+        {
+          "stage": "locale_resolution",
+          "decision": "en",
+          "confidence": 1.0,
+          "detail": "toggle_override_en;english_sentence_structure",
+          "metadata": {
+            "requested": "en",
+            "detected": "en",
+            "effective": "en",
+            "confidence": 1.0,
+            "reason": "toggle_override_en;english_sentence_structure"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "Hi, Can I use a tablet or iPad in the RoV tournamment?",
+            "candidate": "Hi, Can I use a tablet or iPad in the RoV tournamment?",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "parts=1",
+          "metadata": {
+            "elapsed_ms": 10.29,
+            "elapsed_sec": 0.0103,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 12.0,
+            "global_elapsed_sec": 0.0143,
+            "global_remaining_sec": 11.9857,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 10.9857,
+            "timing_status": "running",
+            "parts": [
+              "Hi, Can I use a tablet or iPad in the RoV tournamment?"
+            ],
+            "competition_rule_query": false
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "experimental_allow_llm is false; single clear operation does not need planner",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": false
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "hi, can i use a tablet or ipad in the rov tournamment?",
+          "metadata": {
+            "language_hint": "en",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "Hi, Can I use a tablet or iPad in the RoV tournamment?"
+            ],
+            "elapsed_ms": 27.07,
+            "elapsed_sec": 0.0271
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 27.11,
+            "elapsed_sec": 0.0271
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "competition_rules/competition_rules_lookup",
+          "metadata": {
+            "elapsed_ms": 0.24,
+            "elapsed_sec": 0.0002,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          }
+        },
+        {
+          "stage": "target_lock",
+          "decision": "not_locked",
+          "confidence": 0.97,
+          "detail": "game_resolution_unknown",
+          "metadata": {
+            "locked": false,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "reason": "game_resolution_unknown",
+            "resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "detail",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 20,
+              "comparison_count": 64,
+              "elapsed_ms": 10.527,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            }
+          }
+        },
+        {
+          "stage": "bilingual_route",
+          "decision": "pipeline:approved_english_semantic_rag",
+          "confidence": 0.33333,
+          "detail": "approved English projection; retrieval=approved_lexical",
+          "metadata": {
+            "effective_locale": "en",
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "runtime_translation": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:approved_english_semantic_rag",
+          "metadata": {
+            "elapsed_ms": 0.63,
+            "elapsed_sec": 0.0006,
+            "format_response_style_ms": 0.0,
+            "answer_language": "en",
+            "total_elapsed_ms": 173.3,
+            "total_elapsed_sec": 0.1733
+          }
+        }
+      ],
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      }
+    }
+  },
+  "penalties-th-0": {
+    "case": {
+      "id": "penalties-th-0",
+      "anchor": "penalties-th",
+      "locale": "th",
+      "question": "กติกา VALORANT มีบทลงโทษประเภทไหนบ้าง",
+      "game": "valorant_psu_phuket_2026",
+      "required": [
+        "Warning",
+        "Round Rollback",
+        "Round Loss",
+        "Map Forfeit",
+        "Match Forfeit",
+        "ระบุเจตนาไม่ได้",
+        "เจตนาใช้ช่องโหว่",
+        "ความผิดครั้งแรก",
+        "ความผิดซ้ำ",
+        "ล็อกผล"
+      ],
+      "forbidden": [],
+      "first": []
+    },
+    "elapsed_sec": 0.1834,
+    "failures": [
+      "missing:Warning",
+      "missing:Round Rollback",
+      "missing:Match Forfeit",
+      "missing:ระบุเจตนาไม่ได้",
+      "missing:ความผิดครั้งแรก",
+      "missing:ล็อกผล",
+      "type_missing_or_duplicate:Warning",
+      "type_missing_or_duplicate:Round Rollback",
+      "type_missing_or_duplicate:Match Forfeit"
+    ],
+    "response": {
+      "answer": "คำตอบ: ประเภทบทลงโทษในเกม\n\nรายละเอียดที่เกี่ยวข้อง:\n•    3. การปรับแพ้ในรอบ (Round Loss) เมื่อพบว่าผู้เล่นหรือทีมมีเจตนาใช้ช่องโหว่เพื่อสร้างความได้เปรียบ\n•    4. การปรับแพ้ในแผนที่ (Map Forfeit) สำหรับความผิดร้ายแรงหรือความผิดซ้ำที่ส่งผลกระทบต่อผลการแข่งในแผนที่นั้น\n\nอ้างอิงจากกติกา: VALORANT / PSU Phuket VALORANT 2026 Tournament\nแหล่งข้อมูล: local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+      "mode": "pipeline:competition_source_rag",
+      "route_category": "competition_rules",
+      "hits": [
+        {
+          "id": "competition_rules_valorant_psu_phuket_2026_s10_c01",
+          "metadata": {
+            "source_url": "local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+            "category": "competition_rules",
+            "title": "VALORANT: ประเภทบทลงโทษในเกม",
+            "source_ids": [
+              "competition_rules_valorant_psu_phuket_2026",
+              "competition_rules_valorant_psu_phuket_2026_s10_c01"
+            ],
+            "game": "VALORANT",
+            "intent": "",
+            "facets": [
+              "competition_rules",
+              "competition_rules_valorant_psu_phuket_2026",
+              "penalty",
+              "psu phuket valorant 2026",
+              "tournament_rules",
+              "valorant",
+              "วาโล"
+            ],
+            "rule_id": "canonical::competition_rules_valorant_psu_phuket_2026_s10_c01"
+          }
+        },
+        {
+          "id": "competition_rules_valorant_psu_phuket_2026_s13_c01",
+          "metadata": {
+            "source_url": "local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+            "category": "competition_rules",
+            "title": "VALORANT: 3. การปรับแพ้ในรอบ (Round Loss) เมื่อพบว่าผู้เล่นหรือทีมมีเจตนาใช้ช่องโหว่เพื่อสร้างความได้เปรียบ",
+            "source_ids": [
+              "competition_rules_valorant_psu_phuket_2026",
+              "competition_rules_valorant_psu_phuket_2026_s13_c01"
+            ],
+            "game": "VALORANT",
+            "intent": "",
+            "facets": [
+              "competition_rules",
+              "competition_rules_valorant_psu_phuket_2026",
+              "eligibility",
+              "penalty",
+              "psu phuket valorant 2026",
+              "tournament_rules",
+              "valorant",
+              "วาโล"
+            ],
+            "rule_id": "canonical::competition_rules_valorant_psu_phuket_2026_s13_c01"
+          }
+        },
+        {
+          "id": "competition_rules_valorant_psu_phuket_2026_s14_c01",
+          "metadata": {
+            "source_url": "local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+            "category": "competition_rules",
+            "title": "VALORANT: 4. การปรับแพ้ในแผนที่ (Map Forfeit) สำหรับความผิดร้ายแรงหรือความผิดซ้ำที่ส่งผลกระทบต่อผลการแข่งในแผนที่นั้น",
+            "source_ids": [
+              "competition_rules_valorant_psu_phuket_2026",
+              "competition_rules_valorant_psu_phuket_2026_s14_c01"
+            ],
+            "game": "VALORANT",
+            "intent": "",
+            "facets": [
+              "competition_rules",
+              "competition_rules_valorant_psu_phuket_2026",
+              "map",
+              "penalty",
+              "psu phuket valorant 2026",
+              "tournament_rules",
+              "valorant",
+              "วาโล"
+            ],
+            "rule_id": "canonical::competition_rules_valorant_psu_phuket_2026_s14_c01"
+          }
+        },
+        {
+          "id": "competition_rules_valorant_psu_phuket_2026_s15_c01",
+          "metadata": {
+            "source_url": "local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+            "category": "competition_rules",
+            "title": "VALORANT: 5. การปรับแพ้ในแมตช์ (Match Forfeit) กรณีทุจริต (Cheating) หรือล็อกผล (Match fixing)",
+            "source_ids": [
+              "competition_rules_valorant_psu_phuket_2026",
+              "competition_rules_valorant_psu_phuket_2026_s15_c01"
+            ],
+            "game": "VALORANT",
+            "intent": "",
+            "facets": [
+              "competition_rules",
+              "competition_rules_valorant_psu_phuket_2026",
+              "penalty",
+              "psu phuket valorant 2026",
+              "tournament_rules",
+              "valorant",
+              "วาโล"
+            ],
+            "rule_id": "canonical::competition_rules_valorant_psu_phuket_2026_s15_c01"
+          }
+        },
+        {
+          "id": "competition_rules_valorant_psu_phuket_2026_s25_c01",
+          "metadata": {
+            "source_url": "local://competition_rules/competition_rules_valorant_psu_phuket_2026",
+            "category": "competition_rules",
+            "title": "VALORANT: In-Game Penalty Types",
+            "source_ids": [
+              "competition_rules_valorant_psu_phuket_2026",
+              "competition_rules_valorant_psu_phuket_2026_s25_c01"
+            ],
+            "game": "VALORANT",
+            "intent": "",
+            "facets": [
+              "bug",
+              "competition_rules",
+              "competition_rules_valorant_psu_phuket_2026",
+              "map",
+              "penalty",
+              "psu phuket valorant 2026",
+              "tournament_rules",
+              "valorant",
+              "วาโล"
+            ],
+            "rule_id": "canonical::competition_rules_valorant_psu_phuket_2026_s25_c01"
+          }
+        }
+      ],
+      "trace": [
+        {
+          "stage": "locale_resolution",
+          "decision": "th",
+          "confidence": 1.0,
+          "detail": "toggle_override_th;mixed_thai_function_words",
+          "metadata": {
+            "requested": "th",
+            "detected": "mixed",
+            "effective": "th",
+            "confidence": 1.0,
+            "reason": "toggle_override_th;mixed_thai_function_words"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "กติกา VALORANT มีบทลงโทษประเภทไหนบ้าง",
+            "candidate": "กติกา VALORANT มีบทลงโทษประเภทไหนบ้าง",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "competition_rule_single_target",
+          "metadata": {
+            "elapsed_ms": 8.85,
+            "elapsed_sec": 0.0089,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 12.0,
+            "global_elapsed_sec": 0.0131,
+            "global_remaining_sec": 11.9869,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 10.9869,
+            "timing_status": "running",
+            "parts": [
+              "กติกา VALORANT มีบทลงโทษประเภทไหนบ้าง"
+            ],
+            "competition_rule_query": true
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "experimental_allow_llm is false; competition_rule_target_grounded_retrieval",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": false
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "กติกา valorant มีบทลงโทษประเภทไหนบ้าง",
+          "metadata": {
+            "language_hint": "mixed_th_en",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "กติกา VALORANT มีบทลงโทษประเภทไหนบ้าง"
+            ],
+            "elapsed_ms": 8.81,
+            "elapsed_sec": 0.0088
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 8.84,
+            "elapsed_sec": 0.0088
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "competition_rules/competition_rules_lookup",
+          "metadata": {
+            "elapsed_ms": 0.23,
+            "elapsed_sec": 0.0002,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "semantic_route_refiner",
+          "confidence": 1.0,
+          "detail": "skipped",
+          "metadata": {
+            "elapsed_ms": 0.03,
+            "elapsed_sec": 0.0,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "route_locked": false
+          }
+        },
+        {
+          "stage": "semantic_route_refiner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "semantic retrieval disabled",
+          "metadata": {}
+        },
+        {
+          "stage": "freshness_guard",
+          "decision": "not_required",
+          "confidence": 0.9,
+          "detail": "query does not require live dynamic evidence",
+          "metadata": {
+            "requires_live_evidence": false
+          }
+        },
+        {
+          "stage": "boundary_guard",
+          "decision": "allow",
+          "confidence": 0.9,
+          "detail": "no high-confidence boundary matched",
+          "metadata": {
+            "flags": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "guard_scope",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.03,
+            "elapsed_sec": 0.0
+          }
+        },
+        {
+          "stage": "guard",
+          "decision": "weak_domain_signal",
+          "confidence": 0.35,
+          "detail": "no clear PSU Esports domain hint",
+          "metadata": {}
+        },
+        {
+          "stage": "router",
+          "decision": "competition_rules",
+          "confidence": 0.97,
+          "detail": "competition rule terms found before reservation/check-in",
+          "metadata": {
+            "intent": "competition_rules_lookup",
+            "answer_type": "fact"
+          }
+        },
+        {
+          "stage": "model_gateway",
+          "decision": "skip_preflight_llm",
+          "confidence": 0.97,
+          "detail": "request did not allow LLM",
+          "metadata": {
+            "allow_llm": false,
+            "preflight_allow_llm": false,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "universal_intent",
+          "confidence": 1.0,
+          "detail": "competition_rules/rule_lookup",
+          "metadata": {
+            "elapsed_ms": 1.56,
+            "elapsed_sec": 0.0016,
+            "method": "heuristic",
+            "confidence": 0.9
+          }
+        },
+        {
+          "stage": "universal_intent",
+          "decision": "competition_rules/rule_lookup",
+          "confidence": 0.9,
+          "detail": "known game alias found; competition route overrides game/count ambiguity; rule terms found; competition route forces rule lookup",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false,
+            "llm_first": false,
+            "llm_first_skip_reason": "",
+            "llm_first_review_reason": "",
+            "llm_call": {},
+            "intent_risk_flags": [
+              "competing_domain_signals"
+            ],
+            "input_recovery": {
+              "score": 0.3111,
+              "language": "mixed",
+              "language_quality": 0.6889,
+              "should_review_intent": false,
+              "reason": "Thai character n-gram quality=0.689",
+              "action": "continue"
+            },
+            "llm_rejected_reason": "",
+            "intent_candidates": [
+              {
+                "id": "c1",
+                "domain": "competition_rules",
+                "operation": "rule_lookup",
+                "target": "",
+                "confidence": 0.9,
+                "reason": "heuristic fallback"
+              },
+              {
+                "id": "c2",
+                "domain": "competition_rules",
+                "operation": "list",
+                "target": "",
+                "confidence": 0.97,
+                "reason": "router category candidate"
+              },
+              {
+                "id": "c3",
+                "domain": "games",
+                "operation": "list",
+                "target": "",
+                "confidence": 0.66,
+                "reason": "game-domain catalog alternative"
+              }
+            ],
+            "target": "",
+            "filters": {},
+            "needs": [
+              "lookup_competition_rule"
+            ],
+            "answer_style": "direct",
+            "heuristic": {
+              "domain": "competition_rules",
+              "operation": "rule_lookup",
+              "confidence": 0.9,
+              "reason": "known game alias found; competition route overrides game/count ambiguity; rule terms found; competition route forces rule lookup"
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_router",
+          "confidence": 1.0,
+          "detail": "retrieval/competition_rules",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0,
+            "method": "heuristic",
+            "confidence": 0.9
+          }
+        },
+        {
+          "stage": "tool_router",
+          "decision": "heuristic:retrieval",
+          "confidence": 0.9,
+          "detail": "experimental_allow_llm is false",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "ambiguity_gate",
+          "confidence": 1.0,
+          "detail": "allow",
+          "metadata": {
+            "elapsed_ms": 84.72,
+            "elapsed_sec": 0.0847,
+            "flags": [],
+            "confidence": 0.94
+          }
+        },
+        {
+          "stage": "ambiguity_gate",
+          "decision": "allow",
+          "confidence": 0.94,
+          "detail": "ambiguity risk acceptable",
+          "metadata": {
+            "flags": [],
+            "route": "competition_rules/competition_rules_lookup",
+            "intent": "competition_rules/rule_lookup",
+            "has_known_game": true,
+            "has_service_or_zone": false,
+            "game_entity_resolution": {
+              "status": "exact",
+              "entity_type": "game",
+              "top_candidate": {
+                "entity_id": "valorant",
+                "title": "VALORANT",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "VALORANT",
+                "sources": [
+                  "availability_pc_01_02",
+                  "availability_pc_03_10"
+                ],
+                "zones": [
+                  "PC Zone"
+                ],
+                "has_controls": true,
+                "reasons": []
+              },
+              "candidates": [
+                {
+                  "entity_id": "valorant",
+                  "title": "VALORANT",
+                  "score": 1.0,
+                  "match_type": "exact_alias",
+                  "matched_alias": "VALORANT",
+                  "sources": [
+                    "availability_pc_01_02",
+                    "availability_pc_03_10"
+                  ],
+                  "zones": [
+                    "PC Zone"
+                  ],
+                  "has_controls": true,
+                  "reasons": []
+                }
+              ],
+              "top_score": 1.0,
+              "margin": 1.0,
+              "reason": "direct_alias_match",
+              "operation": "",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "exact",
+              "candidate_count": 1,
+              "comparison_count": 0,
+              "elapsed_ms": 7.953,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            },
+            "intent_candidates": [
+              {
+                "domain": "competition_rules",
+                "operation": "competition_rules_lookup",
+                "score": 0.99,
+                "reasons": [
+                  "competition_terms",
+                  "competition_target",
+                  "route_prior",
+                  "intent_domain_prior"
+                ]
+              },
+              {
+                "domain": "games",
+                "operation": "detail",
+                "score": 0.3,
+                "reasons": [
+                  "known_game_target"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "question_frame",
+          "confidence": 0.97,
+          "detail": "competition_rules/competition_rule_lookup",
+          "metadata": {
+            "elapsed_ms": 9.95,
+            "elapsed_sec": 0.01,
+            "operation": "competition_rule_lookup",
+            "domain": "competition_rules",
+            "expected_answer_types": [
+              "competition_rule"
+            ],
+            "targets": [
+              {
+                "target_id": "valorant",
+                "target_type": "competition_game",
+                "domain": "competition_rules",
+                "label": "VALORANT",
+                "score": 1.0
+              }
+            ],
+            "target_status": "exact",
+            "target_margin": 1.0,
+            "target_required": true,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.97,
+            "method": "competition_target_first",
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "intent_operation": "rule_lookup",
+            "competition_game_ids": [
+              "valorant"
+            ],
+            "competition_game_labels": [
+              "VALORANT"
+            ],
+            "competition_rulebook_ids": [
+              "competition_rules_valorant_psu_phuket_2026"
+            ],
+            "competition_facet": "penalty",
+            "competition_target_reason": "registered_competition_alias",
+            "competition_explicit_mentions": [
+              "valorant"
+            ],
+            "target_reason": "registered_competition_alias",
+            "target_candidate_count": 1,
+            "game_family": ""
+          }
+        },
+        {
+          "stage": "target_context",
+          "decision": "enrich_universal_intent",
+          "confidence": 1.0,
+          "detail": "exact Question Frame target propagated to structured execution",
+          "metadata": {
+            "target_id": "valorant",
+            "target_type": "competition_game",
+            "domain": "competition_rules",
+            "label": "VALORANT",
+            "score": 1.0
+          }
+        },
+        {
+          "stage": "operation_route_refine",
+          "decision": "competition_rules/competition_rules_lookup -> competition_rules/competition_rules_lookup",
+          "confidence": 0.97,
+          "detail": "question frame supplied a clear PSU operation domain",
+          "metadata": {
+            "operation": "competition_rule_lookup",
+            "domain": "competition_rules",
+            "expected_answer_types": [
+              "competition_rule"
+            ],
+            "targets": [
+              {
+                "target_id": "valorant",
+                "target_type": "competition_game",
+                "domain": "competition_rules",
+                "label": "VALORANT",
+                "score": 1.0
+              }
+            ],
+            "target_status": "exact",
+            "target_margin": 1.0,
+            "target_required": true,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.97,
+            "method": "competition_target_first",
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "intent_operation": "rule_lookup",
+            "competition_game_ids": [
+              "valorant"
+            ],
+            "competition_game_labels": [
+              "VALORANT"
+            ],
+            "competition_rulebook_ids": [
+              "competition_rules_valorant_psu_phuket_2026"
+            ],
+            "competition_facet": "penalty",
+            "competition_target_reason": "registered_competition_alias",
+            "competition_explicit_mentions": [
+              "valorant"
+            ],
+            "target_reason": "registered_competition_alias",
+            "target_candidate_count": 1,
+            "game_family": ""
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "candidate_decisions",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 9.82,
+            "elapsed_sec": 0.0098
+          }
+        },
+        {
+          "stage": "decision_candidates",
+          "decision": "retrieval.competition_fact_cards",
+          "confidence": 0.9388888888888889,
+          "detail": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority; question_frame_domain_match; precondition=competition_rule_retrieval_applicable",
+          "metadata": {
+            "selected": {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.939,
+              "status": "accepted",
+              "reason": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority; question_frame_domain_match; precondition=competition_rule_retrieval_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            "selection": {
+              "status": "selected",
+              "execution_allowed": true,
+              "margin": 0.361,
+              "same_action_as_second": false,
+              "second": {
+                "capability_id": "fast.domain_handlers",
+                "action": "fast_path",
+                "domain": "multi",
+                "score": 0.578,
+                "status": "accepted",
+                "reason": "base=0.78; multi_domain; answer_type_match; precondition=competition_fast_handler_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              }
+            },
+            "question_frame": {
+              "operation": "competition_rule_lookup",
+              "domain": "competition_rules",
+              "expected_answer_types": [
+                "competition_rule"
+              ],
+              "targets": [
+                {
+                  "target_id": "valorant",
+                  "target_type": "competition_game",
+                  "domain": "competition_rules",
+                  "label": "VALORANT",
+                  "score": 1.0
+                }
+              ],
+              "target_status": "exact",
+              "target_margin": 1.0,
+              "target_required": true,
+              "allows_multiple_targets": false,
+              "needs_clarification": false,
+              "confidence": 0.97,
+              "method": "competition_target_first",
+              "route_category": "competition_rules",
+              "route_intent": "competition_rules_lookup",
+              "intent_operation": "rule_lookup",
+              "competition_game_ids": [
+                "valorant"
+              ],
+              "competition_game_labels": [
+                "VALORANT"
+              ],
+              "competition_rulebook_ids": [
+                "competition_rules_valorant_psu_phuket_2026"
+              ],
+              "competition_facet": "penalty",
+              "competition_target_reason": "registered_competition_alias",
+              "competition_explicit_mentions": [
+                "valorant"
+              ],
+              "target_reason": "registered_competition_alias",
+              "target_candidate_count": 1,
+              "game_family": ""
+            },
+            "candidates": [
+              {
+                "capability_id": "retrieval.competition_fact_cards",
+                "action": "retrieval",
+                "domain": "competition_rules",
+                "score": 0.939,
+                "status": "accepted",
+                "reason": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority; question_frame_domain_match; precondition=competition_rule_retrieval_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "fast.domain_handlers",
+                "action": "fast_path",
+                "domain": "multi",
+                "score": 0.578,
+                "status": "accepted",
+                "reason": "base=0.78; multi_domain; answer_type_match; precondition=competition_fast_handler_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.hybrid_guarded",
+                "action": "retrieval",
+                "domain": "multi",
+                "score": 0.506,
+                "status": "accepted",
+                "reason": "base=0.72; multi_domain; answer_type_match; tool_router_action=retrieval; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "rulebase.category_rules",
+                "action": "rulebase",
+                "domain": "multi",
+                "score": 0.467,
+                "status": "accepted",
+                "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.vector_guarded",
+                "action": "vector",
+                "domain": "multi",
+                "score": 0.444,
+                "status": "accepted",
+                "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "llm.facts_composer",
+                "action": "rag_llm",
+                "domain": "multi",
+                "score": 0.4,
+                "status": "accepted",
+                "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "clarification.ask_user",
+                "action": "clarification",
+                "domain": "clarification",
+                "score": 0.322,
+                "status": "accepted",
+                "reason": "base=0.58; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              },
+              {
+                "capability_id": "fallback.no_answer",
+                "action": "no_answer",
+                "domain": "no_answer",
+                "score": 0.278,
+                "status": "accepted",
+                "reason": "base=0.50; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              }
+            ],
+            "rejected": [
+              {
+                "capability_id": "structured.members",
+                "action": "structured",
+                "domain": "members",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: competition_query_must_not_use_member_directory",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.games",
+                "action": "structured",
+                "domain": "games",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: competition_rule_query_must_not_use_game_catalog",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.game_controls",
+                "action": "structured",
+                "domain": "game_controls",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_game_control_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.equipment",
+                "action": "structured",
+                "domain": "equipment",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: competition_query_must_not_use_equipment_tool",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.reservation",
+                "action": "structured",
+                "domain": "reservation",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_reservation_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.schedule",
+                "action": "structured",
+                "domain": "schedule",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: competition_round_query_must_not_use_schedule_tool",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.service_fee",
+                "action": "structured",
+                "domain": "service_fee",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_price_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "fast.price_calculator",
+                "action": "fast_path",
+                "domain": "service_fee",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_price_or_calculation_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              }
+            ],
+            "policy": {
+              "psu_specific": true,
+              "route_risk": "medium",
+              "general_llm_requires_non_psu": true
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_precondition",
+          "confidence": 1.0,
+          "detail": "structured.unknown",
+          "metadata": {
+            "elapsed_ms": 0.08,
+            "elapsed_sec": 0.0001,
+            "ok": false
+          }
+        },
+        {
+          "stage": "tool_precondition",
+          "decision": "reject_structured",
+          "confidence": 0.2,
+          "detail": "candidate_selector_preferred_non_structured_action",
+          "metadata": {
+            "capability_id": "structured.unknown",
+            "ok": false,
+            "reason": "no_structured_capability_for_route",
+            "severity": "policy",
+            "selector_allows_structured": false,
+            "selected_capability_id": "retrieval.competition_fact_cards"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "structured_tool_execution",
+          "confidence": 1.0,
+          "detail": "no_result",
+          "metadata": {
+            "elapsed_ms": 0.0,
+            "elapsed_sec": 0.0,
+            "precondition_ok": false,
+            "selector_allows_structured": false,
+            "selected_capability_id": "retrieval.competition_fact_cards",
+            "confidence": 0.0
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "deterministic",
+          "confidence": 1.0,
+          "detail": "no_match",
+          "metadata": {
+            "elapsed_ms": 0.0,
+            "elapsed_sec": 0.0,
+            "confidence": 0.0,
+            "selector_allows_deterministic": false,
+            "selected_capability_id": "retrieval.competition_fact_cards"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "competition_source_retrieval",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 16.71,
+            "elapsed_sec": 0.0167,
+            "hit_count": 5,
+            "target_game_ids": [
+              "valorant"
+            ],
+            "facet": "penalty"
+          }
+        },
+        {
+          "stage": "rag_retrieval",
+          "decision": "curated_lexical",
+          "confidence": 0.84,
+          "detail": "hits=8 game=VALORANT intent=penalty",
+          "metadata": {
+            "category": "competition_rules",
+            "game": "VALORANT",
+            "intent": "penalty"
+          }
+        },
+        {
+          "stage": "competition_contract_retrieval",
+          "decision": "target_facet_source_index",
+          "confidence": 0.98,
+          "detail": "hits=5 facet=penalty",
+          "metadata": {
+            "facet": "penalty",
+            "target_game_ids": [
+              "valorant"
+            ],
+            "rulebook_ids": [
+              "competition_rules_valorant_psu_phuket_2026"
+            ],
+            "hit_ids": [
+              "competition_rules_valorant_psu_phuket_2026_s10_c01",
+              "competition_rules_valorant_psu_phuket_2026_s13_c01",
+              "competition_rules_valorant_psu_phuket_2026_s14_c01",
+              "competition_rules_valorant_psu_phuket_2026_s15_c01",
+              "competition_rules_valorant_psu_phuket_2026_s25_c01"
+            ]
+          }
+        },
+        {
+          "stage": "competition_source_grounding",
+          "decision": "accepted",
+          "confidence": 0.84,
+          "detail": "target-filtered source chunks are preferred over summary fact cards",
+          "metadata": {
+            "hit_count": 5,
+            "validation_errors": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:competition_source_rag",
+          "metadata": {
+            "elapsed_ms": 0.48,
+            "elapsed_sec": 0.0005,
+            "format_response_style_ms": 0.18,
+            "answer_language": "th",
+            "total_elapsed_ms": 183.17,
+            "total_elapsed_sec": 0.1832
+          }
+        }
+      ],
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      }
+    }
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "ok": true,
+  "service": "psu-esports-chat-web",
+  "time": "2026-10-02T12:19:48.376508+00:00",
+  "warmup": {
+    "ok": true,
+    "elapsed_sec": 15.2073,
+    "warmed": [
+      "game_title_aliases",
+      "structured_tools",
+      "game_resolver",
+      "routing_data",
+      "retrieval_data",
+      "probe_queries",
+      "semantic_embedding"
+    ],
+    "errors": [],
+    "timings": {
+      "game_title_aliases": 0.9298,
+      "structured_tools": 0.7719,
+      "game_resolver": 0.1939,
+      "routing_data": 0.2499,
+      "retrieval_data": 3.2891,
+      "probe_queries": 9.6995,
+      "semantic_embedding": 0.0731
+    }
+  },
+  "llm_preflight": {
+    "ok": true,
+    "model": "scb10x/typhoon2.5-qwen3-4b",
+    "kind": "preflight",
+    "elapsed_ms": 235.03,
+    "response_chars": 2,
+    "done_reason": "length",
+    "num_ctx": 3072,
+    "load_duration": 14424800,
+    "prompt_eval_duration": 210215000,
+    "eval_duration": 1000,
+    "health": {
+      "llm_health_enabled": true,
+      "llm_health_status": "ok",
+      "llm_health_failures": 0,
+      "llm_health_failure_scope": "model_and_kind"
+    }
+  },
+  "input_quality_guard": {
+    "enabled": true,
+    "mode": "enforce",
+    "repeat_policy": "warn_and_continue",
+    "layout_threshold": 0.39,
+    "repeat_threshold": 0.55,
+    "corpus_size": 4023,
+    "profile_version": "keyboard-profile-v1:2a863a4176572043"
+  },
+  "llm_health": {
+    "enabled": true,
+    "failure_threshold": 2,
+    "failure_window_sec": 30.0,
+    "cooldown_sec": 90.0,
+    "states": [
+      {
+        "kind": "model",
+        "model": "scb10x/typhoon2.5-qwen3-4b",
+        "status": "ok",
+        "failures": 0,
+        "successes": 1,
+        "cooldown_remaining_sec": 0.0,
+        "last_error_type": "",
+        "last_error": "",
+        "last_elapsed_ms": 235.03,
+        "last_checked_at": 1790943510.6089456,
+        "last_success_at": 1790943510.6089456,
+        "half_open_probe_in_flight": false,
+        "events": [
+          {
+            "event": "success",
+            "kind": "preflight",
+            "elapsed_ms": 235.03,
+            "detail": "preflight_ok",
+            "at": 1790943510.609
+          }
+        ]
+      },
+      {
+        "kind": "preflight",
+        "model": "scb10x/typhoon2.5-qwen3-4b",
+        "status": "ok",
+        "failures": 0,
+        "successes": 1,
+        "cooldown_remaining_sec": 0.0,
+        "last_error_type": "",
+        "last_error": "",
+        "last_elapsed_ms": 235.03,
+        "last_checked_at": 1790943510.6089265,
+        "last_success_at": 1790943510.6089265,
+        "half_open_probe_in_flight": false,
+        "events": [
+          {
+            "event": "success",
+            "kind": "preflight",
+            "elapsed_ms": 235.03,
+            "detail": "preflight_ok",
+            "at": 1790943510.609
+          }
+        ]
+      }
+    ]
+  },
+  "pipeline_workers": {
+    "enabled": true,
+    "started": true,
+    "worker_count": 1,
+    "workers": [
+      {
+        "worker_id": 0,
+        "pid": 8184,
+        "alive": true,
+        "ready": true,
+        "completed_requests": 0,
+        "busy": false,
+        "replacement_warming": false
+      }
+    ],
+    "performance": {
+      "run_id": "20261002T121756Z",
+      "path": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\owner_local_delivery_20261002_source_content_reliability_r32_candidate6\\PSU_Esports_Chatbot_Local\\data\\logs\\performance\\pipeline_20261002T121756Z.jsonl",
+      "events_written": 0,
+      "events_dropped": 0
+    }
+  },
+  "runtime": {
+    "profile": "owner-local-rag-assist",
+    "version": "2026.10.02-source-content-reliability-r32",
+    "started_at": "2026-10-02T12:17:55.264170+00:00",
+    "answer_timeout_sec": 20.0,
+    "pipeline_timeout_sec": 19.0,
+    "intent_timeout_sec": 14.0,
+    "local_llm": {
+      "enabled": true,
+      "model": "scb10x/typhoon2.5-qwen3-4b",
+      "intent_timeout_sec": 14.0,
+      "planner_timeout_sec": 1.2,
+      "general_timeout_sec": 4.0,
+      "high_assist_profile": true
+    },
+    "semantic_rag": {
+      "enabled": true,
+      "embedding_model": "psu-bge-m3:q8_0"
+    },
+    "english": {
+      "enabled": true,
+      "draft_preview": false
+    },
+    "booking": {
+      "enabled": true,
+      "fetch_mode": "wordpress",
+      "cache_seconds": 0.0,
+      "dashboard_required": false,
+      "read_only": true
+    },
+    "input_quality": {
+      "mode": "enforce",
+      "keyboard_layout": "request_retype",
+      "repeated_characters": "warn_and_continue"
+    }
+  },
+  "features": {
+    "bilingual_english": true,
+    "local_llm_assist": true,
+    "semantic_rag": true,
+    "embedding_model": "psu-bge-m3:q8_0",
+    "live_booking_status": true
+  }
+}

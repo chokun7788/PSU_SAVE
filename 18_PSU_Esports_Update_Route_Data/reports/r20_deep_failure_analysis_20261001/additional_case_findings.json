@@ -1,0 +1,41 @@
+{
+  "id": "MASTER-GT-EN-04460",
+  "question": "Could you please help me with this: Could you cite the T8 rule concerning competiion equopment and devices",
+  "cause": "Competition/equipment cue corruption permits noun conjunction to split one rulebook facet into two tasks; devices child returns studio inventory. Observed over-splitting, distinct from missing split.",
+  "child_summaries": [
+    {
+      "stage": "multi_question_child",
+      "decision": "no_answer/english_verified_evidence_unavailable",
+      "confidence": 0.52,
+      "detail": "Could you please help me with this: Could you cite the T8 rule concerning competiion equopment",
+      "metadata": {
+        "mode": "pipeline:english_no_answer",
+        "answer_type": "no_answer",
+        "validation_ok": true,
+        "validation_errors": [],
+        "elapsed": 0.2281,
+        "universal_intent_method": "heuristic",
+        "universal_intent_llm_attempted": false,
+        "universal_intent": "general/unknown"
+      }
+    },
+    {
+      "stage": "multi_question_child",
+      "decision": "equipment/equipment_catalog",
+      "confidence": 0.97,
+      "detail": "devices",
+      "metadata": {
+        "mode": "pipeline:structured_equipment_catalog_en",
+        "answer_type": "fact",
+        "validation_ok": true,
+        "validation_errors": [],
+        "elapsed": 0.0637,
+        "universal_intent_method": "",
+        "universal_intent_llm_attempted": false,
+        "universal_intent": ""
+      }
+    }
+  ],
+  "source_evidence": "traces_en.jsonl:MASTER-GT-EN-04460",
+  "central_trace_count_note": "Counts refer to parent result traces. Two multi_question outputs summarize child traces and do not prove central scorer was absent in every child."
+}

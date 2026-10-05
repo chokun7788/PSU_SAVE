@@ -13,6 +13,7 @@ class PreprocessedInput:
     normalized_query: str
     language_hint: str
     query_variants: tuple[str, ...] = ()
+    name_recoveries: tuple[dict[str, Any], ...] = ()
 
 
 @dataclass(frozen=True)

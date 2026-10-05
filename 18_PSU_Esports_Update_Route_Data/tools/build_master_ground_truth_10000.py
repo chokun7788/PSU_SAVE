@@ -504,6 +504,11 @@ def rule_record_seeds(locale: str) -> list[dict[str, Any]]:
         elif str(row.get("id") or "") == "rule_cockpit_games":
             question = "Cockpit Zone มีเกมอะไรให้เล่นบ้าง" if locale == "th" else "Which game is available in the Cockpit Zone?"
         answer = str(row.get("answer_th" if locale == "th" else "answer_en") or "")
+        # v2.3 stored evaluation metadata predates the detailed fine schedule.
+        # This compatibility value is descriptive, not a runtime policy oracle.
+        # A new dataset version must opt into current source references instead.
+        if locale == "en" and row.get("id") == "rule_damage_responsibility":
+            answer = "If equipment is damaged, users are responsible for fines or compensation depending on severity, from minor damage fines to full compensation for severe damage."
         seeds.append(make_seed(
             locale=locale, domain=domain, question=question, origin="rule_patterns",
             origin_id=str(row.get("id") or ""), routes=routes, intent=intent,

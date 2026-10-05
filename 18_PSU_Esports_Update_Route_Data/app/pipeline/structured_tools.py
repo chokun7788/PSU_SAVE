@@ -11,6 +11,7 @@ from typing import Any
 
 from app.calculator.service_fee import answer_service_fee
 from app.core.normalization import contains_alias, normalize_text
+from app.core.typo_similarity import osa_distance
 from app.core.source_registry import (
     SERVICE_FEE_IMAGE_2026_ID,
     make_source_hits,
@@ -851,8 +852,20 @@ def _canonical_zone_label(value: str) -> str:
 def _detect_zone(query: str, target: str = "") -> str | None:
     text = f"{query} {target}".strip()
     for zone, aliases in ZONE_ALIASES.items():
-        if contains_alias(text, aliases, fuzzy=True, threshold=0.84)[0]:
+        if contains_alias(text, aliases, fuzzy=False)[0]:
             return zone
+    # Only bounded service-label tokens may supply an approximate zone.
+    # Sliding Thai windows made polite wording such as เลย match เพลย์.
+    candidates: set[str] = set()
+    for token in re.findall(r"[A-Za-z]+", text.casefold()):
+        if len(token) < 6:
+            continue
+        for zone, aliases in ZONE_ALIASES.items():
+            if any(alias.isascii() and alias.isalpha() and len(alias) >= 6
+                   and osa_distance(token, alias) == 1 for alias in aliases):
+                candidates.add(zone)
+    if len(candidates) == 1:
+        return next(iter(candidates))
     return None
 
 
@@ -1017,7 +1030,98 @@ def _member_person_match(query: str, rows: list[dict[str, Any]]) -> dict[str, An
             rank = (score, len(name_key), row)
             if best is None or rank[:2] > best[:2]:
                 best = rank
-    return best[2] if best else None
+    if best:
+        return best[2]
+    # Never replace the user's name. Only a full person span in an explicit
+    # role question can be compared with the published directory. A suggestion
+    # needs both a small edit budget and a clear margin over all other names.
+    marker = re.search(r"\s+(?:ทำ)?(?:ตำแหน่งอะไร|ทำหน้าที่อะไร)", query)
+    if not marker:
+        return None
+    observed = query[:marker.start()].strip()
+    if not re.match(r"^(?:นาย|นาง|รศ\.|ผศ\.|ดร\.)", observed):
+        return None
+    observed_key = _compact(observed)
+    if len(observed_key) < 10:
+        return None
+    ranked = sorted(
+        ((osa_distance(observed_key, _compact(str(row.get('name') or ''))), index, row)
+         for index, row in enumerate(rows)), key=lambda item: item[:2],
+    )
+    if not ranked:
+        return None
+    distance, _, person = ranked[0]
+    if distance > 2 or distance / max(len(observed_key), len(_compact(str(person.get('name') or '')))) > 0.16:
+        return None
+    if len(ranked) > 1 and ranked[1][0] - distance < 2:
+        return None
+    return {**person, '_name_suggestion': {'observed': observed, 'distance': distance,
+            'runner_up_distance': ranked[1][0] if len(ranked) > 1 else None,
+            'status': 'conditional_source_name_suggestion'}}
+
+
+@dataclass(frozen=True)
+class _MemberRoleResolution:
+    observed: str
+    role: str
+    distance: int
+    status: str
+    alternatives: tuple[str, ...] = ()
+
+
+def _resolve_member_role_span(query: str, rows: list[dict[str, Any]]) -> _MemberRoleResolution | None:
+    """Resolve a whole Thai role span against existing data, never its suffix alone."""
+    roles = sorted({str(row.get("role") or "").strip() for row in rows})
+    thai_roles = [role for role in roles if re.fullmatch(r"[\u0e00-\u0e7f]{5,}", role)]
+    if not thai_roles:
+        return None
+    q = normalize_text(query)
+    spans: list[tuple[str, bool]] = []
+    # An explicit role field can join whitespace inside a role while keeping
+    # the question frame outside the candidate. Personal names are not edited.
+    marker = re.search(r"(?:ตำแหน่ง|ใครเป็น|ใครคือ|ใครทำหน้าที่)\s*", q)
+    if marker:
+        tail = q[marker.end():]
+        # A corrupted question connector after whitespace (e.g. "ึือใคร")
+        # is still a question tail, not part of the position's name.
+        tail = re.split(r"\s+(?=[\u0e00-\u0e7f]*(?:ใคร|คนไหน|คนใด)(?:บ้าง)?\s*[?]?\s*$)", tail, maxsplit=1)[0]
+        role_text = re.split(r"(?:คือ|มีใคร|เป็นใคร|ใครบ้าง|คนไหน|คนใด|ครับ|ค่ะ|[?])", tail, maxsplit=1)[0]
+        compact_role = _compact(role_text)
+        if re.fullmatch(r"[\u0e00-\u0e7f]{4,32}", compact_role):
+            spans.append((compact_role, True))
+    for token in re.findall(r"[\u0e00-\u0e7f]+", q):
+        token = re.split(r"(?:คือ|มีใคร|เป็นใคร|ใครบ้าง|คนไหน|คนใด|ครับ|ค่ะ)", token, maxsplit=1)[0]
+        if 4 <= len(token) <= 32:
+            spans.append((token, False))
+
+    matches: list[tuple[int, int, str, str]] = []
+    unresolved: list[str] = []
+    for span, explicit in spans:
+        scored = [(osa_distance(span, role), role) for role in thai_roles if abs(len(span) - len(role)) <= 1]
+        nearest = min((distance for distance, _role in scored), default=2)
+        if nearest <= 1:
+            winners = tuple(sorted(role for distance, role in scored if distance == nearest))
+            if len(winners) > 1:
+                return _MemberRoleResolution(span, "", nearest, "ambiguous", winners)
+            matches.append((nearest, -len(span), span, winners[0]))
+        elif any(role in span for role in thai_roles) and (
+            explicit or span.startswith(("รอง", "ผู้ช่วย", "อดีต", "รักษาการ"))
+        ):
+            unresolved.append(span)
+    if unresolved:
+        # A real modifier or an unsupported position must not collapse to
+        # an embedded position such as president or rector.
+        return _MemberRoleResolution(unresolved[0], "", -1, "unsupported")
+    if not matches:
+        return None
+    # Prefer the longest observed target. This prevents a short exact suffix
+    # from defeating a one-edit candidate for a longer position.
+    matches.sort(key=lambda item: (item[1], item[0]))
+    distance, _length, observed, role = matches[0]
+    same_span_roles = {item[3] for item in matches if item[1] == matches[0][1] and item[0] == distance}
+    if len(same_span_roles) > 1:
+        return _MemberRoleResolution(observed, "", distance, "ambiguous", tuple(sorted(same_span_roles)))
+    return _MemberRoleResolution(observed, role, distance, "exact" if distance == 0 else "recovered")
 
 
 def _member_role_matches(query: str, rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -1028,6 +1132,12 @@ def _member_role_matches(query: str, rows: list[dict[str, Any]]) -> list[dict[st
     group_keys = {_compact(group) for group in MEMBER_GROUP_ORDER}
     if any(group_key and group_key in q_key for group_key in group_keys):
         return []
+
+    role_resolution = _resolve_member_role_span(query, rows)
+    if role_resolution is not None:
+        if role_resolution.status in {"ambiguous", "unsupported"}:
+            return []
+        return [row for row in rows if str(row.get("role") or "").strip() == role_resolution.role]
 
     role_query_signals = (
         "ใคร", "คนไหน", "คนใด", "ตำแหน่ง", "หน้าที่", "เป็น", "ทำ", "รับผิดชอบ",
@@ -1163,6 +1273,9 @@ def _member_answer(query: str, intent: UniversalIntent) -> StructuredToolResult 
             f"{person.get('name')}: {person.get('role')}",
             f"หมวด: {person.get('group') or 'Members'}",
         ]
+        suggestion = person.get('_name_suggestion')
+        if suggestion:
+            lines.insert(0, f"หากหมายถึง {person.get('name')} ข้อมูลในแหล่งอ้างอิงระบุว่า:")
         affiliation = str(person.get("affiliation") or "").strip()
         period = str(person.get("period") or "").strip()
         if affiliation:
@@ -1174,10 +1287,31 @@ def _member_answer(query: str, intent: UniversalIntent) -> StructuredToolResult 
             "\n".join(lines),
             [_hit("Members", "members", MEMBERS_URL, "Members")],
             "structured_members_person_lookup",
-            0.98,
-            {**evidence, "selected_member": person.get("name")},
+            0.85 if suggestion else 0.98,
+            {**evidence, "selected_member": person.get("name"),
+             **({'name_resolution': suggestion} if suggestion else {})},
         )
 
+    if re.search(r"(?:นาย|นาง|รศ\.|ผศ\.)", query) and _has(q, "ตำแหน่งอะไร", "ทำหน้าที่อะไร"):
+        return StructuredToolResult(
+            "ยังไม่พบข้อมูลที่ยืนยันได้สำหรับบุคคลที่ระบุครับ กรุณาตรวจชื่อและนามสกุลอีกครั้ง",
+            [], "structured_members_person_not_found", 0.60,
+            {**evidence, "requested_person_not_verified": True},
+        )
+
+    role_resolution = _resolve_member_role_span(query, rows)
+    if role_resolution is not None and role_resolution.status in {"ambiguous", "unsupported"}:
+        options = " / ".join(role_resolution.alternatives)
+        answer = (
+            f"ต้องการถามตำแหน่ง {options} ใช่ไหมครับ? กรุณาระบุตำแหน่งที่ต้องการ"
+            if options else
+            f"ยังยืนยันตำแหน่ง “{role_resolution.observed}” จากข้อมูลสมาชิกไม่ได้ครับ "
+            "กรุณาระบุตำแหน่งหรือชื่อบุคคลที่ต้องการถาม"
+        )
+        return StructuredToolResult(
+            answer, [], "structured_members_role_clarification", 0.60,
+            {**evidence, "role_resolution": role_resolution.__dict__},
+        )
     role_matches = _member_role_matches(query, rows)
     if role_matches and not _has(q, "กี่หมวด", "กี่กลุ่ม", "หมวดอะไร", "กลุ่มอะไร", "แต่ละหมวด", "แต่ละกลุ่ม"):
         return StructuredToolResult(
@@ -1189,6 +1323,7 @@ def _member_answer(query: str, intent: UniversalIntent) -> StructuredToolResult 
                 **evidence,
                 "selected_roles": sorted({str(row.get("role") or "") for row in role_matches}),
                 "returned_members": len(role_matches),
+                "role_resolution": role_resolution.__dict__ if role_resolution is not None else None,
             },
         )
 
@@ -1966,6 +2101,14 @@ def _control_answer(query: str, intent: UniversalIntent) -> StructuredToolResult
 
     display_game_name = str(rows[0].get("game") or game_name).strip() or game_name
     selected_rows = _select_control_rows(query, rows)
+    if not selected_rows:
+        from app.pipeline.control_button_target import explicit_button_selection
+        selection = explicit_button_selection(query, rows)
+        observed = selection.observed if selection else "ที่ถาม"
+        return StructuredToolResult(
+            f"ยังไม่พบข้อมูลที่ยืนยันได้ว่าปุ่ม {observed} ของ {display_game_name} ทำหน้าที่อะไรครับ กรุณาตรวจชื่อปุ่มและแพลตฟอร์มอีกครั้ง",
+            [], "structured_game_controls_unknown_button_no_answer", 0.98,
+            {"game": display_game_name, "requested_button": observed, "no_inferred_mapping": True})
     platform_groups: dict[str, list[dict[str, Any]]] = {}
     for row in selected_rows:
         platform_groups.setdefault(str(row.get("platform") or "ไม่ระบุแพลตฟอร์ม"), []).append(row)
@@ -2007,6 +2150,11 @@ def _control_answer(query: str, intent: UniversalIntent) -> StructuredToolResult
 
 
 def _select_control_rows(query: str, rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    from app.pipeline.control_button_target import explicit_button_selection
+
+    explicit = explicit_button_selection(query, rows)
+    if explicit is not None:
+        return list(explicit.rows)
     q = normalize_text(query)
     if _has(q, "ทั้งหมด", "ทุกปุ่ม", "ปุ่มทั้งหมด", "มีปุ่มอะไร", "controller", "controls", "ใช้จอยยังไง"):
         return rows
@@ -2039,7 +2187,17 @@ def _equipment_answer(query: str, intent: UniversalIntent) -> StructuredToolResu
     # "การ์ดจอ" names a PC component, not the display. Keep a separate
     # "จอ" mention if the user explicitly asks about both components.
     display_query = q.replace("การ์ดจอ", "")
-    if zone and _has_normalized(display_query, "ทีวี", "tv", "จอ", "กี่นิ้ว"):
+    explicit_definition_target = False
+    if item is not None:
+        item_key = _compact(str(item.get("item") or ""))
+        query_key = _compact(query)
+        item_position = query_key.find(item_key) if item_key else -1
+        if item_position >= 0:
+            question_tail = query_key[item_position + len(item_key):]
+            explicit_definition_target = question_tail.startswith((
+                "คืออะไร", "คืออุปกรณ์อะไร", "ใช้ทำอะไร", "ใช้สำหรับอะไร", "อยู่ไหน", "อยู่โซนไหน", "อยู่ที่ไหน",
+            ))
+    if zone and not explicit_definition_target and _has_normalized(display_query, "ทีวี", "tv", "จอ", "กี่นิ้ว"):
         display_rows = [
             row for row in rows
             if zone in str(row.get("zone") or "") and _has(str(row.get("item") or ""), "ทีวี", "tv", "monitor", "จอ")

@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_no_answer_keyboard_sales",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "ขายคีย์บอร์ด",
+      "คีย์บอร์ดเกมมิ่ง.*ขาย",
+      "ซื้อคีย์บอร์ด"
+    ],
+    "en": [
+      "keyboard.*sale",
+      "selling.*keyboard"
+    ]
+  },
+  "facts": {
+    "route_category": "no_answer",
+    "intent": "no_answer_keyboard_sales",
+    "patterns": [
+      "ขายคีย์บอร์ด",
+      "คีย์บอร์ดเกมมิ่ง.*ขาย",
+      "ซื้อคีย์บอร์ด",
+      "keyboard.*sale",
+      "selling.*keyboard"
+    ],
+    "priority": 130
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ยังไม่พบข้อมูลว่าศูนย์มีบริการขายคีย์บอร์ดเกมมิ่งในฐานข้อมูลที่มี ข้อมูลอุปกรณ์ที่มีเป็นรายการอุปกรณ์สำหรับใช้งานภายในศูนย์ เช่น Gaming Keyboard, Gaming Mouse, Gaming Headset และ Gaming PC"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "No information about selling gaming keyboards was found in the available knowledge base. The available equipment data lists devices for on-site studio use, such as gaming keyboards, mice, headsets, and gaming PCs."
+      },
+      "source_sha256": "63f54177b5800f46bb27b3f6af31cffe606561954689c61cb1aa404672754225",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/no_answer_rules.jsonl",
+    "url": "https://esports.phuket.psu.ac.th/home",
+    "source_ids": [
+      "home",
+      "curated_home_equipment_pc_zone"
+    ],
+    "last_verified_at": ""
+  }
+}

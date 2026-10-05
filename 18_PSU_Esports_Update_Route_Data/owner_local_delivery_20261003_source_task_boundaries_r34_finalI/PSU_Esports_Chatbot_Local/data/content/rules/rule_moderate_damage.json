@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_moderate_damage",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "เสียหายปานกลาง",
+      "เบาะขาด",
+      "หูฟังสายขาด",
+      "ปุ่มค้าง"
+    ],
+    "en": [
+      "moderate damage"
+    ]
+  },
+  "facts": {
+    "route_category": "penalty",
+    "intent": "moderate_damage_fine",
+    "patterns": [
+      "เสียหายปานกลาง",
+      "เบาะขาด",
+      "หูฟังสายขาด",
+      "ปุ่มค้าง",
+      "moderate damage"
+    ],
+    "priority": 100
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ความเสียหายปานกลาง เช่น เบาะขาด รอยขีดข่วนลึก โครงเฟอร์นิเจอร์เสียหาย คอนโทรลเลอร์ปุ่มค้าง หรือหูฟังสายขาด ต้องชำระค่าซ่อมตามราคาจริง หรือ 500–2,000 บาท"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Moderate damage such as torn seats, deep scratches, damaged furniture structure, stuck controller buttons, or broken headphone cables requires actual repair cost or 500–2,000 THB."
+      },
+      "source_sha256": "1c195b6f494039c4e835033d7859d79c6e8a7600fa194e25b5284c61f72fb235",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/penalty_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "curated_damage_moderate"
+    ],
+    "last_verified_at": ""
+  }
+}

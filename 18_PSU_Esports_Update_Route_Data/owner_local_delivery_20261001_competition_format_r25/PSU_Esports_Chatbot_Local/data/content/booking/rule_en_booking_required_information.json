@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_en_booking_required_information",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [],
+    "en": [
+      "what\\s+(?:information|details|documents?).*(?:need|required).*(?:book|booking|reservation)",
+      "what\\s+do\\s+i\\s+need\\s+to\\s+book",
+      "booking\\s+(?:information|details|form|requirements)",
+      "what\\s+should\\s+i\\s+fill.*booking"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "user_info_and_payment_slip",
+    "patterns": [
+      "what\\s+(?:information|details|documents?).*(?:need|required).*(?:book|booking|reservation)",
+      "what\\s+do\\s+i\\s+need\\s+to\\s+book",
+      "booking\\s+(?:information|details|form|requirements)",
+      "what\\s+should\\s+i\\s+fill.*booking"
+    ],
+    "priority": 131
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ตอนจองต้องกรอกรหัส ชื่อ นามสกุล อีเมล เบอร์โทรศัพท์ และแนบสลิปหลังโอนเงิน"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "The booking form requires Student ID/Staff ID/National ID, first name, last name, email, phone number, and optional comments. Payment is made by bank transfer and the payment slip must be uploaded."
+      },
+      "source_sha256": "f93f21b7b1ebcbbe8996502c2a5ea30be5d54f51783d5b1bb64fa446b505b02e",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/english_support_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_user_info_required",
+      "curated_booking_steps",
+      "curated_payment_bank"
+    ],
+    "last_verified_at": ""
+  }
+}

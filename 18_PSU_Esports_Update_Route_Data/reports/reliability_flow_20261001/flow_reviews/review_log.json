@@ -1,0 +1,115 @@
+[
+  {
+    "round": 1,
+    "lens": "ตรวจ baseline และสิทธิ์เขียน",
+    "finding": "หาก backup จาก Git HEAD จะสูญเสียงาน r18/r19 ที่ยังไม่ commit; หลักฐาน git_status_before มี engine/preprocess/structured/identity เปลี่ยนอยู่",
+    "revision": "สำรอง source ที่จะปรับจาก working tree พร้อม hash ไม่ใช้ reset/revert เก็บ manifest ของ curated/locales/GT/calendar เจ้าของ ขอสิทธิ์เขียนผ่านระบบก่อนแก้ สร้าง report/แพ็กเกจชื่อใหม่ทุกครั้ง ตัวรันต้องปฏิเสธ output ที่มีอยู่ เว้นแต่เป็น resume ที่ตรวจ hash/config และ prefix IDs ได้จริง",
+    "evidence_files": [
+      "app/pipeline/engine.py",
+      "reports/target_integrity_step1_20260930/before_manifest.json"
+    ],
+    "verification": "ตรวจ paths และ source ของจุดที่กล่าว; เป็น design review ยังไม่ใช่ runtime pass"
+  },
+  {
+    "round": 2,
+    "lens": "ตรวจทางเข้าและลำดับ shortcut",
+    "finding": "engine.answer มี canonical shortcut ก่อน split; _answer_single มี protected/target/live ก่อน English; splitter ไม่ใช่ task_splitter.py แยกไฟล์",
+    "revision": "ใช้ recover_intent_cues ที่ engine และ preprocess ใช้อยู่; เพิ่ม provenance ที่ preflight โดยไม่ส่งข้อความแก้ทั้งหมดผ่าน splitter ใหม่ ก่อน canonical shortcut ถ้ามี recovery ต้องข้าม shortcut ที่อาจตอบงานเดียว เก็บ competition_rule_query และ damage policy เป็นหนึ่งคำถามตามข้อยกเว้นเดิม ตรวจ flag canonical เปิด/ปิดกับข้อที่เกี่ยว",
+    "evidence_files": [
+      "app/pipeline/engine.py",
+      "app/pipeline/preprocess.py"
+    ],
+    "verification": "ตรวจ paths และ source ของจุดที่กล่าว; เป็น design review ยังไม่ใช่ runtime pass"
+  },
+  {
+    "round": 3,
+    "lens": "ตรวจความหมาย static กับ live",
+    "finding": "is_live_booking_question กัน games/equipment เฉพาะสะกดตรง; available+Cockpit ชนะเมื่อ games ผิด",
+    "revision": "กู้คำประเภท game/games/equipment เฉพาะกรอบคำถามรายการ แล้วใช้ผลเดียวกันที่ static/live gate และตัวตอบ ไม่แก้ available ให้แปลว่าช่องจองโดยตัวมันเอง รายการเกมมีคำ today/now ยังอาจเป็น catalog; ส่วน is PC1 available now เป็นสถานะสด ต้องตรวจ object+operation ไม่ใช้เวลาอย่างเดียว ถ้าถามทั้งสองให้แยกงานก่อนเรียก live",
+    "evidence_files": [
+      "app/booking/live_status.py",
+      "app/pipeline/bilingual_english.py"
+    ],
+    "verification": "ตรวจ paths และ source ของจุดที่กล่าว; เป็น design review ยังไม่ใช่ runtime pass"
+  },
+  {
+    "round": 4,
+    "lens": "ตรวจหลายงานและคำเชื่อม",
+    "finding": "splitter กู้ cue เดียว; อล้วจองยังไงไม่เกิดขอบเขตงาน ราคาเร็วตอบจบ",
+    "revision": "กู้คำเชื่อมไทยระยะ 1 เฉพาะระหว่างสอง operation ที่ชัดและมี target/context ไม่สร้าง alias อล้วรายคำ ทดสอบขอบติดกันและมีช่องว่าง ส่งต่อบริการเฉพาะเมื่อส่วนถัดไปไม่ระบุบริการใหม่ คง negation/จองแล้ว/compound policy/game titles ที่มี and ไว้ จำกัดไม่เกิน 3 tasks ตาม splitter เดิม เพิ่ม trace child outcome และ validation เพื่อ audit จำนวนงานที่ตอบจริง",
+    "evidence_files": [
+      "app/pipeline/engine.py",
+      "tests/test_intent_cue_recovery_20260930.py"
+    ],
+    "verification": "ตรวจ paths และ source ของจุดที่กล่าว; เป็น design review ยังไม่ใช่ runtime pass"
+  },
+  {
+    "round": 5,
+    "lens": "ตรวจ booking sub-intent และ source",
+    "finding": "what information ที่ผิดหล่นไป rule ขั้นตอนทั่วไป; _answer_booking_intent มี user info/payment timeout ที่ใช้ข้อมูลเดิมได้อยู่แล้ว",
+    "revision": "กู้ information/booking/payment และ zone เฉพาะ syntax ที่ชัด แล้วให้ FAQ sub-intent ที่มีอยู่ตอบ ตรวจ required fields และ payment limit ตาม rule source เดิม ห้ามสร้างเลข deadline/ราคาใหม่ ห้ามเอา localization draft เข้า approved หาก source จริงยังไม่รองรับต้องคง no-answer/localization pending พร้อม source ไม่ถือว่า typo fix แก้ coverage ได้ทุกข้อ",
+    "evidence_files": [
+      "app/pipeline/bilingual_english.py",
+      "data/rules/reservation_rules.jsonl",
+      "data/rules/english_support_rules.jsonl"
+    ],
+    "verification": "ตรวจ paths และ source ของจุดที่กล่าว; เป็น design review ยังไม่ใช่ runtime pass"
+  },
+  {
+    "round": 6,
+    "lens": "ตรวจ false correction และงบ",
+    "finding": "แก้ทุกคำด้วย nearest word จะเปลี่ยน rice/price pay/play หรือชื่อเกมที่เป็นคำทั่วไป; OSA tie ต้องไม่เลือกตามลำดับ list",
+    "revision": "กู้สูงสุด 3 spans ต่อการเรียก ไม่เกิน 4 character edits รวม ความยาว input ไม่เกิน 180 และไม่แก้ URL; แต่ละ span มี observed/intended/distance/start/reason คำจริงที่ชนกันให้คงเดิมหรือถามกลับ แยก exact token ที่ต้องป้องกัน รวม identifier วันที่ เวลา และคำปฏิเสธ ตรวจ idempotence และ flag recovery off ใช้ syntax anchor เพื่อกันคำในชื่อเกม ไม่เพิ่ม phrase alias ตามทุก testcase",
+    "evidence_files": [
+      "app/core/intent_cue_recovery.py",
+      "app/core/typo_similarity.py"
+    ],
+    "verification": "ตรวจ paths และ source ของจุดที่กล่าว; เป็น design review ยังไม่ใช่ runtime pass"
+  },
+  {
+    "round": 7,
+    "lens": "ตรวจ evaluator และตัวหาร",
+    "finding": "1,107/2,000 ไม่มี positive content requirement; all-groups ต้องใช้ AND หลายงาน live_lookup_required ยังผ่าน unavailable",
+    "revision": "คง legacy scorer/GT frozen และแสดง scorer v2 บน output เดียวกัน เพิ่ม all-groups เฉพาะ source-supported pilot พร้อม source refs บันทึก positive_contract_present และ evidence level ว่าเนื้อหายังไม่ได้ตรวจเมื่อ contract ว่าง live_unavailable เป็น external_blocked ไม่ใช่ verified_booking_correct; unknown mode ต้องเป็น unknown ไม่เดาว่าตอบสำเร็จ เพราะไม่พบคำว่า no_answer ตรวจ scorer กับคำตอบจำลองที่ผิด/ขาดเพื่อพิสูจน์ว่าจับได้",
+    "evidence_files": [
+      "tools/eval_contract_v2.py",
+      "tools/run_master_ground_truth_eval.py",
+      "tests/test_eval_contract_v2_20260930.py"
+    ],
+    "verification": "ตรวจ paths และ source ของจุดที่กล่าว; เป็น design review ยังไม่ใช่ runtime pass"
+  },
+  {
+    "round": 8,
+    "lens": "ตรวจ fixture booking และข้อมูลเจ้าของ",
+    "finding": "API 200 หรือ source=remote_csv_live ไม่พิสูจน์ว่าผลแต่ละเครื่องถูก; mock ที่ผิดจุดอาจยังดึง API จริง",
+    "revision": "แยก tests สามชั้น: classifier ไม่ควร fetch, pipeline กับ fixture slots ว่าง/จองที่รู้ค่า และ HTTP แพ็กเกจที่ปิด live ไม่มีการสร้าง/ยกเลิก booking ตรวจไทยอังกฤษ เครื่องเฉพาะ หมวดรวม source invalid/wrong date และวันที่ปิดโดยชุดเดิมที่มี oracle ทดสอบ static ไม่แตะ fetch ทั้ง fast และ English adapters เก็บ real WordPress oracle ไว้คิวตามคำขอเจ้าของ ไม่ขอข้อมูลจริงซ้ำในรอบนี้",
+    "evidence_files": [
+      "tests/test_live_booking_typo_fixture_20260930.py",
+      "app/runtime/fast_answer.py",
+      "app/booking/live_status.py"
+    ],
+    "verification": "ตรวจ paths และ source ของจุดที่กล่าว; เป็น design review ยังไม่ใช่ runtime pass"
+  },
+  {
+    "round": 9,
+    "lens": "ตรวจ holdout และ regression",
+    "finding": "ทดสอบเฉพาะ examples 8 ข้ออาจซ่อนผลเสียในหมวดอื่นและการซ่อมเกิน; r19 ยังไม่ได้ full2k",
+    "revision": "ใช้ focused cases ที่มี all-groups/forbidden targets, generated one-edit holdout จากคำบอกงานไม่สร้าง alias ให้ exact typo, negative controls, tests r19 และ calendar/live/source เดิม แล้ว full2k ไทยพันอังกฤษพัน แบบ deterministic trace exceptions latency route/status/content แยกภาษา บันทึก r18 delta และ affected-domain r19 delta เฉพาะ IDs ที่มี baseline ห้ามอ้าง full r19 baseline ที่ไม่เคยรัน สอบสวนทุก clean/noisy ที่เคยผ่านแล้วตกใหม่ก่อนยอมรับ",
+    "evidence_files": [
+      "tools/run_bilingual_2000_typo_eval_20260929.py",
+      "reports/target_integrity_step1_20260930/paired_affected_domains_final.summary.json"
+    ],
+    "verification": "ตรวจ paths และ source ของจุดที่กล่าว; เป็น design review ยังไม่ใช่ runtime pass"
+  },
+  {
+    "round": 10,
+    "lens": "ตรวจแพ็กเกจ การสิ้นสุด และแผนย้อนกลับ",
+    "finding": "เอกสารที่บอกเสร็จทุกขั้นทั้งที่ไม่เปิด model/WordPress/load ทำให้ผิดสถานะ; launcher อาจวิ่งกลับ runtime เก่า",
+    "revision": "สร้างแพ็กเกจ r20 ใน output ใหม่ ตรวจ manifest/launcher/source hash ใช้พอร์ตว่างแยก ไม่หยุด runtime ผู้ใช้ ทดสอบ API locale/debug/plain และ static/live unavailable โดยไม่รวม log ทดสอบเข้า package path จริง แล้วหยุดเฉพาะ process ทดลอง เก็บ snapshot Flow 10 รอบก่อนลงมือ จากนั้นบันทึกการปรับ Flow รอบ post-test แยก ระบุ implemented/verified/pending/deferred เป็นรายชิ้น ไม่สัญญา accuracy100 หรือ production SLA",
+    "evidence_files": [
+      "tools/build_owner_local_package.ps1",
+      "docs/116_target_integrity_step1_implementation_20260930.md"
+    ],
+    "verification": "ตรวจ paths และ source ของจุดที่กล่าว; เป็น design review ยังไม่ใช่ runtime pass"
+  }
+]

@@ -1,0 +1,65 @@
+{
+  "unique_requests": 20327,
+  "counts": {
+    "grades": 55583,
+    "grade_passed": 51983,
+    "grade_improved": 7,
+    "failed_unique": 1898,
+    "changed_answers": 57
+  },
+  "previous_failed_unique": 1905,
+  "paired_typo": {
+    "pairs": 2000,
+    "v2_clean_passed": 1734,
+    "v2_noisy_passed": 1639,
+    "v2_regressions": 112,
+    "scope": "strict outcome/overlay; some rows lack positive content oracle; no owner or real booking confirmation"
+  },
+  "previous_paired_typo": {
+    "pairs": 2000,
+    "legacy_clean_passed": 1892,
+    "legacy_noisy_passed": 1781,
+    "v2_clean_passed": 1740,
+    "v2_noisy_passed": 1640,
+    "v2_regressions": 117,
+    "scope": "strict outcome and content overlay, not owner approved and not a booking oracle"
+  },
+  "evidence_levels": {
+    "native_answer_quality": 26,
+    "route_outcome_only": 20632,
+    "literal_content_contract": 31367,
+    "complete_clause_composition": 280,
+    "complete_clause_content": 448,
+    "competition_legacy_evidence": 2830
+  },
+  "by_locale": {
+    "auto": {
+      "total": 3164,
+      "passed": 2836
+    },
+    "th": {
+      "total": 25100,
+      "passed": 23347
+    },
+    "en": {
+      "total": 27319,
+      "passed": 25800
+    }
+  },
+  "triage_hints": {
+    "abstention_vs_gold_or_missing_data_review": 652,
+    "legacy_mode_or_intent_assertion": 44,
+    "route_content_source_review": 2583,
+    "evidence_ids_need_source_review": 102,
+    "controlled_live_dependency_unavailable": 148,
+    "latency_gate": 71
+  },
+  "validation_errors": {},
+  "latency_loaded_direct_sec": {
+    "median": 0.2567,
+    "p95": 2.1829,
+    "max": 35.2095
+  },
+  "same_inputs_and_grade_count": true,
+  "scope": "All inputs executed on r31 final_A freeze in preserved initial + resumed parts. LLM/semantic off, HTTP locale binding; direct pipeline guard short circuit separate; controlled booking unavailable. Do not aggregate as answer accuracy."
+}

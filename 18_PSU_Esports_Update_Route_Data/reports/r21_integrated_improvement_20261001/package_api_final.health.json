@@ -1,0 +1,62 @@
+{
+  "ok": true,
+  "service": "psu-esports-chat-web",
+  "time": "2026-10-01T03:10:10.047108+00:00",
+  "warmup": null,
+  "llm_preflight": null,
+  "input_quality_guard": {
+    "enabled": true,
+    "mode": "enforce",
+    "repeat_policy": "warn_and_continue",
+    "layout_threshold": 0.39,
+    "repeat_threshold": 0.55,
+    "corpus_size": 4023,
+    "profile_version": "keyboard-profile-v1:5cb1f63359ca84bf"
+  },
+  "llm_health": {
+    "enabled": true,
+    "failure_threshold": 2,
+    "failure_window_sec": 30.0,
+    "cooldown_sec": 90.0,
+    "states": []
+  },
+  "pipeline_workers": {
+    "enabled": false
+  },
+  "runtime": {
+    "profile": "r21-package-deterministic-api-check",
+    "version": "2026.10.01-integrated-r21",
+    "started_at": "2026-10-01T03:10:09.036092+00:00",
+    "answer_timeout_sec": 20.0,
+    "pipeline_timeout_sec": 19.0,
+    "intent_timeout_sec": 5.5,
+    "local_llm": {
+      "enabled": false,
+      "model": "scb10x/typhoon2.5-qwen3-4b",
+      "intent_timeout_sec": 5.5,
+      "planner_timeout_sec": 1.2,
+      "general_timeout_sec": 4.0,
+      "high_assist_profile": false
+    },
+    "semantic_rag": {
+      "enabled": false,
+      "embedding_model": "psu-bge-m3:q8_0"
+    },
+    "english": {
+      "enabled": true,
+      "draft_preview": false
+    },
+    "input_quality": {
+      "mode": "enforce",
+      "keyboard_layout": "request_retype",
+      "repeated_characters": "warn_and_continue"
+    }
+  },
+  "features": {
+    "bilingual_english": true,
+    "local_llm_assist": false,
+    "semantic_rag": false,
+    "embedding_model": "psu-bge-m3:q8_0",
+    "live_booking_status": false
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_en_payment_deadline_natural",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [],
+    "en": [
+      "how\\s+long.*(?:pay|payment).*(?:after|booking)",
+      "when\\s+(?:do|must|should)\\s+i\\s+pay.*booking",
+      "how\\s+(?:soon|quickly).*pay.*booking",
+      "payment\\s+(?:deadline|time limit)"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "payment_timeout",
+    "patterns": [
+      "how\\s+long.*(?:pay|payment).*(?:after|booking)",
+      "when\\s+(?:do|must|should)\\s+i\\s+pay.*booking",
+      "how\\s+(?:soon|quickly).*pay.*booking",
+      "payment\\s+(?:deadline|time limit)"
+    ],
+    "priority": 133
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "หลังจองต้องชำระเงินทันที หากไม่ชำระภายใน 10 นาที การจองจะถูกยกเลิก และต้องทำรายการจองใหม่"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Payment must be made immediately after booking. If payment is not made within 10 minutes, the booking is cancelled and a new booking is required."
+      },
+      "source_sha256": "8804b45321291b8945576a07f919e28ab116056c324d880177a6c1e56223eca1",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/english_support_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_payment_10_minutes"
+    ],
+    "last_verified_at": ""
+  }
+}

@@ -1,0 +1,19 @@
+--- before/app/core/runtime_input_quality_guard.py
++++ after/app/core/runtime_input_quality_guard.py
+@@ -8,7 +8,7 @@
+ from pathlib import Path
+ from typing import Iterable
+ 
+-from app.core.keyboard_input_anomaly import AnomalyFeatures, KeyboardInputAnomalyDetector, GENERIC_ENGLISH_WORDS
++from app.core.keyboard_input_anomaly import AnomalyFeatures, KeyboardInputAnomalyDetector, GENERIC_ENGLISH_WORDS, LAYOUT_SCORING_REVISION
+ 
+ 
+ ROOT_DIR = Path(__file__).resolve().parents[2]
+@@ -93,6 +93,7 @@
+ def profile_version_for_texts(texts: Iterable[str]) -> str:
+     """Return a stable identifier for the exact published text used to fit a profile."""
+     digest = hashlib.sha256()
++    digest.update((LAYOUT_SCORING_REVISION + '\n').encode('utf-8'))
+     # The language prior also affects the fitted model; include it in identity.
+     for word in sorted(GENERIC_ENGLISH_WORDS):
+         digest.update(('prior:' + word + '\n').encode('utf-8'))

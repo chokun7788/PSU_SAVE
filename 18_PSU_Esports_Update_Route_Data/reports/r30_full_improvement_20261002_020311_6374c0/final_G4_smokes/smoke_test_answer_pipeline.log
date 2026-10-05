@@ -1,0 +1,23 @@
+OK pipeline:structured_schedule schedule 3.6990s | วันจันทร์ morning เล่นได้ไหม afternoon เปิดไหม
+OK pipeline:structured_schedule schedule 0.4063s | วันอังคารเล่นได้กี่โมง
+OK pipeline:calendar_schedule_fast_path schedule 0.2562s | วันนี้เปิดไหม
+OK pipeline:calendar_schedule_fast_path schedule 0.2774s | พรุ่งนี้เปิดไหม
+OK pipeline:calendar_closure_fast_path schedule 0.2729s | 28 กรกฎา เปิดไหม
+OK pipeline:calendar_closure_fast_path schedule 0.3543s | 30/7/2026 ศูนย์เปิดรึเปล่า
+OK pipeline:calendar_month_context_fast_path schedule 0.3345s | วันไหนหยุดบ้างในเดือนนี้
+OK pipeline:calendar_month_context_fast_path schedule 0.4109s | เดือนนี้ศูนย์ปิดวันไหนบ้าง
+OK pipeline:structured_schedule schedule 0.3238s | วันพุธช่วงเช้าเล่นได้ไหม
+OK pipeline:structured_schedule schedule 0.3141s | พฤหัสปิดกี่โมง
+OK pipeline:deterministic_calculator_fast service_fee 2.2360s | ต่างมหาลัยเล่น VR 30 นาที กับ VR 1 ชั่วโมงต่างกันเท่าไหร่
+OK pipeline:checkin_fast_path reservation 0.4887s | เช็คอินล่วงหน้าได้กี่นาที
+OK pipeline:guard_no_answer no_answer 0.2707s | มีให้เช่าจอไปบ้านไหม
+OK pipeline:structured_service_game_availability games 0.5557s | คอมมีวาโลไหม
+Traceback (most recent call last):
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tests\smoke_test_answer_pipeline.py", line 256, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tests\smoke_test_answer_pipeline.py", line 124, in main
+    check(
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tests\smoke_test_answer_pipeline.py", line 36, in check
+    raise AssertionError(f"{question}: expected mode prefix {mode_prefix}, got {result.mode}")
+AssertionError: CS2 แข่งทีมละกี่คน: expected mode prefix pipeline:competition_fact_card, got pipeline:competition_source_rag

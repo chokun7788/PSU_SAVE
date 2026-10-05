@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_mixed_lost_and_damage",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "ของหาย.*อุปกรณ์.*เปียก",
+      "อุปกรณ์.*เปียก.*ของหาย",
+      "ของหาย.*ทำอุปกรณ์",
+      "ทำอุปกรณ์.*ของหาย"
+    ],
+    "en": []
+  },
+  "facts": {
+    "route_category": "rules",
+    "intent": "lost_items_and_equipment_damage",
+    "patterns": [
+      "ของหาย.*อุปกรณ์.*เปียก",
+      "อุปกรณ์.*เปียก.*ของหาย",
+      "ของหาย.*ทำอุปกรณ์",
+      "ทำอุปกรณ์.*ของหาย"
+    ],
+    "priority": 134
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "กรณีทรัพย์สินส่วนตัวสูญหาย ศูนย์ขอสงวนสิทธิ์ไม่รับผิดชอบในทุกกรณี ส่วนกรณีทำอุปกรณ์เสียหายหรือเปียก ผู้ใช้งานต้องรับผิดชอบค่าปรับหรือค่าชดเชยตามระดับความเสียหาย"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "For lost personal belongings, the center reserves the right not to be responsible. If equipment is damaged or made wet, the user is responsible for fines or compensation depending on the damage level."
+      },
+      "source_sha256": "fb07035fa6d3898b5b2ff1ac21432abb2eb0bc76ee7f77ef10814cb957080839",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/misc_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_rule_lost_items",
+      "curated_damage_minor",
+      "curated_damage_moderate",
+      "curated_damage_severe"
+    ],
+    "last_verified_at": ""
+  }
+}

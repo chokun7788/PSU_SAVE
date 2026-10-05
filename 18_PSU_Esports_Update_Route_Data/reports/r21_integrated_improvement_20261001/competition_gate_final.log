@@ -1,0 +1,38 @@
+....F..F.F...........................
+======================================================================
+FAIL: test_english_comparison_keeps_both_targets_before_localization_check (tests.test_competition_target_grounding.CompetitionTargetGroundingTests.test_english_comparison_keeps_both_targets_before_localization_check)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tests\test_competition_target_grounding.py", line 283, in test_english_comparison_keeps_both_targets_before_localization_check
+    self.assertEqual(result.mode, "pipeline:competition_source_localization_pending_en")
+AssertionError: 'pipeline:structured_competition_rules_en' != 'pipeline:competition_source_localization_pending_en'
+- pipeline:structured_competition_rules_en
++ pipeline:competition_source_localization_pending_en
+
+
+======================================================================
+FAIL: test_english_protest_question_without_target_requests_a_game (tests.test_competition_target_grounding.CompetitionTargetGroundingTests.test_english_protest_question_without_target_requests_a_game)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tests\test_competition_target_grounding.py", line 234, in test_english_protest_question_without_target_requests_a_game
+    self.assertEqual(result.mode, "pipeline:competition_target_clarification_en")
+AssertionError: 'pipeline:english_no_answer' != 'pipeline:competition_target_clarification_en'
+- pipeline:english_no_answer
++ pipeline:competition_target_clarification_en
+
+
+======================================================================
+FAIL: test_english_untargeted_rule_question_requests_a_game (tests.test_competition_target_grounding.CompetitionTargetGroundingTests.test_english_untargeted_rule_question_requests_a_game)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tests\test_competition_target_grounding.py", line 222, in test_english_untargeted_rule_question_requests_a_game
+    self.assertEqual(result.mode, "pipeline:competition_target_clarification_en")
+AssertionError: 'pipeline:english_no_answer' != 'pipeline:competition_target_clarification_en'
+- pipeline:english_no_answer
++ pipeline:competition_target_clarification_en
+
+
+----------------------------------------------------------------------
+Ran 37 tests in 8.119s
+
+FAILED (failures=3)

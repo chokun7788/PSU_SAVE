@@ -1,0 +1,1676 @@
+{
+  "suite": "compound18",
+  "case": {
+    "id": "B-control-15",
+    "question": "CS2 เวลานอกทางเทคนิคขอได้กี่ครั้ง",
+    "locale": "th",
+    "must_contain": [
+      "2 ครั้ง",
+      "10 นาที"
+    ],
+    "must_not_contain": [
+      "4 ครั้ง",
+      "30 วินาที"
+    ],
+    "required_source": "competition_rules_cs2",
+    "outcome": null,
+    "group": "r31_source"
+  },
+  "response": {
+    "answer": "คำตอบ: 4. การขอเวลานอก ทีมละ 4 ครั้ง ครั้งละ 30 วินาที ใช้ได้ในช่วง Freeze time\n\nรายละเอียดที่เกี่ยวข้อง:\n•    3. การหยุดเกมทางเทคนิค ทีมละ 2 ครั้ง ครั้งละไม่เกิน 10 นาที หากพบปัญหาต้องรีบแจ้งกรรมการทันที\n\nอ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+    "mode": "pipeline:competition_source_rag",
+    "category": "competition_rules",
+    "hits": [
+      {
+        "id": "competition_rules_cs2_psu_phuket_2026_s33_c01",
+        "url": "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+      },
+      {
+        "id": "competition_rules_cs2_psu_phuket_2026_s34_c01",
+        "url": "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+      }
+    ],
+    "valid": true,
+    "raw": {
+      "ok": true,
+      "request_id": "ff829d76aa224ffa8f61a15cef51f3aa",
+      "session_id": "r30-331ca1fccb9849b09aaff6b98d74db0c",
+      "answer": "คำตอบ: 4. การขอเวลานอก ทีมละ 4 ครั้ง ครั้งละ 30 วินาที ใช้ได้ในช่วง Freeze time\n\nรายละเอียดที่เกี่ยวข้อง:\n•    3. การหยุดเกมทางเทคนิค ทีมละ 2 ครั้ง ครั้งละไม่เกิน 10 นาที หากพบปัญหาต้องรีบแจ้งกรรมการทันที\n\nอ้างอิงจากกติกา: Counter-Strike 2 / PSU Phuket CS2 2026 Tournament\nแหล่งข้อมูล: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+      "mode": "pipeline:competition_source_rag",
+      "route_category": "competition_rules",
+      "route_intent": "competition_rules_lookup",
+      "universal_intent": {
+        "domain": "competition_rules",
+        "operation": "rule_lookup",
+        "target": "Counter-Strike 2",
+        "filters": {
+          "resolved_target_id": "cs2",
+          "resolved_target_type": "competition_game"
+        },
+        "needs": [],
+        "answer_style": "direct",
+        "confidence": 0.9,
+        "method": "llm",
+        "reason": "candidate_intent:c1 heuristic fallback"
+      },
+      "confidence": 0.84,
+      "latency_sec": 15.0122,
+      "wall_sec": 15.0348,
+      "deadline": {
+        "global_timeout_enabled": true,
+        "global_timeout_sec": 20.0,
+        "global_elapsed_sec": 15.0348,
+        "global_remaining_sec": 4.9652,
+        "finalizer_reserve_sec": 1.0,
+        "work_remaining_sec": 3.9652,
+        "timing_status": "running"
+      },
+      "timing_status": "completed",
+      "timed_out": false,
+      "timeout_stage": "",
+      "retryable": false,
+      "worker_id": 0,
+      "sources": [
+        {
+          "id": "competition_rules_cs2_psu_phuket_2026_s33_c01",
+          "url": "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+        },
+        {
+          "id": "competition_rules_cs2_psu_phuket_2026_s34_c01",
+          "url": "local://competition_rules/competition_rules_cs2_psu_phuket_2026"
+        }
+      ],
+      "validation_ok": true,
+      "language": {
+        "requested": "th",
+        "detected": "mixed",
+        "effective": "th",
+        "confidence": 1.0,
+        "reason": "toggle_override_th;mixed_thai_function_words"
+      },
+      "experimental_rag_fallback": true,
+      "experimental_allow_llm": true,
+      "input_recovery": {
+        "score": 0.1271,
+        "language": "mixed",
+        "language_quality": 0.8729,
+        "should_review_intent": false,
+        "reason": "Thai character n-gram quality=0.873",
+        "action": "continue"
+      },
+      "server_date": {
+        "iso": "2026-10-02",
+        "label": "02/10/2026 (วันศุกร์)",
+        "time": "17:21",
+        "datetime_iso": "2026-10-02T17:21:45.409826+07:00",
+        "timezone": "Asia/Bangkok",
+        "service_slot": {
+          "date": "2026-10-02",
+          "time": "17:21",
+          "weekday": "วันศุกร์",
+          "timezone": "Asia/Bangkok",
+          "status": "outside_hours",
+          "playable": false,
+          "slot": null,
+          "next_open_slot": null,
+          "reason": "outside_regular_service_hours",
+          "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+          "source": "reservation_schedule"
+        },
+        "thai_holidays": [],
+        "upcoming_thai_holidays": [
+          {
+            "date": "2026-10-13",
+            "title": "วันนวมินทรมหาราช",
+            "type": "national_holiday",
+            "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-16",
+            "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+            "type": "bank_holiday_bangkok",
+            "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+            "source": "Bank of Thailand Financial Institutions Holidays 2026",
+            "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+          },
+          {
+            "date": "2026-10-23",
+            "title": "วันปิยมหาราช",
+            "type": "national_holiday",
+            "note": "วันหยุดประจำปีของไทย",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-31",
+            "title": "วันฮาโลวีน",
+            "type": "observance",
+            "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-12-05",
+            "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+            "type": "national_holiday",
+            "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          }
+        ]
+      },
+      "calendar": {
+        "date": "2026-10-02",
+        "label": "02/10/2026 (วันศุกร์)",
+        "weekday": "วันศุกร์",
+        "time": "17:21",
+        "datetime_iso": "2026-10-02T17:21:45.409826+07:00",
+        "timezone": "Asia/Bangkok",
+        "service_slot": {
+          "date": "2026-10-02",
+          "time": "17:21",
+          "weekday": "วันศุกร์",
+          "timezone": "Asia/Bangkok",
+          "status": "outside_hours",
+          "playable": false,
+          "slot": null,
+          "next_open_slot": null,
+          "reason": "outside_regular_service_hours",
+          "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+          "source": "reservation_schedule"
+        },
+        "service_closure": null,
+        "thai_holidays": [],
+        "upcoming_thai_holidays": [
+          {
+            "date": "2026-10-13",
+            "title": "วันนวมินทรมหาราช",
+            "type": "national_holiday",
+            "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-16",
+            "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+            "type": "bank_holiday_bangkok",
+            "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+            "source": "Bank of Thailand Financial Institutions Holidays 2026",
+            "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+          },
+          {
+            "date": "2026-10-23",
+            "title": "วันปิยมหาราช",
+            "type": "national_holiday",
+            "note": "วันหยุดประจำปีของไทย",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-31",
+            "title": "วันฮาโลวีน",
+            "type": "observance",
+            "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-12-05",
+            "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+            "type": "national_holiday",
+            "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          }
+        ]
+      },
+      "input_quality": {
+        "action": "continue",
+        "detected_action": "continue",
+        "applied_action": "continue",
+        "should_retype": false,
+        "flags": [],
+        "layout_score": 0.001774,
+        "repeat_score": 0.0,
+        "guard_status": "passed",
+        "guard_mode": "enforce",
+        "repeat_policy": "warn_and_continue",
+        "profile_version": "keyboard-profile-v1:2a863a4176572043",
+        "guard_elapsed_ms": 0.996
+      },
+      "context_resolution": {
+        "original_question": "CS2 เวลานอกทางเทคนิคขอได้กี่ครั้ง",
+        "resolved_question": "CS2 เวลานอกทางเทคนิคขอได้กี่ครั้ง",
+        "used_context": false,
+        "context_game": null,
+        "context_domain": null,
+        "context_operation": null,
+        "context_topic": null,
+        "reason": "not_followup"
+      },
+      "query_debug": {
+        "original_question": "CS2 เวลานอกทางเทคนิคขอได้กี่ครั้ง",
+        "resolved_question": "CS2 เวลานอกทางเทคนิคขอได้กี่ครั้ง",
+        "normalized_query": "cs2 เวลานอกทางเทคนิคขอได้กี่ครั้ง",
+        "query_variants": [
+          "CS2 เวลานอกทางเทคนิคขอได้กี่ครั้ง"
+        ],
+        "active_query": "CS2 เวลานอกทางเทคนิคขอได้กี่ครั้ง",
+        "active_query_changed": false,
+        "trace": [
+          {
+            "stage": "preprocess",
+            "decision": "normalized",
+            "confidence": 1.0,
+            "detail": "cs2 เวลานอกทางเทคนิคขอได้กี่ครั้ง",
+            "metadata": {
+              "language_hint": "mixed_th_en",
+              "nonsemantic_preface_removed": false,
+              "query_variants": [
+                "CS2 เวลานอกทางเทคนิคขอได้กี่ครั้ง"
+              ],
+              "competition_name_recovery": [],
+              "elapsed_ms": 1086.09,
+              "elapsed_sec": 1.0861
+            }
+          }
+        ]
+      },
+      "decision_artifact": {
+        "intent": {
+          "domain": "competition_rules",
+          "operation": "rule_lookup",
+          "target": "Counter-Strike 2",
+          "confidence": 0.9,
+          "method": "llm"
+        },
+        "route": {
+          "category": "competition_rules",
+          "intent": "competition_rules_lookup",
+          "confidence": 0.97,
+          "answer_type": "fact",
+          "risk": "medium",
+          "reason": "competition rule terms found before reservation/check-in; operation_first=competition_rule_lookup"
+        },
+        "tool_router": {
+          "stage": "tool_router",
+          "decision": "heuristic:retrieval",
+          "confidence": 0.9,
+          "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        "selected_candidate": {
+          "capability_id": "retrieval.competition_fact_cards",
+          "action": "retrieval",
+          "domain": "competition_rules",
+          "score": 0.939,
+          "status": "accepted",
+          "reason": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority; question_frame_domain_match; precondition=competition_rule_retrieval_applicable",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        "candidates": [
+          {
+            "capability_id": "retrieval.competition_fact_cards",
+            "action": "retrieval",
+            "domain": "competition_rules",
+            "score": 0.939,
+            "status": "accepted",
+            "reason": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority; question_frame_domain_match; precondition=competition_rule_retrieval_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "retrieval.hybrid_guarded",
+            "action": "retrieval",
+            "domain": "multi",
+            "score": 0.506,
+            "status": "accepted",
+            "reason": "base=0.72; multi_domain; answer_type_match; tool_router_action=retrieval; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "fast.domain_handlers",
+            "action": "fast_path",
+            "domain": "multi",
+            "score": 0.489,
+            "status": "accepted",
+            "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "rulebase.category_rules",
+            "action": "rulebase",
+            "domain": "multi",
+            "score": 0.467,
+            "status": "accepted",
+            "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "structured.schedule",
+            "action": "structured",
+            "domain": "schedule",
+            "score": 0.456,
+            "status": "accepted",
+            "reason": "base=0.86; answer_type_match; question_frame_domain_mismatch; precondition=schedule_query_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "retrieval.vector_guarded",
+            "action": "vector",
+            "domain": "multi",
+            "score": 0.444,
+            "status": "accepted",
+            "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "llm.facts_composer",
+            "action": "rag_llm",
+            "domain": "multi",
+            "score": 0.4,
+            "status": "accepted",
+            "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "clarification.ask_user",
+            "action": "clarification",
+            "domain": "clarification",
+            "score": 0.322,
+            "status": "accepted",
+            "reason": "base=0.58; precondition=no_specific_precondition",
+            "requires_evidence": false,
+            "risk": "low"
+          }
+        ],
+        "rejected": [
+          {
+            "capability_id": "structured.members",
+            "action": "structured",
+            "domain": "members",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: competition_query_must_not_use_member_directory",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.games",
+            "action": "structured",
+            "domain": "games",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_game_query",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.game_controls",
+            "action": "structured",
+            "domain": "game_controls",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_game_control_query",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.equipment",
+            "action": "structured",
+            "domain": "equipment",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_an_equipment_query",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.reservation",
+            "action": "structured",
+            "domain": "reservation",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_reservation_query",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "structured.service_fee",
+            "action": "structured",
+            "domain": "service_fee",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_price_query",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "fast.price_calculator",
+            "action": "fast_path",
+            "domain": "service_fee",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_price_or_calculation_query",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "llm.general_answer",
+            "action": "general_llm",
+            "domain": "general",
+            "score": 0.139,
+            "status": "rejected",
+            "reason": "policy_veto: PSU-specific or medium/high-risk route cannot use general LLM",
+            "requires_evidence": false,
+            "risk": "low"
+          }
+        ],
+        "policy": {
+          "psu_specific": true,
+          "route_risk": "medium",
+          "general_llm_requires_non_psu": true
+        },
+        "execution_plan": [
+          "normalize_and_extract_entities",
+          "route_and_resolve_universal_intent",
+          "generate_capability_candidates",
+          "apply_policy_and_rank",
+          "apply_tool_preconditions",
+          "execute_retrieval",
+          "format_validate_and_record"
+        ],
+        "final": {
+          "mode": "pipeline:competition_source_rag",
+          "confidence": 0.84,
+          "execution_step": "execute_retrieval",
+          "executed_capability": "retrieval.hybrid_guarded",
+          "selected_matches_execution": false,
+          "validation_ok": true,
+          "validation_errors": [],
+          "validation_warnings": [],
+          "evidence_count": 2,
+          "source_ids": [
+            "competition_rules_cs2_psu_phuket_2026",
+            "competition_rules_cs2_psu_phuket_2026_s33_c01",
+            "competition_rules_cs2_psu_phuket_2026_s34_c01"
+          ]
+        },
+        "production_metrics": {
+          "policy_version": "correctness_control_flow_v2",
+          "outcome": "answered",
+          "quality_gate_status": "pass",
+          "candidate_margin": 0.433,
+          "selection_status": "selected",
+          "ambiguity_decision": "allow",
+          "repair_attempted": false,
+          "repair_recovered": false,
+          "llm_call_count": 1,
+          "requires_shadow_review": true,
+          "shadow_review_reasons": [
+            "selected_execution_mismatch",
+            "llm_used"
+          ]
+        },
+        "entities": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": "general_student",
+          "duration": null,
+          "price_intent": false
+        },
+        "structured_tool": null,
+        "tool_preconditions": [
+          {
+            "stage": "tool_precondition",
+            "decision": "reject_structured",
+            "confidence": 0.2,
+            "detail": "candidate_selector_preferred_non_structured_action",
+            "metadata": {
+              "capability_id": "structured.unknown",
+              "ok": false,
+              "reason": "no_structured_capability_for_route",
+              "severity": "policy",
+              "selector_allows_structured": false,
+              "selected_capability_id": "retrieval.competition_fact_cards"
+            }
+          }
+        ],
+        "candidate_execution": [],
+        "validation": null,
+        "llm_calls": [
+          {
+            "stage": "universal_intent",
+            "decision": "competition_rules/rule_lookup",
+            "llm_kind": "universal_intent",
+            "llm_model": "scb10x/typhoon2.5-qwen3-4b",
+            "llm_timeout_sec": 14.0,
+            "llm_configured_timeout_sec": 14.0,
+            "llm_num_predict": 18,
+            "llm_num_ctx": 1536,
+            "llm_cache_hit": false,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 3.0801,
+            "global_remaining_sec": 15.2698,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 14.2698,
+            "timing_status": "running",
+            "llm_health_enabled": true,
+            "llm_health_allowed": true,
+            "llm_health_status": "ok",
+            "llm_health_kind": "universal_intent",
+            "llm_health_model": "scb10x/typhoon2.5-qwen3-4b",
+            "llm_health_failures": 0,
+            "llm_health_cooldown_remaining_sec": 0.0,
+            "llm_health_last_error_type": "",
+            "llm_health_last_error": "",
+            "llm_health_failure_scope": "kind_only",
+            "llm_budget_enabled": true,
+            "llm_budget_allowed": true,
+            "llm_budget_max_calls": 2,
+            "llm_budget_used_calls": 1,
+            "llm_budget_kind": "universal_intent",
+            "llm_concurrency_allowed": true,
+            "llm_concurrency_limit": 1,
+            "llm_concurrency_wait_sec": 0.2,
+            "llm_prompt_chars": 890,
+            "llm_candidate_count": 6,
+            "llm_compact_candidates_chars": 421,
+            "llm_elapsed_ms": 10666.56,
+            "llm_response_chars": 39,
+            "llm_done_reason": "stop",
+            "llm_parsed": true
+          }
+        ]
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": "general_student",
+        "duration": null,
+        "price_intent": false,
+        "short_answer": false,
+        "comparison_intent": false,
+        "raw": {
+          "normalized_query": "cs2 เวลานอกทางเทคนิคขอได้กี่ครั้ง",
+          "language_hint": "mixed_th_en"
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      },
+      "trace": [
+        {
+          "stage": "timing",
+          "decision": "locale_resolution",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.04,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0001,
+            "global_remaining_sec": 18.3499,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3499,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "intent_cue_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 26.87,
+            "elapsed_sec": 0.0269,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.027,
+            "global_remaining_sec": 18.323,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.323,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "canonical_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.027,
+            "global_remaining_sec": 18.3229,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3229,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "locale_resolution",
+          "decision": "th",
+          "confidence": 1.0,
+          "detail": "toggle_override_th;mixed_thai_function_words",
+          "metadata": {
+            "requested": "th",
+            "detected": "mixed",
+            "effective": "th",
+            "confidence": 1.0,
+            "reason": "toggle_override_th;mixed_thai_function_words"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "CS2 เวลานอกทางเทคนิคขอได้กี่ครั้ง",
+            "candidate": "CS2 เวลานอกทางเทคนิคขอได้กี่ครั้ง",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "parts=1",
+          "metadata": {
+            "elapsed_ms": 22.59,
+            "elapsed_sec": 0.0226,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0496,
+            "global_remaining_sec": 18.3003,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3003,
+            "timing_status": "running",
+            "entry_to_split_ms": 26.97,
+            "parts": [
+              "CS2 เวลานอกทางเทคนิคขอได้กี่ครั้ง"
+            ],
+            "competition_rule_query": false
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "single clear operation does not need planner",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": true
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "cs2 เวลานอกทางเทคนิคขอได้กี่ครั้ง",
+          "metadata": {
+            "language_hint": "mixed_th_en",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "CS2 เวลานอกทางเทคนิคขอได้กี่ครั้ง"
+            ],
+            "competition_name_recovery": [],
+            "elapsed_ms": 1086.09,
+            "elapsed_sec": 1.0861
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 1086.34,
+            "elapsed_sec": 1.0863
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "competition_rules/competition_rules_lookup",
+          "metadata": {
+            "elapsed_ms": 56.1,
+            "elapsed_sec": 0.0561,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": "general_student",
+            "duration": null,
+            "price_intent": false
+          }
+        },
+        {
+          "stage": "target_lock",
+          "decision": "not_locked",
+          "confidence": 0.97,
+          "detail": "game_resolution_unknown",
+          "metadata": {
+            "locked": false,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "reason": "game_resolution_unknown",
+            "resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "detail",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 9,
+              "comparison_count": 64,
+              "elapsed_ms": 35.88,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "semantic_route_refiner",
+          "confidence": 1.0,
+          "detail": "no_route_candidate",
+          "metadata": {
+            "elapsed_ms": 623.25,
+            "elapsed_sec": 0.6233,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "route_locked": false
+          }
+        },
+        {
+          "stage": "semantic_route_refiner",
+          "decision": "no_route_candidate",
+          "confidence": 0.97,
+          "detail": "hits=0 model=psu-bge-m3:q8_0 top=0.4936 margin=0.0029 require_current=False discover_route=True blocked=category_mismatch:230,general_margin_too_small:1",
+          "metadata": {
+            "retrieval": {
+              "model": "psu-bge-m3:q8_0",
+              "dimensions": 1024,
+              "doc_count": 289,
+              "minimum_score": 0.48,
+              "top_score": 0.493646,
+              "second_score": 0.490722,
+              "margin": 0.002924,
+              "require_current": false,
+              "discover_route": true,
+              "required_entity_ids": [],
+              "required_facets": [],
+              "locale": null,
+              "blocked": {
+                "category_mismatch": 230,
+                "general_margin_too_small": 1
+              },
+              "embedding": {
+                "model": "psu-bge-m3:q8_0",
+                "dimensions": 1024,
+                "elapsed_sec": 0.2111,
+                "total_duration_ms": 186.27,
+                "load_duration_ms": 10.53,
+                "prompt_eval_count": 12
+              },
+              "elapsed_sec": 0.4194,
+              "budget_cutoff": false
+            }
+          }
+        },
+        {
+          "stage": "freshness_guard",
+          "decision": "not_required",
+          "confidence": 0.9,
+          "detail": "query does not require live dynamic evidence",
+          "metadata": {
+            "requires_live_evidence": false
+          }
+        },
+        {
+          "stage": "boundary_guard",
+          "decision": "allow",
+          "confidence": 0.9,
+          "detail": "no high-confidence boundary matched",
+          "metadata": {
+            "flags": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "guard_scope",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.03,
+            "elapsed_sec": 0.0
+          }
+        },
+        {
+          "stage": "guard",
+          "decision": "weak_domain_signal",
+          "confidence": 0.35,
+          "detail": "no clear PSU Esports domain hint",
+          "metadata": {}
+        },
+        {
+          "stage": "router",
+          "decision": "competition_rules",
+          "confidence": 0.97,
+          "detail": "competition rule terms found before reservation/check-in",
+          "metadata": {
+            "intent": "competition_rules_lookup",
+            "answer_type": "fact"
+          }
+        },
+        {
+          "stage": "model_gateway",
+          "decision": "allow_preflight_llm",
+          "confidence": 0.97,
+          "detail": "ambiguous route may benefit from model review",
+          "metadata": {
+            "allow_llm": true,
+            "preflight_allow_llm": true,
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "universal_intent",
+          "confidence": 1.0,
+          "detail": "competition_rules/rule_lookup",
+          "metadata": {
+            "elapsed_ms": 11772.52,
+            "elapsed_sec": 11.7725,
+            "method": "llm",
+            "confidence": 0.9
+          }
+        },
+        {
+          "stage": "universal_intent",
+          "decision": "competition_rules/rule_lookup",
+          "confidence": 0.9,
+          "detail": "candidate_intent:c1 heuristic fallback",
+          "metadata": {
+            "method": "llm",
+            "llm_attempted": true,
+            "llm_first": true,
+            "llm_first_skip_reason": "",
+            "llm_first_review_reason": "",
+            "llm_call": {
+              "llm_kind": "universal_intent",
+              "llm_model": "scb10x/typhoon2.5-qwen3-4b",
+              "llm_timeout_sec": 14.0,
+              "llm_configured_timeout_sec": 14.0,
+              "llm_num_predict": 18,
+              "llm_num_ctx": 1536,
+              "llm_cache_hit": false,
+              "global_timeout_enabled": true,
+              "global_timeout_sec": 18.35,
+              "global_elapsed_sec": 3.0801,
+              "global_remaining_sec": 15.2698,
+              "finalizer_reserve_sec": 1.0,
+              "work_remaining_sec": 14.2698,
+              "timing_status": "running",
+              "llm_health_enabled": true,
+              "llm_health_allowed": true,
+              "llm_health_status": "ok",
+              "llm_health_kind": "universal_intent",
+              "llm_health_model": "scb10x/typhoon2.5-qwen3-4b",
+              "llm_health_failures": 0,
+              "llm_health_cooldown_remaining_sec": 0.0,
+              "llm_health_last_error_type": "",
+              "llm_health_last_error": "",
+              "llm_health_failure_scope": "kind_only",
+              "llm_budget_enabled": true,
+              "llm_budget_allowed": true,
+              "llm_budget_max_calls": 2,
+              "llm_budget_used_calls": 1,
+              "llm_budget_kind": "universal_intent",
+              "llm_concurrency_allowed": true,
+              "llm_concurrency_limit": 1,
+              "llm_concurrency_wait_sec": 0.2,
+              "llm_prompt_chars": 890,
+              "llm_candidate_count": 6,
+              "llm_compact_candidates_chars": 421,
+              "llm_elapsed_ms": 10666.56,
+              "llm_response_chars": 39,
+              "llm_done_reason": "stop",
+              "llm_parsed": true
+            },
+            "intent_risk_flags": [
+              "competing_domain_signals"
+            ],
+            "input_recovery": {
+              "score": 0.1271,
+              "language": "mixed",
+              "language_quality": 0.8729,
+              "should_review_intent": false,
+              "reason": "Thai character n-gram quality=0.873",
+              "action": "continue"
+            },
+            "llm_rejected_reason": "",
+            "intent_candidates": [
+              {
+                "id": "c1",
+                "domain": "competition_rules",
+                "operation": "rule_lookup",
+                "target": "",
+                "confidence": 0.9,
+                "reason": "heuristic fallback"
+              },
+              {
+                "id": "c2",
+                "domain": "competition_rules",
+                "operation": "count",
+                "target": "",
+                "confidence": 0.97,
+                "reason": "router category candidate"
+              },
+              {
+                "id": "c3",
+                "domain": "games",
+                "operation": "list",
+                "target": "",
+                "confidence": 0.66,
+                "reason": "game-domain catalog alternative"
+              },
+              {
+                "id": "c4",
+                "domain": "games",
+                "operation": "count",
+                "target": "",
+                "confidence": 0.66,
+                "reason": "domain keyword score=1"
+              },
+              {
+                "id": "c5",
+                "domain": "schedule",
+                "operation": "count",
+                "target": "",
+                "confidence": 0.66,
+                "reason": "domain keyword score=1"
+              },
+              {
+                "id": "c6",
+                "domain": "competition_rules",
+                "operation": "schedule_lookup",
+                "target": "",
+                "confidence": 0.66,
+                "reason": "operation keyword score=1"
+              }
+            ],
+            "target": "",
+            "filters": {},
+            "needs": [],
+            "answer_style": "direct",
+            "heuristic": {
+              "domain": "competition_rules",
+              "operation": "rule_lookup",
+              "confidence": 0.9,
+              "reason": "domain_terms=2; competition route overrides game/count ambiguity; schedule terms found; competition route forces rule lookup"
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_router",
+          "confidence": 1.0,
+          "detail": "retrieval/competition_rules",
+          "metadata": {
+            "elapsed_ms": 0.04,
+            "elapsed_sec": 0.0,
+            "method": "heuristic",
+            "confidence": 0.9
+          }
+        },
+        {
+          "stage": "tool_router",
+          "decision": "heuristic:retrieval",
+          "confidence": 0.9,
+          "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "ambiguity_gate",
+          "confidence": 1.0,
+          "detail": "allow",
+          "metadata": {
+            "elapsed_ms": 193.33,
+            "elapsed_sec": 0.1933,
+            "flags": [],
+            "confidence": 0.94
+          }
+        },
+        {
+          "stage": "ambiguity_gate",
+          "decision": "allow",
+          "confidence": 0.94,
+          "detail": "ambiguity risk acceptable",
+          "metadata": {
+            "flags": [],
+            "route": "competition_rules/competition_rules_lookup",
+            "intent": "competition_rules/rule_lookup",
+            "has_known_game": true,
+            "has_service_or_zone": false,
+            "game_entity_resolution": {
+              "status": "unknown",
+              "entity_type": "game",
+              "top_candidate": null,
+              "candidates": [],
+              "top_score": 0.0,
+              "margin": 0.0,
+              "reason": "shortlist_below_threshold",
+              "operation": "",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "trigram_fuzzy",
+              "candidate_count": 9,
+              "comparison_count": 64,
+              "elapsed_ms": 6.7,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            },
+            "intent_candidates": [
+              {
+                "domain": "schedule",
+                "operation": "schedule_query",
+                "score": 0.45,
+                "reasons": [
+                  "schedule_terms"
+                ]
+              },
+              {
+                "domain": "games",
+                "operation": "detail",
+                "score": 0.3,
+                "reasons": [
+                  "known_game_target"
+                ]
+              },
+              {
+                "domain": "service_fee",
+                "operation": "price_calculate",
+                "score": 0.1,
+                "reasons": [
+                  "price_filters"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "question_frame",
+          "confidence": 0.96,
+          "detail": "competition_rules/competition_rule_lookup",
+          "metadata": {
+            "elapsed_ms": 57.28,
+            "elapsed_sec": 0.0573,
+            "operation": "competition_rule_lookup",
+            "domain": "competition_rules",
+            "expected_answer_types": [
+              "competition_rule"
+            ],
+            "targets": [
+              {
+                "target_id": "cs2",
+                "target_type": "competition_game",
+                "domain": "competition_rules",
+                "label": "Counter-Strike 2",
+                "score": 1.0
+              }
+            ],
+            "target_status": "exact",
+            "target_margin": 1.0,
+            "target_required": true,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.96,
+            "method": "competition_target_first",
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "intent_operation": "rule_lookup",
+            "competition_game_ids": [
+              "cs2"
+            ],
+            "competition_game_labels": [
+              "Counter-Strike 2"
+            ],
+            "competition_rulebook_ids": [
+              "competition_rules_cs2_psu_phuket_2026"
+            ],
+            "competition_facet": "pause_timeout",
+            "competition_target_reason": "registered_competition_alias",
+            "competition_explicit_mentions": [
+              "cs2"
+            ],
+            "target_reason": "registered_competition_alias",
+            "target_candidate_count": 1,
+            "game_family": ""
+          }
+        },
+        {
+          "stage": "target_context",
+          "decision": "enrich_universal_intent",
+          "confidence": 1.0,
+          "detail": "exact Question Frame target propagated to structured execution",
+          "metadata": {
+            "target_id": "cs2",
+            "target_type": "competition_game",
+            "domain": "competition_rules",
+            "label": "Counter-Strike 2",
+            "score": 1.0
+          }
+        },
+        {
+          "stage": "operation_route_refine",
+          "decision": "competition_rules/competition_rules_lookup -> competition_rules/competition_rules_lookup",
+          "confidence": 0.96,
+          "detail": "question frame supplied a clear PSU operation domain",
+          "metadata": {
+            "operation": "competition_rule_lookup",
+            "domain": "competition_rules",
+            "expected_answer_types": [
+              "competition_rule"
+            ],
+            "targets": [
+              {
+                "target_id": "cs2",
+                "target_type": "competition_game",
+                "domain": "competition_rules",
+                "label": "Counter-Strike 2",
+                "score": 1.0
+              }
+            ],
+            "target_status": "exact",
+            "target_margin": 1.0,
+            "target_required": true,
+            "allows_multiple_targets": false,
+            "needs_clarification": false,
+            "confidence": 0.96,
+            "method": "competition_target_first",
+            "route_category": "competition_rules",
+            "route_intent": "competition_rules_lookup",
+            "intent_operation": "rule_lookup",
+            "competition_game_ids": [
+              "cs2"
+            ],
+            "competition_game_labels": [
+              "Counter-Strike 2"
+            ],
+            "competition_rulebook_ids": [
+              "competition_rules_cs2_psu_phuket_2026"
+            ],
+            "competition_facet": "pause_timeout",
+            "competition_target_reason": "registered_competition_alias",
+            "competition_explicit_mentions": [
+              "cs2"
+            ],
+            "target_reason": "registered_competition_alias",
+            "target_candidate_count": 1,
+            "game_family": ""
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "candidate_decisions",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 34.44,
+            "elapsed_sec": 0.0344
+          }
+        },
+        {
+          "stage": "decision_candidates",
+          "decision": "retrieval.competition_fact_cards",
+          "confidence": 0.9388888888888889,
+          "detail": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority; question_frame_domain_match; precondition=competition_rule_retrieval_applicable",
+          "metadata": {
+            "selected": {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.939,
+              "status": "accepted",
+              "reason": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority; question_frame_domain_match; precondition=competition_rule_retrieval_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            "selection": {
+              "status": "selected",
+              "execution_allowed": true,
+              "margin": 0.433,
+              "same_action_as_second": true,
+              "second": {
+                "capability_id": "retrieval.hybrid_guarded",
+                "action": "retrieval",
+                "domain": "multi",
+                "score": 0.506,
+                "status": "accepted",
+                "reason": "base=0.72; multi_domain; answer_type_match; tool_router_action=retrieval; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              }
+            },
+            "question_frame": {
+              "operation": "competition_rule_lookup",
+              "domain": "competition_rules",
+              "expected_answer_types": [
+                "competition_rule"
+              ],
+              "targets": [
+                {
+                  "target_id": "cs2",
+                  "target_type": "competition_game",
+                  "domain": "competition_rules",
+                  "label": "Counter-Strike 2",
+                  "score": 1.0
+                }
+              ],
+              "target_status": "exact",
+              "target_margin": 1.0,
+              "target_required": true,
+              "allows_multiple_targets": false,
+              "needs_clarification": false,
+              "confidence": 0.96,
+              "method": "competition_target_first",
+              "route_category": "competition_rules",
+              "route_intent": "competition_rules_lookup",
+              "intent_operation": "rule_lookup",
+              "competition_game_ids": [
+                "cs2"
+              ],
+              "competition_game_labels": [
+                "Counter-Strike 2"
+              ],
+              "competition_rulebook_ids": [
+                "competition_rules_cs2_psu_phuket_2026"
+              ],
+              "competition_facet": "pause_timeout",
+              "competition_target_reason": "registered_competition_alias",
+              "competition_explicit_mentions": [
+                "cs2"
+              ],
+              "target_reason": "registered_competition_alias",
+              "target_candidate_count": 1,
+              "game_family": ""
+            },
+            "candidates": [
+              {
+                "capability_id": "retrieval.competition_fact_cards",
+                "action": "retrieval",
+                "domain": "competition_rules",
+                "score": 0.939,
+                "status": "accepted",
+                "reason": "base=0.82; domain_match; answer_type_match; tool_router_action=retrieval; tool_router_domain=competition_rules; competition_fact_card_priority; question_frame_domain_match; precondition=competition_rule_retrieval_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.hybrid_guarded",
+                "action": "retrieval",
+                "domain": "multi",
+                "score": 0.506,
+                "status": "accepted",
+                "reason": "base=0.72; multi_domain; answer_type_match; tool_router_action=retrieval; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "fast.domain_handlers",
+                "action": "fast_path",
+                "domain": "multi",
+                "score": 0.489,
+                "status": "accepted",
+                "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "rulebase.category_rules",
+                "action": "rulebase",
+                "domain": "multi",
+                "score": 0.467,
+                "status": "accepted",
+                "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.schedule",
+                "action": "structured",
+                "domain": "schedule",
+                "score": 0.456,
+                "status": "accepted",
+                "reason": "base=0.86; answer_type_match; question_frame_domain_mismatch; precondition=schedule_query_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.vector_guarded",
+                "action": "vector",
+                "domain": "multi",
+                "score": 0.444,
+                "status": "accepted",
+                "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "llm.facts_composer",
+                "action": "rag_llm",
+                "domain": "multi",
+                "score": 0.4,
+                "status": "accepted",
+                "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "clarification.ask_user",
+                "action": "clarification",
+                "domain": "clarification",
+                "score": 0.322,
+                "status": "accepted",
+                "reason": "base=0.58; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              }
+            ],
+            "rejected": [
+              {
+                "capability_id": "structured.members",
+                "action": "structured",
+                "domain": "members",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: competition_query_must_not_use_member_directory",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.games",
+                "action": "structured",
+                "domain": "games",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_game_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.game_controls",
+                "action": "structured",
+                "domain": "game_controls",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_game_control_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.equipment",
+                "action": "structured",
+                "domain": "equipment",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_an_equipment_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.reservation",
+                "action": "structured",
+                "domain": "reservation",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_reservation_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.service_fee",
+                "action": "structured",
+                "domain": "service_fee",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_price_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "fast.price_calculator",
+                "action": "fast_path",
+                "domain": "service_fee",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_price_or_calculation_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "llm.general_answer",
+                "action": "general_llm",
+                "domain": "general",
+                "score": 0.139,
+                "status": "rejected",
+                "reason": "policy_veto: PSU-specific or medium/high-risk route cannot use general LLM",
+                "requires_evidence": false,
+                "risk": "low"
+              }
+            ],
+            "policy": {
+              "psu_specific": true,
+              "route_risk": "medium",
+              "general_llm_requires_non_psu": true
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_precondition",
+          "confidence": 1.0,
+          "detail": "structured.unknown",
+          "metadata": {
+            "elapsed_ms": 0.22,
+            "elapsed_sec": 0.0002,
+            "ok": false
+          }
+        },
+        {
+          "stage": "tool_precondition",
+          "decision": "reject_structured",
+          "confidence": 0.2,
+          "detail": "candidate_selector_preferred_non_structured_action",
+          "metadata": {
+            "capability_id": "structured.unknown",
+            "ok": false,
+            "reason": "no_structured_capability_for_route",
+            "severity": "policy",
+            "selector_allows_structured": false,
+            "selected_capability_id": "retrieval.competition_fact_cards"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "structured_tool_execution",
+          "confidence": 1.0,
+          "detail": "no_result",
+          "metadata": {
+            "elapsed_ms": 0.0,
+            "elapsed_sec": 0.0,
+            "precondition_ok": false,
+            "selector_allows_structured": false,
+            "selected_capability_id": "retrieval.competition_fact_cards",
+            "confidence": 0.0
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "deterministic",
+          "confidence": 1.0,
+          "detail": "no_match",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0,
+            "confidence": 0.0,
+            "selector_allows_deterministic": false,
+            "selected_capability_id": "retrieval.competition_fact_cards"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "competition_source_retrieval",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 913.61,
+            "elapsed_sec": 0.9136,
+            "hit_count": 2,
+            "target_game_ids": [
+              "cs2"
+            ],
+            "facet": "pause_timeout"
+          }
+        },
+        {
+          "stage": "rag_retrieval",
+          "decision": "curated_lexical",
+          "confidence": 0.84,
+          "detail": "hits=8 game=Counter-Strike 2 intent=pause",
+          "metadata": {
+            "category": "competition_rules",
+            "game": "Counter-Strike 2",
+            "intent": "pause"
+          }
+        },
+        {
+          "stage": "competition_contract_retrieval",
+          "decision": "target_facet_source_index",
+          "confidence": 0.98,
+          "detail": "hits=2 facet=pause_timeout",
+          "metadata": {
+            "facet": "pause_timeout",
+            "target_game_ids": [
+              "cs2"
+            ],
+            "rulebook_ids": [
+              "competition_rules_cs2_psu_phuket_2026"
+            ],
+            "hit_ids": [
+              "competition_rules_cs2_psu_phuket_2026_s33_c01",
+              "competition_rules_cs2_psu_phuket_2026_s34_c01"
+            ]
+          }
+        },
+        {
+          "stage": "competition_source_grounding",
+          "decision": "accepted",
+          "confidence": 0.84,
+          "detail": "target-filtered source chunks are preferred over summary fact cards",
+          "metadata": {
+            "hit_count": 2,
+            "validation_errors": [],
+            "pause_detail_missing": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:competition_source_rag",
+          "metadata": {
+            "elapsed_ms": 3.54,
+            "elapsed_sec": 0.0035,
+            "format_response_style_ms": 0.39,
+            "answer_language": "th",
+            "total_elapsed_ms": 15012.08,
+            "total_elapsed_sec": 15.0121
+          }
+        }
+      ],
+      "log_sinks": {
+        "status": "queued"
+      }
+    }
+  },
+  "elapsed": 15.041922200005502,
+  "passed": false,
+  "failures": [
+    "forbidden:4 ครั้ง",
+    "forbidden:30 วินาที"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_switch_games",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "switch.*เกม",
+      "nintendo.*เกม",
+      "เกม.*switch",
+      "เกม.*nintendo"
+    ],
+    "en": [
+      "switch games",
+      "nintendo games"
+    ]
+  },
+  "facts": {
+    "route_category": "games",
+    "intent": "switch_games",
+    "patterns": [
+      "switch.*เกม",
+      "nintendo.*เกม",
+      "เกม.*switch",
+      "เกม.*nintendo",
+      "switch games",
+      "nintendo games"
+    ],
+    "priority": 100
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "เกม Nintendo Switch ที่มีในรายการ ได้แก่ Pokémon Champions, Animal Crossing: New Horizon, It Takes Two, Little Nightmares II, Luigi’s Mansion 3, Mario Kart 8 Deluxe, Mario Party Superstars, Monster Hunter Rise, Moving Out 2, New Super Mario Bros. U Deluxe, Nintendo Switch Sports, Overcooked, Overcooked 2, Ring Fit Adventure, Super Mario Odyssey, Super Smash Bros Ultimate และ The Legend of Zelda: Breath of The Wild"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Nintendo Switch games include Pokémon Champions, Animal Crossing: New Horizon, It Takes Two, Little Nightmares II, Luigi’s Mansion 3, Mario Kart 8 Deluxe, Mario Party Superstars, Monster Hunter Rise, Moving Out 2, New Super Mario Bros. U Deluxe, Nintendo Switch Sports, Overcooked, Overcooked 2, Ring Fit Adventure, Super Mario Odyssey, Super Smash Bros Ultimate, and The Legend of Zelda: Breath of The Wild."
+      },
+      "source_sha256": "c1e8ac4cf11948040e5ce8d7e3c7548ce5b7696475f329ffc32043a6c61bb3d1",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/games_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_games_switch",
+      "reservation-service-nintendo"
+    ],
+    "last_verified_at": ""
+  }
+}

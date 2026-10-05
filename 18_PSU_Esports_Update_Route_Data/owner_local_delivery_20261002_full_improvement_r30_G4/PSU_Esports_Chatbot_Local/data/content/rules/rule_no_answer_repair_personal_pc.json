@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_no_answer_repair_personal_pc",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "ซ่อมคอมพิวเตอร์ส่วนตัว",
+      "ซ่อมคอมส่วนตัว"
+    ],
+    "en": [
+      "repair.*personal.*computer"
+    ]
+  },
+  "facts": {
+    "route_category": "no_answer",
+    "intent": "no_answer_repair_personal_pc",
+    "patterns": [
+      "ซ่อมคอมพิวเตอร์ส่วนตัว",
+      "ซ่อมคอมส่วนตัว",
+      "repair.*personal.*computer"
+    ],
+    "priority": 120
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ยังไม่พบข้อมูลว่าศูนย์มีบริการซ่อมคอมพิวเตอร์ส่วนตัวในฐานข้อมูลที่มี ข้อมูลที่มีตอนนี้เน้นการจองใช้อุปกรณ์ภายในศูนย์และกฎการใช้งาน หากต้องการยืนยันเรื่องซ่อมอุปกรณ์ส่วนตัวควรติดต่อเจ้าหน้าที่ศูนย์โดยตรง"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "No information about personal computer repair service was found in the available knowledge base. The current data focuses on booking and using the studio equipment. Please contact staff directly to confirm personal repair requests."
+      },
+      "source_sha256": "26bd4ad0dcca9cedab18ee5886b2c363ab9c0df01d0aca65004f55cb130ee9b8",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/no_answer_rules.jsonl",
+    "url": "",
+    "source_ids": [],
+    "last_verified_at": ""
+  }
+}

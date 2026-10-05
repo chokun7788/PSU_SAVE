@@ -1,0 +1,4198 @@
+{
+  "health": {
+    "ok": true,
+    "service": "psu-esports-chat-web",
+    "time": "2026-10-01T08:02:02.714533+00:00",
+    "warmup": {
+      "ok": true,
+      "elapsed_sec": 9.5934,
+      "warmed": [
+        "game_title_aliases",
+        "structured_tools",
+        "game_resolver",
+        "routing_data",
+        "retrieval_data",
+        "probe_queries",
+        "semantic_embedding"
+      ],
+      "errors": [],
+      "timings": {
+        "game_title_aliases": 0.6931,
+        "structured_tools": 0.5038,
+        "game_resolver": 0.1338,
+        "routing_data": 0.1454,
+        "retrieval_data": 2.0839,
+        "probe_queries": 5.96,
+        "semantic_embedding": 0.0732
+      }
+    },
+    "llm_preflight": {
+      "ok": true,
+      "model": "scb10x/typhoon2.5-qwen3-4b",
+      "kind": "preflight",
+      "elapsed_ms": 234.85,
+      "response_chars": 2,
+      "done_reason": "length",
+      "num_ctx": 3072,
+      "load_duration": 12794000,
+      "prompt_eval_duration": 212271000,
+      "eval_duration": 1000,
+      "health": {
+        "llm_health_enabled": true,
+        "llm_health_status": "ok",
+        "llm_health_failures": 0,
+        "llm_health_failure_scope": "model_and_kind"
+      }
+    },
+    "input_quality_guard": {
+      "enabled": true,
+      "mode": "enforce",
+      "repeat_policy": "warn_and_continue",
+      "layout_threshold": 0.39,
+      "repeat_threshold": 0.55,
+      "corpus_size": 4023,
+      "profile_version": "keyboard-profile-v1:5cb1f63359ca84bf"
+    },
+    "llm_health": {
+      "enabled": true,
+      "failure_threshold": 2,
+      "failure_window_sec": 30.0,
+      "cooldown_sec": 90.0,
+      "states": [
+        {
+          "kind": "model",
+          "model": "scb10x/typhoon2.5-qwen3-4b",
+          "status": "ok",
+          "failures": 0,
+          "successes": 1,
+          "cooldown_remaining_sec": 0.0,
+          "last_error_type": "",
+          "last_error": "",
+          "last_elapsed_ms": 234.85,
+          "last_checked_at": 1790841701.7757246,
+          "last_success_at": 1790841701.7757246,
+          "half_open_probe_in_flight": false,
+          "events": [
+            {
+              "event": "success",
+              "kind": "preflight",
+              "elapsed_ms": 234.85,
+              "detail": "preflight_ok",
+              "at": 1790841701.776
+            }
+          ]
+        },
+        {
+          "kind": "preflight",
+          "model": "scb10x/typhoon2.5-qwen3-4b",
+          "status": "ok",
+          "failures": 0,
+          "successes": 1,
+          "cooldown_remaining_sec": 0.0,
+          "last_error_type": "",
+          "last_error": "",
+          "last_elapsed_ms": 234.85,
+          "last_checked_at": 1790841701.7757084,
+          "last_success_at": 1790841701.7757084,
+          "half_open_probe_in_flight": false,
+          "events": [
+            {
+              "event": "success",
+              "kind": "preflight",
+              "elapsed_ms": 234.85,
+              "detail": "preflight_ok",
+              "at": 1790841701.776
+            }
+          ]
+        }
+      ]
+    },
+    "pipeline_workers": {
+      "enabled": true,
+      "started": true,
+      "worker_count": 1,
+      "workers": [
+        {
+          "worker_id": 0,
+          "pid": 35028,
+          "alive": true,
+          "ready": true,
+          "completed_requests": 0,
+          "busy": false
+        }
+      ],
+      "performance": {
+        "run_id": "20261001T080119Z",
+        "path": "C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\owner_local_delivery_20261001_on_demand_booking_r22\\PSU_Esports_Chatbot_Local\\data\\logs\\performance\\pipeline_20261001T080119Z.jsonl",
+        "events_written": 0,
+        "events_dropped": 0
+      }
+    },
+    "runtime": {
+      "profile": "owner-local-rag-assist",
+      "version": "2026.10.01-on-demand-booking-r22",
+      "started_at": "2026-10-01T08:01:18.394401+00:00",
+      "answer_timeout_sec": 20.0,
+      "pipeline_timeout_sec": 19.0,
+      "intent_timeout_sec": 14.0,
+      "local_llm": {
+        "enabled": true,
+        "model": "scb10x/typhoon2.5-qwen3-4b",
+        "intent_timeout_sec": 14.0,
+        "planner_timeout_sec": 1.2,
+        "general_timeout_sec": 4.0,
+        "high_assist_profile": true
+      },
+      "semantic_rag": {
+        "enabled": true,
+        "embedding_model": "psu-bge-m3:q8_0"
+      },
+      "english": {
+        "enabled": true,
+        "draft_preview": false
+      },
+      "booking": {
+        "enabled": true,
+        "fetch_mode": "wordpress",
+        "cache_seconds": 0.0,
+        "dashboard_required": false,
+        "read_only": true
+      },
+      "input_quality": {
+        "mode": "enforce",
+        "keyboard_layout": "request_retype",
+        "repeated_characters": "warn_and_continue"
+      }
+    },
+    "features": {
+      "bilingual_english": true,
+      "local_llm_assist": true,
+      "semantic_rag": true,
+      "embedding_model": "psu-bge-m3:q8_0",
+      "live_booking_status": true
+    }
+  },
+  "cases": [
+    {
+      "case": "original-th",
+      "question": "ตนนี้ pc ว่างให้เล่นไหม",
+      "locale": "th",
+      "http_wall_sec": 2.9096,
+      "failures": [],
+      "response": {
+        "ok": true,
+        "request_id": "5253f8f755764d339d4684da4f6d46c0",
+        "session_id": "r22-e02f030eca364b07b04382da47277ecc",
+        "answer": "วันที่ตรวจสอบ: 2026-10-01 (เวลาไทย)\nโซน PC: ว่าง 3/10 รายการ ณ 15:02 น. (เวลาไทย)\n•    PC #01 (1 Person): ถูกจองแล้ว\n•    PC #02 (1 Person): ถูกจองแล้ว\n•    PC #03 (1 Person): ว่าง\n•    PC #04 (1 Person): ถูกจองแล้ว\n•    PC #05 (1 Person): ถูกจองแล้ว\n•    PC #06 (1 Person): ถูกจองแล้ว\n•    PC #07 (1 Person): ถูกจองแล้ว\n•    PC #08 (1 Person): ว่าง\n•    PC #09 (1 Person): ว่าง\n•    PC #10 (1 Person): ถูกจองแล้ว\nอัปเดต: 2026-10-01 15:02:05\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+        "mode": "pipeline:live_booking_status_fast_path",
+        "route_category": "schedule",
+        "route_intent": "live_booking_status",
+        "universal_intent": null,
+        "confidence": 0.99,
+        "latency_sec": 2.7387,
+        "wall_sec": 2.9033,
+        "deadline": {
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 2.9032,
+          "global_remaining_sec": 17.0968,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 16.0967,
+          "timing_status": "running"
+        },
+        "timing_status": "completed",
+        "timed_out": false,
+        "timeout_stage": "",
+        "retryable": false,
+        "worker_id": 0,
+        "sources": [
+          {
+            "id": "Reservation",
+            "url": "https://esports.computing.psu.ac.th/reservation"
+          }
+        ],
+        "validation_ok": true,
+        "language": {
+          "requested": "th",
+          "detected": "th",
+          "effective": "th",
+          "confidence": 1.0,
+          "reason": "toggle_override_th;thai_script"
+        },
+        "experimental_rag_fallback": true,
+        "experimental_allow_llm": true,
+        "input_recovery": {
+          "score": 0.2302,
+          "language": "mixed",
+          "language_quality": 0.7698,
+          "should_review_intent": false,
+          "reason": "Thai character n-gram quality=0.770",
+          "action": "continue"
+        },
+        "server_date": {
+          "iso": "2026-10-01",
+          "label": "01/10/2026 (วันพฤหัสบดี)",
+          "time": "15:02",
+          "datetime_iso": "2026-10-01T15:02:05.625450+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-01",
+            "time": "15:02",
+            "weekday": "วันพฤหัสบดี",
+            "timezone": "Asia/Bangkok",
+            "status": "open",
+            "playable": true,
+            "slot": {
+              "code": "afternoon",
+              "label": "Afternoon",
+              "start": "13:00",
+              "end": "16:00",
+              "time_range": "13:00-16:00",
+              "state": "open",
+              "note": "เปิดให้บริการ"
+            },
+            "next_open_slot": null,
+            "reason": "open",
+            "note": "เปิดให้บริการ",
+            "source": "reservation_schedule"
+          },
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "calendar": {
+          "date": "2026-10-01",
+          "label": "01/10/2026 (วันพฤหัสบดี)",
+          "weekday": "วันพฤหัสบดี",
+          "time": "15:02",
+          "datetime_iso": "2026-10-01T15:02:05.625450+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-01",
+            "time": "15:02",
+            "weekday": "วันพฤหัสบดี",
+            "timezone": "Asia/Bangkok",
+            "status": "open",
+            "playable": true,
+            "slot": {
+              "code": "afternoon",
+              "label": "Afternoon",
+              "start": "13:00",
+              "end": "16:00",
+              "time_range": "13:00-16:00",
+              "state": "open",
+              "note": "เปิดให้บริการ"
+            },
+            "next_open_slot": null,
+            "reason": "open",
+            "note": "เปิดให้บริการ",
+            "source": "reservation_schedule"
+          },
+          "service_closure": null,
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "input_quality": {
+          "action": "continue",
+          "detected_action": "continue",
+          "applied_action": "continue",
+          "should_retype": false,
+          "flags": [],
+          "layout_score": 0.152245,
+          "repeat_score": 0.493558,
+          "guard_status": "passed",
+          "guard_mode": "enforce",
+          "repeat_policy": "warn_and_continue",
+          "profile_version": "keyboard-profile-v1:5cb1f63359ca84bf",
+          "guard_elapsed_ms": 1.904
+        },
+        "context_resolution": {
+          "original_question": "ตนนี้ pc ว่างให้เล่นไหม",
+          "resolved_question": "ตนนี้ pc ว่างให้เล่นไหม",
+          "used_context": false,
+          "context_game": null,
+          "context_domain": null,
+          "context_operation": null,
+          "context_topic": null,
+          "reason": "not_followup"
+        },
+        "query_debug": {
+          "original_question": "ตนนี้ pc ว่างให้เล่นไหม",
+          "resolved_question": "ตนนี้ pc ว่างให้เล่นไหม",
+          "normalized_query": "ตนนี้ pc ว่างให้เล่นไหม",
+          "query_variants": [
+            "ตนนี้ pc ว่างให้เล่นไหม"
+          ],
+          "active_query": "ตนนี้ pc ว่างให้เล่นไหม",
+          "active_query_changed": false,
+          "trace": [
+            {
+              "stage": "preprocess",
+              "decision": "normalized",
+              "confidence": 1.0,
+              "detail": "ตนนี้ pc ว่างให้เล่นไหม",
+              "metadata": {
+                "language_hint": "mixed_th_en",
+                "nonsemantic_preface_removed": false,
+                "query_variants": [
+                  "ตนนี้ pc ว่างให้เล่นไหม"
+                ],
+                "elapsed_ms": 938.44,
+                "elapsed_sec": 0.9384
+              }
+            }
+          ]
+        },
+        "decision_artifact": {
+          "intent": {
+            "domain": "schedule",
+            "operation": "live_booking_status",
+            "target": "",
+            "confidence": 0.99,
+            "method": "route"
+          },
+          "route": {
+            "category": "schedule",
+            "intent": "live_booking_status",
+            "confidence": 0.99,
+            "answer_type": "fact",
+            "risk": "medium",
+            "reason": "aggregate-only live booking dashboard"
+          },
+          "tool_router": null,
+          "selected_candidate": null,
+          "candidates": [],
+          "rejected": [],
+          "policy": {},
+          "execution_plan": [
+            "normalize_and_extract_entities",
+            "route_and_resolve_universal_intent",
+            "generate_capability_candidates",
+            "apply_policy_and_rank",
+            "apply_tool_preconditions",
+            "execute_fast_path",
+            "format_validate_and_record"
+          ],
+          "final": {
+            "mode": "pipeline:live_booking_status_fast_path",
+            "confidence": 0.99,
+            "execution_step": "execute_fast_path",
+            "executed_capability": "fast.domain_handlers",
+            "selected_matches_execution": false,
+            "validation_ok": true,
+            "validation_errors": [],
+            "validation_warnings": [],
+            "evidence_count": 1,
+            "source_ids": [
+              "Reservation"
+            ]
+          },
+          "production_metrics": {
+            "policy_version": "correctness_control_flow_v2",
+            "outcome": "answered",
+            "quality_gate_status": "pass",
+            "candidate_margin": null,
+            "selection_status": "",
+            "ambiguity_decision": "",
+            "repair_attempted": false,
+            "repair_recovered": false,
+            "llm_call_count": 0,
+            "requires_shadow_review": true,
+            "shadow_review_reasons": [
+              "selected_execution_mismatch"
+            ]
+          },
+          "entities": {
+            "day": null,
+            "time_slots": [],
+            "service": "pc",
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          },
+          "structured_tool": null,
+          "tool_preconditions": [],
+          "candidate_execution": [],
+          "validation": null,
+          "llm_calls": []
+        },
+        "entities": {
+          "day": null,
+          "time_slots": [],
+          "service": "pc",
+          "user_group": null,
+          "duration": null,
+          "price_intent": false,
+          "short_answer": false,
+          "comparison_intent": false,
+          "raw": {
+            "normalized_query": "ตนนี้ pc ว่างให้เล่นไหม",
+            "language_hint": "mixed_th_en"
+          }
+        },
+        "validation": {
+          "ok": true,
+          "errors": [],
+          "warnings": []
+        },
+        "trace": [
+          {
+            "stage": "locale_resolution",
+            "decision": "th",
+            "confidence": 1.0,
+            "detail": "toggle_override_th;thai_script",
+            "metadata": {
+              "requested": "th",
+              "detected": "th",
+              "effective": "th",
+              "confidence": 1.0,
+              "reason": "toggle_override_th;thai_script"
+            }
+          },
+          {
+            "stage": "intent_cue_preflight",
+            "decision": "unchanged",
+            "confidence": 1.0,
+            "detail": "bounded task cues; offsets refer to each intermediate input",
+            "metadata": {
+              "raw": "ตนนี้ pc ว่างให้เล่นไหม",
+              "candidate": "ตนนี้ pc ว่างให้เล่นไหม",
+              "recoveries": [],
+              "span_budget": 3,
+              "edit_budget": 4
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "split_multi_question",
+            "confidence": 1.0,
+            "detail": "parts=1",
+            "metadata": {
+              "elapsed_ms": 119.45,
+              "elapsed_sec": 0.1194,
+              "global_timeout_enabled": true,
+              "global_timeout_sec": 18.3499,
+              "global_elapsed_sec": 0.1223,
+              "global_remaining_sec": 18.2276,
+              "finalizer_reserve_sec": 1.0,
+              "work_remaining_sec": 17.2276,
+              "timing_status": "running",
+              "parts": [
+                "ตนนี้ pc ว่างให้เล่นไหม"
+              ],
+              "competition_rule_query": false
+            }
+          },
+          {
+            "stage": "compound_complexity",
+            "decision": "simple",
+            "confidence": 0.0,
+            "detail": "single question",
+            "metadata": {
+              "level": "simple",
+              "score": 0.0,
+              "signals": [],
+              "can_parallelize": false,
+              "requires_planner": false,
+              "max_workers": 1,
+              "reason": "single question"
+            }
+          },
+          {
+            "stage": "query_planner",
+            "decision": "skipped",
+            "confidence": 0.0,
+            "detail": "single clear operation does not need planner",
+            "metadata": {
+              "method": "gated",
+              "llm_attempted": false,
+              "allow_llm": true
+            }
+          },
+          {
+            "stage": "preprocess",
+            "decision": "normalized",
+            "confidence": 1.0,
+            "detail": "ตนนี้ pc ว่างให้เล่นไหม",
+            "metadata": {
+              "language_hint": "mixed_th_en",
+              "nonsemantic_preface_removed": false,
+              "query_variants": [
+                "ตนนี้ pc ว่างให้เล่นไหม"
+              ],
+              "elapsed_ms": 938.44,
+              "elapsed_sec": 0.9384
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "preprocess",
+            "confidence": 1.0,
+            "detail": "",
+            "metadata": {
+              "elapsed_ms": 938.68,
+              "elapsed_sec": 0.9387
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "active_route_selection",
+            "confidence": 1.0,
+            "detail": "equipment/pc_availability",
+            "metadata": {
+              "elapsed_ms": 102.08,
+              "elapsed_sec": 0.1021,
+              "route_category": "equipment",
+              "route_intent": "pc_availability",
+              "variant_count": 0
+            }
+          },
+          {
+            "stage": "entities",
+            "decision": "extracted",
+            "confidence": 0.9,
+            "detail": "",
+            "metadata": {
+              "day": null,
+              "time_slots": [],
+              "service": "pc",
+              "user_group": null,
+              "duration": null,
+              "price_intent": false
+            }
+          },
+          {
+            "stage": "target_lock",
+            "decision": "not_locked",
+            "confidence": 0.95,
+            "detail": "game_resolution_unknown",
+            "metadata": {
+              "locked": false,
+              "route_category": "equipment",
+              "route_intent": "pc_availability",
+              "reason": "game_resolution_unknown",
+              "resolution": {
+                "status": "unknown",
+                "entity_type": "game",
+                "top_candidate": null,
+                "candidates": [],
+                "top_score": 0.0,
+                "margin": 0.0,
+                "reason": "shortlist_below_threshold",
+                "operation": "detail",
+                "resolver": "bounded_trigram_v1",
+                "catalog_version": "bacdf919d5e4323c",
+                "method": "trigram_fuzzy",
+                "candidate_count": 8,
+                "comparison_count": 57,
+                "elapsed_ms": 23.785,
+                "request_cache_hit": false,
+                "budget_exceeded": false,
+                "reranker": {
+                  "enabled": false,
+                  "action": "skipped",
+                  "reason": "disabled"
+                }
+              }
+            }
+          },
+          {
+            "stage": "live_booking_status",
+            "decision": "live_booking_status_fast_path",
+            "confidence": 0.99,
+            "detail": "aggregate-only live booking dashboard",
+            "metadata": {
+              "privacy": "aggregate_only",
+              "source": "remote_csv_live",
+              "transport": "wordpress",
+              "cached": false,
+              "generated_at": "2026-10-01 15:02:05",
+              "error_code": "",
+              "fetch_elapsed_ms": 1440.86
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "build_result",
+            "confidence": 1.0,
+            "detail": "pipeline:live_booking_status_fast_path",
+            "metadata": {
+              "elapsed_ms": 23.43,
+              "elapsed_sec": 0.0234,
+              "format_response_style_ms": 8.12,
+              "answer_language": "th",
+              "total_elapsed_ms": 2738.53,
+              "total_elapsed_sec": 2.7385
+            }
+          }
+        ],
+        "log_sinks": {
+          "status": "queued"
+        }
+      }
+    },
+    {
+      "case": "typo-en",
+      "question": "Is cockpik available now?",
+      "locale": "en",
+      "http_wall_sec": 1.163,
+      "failures": [],
+      "response": {
+        "ok": true,
+        "request_id": "dabea4adac0b4312a90aba19686e9333",
+        "session_id": "r22-d35d5c2cc0674f7c8cc4f3e86e0d7b34",
+        "answer": "Date: 2026-10-01 (Asia/Bangkok)\nCockpit Zone: 1/2 resources are available right now (15:02, Asia/Bangkok).\n•    Cockpit #1 (1 Person): booked\n•    Cockpit #2 (1 Person): available\nUpdated: 2026-10-01 15:02:06\nSource: https://esports.computing.psu.ac.th/reservation",
+        "mode": "pipeline:live_booking_status_fast_path",
+        "route_category": "schedule",
+        "route_intent": "live_booking_status",
+        "universal_intent": null,
+        "confidence": 0.99,
+        "latency_sec": 1.1473,
+        "wall_sec": 1.1576,
+        "deadline": {
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 1.1575,
+          "global_remaining_sec": 18.8425,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 17.8425,
+          "timing_status": "running"
+        },
+        "timing_status": "completed",
+        "timed_out": false,
+        "timeout_stage": "",
+        "retryable": false,
+        "worker_id": 0,
+        "sources": [
+          {
+            "id": "Reservation",
+            "url": "https://esports.computing.psu.ac.th/reservation"
+          }
+        ],
+        "validation_ok": true,
+        "language": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        },
+        "experimental_rag_fallback": true,
+        "experimental_allow_llm": true,
+        "input_recovery": {
+          "score": 0.3116,
+          "language": "en",
+          "language_quality": 0.6884,
+          "should_review_intent": false,
+          "reason": "English character n-gram quality=0.688",
+          "action": "continue"
+        },
+        "server_date": {
+          "iso": "2026-10-01",
+          "label": "01/10/2026 (วันพฤหัสบดี)",
+          "time": "15:02",
+          "datetime_iso": "2026-10-01T15:02:06.790809+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-01",
+            "time": "15:02",
+            "weekday": "วันพฤหัสบดี",
+            "timezone": "Asia/Bangkok",
+            "status": "open",
+            "playable": true,
+            "slot": {
+              "code": "afternoon",
+              "label": "Afternoon",
+              "start": "13:00",
+              "end": "16:00",
+              "time_range": "13:00-16:00",
+              "state": "open",
+              "note": "เปิดให้บริการ"
+            },
+            "next_open_slot": null,
+            "reason": "open",
+            "note": "เปิดให้บริการ",
+            "source": "reservation_schedule"
+          },
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "calendar": {
+          "date": "2026-10-01",
+          "label": "01/10/2026 (วันพฤหัสบดี)",
+          "weekday": "วันพฤหัสบดี",
+          "time": "15:02",
+          "datetime_iso": "2026-10-01T15:02:06.790809+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-01",
+            "time": "15:02",
+            "weekday": "วันพฤหัสบดี",
+            "timezone": "Asia/Bangkok",
+            "status": "open",
+            "playable": true,
+            "slot": {
+              "code": "afternoon",
+              "label": "Afternoon",
+              "start": "13:00",
+              "end": "16:00",
+              "time_range": "13:00-16:00",
+              "state": "open",
+              "note": "เปิดให้บริการ"
+            },
+            "next_open_slot": null,
+            "reason": "open",
+            "note": "เปิดให้บริการ",
+            "source": "reservation_schedule"
+          },
+          "service_closure": null,
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "input_quality": {
+          "action": "continue",
+          "detected_action": "continue",
+          "applied_action": "continue",
+          "should_retype": false,
+          "flags": [],
+          "layout_score": 0.226356,
+          "repeat_score": 0.0,
+          "guard_status": "passed",
+          "guard_mode": "enforce",
+          "repeat_policy": "warn_and_continue",
+          "profile_version": "keyboard-profile-v1:5cb1f63359ca84bf",
+          "guard_elapsed_ms": 1.902
+        },
+        "context_resolution": {
+          "original_question": "Is cockpik available now?",
+          "resolved_question": "Is cockpik available now?",
+          "used_context": false,
+          "context_game": null,
+          "context_domain": null,
+          "context_operation": null,
+          "context_topic": null,
+          "reason": "english_context_preserved_without_rewrite"
+        },
+        "query_debug": {
+          "original_question": "Is cockpik available now?",
+          "resolved_question": "Is cockpik available now?",
+          "normalized_query": "is cockpik available now?",
+          "query_variants": [
+            "Is cockpik available now?"
+          ],
+          "active_query": "Is cockpik available now?",
+          "active_query_changed": false,
+          "trace": [
+            {
+              "stage": "preprocess",
+              "decision": "normalized",
+              "confidence": 1.0,
+              "detail": "is cockpik available now?",
+              "metadata": {
+                "language_hint": "en",
+                "nonsemantic_preface_removed": false,
+                "query_variants": [
+                  "Is cockpik available now?"
+                ],
+                "elapsed_ms": 28.55,
+                "elapsed_sec": 0.0286
+              }
+            }
+          ]
+        },
+        "decision_artifact": {
+          "intent": {
+            "domain": "schedule",
+            "operation": "live_booking_status",
+            "target": "",
+            "confidence": 0.99,
+            "method": "route"
+          },
+          "route": {
+            "category": "schedule",
+            "intent": "live_booking_status",
+            "confidence": 0.99,
+            "answer_type": "fact",
+            "risk": "medium",
+            "reason": "aggregate-only live booking dashboard"
+          },
+          "tool_router": null,
+          "selected_candidate": null,
+          "candidates": [],
+          "rejected": [],
+          "policy": {},
+          "execution_plan": [
+            "normalize_and_extract_entities",
+            "route_and_resolve_universal_intent",
+            "generate_capability_candidates",
+            "apply_policy_and_rank",
+            "apply_tool_preconditions",
+            "execute_fast_path",
+            "format_validate_and_record"
+          ],
+          "final": {
+            "mode": "pipeline:live_booking_status_fast_path",
+            "confidence": 0.99,
+            "execution_step": "execute_fast_path",
+            "executed_capability": "fast.domain_handlers",
+            "selected_matches_execution": false,
+            "validation_ok": true,
+            "validation_errors": [],
+            "validation_warnings": [],
+            "evidence_count": 1,
+            "source_ids": [
+              "Reservation"
+            ]
+          },
+          "production_metrics": {
+            "policy_version": "correctness_control_flow_v2",
+            "outcome": "answered",
+            "quality_gate_status": "pass",
+            "candidate_margin": null,
+            "selection_status": "",
+            "ambiguity_decision": "",
+            "repair_attempted": false,
+            "repair_recovered": false,
+            "llm_call_count": 0,
+            "requires_shadow_review": true,
+            "shadow_review_reasons": [
+              "selected_execution_mismatch"
+            ]
+          },
+          "entities": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          },
+          "structured_tool": null,
+          "tool_preconditions": [],
+          "candidate_execution": [],
+          "validation": null,
+          "llm_calls": []
+        },
+        "entities": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false,
+          "short_answer": false,
+          "comparison_intent": false,
+          "raw": {
+            "normalized_query": "is cockpik available now?",
+            "language_hint": "en"
+          }
+        },
+        "validation": {
+          "ok": true,
+          "errors": [],
+          "warnings": []
+        },
+        "trace": [
+          {
+            "stage": "locale_resolution",
+            "decision": "en",
+            "confidence": 1.0,
+            "detail": "toggle_override_en;english_sentence_structure",
+            "metadata": {
+              "requested": "en",
+              "detected": "en",
+              "effective": "en",
+              "confidence": 1.0,
+              "reason": "toggle_override_en;english_sentence_structure"
+            }
+          },
+          {
+            "stage": "intent_cue_preflight",
+            "decision": "unchanged",
+            "confidence": 1.0,
+            "detail": "bounded task cues; offsets refer to each intermediate input",
+            "metadata": {
+              "raw": "Is cockpik available now?",
+              "candidate": "Is cockpik available now?",
+              "recoveries": [],
+              "span_budget": 3,
+              "edit_budget": 4
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "split_multi_question",
+            "confidence": 1.0,
+            "detail": "parts=1",
+            "metadata": {
+              "elapsed_ms": 18.15,
+              "elapsed_sec": 0.0182,
+              "global_timeout_enabled": true,
+              "global_timeout_sec": 18.35,
+              "global_elapsed_sec": 0.0202,
+              "global_remaining_sec": 18.3298,
+              "finalizer_reserve_sec": 1.0,
+              "work_remaining_sec": 17.3298,
+              "timing_status": "running",
+              "parts": [
+                "Is cockpik available now?"
+              ],
+              "competition_rule_query": false
+            }
+          },
+          {
+            "stage": "compound_complexity",
+            "decision": "simple",
+            "confidence": 0.0,
+            "detail": "single question",
+            "metadata": {
+              "level": "simple",
+              "score": 0.0,
+              "signals": [],
+              "can_parallelize": false,
+              "requires_planner": false,
+              "max_workers": 1,
+              "reason": "single question"
+            }
+          },
+          {
+            "stage": "query_planner",
+            "decision": "skipped",
+            "confidence": 0.0,
+            "detail": "single clear operation does not need planner",
+            "metadata": {
+              "method": "gated",
+              "llm_attempted": false,
+              "allow_llm": true
+            }
+          },
+          {
+            "stage": "preprocess",
+            "decision": "normalized",
+            "confidence": 1.0,
+            "detail": "is cockpik available now?",
+            "metadata": {
+              "language_hint": "en",
+              "nonsemantic_preface_removed": false,
+              "query_variants": [
+                "Is cockpik available now?"
+              ],
+              "elapsed_ms": 28.55,
+              "elapsed_sec": 0.0286
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "preprocess",
+            "confidence": 1.0,
+            "detail": "",
+            "metadata": {
+              "elapsed_ms": 28.72,
+              "elapsed_sec": 0.0287
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "active_route_selection",
+            "confidence": 1.0,
+            "detail": "general/unknown_domain_query",
+            "metadata": {
+              "elapsed_ms": 196.0,
+              "elapsed_sec": 0.196,
+              "route_category": "general",
+              "route_intent": "unknown_domain_query",
+              "variant_count": 0
+            }
+          },
+          {
+            "stage": "entities",
+            "decision": "extracted",
+            "confidence": 0.9,
+            "detail": "",
+            "metadata": {
+              "day": null,
+              "time_slots": [],
+              "service": null,
+              "user_group": null,
+              "duration": null,
+              "price_intent": false
+            }
+          },
+          {
+            "stage": "target_lock",
+            "decision": "not_locked",
+            "confidence": 0.55,
+            "detail": "game_resolution_unknown",
+            "metadata": {
+              "locked": false,
+              "route_category": "general",
+              "route_intent": "unknown_domain_query",
+              "reason": "game_resolution_unknown",
+              "resolution": {
+                "status": "unknown",
+                "entity_type": "game",
+                "top_candidate": null,
+                "candidates": [],
+                "top_score": 0.0,
+                "margin": 0.0,
+                "reason": "shortlist_below_threshold",
+                "operation": "availability",
+                "resolver": "bounded_trigram_v1",
+                "catalog_version": "bacdf919d5e4323c",
+                "method": "trigram_fuzzy",
+                "candidate_count": 5,
+                "comparison_count": 29,
+                "elapsed_ms": 5.397,
+                "request_cache_hit": false,
+                "budget_exceeded": false,
+                "reranker": {
+                  "enabled": false,
+                  "action": "skipped",
+                  "reason": "disabled"
+                }
+              }
+            }
+          },
+          {
+            "stage": "live_booking_status",
+            "decision": "live_booking_status_fast_path",
+            "confidence": 0.99,
+            "detail": "aggregate-only live booking dashboard",
+            "metadata": {
+              "privacy": "aggregate_only",
+              "source": "remote_csv_live",
+              "transport": "wordpress",
+              "cached": false,
+              "generated_at": "2026-10-01 15:02:06",
+              "error_code": "",
+              "fetch_elapsed_ms": 879.52
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "build_result",
+            "confidence": 1.0,
+            "detail": "pipeline:live_booking_status_fast_path",
+            "metadata": {
+              "elapsed_ms": 0.62,
+              "elapsed_sec": 0.0006,
+              "format_response_style_ms": 0.0,
+              "answer_language": "en",
+              "total_elapsed_ms": 1147.19,
+              "total_elapsed_sec": 1.1472
+            }
+          }
+        ],
+        "log_sinks": {
+          "status": "queued"
+        }
+      }
+    },
+    {
+      "case": "slots-th",
+      "question": "วันนี้มีช่วงไหนให้จองบ้าง",
+      "locale": "th",
+      "http_wall_sec": 1.0015,
+      "failures": [],
+      "response": {
+        "ok": true,
+        "request_id": "c12631a814e749a893579c23d1c6e514",
+        "session_id": "r22-9cf287e624604a27accc8e6536564317",
+        "answer": "รอบจองวันที่ 2026-10-01 (เวลาไทย):\nทุกโซน\n•    09:00-10:00: ช่วงเวลาผ่านแล้ว / จองไม่ได้\n•    10:00-11:00: ช่วงเวลาผ่านแล้ว / จองไม่ได้\n•    11:00-12:00: ช่วงเวลาผ่านแล้ว / จองไม่ได้\n•    12:00-13:00: ปิด / จองไม่ได้\n•    13:00-14:00: ช่วงเวลาผ่านแล้ว / จองไม่ได้\n•    14:00-15:00: ช่วงเวลาผ่านแล้ว / จองไม่ได้\n•    15:00-16:00: ว่าง 7/18 รายการ: Cockpit #2 (1 Person), Nintendo Switch (Morning) (1-2 Persons), PC #03 (1 Person), PC #08 (1 Person), PC #09 (1 Person), VR Station (Afternoon) (1-5 Persons) 1 Hour, VR Station (Morning) (1-5 Persons) 30 Mins\nอัปเดต: 2026-10-01 15:02:07\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+        "mode": "pipeline:live_booking_status_fast_path",
+        "route_category": "schedule",
+        "route_intent": "live_booking_status",
+        "universal_intent": null,
+        "confidence": 0.99,
+        "latency_sec": 0.9846,
+        "wall_sec": 0.996,
+        "deadline": {
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.996,
+          "global_remaining_sec": 19.004,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.004,
+          "timing_status": "running"
+        },
+        "timing_status": "completed",
+        "timed_out": false,
+        "timeout_stage": "",
+        "retryable": false,
+        "worker_id": 0,
+        "sources": [
+          {
+            "id": "Reservation",
+            "url": "https://esports.computing.psu.ac.th/reservation"
+          }
+        ],
+        "validation_ok": true,
+        "language": {
+          "requested": "th",
+          "detected": "th",
+          "effective": "th",
+          "confidence": 1.0,
+          "reason": "toggle_override_th;thai_script"
+        },
+        "experimental_rag_fallback": true,
+        "experimental_allow_llm": true,
+        "input_recovery": {
+          "score": 0.3202,
+          "language": "th",
+          "language_quality": 0.6798,
+          "should_review_intent": false,
+          "reason": "Thai character n-gram quality=0.680",
+          "action": "continue"
+        },
+        "server_date": {
+          "iso": "2026-10-01",
+          "label": "01/10/2026 (วันพฤหัสบดี)",
+          "time": "15:02",
+          "datetime_iso": "2026-10-01T15:02:07.791473+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-01",
+            "time": "15:02",
+            "weekday": "วันพฤหัสบดี",
+            "timezone": "Asia/Bangkok",
+            "status": "open",
+            "playable": true,
+            "slot": {
+              "code": "afternoon",
+              "label": "Afternoon",
+              "start": "13:00",
+              "end": "16:00",
+              "time_range": "13:00-16:00",
+              "state": "open",
+              "note": "เปิดให้บริการ"
+            },
+            "next_open_slot": null,
+            "reason": "open",
+            "note": "เปิดให้บริการ",
+            "source": "reservation_schedule"
+          },
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "calendar": {
+          "date": "2026-10-01",
+          "label": "01/10/2026 (วันพฤหัสบดี)",
+          "weekday": "วันพฤหัสบดี",
+          "time": "15:02",
+          "datetime_iso": "2026-10-01T15:02:07.791473+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-01",
+            "time": "15:02",
+            "weekday": "วันพฤหัสบดี",
+            "timezone": "Asia/Bangkok",
+            "status": "open",
+            "playable": true,
+            "slot": {
+              "code": "afternoon",
+              "label": "Afternoon",
+              "start": "13:00",
+              "end": "16:00",
+              "time_range": "13:00-16:00",
+              "state": "open",
+              "note": "เปิดให้บริการ"
+            },
+            "next_open_slot": null,
+            "reason": "open",
+            "note": "เปิดให้บริการ",
+            "source": "reservation_schedule"
+          },
+          "service_closure": null,
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "input_quality": {
+          "action": "continue",
+          "detected_action": "continue",
+          "applied_action": "continue",
+          "should_retype": false,
+          "flags": [],
+          "layout_score": 0.054995,
+          "repeat_score": 0.433431,
+          "guard_status": "passed",
+          "guard_mode": "enforce",
+          "repeat_policy": "warn_and_continue",
+          "profile_version": "keyboard-profile-v1:5cb1f63359ca84bf",
+          "guard_elapsed_ms": 1.165
+        },
+        "context_resolution": {
+          "original_question": "วันนี้มีช่วงไหนให้จองบ้าง",
+          "resolved_question": "วันนี้มีช่วงไหนให้จองบ้าง",
+          "used_context": false,
+          "context_game": null,
+          "context_domain": null,
+          "context_operation": null,
+          "context_topic": null,
+          "reason": "not_followup"
+        },
+        "query_debug": {
+          "original_question": "วันนี้มีช่วงไหนให้จองบ้าง",
+          "resolved_question": "วันนี้มีช่วงไหนให้จองบ้าง",
+          "normalized_query": "วันนี้มีช่วงไหนให้จองบ้าง",
+          "query_variants": [
+            "วันนี้มีช่วงไหนให้จองบ้าง"
+          ],
+          "active_query": "วันนี้มีช่วงไหนให้จองบ้าง",
+          "active_query_changed": false,
+          "trace": [
+            {
+              "stage": "preprocess",
+              "decision": "normalized",
+              "confidence": 1.0,
+              "detail": "วันนี้มีช่วงไหนให้จองบ้าง",
+              "metadata": {
+                "language_hint": "th",
+                "nonsemantic_preface_removed": false,
+                "query_variants": [
+                  "วันนี้มีช่วงไหนให้จองบ้าง"
+                ],
+                "elapsed_ms": 0.45,
+                "elapsed_sec": 0.0005
+              }
+            }
+          ]
+        },
+        "decision_artifact": {
+          "intent": {
+            "domain": "schedule",
+            "operation": "live_booking_status",
+            "target": "",
+            "confidence": 0.99,
+            "method": "route"
+          },
+          "route": {
+            "category": "schedule",
+            "intent": "live_booking_status",
+            "confidence": 0.99,
+            "answer_type": "fact",
+            "risk": "medium",
+            "reason": "aggregate-only live booking dashboard"
+          },
+          "tool_router": null,
+          "selected_candidate": null,
+          "candidates": [],
+          "rejected": [],
+          "policy": {},
+          "execution_plan": [
+            "normalize_and_extract_entities",
+            "route_and_resolve_universal_intent",
+            "generate_capability_candidates",
+            "apply_policy_and_rank",
+            "apply_tool_preconditions",
+            "execute_fast_path",
+            "format_validate_and_record"
+          ],
+          "final": {
+            "mode": "pipeline:live_booking_status_fast_path",
+            "confidence": 0.99,
+            "execution_step": "execute_fast_path",
+            "executed_capability": "fast.domain_handlers",
+            "selected_matches_execution": false,
+            "validation_ok": true,
+            "validation_errors": [],
+            "validation_warnings": [],
+            "evidence_count": 1,
+            "source_ids": [
+              "Reservation"
+            ]
+          },
+          "production_metrics": {
+            "policy_version": "correctness_control_flow_v2",
+            "outcome": "answered",
+            "quality_gate_status": "pass",
+            "candidate_margin": null,
+            "selection_status": "",
+            "ambiguity_decision": "",
+            "repair_attempted": false,
+            "repair_recovered": false,
+            "llm_call_count": 0,
+            "requires_shadow_review": true,
+            "shadow_review_reasons": [
+              "selected_execution_mismatch"
+            ]
+          },
+          "entities": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          },
+          "structured_tool": null,
+          "tool_preconditions": [],
+          "candidate_execution": [],
+          "validation": null,
+          "llm_calls": []
+        },
+        "entities": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": false,
+          "short_answer": false,
+          "comparison_intent": false,
+          "raw": {
+            "normalized_query": "วันนี้มีช่วงไหนให้จองบ้าง",
+            "language_hint": "th"
+          }
+        },
+        "validation": {
+          "ok": true,
+          "errors": [],
+          "warnings": []
+        },
+        "trace": [
+          {
+            "stage": "locale_resolution",
+            "decision": "th",
+            "confidence": 1.0,
+            "detail": "toggle_override_th;thai_script",
+            "metadata": {
+              "requested": "th",
+              "detected": "th",
+              "effective": "th",
+              "confidence": 1.0,
+              "reason": "toggle_override_th;thai_script"
+            }
+          },
+          {
+            "stage": "intent_cue_preflight",
+            "decision": "unchanged",
+            "confidence": 1.0,
+            "detail": "bounded task cues; offsets refer to each intermediate input",
+            "metadata": {
+              "raw": "วันนี้มีช่วงไหนให้จองบ้าง",
+              "candidate": "วันนี้มีช่วงไหนให้จองบ้าง",
+              "recoveries": [],
+              "span_budget": 3,
+              "edit_budget": 4
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "split_multi_question",
+            "confidence": 1.0,
+            "detail": "parts=1",
+            "metadata": {
+              "elapsed_ms": 15.36,
+              "elapsed_sec": 0.0154,
+              "global_timeout_enabled": true,
+              "global_timeout_sec": 18.35,
+              "global_elapsed_sec": 0.0156,
+              "global_remaining_sec": 18.3344,
+              "finalizer_reserve_sec": 1.0,
+              "work_remaining_sec": 17.3344,
+              "timing_status": "running",
+              "parts": [
+                "วันนี้มีช่วงไหนให้จองบ้าง"
+              ],
+              "competition_rule_query": false
+            }
+          },
+          {
+            "stage": "compound_complexity",
+            "decision": "simple",
+            "confidence": 0.0,
+            "detail": "single question",
+            "metadata": {
+              "level": "simple",
+              "score": 0.0,
+              "signals": [],
+              "can_parallelize": false,
+              "requires_planner": false,
+              "max_workers": 1,
+              "reason": "single question"
+            }
+          },
+          {
+            "stage": "query_planner",
+            "decision": "skipped",
+            "confidence": 0.0,
+            "detail": "single clear operation does not need planner",
+            "metadata": {
+              "method": "gated",
+              "llm_attempted": false,
+              "allow_llm": true
+            }
+          },
+          {
+            "stage": "preprocess",
+            "decision": "normalized",
+            "confidence": 1.0,
+            "detail": "วันนี้มีช่วงไหนให้จองบ้าง",
+            "metadata": {
+              "language_hint": "th",
+              "nonsemantic_preface_removed": false,
+              "query_variants": [
+                "วันนี้มีช่วงไหนให้จองบ้าง"
+              ],
+              "elapsed_ms": 0.45,
+              "elapsed_sec": 0.0005
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "preprocess",
+            "confidence": 1.0,
+            "detail": "",
+            "metadata": {
+              "elapsed_ms": 0.54,
+              "elapsed_sec": 0.0005
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "active_route_selection",
+            "confidence": 1.0,
+            "detail": "schedule/schedule_query",
+            "metadata": {
+              "elapsed_ms": 10.12,
+              "elapsed_sec": 0.0101,
+              "route_category": "schedule",
+              "route_intent": "schedule_query",
+              "variant_count": 0
+            }
+          },
+          {
+            "stage": "entities",
+            "decision": "extracted",
+            "confidence": 0.9,
+            "detail": "",
+            "metadata": {
+              "day": null,
+              "time_slots": [],
+              "service": null,
+              "user_group": null,
+              "duration": null,
+              "price_intent": false
+            }
+          },
+          {
+            "stage": "live_booking_status",
+            "decision": "live_booking_status_fast_path",
+            "confidence": 0.99,
+            "detail": "aggregate-only live booking dashboard",
+            "metadata": {
+              "privacy": "aggregate_only",
+              "source": "remote_csv_live",
+              "transport": "wordpress",
+              "cached": false,
+              "generated_at": "2026-10-01 15:02:07",
+              "error_code": "",
+              "fetch_elapsed_ms": 921.79
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "build_result",
+            "confidence": 1.0,
+            "detail": "pipeline:live_booking_status_fast_path",
+            "metadata": {
+              "elapsed_ms": 1.17,
+              "elapsed_sec": 0.0012,
+              "format_response_style_ms": 0.35,
+              "answer_language": "th",
+              "total_elapsed_ms": 984.49,
+              "total_elapsed_sec": 0.9845
+            }
+          }
+        ],
+        "log_sinks": {
+          "status": "queued"
+        }
+      }
+    },
+    {
+      "case": "slots-en",
+      "question": "What PC slots can I book tomorrow?",
+      "locale": "en",
+      "http_wall_sec": 1.0113,
+      "failures": [],
+      "response": {
+        "ok": true,
+        "request_id": "68bbcba5b5294f87ba1ea49f17108586",
+        "session_id": "r22-490cc7269f22434b8b5a0c21754375b7",
+        "answer": "Booking slots on 2026-10-02 (Asia/Bangkok):\nPC Zone\n•    09:00-10:00: 9/10 available: PC #01 (1 Person), PC #02 (1 Person), PC #03 (1 Person), PC #05 (1 Person), PC #06 (1 Person), PC #07 (1 Person), PC #08 (1 Person), PC #09 (1 Person), PC #10 (1 Person)\n•    10:00-11:00: 9/10 available: PC #01 (1 Person), PC #02 (1 Person), PC #03 (1 Person), PC #05 (1 Person), PC #06 (1 Person), PC #07 (1 Person), PC #08 (1 Person), PC #09 (1 Person), PC #10 (1 Person)\n•    11:00-12:00: 9/10 available: PC #01 (1 Person), PC #02 (1 Person), PC #03 (1 Person), PC #05 (1 Person), PC #06 (1 Person), PC #07 (1 Person), PC #08 (1 Person), PC #09 (1 Person), PC #10 (1 Person)\n•    12:00-13:00: closed / not bookable\n•    13:00-14:00: closed / not bookable\n•    14:00-15:00: closed / not bookable\n•    15:00-16:00: closed / not bookable\nUpdated: 2026-10-01 15:02:08\nSource: https://esports.computing.psu.ac.th/reservation",
+        "mode": "pipeline:live_booking_status_fast_path",
+        "route_category": "schedule",
+        "route_intent": "live_booking_status",
+        "universal_intent": null,
+        "confidence": 0.99,
+        "latency_sec": 0.9891,
+        "wall_sec": 1.005,
+        "deadline": {
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 1.0047,
+          "global_remaining_sec": 18.9953,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 17.9953,
+          "timing_status": "running"
+        },
+        "timing_status": "completed",
+        "timed_out": false,
+        "timeout_stage": "",
+        "retryable": false,
+        "worker_id": 0,
+        "sources": [
+          {
+            "id": "Reservation",
+            "url": "https://esports.computing.psu.ac.th/reservation"
+          }
+        ],
+        "validation_ok": true,
+        "language": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        },
+        "experimental_rag_fallback": true,
+        "experimental_allow_llm": true,
+        "input_recovery": {
+          "score": 0.3854,
+          "language": "en",
+          "language_quality": 0.6146,
+          "should_review_intent": false,
+          "reason": "English character n-gram quality=0.615",
+          "action": "continue"
+        },
+        "server_date": {
+          "iso": "2026-10-01",
+          "label": "01/10/2026 (วันพฤหัสบดี)",
+          "time": "15:02",
+          "datetime_iso": "2026-10-01T15:02:08.802424+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-01",
+            "time": "15:02",
+            "weekday": "วันพฤหัสบดี",
+            "timezone": "Asia/Bangkok",
+            "status": "open",
+            "playable": true,
+            "slot": {
+              "code": "afternoon",
+              "label": "Afternoon",
+              "start": "13:00",
+              "end": "16:00",
+              "time_range": "13:00-16:00",
+              "state": "open",
+              "note": "เปิดให้บริการ"
+            },
+            "next_open_slot": null,
+            "reason": "open",
+            "note": "เปิดให้บริการ",
+            "source": "reservation_schedule"
+          },
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "calendar": {
+          "date": "2026-10-01",
+          "label": "01/10/2026 (วันพฤหัสบดี)",
+          "weekday": "วันพฤหัสบดี",
+          "time": "15:02",
+          "datetime_iso": "2026-10-01T15:02:08.802424+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-01",
+            "time": "15:02",
+            "weekday": "วันพฤหัสบดี",
+            "timezone": "Asia/Bangkok",
+            "status": "open",
+            "playable": true,
+            "slot": {
+              "code": "afternoon",
+              "label": "Afternoon",
+              "start": "13:00",
+              "end": "16:00",
+              "time_range": "13:00-16:00",
+              "state": "open",
+              "note": "เปิดให้บริการ"
+            },
+            "next_open_slot": null,
+            "reason": "open",
+            "note": "เปิดให้บริการ",
+            "source": "reservation_schedule"
+          },
+          "service_closure": null,
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "input_quality": {
+          "action": "continue",
+          "detected_action": "continue",
+          "applied_action": "continue",
+          "should_retype": false,
+          "flags": [],
+          "layout_score": 0.154877,
+          "repeat_score": 0.407174,
+          "guard_status": "passed",
+          "guard_mode": "enforce",
+          "repeat_policy": "warn_and_continue",
+          "profile_version": "keyboard-profile-v1:5cb1f63359ca84bf",
+          "guard_elapsed_ms": 3.335
+        },
+        "context_resolution": {
+          "original_question": "What PC slots can I book tomorrow?",
+          "resolved_question": "What PC slots can I book tomorrow?",
+          "used_context": false,
+          "context_game": null,
+          "context_domain": null,
+          "context_operation": null,
+          "context_topic": null,
+          "reason": "english_context_preserved_without_rewrite"
+        },
+        "query_debug": {
+          "original_question": "What PC slots can I book tomorrow?",
+          "resolved_question": "What PC slots can I book tomorrow?",
+          "normalized_query": "what pc slots can i book tomorrow?",
+          "query_variants": [
+            "What PC slots can I book tomorrow?"
+          ],
+          "active_query": "What PC slots can I book tomorrow?",
+          "active_query_changed": false,
+          "trace": [
+            {
+              "stage": "preprocess",
+              "decision": "normalized",
+              "confidence": 1.0,
+              "detail": "what pc slots can i book tomorrow?",
+              "metadata": {
+                "language_hint": "en",
+                "nonsemantic_preface_removed": false,
+                "query_variants": [
+                  "What PC slots can I book tomorrow?"
+                ],
+                "elapsed_ms": 13.97,
+                "elapsed_sec": 0.014
+              }
+            }
+          ]
+        },
+        "decision_artifact": {
+          "intent": {
+            "domain": "schedule",
+            "operation": "live_booking_status",
+            "target": "",
+            "confidence": 0.99,
+            "method": "route"
+          },
+          "route": {
+            "category": "schedule",
+            "intent": "live_booking_status",
+            "confidence": 0.99,
+            "answer_type": "fact",
+            "risk": "medium",
+            "reason": "aggregate-only live booking dashboard"
+          },
+          "tool_router": null,
+          "selected_candidate": null,
+          "candidates": [],
+          "rejected": [],
+          "policy": {},
+          "execution_plan": [
+            "normalize_and_extract_entities",
+            "route_and_resolve_universal_intent",
+            "generate_capability_candidates",
+            "apply_policy_and_rank",
+            "apply_tool_preconditions",
+            "execute_fast_path",
+            "format_validate_and_record"
+          ],
+          "final": {
+            "mode": "pipeline:live_booking_status_fast_path",
+            "confidence": 0.99,
+            "execution_step": "execute_fast_path",
+            "executed_capability": "fast.domain_handlers",
+            "selected_matches_execution": false,
+            "validation_ok": true,
+            "validation_errors": [],
+            "validation_warnings": [],
+            "evidence_count": 1,
+            "source_ids": [
+              "Reservation"
+            ]
+          },
+          "production_metrics": {
+            "policy_version": "correctness_control_flow_v2",
+            "outcome": "answered",
+            "quality_gate_status": "pass",
+            "candidate_margin": null,
+            "selection_status": "",
+            "ambiguity_decision": "",
+            "repair_attempted": false,
+            "repair_recovered": false,
+            "llm_call_count": 0,
+            "requires_shadow_review": true,
+            "shadow_review_reasons": [
+              "selected_execution_mismatch"
+            ]
+          },
+          "entities": {
+            "day": null,
+            "time_slots": [],
+            "service": "pc",
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          },
+          "structured_tool": null,
+          "tool_preconditions": [],
+          "candidate_execution": [],
+          "validation": null,
+          "llm_calls": []
+        },
+        "entities": {
+          "day": null,
+          "time_slots": [],
+          "service": "pc",
+          "user_group": null,
+          "duration": null,
+          "price_intent": false,
+          "short_answer": false,
+          "comparison_intent": false,
+          "raw": {
+            "normalized_query": "what pc slots can i book tomorrow?",
+            "language_hint": "en"
+          }
+        },
+        "validation": {
+          "ok": true,
+          "errors": [],
+          "warnings": []
+        },
+        "trace": [
+          {
+            "stage": "locale_resolution",
+            "decision": "en",
+            "confidence": 1.0,
+            "detail": "toggle_override_en;english_sentence_structure",
+            "metadata": {
+              "requested": "en",
+              "detected": "en",
+              "effective": "en",
+              "confidence": 1.0,
+              "reason": "toggle_override_en;english_sentence_structure"
+            }
+          },
+          {
+            "stage": "intent_cue_preflight",
+            "decision": "unchanged",
+            "confidence": 1.0,
+            "detail": "bounded task cues; offsets refer to each intermediate input",
+            "metadata": {
+              "raw": "What PC slots can I book tomorrow?",
+              "candidate": "What PC slots can I book tomorrow?",
+              "recoveries": [],
+              "span_budget": 3,
+              "edit_budget": 4
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "split_multi_question",
+            "confidence": 1.0,
+            "detail": "parts=1",
+            "metadata": {
+              "elapsed_ms": 17.09,
+              "elapsed_sec": 0.0171,
+              "global_timeout_enabled": true,
+              "global_timeout_sec": 18.35,
+              "global_elapsed_sec": 0.0191,
+              "global_remaining_sec": 18.3309,
+              "finalizer_reserve_sec": 1.0,
+              "work_remaining_sec": 17.3309,
+              "timing_status": "running",
+              "parts": [
+                "What PC slots can I book tomorrow?"
+              ],
+              "competition_rule_query": false
+            }
+          },
+          {
+            "stage": "compound_complexity",
+            "decision": "simple",
+            "confidence": 0.0,
+            "detail": "single question",
+            "metadata": {
+              "level": "simple",
+              "score": 0.0,
+              "signals": [],
+              "can_parallelize": false,
+              "requires_planner": false,
+              "max_workers": 1,
+              "reason": "single question"
+            }
+          },
+          {
+            "stage": "query_planner",
+            "decision": "skipped",
+            "confidence": 0.0,
+            "detail": "single clear operation does not need planner",
+            "metadata": {
+              "method": "gated",
+              "llm_attempted": false,
+              "allow_llm": true
+            }
+          },
+          {
+            "stage": "preprocess",
+            "decision": "normalized",
+            "confidence": 1.0,
+            "detail": "what pc slots can i book tomorrow?",
+            "metadata": {
+              "language_hint": "en",
+              "nonsemantic_preface_removed": false,
+              "query_variants": [
+                "What PC slots can I book tomorrow?"
+              ],
+              "elapsed_ms": 13.97,
+              "elapsed_sec": 0.014
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "preprocess",
+            "confidence": 1.0,
+            "detail": "",
+            "metadata": {
+              "elapsed_ms": 14.11,
+              "elapsed_sec": 0.0141
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "active_route_selection",
+            "confidence": 1.0,
+            "detail": "reservation/booking_policy",
+            "metadata": {
+              "elapsed_ms": 0.99,
+              "elapsed_sec": 0.001,
+              "route_category": "reservation",
+              "route_intent": "booking_policy",
+              "variant_count": 0
+            }
+          },
+          {
+            "stage": "entities",
+            "decision": "extracted",
+            "confidence": 0.9,
+            "detail": "",
+            "metadata": {
+              "day": null,
+              "time_slots": [],
+              "service": "pc",
+              "user_group": null,
+              "duration": null,
+              "price_intent": false
+            }
+          },
+          {
+            "stage": "live_booking_status",
+            "decision": "live_booking_status_fast_path",
+            "confidence": 0.99,
+            "detail": "aggregate-only live booking dashboard",
+            "metadata": {
+              "privacy": "aggregate_only",
+              "source": "remote_csv_live",
+              "transport": "wordpress",
+              "cached": false,
+              "generated_at": "2026-10-01 15:02:08",
+              "error_code": "",
+              "fetch_elapsed_ms": 928.67
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "build_result",
+            "confidence": 1.0,
+            "detail": "pipeline:live_booking_status_fast_path",
+            "metadata": {
+              "elapsed_ms": 0.9,
+              "elapsed_sec": 0.0009,
+              "format_response_style_ms": 0.0,
+              "answer_language": "en",
+              "total_elapsed_ms": 988.92,
+              "total_elapsed_sec": 0.9889
+            }
+          }
+        ],
+        "log_sinks": {
+          "status": "queued"
+        }
+      }
+    },
+    {
+      "case": "procedure-th",
+      "question": "จอง PC ยังไง",
+      "locale": "th",
+      "http_wall_sec": 7.059,
+      "failures": [],
+      "response": {
+        "ok": true,
+        "request_id": "a536ba96be024539aa37538f467c693c",
+        "session_id": "r22-c66688f033174e8e858358ad8cca77a1",
+        "answer": "สำหรับ PC ให้เลือกบริการ/โซน PC ในระบบจอง แล้วทำตามขั้นตอนนี้ครับ\nขั้นตอนจองโดยสรุป:\n•    เลือกบริการหรือโซนที่ต้องการใช้\n•    เลือกวันและรอบเวลาที่ต้องการ\n•    กรอก Student ID/Staff ID/National ID, ชื่อ, นามสกุล, อีเมล และเบอร์โทรศัพท์\n•    ตรวจสอบข้อมูลและชำระเงินโดยโอนเข้าบัญชีที่ระบบแจ้ง\n•    หลังจองต้องชำระเงินภายใน 10 นาที\n•    แนบสลิปและยืนยันการจอง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+        "mode": "pipeline:structured_reservation_fact",
+        "route_category": "reservation",
+        "route_intent": "booking_policy",
+        "universal_intent": {
+          "domain": "reservation",
+          "operation": "how_to",
+          "target": "",
+          "filters": {},
+          "needs": [],
+          "answer_style": "direct_then_details",
+          "confidence": 0.9,
+          "method": "llm",
+          "reason": "candidate_intent:c1 heuristic fallback"
+        },
+        "confidence": 0.94,
+        "latency_sec": 7.04,
+        "wall_sec": 7.053,
+        "deadline": {
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 7.053,
+          "global_remaining_sec": 12.947,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 11.947,
+          "timing_status": "running"
+        },
+        "timing_status": "completed",
+        "timed_out": false,
+        "timeout_stage": "",
+        "retryable": false,
+        "worker_id": 0,
+        "sources": [
+          {
+            "id": "booking_steps",
+            "url": "https://esports.computing.psu.ac.th/"
+          }
+        ],
+        "validation_ok": true,
+        "language": {
+          "requested": "th",
+          "detected": "th",
+          "effective": "th",
+          "confidence": 1.0,
+          "reason": "toggle_override_th;thai_script"
+        },
+        "experimental_rag_fallback": true,
+        "experimental_allow_llm": true,
+        "input_recovery": {
+          "score": 0.0857,
+          "language": "mixed",
+          "language_quality": 0.9143,
+          "should_review_intent": false,
+          "reason": "Thai character n-gram quality=0.914",
+          "action": "continue"
+        },
+        "server_date": {
+          "iso": "2026-10-01",
+          "label": "01/10/2026 (วันพฤหัสบดี)",
+          "time": "15:02",
+          "datetime_iso": "2026-10-01T15:02:15.858129+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-01",
+            "time": "15:02",
+            "weekday": "วันพฤหัสบดี",
+            "timezone": "Asia/Bangkok",
+            "status": "open",
+            "playable": true,
+            "slot": {
+              "code": "afternoon",
+              "label": "Afternoon",
+              "start": "13:00",
+              "end": "16:00",
+              "time_range": "13:00-16:00",
+              "state": "open",
+              "note": "เปิดให้บริการ"
+            },
+            "next_open_slot": null,
+            "reason": "open",
+            "note": "เปิดให้บริการ",
+            "source": "reservation_schedule"
+          },
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "calendar": {
+          "date": "2026-10-01",
+          "label": "01/10/2026 (วันพฤหัสบดี)",
+          "weekday": "วันพฤหัสบดี",
+          "time": "15:02",
+          "datetime_iso": "2026-10-01T15:02:15.858129+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-01",
+            "time": "15:02",
+            "weekday": "วันพฤหัสบดี",
+            "timezone": "Asia/Bangkok",
+            "status": "open",
+            "playable": true,
+            "slot": {
+              "code": "afternoon",
+              "label": "Afternoon",
+              "start": "13:00",
+              "end": "16:00",
+              "time_range": "13:00-16:00",
+              "state": "open",
+              "note": "เปิดให้บริการ"
+            },
+            "next_open_slot": null,
+            "reason": "open",
+            "note": "เปิดให้บริการ",
+            "source": "reservation_schedule"
+          },
+          "service_closure": null,
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "input_quality": {
+          "action": "continue",
+          "detected_action": "continue",
+          "applied_action": "continue",
+          "should_retype": false,
+          "flags": [],
+          "layout_score": 0.210936,
+          "repeat_score": 0.0,
+          "guard_status": "passed",
+          "guard_mode": "enforce",
+          "repeat_policy": "warn_and_continue",
+          "profile_version": "keyboard-profile-v1:5cb1f63359ca84bf",
+          "guard_elapsed_ms": 0.564
+        },
+        "context_resolution": {
+          "original_question": "จอง PC ยังไง",
+          "resolved_question": "จอง PC ยังไง",
+          "used_context": false,
+          "context_game": null,
+          "context_domain": null,
+          "context_operation": null,
+          "context_topic": null,
+          "reason": "not_followup"
+        },
+        "query_debug": {
+          "original_question": "จอง PC ยังไง",
+          "resolved_question": "จอง PC ยังไง",
+          "normalized_query": "จอง pc ยังไง",
+          "query_variants": [
+            "จอง PC ยังไง"
+          ],
+          "active_query": "จอง PC ยังไง",
+          "active_query_changed": false,
+          "trace": [
+            {
+              "stage": "preprocess",
+              "decision": "normalized",
+              "confidence": 1.0,
+              "detail": "จอง pc ยังไง",
+              "metadata": {
+                "language_hint": "mixed_th_en",
+                "nonsemantic_preface_removed": false,
+                "query_variants": [
+                  "จอง PC ยังไง"
+                ],
+                "elapsed_ms": 13.24,
+                "elapsed_sec": 0.0132
+              }
+            }
+          ]
+        },
+        "decision_artifact": {
+          "intent": {
+            "domain": "reservation",
+            "operation": "how_to",
+            "target": "",
+            "confidence": 0.9,
+            "method": "llm"
+          },
+          "route": {
+            "category": "reservation",
+            "intent": "booking_policy",
+            "confidence": 0.94,
+            "answer_type": "fact",
+            "risk": "medium",
+            "reason": "booking selection terms found before game availability; structured_mode=structured_reservation_fact"
+          },
+          "tool_router": {
+            "stage": "tool_router",
+            "decision": "heuristic:structured",
+            "confidence": 0.9,
+            "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+            "metadata": {
+              "method": "heuristic",
+              "llm_attempted": false
+            }
+          },
+          "selected_candidate": {
+            "capability_id": "structured.reservation",
+            "action": "structured",
+            "domain": "reservation",
+            "score": 0.999,
+            "status": "accepted",
+            "reason": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=reservation; question_frame_domain_match; question_frame_operation=booking_lookup; precondition=reservation_or_booking_query",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          "candidates": [
+            {
+              "capability_id": "structured.reservation",
+              "action": "structured",
+              "domain": "reservation",
+              "score": 0.999,
+              "status": "accepted",
+              "reason": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=reservation; question_frame_domain_match; question_frame_operation=booking_lookup; precondition=reservation_or_booking_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.domain_handlers",
+              "action": "fast_path",
+              "domain": "multi",
+              "score": 0.489,
+              "status": "accepted",
+              "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "rulebase.category_rules",
+              "action": "rulebase",
+              "domain": "multi",
+              "score": 0.467,
+              "status": "accepted",
+              "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.hybrid_guarded",
+              "action": "retrieval",
+              "domain": "multi",
+              "score": 0.456,
+              "status": "accepted",
+              "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.vector_guarded",
+              "action": "vector",
+              "domain": "multi",
+              "score": 0.444,
+              "status": "accepted",
+              "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "llm.facts_composer",
+              "action": "rag_llm",
+              "domain": "multi",
+              "score": 0.4,
+              "status": "accepted",
+              "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "clarification.ask_user",
+              "action": "clarification",
+              "domain": "clarification",
+              "score": 0.322,
+              "status": "accepted",
+              "reason": "base=0.58; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            },
+            {
+              "capability_id": "fallback.no_answer",
+              "action": "no_answer",
+              "domain": "no_answer",
+              "score": 0.278,
+              "status": "accepted",
+              "reason": "base=0.50; precondition=no_specific_precondition",
+              "requires_evidence": false,
+              "risk": "low"
+            }
+          ],
+          "rejected": [
+            {
+              "capability_id": "structured.members",
+              "action": "structured",
+              "domain": "members",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_member_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.games",
+              "action": "structured",
+              "domain": "games",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: booking_query_must_not_use_game_tool",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.game_controls",
+              "action": "structured",
+              "domain": "game_controls",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_game_control_query",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.equipment",
+              "action": "structured",
+              "domain": "equipment",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: booking_query_must_not_use_equipment_tool",
+              "requires_evidence": true,
+              "risk": "low"
+            },
+            {
+              "capability_id": "structured.schedule",
+              "action": "structured",
+              "domain": "schedule",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_schedule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "fast.price_calculator",
+              "action": "fast_path",
+              "domain": "service_fee",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_price_or_calculation_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            {
+              "capability_id": "retrieval.competition_fact_cards",
+              "action": "retrieval",
+              "domain": "competition_rules",
+              "score": 0.156,
+              "status": "rejected",
+              "reason": "precondition_veto: not_a_competition_rule_query",
+              "requires_evidence": true,
+              "risk": "medium"
+            }
+          ],
+          "policy": {
+            "psu_specific": true,
+            "route_risk": "medium",
+            "general_llm_requires_non_psu": true
+          },
+          "execution_plan": [
+            "normalize_and_extract_entities",
+            "route_and_resolve_universal_intent",
+            "generate_capability_candidates",
+            "apply_policy_and_rank",
+            "apply_tool_preconditions",
+            "execute_structured_tool",
+            "format_validate_and_record"
+          ],
+          "final": {
+            "mode": "pipeline:structured_reservation_fact",
+            "confidence": 0.94,
+            "execution_step": "execute_structured_tool",
+            "executed_capability": "structured.reservation",
+            "selected_matches_execution": true,
+            "validation_ok": true,
+            "validation_errors": [],
+            "validation_warnings": [],
+            "evidence_count": 1,
+            "source_ids": [
+              "booking_steps"
+            ]
+          },
+          "production_metrics": {
+            "policy_version": "correctness_control_flow_v2",
+            "outcome": "answered",
+            "quality_gate_status": "pass",
+            "candidate_margin": 0.51,
+            "selection_status": "selected",
+            "ambiguity_decision": "allow",
+            "repair_attempted": false,
+            "repair_recovered": false,
+            "llm_call_count": 1,
+            "requires_shadow_review": true,
+            "shadow_review_reasons": [
+              "llm_used"
+            ]
+          },
+          "entities": {
+            "day": null,
+            "time_slots": [],
+            "service": "pc",
+            "user_group": null,
+            "duration": null,
+            "price_intent": false
+          },
+          "structured_tool": {
+            "stage": "structured_tool",
+            "decision": "structured_reservation_fact",
+            "confidence": 0.94,
+            "detail": "get_reservation_fact",
+            "metadata": {
+              "tool": "get_reservation_fact",
+              "fact_key": "booking_steps",
+              "score": 0.8888888888888888,
+              "match_method": "fuzzy",
+              "matched_alias": "จองยังไง",
+              "elapsed": 6.9436,
+              "facts_composer_used": false
+            }
+          },
+          "tool_preconditions": [
+            {
+              "stage": "tool_precondition",
+              "decision": "allow_structured",
+              "confidence": 0.9,
+              "detail": "reservation_or_booking_query",
+              "metadata": {
+                "capability_id": "structured.reservation",
+                "ok": true,
+                "reason": "reservation_or_booking_query",
+                "severity": "policy",
+                "selector_allows_structured": true,
+                "selected_capability_id": "structured.reservation"
+              }
+            }
+          ],
+          "candidate_execution": [],
+          "validation": {
+            "stage": "validation",
+            "decision": "ok",
+            "confidence": 1.0,
+            "detail": "",
+            "metadata": {}
+          },
+          "llm_calls": [
+            {
+              "stage": "universal_intent",
+              "decision": "reservation/how_to",
+              "llm_kind": "universal_intent",
+              "llm_model": "scb10x/typhoon2.5-qwen3-4b",
+              "llm_timeout_sec": 14.0,
+              "llm_configured_timeout_sec": 14.0,
+              "llm_num_predict": 18,
+              "llm_num_ctx": 1536,
+              "llm_cache_hit": false,
+              "global_timeout_enabled": true,
+              "global_timeout_sec": 18.35,
+              "global_elapsed_sec": 0.8451,
+              "global_remaining_sec": 17.5048,
+              "finalizer_reserve_sec": 1.0,
+              "work_remaining_sec": 16.5048,
+              "timing_status": "running",
+              "llm_health_enabled": true,
+              "llm_health_allowed": true,
+              "llm_health_status": "ok",
+              "llm_health_kind": "universal_intent",
+              "llm_health_model": "scb10x/typhoon2.5-qwen3-4b",
+              "llm_health_failures": 0,
+              "llm_health_cooldown_remaining_sec": 0.0,
+              "llm_health_last_error_type": "",
+              "llm_health_last_error": "",
+              "llm_health_failure_scope": "kind_only",
+              "llm_budget_enabled": true,
+              "llm_budget_allowed": true,
+              "llm_budget_max_calls": 2,
+              "llm_budget_used_calls": 1,
+              "llm_budget_kind": "universal_intent",
+              "llm_concurrency_allowed": true,
+              "llm_concurrency_limit": 1,
+              "llm_concurrency_wait_sec": 0.2,
+              "llm_prompt_chars": 556,
+              "llm_candidate_count": 2,
+              "llm_compact_candidates_chars": 135,
+              "llm_elapsed_ms": 5627.79,
+              "llm_response_chars": 39,
+              "llm_done_reason": "stop",
+              "llm_parsed": true
+            }
+          ]
+        },
+        "entities": {
+          "day": null,
+          "time_slots": [],
+          "service": "pc",
+          "user_group": null,
+          "duration": null,
+          "price_intent": false,
+          "short_answer": false,
+          "comparison_intent": false,
+          "raw": {
+            "normalized_query": "จอง pc ยังไง",
+            "language_hint": "mixed_th_en"
+          }
+        },
+        "validation": {
+          "ok": true,
+          "errors": [],
+          "warnings": []
+        },
+        "trace": [
+          {
+            "stage": "locale_resolution",
+            "decision": "th",
+            "confidence": 1.0,
+            "detail": "toggle_override_th;thai_script",
+            "metadata": {
+              "requested": "th",
+              "detected": "th",
+              "effective": "th",
+              "confidence": 1.0,
+              "reason": "toggle_override_th;thai_script"
+            }
+          },
+          {
+            "stage": "intent_cue_preflight",
+            "decision": "unchanged",
+            "confidence": 1.0,
+            "detail": "bounded task cues; offsets refer to each intermediate input",
+            "metadata": {
+              "raw": "จอง PC ยังไง",
+              "candidate": "จอง PC ยังไง",
+              "recoveries": [],
+              "span_budget": 3,
+              "edit_budget": 4
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "split_multi_question",
+            "confidence": 1.0,
+            "detail": "parts=1",
+            "metadata": {
+              "elapsed_ms": 14.66,
+              "elapsed_sec": 0.0147,
+              "global_timeout_enabled": true,
+              "global_timeout_sec": 18.35,
+              "global_elapsed_sec": 0.0149,
+              "global_remaining_sec": 18.3351,
+              "finalizer_reserve_sec": 1.0,
+              "work_remaining_sec": 17.3351,
+              "timing_status": "running",
+              "parts": [
+                "จอง PC ยังไง"
+              ],
+              "competition_rule_query": false
+            }
+          },
+          {
+            "stage": "compound_complexity",
+            "decision": "simple",
+            "confidence": 0.0,
+            "detail": "single question",
+            "metadata": {
+              "level": "simple",
+              "score": 0.0,
+              "signals": [],
+              "can_parallelize": false,
+              "requires_planner": false,
+              "max_workers": 1,
+              "reason": "single question"
+            }
+          },
+          {
+            "stage": "query_planner",
+            "decision": "skipped",
+            "confidence": 0.0,
+            "detail": "single clear operation does not need planner",
+            "metadata": {
+              "method": "gated",
+              "llm_attempted": false,
+              "allow_llm": true
+            }
+          },
+          {
+            "stage": "preprocess",
+            "decision": "normalized",
+            "confidence": 1.0,
+            "detail": "จอง pc ยังไง",
+            "metadata": {
+              "language_hint": "mixed_th_en",
+              "nonsemantic_preface_removed": false,
+              "query_variants": [
+                "จอง PC ยังไง"
+              ],
+              "elapsed_ms": 13.24,
+              "elapsed_sec": 0.0132
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "preprocess",
+            "confidence": 1.0,
+            "detail": "",
+            "metadata": {
+              "elapsed_ms": 13.41,
+              "elapsed_sec": 0.0134
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "active_route_selection",
+            "confidence": 1.0,
+            "detail": "reservation/booking_policy",
+            "metadata": {
+              "elapsed_ms": 1.02,
+              "elapsed_sec": 0.001,
+              "route_category": "reservation",
+              "route_intent": "booking_policy",
+              "variant_count": 0
+            }
+          },
+          {
+            "stage": "entities",
+            "decision": "extracted",
+            "confidence": 0.9,
+            "detail": "",
+            "metadata": {
+              "day": null,
+              "time_slots": [],
+              "service": "pc",
+              "user_group": null,
+              "duration": null,
+              "price_intent": false
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "semantic_route_refiner",
+            "confidence": 1.0,
+            "detail": "skipped_protected_route",
+            "metadata": {
+              "elapsed_ms": 0.03,
+              "elapsed_sec": 0.0,
+              "route_category": "reservation",
+              "route_intent": "booking_policy",
+              "route_locked": false
+            }
+          },
+          {
+            "stage": "semantic_route_refiner",
+            "decision": "skipped_protected_route",
+            "confidence": 0.94,
+            "detail": "protected=reservation/booking_policy",
+            "metadata": {}
+          },
+          {
+            "stage": "freshness_guard",
+            "decision": "not_required",
+            "confidence": 0.9,
+            "detail": "query does not require live dynamic evidence",
+            "metadata": {
+              "requires_live_evidence": false
+            }
+          },
+          {
+            "stage": "boundary_guard",
+            "decision": "allow",
+            "confidence": 0.9,
+            "detail": "no high-confidence boundary matched",
+            "metadata": {
+              "flags": []
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "guard_scope",
+            "confidence": 1.0,
+            "detail": "",
+            "metadata": {
+              "elapsed_ms": 0.02,
+              "elapsed_sec": 0.0
+            }
+          },
+          {
+            "stage": "guard",
+            "decision": "domain_ok",
+            "confidence": 0.9,
+            "detail": "domain hints found",
+            "metadata": {}
+          },
+          {
+            "stage": "router",
+            "decision": "reservation",
+            "confidence": 0.94,
+            "detail": "booking selection terms found before game availability",
+            "metadata": {
+              "intent": "booking_policy",
+              "answer_type": "fact"
+            }
+          },
+          {
+            "stage": "model_gateway",
+            "decision": "allow_preflight_llm",
+            "confidence": 0.94,
+            "detail": "ambiguous route may benefit from model review",
+            "metadata": {
+              "allow_llm": true,
+              "preflight_allow_llm": true,
+              "route_category": "reservation",
+              "route_intent": "booking_policy"
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "universal_intent",
+            "confidence": 1.0,
+            "detail": "reservation/how_to",
+            "metadata": {
+              "elapsed_ms": 6430.92,
+              "elapsed_sec": 6.4309,
+              "method": "llm",
+              "confidence": 0.9
+            }
+          },
+          {
+            "stage": "universal_intent",
+            "decision": "reservation/how_to",
+            "confidence": 0.9,
+            "detail": "candidate_intent:c1 heuristic fallback",
+            "metadata": {
+              "method": "llm",
+              "llm_attempted": true,
+              "llm_first": true,
+              "llm_first_skip_reason": "",
+              "llm_first_review_reason": "",
+              "llm_call": {
+                "llm_kind": "universal_intent",
+                "llm_model": "scb10x/typhoon2.5-qwen3-4b",
+                "llm_timeout_sec": 14.0,
+                "llm_configured_timeout_sec": 14.0,
+                "llm_num_predict": 18,
+                "llm_num_ctx": 1536,
+                "llm_cache_hit": false,
+                "global_timeout_enabled": true,
+                "global_timeout_sec": 18.35,
+                "global_elapsed_sec": 0.8451,
+                "global_remaining_sec": 17.5048,
+                "finalizer_reserve_sec": 1.0,
+                "work_remaining_sec": 16.5048,
+                "timing_status": "running",
+                "llm_health_enabled": true,
+                "llm_health_allowed": true,
+                "llm_health_status": "ok",
+                "llm_health_kind": "universal_intent",
+                "llm_health_model": "scb10x/typhoon2.5-qwen3-4b",
+                "llm_health_failures": 0,
+                "llm_health_cooldown_remaining_sec": 0.0,
+                "llm_health_last_error_type": "",
+                "llm_health_last_error": "",
+                "llm_health_failure_scope": "kind_only",
+                "llm_budget_enabled": true,
+                "llm_budget_allowed": true,
+                "llm_budget_max_calls": 2,
+                "llm_budget_used_calls": 1,
+                "llm_budget_kind": "universal_intent",
+                "llm_concurrency_allowed": true,
+                "llm_concurrency_limit": 1,
+                "llm_concurrency_wait_sec": 0.2,
+                "llm_prompt_chars": 556,
+                "llm_candidate_count": 2,
+                "llm_compact_candidates_chars": 135,
+                "llm_elapsed_ms": 5627.79,
+                "llm_response_chars": 39,
+                "llm_done_reason": "stop",
+                "llm_parsed": true
+              },
+              "intent_risk_flags": [
+                "competing_domain_signals"
+              ],
+              "input_recovery": {
+                "score": 0.0857,
+                "language": "mixed",
+                "language_quality": 0.9143,
+                "should_review_intent": false,
+                "reason": "Thai character n-gram quality=0.914",
+                "action": "continue"
+              },
+              "llm_rejected_reason": "",
+              "intent_candidates": [
+                {
+                  "id": "c1",
+                  "domain": "reservation",
+                  "operation": "how_to",
+                  "target": "",
+                  "confidence": 0.87,
+                  "reason": "heuristic fallback"
+                },
+                {
+                  "id": "c2",
+                  "domain": "equipment",
+                  "operation": "how_to",
+                  "target": "",
+                  "confidence": 0.74,
+                  "reason": "domain keyword score=2"
+                }
+              ],
+              "target": "",
+              "filters": {},
+              "needs": [],
+              "answer_style": "direct_then_details",
+              "heuristic": {
+                "domain": "reservation",
+                "operation": "how_to",
+                "confidence": 0.87,
+                "reason": "domain_terms=3; reservation route overrides entity/game domain; how-to terms found"
+              }
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "tool_router",
+            "confidence": 1.0,
+            "detail": "structured/reservation",
+            "metadata": {
+              "elapsed_ms": 0.04,
+              "elapsed_sec": 0.0,
+              "method": "heuristic",
+              "confidence": 0.9
+            }
+          },
+          {
+            "stage": "tool_router",
+            "decision": "heuristic:structured",
+            "confidence": 0.9,
+            "detail": "PSU_LLM_TOOL_ROUTER is not enabled",
+            "metadata": {
+              "method": "heuristic",
+              "llm_attempted": false
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "ambiguity_gate",
+            "confidence": 1.0,
+            "detail": "allow",
+            "metadata": {
+              "elapsed_ms": 36.58,
+              "elapsed_sec": 0.0366,
+              "flags": [],
+              "confidence": 0.94
+            }
+          },
+          {
+            "stage": "ambiguity_gate",
+            "decision": "allow",
+            "confidence": 0.94,
+            "detail": "ambiguity risk acceptable",
+            "metadata": {
+              "flags": [],
+              "route": "reservation/booking_policy",
+              "intent": "reservation/how_to",
+              "has_known_game": false,
+              "has_service_or_zone": true,
+              "game_entity_resolution": {
+                "status": "unknown",
+                "entity_type": "game",
+                "top_candidate": null,
+                "candidates": [],
+                "top_score": 0.0,
+                "margin": 0.0,
+                "reason": "shortlist_below_threshold",
+                "operation": "booking",
+                "resolver": "bounded_trigram_v1",
+                "catalog_version": "bacdf919d5e4323c",
+                "method": "trigram_fuzzy",
+                "candidate_count": 7,
+                "comparison_count": 7,
+                "elapsed_ms": 5.129,
+                "request_cache_hit": false,
+                "budget_exceeded": false,
+                "reranker": {
+                  "enabled": false,
+                  "action": "skipped",
+                  "reason": "disabled"
+                }
+              },
+              "intent_candidates": [
+                {
+                  "domain": "reservation",
+                  "operation": "booking_policy",
+                  "score": 0.95,
+                  "reasons": [
+                    "booking_terms",
+                    "booking_target",
+                    "route_prior",
+                    "intent_domain_prior"
+                  ]
+                },
+                {
+                  "domain": "service_fee",
+                  "operation": "price_calculate",
+                  "score": 0.18,
+                  "reasons": [
+                    "service_or_zone_target"
+                  ]
+                },
+                {
+                  "domain": "equipment",
+                  "operation": "list",
+                  "score": 0.16,
+                  "reasons": [
+                    "service_or_zone_target"
+                  ]
+                },
+                {
+                  "domain": "games",
+                  "operation": "list",
+                  "score": 0.15,
+                  "reasons": [
+                    "service_or_zone_target"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "question_frame",
+            "confidence": 0.96,
+            "detail": "reservation/booking_lookup",
+            "metadata": {
+              "elapsed_ms": 181.37,
+              "elapsed_sec": 0.1814,
+              "operation": "booking_lookup",
+              "domain": "reservation",
+              "expected_answer_types": [
+                "booking",
+                "how_to"
+              ],
+              "targets": [
+                {
+                  "target_id": "availability_pc_01_02",
+                  "target_type": "service",
+                  "domain": "service_fee",
+                  "label": "PC #01-#02",
+                  "score": 1.0
+                }
+              ],
+              "target_status": "ambiguous",
+              "target_margin": 0.0,
+              "target_required": false,
+              "allows_multiple_targets": false,
+              "needs_clarification": false,
+              "confidence": 0.96,
+              "method": "operation_first",
+              "route_category": "reservation",
+              "route_intent": "booking_policy",
+              "intent_operation": "how_to",
+              "target_reason": "top_targets_low_margin",
+              "target_candidate_count": 2,
+              "game_family": ""
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "candidate_decisions",
+            "confidence": 1.0,
+            "detail": "",
+            "metadata": {
+              "elapsed_ms": 55.76,
+              "elapsed_sec": 0.0558
+            }
+          },
+          {
+            "stage": "decision_candidates",
+            "decision": "structured.reservation",
+            "confidence": 0.999,
+            "detail": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=reservation; question_frame_domain_match; question_frame_operation=booking_lookup; precondition=reservation_or_booking_query",
+            "metadata": {
+              "selected": {
+                "capability_id": "structured.reservation",
+                "action": "structured",
+                "domain": "reservation",
+                "score": 0.999,
+                "status": "accepted",
+                "reason": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=reservation; question_frame_domain_match; question_frame_operation=booking_lookup; precondition=reservation_or_booking_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              "selection": {
+                "status": "selected",
+                "execution_allowed": true,
+                "margin": 0.51,
+                "same_action_as_second": false,
+                "second": {
+                  "capability_id": "fast.domain_handlers",
+                  "action": "fast_path",
+                  "domain": "multi",
+                  "score": 0.489,
+                  "status": "accepted",
+                  "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+                  "requires_evidence": true,
+                  "risk": "medium"
+                }
+              },
+              "question_frame": {
+                "operation": "booking_lookup",
+                "domain": "reservation",
+                "expected_answer_types": [
+                  "booking",
+                  "how_to"
+                ],
+                "targets": [
+                  {
+                    "target_id": "availability_pc_01_02",
+                    "target_type": "service",
+                    "domain": "service_fee",
+                    "label": "PC #01-#02",
+                    "score": 1.0
+                  }
+                ],
+                "target_status": "ambiguous",
+                "target_margin": 0.0,
+                "target_required": false,
+                "allows_multiple_targets": false,
+                "needs_clarification": false,
+                "confidence": 0.96,
+                "method": "operation_first",
+                "route_category": "reservation",
+                "route_intent": "booking_policy",
+                "intent_operation": "how_to",
+                "target_reason": "top_targets_low_margin",
+                "target_candidate_count": 2,
+                "game_family": ""
+              },
+              "candidates": [
+                {
+                  "capability_id": "structured.reservation",
+                  "action": "structured",
+                  "domain": "reservation",
+                  "score": 0.999,
+                  "status": "accepted",
+                  "reason": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=reservation; question_frame_domain_match; question_frame_operation=booking_lookup; precondition=reservation_or_booking_query",
+                  "requires_evidence": true,
+                  "risk": "medium"
+                },
+                {
+                  "capability_id": "fast.domain_handlers",
+                  "action": "fast_path",
+                  "domain": "multi",
+                  "score": 0.489,
+                  "status": "accepted",
+                  "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+                  "requires_evidence": true,
+                  "risk": "medium"
+                },
+                {
+                  "capability_id": "rulebase.category_rules",
+                  "action": "rulebase",
+                  "domain": "multi",
+                  "score": 0.467,
+                  "status": "accepted",
+                  "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                  "requires_evidence": true,
+                  "risk": "medium"
+                },
+                {
+                  "capability_id": "retrieval.hybrid_guarded",
+                  "action": "retrieval",
+                  "domain": "multi",
+                  "score": 0.456,
+                  "status": "accepted",
+                  "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                  "requires_evidence": true,
+                  "risk": "medium"
+                },
+                {
+                  "capability_id": "retrieval.vector_guarded",
+                  "action": "vector",
+                  "domain": "multi",
+                  "score": 0.444,
+                  "status": "accepted",
+                  "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                  "requires_evidence": true,
+                  "risk": "medium"
+                },
+                {
+                  "capability_id": "llm.facts_composer",
+                  "action": "rag_llm",
+                  "domain": "multi",
+                  "score": 0.4,
+                  "status": "accepted",
+                  "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                  "requires_evidence": true,
+                  "risk": "medium"
+                },
+                {
+                  "capability_id": "clarification.ask_user",
+                  "action": "clarification",
+                  "domain": "clarification",
+                  "score": 0.322,
+                  "status": "accepted",
+                  "reason": "base=0.58; precondition=no_specific_precondition",
+                  "requires_evidence": false,
+                  "risk": "low"
+                },
+                {
+                  "capability_id": "fallback.no_answer",
+                  "action": "no_answer",
+                  "domain": "no_answer",
+                  "score": 0.278,
+                  "status": "accepted",
+                  "reason": "base=0.50; precondition=no_specific_precondition",
+                  "requires_evidence": false,
+                  "risk": "low"
+                }
+              ],
+              "rejected": [
+                {
+                  "capability_id": "structured.members",
+                  "action": "structured",
+                  "domain": "members",
+                  "score": 0.156,
+                  "status": "rejected",
+                  "reason": "precondition_veto: not_a_member_query",
+                  "requires_evidence": true,
+                  "risk": "low"
+                },
+                {
+                  "capability_id": "structured.games",
+                  "action": "structured",
+                  "domain": "games",
+                  "score": 0.156,
+                  "status": "rejected",
+                  "reason": "precondition_veto: booking_query_must_not_use_game_tool",
+                  "requires_evidence": true,
+                  "risk": "low"
+                },
+                {
+                  "capability_id": "structured.game_controls",
+                  "action": "structured",
+                  "domain": "game_controls",
+                  "score": 0.156,
+                  "status": "rejected",
+                  "reason": "precondition_veto: not_a_game_control_query",
+                  "requires_evidence": true,
+                  "risk": "low"
+                },
+                {
+                  "capability_id": "structured.equipment",
+                  "action": "structured",
+                  "domain": "equipment",
+                  "score": 0.156,
+                  "status": "rejected",
+                  "reason": "precondition_veto: booking_query_must_not_use_equipment_tool",
+                  "requires_evidence": true,
+                  "risk": "low"
+                },
+                {
+                  "capability_id": "structured.schedule",
+                  "action": "structured",
+                  "domain": "schedule",
+                  "score": 0.156,
+                  "status": "rejected",
+                  "reason": "precondition_veto: not_a_schedule_query",
+                  "requires_evidence": true,
+                  "risk": "medium"
+                },
+                {
+                  "capability_id": "structured.service_fee",
+                  "action": "structured",
+                  "domain": "service_fee",
+                  "score": 0.156,
+                  "status": "rejected",
+                  "reason": "precondition_veto: not_a_price_query",
+                  "requires_evidence": true,
+                  "risk": "medium"
+                },
+                {
+                  "capability_id": "fast.price_calculator",
+                  "action": "fast_path",
+                  "domain": "service_fee",
+                  "score": 0.156,
+                  "status": "rejected",
+                  "reason": "precondition_veto: not_a_price_or_calculation_query",
+                  "requires_evidence": true,
+                  "risk": "medium"
+                },
+                {
+                  "capability_id": "retrieval.competition_fact_cards",
+                  "action": "retrieval",
+                  "domain": "competition_rules",
+                  "score": 0.156,
+                  "status": "rejected",
+                  "reason": "precondition_veto: not_a_competition_rule_query",
+                  "requires_evidence": true,
+                  "risk": "medium"
+                }
+              ],
+              "policy": {
+                "psu_specific": true,
+                "route_risk": "medium",
+                "general_llm_requires_non_psu": true
+              }
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "tool_precondition",
+            "confidence": 1.0,
+            "detail": "structured.reservation",
+            "metadata": {
+              "elapsed_ms": 0.31,
+              "elapsed_sec": 0.0003,
+              "ok": true
+            }
+          },
+          {
+            "stage": "tool_precondition",
+            "decision": "allow_structured",
+            "confidence": 0.9,
+            "detail": "reservation_or_booking_query",
+            "metadata": {
+              "capability_id": "structured.reservation",
+              "ok": true,
+              "reason": "reservation_or_booking_query",
+              "severity": "policy",
+              "selector_allows_structured": true,
+              "selected_capability_id": "structured.reservation"
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "structured_tool_execution",
+            "confidence": 1.0,
+            "detail": "structured_reservation_fact",
+            "metadata": {
+              "elapsed_ms": 183.88,
+              "elapsed_sec": 0.1839,
+              "precondition_ok": true,
+              "selector_allows_structured": true,
+              "selected_capability_id": "structured.reservation",
+              "confidence": 0.94
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "facts_composer",
+            "confidence": 1.0,
+            "detail": "disabled",
+            "metadata": {
+              "elapsed_ms": 0.04,
+              "elapsed_sec": 0.0,
+              "used_llm": false
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "format_answer",
+            "confidence": 1.0,
+            "detail": "structured_reservation_fact",
+            "metadata": {
+              "elapsed_ms": 0.02,
+              "elapsed_sec": 0.0
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "validation",
+            "confidence": 1.0,
+            "detail": "ok",
+            "metadata": {
+              "elapsed_ms": 94.43,
+              "elapsed_sec": 0.0944,
+              "error_count": 0,
+              "warning_count": 0
+            }
+          },
+          {
+            "stage": "structured_tool",
+            "decision": "structured_reservation_fact",
+            "confidence": 0.94,
+            "detail": "get_reservation_fact",
+            "metadata": {
+              "tool": "get_reservation_fact",
+              "fact_key": "booking_steps",
+              "score": 0.8888888888888888,
+              "match_method": "fuzzy",
+              "matched_alias": "จองยังไง",
+              "elapsed": 6.9436,
+              "facts_composer_used": false
+            }
+          },
+          {
+            "stage": "validation",
+            "decision": "ok",
+            "confidence": 1.0,
+            "detail": "",
+            "metadata": {}
+          },
+          {
+            "stage": "timing",
+            "decision": "build_result",
+            "confidence": 1.0,
+            "detail": "pipeline:structured_reservation_fact",
+            "metadata": {
+              "elapsed_ms": 0.63,
+              "elapsed_sec": 0.0006,
+              "format_response_style_ms": 0.2,
+              "answer_language": "th",
+              "total_elapsed_ms": 7039.91,
+              "total_elapsed_sec": 7.0399
+            }
+          }
+        ],
+        "log_sinks": {
+          "status": "queued"
+        }
+      }
+    },
+    {
+      "case": "price-en",
+      "question": "How much does PC cost?",
+      "locale": "en",
+      "http_wall_sec": 0.1549,
+      "failures": [],
+      "response": {
+        "ok": true,
+        "request_id": "ea21beada3cd4ce1968541b52a7014c1",
+        "session_id": "r22-fa810ccca8324895a5cf8c422c9a1172",
+        "answer": "PC - 1 hour (1 people)\n- PSU students and staff: 0 THB\n- PSU alumni and students from other institutions: 25 THB\n- General adults: 70 THB\nPrices are calculated deterministically from the Service Fee 2026 table.\nSource: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png (original source in Thai)",
+        "mode": "pipeline:structured_service_fee_en",
+        "route_category": "service_fee",
+        "route_intent": "service_fee_query",
+        "universal_intent": null,
+        "confidence": 0.9,
+        "latency_sec": 0.1208,
+        "wall_sec": 0.1312,
+        "deadline": {
+          "global_timeout_enabled": true,
+          "global_timeout_sec": 20.0,
+          "global_elapsed_sec": 0.1311,
+          "global_remaining_sec": 19.8689,
+          "finalizer_reserve_sec": 1.0,
+          "work_remaining_sec": 18.8689,
+          "timing_status": "running"
+        },
+        "timing_status": "completed",
+        "timed_out": false,
+        "timeout_stage": "",
+        "retryable": false,
+        "worker_id": 0,
+        "sources": [
+          {
+            "id": "service_fee_image_2026",
+            "url": "https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+          },
+          {
+            "id": "pc_service_fee_local_update_20260727",
+            "url": "https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+          }
+        ],
+        "validation_ok": true,
+        "language": {
+          "requested": "en",
+          "detected": "en",
+          "effective": "en",
+          "confidence": 1.0,
+          "reason": "toggle_override_en;english_sentence_structure"
+        },
+        "experimental_rag_fallback": true,
+        "experimental_allow_llm": true,
+        "input_recovery": {
+          "score": 0.4311,
+          "language": "en",
+          "language_quality": 0.5689,
+          "should_review_intent": true,
+          "reason": "English character n-gram quality=0.569",
+          "action": "bounded_llm_intent_review"
+        },
+        "server_date": {
+          "iso": "2026-10-01",
+          "label": "01/10/2026 (วันพฤหัสบดี)",
+          "time": "15:02",
+          "datetime_iso": "2026-10-01T15:02:16.017431+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-01",
+            "time": "15:02",
+            "weekday": "วันพฤหัสบดี",
+            "timezone": "Asia/Bangkok",
+            "status": "open",
+            "playable": true,
+            "slot": {
+              "code": "afternoon",
+              "label": "Afternoon",
+              "start": "13:00",
+              "end": "16:00",
+              "time_range": "13:00-16:00",
+              "state": "open",
+              "note": "เปิดให้บริการ"
+            },
+            "next_open_slot": null,
+            "reason": "open",
+            "note": "เปิดให้บริการ",
+            "source": "reservation_schedule"
+          },
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "calendar": {
+          "date": "2026-10-01",
+          "label": "01/10/2026 (วันพฤหัสบดี)",
+          "weekday": "วันพฤหัสบดี",
+          "time": "15:02",
+          "datetime_iso": "2026-10-01T15:02:16.017431+07:00",
+          "timezone": "Asia/Bangkok",
+          "service_slot": {
+            "date": "2026-10-01",
+            "time": "15:02",
+            "weekday": "วันพฤหัสบดี",
+            "timezone": "Asia/Bangkok",
+            "status": "open",
+            "playable": true,
+            "slot": {
+              "code": "afternoon",
+              "label": "Afternoon",
+              "start": "13:00",
+              "end": "16:00",
+              "time_range": "13:00-16:00",
+              "state": "open",
+              "note": "เปิดให้บริการ"
+            },
+            "next_open_slot": null,
+            "reason": "open",
+            "note": "เปิดให้บริการ",
+            "source": "reservation_schedule"
+          },
+          "service_closure": null,
+          "thai_holidays": [],
+          "upcoming_thai_holidays": [
+            {
+              "date": "2026-10-13",
+              "title": "วันนวมินทรมหาราช",
+              "type": "national_holiday",
+              "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-16",
+              "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+              "type": "bank_holiday_bangkok",
+              "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+              "source": "Bank of Thailand Financial Institutions Holidays 2026",
+              "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+            },
+            {
+              "date": "2026-10-23",
+              "title": "วันปิยมหาราช",
+              "type": "national_holiday",
+              "note": "วันหยุดประจำปีของไทย",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-10-31",
+              "title": "วันฮาโลวีน",
+              "type": "observance",
+              "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            },
+            {
+              "date": "2026-12-05",
+              "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+              "type": "national_holiday",
+              "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+              "source": "Time and Date Thailand holidays 2026",
+              "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+            }
+          ]
+        },
+        "input_quality": {
+          "action": "continue",
+          "detected_action": "continue",
+          "applied_action": "continue",
+          "should_retype": false,
+          "flags": [],
+          "layout_score": 0.025857,
+          "repeat_score": 0.0,
+          "guard_status": "passed",
+          "guard_mode": "enforce",
+          "repeat_policy": "warn_and_continue",
+          "profile_version": "keyboard-profile-v1:5cb1f63359ca84bf",
+          "guard_elapsed_ms": 1.139
+        },
+        "context_resolution": {
+          "original_question": "How much does PC cost?",
+          "resolved_question": "How much does PC cost?",
+          "used_context": false,
+          "context_game": null,
+          "context_domain": null,
+          "context_operation": null,
+          "context_topic": null,
+          "reason": "english_context_preserved_without_rewrite"
+        },
+        "query_debug": {
+          "original_question": "How much does PC cost?",
+          "resolved_question": "How much does PC cost?",
+          "normalized_query": "how much does pc cost?",
+          "query_variants": [
+            "How much does PC cost?"
+          ],
+          "active_query": "How much does PC cost?",
+          "active_query_changed": false,
+          "trace": [
+            {
+              "stage": "preprocess",
+              "decision": "normalized",
+              "confidence": 1.0,
+              "detail": "how much does pc cost?",
+              "metadata": {
+                "language_hint": "en",
+                "nonsemantic_preface_removed": false,
+                "query_variants": [
+                  "How much does PC cost?"
+                ],
+                "elapsed_ms": 0.45,
+                "elapsed_sec": 0.0004
+              }
+            }
+          ]
+        },
+        "decision_artifact": {
+          "intent": {
+            "domain": "service_fee",
+            "operation": "service_fee_query",
+            "target": "",
+            "confidence": 0.9,
+            "method": "route"
+          },
+          "route": {
+            "category": "service_fee",
+            "intent": "service_fee_query",
+            "confidence": 0.9,
+            "answer_type": "fact",
+            "risk": "low",
+            "reason": "shared deterministic service fee record with English template"
+          },
+          "tool_router": null,
+          "selected_candidate": null,
+          "candidates": [],
+          "rejected": [],
+          "policy": {},
+          "execution_plan": [
+            "normalize_and_extract_entities",
+            "route_and_resolve_universal_intent",
+            "generate_capability_candidates",
+            "apply_policy_and_rank",
+            "apply_tool_preconditions",
+            "execute_structured_tool",
+            "format_validate_and_record"
+          ],
+          "final": {
+            "mode": "pipeline:structured_service_fee_en",
+            "confidence": 0.9,
+            "execution_step": "execute_structured_tool",
+            "executed_capability": "structured.service_fee",
+            "selected_matches_execution": false,
+            "validation_ok": true,
+            "validation_errors": [],
+            "validation_warnings": [],
+            "evidence_count": 2,
+            "source_ids": [
+              "service_fee_image_2026",
+              "pc_service_fee_local_update_20260727"
+            ]
+          },
+          "production_metrics": {
+            "policy_version": "correctness_control_flow_v2",
+            "outcome": "answered",
+            "quality_gate_status": "pass",
+            "candidate_margin": null,
+            "selection_status": "",
+            "ambiguity_decision": "",
+            "repair_attempted": false,
+            "repair_recovered": false,
+            "llm_call_count": 0,
+            "requires_shadow_review": true,
+            "shadow_review_reasons": [
+              "selected_execution_mismatch"
+            ]
+          },
+          "entities": {
+            "day": null,
+            "time_slots": [],
+            "service": "pc",
+            "user_group": null,
+            "duration": null,
+            "price_intent": true
+          },
+          "structured_tool": null,
+          "tool_preconditions": [],
+          "candidate_execution": [],
+          "validation": null,
+          "llm_calls": []
+        },
+        "entities": {
+          "day": null,
+          "time_slots": [],
+          "service": "pc",
+          "user_group": null,
+          "duration": null,
+          "price_intent": true,
+          "short_answer": false,
+          "comparison_intent": false,
+          "raw": {
+            "normalized_query": "how much does pc cost?",
+            "language_hint": "en"
+          }
+        },
+        "validation": {
+          "ok": true,
+          "errors": [],
+          "warnings": []
+        },
+        "trace": [
+          {
+            "stage": "locale_resolution",
+            "decision": "en",
+            "confidence": 1.0,
+            "detail": "toggle_override_en;english_sentence_structure",
+            "metadata": {
+              "requested": "en",
+              "detected": "en",
+              "effective": "en",
+              "confidence": 1.0,
+              "reason": "toggle_override_en;english_sentence_structure"
+            }
+          },
+          {
+            "stage": "intent_cue_preflight",
+            "decision": "unchanged",
+            "confidence": 1.0,
+            "detail": "bounded task cues; offsets refer to each intermediate input",
+            "metadata": {
+              "raw": "How much does PC cost?",
+              "candidate": "How much does PC cost?",
+              "recoveries": [],
+              "span_budget": 3,
+              "edit_budget": 4
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "split_multi_question",
+            "confidence": 1.0,
+            "detail": "parts=1",
+            "metadata": {
+              "elapsed_ms": 12.15,
+              "elapsed_sec": 0.0121,
+              "global_timeout_enabled": true,
+              "global_timeout_sec": 18.35,
+              "global_elapsed_sec": 0.0127,
+              "global_remaining_sec": 18.3373,
+              "finalizer_reserve_sec": 1.0,
+              "work_remaining_sec": 17.3373,
+              "timing_status": "running",
+              "parts": [
+                "How much does PC cost?"
+              ],
+              "competition_rule_query": false
+            }
+          },
+          {
+            "stage": "compound_complexity",
+            "decision": "simple",
+            "confidence": 0.0,
+            "detail": "single question",
+            "metadata": {
+              "level": "simple",
+              "score": 0.0,
+              "signals": [],
+              "can_parallelize": false,
+              "requires_planner": false,
+              "max_workers": 1,
+              "reason": "single question"
+            }
+          },
+          {
+            "stage": "query_planner",
+            "decision": "skipped",
+            "confidence": 0.0,
+            "detail": "single clear operation does not need planner",
+            "metadata": {
+              "method": "gated",
+              "llm_attempted": false,
+              "allow_llm": true
+            }
+          },
+          {
+            "stage": "preprocess",
+            "decision": "normalized",
+            "confidence": 1.0,
+            "detail": "how much does pc cost?",
+            "metadata": {
+              "language_hint": "en",
+              "nonsemantic_preface_removed": false,
+              "query_variants": [
+                "How much does PC cost?"
+              ],
+              "elapsed_ms": 0.45,
+              "elapsed_sec": 0.0004
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "preprocess",
+            "confidence": 1.0,
+            "detail": "",
+            "metadata": {
+              "elapsed_ms": 0.57,
+              "elapsed_sec": 0.0006
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "active_route_selection",
+            "confidence": 1.0,
+            "detail": "service_fee/service_fee_query",
+            "metadata": {
+              "elapsed_ms": 0.84,
+              "elapsed_sec": 0.0008,
+              "route_category": "service_fee",
+              "route_intent": "service_fee_query",
+              "variant_count": 0
+            }
+          },
+          {
+            "stage": "entities",
+            "decision": "extracted",
+            "confidence": 0.9,
+            "detail": "",
+            "metadata": {
+              "day": null,
+              "time_slots": [],
+              "service": "pc",
+              "user_group": null,
+              "duration": null,
+              "price_intent": true
+            }
+          },
+          {
+            "stage": "bilingual_route",
+            "decision": "pipeline:structured_service_fee_en",
+            "confidence": 0.9,
+            "detail": "shared deterministic service fee record with English template",
+            "metadata": {
+              "effective_locale": "en",
+              "route_category": "service_fee",
+              "route_intent": "service_fee_query",
+              "runtime_translation": false
+            }
+          },
+          {
+            "stage": "timing",
+            "decision": "build_result",
+            "confidence": 1.0,
+            "detail": "pipeline:structured_service_fee_en",
+            "metadata": {
+              "elapsed_ms": 0.73,
+              "elapsed_sec": 0.0007,
+              "format_response_style_ms": 0.0,
+              "answer_language": "en",
+              "total_elapsed_ms": 120.72,
+              "total_elapsed_sec": 0.1207
+            }
+          }
+        ],
+        "log_sinks": {
+          "status": "queued"
+        }
+      }
+    }
+  ],
+  "passed": 6,
+  "total": 6
+}

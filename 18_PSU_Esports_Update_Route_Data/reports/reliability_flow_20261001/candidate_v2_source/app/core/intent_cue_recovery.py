@@ -1,0 +1,286 @@
+"""Bounded recovery of task words; never rewrites names, dates or numbers.
+
+This complements the existing phrase and keyboard recoverers. Its lexicon is
+made of operations the bot already supports, not whole user questions.
+"""
+from __future__ import annotations
+
+import os
+import re
+from dataclasses import dataclass
+
+from app.core.typo_similarity import osa_distance
+
+
+_TIME = re.compile(r"\b\d{1,2}:\d{2}\b")
+_RESOURCE = re.compile(r"\b(?:pc|ps5|vr|cockpit|nintendo|switch|playstation)\b|โซน|เครื่อง", re.I)
+_EN_TOKEN = re.compile(r"[A-Za-z]+")
+_POLITE = ("ครับ", "ค่ะ", "คับ", "คะ")
+_VALID_THAI_PRICE = ("ราคาเท่าไหร่", "ราคาเท่าไร", "ราคากี่บาท")
+_VALID_ENGLISH_WORDS = {
+    "play", "pay", "book", "look", "free", "game", "games", "gates", "names",
+    "times", "came", "same", "name", "gear", "tone", "done", "looking", "cooking",
+    "drink", "drinks", "allowed", "permitted", "booking", "information", "equipment",
+    "zone", "zones",
+}
+
+
+@dataclass(frozen=True)
+class CueRecovery:
+    raw: str
+    recovered: str
+    observed: str
+    intended: str
+    start: int
+    distance: int
+    reason: str
+
+
+def _contextual_task_cue(text: str) -> CueRecovery | None:
+    """One-edit task words inside syntax frames, not a global spellchecker."""
+    lower = text.casefold()
+    tokens = list(_EN_TOKEN.finditer(text))
+
+    def near(word: str) -> bool:
+        return any(
+            abs(len(token.group()) - len(word)) <= 1
+            and osa_distance(token.group().casefold(), word) <= 1
+            for token in tokens
+        )
+
+    booking_context = near("booking") or bool(re.search(r"\b(?:book|reserve|reservation)\b", lower))
+    permission_context = near("allowed") or bool(re.search(r"\b(?:permitted|bring)\b", lower))
+    drink_context = near("drinks") or bool(re.search(r"\b(?:food|snacks|water|alcoholic)\b", lower))
+    for match in tokens:
+        observed = match.group().casefold()
+        if observed in _VALID_ENGLISH_WORDS or len(observed) < 4:
+            continue
+        before, after = lower[:match.start()], lower[match.end():]
+        targets = []
+        # The object immediately following a list interrogative is catalog
+        # vocabulary. "Available" alone is not evidence for live slots.
+        if re.search(r"\b(?:what|which|many|list|show)(?:\s+(?:me|the|pc|studio|any))*\s+$", before):
+            if re.match(r"\s+(?:(?:is|are)\s+)?(?:available|in|for|on|does|do)\b", after):
+                targets.extend(("games", "equipment"))
+        if booking_context and re.search(r"\b(?:what|which)(?:\s+(?:user|required))*\s+$", before):
+            targets.append("information")
+        if (near("information") or re.search(r"\b(?:how|when|pay|payment|after|make)\b", lower)):
+            if re.search(r"\b(?:a|after|for|make|my|the)\s+$", before):
+                targets.append("booking")
+        if re.search(r"\bwhich(?:\s+studio)?\s+$", before) and re.match(r"\s+(?:has|have|is)\b", after):
+            targets.append("zone")
+        if re.match(r"\s*(?:are|is|can|may)\b", lower) and permission_context:
+            targets.append("drinks")
+        if re.match(r"\s*(?:are|is|can|may)\b", lower) and drink_context:
+            targets.append("allowed")
+        winners = sorted({
+            target for target in targets
+            if abs(len(observed) - len(target)) <= 1 and osa_distance(observed, target) == 1
+        })
+        if len(winners) != 1:
+            continue
+        target = winners[0]
+        return CueRecovery(
+            text, text[:match.start()] + target + text[match.end():],
+            match.group(), target, match.start(), 1, "syntax-anchored task-word recovery",
+        )
+
+    # A Thai conjunction is recoverable only as a bridge between operations.
+    # This deliberately does not correct short Thai words anywhere in input.
+    if _RESOURCE.search(text):
+        right_operations = r"(?:จอง(?:ยังไง|อย่างไร)|มีเกม|มีอุปกรณ์|เปิดกี่โมง)"
+        for right in re.finditer(right_operations, text):
+            prefix = text[:right.start()].rstrip()
+            if prefix.endswith(("แล้ว", "และ", "ส่วน")):
+                continue
+            candidates = []
+            for length in (3, 4, 5):
+                observed = prefix[-length:]
+                preceding = prefix[:-length]
+                if not re.fullmatch(r"[\u0e00-\u0e7f]+", observed):
+                    continue
+                if not any(cue in preceding for cue in ("ราคา", "กี่บาท", "เสียกี่บาท", "มีเกม", "มีอุปกรณ์")):
+                    continue
+                if osa_distance(observed, "แล้ว") == 1:
+                    candidates.append((abs(length - 4), length, observed))
+            if candidates:
+                _, length, observed = min(candidates)
+                start = len(prefix) - length
+                return CueRecovery(
+                    text, text[:start] + "แล้ว" + text[start + length:],
+                    observed, "แล้ว", start, 1, "operation-anchored Thai conjunction recovery",
+                )
+    return None
+
+
+def _thai_span(text: str, target: str, anchor: str, max_distance: int,
+               start_after: str = "") -> CueRecovery | None:
+    if target in text:
+        return None
+    starts: list[int] = []
+    if start_after:
+        pos = text.find(start_after)
+        if pos >= 0:
+            starts.append(pos + len(start_after))
+    else:
+        pos = 0
+        while True:
+            pos = text.find(anchor, pos)
+            if pos < 0:
+                break
+            starts.append(pos)
+            pos += 1
+    possibilities: list[tuple[int, int, int, str]] = []
+    for start in starts:
+        if start >= len(text):
+            continue
+        for length in range(max(2, len(target) - max_distance), len(target) + max_distance + 1):
+            observed = text[start:start + length]
+            if len(observed) != length or not all("\u0e00" <= ch <= "\u0e7f" for ch in observed):
+                continue
+            distance = osa_distance(observed, target)
+            if 0 < distance <= max_distance:
+                possibilities.append((distance, abs(length - len(target)), start, observed))
+    if not possibilities:
+        return None
+    possibilities.sort()
+    best = possibilities[0]
+    # Equal best candidates at different positions are ambiguous.
+    if any(item[:2] == best[:2] and item[2] != best[2] for item in possibilities[1:]):
+        return None
+    distance, _, start, observed = best
+    return CueRecovery(
+        raw=text, recovered=text[:start] + target + text[start + len(observed):],
+        observed=observed, intended=target, start=start, distance=distance,
+        reason="bounded task-cue edit distance",
+    )
+
+
+def detect_intent_cue_recovery(value: str) -> CueRecovery | None:
+    if os.getenv("PSU_INTENT_CUE_RECOVERY", "1").casefold() in {"0", "false", "off", "no"}:
+        return None
+    text = str(value or "")
+    if not text or len(text) > 180 or "://" in text:
+        return None
+    lower = text.casefold()
+    contextual = _contextual_task_cue(text)
+    if contextual is not None:
+        return contextual
+    live_time_context = bool(
+        _TIME.search(text)
+        or re.search(r"\b(?:right\s+now|now|\d{1,2}\s*(?:am|pm))\b", lower)
+    )
+    live_resource_context = bool(
+        _RESOURCE.search(text)
+        or re.search(r"\bslots?\b", lower)
+        or any(
+            len(token.group()) >= 6 and osa_distance(token.group().casefold(), "cockpit") == 1
+            for token in _EN_TOKEN.finditer(text)
+        )
+    )
+    live_context = live_time_context and live_resource_context
+
+    # English tokens have explicit boundaries. A real word with another
+    # plausible meaning (for example pay/play) is not silently changed.
+    control_context = bool(
+        re.search(r"\b(?:what|wat|hat|wht|wha|whar|whay)\b", lower)
+        or "confirmation" in lower
+    ) and bool(re.search(r"\b(?:does|do|are|for|all|in)\b", lower))
+    for match in _EN_TOKEN.finditer(text):
+        observed = match.group().casefold()
+        if observed in _VALID_ENGLISH_WORDS or observed in {"button", "buttons", "control", "controls", "temporary", "available", "availability", "free", "booked", "vacant"}:
+            continue
+        target = ""
+        if control_context and len(observed) >= 5:
+            for control_word in ("button", "buttons", "controls"):
+                if observed != control_word and osa_distance(observed, control_word) == 1:
+                    target = control_word
+                    break
+        if not target and live_context and len(observed) >= 3:
+            for live_word in ("available", "availability", "free", "booked", "vacant"):
+                if osa_distance(observed, live_word) == 1:
+                    target = live_word
+                    break
+        if not target and (
+            "temporary" not in lower
+            and "suspension" in lower
+            and osa_distance(observed, "temporary") == 1
+        ):
+            target = "temporary"
+        if not target:
+            continue
+        return CueRecovery(
+            raw=text,
+            recovered=text[:match.start()] + target + text[match.end():],
+            observed=match.group(), intended=target, start=match.start(),
+            distance=1, reason="bounded English task-cue edit distance",
+        )
+
+    if "ปุ่ม" not in text and ("ใช้" in text or "กด" in text or "เคลื่อนที่" in text or "ทำอะไร" in text):
+        if "เกม" in text or _RESOURCE.search(text) or "กด" in text:
+            for match in re.finditer(r"(?<!\S)[\u0e00-\u0e7f]{2,6}", text):
+                for length in (2, 3, 4):
+                    observed = match.group()[:length]
+                    if not observed or observed[0] not in {"ป", "ุ", "แ"}:
+                        continue
+                    if osa_distance(observed, "ปุ่ม") == 1:
+                        return CueRecovery(
+                            raw=text,
+                            recovered=text[:match.start()] + "ปุ่ม" + text[match.start() + length:],
+                            observed=observed, intended="ปุ่ม", start=match.start(),
+                            distance=1, reason="bounded Thai control-cue edit distance",
+                        )
+
+    if "เกมอะไรบ้าง" not in text and "มีเกม" in text:
+        candidate = _thai_span(text, "เกมอะไรบ้าง", "เกม", 1)
+        if candidate and text[:candidate.start].endswith("มี"):
+            return candidate
+
+    if (
+        not any(term in text for term in _VALID_THAI_PRICE)
+        and "ราค" in text
+    ):
+        candidate = _thai_span(text, "ราคาเท่าไหร่", "ราค", 2)
+        if candidate and "เท่า" in candidate.observed:
+            return candidate
+
+    if _TIME.search(text) and _RESOURCE.search(text) and "ว่างบ้าง" not in text:
+        for anchor in ("เครื่องไหน", "ช่องไหน"):
+            if anchor in text:
+                candidate = _thai_span(text, "ว่างบ้าง", "", 1, start_after=anchor)
+                if candidate and candidate.observed.startswith("ว"):
+                    return candidate
+    if (
+        _RESOURCE.search(text)
+        and (_TIME.search(text) or any(term in text for term in ("ตอนนี้", "ตอนี้", "โมง", "บ่าย")))
+        and "ว่างไหม" not in text
+    ):
+        for match in re.finditer(r"ว[\u0e00-\u0e7f]{1,5}(?=ไหม|มั้ย)", text):
+            observed = match.group()
+            if observed != "ว่า" and osa_distance(observed, "ว่าง") == 1:
+                return CueRecovery(
+                    raw=text,
+                    recovered=text[:match.start()] + "ว่าง" + text[match.end():],
+                    observed=observed, intended="ว่าง", start=match.start(),
+                    distance=1, reason="bounded Thai live-availability cue edit distance",
+                )
+    return None
+
+
+def recover_intent_cue_sequence(value: str) -> tuple[str, tuple[CueRecovery, ...]]:
+    """At most three contextual edits, with positions relative to each step."""
+    current = value
+    recoveries: list[CueRecovery] = []
+    edit_budget = 4
+    for _ in range(3):
+        recovery = detect_intent_cue_recovery(current)
+        if recovery is None or recovery.distance > edit_budget:
+            break
+        recoveries.append(recovery)
+        edit_budget -= recovery.distance
+        current = recovery.recovered
+    return current, tuple(recoveries)
+
+
+def recover_intent_cues(value: str) -> str:
+    return recover_intent_cue_sequence(value)[0]

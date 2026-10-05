@@ -1,0 +1,39 @@
+{
+  "tests": 153,
+  "failures": [
+    [
+      "test_dispute_resolution_is_not_display_resolution (tests.test_competition_composition_r28_20261001.CompositionR28Tests.test_dispute_resolution_is_not_display_resolution)",
+      "Traceback (most recent call last):\n  File \"C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\tests\\test_competition_composition_r28_20261001.py\", line 108, in test_dispute_resolution_is_not_display_resolution\n    self.assertTrue(any('_s54_' in str(h.get('id','')) or '_s57_' in str(h.get('id','')) for h in result.hits))\nAssertionError: False is not true\n"
+    ],
+    [
+      "test_new_slot_listing_question_runs_through_pipeline_not_weekly_template (tests.test_booking_on_demand_20261001.BookingOnDemandTests.test_new_slot_listing_question_runs_through_pipeline_not_weekly_template)",
+      "Traceback (most recent call last):\n  File \"C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\tests\\test_booking_on_demand_20261001.py\", line 187, in test_new_slot_listing_question_runs_through_pipeline_not_weekly_template\n    self.assertEqual(result.mode, \"pipeline:live_booking_status_fast_path\")\nAssertionError: 'pipeline:live_booking_status_unavailable' != 'pipeline:live_booking_status_fast_path'\n- pipeline:live_booking_status_unavailable\n?                              ^^ ^ ^^^^^^\n+ pipeline:live_booking_status_fast_path\n?                              ^ ^^^^ ^^\n\n"
+    ],
+    [
+      "test_pipeline_uses_live_fixture_and_records_transport_not_customer (tests.test_booking_on_demand_20261001.BookingOnDemandTests.test_pipeline_uses_live_fixture_and_records_transport_not_customer)",
+      "Traceback (most recent call last):\n  File \"C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\tests\\test_booking_on_demand_20261001.py\", line 164, in test_pipeline_uses_live_fixture_and_records_transport_not_customer\n    self.assertEqual(result.mode, \"pipeline:live_booking_status_fast_path\")\nAssertionError: 'pipeline:live_booking_status_unavailable' != 'pipeline:live_booking_status_fast_path'\n- pipeline:live_booking_status_unavailable\n?                              ^^ ^ ^^^^^^\n+ pipeline:live_booking_status_fast_path\n?                              ^ ^^^^ ^^\n\n"
+    ],
+    [
+      "test_pipeline_routes_actual_question_to_wordpress_and_filters_answer (tests.test_available_equipment_only_20261001.AvailableEquipmentOnlyTests.test_pipeline_routes_actual_question_to_wordpress_and_filters_answer)",
+      "Traceback (most recent call last):\n  File \"C:\\Users\\Chokhun\\Downloads\\Learn-LLM\\18_PSU_Esports_Update_Route_Data\\tests\\test_available_equipment_only_20261001.py\", line 114, in test_pipeline_routes_actual_question_to_wordpress_and_filters_answer\n    self.assertEqual(result.mode, \"pipeline:live_booking_status_fast_path\")\nAssertionError: 'pipeline:live_booking_status_unavailable' != 'pipeline:live_booking_status_fast_path'\n- pipeline:live_booking_status_unavailable\n?                              ^^ ^ ^^^^^^\n+ pipeline:live_booking_status_fast_path\n?                              ^ ^^^^ ^^\n\n"
+    ]
+  ],
+  "errors": [],
+  "success": false,
+  "modules": [
+    "tests.test_competition_composition_r28_20261001",
+    "tests.test_worker_recycle_r27_20261001",
+    "tests.test_competition_contract_r27_20261001",
+    "tests.test_competition_content_speed_r26_20261001",
+    "tests.test_competition_format_r25_20261001",
+    "tests.test_competition_user_questions_r24_20261001",
+    "tests.test_competition_target_grounding",
+    "tests.test_competition_source_facets",
+    "tests.test_competition_taxonomy_contract",
+    "tests.test_intent_cue_recovery_20260930",
+    "tests.test_integrated_improvement_r21_20261001",
+    "tests.test_booking_on_demand_20261001",
+    "tests.test_available_equipment_only_20261001",
+    "tests.test_keyboard_neighbor_recovery_20260929"
+  ]
+}

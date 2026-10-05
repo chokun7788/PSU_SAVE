@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_edit_booking",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "แก้ไขการจอง",
+      "แก้ข้อมูลจอง",
+      "แก้เวลา booking",
+      "แก้เวลา.*จอง",
+      "เปลี่ยนข้อมูลจอง",
+      "กรอกข้อมูลผิด",
+      "ข้อมูลผิด.*หลังจอง",
+      "หลังจอง.*ข้อมูลผิด",
+      "แนบสลิปเดิม",
+      "สลิปเดิม.*จองใหม่",
+      "จองใหม่.*สลิปเดิม"
+    ],
+    "en": [
+      "edit.*booking",
+      "change.*booking"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "edit_booking",
+    "patterns": [
+      "แก้ไขการจอง",
+      "แก้ข้อมูลจอง",
+      "แก้เวลา booking",
+      "แก้เวลา.*จอง",
+      "เปลี่ยนข้อมูลจอง",
+      "กรอกข้อมูลผิด",
+      "ข้อมูลผิด.*หลังจอง",
+      "หลังจอง.*ข้อมูลผิด",
+      "แนบสลิปเดิม",
+      "สลิปเดิม.*จองใหม่",
+      "จองใหม่.*สลิปเดิม",
+      "edit.*booking",
+      "change.*booking"
+    ],
+    "priority": 135
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "เมื่อกดจองแล้วจะไม่สามารถแก้ไขข้อมูลได้ หากต้องการแก้ไขต้องยกเลิกการจองผ่านทางอีเมลก่อนเวลาใช้งานอย่างน้อย 1 ชั่วโมง แล้วจองใหม่ พร้อมแนบสลิปเดิม"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Once a booking is confirmed, it cannot be edited. To make changes, users must cancel by email at least 1 hour before the reserved time, make a new booking, and attach the previous payment slip."
+      },
+      "source_sha256": "2f4dfefcf3f82850a0fadda0039f91e52166c69763c5c7678cb5d709efeda805",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/reservation_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_booking_no_edit"
+    ],
+    "last_verified_at": ""
+  }
+}

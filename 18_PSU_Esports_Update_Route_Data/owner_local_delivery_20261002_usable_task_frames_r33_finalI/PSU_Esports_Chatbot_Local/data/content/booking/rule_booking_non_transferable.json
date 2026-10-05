@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_booking_non_transferable",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "โอนสิทธิ์",
+      "โอน.*booking",
+      "จองแทนกัน",
+      "ใช้ booking แทน",
+      "คนอื่น.*ใช้ booking"
+    ],
+    "en": [
+      "transfer.*booking"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "booking_non_transferable",
+    "patterns": [
+      "โอนสิทธิ์",
+      "โอน.*booking",
+      "transfer.*booking",
+      "จองแทนกัน",
+      "ใช้ booking แทน",
+      "คนอื่น.*ใช้ booking"
+    ],
+    "priority": 132
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ไม่สามารถโอนสิทธิ์การจองให้กับผู้อื่นได้"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "A booking cannot be transferred to another person."
+      },
+      "source_sha256": "36c271d597a6b6d0b2fcd5f037704a3fd41dd4a8d706518da585dd18afe54f13",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/reservation_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_booking_non_transferable"
+    ],
+    "last_verified_at": ""
+  }
+}

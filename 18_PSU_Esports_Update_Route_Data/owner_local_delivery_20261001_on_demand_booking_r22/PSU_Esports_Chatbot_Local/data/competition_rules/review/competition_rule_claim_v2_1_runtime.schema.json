@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "competition_rule_claim_v2_1_runtime.schema.json",
+  "title": "Approved Competition Rule Claim V2.1 Runtime Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "claim_id",
+    "release_id",
+    "status",
+    "answerable",
+    "source",
+    "claim",
+    "retrieval",
+    "evidence",
+    "lifecycle",
+    "quality",
+    "approval"
+  ],
+  "properties": {
+    "schema_version": { "const": "competition_rule_claim_v2_1" },
+    "claim_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._:-]+$" },
+    "release_id": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["approved", "retired"] },
+    "answerable": { "type": "boolean" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "document_id",
+        "source_chunk_id",
+        "source_url",
+        "source_file",
+        "source_version",
+        "source_priority",
+        "heading_th",
+        "clause_th",
+        "clause_sha256"
+      ],
+      "properties": {
+        "document_id": { "type": "string", "minLength": 1 },
+        "source_chunk_id": { "type": "string", "minLength": 1 },
+        "source_url": { "type": "string", "minLength": 1 },
+        "source_file": { "type": "string", "minLength": 1 },
+        "source_version": { "type": "string", "minLength": 1 },
+        "source_priority": {
+          "enum": [
+            "owner_approved_rulebook",
+            "official_organizer_announcement",
+            "official_website",
+            "imported_legacy_document"
+          ]
+        },
+        "heading_th": { "type": "string" },
+        "clause_th": { "type": "string", "minLength": 1 },
+        "clause_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "proposition_id",
+        "statement_th",
+        "answer_th",
+        "answer_en",
+        "english_status",
+        "structured_values"
+      ],
+      "properties": {
+        "proposition_id": { "type": "string", "minLength": 1 },
+        "statement_th": { "type": "string", "minLength": 1 },
+        "answer_th": { "type": "string", "minLength": 1 },
+        "answer_en": { "type": ["string", "null"] },
+        "english_status": { "enum": ["missing", "approved", "stale"] },
+        "structured_values": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/structuredValue" }
+        }
+      }
+    },
+    "retrieval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "game_id",
+        "canonical_section",
+        "facet",
+        "aliases_th",
+        "aliases_en",
+        "question_patterns_th",
+        "question_patterns_en"
+      ],
+      "properties": {
+        "game_id": { "enum": ["cs2", "rov", "tekken8", "valorant"] },
+        "canonical_section": { "$ref": "#/$defs/canonicalFacet" },
+        "facet": { "$ref": "#/$defs/canonicalFacet" },
+        "aliases_th": { "$ref": "#/$defs/stringArray" },
+        "aliases_en": { "$ref": "#/$defs/stringArray" },
+        "question_patterns_th": { "$ref": "#/$defs/stringArray" },
+        "question_patterns_en": { "$ref": "#/$defs/stringArray" }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "source_refs", "source_span_sha256"],
+      "properties": {
+        "mode": { "const": "exact_source_clause" },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "source_span_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "evidence_links": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "lifecycle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "effective_from",
+        "effective_to",
+        "supersedes_claim_id",
+        "conflicts_with"
+      ],
+      "properties": {
+        "effective_from": { "type": ["string", "null"], "format": "date-time" },
+        "effective_to": { "type": ["string", "null"], "format": "date-time" },
+        "supersedes_claim_id": { "type": ["string", "null"] },
+        "conflicts_with": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["atomicity", "heading_clause_relation", "completeness"],
+      "properties": {
+        "atomicity": { "const": "verified" },
+        "heading_clause_relation": { "const": "separated" },
+        "completeness": { "enum": ["direct", "complete_list", "partial_list"] }
+      }
+    },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "thai_status",
+        "approved_by",
+        "approved_at",
+        "english_status",
+        "english_approved_by",
+        "english_approved_at"
+      ],
+      "properties": {
+        "thai_status": { "const": "approved" },
+        "approved_by": { "type": "string", "minLength": 1 },
+        "approved_at": { "type": "string", "format": "date-time" },
+        "english_status": { "enum": ["missing", "approved", "stale"] },
+        "english_approved_by": { "type": ["string", "null"] },
+        "english_approved_at": { "type": ["string", "null"], "format": "date-time" }
+      }
+    }
+  },
+  "$defs": {
+    "stringArray": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "structuredValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "value"],
+      "properties": {
+        "key": { "type": "string", "minLength": 1 },
+        "value": { "type": ["string", "number", "integer", "boolean"] },
+        "unit": { "type": ["string", "null"] },
+        "condition": { "type": ["string", "null"] }
+      }
+    },
+    "canonicalFacet": {
+      "enum": [
+        "rulebook_identity",
+        "eligibility_registration",
+        "registration",
+        "pre_match_on_site",
+        "team_size",
+        "roster_composition",
+        "competition_format",
+        "match_configuration",
+        "match_settings",
+        "map_pool",
+        "equipment",
+        "in_match_operations",
+        "pause_timeout",
+        "disconnect",
+        "fair_play_conduct",
+        "conduct",
+        "penalty",
+        "penalty_matrix",
+        "dispute",
+        "protest_dispute",
+        "schedule"
+      ]
+    }
+  }
+}

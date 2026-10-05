@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Competition Rule Claim V2",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "claim_id",
+    "status",
+    "source",
+    "claim",
+    "retrieval",
+    "evidence",
+    "quality",
+    "approval"
+  ],
+  "properties": {
+    "schema_version": { "const": "competition_rule_claim_v2" },
+    "claim_id": { "type": "string", "minLength": 1 },
+    "release_id": { "type": ["string", "null"] },
+    "status": {
+      "enum": ["draft", "needs_owner_review", "approved", "retired"]
+    },
+    "source": {
+      "type": "object",
+      "required": ["doc_id", "source_chunk_id", "heading_th", "clause_th", "clause_sha256"],
+      "properties": {
+        "doc_id": { "type": "string" },
+        "source_chunk_id": { "type": "string" },
+        "heading_th": { "type": "string" },
+        "clause_th": { "type": "string", "minLength": 1 },
+        "clause_sha256": { "type": "string", "minLength": 32 },
+        "source_url": { "type": ["string", "null"] },
+        "source_file": { "type": ["string", "null"] }
+      }
+    },
+    "claim": {
+      "type": "object",
+      "required": ["statement_th", "answer_th", "answer_en", "english_status"],
+      "properties": {
+        "statement_th": { "type": "string", "minLength": 1 },
+        "answer_th": { "type": "string" },
+        "answer_en": { "type": "string" },
+        "english_status": {
+          "enum": ["missing", "draft", "approved", "stale"]
+        }
+      }
+    },
+    "retrieval": {
+      "type": "object",
+      "required": ["game_id", "canonical_section", "facet"],
+      "properties": {
+        "game_id": { "type": "string", "minLength": 1 },
+        "canonical_section": { "type": "string", "minLength": 1 },
+        "facet": { "type": "string", "minLength": 1 },
+        "aliases_th": { "type": "array", "items": { "type": "string" } },
+        "aliases_en": { "type": "array", "items": { "type": "string" } },
+        "question_patterns_th": { "type": "array", "items": { "type": "string" } },
+        "question_patterns_en": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["mode", "source_refs"],
+      "properties": {
+        "mode": { "const": "exact_source_clause" },
+        "source_refs": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "evidence_links": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "required": ["atomicity", "heading_clause_relation"],
+      "properties": {
+        "atomicity": { "enum": ["verified", "review_required"] },
+        "heading_clause_relation": { "enum": ["separated", "not_separated", "heading_only"] }
+      }
+    },
+    "approval": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": { "enum": ["pending", "approved", "rejected"] },
+        "approved_by": { "type": ["string", "null"] },
+        "approved_at": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

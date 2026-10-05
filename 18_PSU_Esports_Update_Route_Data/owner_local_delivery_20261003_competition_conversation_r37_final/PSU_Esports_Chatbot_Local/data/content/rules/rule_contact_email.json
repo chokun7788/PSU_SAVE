@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_contact_email",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "อีเมล"
+    ],
+    "en": [
+      "email",
+      "e-mail"
+    ]
+  },
+  "facts": {
+    "route_category": "contact",
+    "intent": "contact_email",
+    "patterns": [
+      "อีเมล",
+      "email",
+      "e-mail"
+    ],
+    "priority": 100
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "อีเมลติดต่อศูนย์คือ psuesportspkt@gmail.com"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "The contact email is psuesportspkt@gmail.com."
+      },
+      "source_sha256": "eb4d131d4657fec833acbab7f8ac7be45e47f9eed1fcd0148c0a76797f54bd27",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/contact_rules.jsonl",
+    "url": "https://esports.phuket.psu.ac.th/Contact-Us",
+    "source_ids": [
+      "curated_contact_email"
+    ],
+    "last_verified_at": ""
+  }
+}

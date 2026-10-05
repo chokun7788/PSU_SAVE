@@ -1,0 +1,201 @@
+{
+  "cases": [
+    {
+      "id": "post-H-composition-1",
+      "group": "payment",
+      "question": "จ่ายเงินยังไง แล้วหลังจองต้องชำระภายในกี่นาที",
+      "locale": "th",
+      "required": [
+        [
+          "795-276244-1"
+        ],
+        [
+          "Siam Commercial Bank",
+          "ไทยพาณิชย์"
+        ],
+        [
+          "สลิป",
+          "slip"
+        ],
+        [
+          "10 นาที"
+        ]
+      ],
+      "source": [
+        "payment_bank",
+        "rule_payment_bank"
+      ],
+      "forbidden": [
+        "cannot be transferred",
+        "ไม่สามารถโอนสิทธิ์"
+      ]
+    },
+    {
+      "id": "post-H-composition-2",
+      "group": "payment",
+      "question": "How do I pay for a booking and how many minutes do I have to pay after booking?",
+      "locale": "en",
+      "required": [
+        [
+          "795-276244-1"
+        ],
+        [
+          "Siam Commercial Bank",
+          "ไทยพาณิชย์"
+        ],
+        [
+          "สลิป",
+          "slip"
+        ],
+        [
+          "10 minutes"
+        ]
+      ],
+      "source": [
+        "payment_bank",
+        "rule_payment_bank"
+      ],
+      "forbidden": [
+        "cannot be transferred",
+        "ไม่สามารถโอนสิทธิ์"
+      ]
+    },
+    {
+      "id": "post-H-composition-3",
+      "group": "price",
+      "question": "PC กับ VR อันไหนแพงกว่า แล้วจองยังไง",
+      "locale": "th",
+      "required": [
+        [
+          "PC"
+        ],
+        [
+          "VR"
+        ],
+        [
+          "25"
+        ],
+        [
+          "70"
+        ],
+        [
+          "190"
+        ],
+        [
+          "525"
+        ],
+        [
+          "375"
+        ],
+        [
+          "1050",
+          "1,050"
+        ],
+        [
+          "เลือกบริการ",
+          "Select a service",
+          "select the service"
+        ]
+      ],
+      "source": [
+        "service_fee"
+      ],
+      "forbidden": []
+    },
+    {
+      "id": "post-H-composition-4",
+      "group": "price",
+      "question": "Which is cheaper, PC or VR, and how do I book a session?",
+      "locale": "en",
+      "required": [
+        [
+          "PC"
+        ],
+        [
+          "VR"
+        ],
+        [
+          "25"
+        ],
+        [
+          "70"
+        ],
+        [
+          "190"
+        ],
+        [
+          "525"
+        ],
+        [
+          "375"
+        ],
+        [
+          "1050",
+          "1,050"
+        ],
+        [
+          "select a service",
+          "select the service",
+          "choose a service"
+        ]
+      ],
+      "source": [
+        "service_fee"
+      ],
+      "forbidden": []
+    },
+    {
+      "id": "post-H-composition-5",
+      "group": "speech",
+      "question": "Could you explain what the studio says about mocking people?",
+      "locale": "en",
+      "required": [
+        [
+          "ห้าม",
+          "must not",
+          "Avoid",
+          "avoid",
+          "prohibited"
+        ],
+        [
+          "ดูหมิ่น",
+          "เสียดสี",
+          "insult",
+          "mock",
+          "sarcastic"
+        ]
+      ],
+      "source": [
+        "noise_language",
+        "noise_language_rule",
+        "noise_language",
+        "Reservation",
+        "rule_en_general_studio_rules"
+      ],
+      "forbidden": []
+    },
+    {
+      "id": "post-H-composition-6",
+      "group": "competition",
+      "question": "Please cite the Arena of Valor rules on the number of players per team",
+      "locale": "en",
+      "required": [
+        [
+          "5v5",
+          "5 v 5",
+          "5 คน",
+          "5 players"
+        ]
+      ],
+      "source": [
+        "competition_rules_rov_blueket_2025_men"
+      ],
+      "forbidden": [
+        "PSU Phuket CS2",
+        "VALORANT 2026",
+        "Tekken 8"
+      ]
+    }
+  ],
+  "scope": "New post-H wording and composition risk gate; first execution is holdout. Source constraints are assistant-reviewed, not owner approval."
+}

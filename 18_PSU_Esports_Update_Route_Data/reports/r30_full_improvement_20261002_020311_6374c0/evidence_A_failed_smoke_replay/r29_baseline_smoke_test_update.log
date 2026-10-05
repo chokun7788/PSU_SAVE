@@ -1,0 +1,17 @@
+OK calculator: ต่างมหาลัย เล่น vr ครึ่ง ชม เท่าไหร่ -> contains 190
+OK calculator: นักเรียน มอ. เล่น ps5 เท่าไหร่ -> contains 0
+OK calculator: pc ชั่วโมงละเท่าไหร่ -> contains ราคา PC
+OK calculator: นักศึกษา สจล อยากเล่น PC เสียเท่าไหร่ -> contains General Student
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tests\smoke_test_update.py", line 54, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tests\smoke_test_update.py", line 37, in main
+    assert_contains(result["answer"], expected, question)
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tests\smoke_test_update.py", line 19, in assert_contains
+    raise AssertionError(f"{label}: expected {expected!r} in {text!r}")
+AssertionError: เด็กจุฬา เล่น PC กี่บาท: expected 'มหาลัยอื่น' in 'ราคา PC 1 ชั่วโมง (1 คน) สำหรับ ศิษย์เก่า PSU / นักศึกษา-นักเรียนต่างสถาบัน (General Student)\n•    25 บาท\nหมายเหตุข้อมูล PC: ราคา PC เพิ่มจาก local service fee update 2026-07-27\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png'

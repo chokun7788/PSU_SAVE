@@ -1051,6 +1051,7 @@ class FastAnswer:
     mode: str
     elapsed: float
     confidence: float = 0.90
+    diagnostics: dict | None = None
 
 
 def _has(q: str, *terms: str) -> bool:
@@ -1141,13 +1142,14 @@ def _game_alias_match(q: str, aliases: tuple[str, ...], *, threshold: float = 0.
     return bool(fuzzy_aliases and contains_alias(q, fuzzy_aliases, fuzzy=True, threshold=threshold)[0])
 
 
-def _answer(text: str, source: str, mode: str, start: float, confidence: float = 0.90) -> FastAnswer:
+def _answer(text: str, source: str, mode: str, start: float, confidence: float = 0.90, *, diagnostics: dict | None = None) -> FastAnswer:
     return FastAnswer(
         answer=text.strip(),
         hits=HITS[source],
         mode=mode,
         elapsed=round(time.perf_counter() - start, 4),
         confidence=confidence,
+        diagnostics=diagnostics,
     )
 
 
@@ -1350,8 +1352,8 @@ def _current_service_answer(q: str, start: float) -> FastAnswer:
 def answer_live_booking_status(query: str, start: float) -> FastAnswer | None:
     """Answer only questions which explicitly require live opening/slot facts.
 
-    The adapter consumes the dashboard's aggregate-only endpoint.  It never
-    receives or emits customer or appointment data.
+    The adapter returns only aggregates from WordPress or the owner Dashboard.
+    Customer and appointment detail is excluded from the pipeline.
     """
     if not is_live_booking_question(query):
         return None
@@ -1370,6 +1372,14 @@ def answer_live_booking_status(query: str, start: float) -> FastAnswer | None:
         mode,
         start,
         confidence,
+        diagnostics={
+            "source": snapshot.source,
+            "transport": snapshot.transport,
+            "cached": snapshot.cached,
+            "generated_at": snapshot.generated_at,
+            "error_code": snapshot.error_code,
+            "fetch_elapsed_ms": snapshot.fetch_elapsed_ms,
+        },
     )
 
 

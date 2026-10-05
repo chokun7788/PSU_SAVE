@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_contact_phone",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "เบอร์",
+      "โทร"
+    ],
+    "en": [
+      "phone",
+      "tel"
+    ]
+  },
+  "facts": {
+    "route_category": "contact",
+    "intent": "contact_phone",
+    "patterns": [
+      "เบอร์",
+      "โทร",
+      "phone",
+      "tel"
+    ],
+    "priority": 95
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "เบอร์ติดต่อที่ปรากฏในระบบจองคือ +66 7627 6004 และ +66 7627 6045"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "The phone numbers shown in the reservation system are +66 7627 6004 and +66 7627 6045."
+      },
+      "source_sha256": "346df5f3b45691657811bb15059b82c5a9647ab4886956041c198420ad698d13",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/contact_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "curated_contact_phone"
+    ],
+    "last_verified_at": ""
+  }
+}

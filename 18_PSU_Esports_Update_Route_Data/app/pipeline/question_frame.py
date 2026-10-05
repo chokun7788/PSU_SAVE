@@ -91,6 +91,15 @@ def _operation_from_question(
     # The game name is a retrieval target here; it must not change the domain.
     if looks_like_competition_rule_query(question):
         return "competition_rule_lookup", "competition_rules", 0.97
+    from app.pipeline.source_task_signals import fee_comparison_query
+    if fee_comparison_query(question):
+        return "price_lookup", "service_fee", 0.98
+    from app.pipeline.source_task_signals import payment_method_query
+    if payment_method_query(question):
+        return "booking_lookup", "reservation", 0.98
+    from app.pipeline.source_task_signals import speech_rule_query
+    if speech_rule_query(question):
+        return "studio_rule_lookup", "rules", 0.98
     # A zone/genre catalogue question asks for multiple games, even when the
     # router labels it as game availability. Requiring one title here turns a
     # valid catalogue request into an irrelevant "which game?" clarification.
@@ -127,7 +136,7 @@ def _operation_from_question(
         and _has(question, "vr", "วีอาร์", "pc", "ps5", "playstation", "nintendo", "switch", "cockpit")
     ):
         return "price_lookup", "service_fee", 0.97
-    if _has(question, "ราคา", "กี่บาท", "ค่าบริการ", "คิดเงิน", "คำนวณ", "เสียเงิน", "จ่ายเท่า"):
+    if _has(question, "ราคา", "กี่บาท", "ค่าบริการ", "ค่าเล่น", "คิดเงิน", "คำนวณ", "เสียเงิน", "จ่ายเท่า"):
         return "price_lookup", "service_fee", 0.98
     if looks_like_play_access_query(question) or _has(
         question,

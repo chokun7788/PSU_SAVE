@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_en_general_damage_penalties",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [],
+    "en": [
+      "what\\s+are\\s+the\\s+(?:damage\\s+)?(?:penalties|fines)",
+      "damage\\s+(?:penalties|fines|charges)",
+      "how\\s+much\\s+is\\s+the\\s+fine.*damage"
+    ]
+  },
+  "facts": {
+    "route_category": "penalty",
+    "intent": "damage_penalty_summary",
+    "patterns": [
+      "what\\s+are\\s+the\\s+(?:damage\\s+)?(?:penalties|fines)",
+      "damage\\s+(?:penalties|fines|charges)",
+      "how\\s+much\\s+is\\s+the\\s+fine.*damage"
+    ],
+    "priority": 130
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ค่าปรับความเสียหายแบ่งตามระดับ: เล็กน้อย 100–500 บาท ปานกลางตามราคาจริงหรือ 500–2,000 บาท และร้ายแรงชดเชยเต็มราคาทรัพย์สิน"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Damage penalties depend on severity: minor damage is 100-500 THB, moderate damage is the actual cost or 500-2,000 THB, and severe damage requires full compensation for the property."
+      },
+      "source_sha256": "ec125cd06831a7abf72cbb1bf1924798fadb87ddc6d77823648cf69d3935fa14",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/english_support_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_damage_minor",
+      "curated_damage_moderate",
+      "curated_damage_severe"
+    ],
+    "last_verified_at": ""
+  }
+}

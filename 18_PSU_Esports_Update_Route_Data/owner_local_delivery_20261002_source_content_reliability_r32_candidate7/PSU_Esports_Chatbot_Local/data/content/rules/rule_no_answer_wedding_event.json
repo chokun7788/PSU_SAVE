@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_no_answer_wedding_event",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "งานแต่ง",
+      "จัดงานแต่ง"
+    ],
+    "en": [
+      "wedding"
+    ]
+  },
+  "facts": {
+    "route_category": "no_answer",
+    "intent": "no_answer_wedding_event",
+    "patterns": [
+      "งานแต่ง",
+      "จัดงานแต่ง",
+      "wedding"
+    ],
+    "priority": 130
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ยังไม่พบข้อมูลว่าศูนย์รับจัดงานแต่งในฐานข้อมูลที่มี ข้อมูลที่มีเกี่ยวกับบริการศูนย์อีสปอร์ต การจองใช้อุปกรณ์ กิจกรรม และการแข่งขัน หากเป็นงานพิเศษนอกเหนือจากนี้ควรติดต่อเจ้าหน้าที่ศูนย์โดยตรง"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "No information about hosting weddings at the studio was found in the available knowledge base. The available data covers esports studio services, booking equipment, activities, and competitions. Please contact staff directly for special event requests."
+      },
+      "source_sha256": "b7115af6c5e74d71d2603b6e1aec79153844a83d76b0c1591a2a5452ebcc1b43",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/no_answer_rules.jsonl",
+    "url": "https://esports.phuket.psu.ac.th/home",
+    "source_ids": [
+      "Services",
+      "Events_and_News",
+      "Reservation"
+    ],
+    "last_verified_at": ""
+  }
+}

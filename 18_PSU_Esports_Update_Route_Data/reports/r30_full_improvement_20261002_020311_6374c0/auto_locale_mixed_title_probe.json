@@ -1,0 +1,3715 @@
+[
+  {
+    "q": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+    "requested_locale": "auto",
+    "status": 200,
+    "content_language": "th",
+    "elapsed": 0.7132450999924913,
+    "response": {
+      "ok": true,
+      "request_id": "ed6185eb5f9f40698316b21b530ffe62",
+      "session_id": "r30-717569fc195e47fdbee7ed22952f631c",
+      "answer": "The Last of Us Part I ไม่มีราคาแยกตามชื่อเกมครับ ต้องดูราคาตามโซน/บริการที่ใช้เล่นเกมนี้\n\nPlayStation 5 Zone\nยังไม่ทราบกลุ่มผู้ใช้ จึงแสดงราคาทุกกลุ่มให้เทียบก่อน\nPlayStation 5 1 ชั่วโมง (1-2 คน)\n•    นักศึกษา/นักเรียน/บุคลากร PSU: 0 บาท/1 ชั่วโมง\n•    ศิษย์เก่า PSU / นักศึกษา-นักเรียนต่างสถาบัน (General Student): 50 บาท/1 ชั่วโมง\n•    บุคคลทั่วไป (General Adult): 150 บาท/1 ชั่วโมง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+      "mode": "pipeline:structured_service_fee_by_game",
+      "route_category": "service_fee",
+      "route_intent": "service_fee_query",
+      "universal_intent": {
+        "domain": "service_fee",
+        "operation": "price_calculate",
+        "target": "The Last of Us Part I",
+        "filters": {
+          "resolved_target_id": "thelastofusparti",
+          "resolved_target_type": "game"
+        },
+        "needs": [
+          "calculate_price",
+          "show_price_breakdown"
+        ],
+        "answer_style": "direct_then_details",
+        "confidence": 0.93,
+        "method": "heuristic",
+        "reason": "known game alias found; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+      },
+      "confidence": 0.86,
+      "latency_sec": 0.6912,
+      "wall_sec": 0.7069,
+      "deadline": {
+        "global_timeout_enabled": true,
+        "global_timeout_sec": 20.0,
+        "global_elapsed_sec": 0.7069,
+        "global_remaining_sec": 19.2931,
+        "finalizer_reserve_sec": 1.0,
+        "work_remaining_sec": 18.2931,
+        "timing_status": "running"
+      },
+      "timing_status": "completed",
+      "timed_out": false,
+      "timeout_stage": "",
+      "retryable": false,
+      "worker_id": 0,
+      "sources": [
+        {
+          "id": "The Last of Us Part I",
+          "url": "https://esports.phuket.psu.ac.th/Services/our-games"
+        },
+        {
+          "id": "service_fee_image_2026",
+          "url": "https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+        }
+      ],
+      "validation_ok": true,
+      "language": {
+        "requested": "auto",
+        "detected": "th",
+        "effective": "th",
+        "confidence": 0.99,
+        "reason": "keyboard_guard_thai_intended"
+      },
+      "experimental_rag_fallback": true,
+      "experimental_allow_llm": true,
+      "input_recovery": {
+        "score": 0.1825,
+        "language": "mixed",
+        "language_quality": 0.8175,
+        "should_review_intent": false,
+        "reason": "Thai character n-gram quality=0.818",
+        "action": "continue"
+      },
+      "server_date": {
+        "iso": "2026-10-02",
+        "label": "02/10/2026 (วันศุกร์)",
+        "time": "03:15",
+        "datetime_iso": "2026-10-02T03:15:48.113764+07:00",
+        "timezone": "Asia/Bangkok",
+        "service_slot": {
+          "date": "2026-10-02",
+          "time": "03:15",
+          "weekday": "วันศุกร์",
+          "timezone": "Asia/Bangkok",
+          "status": "outside_hours",
+          "playable": false,
+          "slot": null,
+          "next_open_slot": {
+            "code": "morning",
+            "label": "Morning",
+            "start": "09:00",
+            "end": "12:00",
+            "time_range": "09:00-12:00",
+            "state": "open",
+            "note": "เปิดให้บริการ"
+          },
+          "reason": "outside_regular_service_hours",
+          "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+          "source": "reservation_schedule"
+        },
+        "thai_holidays": [],
+        "upcoming_thai_holidays": [
+          {
+            "date": "2026-10-13",
+            "title": "วันนวมินทรมหาราช",
+            "type": "national_holiday",
+            "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-16",
+            "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+            "type": "bank_holiday_bangkok",
+            "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+            "source": "Bank of Thailand Financial Institutions Holidays 2026",
+            "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+          },
+          {
+            "date": "2026-10-23",
+            "title": "วันปิยมหาราช",
+            "type": "national_holiday",
+            "note": "วันหยุดประจำปีของไทย",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-31",
+            "title": "วันฮาโลวีน",
+            "type": "observance",
+            "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-12-05",
+            "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+            "type": "national_holiday",
+            "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          }
+        ]
+      },
+      "calendar": {
+        "date": "2026-10-02",
+        "label": "02/10/2026 (วันศุกร์)",
+        "weekday": "วันศุกร์",
+        "time": "03:15",
+        "datetime_iso": "2026-10-02T03:15:48.113764+07:00",
+        "timezone": "Asia/Bangkok",
+        "service_slot": {
+          "date": "2026-10-02",
+          "time": "03:15",
+          "weekday": "วันศุกร์",
+          "timezone": "Asia/Bangkok",
+          "status": "outside_hours",
+          "playable": false,
+          "slot": null,
+          "next_open_slot": {
+            "code": "morning",
+            "label": "Morning",
+            "start": "09:00",
+            "end": "12:00",
+            "time_range": "09:00-12:00",
+            "state": "open",
+            "note": "เปิดให้บริการ"
+          },
+          "reason": "outside_regular_service_hours",
+          "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+          "source": "reservation_schedule"
+        },
+        "service_closure": null,
+        "thai_holidays": [],
+        "upcoming_thai_holidays": [
+          {
+            "date": "2026-10-13",
+            "title": "วันนวมินทรมหาราช",
+            "type": "national_holiday",
+            "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-16",
+            "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+            "type": "bank_holiday_bangkok",
+            "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+            "source": "Bank of Thailand Financial Institutions Holidays 2026",
+            "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+          },
+          {
+            "date": "2026-10-23",
+            "title": "วันปิยมหาราช",
+            "type": "national_holiday",
+            "note": "วันหยุดประจำปีของไทย",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-31",
+            "title": "วันฮาโลวีน",
+            "type": "observance",
+            "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-12-05",
+            "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+            "type": "national_holiday",
+            "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          }
+        ]
+      },
+      "input_quality": {
+        "action": "continue",
+        "detected_action": "continue",
+        "applied_action": "continue",
+        "should_retype": false,
+        "flags": [],
+        "layout_score": 0.147681,
+        "repeat_score": 0.04,
+        "guard_status": "passed",
+        "guard_mode": "enforce",
+        "repeat_policy": "warn_and_continue",
+        "profile_version": "keyboard-profile-v1:acb6d6b414cb0914",
+        "guard_elapsed_ms": 2.704
+      },
+      "context_resolution": {
+        "original_question": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+        "resolved_question": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+        "used_context": false,
+        "context_game": "The Last of Us Part I / Part II",
+        "context_domain": null,
+        "context_operation": null,
+        "context_topic": null,
+        "reason": "question_has_explicit_game"
+      },
+      "query_debug": {
+        "original_question": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+        "resolved_question": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+        "normalized_query": "the last of us part i / part ii ราคาเท่าไหร่",
+        "query_variants": [
+          "The Last of Us Part I / Part II ราคาเท่าไหร่"
+        ],
+        "active_query": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+        "active_query_changed": false,
+        "trace": [
+          {
+            "stage": "preprocess",
+            "decision": "normalized",
+            "confidence": 1.0,
+            "detail": "the last of us part i / part ii ราคาเท่าไหร่",
+            "metadata": {
+              "language_hint": "mixed_th_en",
+              "nonsemantic_preface_removed": false,
+              "query_variants": [
+                "The Last of Us Part I / Part II ราคาเท่าไหร่"
+              ],
+              "elapsed_ms": 14.5,
+              "elapsed_sec": 0.0145
+            }
+          }
+        ]
+      },
+      "decision_artifact": {
+        "intent": {
+          "domain": "service_fee",
+          "operation": "price_calculate",
+          "target": "The Last of Us Part I",
+          "confidence": 0.93,
+          "method": "heuristic"
+        },
+        "route": {
+          "category": "service_fee",
+          "intent": "service_fee_query",
+          "confidence": 0.95,
+          "answer_type": "fact",
+          "risk": "medium",
+          "reason": "price/service entity found; structured_mode=structured_service_fee_by_game"
+        },
+        "tool_router": {
+          "stage": "tool_router",
+          "decision": "heuristic:structured",
+          "confidence": 0.93,
+          "detail": "experimental_allow_llm is false",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        "selected_candidate": {
+          "capability_id": "structured.service_fee",
+          "action": "structured",
+          "domain": "service_fee",
+          "score": 0.985,
+          "status": "accepted",
+          "reason": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=service_fee; question_frame_domain_match; game_price_requires_service_mapping; precondition=known_game_price_query_needs_zone_service_mapping",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        "candidates": [
+          {
+            "capability_id": "structured.service_fee",
+            "action": "structured",
+            "domain": "service_fee",
+            "score": 0.985,
+            "status": "accepted",
+            "reason": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=service_fee; question_frame_domain_match; game_price_requires_service_mapping; precondition=known_game_price_query_needs_zone_service_mapping",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "fast.price_calculator",
+            "action": "fast_path",
+            "domain": "service_fee",
+            "score": 0.894,
+            "status": "accepted",
+            "reason": "base=0.93; domain_match; tool_router_domain=service_fee; price_calculation_priority; question_frame_domain_match; question_frame_operation=price_lookup; game_price_not_direct_calculator_input; precondition=price_calculator_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "fast.domain_handlers",
+            "action": "fast_path",
+            "domain": "multi",
+            "score": 0.489,
+            "status": "accepted",
+            "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "rulebase.category_rules",
+            "action": "rulebase",
+            "domain": "multi",
+            "score": 0.467,
+            "status": "accepted",
+            "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "retrieval.hybrid_guarded",
+            "action": "retrieval",
+            "domain": "multi",
+            "score": 0.456,
+            "status": "accepted",
+            "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "retrieval.vector_guarded",
+            "action": "vector",
+            "domain": "multi",
+            "score": 0.444,
+            "status": "accepted",
+            "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "llm.facts_composer",
+            "action": "rag_llm",
+            "domain": "multi",
+            "score": 0.4,
+            "status": "accepted",
+            "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "clarification.ask_user",
+            "action": "clarification",
+            "domain": "clarification",
+            "score": 0.322,
+            "status": "accepted",
+            "reason": "base=0.58; precondition=no_specific_precondition",
+            "requires_evidence": false,
+            "risk": "low"
+          }
+        ],
+        "rejected": [
+          {
+            "capability_id": "structured.members",
+            "action": "structured",
+            "domain": "members",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_member_query",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.games",
+            "action": "structured",
+            "domain": "games",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: price_query_must_not_use_game_tool",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.game_controls",
+            "action": "structured",
+            "domain": "game_controls",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_game_control_query",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.equipment",
+            "action": "structured",
+            "domain": "equipment",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: price_query_must_not_use_equipment_tool",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.reservation",
+            "action": "structured",
+            "domain": "reservation",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: price_query_should_use_calculator_or_service_fee",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "structured.schedule",
+            "action": "structured",
+            "domain": "schedule",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: price_query_must_not_use_schedule_tool",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "retrieval.competition_fact_cards",
+            "action": "retrieval",
+            "domain": "competition_rules",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_competition_rule_query",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "llm.general_answer",
+            "action": "general_llm",
+            "domain": "general",
+            "score": 0.139,
+            "status": "rejected",
+            "reason": "policy_veto: PSU-specific or medium/high-risk route cannot use general LLM",
+            "requires_evidence": false,
+            "risk": "low"
+          }
+        ],
+        "policy": {
+          "psu_specific": true,
+          "route_risk": "medium",
+          "general_llm_requires_non_psu": true
+        },
+        "execution_plan": [
+          "normalize_and_extract_entities",
+          "route_and_resolve_universal_intent",
+          "generate_capability_candidates",
+          "apply_policy_and_rank",
+          "apply_tool_preconditions",
+          "execute_structured_tool",
+          "format_validate_and_record"
+        ],
+        "final": {
+          "mode": "pipeline:structured_service_fee_by_game",
+          "confidence": 0.86,
+          "execution_step": "execute_structured_tool",
+          "executed_capability": "structured.service_fee",
+          "selected_matches_execution": true,
+          "validation_ok": true,
+          "validation_errors": [],
+          "validation_warnings": [
+            "price_question_should_start_with_price_or_number"
+          ],
+          "evidence_count": 2,
+          "source_ids": [
+            "The Last of Us Part I",
+            "service_fee_image_2026"
+          ]
+        },
+        "production_metrics": {
+          "policy_version": "correctness_control_flow_v2",
+          "outcome": "answered",
+          "quality_gate_status": "pass",
+          "candidate_margin": 0.091,
+          "selection_status": "selected",
+          "ambiguity_decision": "allow",
+          "repair_attempted": false,
+          "repair_recovered": false,
+          "llm_call_count": 0,
+          "requires_shadow_review": true,
+          "shadow_review_reasons": [
+            "validation_warning"
+          ]
+        },
+        "entities": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": true
+        },
+        "structured_tool": {
+          "stage": "structured_tool",
+          "decision": "structured_service_fee_by_game",
+          "confidence": 0.86,
+          "detail": "calculate_service_fee_by_game_zone",
+          "metadata": {
+            "tool": "calculate_service_fee_by_game_zone",
+            "game": "The Last of Us Part I",
+            "zones": [
+              "PlayStation 5 Zone"
+            ],
+            "services": [
+              "PS5"
+            ],
+            "elapsed": 0.5776,
+            "facts_composer_used": false
+          }
+        },
+        "tool_preconditions": [
+          {
+            "stage": "tool_precondition",
+            "decision": "allow_structured",
+            "confidence": 0.9,
+            "detail": "known_game_price_query_needs_zone_service_mapping",
+            "metadata": {
+              "capability_id": "structured.service_fee",
+              "ok": true,
+              "reason": "known_game_price_query_needs_zone_service_mapping",
+              "severity": "policy",
+              "selector_allows_structured": true,
+              "selected_capability_id": "structured.service_fee"
+            }
+          }
+        ],
+        "candidate_execution": [],
+        "validation": {
+          "stage": "validation",
+          "decision": "ok",
+          "confidence": 1.0,
+          "detail": "price_question_should_start_with_price_or_number",
+          "metadata": {}
+        },
+        "llm_calls": []
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": null,
+        "duration": null,
+        "price_intent": true,
+        "short_answer": false,
+        "comparison_intent": false,
+        "raw": {
+          "normalized_query": "the last of us part i / part ii ราคาเท่าไหร่",
+          "language_hint": "mixed_th_en"
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "price_question_should_start_with_price_or_number"
+        ]
+      },
+      "trace": [
+        {
+          "stage": "timing",
+          "decision": "locale_resolution",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0001,
+            "global_remaining_sec": 18.3499,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3499,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "intent_cue_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 8.1,
+            "elapsed_sec": 0.0081,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0082,
+            "global_remaining_sec": 18.3418,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3418,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "canonical_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0082,
+            "global_remaining_sec": 18.3418,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3418,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "locale_resolution",
+          "decision": "th",
+          "confidence": 0.99,
+          "detail": "keyboard_guard_thai_intended",
+          "metadata": {
+            "requested": "auto",
+            "detected": "th",
+            "effective": "th",
+            "confidence": 0.99,
+            "reason": "keyboard_guard_thai_intended"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+            "candidate": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "parts=1",
+          "metadata": {
+            "elapsed_ms": 23.06,
+            "elapsed_sec": 0.0231,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0313,
+            "global_remaining_sec": 18.3187,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3187,
+            "timing_status": "running",
+            "entry_to_split_ms": 8.18,
+            "parts": [
+              "The Last of Us Part I / Part II ราคาเท่าไหร่"
+            ],
+            "competition_rule_query": false
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "single clear operation does not need planner",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": true
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "the last of us part i / part ii ราคาเท่าไหร่",
+          "metadata": {
+            "language_hint": "mixed_th_en",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "The Last of Us Part I / Part II ราคาเท่าไหร่"
+            ],
+            "elapsed_ms": 14.5,
+            "elapsed_sec": 0.0145
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 14.63,
+            "elapsed_sec": 0.0146
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "service_fee/service_fee_query",
+          "metadata": {
+            "elapsed_ms": 110.72,
+            "elapsed_sec": 0.1107,
+            "route_category": "service_fee",
+            "route_intent": "service_fee_query",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": null,
+            "duration": null,
+            "price_intent": true
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "semantic_route_refiner",
+          "confidence": 1.0,
+          "detail": "skipped_protected_route",
+          "metadata": {
+            "elapsed_ms": 0.03,
+            "elapsed_sec": 0.0,
+            "route_category": "service_fee",
+            "route_intent": "service_fee_query",
+            "route_locked": false
+          }
+        },
+        {
+          "stage": "semantic_route_refiner",
+          "decision": "skipped_protected_route",
+          "confidence": 0.95,
+          "detail": "protected=service_fee/service_fee_query",
+          "metadata": {}
+        },
+        {
+          "stage": "freshness_guard",
+          "decision": "not_required",
+          "confidence": 0.9,
+          "detail": "query does not require live dynamic evidence",
+          "metadata": {
+            "requires_live_evidence": false
+          }
+        },
+        {
+          "stage": "boundary_guard",
+          "decision": "allow",
+          "confidence": 0.9,
+          "detail": "no high-confidence boundary matched",
+          "metadata": {
+            "flags": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "guard_scope",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0
+          }
+        },
+        {
+          "stage": "guard",
+          "decision": "domain_ok",
+          "confidence": 0.9,
+          "detail": "domain hints found",
+          "metadata": {}
+        },
+        {
+          "stage": "router",
+          "decision": "service_fee",
+          "confidence": 0.95,
+          "detail": "price/service entity found",
+          "metadata": {
+            "intent": "service_fee_query",
+            "answer_type": "fact"
+          }
+        },
+        {
+          "stage": "model_gateway",
+          "decision": "skip_preflight_llm",
+          "confidence": 0.95,
+          "detail": "verified deterministic service-fee route",
+          "metadata": {
+            "allow_llm": true,
+            "preflight_allow_llm": false,
+            "route_category": "service_fee",
+            "route_intent": "service_fee_query"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "universal_intent",
+          "confidence": 1.0,
+          "detail": "service_fee/price_calculate",
+          "metadata": {
+            "elapsed_ms": 1.89,
+            "elapsed_sec": 0.0019,
+            "method": "heuristic",
+            "confidence": 0.93
+          }
+        },
+        {
+          "stage": "universal_intent",
+          "decision": "service_fee/price_calculate",
+          "confidence": 0.93,
+          "detail": "known game alias found; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false,
+            "llm_first": false,
+            "llm_first_skip_reason": "",
+            "llm_first_review_reason": "",
+            "llm_call": {},
+            "intent_risk_flags": [],
+            "input_recovery": {
+              "score": 0.1825,
+              "language": "mixed",
+              "language_quality": 0.8175,
+              "should_review_intent": false,
+              "reason": "Thai character n-gram quality=0.818",
+              "action": "continue"
+            },
+            "llm_rejected_reason": "",
+            "intent_candidates": [
+              {
+                "id": "c1",
+                "domain": "service_fee",
+                "operation": "price_calculate",
+                "target": "",
+                "confidence": 0.93,
+                "reason": "heuristic fallback"
+              }
+            ],
+            "target": "",
+            "filters": {},
+            "needs": [
+              "calculate_price",
+              "show_price_breakdown"
+            ],
+            "answer_style": "direct_then_details",
+            "heuristic": {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "known game alias found; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_router",
+          "confidence": 1.0,
+          "detail": "structured/service_fee",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "method": "heuristic",
+            "confidence": 0.93
+          }
+        },
+        {
+          "stage": "tool_router",
+          "decision": "heuristic:structured",
+          "confidence": 0.93,
+          "detail": "experimental_allow_llm is false",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "ambiguity_gate",
+          "confidence": 1.0,
+          "detail": "allow",
+          "metadata": {
+            "elapsed_ms": 95.21,
+            "elapsed_sec": 0.0952,
+            "flags": [
+              "price_query_with_game_target_requires_zone_mapping"
+            ],
+            "confidence": 0.76
+          }
+        },
+        {
+          "stage": "ambiguity_gate",
+          "decision": "allow",
+          "confidence": 0.76,
+          "detail": "ambiguity risk acceptable",
+          "metadata": {
+            "flags": [
+              "price_query_with_game_target_requires_zone_mapping"
+            ],
+            "route": "service_fee/service_fee_query",
+            "intent": "service_fee/price_calculate",
+            "has_known_game": true,
+            "has_service_or_zone": false,
+            "game_entity_resolution": {
+              "status": "exact",
+              "entity_type": "game",
+              "top_candidate": {
+                "entity_id": "thelastofusparti",
+                "title": "The Last of Us Part I",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "The Last of Us Part I",
+                "sources": [
+                  "availability_ps5_01_02"
+                ],
+                "zones": [
+                  "PlayStation 5 Zone"
+                ],
+                "has_controls": true,
+                "reasons": [
+                  "operation_has_availability"
+                ]
+              },
+              "candidates": [
+                {
+                  "entity_id": "thelastofusparti",
+                  "title": "The Last of Us Part I",
+                  "score": 1.0,
+                  "match_type": "exact_alias",
+                  "matched_alias": "The Last of Us Part I",
+                  "sources": [
+                    "availability_ps5_01_02"
+                  ],
+                  "zones": [
+                    "PlayStation 5 Zone"
+                  ],
+                  "has_controls": true,
+                  "reasons": [
+                    "operation_has_availability"
+                  ]
+                }
+              ],
+              "top_score": 1.0,
+              "margin": 1.0,
+              "reason": "direct_alias_match",
+              "operation": "price",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "exact",
+              "candidate_count": 1,
+              "comparison_count": 0,
+              "elapsed_ms": 11.999,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            },
+            "intent_candidates": [
+              {
+                "domain": "service_fee",
+                "operation": "price_calculate",
+                "score": 0.99,
+                "reasons": [
+                  "price_terms",
+                  "known_game_price_target",
+                  "route_prior",
+                  "intent_domain_prior",
+                  "intent_operation_prior"
+                ]
+              },
+              {
+                "domain": "games",
+                "operation": "detail",
+                "score": 0.3,
+                "reasons": [
+                  "known_game_target"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "question_frame",
+          "confidence": 0.98,
+          "detail": "service_fee/price_lookup",
+          "metadata": {
+            "elapsed_ms": 109.64,
+            "elapsed_sec": 0.1096,
+            "operation": "price_lookup",
+            "domain": "service_fee",
+            "expected_answer_types": [
+              "price",
+              "calculation"
+            ],
+            "targets": [
+              {
+                "target_id": "thelastofusparti",
+                "target_type": "game",
+                "domain": "games",
+                "label": "The Last of Us Part I",
+                "score": 1.0
+              }
+            ],
+            "target_status": "exact",
+            "target_margin": 0.174,
+            "target_required": false,
+            "allows_multiple_targets": true,
+            "needs_clarification": false,
+            "confidence": 0.98,
+            "method": "operation_first",
+            "route_category": "service_fee",
+            "route_intent": "service_fee_query",
+            "intent_operation": "price_calculate",
+            "target_reason": "explicit_canonical_title_overrides_normalized_alias_tie",
+            "target_candidate_count": 5,
+            "game_family": ""
+          }
+        },
+        {
+          "stage": "target_context",
+          "decision": "enrich_universal_intent",
+          "confidence": 1.0,
+          "detail": "exact Question Frame target propagated to structured execution",
+          "metadata": {
+            "target_id": "thelastofusparti",
+            "target_type": "game",
+            "domain": "games",
+            "label": "The Last of Us Part I",
+            "score": 1.0
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "candidate_decisions",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 107.3,
+            "elapsed_sec": 0.1073
+          }
+        },
+        {
+          "stage": "decision_candidates",
+          "decision": "structured.service_fee",
+          "confidence": 0.9850000000000001,
+          "detail": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=service_fee; question_frame_domain_match; game_price_requires_service_mapping; precondition=known_game_price_query_needs_zone_service_mapping",
+          "metadata": {
+            "selected": {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.985,
+              "status": "accepted",
+              "reason": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=service_fee; question_frame_domain_match; game_price_requires_service_mapping; precondition=known_game_price_query_needs_zone_service_mapping",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            "selection": {
+              "status": "selected",
+              "execution_allowed": true,
+              "margin": 0.091,
+              "same_action_as_second": false,
+              "second": {
+                "capability_id": "fast.price_calculator",
+                "action": "fast_path",
+                "domain": "service_fee",
+                "score": 0.894,
+                "status": "accepted",
+                "reason": "base=0.93; domain_match; tool_router_domain=service_fee; price_calculation_priority; question_frame_domain_match; question_frame_operation=price_lookup; game_price_not_direct_calculator_input; precondition=price_calculator_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              }
+            },
+            "question_frame": {
+              "operation": "price_lookup",
+              "domain": "service_fee",
+              "expected_answer_types": [
+                "price",
+                "calculation"
+              ],
+              "targets": [
+                {
+                  "target_id": "thelastofusparti",
+                  "target_type": "game",
+                  "domain": "games",
+                  "label": "The Last of Us Part I",
+                  "score": 1.0
+                }
+              ],
+              "target_status": "exact",
+              "target_margin": 0.174,
+              "target_required": false,
+              "allows_multiple_targets": true,
+              "needs_clarification": false,
+              "confidence": 0.98,
+              "method": "operation_first",
+              "route_category": "service_fee",
+              "route_intent": "service_fee_query",
+              "intent_operation": "price_calculate",
+              "target_reason": "explicit_canonical_title_overrides_normalized_alias_tie",
+              "target_candidate_count": 5,
+              "game_family": ""
+            },
+            "candidates": [
+              {
+                "capability_id": "structured.service_fee",
+                "action": "structured",
+                "domain": "service_fee",
+                "score": 0.985,
+                "status": "accepted",
+                "reason": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=service_fee; question_frame_domain_match; game_price_requires_service_mapping; precondition=known_game_price_query_needs_zone_service_mapping",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "fast.price_calculator",
+                "action": "fast_path",
+                "domain": "service_fee",
+                "score": 0.894,
+                "status": "accepted",
+                "reason": "base=0.93; domain_match; tool_router_domain=service_fee; price_calculation_priority; question_frame_domain_match; question_frame_operation=price_lookup; game_price_not_direct_calculator_input; precondition=price_calculator_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "fast.domain_handlers",
+                "action": "fast_path",
+                "domain": "multi",
+                "score": 0.489,
+                "status": "accepted",
+                "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "rulebase.category_rules",
+                "action": "rulebase",
+                "domain": "multi",
+                "score": 0.467,
+                "status": "accepted",
+                "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.hybrid_guarded",
+                "action": "retrieval",
+                "domain": "multi",
+                "score": 0.456,
+                "status": "accepted",
+                "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.vector_guarded",
+                "action": "vector",
+                "domain": "multi",
+                "score": 0.444,
+                "status": "accepted",
+                "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "llm.facts_composer",
+                "action": "rag_llm",
+                "domain": "multi",
+                "score": 0.4,
+                "status": "accepted",
+                "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "clarification.ask_user",
+                "action": "clarification",
+                "domain": "clarification",
+                "score": 0.322,
+                "status": "accepted",
+                "reason": "base=0.58; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              }
+            ],
+            "rejected": [
+              {
+                "capability_id": "structured.members",
+                "action": "structured",
+                "domain": "members",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_member_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.games",
+                "action": "structured",
+                "domain": "games",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: price_query_must_not_use_game_tool",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.game_controls",
+                "action": "structured",
+                "domain": "game_controls",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_game_control_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.equipment",
+                "action": "structured",
+                "domain": "equipment",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: price_query_must_not_use_equipment_tool",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.reservation",
+                "action": "structured",
+                "domain": "reservation",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: price_query_should_use_calculator_or_service_fee",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.schedule",
+                "action": "structured",
+                "domain": "schedule",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: price_query_must_not_use_schedule_tool",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.competition_fact_cards",
+                "action": "retrieval",
+                "domain": "competition_rules",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_competition_rule_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "llm.general_answer",
+                "action": "general_llm",
+                "domain": "general",
+                "score": 0.139,
+                "status": "rejected",
+                "reason": "policy_veto: PSU-specific or medium/high-risk route cannot use general LLM",
+                "requires_evidence": false,
+                "risk": "low"
+              }
+            ],
+            "policy": {
+              "psu_specific": true,
+              "route_risk": "medium",
+              "general_llm_requires_non_psu": true
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_precondition",
+          "confidence": 1.0,
+          "detail": "structured.service_fee",
+          "metadata": {
+            "elapsed_ms": 0.33,
+            "elapsed_sec": 0.0003,
+            "ok": true
+          }
+        },
+        {
+          "stage": "tool_precondition",
+          "decision": "allow_structured",
+          "confidence": 0.9,
+          "detail": "known_game_price_query_needs_zone_service_mapping",
+          "metadata": {
+            "capability_id": "structured.service_fee",
+            "ok": true,
+            "reason": "known_game_price_query_needs_zone_service_mapping",
+            "severity": "policy",
+            "selector_allows_structured": true,
+            "selected_capability_id": "structured.service_fee"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "structured_tool_execution",
+          "confidence": 1.0,
+          "detail": "structured_service_fee_by_game",
+          "metadata": {
+            "elapsed_ms": 32.26,
+            "elapsed_sec": 0.0323,
+            "precondition_ok": true,
+            "selector_allows_structured": true,
+            "selected_capability_id": "structured.service_fee",
+            "confidence": 0.86
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "facts_composer",
+          "confidence": 1.0,
+          "detail": "disabled",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "used_llm": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "format_answer",
+          "confidence": 1.0,
+          "detail": "structured_service_fee_by_game",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "validation",
+          "confidence": 1.0,
+          "detail": "ok",
+          "metadata": {
+            "elapsed_ms": 111.93,
+            "elapsed_sec": 0.1119,
+            "error_count": 0,
+            "warning_count": 1
+          }
+        },
+        {
+          "stage": "structured_tool",
+          "decision": "structured_service_fee_by_game",
+          "confidence": 0.86,
+          "detail": "calculate_service_fee_by_game_zone",
+          "metadata": {
+            "tool": "calculate_service_fee_by_game_zone",
+            "game": "The Last of Us Part I",
+            "zones": [
+              "PlayStation 5 Zone"
+            ],
+            "services": [
+              "PS5"
+            ],
+            "elapsed": 0.5776,
+            "facts_composer_used": false
+          }
+        },
+        {
+          "stage": "validation",
+          "decision": "ok",
+          "confidence": 1.0,
+          "detail": "price_question_should_start_with_price_or_number",
+          "metadata": {}
+        },
+        {
+          "stage": "timing",
+          "decision": "validation_final",
+          "confidence": 1.0,
+          "detail": "ok",
+          "metadata": {
+            "elapsed_ms": 0.36,
+            "elapsed_sec": 0.0004,
+            "added_error_count": 0,
+            "added_warning_count": 1,
+            "added_errors": [],
+            "added_warnings": [
+              "price_question_should_start_with_price_or_number"
+            ],
+            "merged_error_count": 0,
+            "merged_warning_count": 1
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:structured_service_fee_by_game",
+          "metadata": {
+            "elapsed_ms": 0.98,
+            "elapsed_sec": 0.001,
+            "format_response_style_ms": 0.39,
+            "answer_language": "th",
+            "total_elapsed_ms": 691.12,
+            "total_elapsed_sec": 0.6911
+          }
+        }
+      ],
+      "log_sinks": {
+        "status": "queued"
+      }
+    }
+  },
+  {
+    "q": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+    "requested_locale": "th",
+    "status": 200,
+    "content_language": "th",
+    "elapsed": 0.6950787000823766,
+    "response": {
+      "ok": true,
+      "request_id": "33352fa1ce664d10828e553b15f47cf1",
+      "session_id": "r30-59efb67a05f94893b5212c77f35e4097",
+      "answer": "The Last of Us Part I ไม่มีราคาแยกตามชื่อเกมครับ ต้องดูราคาตามโซน/บริการที่ใช้เล่นเกมนี้\n\nPlayStation 5 Zone\nยังไม่ทราบกลุ่มผู้ใช้ จึงแสดงราคาทุกกลุ่มให้เทียบก่อน\nPlayStation 5 1 ชั่วโมง (1-2 คน)\n•    นักศึกษา/นักเรียน/บุคลากร PSU: 0 บาท/1 ชั่วโมง\n•    ศิษย์เก่า PSU / นักศึกษา-นักเรียนต่างสถาบัน (General Student): 50 บาท/1 ชั่วโมง\n•    บุคคลทั่วไป (General Adult): 150 บาท/1 ชั่วโมง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png",
+      "mode": "pipeline:structured_service_fee_by_game",
+      "route_category": "service_fee",
+      "route_intent": "service_fee_query",
+      "universal_intent": {
+        "domain": "service_fee",
+        "operation": "price_calculate",
+        "target": "The Last of Us Part I",
+        "filters": {
+          "resolved_target_id": "thelastofusparti",
+          "resolved_target_type": "game"
+        },
+        "needs": [
+          "calculate_price",
+          "show_price_breakdown"
+        ],
+        "answer_style": "direct_then_details",
+        "confidence": 0.93,
+        "method": "heuristic",
+        "reason": "known game alias found; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+      },
+      "confidence": 0.86,
+      "latency_sec": 0.6744,
+      "wall_sec": 0.6886,
+      "deadline": {
+        "global_timeout_enabled": true,
+        "global_timeout_sec": 20.0,
+        "global_elapsed_sec": 0.6886,
+        "global_remaining_sec": 19.3114,
+        "finalizer_reserve_sec": 1.0,
+        "work_remaining_sec": 18.3114,
+        "timing_status": "running"
+      },
+      "timing_status": "completed",
+      "timed_out": false,
+      "timeout_stage": "",
+      "retryable": false,
+      "worker_id": 0,
+      "sources": [
+        {
+          "id": "The Last of Us Part I",
+          "url": "https://esports.phuket.psu.ac.th/Services/our-games"
+        },
+        {
+          "id": "service_fee_image_2026",
+          "url": "https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png"
+        }
+      ],
+      "validation_ok": true,
+      "language": {
+        "requested": "th",
+        "detected": "th",
+        "effective": "th",
+        "confidence": 1.0,
+        "reason": "toggle_override_th;keyboard_guard_thai_intended"
+      },
+      "experimental_rag_fallback": true,
+      "experimental_allow_llm": true,
+      "input_recovery": {
+        "score": 0.1825,
+        "language": "mixed",
+        "language_quality": 0.8175,
+        "should_review_intent": false,
+        "reason": "Thai character n-gram quality=0.818",
+        "action": "continue"
+      },
+      "server_date": {
+        "iso": "2026-10-02",
+        "label": "02/10/2026 (วันศุกร์)",
+        "time": "03:15",
+        "datetime_iso": "2026-10-02T03:15:48.807520+07:00",
+        "timezone": "Asia/Bangkok",
+        "service_slot": {
+          "date": "2026-10-02",
+          "time": "03:15",
+          "weekday": "วันศุกร์",
+          "timezone": "Asia/Bangkok",
+          "status": "outside_hours",
+          "playable": false,
+          "slot": null,
+          "next_open_slot": {
+            "code": "morning",
+            "label": "Morning",
+            "start": "09:00",
+            "end": "12:00",
+            "time_range": "09:00-12:00",
+            "state": "open",
+            "note": "เปิดให้บริการ"
+          },
+          "reason": "outside_regular_service_hours",
+          "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+          "source": "reservation_schedule"
+        },
+        "thai_holidays": [],
+        "upcoming_thai_holidays": [
+          {
+            "date": "2026-10-13",
+            "title": "วันนวมินทรมหาราช",
+            "type": "national_holiday",
+            "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-16",
+            "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+            "type": "bank_holiday_bangkok",
+            "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+            "source": "Bank of Thailand Financial Institutions Holidays 2026",
+            "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+          },
+          {
+            "date": "2026-10-23",
+            "title": "วันปิยมหาราช",
+            "type": "national_holiday",
+            "note": "วันหยุดประจำปีของไทย",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-31",
+            "title": "วันฮาโลวีน",
+            "type": "observance",
+            "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-12-05",
+            "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+            "type": "national_holiday",
+            "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          }
+        ]
+      },
+      "calendar": {
+        "date": "2026-10-02",
+        "label": "02/10/2026 (วันศุกร์)",
+        "weekday": "วันศุกร์",
+        "time": "03:15",
+        "datetime_iso": "2026-10-02T03:15:48.807520+07:00",
+        "timezone": "Asia/Bangkok",
+        "service_slot": {
+          "date": "2026-10-02",
+          "time": "03:15",
+          "weekday": "วันศุกร์",
+          "timezone": "Asia/Bangkok",
+          "status": "outside_hours",
+          "playable": false,
+          "slot": null,
+          "next_open_slot": {
+            "code": "morning",
+            "label": "Morning",
+            "start": "09:00",
+            "end": "12:00",
+            "time_range": "09:00-12:00",
+            "state": "open",
+            "note": "เปิดให้บริการ"
+          },
+          "reason": "outside_regular_service_hours",
+          "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+          "source": "reservation_schedule"
+        },
+        "service_closure": null,
+        "thai_holidays": [],
+        "upcoming_thai_holidays": [
+          {
+            "date": "2026-10-13",
+            "title": "วันนวมินทรมหาราช",
+            "type": "national_holiday",
+            "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-16",
+            "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+            "type": "bank_holiday_bangkok",
+            "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+            "source": "Bank of Thailand Financial Institutions Holidays 2026",
+            "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+          },
+          {
+            "date": "2026-10-23",
+            "title": "วันปิยมหาราช",
+            "type": "national_holiday",
+            "note": "วันหยุดประจำปีของไทย",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-31",
+            "title": "วันฮาโลวีน",
+            "type": "observance",
+            "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-12-05",
+            "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+            "type": "national_holiday",
+            "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          }
+        ]
+      },
+      "input_quality": {
+        "action": "continue",
+        "detected_action": "continue",
+        "applied_action": "continue",
+        "should_retype": false,
+        "flags": [],
+        "layout_score": 0.147681,
+        "repeat_score": 0.04,
+        "guard_status": "passed",
+        "guard_mode": "enforce",
+        "repeat_policy": "warn_and_continue",
+        "profile_version": "keyboard-profile-v1:acb6d6b414cb0914",
+        "guard_elapsed_ms": 3.33
+      },
+      "context_resolution": {
+        "original_question": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+        "resolved_question": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+        "used_context": false,
+        "context_game": "The Last of Us Part I / Part II",
+        "context_domain": null,
+        "context_operation": null,
+        "context_topic": null,
+        "reason": "question_has_explicit_game"
+      },
+      "query_debug": {
+        "original_question": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+        "resolved_question": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+        "normalized_query": "the last of us part i / part ii ราคาเท่าไหร่",
+        "query_variants": [
+          "The Last of Us Part I / Part II ราคาเท่าไหร่"
+        ],
+        "active_query": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+        "active_query_changed": false,
+        "trace": [
+          {
+            "stage": "preprocess",
+            "decision": "normalized",
+            "confidence": 1.0,
+            "detail": "the last of us part i / part ii ราคาเท่าไหร่",
+            "metadata": {
+              "language_hint": "mixed_th_en",
+              "nonsemantic_preface_removed": false,
+              "query_variants": [
+                "The Last of Us Part I / Part II ราคาเท่าไหร่"
+              ],
+              "elapsed_ms": 21.38,
+              "elapsed_sec": 0.0214
+            }
+          }
+        ]
+      },
+      "decision_artifact": {
+        "intent": {
+          "domain": "service_fee",
+          "operation": "price_calculate",
+          "target": "The Last of Us Part I",
+          "confidence": 0.93,
+          "method": "heuristic"
+        },
+        "route": {
+          "category": "service_fee",
+          "intent": "service_fee_query",
+          "confidence": 0.95,
+          "answer_type": "fact",
+          "risk": "medium",
+          "reason": "price/service entity found; structured_mode=structured_service_fee_by_game"
+        },
+        "tool_router": {
+          "stage": "tool_router",
+          "decision": "heuristic:structured",
+          "confidence": 0.93,
+          "detail": "experimental_allow_llm is false",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        "selected_candidate": {
+          "capability_id": "structured.service_fee",
+          "action": "structured",
+          "domain": "service_fee",
+          "score": 0.985,
+          "status": "accepted",
+          "reason": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=service_fee; question_frame_domain_match; game_price_requires_service_mapping; precondition=known_game_price_query_needs_zone_service_mapping",
+          "requires_evidence": true,
+          "risk": "medium"
+        },
+        "candidates": [
+          {
+            "capability_id": "structured.service_fee",
+            "action": "structured",
+            "domain": "service_fee",
+            "score": 0.985,
+            "status": "accepted",
+            "reason": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=service_fee; question_frame_domain_match; game_price_requires_service_mapping; precondition=known_game_price_query_needs_zone_service_mapping",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "fast.price_calculator",
+            "action": "fast_path",
+            "domain": "service_fee",
+            "score": 0.894,
+            "status": "accepted",
+            "reason": "base=0.93; domain_match; tool_router_domain=service_fee; price_calculation_priority; question_frame_domain_match; question_frame_operation=price_lookup; game_price_not_direct_calculator_input; precondition=price_calculator_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "fast.domain_handlers",
+            "action": "fast_path",
+            "domain": "multi",
+            "score": 0.489,
+            "status": "accepted",
+            "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "rulebase.category_rules",
+            "action": "rulebase",
+            "domain": "multi",
+            "score": 0.467,
+            "status": "accepted",
+            "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "retrieval.hybrid_guarded",
+            "action": "retrieval",
+            "domain": "multi",
+            "score": 0.456,
+            "status": "accepted",
+            "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "retrieval.vector_guarded",
+            "action": "vector",
+            "domain": "multi",
+            "score": 0.444,
+            "status": "accepted",
+            "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "llm.facts_composer",
+            "action": "rag_llm",
+            "domain": "multi",
+            "score": 0.4,
+            "status": "accepted",
+            "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "clarification.ask_user",
+            "action": "clarification",
+            "domain": "clarification",
+            "score": 0.322,
+            "status": "accepted",
+            "reason": "base=0.58; precondition=no_specific_precondition",
+            "requires_evidence": false,
+            "risk": "low"
+          }
+        ],
+        "rejected": [
+          {
+            "capability_id": "structured.members",
+            "action": "structured",
+            "domain": "members",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_member_query",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.games",
+            "action": "structured",
+            "domain": "games",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: price_query_must_not_use_game_tool",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.game_controls",
+            "action": "structured",
+            "domain": "game_controls",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_game_control_query",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.equipment",
+            "action": "structured",
+            "domain": "equipment",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: price_query_must_not_use_equipment_tool",
+            "requires_evidence": true,
+            "risk": "low"
+          },
+          {
+            "capability_id": "structured.reservation",
+            "action": "structured",
+            "domain": "reservation",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: price_query_should_use_calculator_or_service_fee",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "structured.schedule",
+            "action": "structured",
+            "domain": "schedule",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: price_query_must_not_use_schedule_tool",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "retrieval.competition_fact_cards",
+            "action": "retrieval",
+            "domain": "competition_rules",
+            "score": 0.156,
+            "status": "rejected",
+            "reason": "precondition_veto: not_a_competition_rule_query",
+            "requires_evidence": true,
+            "risk": "medium"
+          },
+          {
+            "capability_id": "llm.general_answer",
+            "action": "general_llm",
+            "domain": "general",
+            "score": 0.139,
+            "status": "rejected",
+            "reason": "policy_veto: PSU-specific or medium/high-risk route cannot use general LLM",
+            "requires_evidence": false,
+            "risk": "low"
+          }
+        ],
+        "policy": {
+          "psu_specific": true,
+          "route_risk": "medium",
+          "general_llm_requires_non_psu": true
+        },
+        "execution_plan": [
+          "normalize_and_extract_entities",
+          "route_and_resolve_universal_intent",
+          "generate_capability_candidates",
+          "apply_policy_and_rank",
+          "apply_tool_preconditions",
+          "execute_structured_tool",
+          "format_validate_and_record"
+        ],
+        "final": {
+          "mode": "pipeline:structured_service_fee_by_game",
+          "confidence": 0.86,
+          "execution_step": "execute_structured_tool",
+          "executed_capability": "structured.service_fee",
+          "selected_matches_execution": true,
+          "validation_ok": true,
+          "validation_errors": [],
+          "validation_warnings": [
+            "price_question_should_start_with_price_or_number"
+          ],
+          "evidence_count": 2,
+          "source_ids": [
+            "The Last of Us Part I",
+            "service_fee_image_2026"
+          ]
+        },
+        "production_metrics": {
+          "policy_version": "correctness_control_flow_v2",
+          "outcome": "answered",
+          "quality_gate_status": "pass",
+          "candidate_margin": 0.091,
+          "selection_status": "selected",
+          "ambiguity_decision": "allow",
+          "repair_attempted": false,
+          "repair_recovered": false,
+          "llm_call_count": 0,
+          "requires_shadow_review": true,
+          "shadow_review_reasons": [
+            "validation_warning"
+          ]
+        },
+        "entities": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": true
+        },
+        "structured_tool": {
+          "stage": "structured_tool",
+          "decision": "structured_service_fee_by_game",
+          "confidence": 0.86,
+          "detail": "calculate_service_fee_by_game_zone",
+          "metadata": {
+            "tool": "calculate_service_fee_by_game_zone",
+            "game": "The Last of Us Part I",
+            "zones": [
+              "PlayStation 5 Zone"
+            ],
+            "services": [
+              "PS5"
+            ],
+            "elapsed": 0.5624,
+            "facts_composer_used": false
+          }
+        },
+        "tool_preconditions": [
+          {
+            "stage": "tool_precondition",
+            "decision": "allow_structured",
+            "confidence": 0.9,
+            "detail": "known_game_price_query_needs_zone_service_mapping",
+            "metadata": {
+              "capability_id": "structured.service_fee",
+              "ok": true,
+              "reason": "known_game_price_query_needs_zone_service_mapping",
+              "severity": "policy",
+              "selector_allows_structured": true,
+              "selected_capability_id": "structured.service_fee"
+            }
+          }
+        ],
+        "candidate_execution": [],
+        "validation": {
+          "stage": "validation",
+          "decision": "ok",
+          "confidence": 1.0,
+          "detail": "price_question_should_start_with_price_or_number",
+          "metadata": {}
+        },
+        "llm_calls": []
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": null,
+        "duration": null,
+        "price_intent": true,
+        "short_answer": false,
+        "comparison_intent": false,
+        "raw": {
+          "normalized_query": "the last of us part i / part ii ราคาเท่าไหร่",
+          "language_hint": "mixed_th_en"
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "price_question_should_start_with_price_or_number"
+        ]
+      },
+      "trace": [
+        {
+          "stage": "timing",
+          "decision": "locale_resolution",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.04,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0001,
+            "global_remaining_sec": 18.3499,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3499,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "intent_cue_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 4.5,
+            "elapsed_sec": 0.0045,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0046,
+            "global_remaining_sec": 18.3454,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3454,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "canonical_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0046,
+            "global_remaining_sec": 18.3453,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3453,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "locale_resolution",
+          "decision": "th",
+          "confidence": 1.0,
+          "detail": "toggle_override_th;keyboard_guard_thai_intended",
+          "metadata": {
+            "requested": "th",
+            "detected": "th",
+            "effective": "th",
+            "confidence": 1.0,
+            "reason": "toggle_override_th;keyboard_guard_thai_intended"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+            "candidate": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "parts=1",
+          "metadata": {
+            "elapsed_ms": 21.09,
+            "elapsed_sec": 0.0211,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0257,
+            "global_remaining_sec": 18.3242,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3242,
+            "timing_status": "running",
+            "entry_to_split_ms": 4.58,
+            "parts": [
+              "The Last of Us Part I / Part II ราคาเท่าไหร่"
+            ],
+            "competition_rule_query": false
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "single clear operation does not need planner",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": true
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "the last of us part i / part ii ราคาเท่าไหร่",
+          "metadata": {
+            "language_hint": "mixed_th_en",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "The Last of Us Part I / Part II ราคาเท่าไหร่"
+            ],
+            "elapsed_ms": 21.38,
+            "elapsed_sec": 0.0214
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 21.53,
+            "elapsed_sec": 0.0215
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "service_fee/service_fee_query",
+          "metadata": {
+            "elapsed_ms": 103.19,
+            "elapsed_sec": 0.1032,
+            "route_category": "service_fee",
+            "route_intent": "service_fee_query",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": null,
+            "duration": null,
+            "price_intent": true
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "semantic_route_refiner",
+          "confidence": 1.0,
+          "detail": "skipped_protected_route",
+          "metadata": {
+            "elapsed_ms": 0.03,
+            "elapsed_sec": 0.0,
+            "route_category": "service_fee",
+            "route_intent": "service_fee_query",
+            "route_locked": false
+          }
+        },
+        {
+          "stage": "semantic_route_refiner",
+          "decision": "skipped_protected_route",
+          "confidence": 0.95,
+          "detail": "protected=service_fee/service_fee_query",
+          "metadata": {}
+        },
+        {
+          "stage": "freshness_guard",
+          "decision": "not_required",
+          "confidence": 0.9,
+          "detail": "query does not require live dynamic evidence",
+          "metadata": {
+            "requires_live_evidence": false
+          }
+        },
+        {
+          "stage": "boundary_guard",
+          "decision": "allow",
+          "confidence": 0.9,
+          "detail": "no high-confidence boundary matched",
+          "metadata": {
+            "flags": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "guard_scope",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0
+          }
+        },
+        {
+          "stage": "guard",
+          "decision": "domain_ok",
+          "confidence": 0.9,
+          "detail": "domain hints found",
+          "metadata": {}
+        },
+        {
+          "stage": "router",
+          "decision": "service_fee",
+          "confidence": 0.95,
+          "detail": "price/service entity found",
+          "metadata": {
+            "intent": "service_fee_query",
+            "answer_type": "fact"
+          }
+        },
+        {
+          "stage": "model_gateway",
+          "decision": "skip_preflight_llm",
+          "confidence": 0.95,
+          "detail": "verified deterministic service-fee route",
+          "metadata": {
+            "allow_llm": true,
+            "preflight_allow_llm": false,
+            "route_category": "service_fee",
+            "route_intent": "service_fee_query"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "universal_intent",
+          "confidence": 1.0,
+          "detail": "service_fee/price_calculate",
+          "metadata": {
+            "elapsed_ms": 1.75,
+            "elapsed_sec": 0.0017,
+            "method": "heuristic",
+            "confidence": 0.93
+          }
+        },
+        {
+          "stage": "universal_intent",
+          "decision": "service_fee/price_calculate",
+          "confidence": 0.93,
+          "detail": "known game alias found; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false,
+            "llm_first": false,
+            "llm_first_skip_reason": "",
+            "llm_first_review_reason": "",
+            "llm_call": {},
+            "intent_risk_flags": [],
+            "input_recovery": {
+              "score": 0.1825,
+              "language": "mixed",
+              "language_quality": 0.8175,
+              "should_review_intent": false,
+              "reason": "Thai character n-gram quality=0.818",
+              "action": "continue"
+            },
+            "llm_rejected_reason": "",
+            "intent_candidates": [
+              {
+                "id": "c1",
+                "domain": "service_fee",
+                "operation": "price_calculate",
+                "target": "",
+                "confidence": 0.93,
+                "reason": "heuristic fallback"
+              }
+            ],
+            "target": "",
+            "filters": {},
+            "needs": [
+              "calculate_price",
+              "show_price_breakdown"
+            ],
+            "answer_style": "direct_then_details",
+            "heuristic": {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "known game alias found; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_router",
+          "confidence": 1.0,
+          "detail": "structured/service_fee",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "method": "heuristic",
+            "confidence": 0.93
+          }
+        },
+        {
+          "stage": "tool_router",
+          "decision": "heuristic:structured",
+          "confidence": 0.93,
+          "detail": "experimental_allow_llm is false",
+          "metadata": {
+            "method": "heuristic",
+            "llm_attempted": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "ambiguity_gate",
+          "confidence": 1.0,
+          "detail": "allow",
+          "metadata": {
+            "elapsed_ms": 105.15,
+            "elapsed_sec": 0.1052,
+            "flags": [
+              "price_query_with_game_target_requires_zone_mapping"
+            ],
+            "confidence": 0.76
+          }
+        },
+        {
+          "stage": "ambiguity_gate",
+          "decision": "allow",
+          "confidence": 0.76,
+          "detail": "ambiguity risk acceptable",
+          "metadata": {
+            "flags": [
+              "price_query_with_game_target_requires_zone_mapping"
+            ],
+            "route": "service_fee/service_fee_query",
+            "intent": "service_fee/price_calculate",
+            "has_known_game": true,
+            "has_service_or_zone": false,
+            "game_entity_resolution": {
+              "status": "exact",
+              "entity_type": "game",
+              "top_candidate": {
+                "entity_id": "thelastofusparti",
+                "title": "The Last of Us Part I",
+                "score": 1.0,
+                "match_type": "exact_alias",
+                "matched_alias": "The Last of Us Part I",
+                "sources": [
+                  "availability_ps5_01_02"
+                ],
+                "zones": [
+                  "PlayStation 5 Zone"
+                ],
+                "has_controls": true,
+                "reasons": [
+                  "operation_has_availability"
+                ]
+              },
+              "candidates": [
+                {
+                  "entity_id": "thelastofusparti",
+                  "title": "The Last of Us Part I",
+                  "score": 1.0,
+                  "match_type": "exact_alias",
+                  "matched_alias": "The Last of Us Part I",
+                  "sources": [
+                    "availability_ps5_01_02"
+                  ],
+                  "zones": [
+                    "PlayStation 5 Zone"
+                  ],
+                  "has_controls": true,
+                  "reasons": [
+                    "operation_has_availability"
+                  ]
+                }
+              ],
+              "top_score": 1.0,
+              "margin": 1.0,
+              "reason": "direct_alias_match",
+              "operation": "price",
+              "resolver": "bounded_trigram_v1",
+              "catalog_version": "bacdf919d5e4323c",
+              "method": "exact",
+              "candidate_count": 1,
+              "comparison_count": 0,
+              "elapsed_ms": 3.07,
+              "request_cache_hit": false,
+              "budget_exceeded": false,
+              "reranker": {
+                "enabled": false,
+                "action": "skipped",
+                "reason": "disabled"
+              }
+            },
+            "intent_candidates": [
+              {
+                "domain": "service_fee",
+                "operation": "price_calculate",
+                "score": 0.99,
+                "reasons": [
+                  "price_terms",
+                  "known_game_price_target",
+                  "route_prior",
+                  "intent_domain_prior",
+                  "intent_operation_prior"
+                ]
+              },
+              {
+                "domain": "games",
+                "operation": "detail",
+                "score": 0.3,
+                "reasons": [
+                  "known_game_target"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "question_frame",
+          "confidence": 0.98,
+          "detail": "service_fee/price_lookup",
+          "metadata": {
+            "elapsed_ms": 107.05,
+            "elapsed_sec": 0.107,
+            "operation": "price_lookup",
+            "domain": "service_fee",
+            "expected_answer_types": [
+              "price",
+              "calculation"
+            ],
+            "targets": [
+              {
+                "target_id": "thelastofusparti",
+                "target_type": "game",
+                "domain": "games",
+                "label": "The Last of Us Part I",
+                "score": 1.0
+              }
+            ],
+            "target_status": "exact",
+            "target_margin": 0.174,
+            "target_required": false,
+            "allows_multiple_targets": true,
+            "needs_clarification": false,
+            "confidence": 0.98,
+            "method": "operation_first",
+            "route_category": "service_fee",
+            "route_intent": "service_fee_query",
+            "intent_operation": "price_calculate",
+            "target_reason": "explicit_canonical_title_overrides_normalized_alias_tie",
+            "target_candidate_count": 5,
+            "game_family": ""
+          }
+        },
+        {
+          "stage": "target_context",
+          "decision": "enrich_universal_intent",
+          "confidence": 1.0,
+          "detail": "exact Question Frame target propagated to structured execution",
+          "metadata": {
+            "target_id": "thelastofusparti",
+            "target_type": "game",
+            "domain": "games",
+            "label": "The Last of Us Part I",
+            "score": 1.0
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "candidate_decisions",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 117.84,
+            "elapsed_sec": 0.1178
+          }
+        },
+        {
+          "stage": "decision_candidates",
+          "decision": "structured.service_fee",
+          "confidence": 0.9850000000000001,
+          "detail": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=service_fee; question_frame_domain_match; game_price_requires_service_mapping; precondition=known_game_price_query_needs_zone_service_mapping",
+          "metadata": {
+            "selected": {
+              "capability_id": "structured.service_fee",
+              "action": "structured",
+              "domain": "service_fee",
+              "score": 0.985,
+              "status": "accepted",
+              "reason": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=service_fee; question_frame_domain_match; game_price_requires_service_mapping; precondition=known_game_price_query_needs_zone_service_mapping",
+              "requires_evidence": true,
+              "risk": "medium"
+            },
+            "selection": {
+              "status": "selected",
+              "execution_allowed": true,
+              "margin": 0.091,
+              "same_action_as_second": false,
+              "second": {
+                "capability_id": "fast.price_calculator",
+                "action": "fast_path",
+                "domain": "service_fee",
+                "score": 0.894,
+                "status": "accepted",
+                "reason": "base=0.93; domain_match; tool_router_domain=service_fee; price_calculation_priority; question_frame_domain_match; question_frame_operation=price_lookup; game_price_not_direct_calculator_input; precondition=price_calculator_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              }
+            },
+            "question_frame": {
+              "operation": "price_lookup",
+              "domain": "service_fee",
+              "expected_answer_types": [
+                "price",
+                "calculation"
+              ],
+              "targets": [
+                {
+                  "target_id": "thelastofusparti",
+                  "target_type": "game",
+                  "domain": "games",
+                  "label": "The Last of Us Part I",
+                  "score": 1.0
+                }
+              ],
+              "target_status": "exact",
+              "target_margin": 0.174,
+              "target_required": false,
+              "allows_multiple_targets": true,
+              "needs_clarification": false,
+              "confidence": 0.98,
+              "method": "operation_first",
+              "route_category": "service_fee",
+              "route_intent": "service_fee_query",
+              "intent_operation": "price_calculate",
+              "target_reason": "explicit_canonical_title_overrides_normalized_alias_tie",
+              "target_candidate_count": 5,
+              "game_family": ""
+            },
+            "candidates": [
+              {
+                "capability_id": "structured.service_fee",
+                "action": "structured",
+                "domain": "service_fee",
+                "score": 0.985,
+                "status": "accepted",
+                "reason": "base=0.86; domain_match; answer_type_match; tool_router_action=structured; tool_router_domain=service_fee; question_frame_domain_match; game_price_requires_service_mapping; precondition=known_game_price_query_needs_zone_service_mapping",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "fast.price_calculator",
+                "action": "fast_path",
+                "domain": "service_fee",
+                "score": 0.894,
+                "status": "accepted",
+                "reason": "base=0.93; domain_match; tool_router_domain=service_fee; price_calculation_priority; question_frame_domain_match; question_frame_operation=price_lookup; game_price_not_direct_calculator_input; precondition=price_calculator_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "fast.domain_handlers",
+                "action": "fast_path",
+                "domain": "multi",
+                "score": 0.489,
+                "status": "accepted",
+                "reason": "base=0.78; multi_domain; answer_type_match; precondition=domain_fast_handler_applicable",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "rulebase.category_rules",
+                "action": "rulebase",
+                "domain": "multi",
+                "score": 0.467,
+                "status": "accepted",
+                "reason": "base=0.74; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.hybrid_guarded",
+                "action": "retrieval",
+                "domain": "multi",
+                "score": 0.456,
+                "status": "accepted",
+                "reason": "base=0.72; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.vector_guarded",
+                "action": "vector",
+                "domain": "multi",
+                "score": 0.444,
+                "status": "accepted",
+                "reason": "base=0.70; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "llm.facts_composer",
+                "action": "rag_llm",
+                "domain": "multi",
+                "score": 0.4,
+                "status": "accepted",
+                "reason": "base=0.62; multi_domain; answer_type_match; precondition=no_specific_precondition",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "clarification.ask_user",
+                "action": "clarification",
+                "domain": "clarification",
+                "score": 0.322,
+                "status": "accepted",
+                "reason": "base=0.58; precondition=no_specific_precondition",
+                "requires_evidence": false,
+                "risk": "low"
+              }
+            ],
+            "rejected": [
+              {
+                "capability_id": "structured.members",
+                "action": "structured",
+                "domain": "members",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_member_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.games",
+                "action": "structured",
+                "domain": "games",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: price_query_must_not_use_game_tool",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.game_controls",
+                "action": "structured",
+                "domain": "game_controls",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_game_control_query",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.equipment",
+                "action": "structured",
+                "domain": "equipment",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: price_query_must_not_use_equipment_tool",
+                "requires_evidence": true,
+                "risk": "low"
+              },
+              {
+                "capability_id": "structured.reservation",
+                "action": "structured",
+                "domain": "reservation",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: price_query_should_use_calculator_or_service_fee",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "structured.schedule",
+                "action": "structured",
+                "domain": "schedule",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: price_query_must_not_use_schedule_tool",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "retrieval.competition_fact_cards",
+                "action": "retrieval",
+                "domain": "competition_rules",
+                "score": 0.156,
+                "status": "rejected",
+                "reason": "precondition_veto: not_a_competition_rule_query",
+                "requires_evidence": true,
+                "risk": "medium"
+              },
+              {
+                "capability_id": "llm.general_answer",
+                "action": "general_llm",
+                "domain": "general",
+                "score": 0.139,
+                "status": "rejected",
+                "reason": "policy_veto: PSU-specific or medium/high-risk route cannot use general LLM",
+                "requires_evidence": false,
+                "risk": "low"
+              }
+            ],
+            "policy": {
+              "psu_specific": true,
+              "route_risk": "medium",
+              "general_llm_requires_non_psu": true
+            }
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "tool_precondition",
+          "confidence": 1.0,
+          "detail": "structured.service_fee",
+          "metadata": {
+            "elapsed_ms": 0.4,
+            "elapsed_sec": 0.0004,
+            "ok": true
+          }
+        },
+        {
+          "stage": "tool_precondition",
+          "decision": "allow_structured",
+          "confidence": 0.9,
+          "detail": "known_game_price_query_needs_zone_service_mapping",
+          "metadata": {
+            "capability_id": "structured.service_fee",
+            "ok": true,
+            "reason": "known_game_price_query_needs_zone_service_mapping",
+            "severity": "policy",
+            "selector_allows_structured": true,
+            "selected_capability_id": "structured.service_fee"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "structured_tool_execution",
+          "confidence": 1.0,
+          "detail": "structured_service_fee_by_game",
+          "metadata": {
+            "elapsed_ms": 8.16,
+            "elapsed_sec": 0.0082,
+            "precondition_ok": true,
+            "selector_allows_structured": true,
+            "selected_capability_id": "structured.service_fee",
+            "confidence": 0.86
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "facts_composer",
+          "confidence": 1.0,
+          "detail": "disabled",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0,
+            "used_llm": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "format_answer",
+          "confidence": 1.0,
+          "detail": "structured_service_fee_by_game",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "validation",
+          "confidence": 1.0,
+          "detail": "ok",
+          "metadata": {
+            "elapsed_ms": 110.36,
+            "elapsed_sec": 0.1104,
+            "error_count": 0,
+            "warning_count": 1
+          }
+        },
+        {
+          "stage": "structured_tool",
+          "decision": "structured_service_fee_by_game",
+          "confidence": 0.86,
+          "detail": "calculate_service_fee_by_game_zone",
+          "metadata": {
+            "tool": "calculate_service_fee_by_game_zone",
+            "game": "The Last of Us Part I",
+            "zones": [
+              "PlayStation 5 Zone"
+            ],
+            "services": [
+              "PS5"
+            ],
+            "elapsed": 0.5624,
+            "facts_composer_used": false
+          }
+        },
+        {
+          "stage": "validation",
+          "decision": "ok",
+          "confidence": 1.0,
+          "detail": "price_question_should_start_with_price_or_number",
+          "metadata": {}
+        },
+        {
+          "stage": "timing",
+          "decision": "validation_final",
+          "confidence": 1.0,
+          "detail": "ok",
+          "metadata": {
+            "elapsed_ms": 0.37,
+            "elapsed_sec": 0.0004,
+            "added_error_count": 0,
+            "added_warning_count": 1,
+            "added_errors": [],
+            "added_warnings": [
+              "price_question_should_start_with_price_or_number"
+            ],
+            "merged_error_count": 0,
+            "merged_warning_count": 1
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:structured_service_fee_by_game",
+          "metadata": {
+            "elapsed_ms": 1.02,
+            "elapsed_sec": 0.001,
+            "format_response_style_ms": 0.41,
+            "answer_language": "th",
+            "total_elapsed_ms": 674.34,
+            "total_elapsed_sec": 0.6743
+          }
+        }
+      ],
+      "log_sinks": {
+        "status": "queued"
+      }
+    }
+  },
+  {
+    "q": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+    "requested_locale": "en",
+    "status": 200,
+    "content_language": "en",
+    "elapsed": 0.8726053000427783,
+    "response": {
+      "ok": true,
+      "request_id": "41183301d42041738aa93a698ee0f46a",
+      "session_id": "r30-552b5e227a084fb184d6968f98a33f55",
+      "answer": "I could not reliably understand that input. It may use the wrong keyboard layout. Please type the question again in Thai or English.",
+      "mode": "pipeline:english_clarification",
+      "route_category": "clarification",
+      "route_intent": "missing_target_clarification",
+      "universal_intent": {
+        "domain": "service_fee",
+        "operation": "price_calculate",
+        "target": "",
+        "filters": {},
+        "needs": [],
+        "answer_style": "direct_then_details",
+        "confidence": 0.9,
+        "method": "llm",
+        "reason": "candidate_intent:c1 heuristic fallback"
+      },
+      "confidence": 0.96,
+      "latency_sec": 0.8529,
+      "wall_sec": 0.867,
+      "deadline": {
+        "global_timeout_enabled": true,
+        "global_timeout_sec": 20.0,
+        "global_elapsed_sec": 0.867,
+        "global_remaining_sec": 19.133,
+        "finalizer_reserve_sec": 1.0,
+        "work_remaining_sec": 18.133,
+        "timing_status": "running"
+      },
+      "timing_status": "completed",
+      "timed_out": false,
+      "timeout_stage": "",
+      "retryable": false,
+      "worker_id": 0,
+      "sources": [],
+      "validation_ok": true,
+      "language": {
+        "requested": "en",
+        "detected": "th",
+        "effective": "en",
+        "confidence": 1.0,
+        "reason": "toggle_override_en;keyboard_guard_thai_intended"
+      },
+      "experimental_rag_fallback": true,
+      "experimental_allow_llm": true,
+      "input_recovery": {
+        "score": 0.1825,
+        "language": "mixed",
+        "language_quality": 0.8175,
+        "should_review_intent": false,
+        "reason": "Thai character n-gram quality=0.818",
+        "action": "continue"
+      },
+      "server_date": {
+        "iso": "2026-10-02",
+        "label": "02/10/2026 (วันศุกร์)",
+        "time": "03:15",
+        "datetime_iso": "2026-10-02T03:15:49.679837+07:00",
+        "timezone": "Asia/Bangkok",
+        "service_slot": {
+          "date": "2026-10-02",
+          "time": "03:15",
+          "weekday": "วันศุกร์",
+          "timezone": "Asia/Bangkok",
+          "status": "outside_hours",
+          "playable": false,
+          "slot": null,
+          "next_open_slot": {
+            "code": "morning",
+            "label": "Morning",
+            "start": "09:00",
+            "end": "12:00",
+            "time_range": "09:00-12:00",
+            "state": "open",
+            "note": "เปิดให้บริการ"
+          },
+          "reason": "outside_regular_service_hours",
+          "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+          "source": "reservation_schedule"
+        },
+        "thai_holidays": [],
+        "upcoming_thai_holidays": [
+          {
+            "date": "2026-10-13",
+            "title": "วันนวมินทรมหาราช",
+            "type": "national_holiday",
+            "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-16",
+            "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+            "type": "bank_holiday_bangkok",
+            "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+            "source": "Bank of Thailand Financial Institutions Holidays 2026",
+            "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+          },
+          {
+            "date": "2026-10-23",
+            "title": "วันปิยมหาราช",
+            "type": "national_holiday",
+            "note": "วันหยุดประจำปีของไทย",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-31",
+            "title": "วันฮาโลวีน",
+            "type": "observance",
+            "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-12-05",
+            "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+            "type": "national_holiday",
+            "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          }
+        ]
+      },
+      "calendar": {
+        "date": "2026-10-02",
+        "label": "02/10/2026 (วันศุกร์)",
+        "weekday": "วันศุกร์",
+        "time": "03:15",
+        "datetime_iso": "2026-10-02T03:15:49.679837+07:00",
+        "timezone": "Asia/Bangkok",
+        "service_slot": {
+          "date": "2026-10-02",
+          "time": "03:15",
+          "weekday": "วันศุกร์",
+          "timezone": "Asia/Bangkok",
+          "status": "outside_hours",
+          "playable": false,
+          "slot": null,
+          "next_open_slot": {
+            "code": "morning",
+            "label": "Morning",
+            "start": "09:00",
+            "end": "12:00",
+            "time_range": "09:00-12:00",
+            "state": "open",
+            "note": "เปิดให้บริการ"
+          },
+          "reason": "outside_regular_service_hours",
+          "note": "อยู่นอกช่วงเวลาให้บริการตามตารางประจำ",
+          "source": "reservation_schedule"
+        },
+        "service_closure": null,
+        "thai_holidays": [],
+        "upcoming_thai_holidays": [
+          {
+            "date": "2026-10-13",
+            "title": "วันนวมินทรมหาราช",
+            "type": "national_holiday",
+            "note": "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศรฯ",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-16",
+            "title": "วันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ",
+            "type": "bank_holiday_bangkok",
+            "note": "ธนาคารแห่งประเทศไทยระบุเป็นวันหยุดพิเศษของสถาบันการเงินในกรุงเทพฯ ไม่ใช่ข้อมูลยืนยันว่าศูนย์ภูเก็ตปิด",
+            "source": "Bank of Thailand Financial Institutions Holidays 2026",
+            "source_url": "https://www.bot.or.th/en/financial-institutions-holiday.html"
+          },
+          {
+            "date": "2026-10-23",
+            "title": "วันปิยมหาราช",
+            "type": "national_holiday",
+            "note": "วันหยุดประจำปีของไทย",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-10-31",
+            "title": "วันฮาโลวีน",
+            "type": "observance",
+            "note": "วันสำคัญ/เทศกาล ไม่ใช่ข้อมูลยืนยันว่าศูนย์ปิด",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          },
+          {
+            "date": "2026-12-05",
+            "title": "วันพ่อแห่งชาติ / วันชาติ / วันคล้ายวันพระบรมราชสมภพ ร.9",
+            "type": "national_holiday",
+            "note": "ตรงกับวันเสาร์ และมีวันหยุดชดเชย 7 ธันวาคม 2026",
+            "source": "Time and Date Thailand holidays 2026",
+            "source_url": "https://www.timeanddate.com/holidays/thailand/2026"
+          }
+        ]
+      },
+      "input_quality": {
+        "action": "continue",
+        "detected_action": "continue",
+        "applied_action": "continue",
+        "should_retype": false,
+        "flags": [],
+        "layout_score": 0.147681,
+        "repeat_score": 0.04,
+        "guard_status": "passed",
+        "guard_mode": "enforce",
+        "repeat_policy": "warn_and_continue",
+        "profile_version": "keyboard-profile-v1:acb6d6b414cb0914",
+        "guard_elapsed_ms": 2.038
+      },
+      "context_resolution": {
+        "original_question": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+        "resolved_question": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+        "used_context": false,
+        "context_game": "The Last of Us Part I / Part II",
+        "context_domain": null,
+        "context_operation": null,
+        "context_topic": null,
+        "reason": "question_has_explicit_game"
+      },
+      "query_debug": {
+        "original_question": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+        "resolved_question": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+        "normalized_query": "the last of us part i / part ii ราคาเท่าไหร่",
+        "query_variants": [
+          "The Last of Us Part I / Part II ราคาเท่าไหร่"
+        ],
+        "active_query": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+        "active_query_changed": false,
+        "trace": [
+          {
+            "stage": "preprocess",
+            "decision": "normalized",
+            "confidence": 1.0,
+            "detail": "the last of us part i / part ii ราคาเท่าไหร่",
+            "metadata": {
+              "language_hint": "mixed_th_en",
+              "nonsemantic_preface_removed": false,
+              "query_variants": [
+                "The Last of Us Part I / Part II ราคาเท่าไหร่"
+              ],
+              "elapsed_ms": 22.69,
+              "elapsed_sec": 0.0227
+            }
+          }
+        ]
+      },
+      "decision_artifact": {
+        "intent": {
+          "domain": "service_fee",
+          "operation": "price_calculate",
+          "target": "",
+          "confidence": 0.9,
+          "method": "llm"
+        },
+        "route": {
+          "category": "clarification",
+          "intent": "missing_target_clarification",
+          "confidence": 0.96,
+          "answer_type": "clarification",
+          "risk": "low",
+          "reason": "the request lacks the target required by the verified answer contract"
+        },
+        "tool_router": null,
+        "selected_candidate": null,
+        "candidates": [],
+        "rejected": [],
+        "policy": {},
+        "execution_plan": [
+          "normalize_and_extract_entities",
+          "route_and_resolve_universal_intent",
+          "generate_capability_candidates",
+          "apply_policy_and_rank",
+          "apply_tool_preconditions",
+          "ask_clarification",
+          "format_validate_and_record"
+        ],
+        "final": {
+          "mode": "pipeline:english_clarification",
+          "confidence": 0.96,
+          "execution_step": "ask_clarification",
+          "executed_capability": "clarification.ask_user",
+          "selected_matches_execution": false,
+          "validation_ok": true,
+          "validation_errors": [],
+          "validation_warnings": [],
+          "evidence_count": 0,
+          "source_ids": []
+        },
+        "production_metrics": {
+          "policy_version": "correctness_control_flow_v2",
+          "outcome": "clarification",
+          "quality_gate_status": "safe_abstain",
+          "candidate_margin": null,
+          "selection_status": "",
+          "ambiguity_decision": "",
+          "repair_attempted": false,
+          "repair_recovered": false,
+          "llm_call_count": 1,
+          "requires_shadow_review": true,
+          "shadow_review_reasons": [
+            "selected_execution_mismatch",
+            "clarification",
+            "llm_used"
+          ]
+        },
+        "entities": {
+          "day": null,
+          "time_slots": [],
+          "service": null,
+          "user_group": null,
+          "duration": null,
+          "price_intent": true
+        },
+        "structured_tool": null,
+        "tool_preconditions": [],
+        "candidate_execution": [],
+        "validation": null,
+        "llm_calls": [
+          {
+            "stage": "universal_intent",
+            "decision": "service_fee/price_calculate",
+            "llm_kind": "universal_intent",
+            "llm_model": "scb10x/typhoon2.5-qwen3-4b",
+            "llm_timeout_sec": 14.0,
+            "llm_configured_timeout_sec": 14.0,
+            "llm_num_predict": 18,
+            "llm_num_ctx": 1536,
+            "llm_cache_hit": false,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.2133,
+            "global_remaining_sec": 18.1367,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.1367,
+            "timing_status": "running",
+            "llm_health_enabled": true,
+            "llm_health_allowed": true,
+            "llm_health_status": "ok",
+            "llm_health_kind": "universal_intent",
+            "llm_health_model": "scb10x/typhoon2.5-qwen3-4b",
+            "llm_health_failures": 0,
+            "llm_health_cooldown_remaining_sec": 0.0,
+            "llm_health_last_error_type": "",
+            "llm_health_last_error": "",
+            "llm_health_failure_scope": "kind_only",
+            "llm_budget_enabled": true,
+            "llm_budget_allowed": true,
+            "llm_budget_max_calls": 2,
+            "llm_budget_used_calls": 1,
+            "llm_budget_kind": "universal_intent",
+            "llm_concurrency_allowed": true,
+            "llm_concurrency_limit": 1,
+            "llm_concurrency_wait_sec": 0.2,
+            "llm_prompt_chars": 543,
+            "llm_candidate_count": 1,
+            "llm_compact_candidates_chars": 78,
+            "llm_elapsed_ms": 631.75,
+            "llm_response_chars": 39,
+            "llm_done_reason": "stop",
+            "llm_parsed": true
+          }
+        ]
+      },
+      "entities": {
+        "day": null,
+        "time_slots": [],
+        "service": null,
+        "user_group": null,
+        "duration": null,
+        "price_intent": true,
+        "short_answer": false,
+        "comparison_intent": false,
+        "raw": {
+          "normalized_query": "the last of us part i / part ii ราคาเท่าไหร่",
+          "language_hint": "mixed_th_en"
+        }
+      },
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": []
+      },
+      "trace": [
+        {
+          "stage": "timing",
+          "decision": "locale_resolution",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.03,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0001,
+            "global_remaining_sec": 18.3499,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3499,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "intent_cue_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 4.48,
+            "elapsed_sec": 0.0045,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0046,
+            "global_remaining_sec": 18.3454,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3454,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "canonical_preflight",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.01,
+            "elapsed_sec": 0.0,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0046,
+            "global_remaining_sec": 18.3454,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3454,
+            "timing_status": "running"
+          }
+        },
+        {
+          "stage": "locale_resolution",
+          "decision": "en",
+          "confidence": 1.0,
+          "detail": "toggle_override_en;keyboard_guard_thai_intended",
+          "metadata": {
+            "requested": "en",
+            "detected": "th",
+            "effective": "en",
+            "confidence": 1.0,
+            "reason": "toggle_override_en;keyboard_guard_thai_intended"
+          }
+        },
+        {
+          "stage": "intent_cue_preflight",
+          "decision": "unchanged",
+          "confidence": 1.0,
+          "detail": "bounded task cues; offsets refer to each intermediate input",
+          "metadata": {
+            "raw": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+            "candidate": "The Last of Us Part I / Part II ราคาเท่าไหร่",
+            "recoveries": [],
+            "span_budget": 3,
+            "edit_budget": 4
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "split_multi_question",
+          "confidence": 1.0,
+          "detail": "parts=1",
+          "metadata": {
+            "elapsed_ms": 20.54,
+            "elapsed_sec": 0.0205,
+            "global_timeout_enabled": true,
+            "global_timeout_sec": 18.35,
+            "global_elapsed_sec": 0.0251,
+            "global_remaining_sec": 18.3248,
+            "finalizer_reserve_sec": 1.0,
+            "work_remaining_sec": 17.3248,
+            "timing_status": "running",
+            "entry_to_split_ms": 4.56,
+            "parts": [
+              "The Last of Us Part I / Part II ราคาเท่าไหร่"
+            ],
+            "competition_rule_query": false
+          }
+        },
+        {
+          "stage": "compound_complexity",
+          "decision": "simple",
+          "confidence": 0.0,
+          "detail": "single question",
+          "metadata": {
+            "level": "simple",
+            "score": 0.0,
+            "signals": [],
+            "can_parallelize": false,
+            "requires_planner": false,
+            "max_workers": 1,
+            "reason": "single question"
+          }
+        },
+        {
+          "stage": "query_planner",
+          "decision": "skipped",
+          "confidence": 0.0,
+          "detail": "single clear operation does not need planner",
+          "metadata": {
+            "method": "gated",
+            "llm_attempted": false,
+            "allow_llm": true
+          }
+        },
+        {
+          "stage": "preprocess",
+          "decision": "normalized",
+          "confidence": 1.0,
+          "detail": "the last of us part i / part ii ราคาเท่าไหร่",
+          "metadata": {
+            "language_hint": "mixed_th_en",
+            "nonsemantic_preface_removed": false,
+            "query_variants": [
+              "The Last of Us Part I / Part II ราคาเท่าไหร่"
+            ],
+            "elapsed_ms": 22.69,
+            "elapsed_sec": 0.0227
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "preprocess",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 22.86,
+            "elapsed_sec": 0.0229
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "active_route_selection",
+          "confidence": 1.0,
+          "detail": "service_fee/service_fee_query",
+          "metadata": {
+            "elapsed_ms": 100.42,
+            "elapsed_sec": 0.1004,
+            "route_category": "service_fee",
+            "route_intent": "service_fee_query",
+            "variant_count": 0
+          }
+        },
+        {
+          "stage": "entities",
+          "decision": "extracted",
+          "confidence": 0.9,
+          "detail": "",
+          "metadata": {
+            "day": null,
+            "time_slots": [],
+            "service": null,
+            "user_group": null,
+            "duration": null,
+            "price_intent": true
+          }
+        },
+        {
+          "stage": "bilingual_route",
+          "decision": "defer_english_response_to_intent_review",
+          "confidence": 0.96,
+          "detail": "broad English response receives bounded Local LLM intent review before verified rendering",
+          "metadata": {
+            "effective_locale": "en",
+            "runtime_translation": false,
+            "initial_mode": "pipeline:english_clarification",
+            "review_required": true
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "semantic_route_refiner",
+          "confidence": 1.0,
+          "detail": "skipped_protected_route",
+          "metadata": {
+            "elapsed_ms": 0.03,
+            "elapsed_sec": 0.0,
+            "route_category": "service_fee",
+            "route_intent": "service_fee_query",
+            "route_locked": false
+          }
+        },
+        {
+          "stage": "semantic_route_refiner",
+          "decision": "skipped_protected_route",
+          "confidence": 0.95,
+          "detail": "protected=service_fee/service_fee_query",
+          "metadata": {}
+        },
+        {
+          "stage": "freshness_guard",
+          "decision": "not_required",
+          "confidence": 0.9,
+          "detail": "query does not require live dynamic evidence",
+          "metadata": {
+            "requires_live_evidence": false
+          }
+        },
+        {
+          "stage": "boundary_guard",
+          "decision": "allow",
+          "confidence": 0.9,
+          "detail": "no high-confidence boundary matched",
+          "metadata": {
+            "flags": []
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "guard_scope",
+          "confidence": 1.0,
+          "detail": "",
+          "metadata": {
+            "elapsed_ms": 0.02,
+            "elapsed_sec": 0.0
+          }
+        },
+        {
+          "stage": "guard",
+          "decision": "domain_ok",
+          "confidence": 0.9,
+          "detail": "domain hints found",
+          "metadata": {}
+        },
+        {
+          "stage": "router",
+          "decision": "service_fee",
+          "confidence": 0.95,
+          "detail": "price/service entity found",
+          "metadata": {
+            "intent": "service_fee_query",
+            "answer_type": "fact"
+          }
+        },
+        {
+          "stage": "model_gateway",
+          "decision": "allow_preflight_llm",
+          "confidence": 0.95,
+          "detail": "broad English structured response requests bounded intent review",
+          "metadata": {
+            "allow_llm": true,
+            "preflight_allow_llm": true,
+            "route_category": "service_fee",
+            "route_intent": "service_fee_query"
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "universal_intent",
+          "confidence": 1.0,
+          "detail": "service_fee/price_calculate",
+          "metadata": {
+            "elapsed_ms": 634.78,
+            "elapsed_sec": 0.6348,
+            "method": "llm",
+            "confidence": 0.9
+          }
+        },
+        {
+          "stage": "universal_intent",
+          "decision": "service_fee/price_calculate",
+          "confidence": 0.9,
+          "detail": "candidate_intent:c1 heuristic fallback",
+          "metadata": {
+            "method": "llm",
+            "llm_attempted": true,
+            "llm_first": true,
+            "llm_first_skip_reason": "",
+            "llm_first_review_reason": "forced bounded intent review for broad English structured response",
+            "llm_call": {
+              "llm_kind": "universal_intent",
+              "llm_model": "scb10x/typhoon2.5-qwen3-4b",
+              "llm_timeout_sec": 14.0,
+              "llm_configured_timeout_sec": 14.0,
+              "llm_num_predict": 18,
+              "llm_num_ctx": 1536,
+              "llm_cache_hit": false,
+              "global_timeout_enabled": true,
+              "global_timeout_sec": 18.35,
+              "global_elapsed_sec": 0.2133,
+              "global_remaining_sec": 18.1367,
+              "finalizer_reserve_sec": 1.0,
+              "work_remaining_sec": 17.1367,
+              "timing_status": "running",
+              "llm_health_enabled": true,
+              "llm_health_allowed": true,
+              "llm_health_status": "ok",
+              "llm_health_kind": "universal_intent",
+              "llm_health_model": "scb10x/typhoon2.5-qwen3-4b",
+              "llm_health_failures": 0,
+              "llm_health_cooldown_remaining_sec": 0.0,
+              "llm_health_last_error_type": "",
+              "llm_health_last_error": "",
+              "llm_health_failure_scope": "kind_only",
+              "llm_budget_enabled": true,
+              "llm_budget_allowed": true,
+              "llm_budget_max_calls": 2,
+              "llm_budget_used_calls": 1,
+              "llm_budget_kind": "universal_intent",
+              "llm_concurrency_allowed": true,
+              "llm_concurrency_limit": 1,
+              "llm_concurrency_wait_sec": 0.2,
+              "llm_prompt_chars": 543,
+              "llm_candidate_count": 1,
+              "llm_compact_candidates_chars": 78,
+              "llm_elapsed_ms": 631.75,
+              "llm_response_chars": 39,
+              "llm_done_reason": "stop",
+              "llm_parsed": true
+            },
+            "intent_risk_flags": [],
+            "input_recovery": {
+              "score": 0.1825,
+              "language": "mixed",
+              "language_quality": 0.8175,
+              "should_review_intent": false,
+              "reason": "Thai character n-gram quality=0.818",
+              "action": "continue"
+            },
+            "llm_rejected_reason": "",
+            "intent_candidates": [
+              {
+                "id": "c1",
+                "domain": "service_fee",
+                "operation": "price_calculate",
+                "target": "",
+                "confidence": 0.93,
+                "reason": "heuristic fallback"
+              }
+            ],
+            "target": "",
+            "filters": {},
+            "needs": [],
+            "answer_style": "direct_then_details",
+            "heuristic": {
+              "domain": "service_fee",
+              "operation": "price_calculate",
+              "confidence": 0.93,
+              "reason": "known game alias found; service fee route overrides member/equipment hints; price terms found; service fee route keeps price operation"
+            }
+          }
+        },
+        {
+          "stage": "bilingual_route",
+          "decision": "english_renderer_after_intent_review",
+          "confidence": 0.96,
+          "detail": "the request lacks the target required by the verified answer contract",
+          "metadata": {
+            "effective_locale": "en",
+            "route_category": "clarification",
+            "route_intent": "missing_target_clarification",
+            "runtime_translation": false
+          }
+        },
+        {
+          "stage": "timing",
+          "decision": "build_result",
+          "confidence": 1.0,
+          "detail": "pipeline:english_clarification",
+          "metadata": {
+            "elapsed_ms": 5.43,
+            "elapsed_sec": 0.0054,
+            "format_response_style_ms": 0.0,
+            "answer_language": "en",
+            "total_elapsed_ms": 852.75,
+            "total_elapsed_sec": 0.8528
+          }
+        }
+      ],
+      "log_sinks": {
+        "status": "queued"
+      }
+    }
+  }
+]

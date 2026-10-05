@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_schedule_friday_maintenance",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "วันศุกร์.*maintenance",
+      "วันศุกร์.*ปิด",
+      "วันศุกร์.*เล่น"
+    ],
+    "en": [
+      "friday.*maintenance",
+      "friday.*open",
+      "friday.*close"
+    ]
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "schedule_friday_maintenance",
+    "patterns": [
+      "วันศุกร์.*maintenance",
+      "วันศุกร์.*ปิด",
+      "วันศุกร์.*เล่น",
+      "friday.*maintenance",
+      "friday.*open",
+      "friday.*close"
+    ],
+    "priority": 123
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "วันศุกร์ช่วง Morning 09:00–12:00 เปิดตามรอบเช้าได้ แต่ช่วง Afternoon 13:00–16:00 เป็น Maintenance** สำหรับ Weekly hardware inspection and cleaning จึงไม่ใช่ช่วงเล่น/ให้บริการ"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "On Friday, the Morning slot 09:00-12:00 is available, but the Afternoon slot 13:00-16:00 is Maintenance** for weekly hardware inspection and cleaning, so it is not an available play/service slot."
+      },
+      "source_sha256": "f5185307c1755fd560fabffb9d2cac1d3517eb50fc6faf07721ede55c74b2b5e",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/reservation_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_reservation_schedule_friday_maintenance",
+      "reservation-intro-schedule"
+    ],
+    "last_verified_at": ""
+  }
+}

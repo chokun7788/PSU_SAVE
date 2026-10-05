@@ -440,6 +440,8 @@ def _format_game_control_line(row: dict[str, Any]) -> str:
 
 
 def _format_game_control_rows(game: str, platform: str, rows: list[dict[str, Any]], source_url: str = "") -> str:
+    from app.pipeline.structured_tools import _control_source_review_note
+
     lines = [f"{game} บน {platform} มีปุ่มควบคุมดังนี้:"]
     has_sections = any(str(row.get("section") or "").strip() for row in rows)
     if has_sections:
@@ -455,6 +457,9 @@ def _format_game_control_rows(game: str, platform: str, rows: list[dict[str, Any
     else:
         for row in rows:
             lines.append(_format_game_control_line(row))
+    review_note = _control_source_review_note(rows)
+    if review_note:
+        lines.append(review_note)
     if source_url:
         lines.append(f"แหล่งข้อมูล: {source_url}")
     return "\n".join(lines)
@@ -488,6 +493,11 @@ def _unique_fragments(values: list[str]) -> list[str]:
 
 
 def _focused_game_control_rows(rows: list[dict[str, Any]], query: str) -> list[dict[str, Any]]:
+    from app.pipeline.control_button_target import explicit_button_selection
+
+    explicit = explicit_button_selection(query, rows)
+    if explicit is not None:
+        return list(explicit.rows)
     q = normalize_text(query)
     if not q:
         return []
@@ -507,6 +517,8 @@ def _focused_game_control_rows(rows: list[dict[str, Any]], query: str) -> list[d
 
 
 def _answer_from_game_control_hits(hits: list[dict[str, Any]], query: str = "") -> str:
+    from app.pipeline.structured_tools import _control_source_review_note
+
     explicit_game = _explicit_game_hint(query)
     if explicit_game:
         explicit_rows = _all_game_control_rows(explicit_game, "")
@@ -517,6 +529,10 @@ def _answer_from_game_control_hits(hits: list[dict[str, Any]], query: str = "") 
             )
         explicit_game = str(explicit_rows[0].get("game") or explicit_game).strip()
         explicit_platform = str(explicit_rows[0].get("platform") or "").strip()
+        from app.pipeline.control_button_target import explicit_button_selection
+        selection = explicit_button_selection(query, explicit_rows)
+        if selection is not None and not selection.rows:
+            return f"ยังไม่พบข้อมูลที่ยืนยันได้ว่าปุ่ม {selection.observed} ของ {explicit_game} ทำหน้าที่อะไรครับ กรุณาตรวจชื่อปุ่มและแพลตฟอร์มอีกครั้ง"
         wants_full_list = _looks_like_full_game_control_query(query)
         if wants_full_list:
             return _format_game_control_rows(explicit_game, explicit_platform, explicit_rows, str(explicit_rows[0].get("source_url") or ""))
@@ -524,6 +540,9 @@ def _answer_from_game_control_hits(hits: list[dict[str, Any]], query: str = "") 
         if focused_rows:
             lines = [f"{explicit_game} บน {explicit_platform} ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:"]
             lines.extend(_format_game_control_line(row) for row in focused_rows)
+            review_note = _control_source_review_note(focused_rows)
+            if review_note:
+                lines.append(review_note)
             source_url = str(focused_rows[0].get("source_url") or "").strip()
             if source_url:
                 lines.append(f"แหล่งข้อมูล: {source_url}")
@@ -588,6 +607,9 @@ def _answer_from_game_control_hits(hits: list[dict[str, Any]], query: str = "") 
     lines = [f"{game} บน {platform} ใช้ปุ่มหลักที่เกี่ยวข้องดังนี้:"]
     for row in rows:
         lines.append(_format_game_control_line(row))
+    review_note = _control_source_review_note(rows)
+    if review_note:
+        lines.append(review_note)
     if source_url:
         lines.append(f"แหล่งข้อมูล: {source_url}")
     return "\n".join(lines)

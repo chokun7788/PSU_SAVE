@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_overview_founder",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "ใคร.*ก่อตั้ง.*ศูนย์",
+      "ก่อตั้ง.*ศูนย์",
+      "ศูนย์.*ก่อตั้งโดย",
+      "หน่วยงาน.*ดำเนินการ"
+    ],
+    "en": []
+  },
+  "facts": {
+    "route_category": "overview",
+    "intent": "studio_founder_operator",
+    "patterns": [
+      "ใคร.*ก่อตั้ง.*ศูนย์",
+      "ก่อตั้ง.*ศูนย์",
+      "ศูนย์.*ก่อตั้งโดย",
+      "หน่วยงาน.*ดำเนินการ"
+    ],
+    "priority": 126
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ศูนย์ก่อตั้งโดยมหาวิทยาลัยสงขลานครินทร์ และดำเนินการโดยวิทยาลัยการคอมพิวเตอร์"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "The studio was established by Prince of Songkla University and is operated by the College of Computing."
+      },
+      "source_sha256": "2380ee94aa993468ce43cbcb137dc7ccf37fe846e8415385c184ec61f0a1eba6",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/overview_rules.jsonl",
+    "url": "https://esports.phuket.psu.ac.th/home",
+    "source_ids": [
+      "home",
+      "curated_overview_mission",
+      "curated_overview_identity"
+    ],
+    "last_verified_at": ""
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_booking_cancel_invalid_info",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "การจอง.*ยกเลิก.*ไม่แจ้ง",
+      "ข้อมูลไม่ถูกต้อง",
+      "ไม่ปฏิบัติตามกฎ"
+    ],
+    "en": []
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "booking_cancel_invalid_info",
+    "patterns": [
+      "การจอง.*ยกเลิก.*ไม่แจ้ง",
+      "ข้อมูลไม่ถูกต้อง",
+      "ไม่ปฏิบัติตามกฎ"
+    ],
+    "priority": 110
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "การจองอาจถูกยกเลิกโดยไม่ต้องแจ้งให้ทราบล่วงหน้า หากข้อมูลไม่ถูกต้องหรือไม่ปฏิบัติตามกฎ"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "A booking may be cancelled without prior notice if the provided information is incorrect or if the rules are violated."
+      },
+      "source_sha256": "ec1cdb1ca2e196887150c434a5b136755295100d241c77e78f8ed0c75e5d5614",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/reservation_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_reservation_cancel_invalid_info",
+      "reservation-booking-rules"
+    ],
+    "last_verified_at": ""
+  }
+}

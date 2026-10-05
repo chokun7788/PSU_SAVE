@@ -15,7 +15,7 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qs, unquote, urlparse
 
-from app.booking.live_status import get_live_booking_status, live_booking_enabled
+from app.booking.live_status import get_live_booking_status, live_booking_enabled, live_booking_runtime_config
 from app.calendar.service_calendar import calendar_context, today_bangkok
 from app.core.locale import (
     LocaleDecision,
@@ -128,6 +128,7 @@ def _runtime_status() -> dict[str, Any]:
             "enabled": bilingual_english_enabled(),
             "draft_preview": os.getenv("PSU_ENGLISH_LOCALIZATION_DRAFT_PREVIEW", "0").strip().lower() in {"1", "true", "yes", "on"},
         },
+        "booking": live_booking_runtime_config(),
         "input_quality": {
             "mode": os.getenv("PSU_INPUT_QUALITY_GUARD_MODE", "shadow"),
             "keyboard_layout": "request_retype",
@@ -329,7 +330,7 @@ class ChatHandler(BaseHTTPRequestHandler):
     def log_message(self, fmt: str, *args: Any) -> None:
         sys.stderr.write("[%s] %s\n" % (self.log_date_time_string(), fmt % args))
 
-    def _send_bytes(self, status: int, body: bytes, content_type: str, *, content_language: str | None = None) -> None:
+    def _send_bytes(self, status: int, body: bytes, content_type: str, *, content_language: str | None = None, retry_after_ms: int | None = None) -> None:
         self.send_response(status)
         self.send_header("Content-Type", content_type)
         self.send_header("Content-Length", str(len(body)))
@@ -339,12 +340,15 @@ class ChatHandler(BaseHTTPRequestHandler):
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
         if content_language in {"th", "en"}:
             self.send_header("Content-Language", content_language)
+        if status == 503 and retry_after_ms is not None:
+            self.send_header("Retry-After", str(max(1, (retry_after_ms + 999) // 1000)))
         self.end_headers()
         self.wfile.write(body)
 
     def _send_json(self, payload: dict[str, Any], status: int = 200, *, content_language: str | None = None) -> None:
         code, body = _json_bytes(payload, status)
-        self._send_bytes(code, body, "application/json; charset=utf-8", content_language=content_language)
+        retry_ms = 500 if code == 503 and payload.get("retryable") is True else None
+        self._send_bytes(code, body, "application/json; charset=utf-8", content_language=content_language, retry_after_ms=retry_ms)
 
     def do_OPTIONS(self) -> None:
         self._send_bytes(204, b"", "text/plain; charset=utf-8")
@@ -451,7 +455,7 @@ class ChatHandler(BaseHTTPRequestHandler):
         with request_deadline(_product_backend_timeout_sec()):
             input_quality = INPUT_QUALITY_GUARD.inspect(question) if INPUT_QUALITY_GUARD else None
             input_recovery = inspect_surface_input(question)
-            layout_direction = input_quality.features.layout_direction if input_quality else None
+            layout_direction = input_quality.locale_layout_direction if input_quality else None
             locale_decision = resolve_locale(
                 question,
                 requested=requested_locale,
@@ -465,6 +469,7 @@ class ChatHandler(BaseHTTPRequestHandler):
                     "error": "server_busy",
                     "request_id": request_id,
                     "retry_after_ms": 250,
+                    "retryable": True,
                     "message": "The server is busy. Please try again shortly." if locale_decision.effective == "en" else "ขณะนี้มีผู้ใช้งานพร้อมกันจำนวนมาก กรุณาลองใหม่อีกครั้งในอีกสักครู่ครับ",
                     "language": locale_decision.to_dict(),
                 }, 503, content_language=locale_decision.effective)
@@ -526,6 +531,7 @@ class ChatHandler(BaseHTTPRequestHandler):
                         request_id=request_id,
                         locale=requested_locale,
                         locale_decision=locale_decision.to_dict(),
+                        recent_history=recent_history,
                     )
                     worker_id = supervised.worker_id
                     if supervised.status == "timeout":
@@ -750,6 +756,13 @@ class ChatHandler(BaseHTTPRequestHandler):
         self._send_bytes(200, target.read_bytes(), content_type)
 
 
+class ChatHTTPServer(ThreadingHTTPServer):
+    # Let a short burst reach the existing admission/worker limits so the
+    # client can receive a bounded, retryable 503 instead of a TCP failure.
+    # This changes pending connections only, not active requests or workers.
+    request_queue_size = 16
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Run the PSU Esports chatbot web/API MVP.")
     parser.add_argument("--host", default="127.0.0.1")
@@ -818,7 +831,7 @@ def main() -> int:
     else:
         print("LLM preflight disabled by PSU_LLM_PREFLIGHT.")
 
-    server = ThreadingHTTPServer((args.host, args.port), ChatHandler)
+    server = ChatHTTPServer((args.host, args.port), ChatHandler)
     print(f"PSU Esports Chat Web is running at http://{args.host}:{args.port}/")
     print("Press Ctrl+C to stop.")
     try:

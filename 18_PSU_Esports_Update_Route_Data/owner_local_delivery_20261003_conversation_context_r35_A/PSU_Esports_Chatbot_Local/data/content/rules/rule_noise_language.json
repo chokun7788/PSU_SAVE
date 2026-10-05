@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_noise_language",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "เสียงดัง",
+      "ส่งเสียงดัง",
+      "พูดจาเสียดสี",
+      "เสียดสี",
+      "ดูหมิ่น",
+      "คำพูดไม่เหมาะสม"
+    ],
+    "en": [
+      "loud noise",
+      "insult"
+    ]
+  },
+  "facts": {
+    "route_category": "rules",
+    "intent": "noise_language_rule",
+    "patterns": [
+      "เสียงดัง",
+      "ส่งเสียงดัง",
+      "พูดจาเสียดสี",
+      "เสียดสี",
+      "ดูหมิ่น",
+      "คำพูดไม่เหมาะสม",
+      "loud noise",
+      "insult"
+    ],
+    "priority": 119
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "กรุณางดส่งเสียงดังเกินควร และห้ามพูดจาดูหมิ่นหรือเสียดสีผู้อื่น"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Users should avoid excessive noise and must not insult or mock others."
+      },
+      "source_sha256": "5dac7d8ec3247702320ecfcc8f9eb0677551212fd4e7c8e359e683b75d464f9b",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/misc_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_rule_noise_language"
+    ],
+    "last_verified_at": ""
+  }
+}

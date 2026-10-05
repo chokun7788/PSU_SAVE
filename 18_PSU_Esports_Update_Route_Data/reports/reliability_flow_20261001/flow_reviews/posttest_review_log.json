@@ -1,0 +1,26 @@
+[
+  {
+    "round": 11,
+    "finding": "focused v1 ผ่าน 22/24; alcoholic ไม่อยู่ในตัวตรวจ modifier และ public-access guard ชนะวิธีจองที่รับกลุ่มผู้ใช้มาจากงานราคา",
+    "revision": "เพิ่ม alcoholic ในกลุ่มความหมาย alcohol ที่มี source เดิม และให้คำถามวิธีจองที่ชัดไปขั้นตอนจองแทน permission guard; required groups ต้องจับทั้งราคาและสลิป",
+    "gate": "ข้อเทียบ live-specific-th เดิมบังคับคำ ถูกจอง แต่คำตอบ ไม่ว่างตลอดช่วง ก็ตรง oracle ต้องเทียบ baseline ด้วย contract เดียวกัน; เก็บ baseline เดิมและรันแพ็กเกจ r19 ใหม่ได้ 9/24"
+  },
+  {
+    "round": 12,
+    "finding": "ครบ 2,000 คู่ clean1790 noisy1641; เหลือคำเชื่อม/บุพบท/กริยาสั้น ทำให้หลายบริการหรือจำนวน session หาย และ pay ถูกเลือกเป็นราคา",
+    "revision": "เพิ่ม one-edit grammar recovery เฉพาะรูปประโยคที่ระบุ operation; split for/in/on หลายบริการ; แยก payment deadline/method ออกจาก fee amount โดยไม่เปลี่ยนข้อเท็จจริง",
+    "gate": "คงคำจริง pay/play/rice และคำปฏิเสธ; ต้องมี test ภาษาอังกฤษหลายบริการและ booking/payment facets เป็นคนละ task"
+  },
+  {
+    "round": 13,
+    "finding": "How do I boot a PC ถูกแก้เป็น book แม้ focused31และtests115ผ่าน แสดงว่าชุด positive อย่างเดียวไม่พอ",
+    "revision": "คำสั้นที่ผิดแบบแทนตัวหนึ่งต้องผ่านทั้ง OSA และตำแหน่งแป้นข้างเคียง; ขาด/เบิ้ล/สลับใช้ OSA ตามเดิม เพิ่ม boot/cook/hook/far controls",
+    "gate": "หยุด TH v3 ที่ยังไม่ครบโดยเก็บไฟล์ partial; EN v3ครบแต่ไม่ใช้เป็นผลส่งมอบ เริ่ม full gate ทั้งสองภาษาใหม่หลังแก้ พร้อม source hash manifest"
+  },
+  {
+    "round": 14,
+    "finding": "117 tests, holdout196, API29 และ boot negative2ผ่าน; UI แสดง game list และคำตอบสามงานได้ แต่หัวข้ออังกฤษหนึ่งเกมยังใช้รูปพหูพจน์",
+    "revision": "เพิ่ม UI/style เข้า known limitations ไม่ตี semantic pass เป็นการรับรองภาษาอังกฤษทุกประโยค; การทดสอบ pipeline/API/UI และ latency ต้องรายงานแยก",
+    "gate": "ไม่มี WordPress real oracle หรือ human approval เพิ่ม; runtime assistปิด แต่ startup /health มี local model preflightสำเร็จ ไม่อ้างว่าไม่มีการเรียกโมเดลเลย"
+  }
+]

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_en_food_drink_natural",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [],
+    "en": [
+      "can\\s+i\\s+(?:bring|eat|have).*(?:food|snack|drink)",
+      "are\\s+(?:food|drinks|snacks).*(?:allowed|permitted)",
+      "is\\s+(?:food|a drink|water).*(?:allowed|permitted)",
+      "may\\s+i\\s+(?:bring|eat|drink)"
+    ]
+  },
+  "facts": {
+    "route_category": "rules",
+    "intent": "food_drink_rule",
+    "patterns": [
+      "can\\s+i\\s+(?:bring|eat|have).*(?:food|snack|drink)",
+      "are\\s+(?:food|drinks|snacks).*(?:allowed|permitted)",
+      "is\\s+(?:food|a drink|water).*(?:allowed|permitted)",
+      "may\\s+i\\s+(?:bring|eat|drink)"
+    ],
+    "priority": 132
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "อนุญาตให้รับประทานอาหารและเครื่องดื่มเฉพาะในพื้นที่ที่กำหนดเท่านั้น"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "Food and drinks are allowed only in designated areas."
+      },
+      "source_sha256": "f8d95dabe98eda7f8106ba003ef6ff7641d01aab3d9a46cea488e3ffb1c4e723",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/english_support_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_rule_food_drinks"
+    ],
+    "last_verified_at": ""
+  }
+}

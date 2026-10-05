@@ -42,6 +42,8 @@ def _answer_types(answer: str, route: PipelineRoute, mode: str = "") -> set[str]
         types.add("no_answer")
     if "structured_service_game_availability_no_match" in mode_key:
         types.add("no_answer")
+    if mode_key == "competition_rule_detail_no_answer":
+        types.add("no_answer")
     typed_modes: tuple[tuple[tuple[str, ...], tuple[str, ...]], ...] = (
         (("structured_game_controls", "game_control_vector"), ("controls", "list", "how_to")),
         (("structured_service_fee", "deterministic_calculator", "price_calculator"), ("price", "calculation")),
@@ -150,6 +152,9 @@ def _answer_types(answer: str, route: PipelineRoute, mode: str = "") -> set[str]
         types.update({"penalty", "rule"})
     if not types:
         types.update({"fact", "summary"})
+    # A source-backed partial reply must still satisfy fact/evidence gates.
+    if "competition_rule_detail_partial_source" in mode_key:
+        types.difference_update({"no_answer", "clarification"})
     return types
 
 

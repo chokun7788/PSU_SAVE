@@ -1,0 +1,105 @@
+test_broad_and_focused_requests_are_distinct (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_broad_and_focused_requests_are_distinct) ... FAIL
+test_english_overviews_use_recorded_localization (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_english_overviews_use_recorded_localization) ... 
+  test_english_overviews_use_recorded_localization (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_english_overviews_use_recorded_localization) (game='cs2') ... FAIL
+  test_english_overviews_use_recorded_localization (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_english_overviews_use_recorded_localization) (game='rov') ... FAIL
+  test_english_overviews_use_recorded_localization (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_english_overviews_use_recorded_localization) (game='tekken 8') ... FAIL
+  test_english_overviews_use_recorded_localization (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_english_overviews_use_recorded_localization) (game='valorant') ... FAIL
+test_known_lowercase_codes_do_not_trigger_layout_rejection (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_known_lowercase_codes_do_not_trigger_layout_rejection) ... 
+  test_known_lowercase_codes_do_not_trigger_layout_rejection (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_known_lowercase_codes_do_not_trigger_layout_rejection) (code='cs2') ... FAIL
+  test_known_lowercase_codes_do_not_trigger_layout_rejection (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_known_lowercase_codes_do_not_trigger_layout_rejection) (code='CS2') ... FAIL
+  test_known_lowercase_codes_do_not_trigger_layout_rejection (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_known_lowercase_codes_do_not_trigger_layout_rejection) (code='ps5') ... FAIL
+  test_known_lowercase_codes_do_not_trigger_layout_rejection (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_known_lowercase_codes_do_not_trigger_layout_rejection) (code='pc1') ... FAIL
+test_metadata_and_headings_are_not_substantive_rules (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_metadata_and_headings_are_not_substantive_rules) ... ok
+test_overviews_contain_real_clauses_and_same_game_evidence (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_overviews_contain_real_clauses_and_same_game_evidence) ... ok
+test_unknown_and_multi_game_overviews_cannot_pick_one_game (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_unknown_and_multi_game_overviews_cannot_pick_one_game) ... ok
+test_user_questions_enter_competition_not_catalog (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_user_questions_enter_competition_not_catalog) ... ok
+test_visual_vowel_normalization_keeps_game_and_raw (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_visual_vowel_normalization_keeps_game_and_raw) ... ok
+
+======================================================================
+FAIL: test_broad_and_focused_requests_are_distinct (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_broad_and_focused_requests_are_distinct)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tests\test_competition_user_questions_r24_20261001.py", line 34, in test_broad_and_focused_requests_are_distinct
+    self.assertFalse(looks_like_broad_competition_rules_query('กฎ CS2 เรื่องอุปกรณ์มีอะไรบ้าง'))
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_english_overviews_use_recorded_localization (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_english_overviews_use_recorded_localization) (game='cs2')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tests\test_competition_user_questions_r24_20261001.py", line 67, in test_english_overviews_use_recorded_localization
+    self.assertEqual(result.mode, 'pipeline:competition_overview_source')
+AssertionError: 'pipeline:structured_competition_rules_en' != 'pipeline:competition_overview_source'
+- pipeline:structured_competition_rules_en
++ pipeline:competition_overview_source
+
+
+======================================================================
+FAIL: test_english_overviews_use_recorded_localization (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_english_overviews_use_recorded_localization) (game='rov')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tests\test_competition_user_questions_r24_20261001.py", line 67, in test_english_overviews_use_recorded_localization
+    self.assertEqual(result.mode, 'pipeline:competition_overview_source')
+AssertionError: 'pipeline:structured_competition_rules_en' != 'pipeline:competition_overview_source'
+- pipeline:structured_competition_rules_en
++ pipeline:competition_overview_source
+
+
+======================================================================
+FAIL: test_english_overviews_use_recorded_localization (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_english_overviews_use_recorded_localization) (game='tekken 8')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tests\test_competition_user_questions_r24_20261001.py", line 67, in test_english_overviews_use_recorded_localization
+    self.assertEqual(result.mode, 'pipeline:competition_overview_source')
+AssertionError: 'pipeline:structured_competition_rules_en' != 'pipeline:competition_overview_source'
+- pipeline:structured_competition_rules_en
++ pipeline:competition_overview_source
+
+
+======================================================================
+FAIL: test_english_overviews_use_recorded_localization (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_english_overviews_use_recorded_localization) (game='valorant')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tests\test_competition_user_questions_r24_20261001.py", line 67, in test_english_overviews_use_recorded_localization
+    self.assertEqual(result.mode, 'pipeline:competition_overview_source')
+AssertionError: 'pipeline:structured_competition_rules_en' != 'pipeline:competition_overview_source'
+- pipeline:structured_competition_rules_en
++ pipeline:competition_overview_source
+
+
+======================================================================
+FAIL: test_known_lowercase_codes_do_not_trigger_layout_rejection (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_known_lowercase_codes_do_not_trigger_layout_rejection) (code='cs2')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tests\test_competition_user_questions_r24_20261001.py", line 21, in test_known_lowercase_codes_do_not_trigger_layout_rejection
+    self.assertTrue(any(span.source_protected for span in decision.features.layout_spans if span.source_span == code))
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_known_lowercase_codes_do_not_trigger_layout_rejection (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_known_lowercase_codes_do_not_trigger_layout_rejection) (code='CS2')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tests\test_competition_user_questions_r24_20261001.py", line 21, in test_known_lowercase_codes_do_not_trigger_layout_rejection
+    self.assertTrue(any(span.source_protected for span in decision.features.layout_spans if span.source_span == code))
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_known_lowercase_codes_do_not_trigger_layout_rejection (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_known_lowercase_codes_do_not_trigger_layout_rejection) (code='ps5')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tests\test_competition_user_questions_r24_20261001.py", line 21, in test_known_lowercase_codes_do_not_trigger_layout_rejection
+    self.assertTrue(any(span.source_protected for span in decision.features.layout_spans if span.source_span == code))
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_known_lowercase_codes_do_not_trigger_layout_rejection (tests.test_competition_user_questions_r24_20261001.CompetitionUserQuestions.test_known_lowercase_codes_do_not_trigger_layout_rejection) (code='pc1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Chokhun\Downloads\Learn-LLM\18_PSU_Esports_Update_Route_Data\tests\test_competition_user_questions_r24_20261001.py", line 21, in test_known_lowercase_codes_do_not_trigger_layout_rejection
+    self.assertTrue(any(span.source_protected for span in decision.features.layout_spans if span.source_span == code))
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 8 tests in 4.773s
+
+FAILED (failures=9)

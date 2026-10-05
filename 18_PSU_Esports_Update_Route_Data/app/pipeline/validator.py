@@ -380,6 +380,8 @@ def validate_answer(
                 warnings.append("service_fee_answer_missing_service_fee_source")
         pc_price_context = (
             price_context
+            and route.category != "clarification"
+            and route.answer_type != "clarification"
             and (route.category == "service_fee" or _looks_like_price_query(question))
             and _has(question, "PC", "คอม", "คอมพิวเตอร์")
         )
@@ -400,6 +402,10 @@ def validate_answer(
     )
     errors.extend(contract.errors)
     warnings.extend(contract.warnings)
+
+    from app.pipeline.competition_request_contract import validate_requested_clauses
+    errors.extend(validate_requested_clauses(question,answer,hits,
+        locale.effective if locale is not None else 'en' if not re.search(r'[\u0e00-\u0e7f]',answer) else 'th',mode))
 
     return ValidationResult(
         ok=not errors,

@@ -11,7 +11,7 @@ from app.knowledge.canonical_retrieval import (
     active_canonical_competition_release_ids,
     load_canonical_rag_rows,
 )
-from app.pipeline.competition_targets import resolve_competition_targets, target_for_game_id
+from app.pipeline.competition_targets import resolve_competition_targets, target_for_game_id, replace_competition_target_mentions
 from app.pipeline.competition_source_facets import competition_source_facets, source_row_supports_facet
 from app.pipeline.competition_taxonomy import detect_competition_facet
 from app.pipeline.schemas import PipelineTrace
@@ -370,6 +370,14 @@ def competition_hits_cover_intent(query: str, hits: list[dict[str, Any]]) -> boo
     conduct, roster, or other unrelated competition policy merely because
     both snippets came from the same rulebook.
     """
+    q = normalize_text(query)
+    if _has_any(q, 'minimum age', 'age requirement', 'อายุขั้นต่ำ', 'อายุอย่างน้อย'):
+        # Eligibility headings or "accept the rules" cannot prove an age.
+        from app.pipeline.competition_presentation import source_clause_lines
+        age_clauses = [line for row in hits for line in source_clause_lines(str(row.get('text') or ''))
+                       if re.search(r'อายุ|\bage\b|\baged\b|years? old', line, re.I)]
+        if not any(re.search(r'อายุ[^\n]{0,30}[0-9๐-๙]+\s*ปี|\b(?:age|aged|least)[^\n]{0,30}\b(?:\d+|eighteen|sixteen|twenty)\s+years?\b|\b\d+\s+years?\s+old\b', line, re.I) for line in age_clauses):
+            return False
     intent = _competition_intent_hint(query)
     if not intent:
         return True
@@ -1255,10 +1263,32 @@ def looks_like_broad_competition_rules_query(query: str) -> bool:
     pipeline must instead collect multiple target-grounded RAG chunks.
     """
     q = normalize_text(query)
-    return any(term in q for term in (
-        "มีอะไรบ้าง", "ทั้งหมด", "สรุปกฎ", "สรุปกติกา", "กฎอะไรบ้าง",
+    # A question about a specific clause needs that clause, even when its
+    # wording starts with "what rules". General rulebook identity is an
+    # overview; other resolved facets retain focused retrieval.
+    if detect_competition_facet(query) is not None:
+        return False
+    from app.pipeline.competition_conversation_signals import is_broad_rule_request
+    if is_broad_rule_request(query):
+        return True
+    if re.search(r"\b(?:about|concerning|regarding|procedures?)\b", q) or any(term in q for term in ("เรื่อง", "เกี่ยวกับ", "ขั้นตอน")):
+        # Unresolved specific topics need clarification/grounding, not a
+        # generic rule overview that merely shares the game's name.
+        return False
+    # A short Thai request such as "ขอกฏการแข่ง VALORANT" omits
+    # "มีอะไรบ้าง". With no specific facet it still asks for the rulebook.
+    target = resolve_competition_targets(query)
+    without_title = query
+    if target.status == 'exact':
+        without_title = replace_competition_target_mentions(query, target, '')
+    short_thai_rule_request = bool(re.fullmatch(
+        r"\s*(?:(?:ขอ|ดู|เอา|สรุป)\s*)?(?:กฎ|กฏ|กติกา)(?:การ|ตอน)?(?:แข่ง|แข่งขัน)\s*(?:หน่อย|ครับ|ค่ะ)?\s*[?!.]*",
+        without_title,
+    ))
+    return short_thai_rule_request or bool(re.search(r"\brules?\s*[?!.]*$", q)) or any(term in q for term in (
+        "มีอะไรบ้าง", "มีอะไรมั่ง", "มีไรบ้าง", "มีไรมั่ง", "ทั้งหมด", "สรุปกฎ", "สรุปกติกา", "กฎอะไรบ้าง",
         "กติกาอะไรบ้าง", "รายละเอียดกฎ", "รายละเอียดกติกา", "what rules",
-        "all rules", "rules overview", "rule overview", "summarize the rules",
+        "all rules", "rules overview", "rule overview", "summarize the rules", "what are the rules", "competition rules", "tournament rules",
     ))
 
 
@@ -1268,6 +1298,24 @@ def _competition_answer_from_hits(query: str, hits: list[dict[str, Any]]) -> str
 
     q = normalize_text(query)
     intent_hint = _competition_intent_hint(query)
+    from app.pipeline.competition_presentation import build_penalty_table, build_penalty_types, clause_supports_facet, focused_pause_lines, focused_rule_lines, is_rule_clause, pause_rows_for_query, render_rule_reply, source_clause_lines
+
+    penalty_types = build_penalty_types(query, hits)
+    if penalty_types:
+        hits[:] = list(penalty_types.rows)
+        return penalty_types.answer
+
+    source_table = build_penalty_table(query, 'th', hits)
+    if source_table:
+        # Include continuation evidence in the returned hits, not only display.
+        for row in source_table.rows:
+            if not any(existing.get('id') == row.get('id') for existing in hits):
+                hits.append(row)
+        return source_table.answer
+    scoped_pause_hits = pause_rows_for_query(query, hits)
+    if scoped_pause_hits:
+        hits[:] = scoped_pause_hits
+        hits.sort(key=lambda row: not bool(focused_pause_lines(query, str(row.get('text') or ''))))
     # Retrieval can retain a section heading and several adjacent details in
     # one evidence window.  Render from the section matching the requested
     # facet first; list order alone once made a settings question answer from
@@ -1323,8 +1371,27 @@ def _competition_answer_from_hits(query: str, hits: list[dict[str, Any]]) -> str
     focus: list[str] = []
     answer_first = ""
 
+    pause_focus = focused_pause_lines(query, str(best.get('text') or ''))
+    format_focus = []
+    if detect_competition_facet(query) == 'competition_format':
+        for row in presentation_hits:
+            text = str(row.get('text') or '')
+            direct = [line for line in focused_rule_lines(query, text, 'competition_format') if clause_supports_facet(line, 'competition_format')]
+            if direct:
+                format_focus.extend(direct)
+                # Keep round/timer values attached to that format section.
+                format_focus.extend(line for line in source_clause_lines(text) if is_rule_clause(line) and clause_supports_facet(line, 'match_settings'))
+        format_focus = list(dict.fromkeys(format_focus))
     checkin_focus = _direct_checkin_lines(query, candidate_lines)
-    if checkin_focus:
+    if pause_focus:
+        focus = pause_focus
+        answer_first = focus[0]
+    elif pause_focus is not None:
+        return render_rule_reply('ยังไม่พบข้อกฎที่ยืนยันรายละเอียดที่ถามในส่วนการหยุดเกมประเภทนี้ กรุณาระบุประเด็นเพิ่มเติมหรือสอบถามผู้จัดครับ', [], best, 'th')
+    elif format_focus:
+        focus = format_focus
+        answer_first = focus[0]
+    elif checkin_focus:
         # This is a single-facet request; preserve only direct arrival/check-
         # in instructions rather than leaking adjacent preparation rules.
         focus = checkin_focus
@@ -1416,8 +1483,8 @@ def _competition_answer_from_hits(query: str, hits: list[dict[str, Any]]) -> str
         focus = _clean_answer_lines(str(best.get("text", "")))[:5]
         answer_first = focus[0] if focus else _first_useful_line(str(best.get("text", "")))
 
-    detail_lines = [line for line in focus if line != answer_first][:5]
-    lines = [f"คำตอบ: {answer_first}"]
+    detail_lines = [line for line in focus if line != answer_first and is_rule_clause(line)][:5]
+    lines = [f"คำตอบ: {answer_first.lstrip('*-•· ').strip()}"]
     if detail_lines:
         lines.append("")
         lines.append("รายละเอียดที่เกี่ยวข้อง:")

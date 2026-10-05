@@ -571,10 +571,141 @@ def _resolve_english_followup(original: str, recent_history: Any) -> ResolvedQue
     return None
 
 
+def _resolve_competition_followup(original: str, recent_history: Any) -> ResolvedQuestion | None:
+    """Bind a reply to the latest turn, before a bare title becomes game detail.
+
+    Keep the prior question's facet/year/negation. Never pick a target from
+    the assistant's example list or search back across an intervening topic.
+    """
+    from app.pipeline.competition_targets import (
+        looks_like_competition_rule_query, resolve_competition_targets, replace_competition_target_mentions,
+    )
+
+    from app.pipeline.competition_conversation_signals import (
+        is_broad_rule_request, is_more_rule_request, is_rulebook_catalog_request, competition_choice_text,
+    )
+
+    current_target = resolve_competition_targets(original)
+    more = is_more_rule_request(original)
+    generic = is_broad_rule_request(original) or more
+    from app.pipeline.competition_taxonomy import detect_competition_facet
+    def specific_rule_request(text):
+        return (
+            bool(re.search(r"กฎ|กฏ|กติกา|\brules?\b", text, re.I))
+            and detect_competition_facet(text) is not None
+            and not re.search(r"ศูนย์|สตูดิโอ|\b(?:studio|center|centre)\b|ไม่(?:เอา|ต้องการ)", text, re.I)
+        )
+    specific_followup = current_target.status == "absent" and specific_rule_request(original)
+    english = original.isascii()
+    prefix = ("Additional competition rules for" if more else "Competition rules for") if english else ("กติกาการแข่งขันเพิ่มเติม" if more else "กติกาการแข่งขัน")
+    if current_target.status == "exact" and generic:
+        target = current_target.targets[0]
+        return ResolvedQuestion(
+            original, f"{prefix} {target.label}", False, target.label,
+            context_domain="competition_rules", context_operation="rule_more" if more else "rule_lookup",
+            context_topic=target.label, reason="canonicalized_explicit_generic_competition_rules",
+        )
+
+    items = _history_dict_items(recent_history)
+    if len(items) < 2:
+        return None
+    previous_user, previous_answer = items[-2:]
+    if previous_user.get("role") != "user" or previous_answer.get("role") != "assistant":
+        return None
+    if any(item.get("contextEligible") is False or item.get("context_eligible") is False for item in (previous_user, previous_answer)):
+        return None
+    prior = str(previous_answer.get("resolved_text") or previous_user.get("text") or "").strip()
+    answer = str(previous_answer.get("text") or "")
+    is_competition = previous_answer.get("route_category") == "competition_rules"
+    catalog_choice = is_competition and previous_answer.get("route_intent") == "competition_rulebook_catalog"
+    pending = is_competition and (
+        "ต้องการดูกติกาของเกมใด" in answer
+        or "which game's competition rules would you like to check" in answer.casefold()
+    )
+
+    # Only a title (with a short conversational prefix/polite suffix) fills
+    # a pending target. "VALORANT คืออะไร" explicitly requests a new task.
+    choice = competition_choice_text(normalize_text(original))
+    competition_anchor = is_competition or is_rulebook_catalog_request(prior)
+    # Use the existing bounded long-name recovery with a competition cue
+    # supplied by the prior task, before a bare misspelling becomes game detail.
+    choice_target = resolve_competition_targets(("competition rules " if competition_anchor else "") + choice)
+    bare_target = (
+        choice_target.status == "exact"
+        and len(choice_target.explicit_mentions) == 1
+        and _alias_key(choice) == _alias_key(choice_target.explicit_mentions[0])
+    )
+    if bare_target and (pending or competition_anchor):
+        target = choice_target.targets[0]
+        prior_target = resolve_competition_targets(prior)
+        if (catalog_choice or is_rulebook_catalog_request(prior)) and prior_target.status == "absent":
+            resolved = f"{'Competition rules for' if prior.isascii() else 'กติกาการแข่งขัน'} {target.label}"
+        elif pending and prior_target.status == "absent":
+            resolved = f"{prior} {target.label}"
+        elif not pending and prior_target.status == "exact" and looks_like_competition_rule_query(prior):
+            # Replace the explicit prior title; retain the requested facet.
+            resolved = replace_competition_target_mentions(prior, prior_target, target.label)
+            if resolved == prior and target.game_id != prior_target.targets[0].game_id:
+                return None
+        else:
+            return None
+        return ResolvedQuestion(
+            original, resolved, True, target.label,
+            context_domain="competition_rules", context_operation="rule_lookup",
+            context_topic=target.label, reason="resolved_latest_competition_target_reply",
+        )
+
+    if current_target.status != "absent" or detect_game(original) or not (generic or specific_followup):
+        return None
+    # Generic rule follow-ups may survive an intervening failed rule reply.
+    # A user change of topic ends the search, regardless of assistant output.
+    for index in range(len(items) - 2, -1, -2):
+        user, reply = items[index:index + 2]
+        if user.get("role") != "user" or reply.get("role") != "assistant":
+            break
+        if any(item.get("contextEligible") is False or item.get("context_eligible") is False for item in (user, reply)):
+            break
+        user_text = str(user.get("text") or "")
+        user_target = resolve_competition_targets(user_text)
+        resolved_text = str(reply.get("resolved_text") or user_text)
+        prior_target = resolve_competition_targets(resolved_text)
+        if user_target.status == "absent" and reply.get("route_category") == "competition_rules":
+            user_choice = competition_choice_text(normalize_text(user_text))
+            recovered_choice = resolve_competition_targets("competition rules " + user_choice)
+            if recovered_choice.status == "exact" and len(recovered_choice.explicit_mentions) == 1 and _alias_key(user_choice) == _alias_key(recovered_choice.explicit_mentions[0]):
+                user_target = recovered_choice
+        if reply.get("route_category") == "competition_rules" and prior_target.status == "exact":
+            # An explicit target or a resolved rule follow-up anchors context;
+            # assistant example lists never provide a target.
+            if user_target.status == "exact" or is_broad_rule_request(user_text) or is_more_rule_request(user_text) or specific_rule_request(user_text):
+                target = prior_target.targets[0]
+                return ResolvedQuestion(
+                    original, f"{original if specific_followup else prefix} {target.label}", True, target.label,
+                    context_domain="competition_rules", context_operation="rule_more" if more else "rule_lookup",
+                    context_topic=target.label, reason="inherited_active_competition_game_for_rule_followup",
+                )
+        if user_target.status != "absent" or not (is_broad_rule_request(user_text) or is_more_rule_request(user_text) or specific_rule_request(user_text)):
+            break
+    return None
+
+
 def resolve_question_with_context(question: str, recent_history: Any, *, locale: str = "th") -> ResolvedQuestion:
     original = str(question or "").strip()
     if not original:
         return ResolvedQuestion(original, original, False, reason="empty")
+
+    # An explicit rejection followed by a complete new request changes the
+    # task. Removing only this bounded preface prevents its rule word from
+    # routing the new game-identity request back into a competition rulebook.
+    declined = re.fullmatch(r"(?:ไม่เอา|ไม่ต้อง(?:การ)?|ไม่อยาก(?:ดู|รู้))(?:กฎ|กฏ|กติกา)(?:แล้ว)?\s+(.+)", original)
+    if declined:
+        remainder = declined.group(1).strip()
+        if detect_game(remainder) and re.search(r"คือ(?:เกม)?อะไร|เป็นเกมอะไร", remainder):
+            return ResolvedQuestion(original, remainder, False, detect_game(remainder), context_domain="games", context_operation="game_detail", reason="explicitly_declined_rules_and_requested_game_identity")
+
+    competition_followup = _resolve_competition_followup(original, recent_history)
+    if competition_followup is not None:
+        return competition_followup
 
     explicit_game = detect_game(original)
     if explicit_game:

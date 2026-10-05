@@ -1,0 +1,97 @@
+{
+  "requests": 19,
+  "passed": 14,
+  "failed": [
+    {
+      "session": "user_original",
+      "turn": 1,
+      "errors": [
+        "category:knowledge expected:competition_rules"
+      ],
+      "context": {
+        "original_question": "มีรายการแข่งอะไรบ้าง",
+        "resolved_question": "มีรายการแข่งอะไรบ้าง",
+        "used_context": false,
+        "context_game": null,
+        "context_domain": null,
+        "context_operation": null,
+        "context_topic": null,
+        "reason": "not_followup"
+      }
+    },
+    {
+      "session": "user_original",
+      "turn": 2,
+      "errors": [
+        "category:games expected:competition_rules",
+        "context_unused",
+        "source_not_rulebook"
+      ],
+      "context": {
+        "original_question": "valorant",
+        "resolved_question": "valorant",
+        "used_context": false,
+        "context_game": "VALORANT",
+        "context_domain": null,
+        "context_operation": null,
+        "context_topic": null,
+        "reason": "question_has_explicit_game"
+      }
+    },
+    {
+      "session": "user_original",
+      "turn": 3,
+      "errors": [
+        "category:events_news expected:competition_rules",
+        "source_not_rulebook"
+      ],
+      "context": {
+        "original_question": "ขอกฏการแข่ง",
+        "resolved_question": "ขอกฏการแข่ง VALORANT",
+        "used_context": true,
+        "context_game": "VALORANT",
+        "context_domain": "competition_rules",
+        "context_operation": "rule_lookup",
+        "context_topic": "VALORANT",
+        "reason": "inherited_latest_explicit_competition_game"
+      }
+    },
+    {
+      "session": "user_original",
+      "turn": 4,
+      "errors": [
+        "category:games expected:competition_rules",
+        "context_unused",
+        "source_not_rulebook"
+      ],
+      "context": {
+        "original_question": "valorant",
+        "resolved_question": "valorant",
+        "used_context": false,
+        "context_game": "VALORANT",
+        "context_domain": null,
+        "context_operation": null,
+        "context_topic": null,
+        "reason": "question_has_explicit_game"
+      }
+    },
+    {
+      "session": "topic_change",
+      "turn": 2,
+      "errors": [
+        "category:clarification expected:games"
+      ],
+      "context": {
+        "original_question": "VALORANT คือเกมอะไร",
+        "resolved_question": "VALORANT คือเกมอะไร",
+        "used_context": false,
+        "context_game": "VALORANT",
+        "context_domain": null,
+        "context_operation": null,
+        "context_topic": null,
+        "reason": "question_has_explicit_game"
+      }
+    }
+  ],
+  "assist": false
+}

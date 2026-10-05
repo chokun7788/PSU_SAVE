@@ -1,0 +1,131 @@
+{
+  "remaining_clean_pass_noisy_fail": 111,
+  "by_locale": {
+    "en": 54,
+    "th": 57
+  },
+  "triage_hints": {
+    "route_mismatch": 91,
+    "abstention_or_dependency_vs_expected": 8,
+    "other_status_mismatch": 3,
+    "content_contract_failure": 8,
+    "clarification_vs_expected_answer": 1
+  },
+  "with_positive_content_contract": 43,
+  "without_positive_content_contract": 68,
+  "all_pairs_positive_contract": 894,
+  "examples": {
+    "route_mismatch": {
+      "id": "MASTER-GT-EN-01715",
+      "clean_question": "Where can you play VALORANT",
+      "noisy_question": "Wherw can you pay VALORANT",
+      "clean_answer": "VALORANT is available on: PC #01-#02, PC #03-#10. Studio zone(s): PC Zone.\nSource: https://esports.computing.psu.ac.th/ (original source in Thai)",
+      "noisy_answer": "PC - 1 hour (1 people)\n- PSU students and staff: 0 THB\n- PSU alumni and students from other institutions: 25 THB\n- General adults: 70 THB\nPrices are calculated deterministically from the Service Fee 2026 table.\nSource: https://esports.computing.psu.ac.th/wp-content/uploads/2026/01/PSU-Esports-Studio-phuket-SERVICE-FEE-2026.png (original source in Thai)",
+      "noisy_mode": "pipeline:structured_service_fee_en",
+      "v2": {
+        "route_ok": false,
+        "status_ok": true,
+        "content_ok": true,
+        "latency_ok": true,
+        "passed": false,
+        "outcome": "answer",
+        "failures": [
+          "route service_fee outside expected ['games']"
+        ],
+        "positive_contract_present": false,
+        "evidence_level": "content_not_checked",
+        "live_claim_verified": false
+      }
+    },
+    "abstention_or_dependency_vs_expected": {
+      "id": "MASTER-GT-EN-04891",
+      "clean_question": "Price",
+      "noisy_question": "rice",
+      "clean_answer": "Which service, duration, and user group should I price: PC, PlayStation 5, Nintendo Switch, Cockpit, or VR?",
+      "noisy_answer": "I could not find verified PSU Esports Studio - Phuket information for this question.",
+      "noisy_mode": "pipeline:english_no_answer",
+      "v2": {
+        "route_ok": true,
+        "status_ok": false,
+        "content_ok": true,
+        "latency_ok": true,
+        "passed": false,
+        "outcome": "no_answer",
+        "failures": [
+          "outcome no_answer differs from expected clarification_required"
+        ],
+        "positive_contract_present": false,
+        "evidence_level": "content_not_checked",
+        "live_claim_verified": false
+      }
+    },
+    "other_status_mismatch": {
+      "id": "MASTER-GT-TH-00858",
+      "clean_question": "พรุ่งนี้ 13:00 Nintendo Switch (1-4 Persons) ว่างหรือเปล่า",
+      "noisy_question": "พรุ่งนี้ 13:00 Nintendo Switch (1-4 Persons) วางหรือเปล่า",
+      "clean_answer": "วันที่ 2026-10-03 (เวลาไทย) ยังยืนยันสถานะเปิด-ปิดและ Slot แบบสดไม่ได้ เพราะการเชื่อมต่อระบบจองยังไม่พร้อมใช้งานครับ\nผมจะไม่เอาตารางเก่ามาแสดงว่าเป็นข้อมูลจองแบบสด กรุณาลองใหม่อีกครั้งหรือดูหน้าจองโดยตรง\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/reservation",
+      "noisy_answer": "ข้อมูลเกม: Nintendo Switch มี Mario Kart 8 Deluxe, Overcooked 2, Super Smash Bros Ultimate, Nintendo Switch Sports และเกมอื่น ๆ\n\nพรุ่งนี้ 03/10/2026 (วันเสาร์): วันเสาร์ยังไม่พบช่วงให้บริการในตารางประจำที่มีอยู่ จึงควรตรวจสอบกับศูนย์ก่อนเดินทาง\nวันที่อ้างอิงของระบบ: วันนี้คือ 02/10/2026 (วันศุกร์) ตามเวลาไทย\n\nปฏิทินไทยของวันที่นี้:\nไม่พบวันหยุดไทยหรือเทศกาลในปฏิทินที่บันทึกไว้สำหรับวันที่นี้\n\nรายละเอียดจากตาราง:\n•    วันจันทร์ช่วงเช้า 09:00-12:00 เป็น Maintenance* และเปิดช่วงบ่าย 13:00-16:00\n•    วันอังคาร-พฤหัสบดีเปิด 09:00-12:00 และ 13:00-16:00\n•    วันศุกร์เปิดช่วงเช้า 09:00-12:00 และช่วงบ่าย 13:00-16:00 เป็น Maintenance\n•    เฉพาะวันที่บันทึกว่าศูนย์ปิดในไฟล์ปฏิทินบริการจะมีผลก่อนตารางปกติ; วันหยุดไทยอย่างเดียวไม่ได้ทำให้ปิดอัตโนมัติ\nแหล่งข้อมูลตารางบริการ: https://esports.computing.psu.ac.th/reservation",
+      "noisy_mode": "pipeline:calendar_schedule_fast_path",
+      "v2": {
+        "route_ok": true,
+        "status_ok": false,
+        "content_ok": true,
+        "latency_ok": true,
+        "passed": false,
+        "outcome": "answer",
+        "failures": [
+          "outcome answer differs from expected live_lookup_required"
+        ],
+        "positive_contract_present": false,
+        "evidence_level": "content_not_checked",
+        "live_claim_verified": false
+      }
+    },
+    "content_contract_failure": {
+      "id": "MASTER-GT-TH-01842",
+      "clean_question": "Pokémon Champions อยู่โซนไหน",
+      "noisy_question": "Pokémon Champions อยู่โซซนไหน",
+      "clean_answer": "ได้ครับ Pokémon Champions เล่นได้ที่ Nintendo Switch Zone - Nintendo Switch (1-2 Persons), Nintendo Switch Zone - Nintendo Switch (1-4 Persons)\nแหล่งข้อมูล: https://esports.computing.psu.ac.th/",
+      "noisy_answer": "ยังไม่พบข้อมูลที่ยืนยันได้ในฐานข้อมูลของ PSU Esports Studio - Phuket สำหรับหมวด games ตอนนี้ครับ",
+      "noisy_mode": "pipeline:no_answer",
+      "v2": {
+        "route_ok": true,
+        "status_ok": false,
+        "content_ok": false,
+        "latency_ok": true,
+        "passed": false,
+        "outcome": "no_answer",
+        "failures": [
+          "missing all alternatives: ['Nintendo Switch', 'Nintendo Switch (1-2 Persons)']",
+          "outcome no_answer differs from expected answer_available"
+        ],
+        "positive_contract_present": true,
+        "evidence_level": "candidate_content_contract",
+        "live_claim_verified": false
+      }
+    },
+    "clarification_vs_expected_answer": {
+      "id": "MASTER-GT-EN-04037",
+      "clean_question": "What do the CS2 tournament rules say about in-match procedure",
+      "noisy_question": "What do the CS2 tornament rules say about in-march procedure",
+      "clean_answer": "Answer: Technical game pauses allowed per team: two times, each not exceeding 10 minutes. If issues arise, teams must immediately notify the referees.\n\nRulebook: Counter-Strike 2\nSource: local://competition_rules/competition_rules_cs2_psu_phuket_2026",
+      "noisy_answer": "Which competition procedure do you mean: before a match, during a match, or after a match? Please specify the step or situation you want to check.",
+      "noisy_mode": "pipeline:competition_procedure_clarification_en",
+      "v2": {
+        "route_ok": true,
+        "status_ok": false,
+        "content_ok": true,
+        "latency_ok": true,
+        "passed": false,
+        "outcome": "clarification",
+        "failures": [
+          "outcome clarification differs from expected answer_available"
+        ],
+        "positive_contract_present": false,
+        "evidence_level": "content_not_checked",
+        "live_claim_verified": false
+      }
+    }
+  },
+  "scope": "Failed pair records with full question, clean/noisy answer, expected contract and trace. Triage counts are candidates, not verified causes for every row. Do not call all 111 wrong factual answers."
+}

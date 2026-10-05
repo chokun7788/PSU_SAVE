@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_no_answer_food_buffet",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "อาหารบุฟเฟต์",
+      "บุฟเฟต์"
+    ],
+    "en": [
+      "buffet"
+    ]
+  },
+  "facts": {
+    "route_category": "no_answer",
+    "intent": "no_answer_food_buffet",
+    "patterns": [
+      "อาหารบุฟเฟต์",
+      "บุฟเฟต์",
+      "buffet"
+    ],
+    "priority": 130
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ยังไม่พบข้อมูลว่าศูนย์มีบริการอาหารบุฟเฟต์ในฐานข้อมูลที่มี และกฎที่มีระบุว่าอาหารและเครื่องดื่มควรรับประทานเฉพาะในพื้นที่ที่กำหนดเท่านั้น จึงไม่ควรสรุปว่ามีบริการบุฟเฟต์ภายในศูนย์"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "No information about buffet food service was found in the available knowledge base. The available rules say food and drinks are allowed only in designated areas, so buffet service should not be assumed."
+      },
+      "source_sha256": "29e5ab81bc63954c24c12f66ef007c63c37b2985fe34e4eff4c2688679ef52a2",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/no_answer_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_rule_food_drinks"
+    ],
+    "last_verified_at": ""
+  }
+}
