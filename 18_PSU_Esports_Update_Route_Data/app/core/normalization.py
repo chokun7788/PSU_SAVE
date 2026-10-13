@@ -269,6 +269,14 @@ def _fuzzy_replace_keyword(value: str, canonical: str, threshold: float) -> str:
     prefixes = FUZZY_NORMALIZATION_PREFIXES.get(canonical, ())
     replacements: list[tuple[int, int, str]] = []
     occupied: set[int] = set()
+    # A fuzzy candidate may overlap an intact intent word next to another
+    # Thai word (for example เปิดปิด). Preserve those exact spans before
+    # looking for misspellings; fuzzy similarity cannot justify rewriting
+    # a correctly spelled cue into a different cue.
+    protected: set[int] = set()
+    for known in (*FUZZY_NORMALIZATION_KEYWORDS, *DOMAIN_CONTEXT_FUZZY_KEYWORDS, 'ปิด'):
+        for exact in re.finditer(re.escape(known),value):
+            protected.update(range(exact.start(),exact.end()))
 
     for start in range(len(value)):
         best: tuple[float, int, int] | None = None
@@ -277,6 +285,8 @@ def _fuzzy_replace_keyword(value: str, canonical: str, threshold: float) -> str:
             if end > len(value):
                 continue
             candidate = value[start:end]
+            if protected.intersection(range(start,end)):
+                continue
             if candidate == canonical or any(ch.isspace() for ch in candidate):
                 continue
             if candidate in canonical:

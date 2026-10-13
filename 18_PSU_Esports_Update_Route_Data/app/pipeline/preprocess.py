@@ -10,6 +10,7 @@ from app.core.multi_error_phrase_recovery import recover_multi_error_phrase_quer
 from app.core.intent_cue_recovery import recover_intent_cues
 from app.pipeline.game_title_correction import build_game_title_query_variants
 from app.pipeline.schemas import EntityBundle, PreprocessedInput
+from app.pipeline.query_signals import has_any_signal
 
 
 SHORT_ANSWER_TERMS = ("ตอบสั้น", "สั้นๆ", "สั้น ๆ", "brief", "short answer")
@@ -289,7 +290,7 @@ def extract_entities(pre: PreprocessedInput) -> EntityBundle:
         duration = "60_minutes"
 
     payment_deadline_intent = _has(q, "จ่ายภายใน", "ชำระภายใน", "โอนเงิน", "สลิป", "เลขบัญชี", "ธนาคาร", "ลืมจ่าย", "ไม่จ่าย", "หลังจองต้องจ่าย")
-    price_intent = _has(q, "ราคา", "ค่าบริการ", "ค่าใช้บริการ", "ค่าใช้จ่าย", "กี่บาท", "เท่าไหร่", "เท่าไร", "บาท", "เสียเงิน", "คิดเงิน", "fee", "price", "cost")
+    price_intent = has_any_signal(q, "ราคา", "ค่าบริการ", "ค่าใช้บริการ", "ค่าใช้จ่าย", "กี่บาท", "เท่าไหร่", "เท่าไร", "บาท", "เสียเงิน", "คิดเงิน", "fee", "fees", "price", "cost")
     price_intent = price_intent or (_has(q, "ต้องจ่าย", "จ่ายไหม") and not payment_deadline_intent)
     price_intent = price_intent or bool(service and _has(q, "คิดยังไง", "คิดอย่างไร") and re.search(r"\d+\s*(?:ชั่วโมง|ชม|นาที)", q))
     comparison_intent = _has(q, *COMPARISON_TERMS)

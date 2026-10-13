@@ -1,5 +1,7 @@
 param(
-    [int]$Port = 8090
+    [int]$Port = 8090,
+    [switch]$NoBrowser,
+    [string]$PythonPath = ''
 )
 
 $ErrorActionPreference = "Stop"
@@ -11,15 +13,12 @@ if ($Port -lt 1024 -or $Port -gt 65535) {
     throw "Port must be between 1024 and 65535."
 }
 
-$python = Get-Command python -ErrorAction SilentlyContinue
-if (-not $python) {
-    $codexPython = Join-Path $env:USERPROFILE ".cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe"
-    if (Test-Path -LiteralPath $codexPython) {
-        $python = [pscustomobject]@{ Source = $codexPython }
-    }
-}
-if (-not $python) {
-    throw "Python was not found. Install Python 3.11 or newer, select Add Python to PATH, then open this file again."
+. (Join-Path $projectRoot 'Runtime-Readiness.ps1')
+$python = Get-ChatbotPython $projectRoot $PythonPath
+Write-Host "Python: $($python.Path) ($($python.Identity.version -join '.'))"
+if (-not $NoBrowser) {
+    & (Join-Path $projectRoot 'Open-PSU-Esports-Background.ps1') -Port $Port -PythonPath $python.Path
+    return
 }
 
 function Test-OllamaReady {
@@ -64,4 +63,4 @@ if ($missingModels.Count -gt 0) {
     }
 }
 
-& (Join-Path $projectRoot "Start-PSU-Esports-Chatbot.ps1") -Port $Port -OpenBrowser
+& (Join-Path $projectRoot "Start-PSU-Esports-Chatbot.ps1") -Port $Port -PythonPath $python.Path -OpenBrowser:(!$NoBrowser)

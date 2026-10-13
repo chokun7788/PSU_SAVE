@@ -1,0 +1,826 @@
+{
+  "version": 1,
+  "purpose": "Presentation semantics only; no owner facts",
+  "kinds": {
+    "rate": {
+      "context": [
+        {
+          "when": [
+            "amount_minor",
+            "unit",
+            "duration_minutes"
+          ],
+          "include": [
+            "service_id",
+            "audience_id",
+            "currency",
+            "unit",
+            "duration_minutes",
+            "calculation_rule",
+            "tax_note"
+          ]
+        }
+      ]
+    },
+    "rental_package": {
+      "context": [
+        {
+          "when": [
+            "amount_minor"
+          ],
+          "include": [
+            "audience_id",
+            "currency",
+            "period_label",
+            "duration_minutes",
+            "terms"
+          ]
+        },
+        {
+          "when": [
+            "equipment_included"
+          ],
+          "include": [
+            "zone_ids"
+          ]
+        }
+      ]
+    },
+    "policy": {
+      "context": [
+        {
+          "when": [
+            "decision",
+            "exceptions",
+            "details",
+            "conditions_all"
+          ],
+          "include": [
+            "decision",
+            "conditions_all",
+            "exceptions",
+            "details"
+          ]
+        }
+      ]
+    },
+    "game_mode": {
+      "context": [
+        {
+          "when": [
+            "players_min",
+            "players_max",
+            "network_requirement",
+            "studio_supported"
+          ],
+          "include": [
+            "mode_name",
+            "platform"
+          ]
+        }
+      ]
+    },
+    "control_set": {
+      "context": [
+        {
+          "when": [
+            "bindings",
+            "game_version"
+          ],
+          "include": [
+            "platform",
+            "input_device",
+            "preset"
+          ]
+        }
+      ]
+    },
+    "competition_rule": {
+      "context": [
+        {
+          "when": [
+            "text"
+          ],
+          "include": [
+            "heading",
+            "section_number",
+            "completeness"
+          ]
+        }
+      ]
+    },
+    "schedule": {
+      "context": [
+        {
+          "when": [
+            "open_periods",
+            "bookable_periods",
+            "maintenance_periods"
+          ],
+          "include": [
+            "timezone",
+            "weekday",
+            "zone_ids"
+          ]
+        }
+      ]
+    },
+    "closure": {
+      "context": [
+        {
+          "when": [
+            "state",
+            "open_periods",
+            "bookable_periods"
+          ],
+          "include": [
+            "local_date",
+            "zone_ids"
+          ]
+        }
+      ]
+    },
+    "contact": {
+      "context": [
+        {
+          "when": [
+            "channel"
+          ],
+          "include": [
+            "value"
+          ]
+        }
+      ]
+    }
+  },
+  "labels": {
+    "service": {
+      "session_minutes": {
+        "th": "เวลาเล่น (นาที)",
+        "en": "Play time (minutes)"
+      },
+      "occupancy_minutes": {
+        "th": "เวลาที่ล็อกเครื่อง (นาที)",
+        "en": "Reserved time (minutes)"
+      },
+      "name": {
+        "th": "ชื่อบริการตามหน้า WordPress",
+        "en": "name"
+      },
+      "resource_ids": {
+        "th": "เครื่องจริงที่ใช้กับบริการนี้",
+        "en": "resource ids"
+      },
+      "platform": {
+        "th": "แพลตฟอร์ม เช่น PC หรือ PS5",
+        "en": "platform"
+      },
+      "capacity_min": {
+        "th": "จำนวนคนขั้นต่ำของบริการ",
+        "en": "capacity min"
+      },
+      "capacity_max": {
+        "th": "จำนวนคนสูงสุดของบริการ",
+        "en": "capacity max"
+      },
+      "booking_product_key": {
+        "th": "รหัสบริการจาก WordPress (ถ้าทราบ)",
+        "en": "booking product key"
+      }
+    },
+    "rate": {
+      "amount_minor": {
+        "th": "ราคา",
+        "en": "Price"
+      },
+      "unit": {
+        "th": "หน่วยคิดราคา",
+        "en": "Billing unit"
+      },
+      "calculation_rule": {
+        "th": "วิธีคิดราคา",
+        "en": "Calculation rule"
+      },
+      "service_id": {
+        "th": "เลือกตัวเลือกบริการบนหน้าจอง",
+        "en": "service id"
+      },
+      "audience_id": {
+        "th": "เลือกกลุ่มผู้ใช้ที่ใช้ราคานี้",
+        "en": "audience id"
+      },
+      "currency": {
+        "th": "สกุลเงิน",
+        "en": "currency"
+      },
+      "duration_minutes": {
+        "th": "ระยะเวลาที่ครอบคลุม (นาที)",
+        "en": "duration minutes"
+      },
+      "persons_min": {
+        "th": "ราคานี้ใช้กับจำนวนคนอย่างน้อย",
+        "en": "persons min"
+      },
+      "persons_max": {
+        "th": "ราคานี้ใช้กับจำนวนคนไม่เกิน",
+        "en": "persons max"
+      },
+      "tax_note": {
+        "th": "ภาษีและเงื่อนไขราคา",
+        "en": "tax note"
+      }
+    },
+    "rental_package": {
+      "amount_minor": {
+        "th": "ราคาแพ็กเกจ",
+        "en": "Package price"
+      },
+      "equipment_included": {
+        "th": "อุปกรณ์ที่รวม",
+        "en": "Included equipment"
+      },
+      "room_seats": {
+        "th": "ที่นั่งในพื้นที่",
+        "en": "Room seats"
+      },
+      "duration_minutes": {
+        "th": "ระยะเวลา (นาที)",
+        "en": "Duration (minutes)"
+      },
+      "name": {
+        "th": "ชื่อแพ็กเกจ",
+        "en": "name"
+      },
+      "zone_ids": {
+        "th": "โซนที่ข้อมูลนี้ครอบคลุม",
+        "en": "zone ids"
+      },
+      "audience_id": {
+        "th": "เลือกกลุ่มผู้ใช้ที่ใช้ราคานี้",
+        "en": "audience id"
+      },
+      "period_label": {
+        "th": "ครึ่งวัน / เต็มวัน / ช่วงที่กำหนดเอง",
+        "en": "period label"
+      },
+      "currency": {
+        "th": "สกุลเงิน",
+        "en": "currency"
+      },
+      "terms": {
+        "th": "เช่น ค่าเจ้าหน้าที่นอกเวลา",
+        "en": "terms"
+      }
+    },
+    "schedule": {
+      "open_periods": {
+        "th": "เวลาเปิดพื้นที่",
+        "en": "Opening periods"
+      },
+      "bookable_periods": {
+        "th": "ช่วงที่จองได้",
+        "en": "Bookable periods"
+      },
+      "maintenance_periods": {
+        "th": "ช่วงบำรุงรักษา",
+        "en": "Maintenance periods"
+      },
+      "zone_ids": {
+        "th": "โซนที่ใช้ตารางนี้",
+        "en": "Applicable zones"
+      },
+      "timezone": {
+        "th": "เขตเวลา",
+        "en": "timezone"
+      },
+      "weekday": {
+        "th": "เลือกวันในสัปดาห์",
+        "en": "weekday"
+      },
+      "reason": {
+        "th": "เหตุผลตามประกาศ",
+        "en": "reason"
+      }
+    },
+    "closure": {
+      "zone_ids": {
+        "th": "โซนที่ได้รับผล",
+        "en": "Affected zones"
+      },
+      "state": {
+        "th": "สถานะตามประกาศ",
+        "en": "Notice status"
+      },
+      "local_date": {
+        "th": "วันที่แน่นอน (ค.ศ.)",
+        "en": "local date"
+      },
+      "open_periods": {
+        "th": "ช่วงที่เปิดพื้นที่",
+        "en": "open periods"
+      },
+      "bookable_periods": {
+        "th": "ช่วงที่จองและเล่นได้",
+        "en": "bookable periods"
+      },
+      "reason": {
+        "th": "เหตุผลตามประกาศ",
+        "en": "reason"
+      },
+      "resolution_policy_id": {
+        "th": "กฎจัดการจองเดิมเมื่อปิดพิเศษ (ถ้ามี)",
+        "en": "resolution policy id"
+      }
+    },
+    "game_service": {
+      "game_version": {
+        "th": "เวอร์ชันที่ติดตั้ง",
+        "en": "Installed game version"
+      },
+      "game_id": {
+        "th": "เลือกเกมที่เกี่ยวข้อง",
+        "en": "game id"
+      },
+      "service_id": {
+        "th": "เลือกตัวเลือกบริการบนหน้าจอง",
+        "en": "service id"
+      },
+      "offered": {
+        "th": "ศูนย์มีเกมนี้ในบริการที่เลือกหรือไม่",
+        "en": "offered"
+      },
+      "installed_resource_ids": {
+        "th": "เครื่องที่ยืนยันว่าติดตั้งเกมนี้ไว้",
+        "en": "installed resource ids"
+      },
+      "account_policy_id": {
+        "th": "เลือกกฎเรื่องบัญชีเกม (ถ้ามี)",
+        "en": "account policy id"
+      }
+    },
+    "control_set": {
+      "game_version": {
+        "th": "เวอร์ชันที่ตรวจชุดปุ่ม",
+        "en": "Version used to verify controls"
+      },
+      "game_id": {
+        "th": "เลือกเกมที่เกี่ยวข้อง",
+        "en": "game id"
+      },
+      "platform": {
+        "th": "แพลตฟอร์ม เช่น PC หรือ PS5",
+        "en": "platform"
+      },
+      "input_device": {
+        "th": "อุปกรณ์ควบคุม",
+        "en": "input device"
+      },
+      "preset": {
+        "th": "ชื่อชุดปุ่ม เช่น default",
+        "en": "preset"
+      },
+      "bindings": {
+        "th": "ปุ่มควบคุม: เพิ่มทีละปุ่มหรือชุดปุ่ม",
+        "en": "bindings"
+      },
+      "limitations": {
+        "th": "ข้อจำกัดหรือส่วนที่ยังไม่ยืนยัน",
+        "en": "limitations"
+      }
+    },
+    "contact": {
+      "value": {
+        "th": "ช่องทางติดต่อ",
+        "en": "Contact"
+      },
+      "office_hours": {
+        "th": "เวลาที่ช่องทางนี้ตอบ",
+        "en": "Contact response hours"
+      },
+      "channel": {
+        "th": "ประเภทช่องทาง",
+        "en": "channel"
+      },
+      "purpose": {
+        "th": "ติดต่อเรื่องอะไรได้บ้าง",
+        "en": "purpose"
+      }
+    },
+    "center": {
+      "name": {
+        "th": "ชื่อศูนย์อย่างเป็นทางการ",
+        "en": "name"
+      },
+      "operator": {
+        "th": "หน่วยงานเจ้าของ/ผู้ดำเนินการ",
+        "en": "operator"
+      },
+      "description": {
+        "th": "ศูนย์ทำอะไร/ขอบเขตบริการ",
+        "en": "description"
+      },
+      "address": {
+        "th": "ที่อยู่เต็ม",
+        "en": "address"
+      },
+      "building": {
+        "th": "อาคาร",
+        "en": "building"
+      },
+      "floor": {
+        "th": "ชั้น",
+        "en": "floor"
+      },
+      "map_url": {
+        "th": "ลิงก์แผนที่",
+        "en": "map url"
+      },
+      "timezone": {
+        "th": "เขตเวลา",
+        "en": "timezone"
+      }
+    },
+    "facility": {
+      "name": {
+        "th": "เช่น ที่จอดรถ/ที่นั่งพัก",
+        "en": "name"
+      },
+      "location": {
+        "th": "อยู่บริเวณไหน",
+        "en": "location"
+      },
+      "usage_conditions": {
+        "th": "เงื่อนไขใช้บริการ",
+        "en": "usage conditions"
+      },
+      "accessibility": {
+        "th": "การเข้าถึง/รถเข็น หากยังไม่มีข้อมูลให้ unknown",
+        "en": "accessibility"
+      }
+    },
+    "zone": {
+      "name": {
+        "th": "PC/PS5/Switch/Cockpit/VR เป็นชื่อรายการ",
+        "en": "name"
+      },
+      "description": {
+        "th": "โซนนี้ใช้ทำอะไร",
+        "en": "description"
+      },
+      "location": {
+        "th": "ตำแหน่งในศูนย์",
+        "en": "location"
+      },
+      "room_seats": {
+        "th": "จำนวนที่นั่งในพื้นที่ (ไม่ใช่จำนวนผู้เล่นต่อเครื่อง)",
+        "en": "room seats"
+      }
+    },
+    "equipment_model": {
+      "name": {
+        "th": "ชื่อรุ่นอุปกรณ์",
+        "en": "name"
+      },
+      "device_type": {
+        "th": "ประเภทอุปกรณ์",
+        "en": "device type"
+      },
+      "specifications": {
+        "th": "สเปกทีละค่า พร้อมหน่วย/รุ่น",
+        "en": "specifications"
+      },
+      "usage": {
+        "th": "วิธีใช้อุปกรณ์/ข้อควรทราบจากแหล่งข้อมูล",
+        "en": "usage"
+      }
+    },
+    "resource": {
+      "name": {
+        "th": "ชื่อเครื่อง",
+        "en": "name"
+      },
+      "zone_id": {
+        "th": "เลือกโซนที่เครื่องตั้งอยู่",
+        "en": "zone id"
+      },
+      "equipment_model_ids": {
+        "th": "รุ่นอุปกรณ์ของเครื่องนี้",
+        "en": "equipment model ids"
+      },
+      "capacity_persons": {
+        "th": "จำนวนคนที่เล่นเครื่องนี้พร้อมกันได้",
+        "en": "capacity persons"
+      },
+      "physical_pool_key": {
+        "th": "รหัสเครื่องที่ใช้ร่วมกัน (คัดลอกจากระบบจริง)",
+        "en": "physical pool key"
+      },
+      "operational_status": {
+        "th": "เครื่องพร้อมให้บริการหรือไม่ (แยกจากการถูกจอง)",
+        "en": "operational status"
+      }
+    },
+    "game": {
+      "title": {
+        "th": "ชื่อเกมอย่างเป็นทางการ",
+        "en": "title"
+      },
+      "edition": {
+        "th": "ภาคหรือรุ่นของเกม",
+        "en": "edition"
+      },
+      "genre": {
+        "th": "แนวเกม",
+        "en": "genre"
+      },
+      "summary": {
+        "th": "เกมเกี่ยวกับอะไร",
+        "en": "summary"
+      },
+      "how_to_play": {
+        "th": "วิธีเล่นเบื้องต้นและเป้าหมายของเกม",
+        "en": "how to play"
+      },
+      "publisher_url": {
+        "th": "ลิงก์ข้อมูลจากผู้พัฒนาเกม",
+        "en": "publisher url"
+      },
+      "supported_platforms": {
+        "th": "แพลตฟอร์มที่ตัวเกมรองรับ ไม่แปลว่าศูนย์มีให้เล่น",
+        "en": "supported platforms"
+      },
+      "age_rating": {
+        "th": "เรตอายุของตัวเกม (แยกจากกฎรับเด็กของศูนย์)",
+        "en": "age rating"
+      }
+    },
+    "game_mode": {
+      "game_id": {
+        "th": "เลือกเกมที่เกี่ยวข้อง",
+        "en": "game id"
+      },
+      "mode_name": {
+        "th": "ชื่อโหมดการเล่น",
+        "en": "mode name"
+      },
+      "platform": {
+        "th": "แพลตฟอร์ม เช่น PC หรือ PS5",
+        "en": "platform"
+      },
+      "players_min": {
+        "th": "ผู้เล่นขั้นต่ำของโหมดเกม",
+        "en": "players min"
+      },
+      "players_max": {
+        "th": "ผู้เล่นสูงสุดของโหมดเกม",
+        "en": "players max"
+      },
+      "network_requirement": {
+        "th": "อินเทอร์เน็ตหรือบัญชีที่ต้องใช้",
+        "en": "network requirement"
+      },
+      "studio_supported": {
+        "th": "ศูนย์รองรับโหมดนี้จริงหรือไม่",
+        "en": "studio supported"
+      }
+    },
+    "audience": {
+      "name": {
+        "th": "ชื่อกลุ่ม",
+        "en": "name"
+      },
+      "eligibility": {
+        "th": "ใครใช้สิทธิ์ของกลุ่มนี้ได้",
+        "en": "eligibility"
+      },
+      "required_proofs": {
+        "th": "หลักฐานสิทธิ์ที่ต้องแสดง",
+        "en": "required proofs"
+      }
+    },
+    "policy": {
+      "topic": {
+        "th": "หัวข้อเชิงความหมาย",
+        "en": "topic"
+      },
+      "subject": {
+        "th": "กฎนี้ใช้กับเรื่องอะไร",
+        "en": "subject"
+      },
+      "decision": {
+        "th": "อนุญาต / ไม่อนุญาต / จำเป็น / มีเงื่อนไข",
+        "en": "decision"
+      },
+      "conditions_all": {
+        "th": "เงื่อนไขที่ต้องครบทุกข้อ",
+        "en": "conditions all"
+      },
+      "exceptions": {
+        "th": "ข้อยกเว้นตามประกาศ",
+        "en": "exceptions"
+      },
+      "consequence": {
+        "th": "ผลเมื่อผิดกฎตามประกาศ",
+        "en": "consequence"
+      },
+      "details": {
+        "th": "ข้อความกฎเต็มพร้อมเงื่อนไข",
+        "en": "details"
+      },
+      "procedure_id": {
+        "th": "เลือกขั้นตอนปฏิบัติที่เกี่ยวข้อง",
+        "en": "procedure id"
+      }
+    },
+    "procedure": {
+      "topic": {
+        "th": "เรื่องที่ขั้นตอนนี้ใช้กับ",
+        "en": "topic"
+      },
+      "preconditions": {
+        "th": "สถานการณ์ที่ใช้ขั้นตอนนี้",
+        "en": "preconditions"
+      },
+      "steps": {
+        "th": "ขั้นตอนที่ผู้ใช้ต้องทำ (เรียงลำดับ)",
+        "en": "steps"
+      },
+      "required_documents": {
+        "th": "เอกสารหรือหลักฐานที่ต้องเตรียม",
+        "en": "required documents"
+      },
+      "deadline_minutes": {
+        "th": "ต้องทำภายในกี่นาที (ถ้ายืนยันแล้ว)",
+        "en": "deadline minutes"
+      },
+      "outcome": {
+        "th": "ผลที่ได้หลังทำครบขั้นตอน",
+        "en": "outcome"
+      }
+    },
+    "competition": {
+      "game_id": {
+        "th": "เลือกเกมที่เกี่ยวข้อง",
+        "en": "game id"
+      },
+      "event_name": {
+        "th": "ชื่อรายการ+ปี+ประเภทให้ตรง",
+        "en": "event name"
+      },
+      "division": {
+        "th": "ประเภทหรือกลุ่มการแข่งขัน",
+        "en": "division"
+      },
+      "rulebook_release": {
+        "th": "ฉบับกติกาและวันที่",
+        "en": "rulebook release"
+      },
+      "competition_dates": {
+        "th": "วันที่จัดการแข่งขันตามต้นทาง",
+        "en": "competition dates"
+      },
+      "coverage": {
+        "th": "เอกสารกติกาครบหรือมีเพียงบางส่วน",
+        "en": "coverage"
+      },
+      "supersedes_id": {
+        "th": "เลือกฉบับกติกาก่อนหน้า (ถ้ามี)",
+        "en": "supersedes id"
+      }
+    },
+    "competition_rule": {
+      "competition_id": {
+        "th": "เลือกรายการแข่งขันและฉบับกติกา",
+        "en": "competition id"
+      },
+      "section_number": {
+        "th": "เลขข้อจากเอกสารเดิม",
+        "en": "section number"
+      },
+      "facet": {
+        "th": "หมวดของกติกาข้อนี้",
+        "en": "facet"
+      },
+      "heading": {
+        "th": "หัวข้อกติกา",
+        "en": "heading"
+      },
+      "text": {
+        "th": "ข้อความกติกาเต็ม รวมเงื่อนไขท้ายข้อ",
+        "en": "text"
+      },
+      "depends_on_ids": {
+        "th": "ข้อกติกาที่ต้องอ่านร่วมกัน (ถ้ามี)",
+        "en": "depends on ids"
+      },
+      "completeness": {
+        "th": "ข้อความข้อนี้ครบหรือถูกตัด",
+        "en": "completeness"
+      }
+    },
+    "news": {
+      "title": {
+        "th": "หัวข้อประกาศ",
+        "en": "title"
+      },
+      "body": {
+        "th": "รายละเอียด",
+        "en": "body"
+      },
+      "event_start": {
+        "th": "เวลาเริ่มกิจกรรม",
+        "en": "event start"
+      },
+      "event_end": {
+        "th": "เวลาจบกิจกรรม",
+        "en": "event end"
+      },
+      "audience_ids": {
+        "th": "ผู้เข้าร่วม/กลุ่มสิทธิ์",
+        "en": "audience ids"
+      },
+      "contact_id": {
+        "th": "ช่องทางเกี่ยวกับกิจกรรม",
+        "en": "contact id"
+      },
+      "registration_url": {
+        "th": "ลิงก์สมัคร ถ้ามี",
+        "en": "registration url"
+      }
+    },
+    "person": {
+      "display_name": {
+        "th": "ชื่อที่อนุญาตให้เผยแพร่",
+        "en": "display name"
+      },
+      "role": {
+        "th": "ตำแหน่ง/หน้าที่",
+        "en": "role"
+      },
+      "team": {
+        "th": "ทีม/หน่วยงาน",
+        "en": "team"
+      },
+      "public_contact_id": {
+        "th": "ช่องทางงานที่อนุญาตเผยแพร่",
+        "en": "public contact id"
+      },
+      "public_scope": {
+        "th": "รายละเอียดที่เผยแพร่ได้ ไม่ใส่ข้อมูลลูกค้าหรือสลิป",
+        "en": "public scope"
+      }
+    },
+    "faq": {
+      "question": {
+        "th": "คำถามตั้งต้น ไม่จำเป็นต้องเก็บทุก paraphrase",
+        "en": "question"
+      },
+      "answer": {
+        "th": "คำตอบพร้อมหลักฐานของศูนย์",
+        "en": "answer"
+      },
+      "related_ids": {
+        "th": "ข้อมูลอื่นที่เกี่ยวข้อง",
+        "en": "related ids"
+      },
+      "topic": {
+        "th": "หัวข้อเชิงความหมาย",
+        "en": "topic"
+      },
+      "scope_note": {
+        "th": "ขอบเขตคำตอบและข้อจำกัด",
+        "en": "scope note"
+      }
+    },
+    "live_binding": {
+      "service_id": {
+        "th": "เลือกตัวเลือกบริการบนหน้าจอง",
+        "en": "service id"
+      },
+      "provider": {
+        "th": "ผู้ให้ข้อมูลสด",
+        "en": "provider"
+      },
+      "external_resource_key": {
+        "th": "รหัสเครื่องหรือบริการที่ API ใช้จริง",
+        "en": "external resource key"
+      },
+      "physical_pool_key": {
+        "th": "รหัสเครื่องที่ใช้ร่วมกัน (คัดลอกจากระบบจริง)",
+        "en": "physical pool key"
+      },
+      "status_mapping": {
+        "th": "ค่าจาก API แต่ละค่าหมายถึงอะไร",
+        "en": "status mapping"
+      },
+      "timezone": {
+        "th": "เขตเวลา",
+        "en": "timezone"
+      },
+      "freshness_policy": {
+        "th": "ข้อมูลเก่าได้กี่วินาที ตามนโยบายที่อนุมัติ",
+        "en": "freshness policy"
+      }
+    }
+  }
+}

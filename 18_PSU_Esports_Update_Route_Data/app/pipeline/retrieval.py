@@ -675,7 +675,9 @@ def retrieve_competition_fact_cards(
         scored.append((score, {**row, "_matched_pattern": matched_pattern}))
 
     scored.sort(key=lambda item: item[0], reverse=True)
-    hits = [{**row, "_score": round(score, 3)} for score, row in scored[:limit]]
+    from app.knowledge.common.legacy_bridge import guard_hits
+    candidates, ownership_blocked = guard_hits([{**row, "_score": round(score, 3)} for score, row in scored])
+    hits = candidates[:limit]
     confidence = min(0.95, 0.45 + (hits[0]["_score"] / 25 if hits else 0.0))
     detail = f"hits={len(hits)} game={game_hint or '-'} intent={intent_hint or '-'}"
     if skipped_for_active_canonical:
@@ -895,7 +897,7 @@ def retrieve_curated(
     detail = f"hits={len(hits)}"
     if category == "competition_rules":
         detail += f" game={competition_game or '-'} intent={competition_intent or '-'}"
-    return hits, PipelineTrace("rag_retrieval", "curated_lexical", confidence, detail, {"category": category, "game": competition_game, "intent": competition_intent})
+    return hits, PipelineTrace("rag_retrieval", "curated_lexical", confidence, detail, {"category": category, "game": competition_game, "intent": competition_intent,"common_ownership_blocked":ownership_blocked})
 
 
 def retrieve_competition_contract_rows(

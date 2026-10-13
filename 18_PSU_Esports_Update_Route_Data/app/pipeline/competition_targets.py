@@ -66,7 +66,7 @@ _RULE_SIGNALS = (
     "protest", "roster", "substitute", "forfeit", "anti-cheat", "cheating", "conduct",
     "sportsmanship", "technical pause", "timeout", "pause", "disconnect",
     "มารยาท", "พฤติกรรม", "ตัวสำรอง", "ปรับแพ้", "ประท้วง", "ข้อพิพาท",
-    "หลุดเกม", "การเชื่อมต่อ", "การหยุดเกม", "พักเกม", "โกง",
+    "หลุดเกม", "การเชื่อมต่อ", "การหยุดเกม", "พักเกม", "เวลานอก", "โกง",
 )
 
 # These phrases are not sufficient on their own: a question about a game can
@@ -213,7 +213,7 @@ def looks_like_competition_rule_query(query: str) -> bool:
         # Participant roles and a paired display-setting request express a
         # rulebook proposition without requiring the word "rules". Bind these
         # to an exact game; changing a character is not changing a roster.
-        roles = bool(re.search(r"ผู้เล่น(?:หลัก|ตัวจริง).{0,20}(?:กี่|จำนวน)|(?:ส่ง|ต้องมี).{0,12}ผู้เล่น.{0,12}(?:กี่|คน)|(?:how many|number of).{0,20}(?:starting players|starters)", query, re.I))
+        roles = bool(re.search(r"ผู้เล่น(?:หลัก|ตัวจริง).{0,20}(?:กี่|จำนวน)|(?:ส่ง|ต้องมี).{0,12}ผู้เล่น.{0,12}(?:กี่|คน)|สมาชิกทีม.{0,35}(?:กี่คน|จำนวน)|(?:how many|number of).{0,25}(?:starting players|starters)|(?:how many|number of).{0,25}members.{0,30}team", query, re.I))
         cs2_roster = any(t.game_id == 'cs2' for t in target.targets) and bool(re.search(r"เปลี่ยนตัว(?!ละคร)|สลับผู้เล่น|เปลี่ยน(?:แปลง)?สมาชิก|(?:swap|replace|change).{0,20}(?:players?|starters?)", query, re.I))
         valo_display = any(t.game_id == 'valorant' for t in target.targets) and bool(re.search(r"ปิด.{0,20}(?:เลือด|ศพ)|(?:เลือด|ศพ).{0,20}ปิด|turn.{0,12}off.{0,25}(?:blood|bodies)|(?:blood|bodies).{0,25}(?:off|display|settings)", query, re.I))
         rov_late = any(t.game_id == 'rov' for t in target.targets) and bool(re.search(r"มาสาย|(?:เริ่ม|เริ่มแข่ง).{0,15}ช้า|(?:arrive|arrival|team is|starts?).{0,50}late", query, re.I))

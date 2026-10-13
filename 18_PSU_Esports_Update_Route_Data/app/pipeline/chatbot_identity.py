@@ -159,6 +159,9 @@ def is_chatbot_identity_query(value: str) -> bool:
             r"|\bwhat\s+is\s+this\s+(?:chat\s+)?(?:bot|assistant|chatbot)\s+called\b",
             query,
         ))
+        en_capabilities = bool(re.fullmatch(
+            r"(?:what\s+(?:can|could)\s+(?:you|u)\s+help\s+(?:me\s+)?with|how\s+(?:can|could)\s+(?:you|u)\s+help\s*(?:me)?|what\s+topics\s+can\s+i\s+ask\s+about)[?!. ]*",
+            query, re.I))
         en_answering = bool(re.search(r"\bwho\s+is\s+answering\s+me\b", query))
         th_subject = bool(re.search(
             r"(?<![ก-๙])(?:นาย|คุณ|คุน|แก|เธอ)(?=(?:เป็น|เปน|คือ|นี่|นี|ทำ|ช่วย|ตอบ|ชื่อ|ไคร|ใคร))",
@@ -167,7 +170,7 @@ def is_chatbot_identity_query(value: str) -> bool:
             r"ผู้ช่วย(?:นี้|แชท|ของศูนย์|\s*ai)", query,
         ))
         th_predicate = any(token in query for token in ("ใคร", "ไคร", "เปน", "เป็น", "หน้าที่", "ชื่อ", "คนหรือบอท", "ตอบอยู่"))
-        if en_identity or en_answering or (th_subject and th_predicate):
+        if en_identity or en_capabilities or en_answering or (th_subject and th_predicate):
             return True
     if any(term in query for term in _IDENTITY_TERMS):
         return True

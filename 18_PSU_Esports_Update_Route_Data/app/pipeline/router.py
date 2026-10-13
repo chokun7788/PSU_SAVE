@@ -622,6 +622,11 @@ def _looks_like_studio_rules_query(q: str) -> bool:
 
 def route_intent(pre: PreprocessedInput, entities: EntityBundle) -> tuple[PipelineRoute, PipelineTrace]:
     q = pre.normalized_query
+    if looks_like_clear_general_request(pre.clean_query):
+        route = PipelineRoute('general', 'general_knowledge_query', .94, 'general', 'low',
+                              'complete general task before incidental domain words')
+        return route, PipelineTrace('router', 'general', route.confidence, route.reason,
+                                    {'intent': route.intent, 'answer_type': route.answer_type})
     semantic_match = None
     looks_like_payment_policy = _has(q, "ชำระ", "จ่ายภายใน", "ชำระภายใน", "จ่ายเงินผ่าน", "ช่องทางไหน", "โอนเงิน", "สลิป", "เลขบัญชี", "ธนาคาร", "ไม่จ่าย", "ลืมจ่าย", "payment timeout", "หลังจองต้องจ่าย", "จ่ายภายในกี่นาที", "จ่ายเงินผ่านบัญชี")
     looks_like_late_or_walkin = _has(q, "ไปช้า", "ไปถึงช้า", "มาสาย", "เช็คอินช้า", "เช็คอินไม่ทัน", "เชคอินไม่ทัน", "walk in", "walk-in", "วอล์คอิน")

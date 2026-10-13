@@ -86,6 +86,13 @@ GROUP_ORDER = ("psu_student_staff", "general_student", "general_adult")
 
 def _detect_minutes(query: str) -> int | None:
     q = normalize_text(query)
+    # Word numbers are quantity slots only next to a duration unit. Preserve
+    # identifiers and time of day; never rewrite the user's raw query.
+    words = {'หนึ่ง':1,'สอง':2,'สาม':3,'สี่':4,'ห้า':5,'หก':6,
+             'one':1,'two':2,'three':3,'four':4,'five':5,'six':6}
+    word_match = re.search(r'(?<![a-z])('+'|'.join(words)+r')\s*(ชั่วโมง|ชม\.?|hours?|hrs?|นาที|minutes?|mins?)',q)
+    if word_match:
+        return words[word_match.group(1)] * (60 if re.match(r'ชั่วโมง|ชม|hour|hr',word_match.group(2)) else 1)
     if contains_alias(q, TIME_WORD_ALIASES["half_hour"], fuzzy=False)[0]:
         return 30
     if contains_alias(q, TIME_WORD_ALIASES["one_hour"], fuzzy=False)[0]:
@@ -110,8 +117,13 @@ def _mentions_vr_30_and_60(query: str) -> bool:
 
 def _detect_people(query: str) -> int | None:
     q = normalize_text(query)
-    match = re.search(r"(\d+)\s*(?:คน|persons?|people)", q)
-    return int(match.group(1)) if match else None
+    match = re.search(r'(\d+)\s*(?:คน|persons?|people|ppl)',q)
+    if match:return int(match.group(1))
+    words={'หนึ่ง':1,'สอง':2,'สาม':3,'สี่':4,'ห้า':5,'หก':6,'one':1,'two':2,'three':3,'four':4,'five':5,'six':6}
+    match=re.search(r'(?<![a-z])('+'|'.join(words)+r')\s*(?:คน|persons?|people|ppl|of us)',q)
+    if match:return words[match.group(1)]
+    match=re.search(r'\bgroup of (one|two|three|four|five|six)\b',q)
+    return words[match.group(1)] if match else None
 
 
 def _select_service_key(query: str) -> tuple[str | None, str]:

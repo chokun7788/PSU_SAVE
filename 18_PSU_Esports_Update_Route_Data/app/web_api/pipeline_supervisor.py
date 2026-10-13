@@ -125,9 +125,12 @@ def _worker_exit_diagnostics(
     }
 
 
-def _worker_main(requests: Any, results: Any, events: Any, ready: Any, run_id: str, worker_id: int) -> None:
+def _worker_main(requests: Any, results: Any, events: Any, ready: Any, run_id: str, worker_id: int, model_channel=None, model_limit=1) -> None:
     # Imports live here so Windows spawn starts cleanly and native model state
     # stays contained in the worker process.
+    if model_channel is not None:
+        from app.pipeline.llm_health import configure_model_admission
+        configure_model_admission(*model_channel, model_limit)
     from app.runtime.pipeline_answer import answer_question_pipeline_debug
 
     # Warm only local/deterministic indexes here.  Loading the Local LLM or
@@ -140,6 +143,9 @@ def _worker_main(requests: Any, results: Any, events: Any, ready: Any, run_id: s
 
         _game_resolver_index()
         load_vector_index()
+        # Load the schema validator before accepting the first user request.
+        # This performs no model call and does not activate drafts.
+        from app.knowledge.common.answer import CommonAnswerer
     except Exception:
         # The worker can still run deterministic paths built from source data.
         # Do not expose warmup internals or user data in the performance trace.
@@ -190,6 +196,7 @@ def _worker_main(requests: Any, results: Any, events: Any, ready: Any, run_id: s
                     locale=str(task.get("locale") or "auto"),
                     locale_decision=task.get("locale_decision"),
                     recent_history=task.get("recent_history"),
+                    request_plan=task.get("request_plan"),
                 )
                 emit_performance_event("request_finished", "pipeline", status="completed", attributes={"mode": result.mode})
                 results.put({"task_id": task_id, "status": "ok", "result": result})
@@ -220,11 +227,15 @@ class _WorkerSlot:
     replacement: _WorkerSlot | None = None
     replacement_started: float = 0.0
     recycle_retry_after: float = 0.0
+    model_owner: str = ''
 
 
 class PipelineWorkerSupervisor:
     def __init__(self, *, workers: int | None = None) -> None:
         self._ctx = mp.get_context("spawn")
+        from app.pipeline.model_admission import ModelAdmissionBroker
+        from app.pipeline.llm_health import _concurrency_limit
+        self._model_broker = ModelAdmissionBroker(self._ctx, limit=_concurrency_limit())
         self._count = workers if workers is not None else worker_count()
         self._slots: list[_WorkerSlot] = []
         self._guard = threading.Lock()
@@ -237,6 +248,7 @@ class PipelineWorkerSupervisor:
         with self._guard:
             if self._started:
                 return
+            self._model_broker.start()
             self._performance.start()
             self._slots = [self._new_slot(index) for index in range(self._count)]
             self._started = True
@@ -253,6 +265,11 @@ class PipelineWorkerSupervisor:
             self._slots.clear()
             self._started = False
             self._performance.stop()
+            self._model_broker.stop()
+
+    def model_admission_busy(self) -> bool:
+        state = self._model_broker.snapshot()
+        return state['active'] >= state['limit']
 
     def health(self) -> dict[str, Any]:
         with self._guard:
@@ -273,6 +290,7 @@ class PipelineWorkerSupervisor:
                     for slot in self._slots
                 ],
                 "performance": self._performance.snapshot(),
+                "model_admission": self._model_broker.snapshot(),
             }
 
     def answer(
@@ -286,6 +304,7 @@ class PipelineWorkerSupervisor:
         locale: str = "auto",
         locale_decision: dict[str, Any] | None = None,
         recent_history: list[dict[str, Any]] | None = None,
+        request_plan: dict | None = None,
     ) -> SupervisedCall:
         started = time.perf_counter()
         self.start()
@@ -328,6 +347,7 @@ class PipelineWorkerSupervisor:
                     "locale": locale,
                     "locale_decision": locale_decision or {},
                     "recent_history": list(recent_history or [])[-10:],
+                    "request_plan": request_plan,
                     # The child must respect queue time already consumed in
                     # the parent; otherwise a burst could exceed the HTTP SLA.
                     "pipeline_timeout_sec": max(0.1, remaining_timeout_sec - 0.15),
@@ -355,6 +375,7 @@ class PipelineWorkerSupervisor:
                 event = slot.results.get(timeout=max(0.05, remaining_timeout_sec))
             except queue.Empty:
                 diagnostics = _worker_exit_diagnostics(slot.process.exitcode, timed_out=True)
+                diagnostics['partial_progress']=self._performance.request_snapshot(request_id or task_id)
                 self._replace_slot(slot)
                 self._performance.emit_parent("worker_timeout", "pipeline", request_id=request_id or task_id, worker_id=slot.worker_id, status=diagnostics["exit_type"], attributes=diagnostics)
                 self._performance.emit_parent("worker_replaced", "pipeline", request_id=request_id or task_id, worker_id=slot.worker_id, status="restarting")
@@ -380,14 +401,17 @@ class PipelineWorkerSupervisor:
         requests = self._ctx.Queue(maxsize=1)
         results = self._ctx.Queue(maxsize=1)
         ready = self._ctx.Event()
+        model_channel = self._model_broker.register()
         process = self._ctx.Process(
             target=_worker_main,
-            args=(requests, results, self._events, ready, self._performance.run_id, worker_id),
+            args=(requests, results, self._events, ready, self._performance.run_id, worker_id, model_channel, self._model_broker.limit),
             name=f"psu-pipeline-worker-{worker_id}",
             daemon=True,
         )
         process.start()
-        return _WorkerSlot(worker_id, requests, results, ready, process, threading.Lock())
+        slot = _WorkerSlot(worker_id, requests, results, ready, process, threading.Lock())
+        slot.model_owner = model_channel[2]
+        return slot
 
     def _stop_slot(self, slot: _WorkerSlot) -> None:
         if slot.replacement is not None:
@@ -409,6 +433,7 @@ class PipelineWorkerSupervisor:
             # permanently degraded.
             slot.process.kill()
             slot.process.join(timeout=1.0)
+        self._model_broker.revoke(slot.model_owner)
 
     def _replace_slot(self, slot: _WorkerSlot) -> None:
         with self._guard:

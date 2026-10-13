@@ -9,6 +9,7 @@ from app.core.normalization import normalize_text
 from app.pipeline.question_frame import QuestionFrame, build_question_frame
 from app.pipeline.competition_targets import target_for_game_id
 from app.pipeline.schemas import PipelineRoute, UniversalIntent
+from app.pipeline.query_signals import has_any_signal
 
 
 @dataclass(frozen=True)
@@ -21,8 +22,7 @@ class ContractValidation:
 
 
 def _has(text: str, *terms: str) -> bool:
-    clean = normalize_text(text)
-    return any(normalize_text(term) in clean for term in terms)
+    return has_any_signal(text, *terms)
 
 
 def _compact(value: str) -> str:
@@ -58,6 +58,7 @@ def _answer_types(answer: str, route: PipelineRoute, mode: str = "") -> set[str]
         (("competition_fact_card", "competition_rule"), ("competition_rule",)),
         (("penalty_fast", "penalty_rule"), ("penalty", "rule")),
         (("semantic_rag_dynamic", "semantic_grounded"), ("fact", "summary")),
+        (("general_llm_direct", "general_llm_after_rag_miss"), ("fact", "summary")),
     )
     if not safe_control_mode:
         for mode_terms, inferred_types in typed_modes:

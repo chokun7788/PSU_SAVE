@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any
 
 from app.core.normalization import normalize_text
-from app.pipeline.query_signals import contains_ascii_bounded
+from app.pipeline.query_signals import contains_ascii_bounded, looks_like_clear_general_request
 from app.pipeline.schemas import EntityBundle, PipelineRoute, PipelineTrace
 
 
@@ -44,6 +44,8 @@ def apply_routing_priority_policy(
     route, such as price terms plus Nintendo/PS5 entities.
     """
     q = normalize_text(query)
+    if route.category == 'general' and looks_like_clear_general_request(query):
+        return route, None
     matrix = _load_matrix()
 
     for rule in matrix.get("rules", []):

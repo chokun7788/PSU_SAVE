@@ -4,8 +4,8 @@ import re
 import unicodedata
 from app.core.typo_similarity import osa_distance
 
-_THAI_WORDS = r"(?:ขอ|ดู|เอา|แล้ว|อยากรู้|อยากดู|บอก|สรุป|มี|เรื่อง|ของ|เกมนี้|เกม|กฎ|กติกา|ระเบียบ|การ|ตอน|แข่งขัน|แข่ง|ทัวร์นาเมนต์|อะไร|ไร|บ้าง|มั่ง|อื่น|เพิ่มเติม|เพิ่ม|อีก|ทั้งหมด|ไหม|มั้ย|หน่อย|ครับ|ค่ะ|คับ|\s|[?!.,])+"
-_ENGLISH_WORDS = r"(?:can|could|i|we|you|see|show|tell|give|me|please|pls|what|which|are|is|there|the|a|an|and|any|about|it|its|this|game|of|for|tournament|competition|rules|rule|regulations|other|more|additional|all|overview|summarize|\s|[?!.,])+"
+_THAI_WORDS = r"(?:ขอ|ดู|เอา|แล้ว|อยากรู้|อยากดู|บอก|สรุป|มี|เรื่อง|ของ|เกมนี้|เกม|กฎ|กติกา|ระเบียบ|การ|ตอน|แข่งขัน|แข่ง|ทัวร์นาเมนต์|อะไร|ไร|บ้าง|มั่ง|อื่น|เพิ่มเติม|เพิ่ม|อีก|ต่อ|เหลือ|ที่เหลือ|ทั้งหมด|ทุกหัวข้อ|ทุกข้อ|ทุกส่วน|รายละเอียด|ครบ|ไหม|มั้ย|ล่ะ|หน่อย|ครับ|ค่ะ|คับ|\s|[?!.,])+"
+_ENGLISH_WORDS = r"(?:can|could|i|we|you|see|show|tell|give|me|please|pls|what|which|are|is|there|the|a|an|and|any|about|with|page|pages|it|its|this|game|of|for|tournament|competition|rules|rule|regulations|other|more|additional|continue|remaining|rest|next|all|full|complete|detailed|details|sections|topics|overview|summarize|\s|[?!.,])+"
 
 def _clean(query: str) -> str:
     q=unicodedata.normalize('NFC',str(query or '')).casefold().strip(' ?!.,')
@@ -60,9 +60,9 @@ def is_contextual_more_request(query: str) -> bool:
     """A continuation shape only; the caller must supply an active rulebook."""
     q=_clean(query)
     thai=re.fullmatch(r'(?:แล้ว|ขอ|มี|ข้อ|อัน|อื่น|อีก|เพิ่มเติม|เพิ่ม|ต่อ|หน่อย|ยัง|เหลือ|อะไร|ไร|บ้าง|มั่ง|ไหม|มั้ย|เปล่า|ป่าว|ปะ|ล่ะ|ครับ|ค่ะ|คับ|\s)+',q)
-    english=re.fullmatch(r'(?:anything else|(?:any )?(?:more|other)(?: please| pls)?|(?:please )?(?:continue|go on))',q)
+    english=re.fullmatch(r'(?:anything else|(?:any )?(?:more|other)(?: please| pls)?|(?:please )?(?:continue|go on)|(?:the )?next page)',q)
     return bool((thai and re.search(r'อื่น|เพิ่มเติม|เพิ่ม|อีก|ต่อ',q)) or english)
 
 def is_more_rule_request(query: str) -> bool:
     q=_generic_rule_text(query)
-    return (is_broad_rule_request(query) and bool(re.search(r'อื่น|เพิ่มเติม|เพิ่ม|อีก|\b(?:more|other|additional)\b',q))) or is_contextual_more_request(query)
+    return (is_broad_rule_request(query) and bool(re.search(r'อื่น|เพิ่มเติม|เพิ่ม|อีก|ต่อ|เหลือ|\b(?:more|other|additional|continue|remaining|next)\b',q))) or is_contextual_more_request(query)

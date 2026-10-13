@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+from contextlib import contextmanager
+from contextvars import ContextVar
 import os
 import re
 import threading
@@ -22,6 +24,23 @@ BOOKING_SOURCE_URL = "https://esports.computing.psu.ac.th/reservation"
 _CACHE_LOCK = threading.Lock()
 _CACHE: dict[str, tuple[float, "LiveBookingSnapshot"]] = {}
 _FETCH_LOCK = threading.Lock()
+_REQUEST_SNAPSHOTS = ContextVar('booking_request_snapshots', default=None)
+
+@contextmanager
+def booking_request_snapshots():
+    """One aggregate snapshot per date/transport within an answer only.
+
+    copy_context shares this state with compound children. It expires at
+    the end of the request; the next question uses the configured transport.
+    """
+    if _REQUEST_SNAPSHOTS.get() is not None:
+        yield
+        return
+    token = _REQUEST_SNAPSHOTS.set({'lock': threading.Lock(), 'values': {}})
+    try:
+        yield
+    finally:
+        _REQUEST_SNAPSHOTS.reset(token)
 
 
 def _truthy(value: str | None, default: bool) -> bool:
@@ -119,6 +138,7 @@ class LiveBookingSnapshot:
     transport: str = "dashboard"
     error_code: str = ""
     fetch_elapsed_ms: float = 0.0
+    request_reused: bool = False
 
     def as_public_dict(self) -> dict[str, Any]:
         """Return only aggregate booking facts. Never return appointment or user fields."""
@@ -138,6 +158,7 @@ class LiveBookingSnapshot:
             "transport": self.transport,
             "error_code": self.error_code or None,
             "fetch_elapsed_ms": self.fetch_elapsed_ms,
+            "request_reused": self.request_reused,
             "error": self.error or None,
             "privacy": "aggregate_only",
         }
@@ -263,6 +284,20 @@ def _unavailable(selected_date: str, error: str, *, error_code: str = "dashboard
 
 
 def get_live_booking_status(selected_date: str) -> LiveBookingSnapshot:
+    scope = _REQUEST_SNAPSHOTS.get()
+    if scope is None:
+        return _fetch_live_booking_status(selected_date)
+    config = live_booking_runtime_config()
+    key = (config['fetch_mode'], _status_url(), selected_date)
+    with scope['lock']:
+        if key in scope['values']:
+            return replace(scope['values'][key], request_reused=True)
+        result = _fetch_live_booking_status(selected_date)
+        scope['values'][key] = result
+        return result
+
+
+def _fetch_live_booking_status(selected_date: str) -> LiveBookingSnapshot:
     """Fetch on demand through the configured read-only booking transport."""
     mode = str(live_booking_runtime_config()["fetch_mode"])
     if not live_booking_enabled():
@@ -548,8 +583,11 @@ def _thai_afternoon_clock(token: str, half: bool = False) -> str | None:
 def requested_time_window(query: str, snapshot: LiveBookingSnapshot) -> TimeWindow | None:
     """Read numeric and conversational Thai time expressions into a time target."""
     q = normalize_text(query)
+    # Date selection belongs to resolve_live_target_date. Its month/day
+    # suffix must never masquerade as an hour range such as 09-17.
+    q = re.sub(r'(?<!\d)\d{4}-\d{2}-\d{2}(?!\d)',' ',q)
     colon_range = re.search(
-        r"\b([01]?\d|2[0-3]):([0-5]\d)\s*(?:-|–|to|until|ถึง)\s*([01]?\d|2[0-3]):([0-5]\d)\b",
+        r"(?<![\d:])([01]?\d|2[0-3]):([0-5]\d)\s*(?:-|–|to|until|ถึง)\s*([01]?\d|2[0-3]):([0-5]\d)\b",
         q,
     )
     if colon_range:
@@ -559,7 +597,7 @@ def requested_time_window(query: str, snapshot: LiveBookingSnapshot) -> TimeWind
             return TimeWindow(start, end, explicit=True)
 
     hour_range = re.search(
-        r"\b([01]?\d|2[0-3])\s*(?:โมง)?\s*(?:-|–|to|until|ถึง)\s*([01]?\d|2[0-3])\s*(?:โมง)?\b",
+        r"(?<![\d:])([01]?\d|2[0-3])\s*(?:โมง)?\s*(?:-|–|to|until|ถึง)\s*([01]?\d|2[0-3])\s*(?:โมง)?(?![\d:])",
         q,
     )
     if hour_range:
@@ -716,6 +754,7 @@ def _resource_scopes(query: str) -> tuple[str, ...]:
     # recognized before token matching because "pc2" is one token, not
     # "pc" + "2".
     compact_station_patterns = (
+        ("vr", r"\bvr\s*#?\s*0?\d{1,2}\b"),
         ("ps5", r"\bps\s*5\s*#?\s*0?\d{1,2}\b|\bplaystation\s*5\s*#?\s*0?\d{1,2}\b"),
         ("cockpit", r"\bcockpit\s*#?\s*0?\d{1,2}\b"),
         ("pc", r"\b(?:pc|computer)\s*#?\s*0?\d{1,2}\b"),
@@ -758,11 +797,11 @@ def _requested_resource_number(query: str, family: str | None) -> int | None:
         return None
     q = normalize_text(query)
     family_patterns = {
-        "pc": r"\b(?:pc|computer)\s*(?:#|station|เครื่อง)?\s*0?(\d{1,2})\b|(?:คอม|คอมพิวเตอร์)\s*(?:เครื่อง)?\s*0?(\d{1,2})\b",
-        "ps5": r"\b(?:ps5|playstation\s*5)\s*(?:#|station|เครื่อง)?\s*0?(\d{1,2})\b",
-        "cockpit": r"\bcockpit\s*(?:#|station|เครื่อง)?\s*0?(\d{1,2})\b|ค็อกพิท\s*(?:เครื่อง)?\s*0?(\d{1,2})\b",
-        "switch": r"\b(?:nintendo(?:\s+switch)?|switch)\s*(?:#|station|เครื่อง)?\s*0?(\d{1,2})\b",
-        "vr": r"\bvr\s*(?:#|station|เครื่อง)?\s*0?(\d{1,2})\b",
+        "pc": r"\b(?:pc|computer)\s*(?:#|station|เครื่อง)?\s*0?(\d{1,2})(?!\d|\s*(?::|โมง|นาที|ชั่วโมง|คน|บาท|am\b|pm\b|minutes?\b|hours?\b|people\b|persons?\b|thb\b))|(?:คอม|คอมพิวเตอร์)\s*(?:เครื่อง)?\s*0?(\d{1,2})(?!\d|\s*(?::|โมง|นาที|ชั่วโมง|คน|บาท|am\b|pm\b|minutes?\b|hours?\b|people\b|persons?\b|thb\b))",
+        "ps5": r"\b(?:ps5|playstation\s*5)\s*(?:#|station|เครื่อง)?\s*0?(\d{1,2})(?!\d|\s*(?::|โมง|นาที|ชั่วโมง|คน|บาท|am\b|pm\b|minutes?\b|hours?\b|people\b|persons?\b|thb\b))",
+        "cockpit": r"\bcockpit\s*(?:#|station|เครื่อง)?\s*0?(\d{1,2})(?!\d|\s*(?::|โมง|นาที|ชั่วโมง|คน|บาท|am\b|pm\b|minutes?\b|hours?\b|people\b|persons?\b|thb\b))|ค็อกพิท\s*(?:เครื่อง)?\s*0?(\d{1,2})(?!\d|\s*(?::|โมง|นาที|ชั่วโมง|คน|บาท|am\b|pm\b|minutes?\b|hours?\b|people\b|persons?\b|thb\b))",
+        "switch": r"\b(?:nintendo(?:\s+switch)?|switch)\s*(?:#|station|เครื่อง)?\s*0?(\d{1,2})(?!\d|\s*(?::|โมง|นาที|ชั่วโมง|คน|บาท|am\b|pm\b|minutes?\b|hours?\b|people\b|persons?\b|thb\b))",
+        "vr": r"\bvr\s*(?:#|station|เครื่อง)?\s*0?(\d{1,2})(?!\d|\s*(?::|โมง|นาที|ชั่วโมง|คน|บาท|am\b|pm\b|minutes?\b|hours?\b|people\b|persons?\b|thb\b))",
     }
     pattern = family_patterns.get(family)
     if not pattern:
@@ -778,7 +817,7 @@ def _requested_resource_number(query: str, family: str | None) -> int | None:
                 for name, candidate_family in _FUZZY_RESOURCE_NAMES.items()
             ):
                 continue
-            number_match = re.match(r"\s*(?:#|station|เครื่อง)?\s*0?(\d{1,2})(?!\d|:|โมง)", q[token_match.end():])
+            number_match = re.match(r"\s*(?:#|station|เครื่อง)?\s*0?(\d{1,2})(?!\d|\s*(?::|โมง|นาที|ชั่วโมง|คน|บาท|am\b|pm\b|minutes?\b|hours?\b|people\b|persons?\b|thb\b))", q[token_match.end():])
             if number_match:
                 return int(number_match.group(1))
         return None
@@ -800,6 +839,10 @@ def _resources_for_family(snapshot: LiveBookingSnapshot, query: str, family: str
     if family in {"switch", "vr"}:
         q = normalize_text(query)
         period = "morning" if any(signal in q for signal in ("morning", "เช้า")) else "afternoon" if any(signal in q for signal in ("afternoon", "บ่าย")) else ""
+        if not period:
+            window=requested_time_window(query,snapshot)
+            if window and (not window.end or window.end<='12:00') and window.start<'12:00':period='morning'
+            elif window and window.start>='13:00':period='afternoon'
         if period:
             period_selected = tuple(resource for resource in selected if period in normalize_text(resource.resource_name))
             if period_selected:
@@ -839,7 +882,15 @@ def _slot_window_for_resources(resources: tuple[LiveResource, ...], window: Time
     another resource can have a shorter slot. No promotion is made for an
     implicit "now" lookup.
     """
-    if window is None or window.is_range or not window.explicit:
+    if window is None or not window.explicit:
+        return window
+    if window.is_range:
+        # User-confirmed occupancy policy: a VR 30-minute visit consumes its
+        # enclosing hour. Fee packages remain separate from occupied slots.
+        if resources and all(_resource_family(r)=='vr' for r in resources):
+            start_hour=int(window.start[:2]);end_hour=int(window.end[:2])
+            end_hour+=int(window.end[3:]!='00')
+            return TimeWindow(f'{start_hour:02}:00',f'{end_hour:02}:00',explicit=True)
         return window
     boundaries = {
         (slot.start, slot.end)

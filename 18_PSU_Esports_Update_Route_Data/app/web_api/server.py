@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import mimetypes
 import os
+import struct
 import sys
 import threading
 import time
@@ -30,11 +32,14 @@ from app.core.runtime_input_quality_guard import (
 )
 from app.pipeline.input_recovery import inspect_surface_input
 from app.pipeline.llm_health import llm_health_snapshot, llm_preflight_enabled, preflight_ollama
+from app.knowledge.common.build_info import LOADED_BUILD as COMMON_LOADED_BUILD
 from app.pipeline.request_deadline import deadline_metadata, request_deadline
 from app.pipeline.semantic_embeddings import embedding_model_name, semantic_retrieval_enabled
 from app.pipeline.warmup import WarmupResult, pipeline_warmup_enabled, warm_pipeline_caches
 from app.runtime.pipeline_answer import answer_question_pipeline_debug
-from app.session.context_resolver import resolve_question_with_context
+from app.session.context_resolver import resolve_question_with_context, ResolvedQuestion
+from app.session.conversation_store import STORE, TurnConflict
+from app.session.conversation_plan import valid_price_task
 from app.session.chat_logger import is_valid_session_id, read_sqlite_session_history, write_chat_log
 from app.session.intent_feedback import write_intent_feedback
 from app.web_api.pipeline_supervisor import PipelineWorkerSupervisor, worker_supervisor_enabled
@@ -42,7 +47,7 @@ from app.web_api.pipeline_supervisor import PipelineWorkerSupervisor, worker_sup
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 WEB_ROOT = PROJECT_ROOT / "web_chat"
-LOG_DIR = PROJECT_ROOT / "data" / "logs"
+LOG_DIR = Path(os.getenv("PSU_CHAT_LOG_DIR") or PROJECT_ROOT / "data" / "logs")
 MAX_BODY_BYTES = 128 * 1024
 MAX_QUESTION_CHARS = 4000
 
@@ -102,13 +107,50 @@ def _supervisor_worker_timeout_sec() -> float:
     return max(0.1, _product_backend_timeout_sec() - reserve)
 
 
+def _system_memory_status() -> dict[str, Any]:
+    """Diagnostic snapshot, not a promise that the next allocation will succeed."""
+    if sys.platform != 'win32':
+        return {"available": False}
+    try:
+        import ctypes
+
+        class MemoryStatus(ctypes.Structure):
+            _fields_ = [("length", ctypes.c_uint32), ("load", ctypes.c_uint32)] + [
+                (name, ctypes.c_uint64) for name in (
+                    "total_physical", "available_physical", "total_commit", "available_commit",
+                    "total_virtual", "available_virtual", "extended_virtual",
+                )
+            ]
+
+        status = MemoryStatus()
+        status.length = ctypes.sizeof(status)
+        if not ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(status)):
+            return {"available": False}
+        return {
+            "available": True,
+            "physical_load_percent": status.load,
+            "available_physical_mb": round(status.available_physical / (1024 * 1024), 1),
+            "available_commit_mb": round(status.available_commit / (1024 * 1024), 1),
+        }
+    except (OSError, AttributeError):
+        return {"available": False}
+
+
 def _runtime_status() -> dict[str, Any]:
     """Return non-sensitive runtime facts so local testers know which profile is live."""
     semantic_rag = semantic_retrieval_enabled()
     return {
         "profile": os.getenv("PSU_RUNTIME_PROFILE", "ad-hoc"),
         "version": os.getenv("PSU_RUNTIME_VERSION", "dev"),
+        "installation_id": hashlib.sha256(os.path.normcase(str(PROJECT_ROOT.resolve())).encode('utf-8')).hexdigest()[:16],
         "started_at": SERVER_STARTED_AT.isoformat(),
+        "system_memory": _system_memory_status(),
+        "python": {
+            "executable_id": hashlib.sha256(os.path.normcase(os.path.realpath(sys.executable)).encode('utf-8')).hexdigest()[:16],
+            "version": list(sys.version_info[:3]),
+            "bits": struct.calcsize('P') * 8,
+            "pid": os.getpid(),
+        },
         "answer_timeout_sec": _product_backend_timeout_sec(),
         "pipeline_timeout_sec": _env_float("PSU_PIPELINE_GLOBAL_TIMEOUT_SEC", 9.0, minimum=1.0),
         "intent_timeout_sec": _env_float("PSU_INTENT_LLM_TIMEOUT_SEC", 5.5, minimum=0.1),
@@ -117,7 +159,7 @@ def _runtime_status() -> dict[str, Any]:
             "model": os.getenv("PSU_CHATBOT_OLLAMA_MODEL", "scb10x/typhoon2.5-qwen3-4b"),
             "intent_timeout_sec": _env_float("PSU_INTENT_LLM_TIMEOUT_SEC", 5.5, minimum=0.1),
             "planner_timeout_sec": _env_float("PSU_QUERY_PLANNER_TIMEOUT_SEC", 1.2, minimum=0.1),
-            "general_timeout_sec": _env_float("PSU_GENERAL_LLM_TIMEOUT_SEC", 4.0, minimum=0.1),
+            "general_timeout_sec": _env_float("PSU_GENERAL_LLM_TIMEOUT_SEC", 15.0, minimum=0.1),
             "high_assist_profile": os.getenv("PSU_MODEL_FIRST_PREFLIGHT_CONFIDENCE", "0.90") == "0.99",
         },
         "semantic_rag": {
@@ -199,7 +241,11 @@ def _source_list(hits: list[dict[str, Any]]) -> list[dict[str, str]]:
             or ""
         )
         if not url:
-            continue
+            if metadata.get('common_approved') is not True:
+                continue
+            # Approved owner facts can have private evidence and no public URL.
+            # Show a plain label without inventing a link or exposing paths.
+            source_id = str(metadata.get('title') or 'Approved center information') + ' (' + str(metadata.get('release_id',''))[:12] + ')'
         key = (source_id, url)
         if key in seen:
             continue
@@ -292,7 +338,7 @@ def _localized_input_quality_public(decision: InputQualityDecision, locale: str)
     return payload
 
 
-def _supervisor_timeout_response(*, request_id: str, started: float, worker_id: int, locale: LocaleDecision) -> dict[str, Any]:
+def _supervisor_timeout_response(*, request_id: str, started: float, worker_id: int, locale: LocaleDecision, diagnostics: dict[str, Any] | None = None) -> dict[str, Any]:
     answer = (
         "This request reached the processing time limit, so it was stopped to keep the service responsive.\n"
         "Please try a more specific question, such as naming the zone, game, or topic directly."
@@ -316,6 +362,7 @@ def _supervisor_timeout_response(*, request_id: str, started: float, worker_id: 
         "timing_status": "controlled_timeout",
         "timed_out": True,
         "timeout_stage": "pipeline_worker_supervision",
+        "processing_diagnostics": diagnostics or {"partial_progress":{"partial":True,"events":[],"cause_confirmed":False}},
         "retryable": False,
         "worker_id": worker_id,
         "sources": [],
@@ -356,6 +403,18 @@ class ChatHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
         parsed = urlparse(self.path)
         path = unquote(parsed.path)
+        if path.startswith('/api/chat/jobs/'):
+            jobs = getattr(self.server, 'chat_jobs', None)
+            if jobs is None:
+                self._send_json({'ok':False,'error':'jobs_disabled'},404)
+                return
+            from app.web_api.chat_jobs import JobError
+            try:
+                session = (parse_qs(parsed.query).get('session_id') or [''])[0]
+                self._send_json(jobs.get(path.rsplit('/',1)[-1],session))
+            except JobError as exc:
+                self._send_json({'ok':False,'error':exc.reason},exc.status)
+            return
         if path == "/health":
             self._send_json({
                 "ok": True,
@@ -365,15 +424,18 @@ class ChatHandler(BaseHTTPRequestHandler):
                 "llm_preflight": STARTUP_LLM_PREFLIGHT,
                 "input_quality_guard": STARTUP_INPUT_QUALITY_GUARD,
                 "llm_health": llm_health_snapshot(),
+                "common_loaded_build": COMMON_LOADED_BUILD,
                 "pipeline_workers": PIPELINE_SUPERVISOR.health() if PIPELINE_SUPERVISOR else {"enabled": False},
-                "runtime": _runtime_status(),
+                "runtime": {**_runtime_status(), 'queue_ttl_sec': getattr(self.server,'job_ttl_sec',None)},
                 "features": {
                     "bilingual_english": bilingual_english_enabled(),
                     "local_llm_assist": LOCAL_LLM_ASSIST_ENABLED,
                     "semantic_rag": semantic_retrieval_enabled(),
                     "embedding_model": embedding_model_name(),
                     "live_booking_status": live_booking_enabled(),
+                    "chat_jobs": getattr(self.server, 'chat_jobs', None) is not None,
                 },
+                "chat_jobs": self.server.chat_jobs.snapshot() if getattr(self.server,'chat_jobs',None) else {'enabled':False},
             })
             return
         if path == "/api/calendar":
@@ -407,7 +469,7 @@ class ChatHandler(BaseHTTPRequestHandler):
 
     def do_POST(self) -> None:
         parsed = urlparse(self.path)
-        if parsed.path not in {"/api/chat", "/api/intent-feedback"}:
+        if parsed.path not in {"/api/chat", "/api/intent-feedback", '/api/chat/jobs', '/api/chat/jobs/cancel'}:
             self._send_json({"ok": False, "error": "not_found"}, 404)
             return
 
@@ -419,6 +481,8 @@ class ChatHandler(BaseHTTPRequestHandler):
         try:
             raw_body = self.rfile.read(content_length)
             payload = json.loads(raw_body.decode("utf-8"))
+            if not isinstance(payload,dict):
+                raise ValueError('object required')
         except Exception:
             self._send_json({"ok": False, "error": "invalid_json"}, 400)
             return
@@ -430,10 +494,26 @@ class ChatHandler(BaseHTTPRequestHandler):
                 self._send_json({"ok": False, "error": "invalid_feedback", "detail": str(exc)}, 400)
             return
 
+        if parsed.path == '/api/chat/jobs/cancel':
+            from app.web_api.chat_jobs import JobError
+            jobs = getattr(self.server,'chat_jobs',None)
+            if jobs is None:
+                self._send_json({'ok':False,'error':'jobs_disabled'},404)
+                return
+            try:
+                self._send_json(jobs.cancel(str(payload.get('job_id') or ''),str(payload.get('client_session_id') or '')))
+            except JobError as exc:
+                self._send_json({'ok':False,'error':exc.reason},exc.status)
+            return
+
         question = str(payload.get("question") or "").strip()
         client_session_id = str(payload.get("client_session_id") or "").strip()
         if not is_valid_session_id(client_session_id):
             client_session_id = f"session-{uuid.uuid4()}"
+        client_turn_id = str(payload.get('client_turn_id') or '').strip()
+        if not is_valid_session_id(client_turn_id):
+            client_turn_id = f'turn-{uuid.uuid4()}'
+        last_seen_response_id = str(payload.get('last_seen_response_id') or '')[:128]
         recent_history = payload.get("recent_history") or []
         requested_locale = normalize_requested_locale(payload.get("locale"))
         debug = bool(payload.get("debug", False))
@@ -447,6 +527,19 @@ class ChatHandler(BaseHTTPRequestHandler):
             return
         if len(question) > MAX_QUESTION_CHARS:
             self._send_json({"ok": False, "error": "question_too_long", "max_chars": MAX_QUESTION_CHARS}, 413)
+            return
+
+        if parsed.path == '/api/chat/jobs':
+            from app.web_api.chat_jobs import JobError
+            jobs = getattr(self.server,'chat_jobs',None)
+            if jobs is None:
+                self._send_json({'ok':False,'error':'jobs_disabled'},404)
+                return
+            payload.update(question=question, client_session_id=client_session_id, client_turn_id=client_turn_id)
+            try:
+                self._send_json(jobs.submit(payload),202)
+            except JobError as exc:
+                self._send_json({'ok':False,'error':exc.reason,'retryable':exc.status==503},exc.status)
             return
 
         started = time.perf_counter()
@@ -520,7 +613,37 @@ class ChatHandler(BaseHTTPRequestHandler):
                     self._send_json(response, content_language=locale_decision.effective)
                     return
 
-                resolved = resolve_question_with_context(question, recent_history, locale=locale_decision.effective)
+                if last_seen_response_id:
+                    STORE.acknowledge(client_session_id, last_seen_response_id)
+                recent_history = STORE.history(client_session_id, recent_history)
+                locale_decision = resolve_locale(question, requested=requested_locale, recent_history=recent_history,
+                    keyboard_layout_direction=layout_direction,
+                    surface_language=input_recovery.language if input_recovery.should_review_intent else None)
+                try:
+                    turn = STORE.begin(client_session_id, client_turn_id, question, locale=locale_decision.effective,
+                        history=recent_history, fingerprint_locale=requested_locale)
+                except TurnConflict:
+                    self._send_json({'ok': False, 'error': 'client_turn_conflict', 'request_id': request_id}, 409)
+                    return
+                if turn['response']:
+                    turn['response']['conversation_state'] = STORE.snapshot(client_session_id)
+                    cached_language = (turn['response'].get('language') or {}).get('effective',locale_decision.effective)
+                    self._send_json(turn['response'], content_language=cached_language)
+                    STORE.delivery(client_session_id, client_turn_id, 'server_written')
+                    _write_chat_log_async({'event_type':'cached_response_replay','request_id':request_id,
+                        'original_response_id':turn['response'].get('request_id'),'client_session_id':client_session_id,
+                        'client_turn_id':client_turn_id,'state_revision':turn['revision']})
+                    return
+                request_plan = turn['plan']
+                if turn.get('context_resolution'):
+                    resolved = ResolvedQuestion(**turn['context_resolution'])
+                elif request_plan:
+                    rental = request_plan.get('schema_type') == 'zone_rental_v1'
+                    resolved = ResolvedQuestion(question, request_plan['resolved_query'], request_plan.get('context_used', False),
+                        context_domain='zone_rental' if rental else 'service_fee', context_operation='zone_rental_fee' if rental else 'price_lookup', reason='parent_typed_request_plan')
+                else:
+                    resolved = resolve_question_with_context(question, recent_history, locale=locale_decision.effective)
+                    request_plan = resolved.to_selection_plan()
                 worker_id = -1
                 if PIPELINE_SUPERVISOR is not None:
                     supervised = PIPELINE_SUPERVISOR.answer(
@@ -532,6 +655,7 @@ class ChatHandler(BaseHTTPRequestHandler):
                         locale=requested_locale,
                         locale_decision=locale_decision.to_dict(),
                         recent_history=recent_history,
+                        request_plan=request_plan,
                     )
                     worker_id = supervised.worker_id
                     if supervised.status == "timeout":
@@ -540,6 +664,7 @@ class ChatHandler(BaseHTTPRequestHandler):
                             started=started,
                             worker_id=worker_id,
                             locale=locale_decision,
+                            diagnostics=supervised.diagnostics,
                         )
                         _write_chat_log_async({
                             "event_type": "chat_exchange",
@@ -558,6 +683,7 @@ class ChatHandler(BaseHTTPRequestHandler):
                             "timing_status": timeout_response["timing_status"],
                             "timed_out": True,
                             "timeout_stage": timeout_response["timeout_stage"],
+                            "processing_diagnostics": timeout_response["processing_diagnostics"],
                             "worker_id": worker_id,
                             "sources": [],
                             "validation_ok": True,
@@ -604,7 +730,17 @@ class ChatHandler(BaseHTTPRequestHandler):
                         locale_decision=locale_decision,
                         recent_history=recent_history,
                         keyboard_layout_direction=layout_direction,
+                        request_plan=request_plan,
                     )
+                model_admission = next((item.metadata.get('llm_call',{}) for item in result.trace
+                                        if item.metadata.get('llm_call',{}).get('llm_failure_reason') == 'admission_full'),None)
+                if result.mode == 'pipeline:general_rag_miss_llm_unavailable' and model_admission:
+                    # No final model call ran. Keep the turn pending so the job
+                    # queue can retry admission without caching a busy answer.
+                    self._send_json({'ok':False,'error':'server_busy','retryable':True,
+                                     'reason':'model_admission_full','retry_after_ms':250,
+                                     'request_id':request_id,'language':locale_decision.to_dict()},503)
+                    return
                 sources = _source_list(result.hits)
                 query_debug = _trace_query_debug(result, question, resolved.resolved_question)
                 calendar = calendar_context()
@@ -668,12 +804,48 @@ class ChatHandler(BaseHTTPRequestHandler):
                     response["validation"] = result.validation
                     response["trace"] = result.trace
 
+                contract = next((t.metadata for t in reversed(result.trace) if t.stage == 'conversation_contract'), {})
+                rental_contract = next((t.metadata for t in reversed(result.trace) if t.stage == 'zone_rental_contract'), {})
+                task_contract = next((t.metadata for t in reversed(result.trace) if t.stage == 'task_answer_contract'), {})
+                actual_plan = rental_contract.get('request_plan') or contract.get('request_plan') or request_plan
+                from app.pipeline.zone_rental import valid_zone_rental_plan
+                if valid_zone_rental_plan(actual_plan):
+                    resolved = ResolvedQuestion(question, actual_plan['resolved_query'], actual_plan.get('context_used',False),
+                        context_domain='zone_rental', context_operation='zone_rental_fee', reason='validated_zone_rental_plan')
+                    if debug: response['context_resolution'] = resolved.to_dict()
+                if actual_plan and actual_plan.get('resolved_query') and actual_plan.get('tasks') and valid_price_task(actual_plan['tasks'][0]):
+                    resolved = ResolvedQuestion(question, actual_plan['resolved_query'], actual_plan.get('context_used',False),
+                        context_domain='service_fee', context_operation='price_lookup', reason='validated_typed_request_plan')
+                    if debug:
+                        response['context_resolution'] = resolved.to_dict()
+                response['resolved_question'] = resolved.resolved_question
+                from app.knowledge.common.dialogue import state_from_answer
+                common_state=state_from_answer(result)
+                if common_state:response['common_read_state']=common_state
+                response['rule_coverage'] = next((t.metadata for t in reversed(result.trace) if t.stage == 'competition_full_coverage'), None)
+                response['client_turn_id'] = client_turn_id
+                response['request_plan'] = actual_plan
+                if rental_contract: response['zone_rental_contract'] = rental_contract
+                response['task_contract'] = task_contract
+                response['conversation_outcome'] = contract.get('outcome', task_contract.get('outcome','delegated_existing_pipeline'))
+                response['coverage'] = {k: contract.get(k) for k in ('expected_ids', 'returned_ids', 'missing_ids', 'temporal_validity', 'task_outcomes') if k in contract}
+                if not response['timed_out']:
+                    from app.session.service_fact_dialogue import service_fact_state
+                    fact_state=service_fact_state({'mode':result.mode,'trace':result.trace})
+                    STORE.complete(client_session_id, client_turn_id, turn['revision'], response, plan=actual_plan, fact_state=fact_state)
+                response['conversation_state'] = STORE.snapshot(client_session_id)
                 log_record = {
                     "event_type": "chat_exchange",
                     "exchange_id": exchange_id,
                     "channel": "web",
                     "request_id": request_id,
                     "client_session_id": client_session_id,
+                    "client_turn_id": client_turn_id,
+                    "conversation_state": response['conversation_state'],
+                    "request_plan": actual_plan,
+                    "conversation_contract": contract,
+                    "zone_rental_contract": rental_contract,
+                    "task_contract": task_contract,
                     "question": question,
                     "resolved_question": resolved.resolved_question,
                     "context_resolution": resolved.to_dict(),
@@ -707,7 +879,15 @@ class ChatHandler(BaseHTTPRequestHandler):
                     log_record["input_quality"] = input_quality.to_log_dict()
                 if debug:
                     response["log_sinks"] = {"status": "queued"}
-                self._send_json(response, content_language=(result.language or locale_decision).effective)
+                try:
+                    self._send_json(response, content_language=(result.language or locale_decision).effective)
+                    STORE.delivery(client_session_id, client_turn_id, 'server_written')
+                except (BrokenPipeError, ConnectionResetError, OSError):
+                    STORE.delivery(client_session_id, client_turn_id, 'uncertain')
+                    log_record['delivery_status'] = 'uncertain'
+                    _write_chat_log_async(log_record)
+                    return
+                log_record['delivery_status'] = 'server_written'
                 _write_chat_log_async(log_record)
             except Exception as exc:
                 _write_chat_log_async({
@@ -832,6 +1012,19 @@ def main() -> int:
         print("LLM preflight disabled by PSU_LLM_PREFLIGHT.")
 
     server = ChatHTTPServer((args.host, args.port), ChatHandler)
+    server.chat_jobs = None
+    if os.getenv('PSU_CHAT_JOBS_ENABLED','0') == '1':
+        from app.web_api.chat_jobs import ChatJobQueue
+        server.chat_jobs = ChatJobQueue(
+            LOG_DIR / 'chat_jobs_v1.sqlite3', f'http://127.0.0.1:{server.server_port}/api/chat',
+            capacity=max(1,min(128,int(os.getenv('PSU_CHAT_JOB_CAPACITY','32')))),
+            workers=max(1,min(8,int(os.getenv('PSU_CHAT_JOB_DISPATCHERS','2')))),
+            ttl=max(20,min(180,float(os.getenv('PSU_CHAT_JOB_TTL_SEC','90')))),
+            call_timeout=_product_backend_timeout_sec()+5,
+            model_busy=PIPELINE_SUPERVISOR.model_admission_busy if PIPELINE_SUPERVISOR else None,
+        )
+        server.chat_jobs.start()
+    server.job_ttl_sec = server.chat_jobs.ttl if server.chat_jobs else None
     print(f"PSU Esports Chat Web is running at http://{args.host}:{args.port}/")
     print("Press Ctrl+C to stop.")
     try:
@@ -839,6 +1032,8 @@ def main() -> int:
     except KeyboardInterrupt:
         print("\nStopping server...")
     finally:
+        if server.chat_jobs:
+            server.chat_jobs.stop()
         if PIPELINE_SUPERVISOR is not None:
             PIPELINE_SUPERVISOR.shutdown()
         server.server_close()

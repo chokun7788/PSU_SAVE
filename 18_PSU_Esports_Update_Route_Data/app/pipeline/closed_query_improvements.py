@@ -66,6 +66,13 @@ def _booking_resource(query,locale):
     return StructuredToolResult('\n'.join(lines),hits,'structured_booking_game_service_selection',.97,{'game':game,'services':sorted(seen),'catalog_only':True})
 
 def _fee_catalog(query,locale):
+    from app.session.conversation_plan import resolve_request_plan
+    from app.pipeline.conversation_fee import build_price_plan_answer
+    plan = resolve_request_plan(query, locale=locale)
+    if plan and plan.get('tasks') and plan['tasks'][0]['scope']['entity_selection'] == 'all':
+        result = build_price_plan_answer(plan, locale)
+        if result:
+            return StructuredToolResult(result['answer'], result['hits'], 'structured_service_fee_catalog', .98, result['metadata'])
     from app.core.normalization import has_price_intent,SERVICE_ALIASES,contains_alias
     if not (has_price_intent(query) or 'ค่าเล่น' in query or re.search(r'\b(?:prices?|fees?|costs?)\b',query,re.I)):return None
     if not re.search(r'แต่ละ(?:เครื่อง|โซน|บริการ)|ตาราง.*ราคา|ค่าบริการ.*ทั้งหมด|ราคา.*ทั้งหมด|ค่าเล่น.*(?:เครื่อง|โซน).*บ้าง|\b(?:each|all)\s+(?:service|zone|device|station)s?\b',query,re.I):return None
@@ -122,6 +129,26 @@ def _non_catalog_request(query,locale):
         return StructuredToolResult(answer,[],'equipment_home_delivery_no_answer',.98,{'missing_service':'home_equipment_delivery'})
     return None
 
+def _studio_location_th(query,locale):
+    if locale!='th':return None
+    from app.core.normalization import normalize_text
+    q=normalize_text(query)
+    if not (re.search(r'ศูนย์|สตูดิโอ|\bpsu esports\b',q,re.I) and re.search(r'ที่ตั้ง|ที่อยู่|อยู่ที่ไหน',q)):return None
+    if re.search(r'แข่ง|กฎ|กติกา|อุปกรณ์|ทีวี|จอ|ปุ่ม|เกม|เจ้าหน้าที่|\b(?:competition|tournament|tv|pc|ps5|vr)\b',q,re.I):return None
+    remainder=re.sub(r'psu esports(?: studio)?(?:\s*-?\s*phuket)?|อยู่ที่ไหน|ที่ตั้ง|ที่อยู่|สตูดิโอ|อยากทราบ|อยากรู้|ทราบ|ศูนย์|ของ|ขอ|ครับ|ค่ะ|หน่อย|\s|[-?.!]', '',q,flags=re.I)
+    if remainder:
+        return StructuredToolResult('หมายถึง PSU Esports Studio - Phuket ใช่ไหมครับ? กรุณาระบุชื่อสถานที่ที่ต้องการ ข้อมูลที่อยู่ที่มีเป็นของศูนย์นี้ครับ',[],'studio_location_target_clarification_th',.98,{'unresolved_location_target':remainder})
+    from app.rules.matcher import RuleMatcher
+    from app.pipeline.retrieval import load_curated_rows,hit_from_curated
+    matched=RuleMatcher.default().match('ที่ตั้ง',category='contact',locale='th')
+    if not matched:return None
+    rows={row.get('content_id') or row['id']:row for row in load_curated_rows() if row.get('id') and row.get('language','th')=='th'}
+    source_ids=matched.get('source_ids',[])
+    if not source_ids or any(source not in rows or matched['answer'].strip()!=str(rows[source].get('text','')).strip() for source in source_ids):return None
+    answer=matched['answer']+'\nแหล่งข้อมูล: '+matched['source_url']
+    return StructuredToolResult(answer,[hit_from_curated(rows[source]) for source in source_ids],'structured_studio_location_th',.98,{'required_fields':['location'],'source_ids':source_ids,'existing_record_only':True})
+
+
 def _contact_fields(query,locale):
     if not (re.search(r'อีเมล|\be-?mail\b',query,re.I) and re.search(r'เบอร์|โทร|\b(?:phone|telephone|tel)\b',query,re.I)):return None
     if re.search(r'ส่วนตัว|\b(?:personal|private)\b',query,re.I):return None
@@ -169,8 +196,26 @@ def _recorded_catalog_gap(query,locale):
             f'ยังไม่พบ {title} ในรายการเกมของศูนย์ที่ยืนยันได้ครับ กรุณาสอบถามเจ้าหน้าที่ก่อนจองเพื่อเล่นเกมนี้ ข้อมูลนี้ยังไม่ใช่การยืนยันว่าศูนย์ไม่มีเกมดังกล่าว\nแหล่งข้อมูล: {OUR_GAMES_URL}')
     return StructuredToolResult(answer,HITS['our_games'],'recorded_game_catalog_no_answer',.97,{'game':title,'catalog_titles_checked':len(catalog),'absence_only':True,'not_live_occupancy':True})
 
+def _booking_maximum_resource_count(query,locale):
+    booking=bool(re.search(r'จอง|\b(?:book|booking|reserve|reservation)\b',query,re.I))
+    count=bool(re.search(r'เครื่อง|อุปกรณ์|\b(?:stations?|devices?|resources?|machines?)\b',query,re.I))
+    maximum=bool(re.search(r'สูงสุด|มากสุด|\b(?:maximum|max)\b',query,re.I)) or bool(re.search(r'(?:กี่|\bhow\s+many\b).{0,45}(?:พร้อมกัน|ครั้งเดียว|\bat\s+once\b|\bper\s+booking\b)',query,re.I))
+    if not (booking and count and maximum):return None
+    answer=('I could not find verified information on the maximum number of devices you may reserve in one booking. Please confirm this device limit with the studio; the session limit does not establish a device limit.' if locale=='en' else
+        'ยังไม่พบข้อมูลยืนยันจำนวนเครื่องสูงสุดที่จองพร้อมกันในหนึ่งรายการครับ กรุณายืนยันจำนวนเครื่องกับศูนย์ก่อน จำนวน Sessions ต่อรายการไม่ใช่จำนวนเครื่อง')
+    answer+='\n'+('Source: ' if locale=='en' else 'แหล่งข้อมูล: ')+'https://esports.computing.psu.ac.th/reservation'
+    return StructuredToolResult(answer,[],'booking_maximum_resources_unconfirmed',.98,{'missing_policy':'maximum_resources_per_booking','sessions_are_not_devices':True})
+
+def _booking_maximum_lead(query,locale):
+    from app.pipeline.protected_intents import is_maximum_booking_lead_query
+    if not is_maximum_booking_lead_query(query):return None
+    answer=('I could not find verified information on the maximum number of days ahead you may book. Please confirm this limit with the studio.' if locale=='en' else
+        'ยังไม่พบข้อมูลยืนยันว่าจองล่วงหน้าได้สูงสุดกี่วันครับ กรุณายืนยันจำนวนวันสูงสุดกับศูนย์ก่อน')
+    answer+=('\nSource: ' if locale=='en' else '\nแหล่งข้อมูล: ')+'https://esports.computing.psu.ac.th/reservation'
+    return StructuredToolResult(answer,[],'booking_maximum_lead_unconfirmed',.98,{'missing_policy':'maximum_booking_lead_days','not_weekly_schedule':True,'no_inferred_maximum':True})
+
 def answer_closed_query_improvement(query,locale):
-    for category,resolver in [('games',_recorded_catalog_gap),('contact',_contact_fields),('no_answer',_non_catalog_request),('service_fee',_fee_comparison),('service_fee',answer_fee_alternatives),('service_fee',_fee_catalog),('reservation',_booking_resource),('no_answer',_media_policy_gap)]:
+    for category,resolver in [('reservation',_booking_maximum_resource_count),('reservation',_booking_maximum_lead),('games',_recorded_catalog_gap),('contact',_studio_location_th),('contact',_contact_fields),('no_answer',_non_catalog_request),('service_fee',_fee_comparison),('service_fee',answer_fee_alternatives),('service_fee',_fee_catalog),('reservation',_booking_resource),('no_answer',_media_policy_gap)]:
         result=resolver(query,locale)
         if result is not None:return ('clarification' if 'clarification' in result.mode else category),result
     return None

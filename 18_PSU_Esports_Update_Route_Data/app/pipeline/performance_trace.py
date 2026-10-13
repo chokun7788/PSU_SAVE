@@ -8,6 +8,8 @@ the only JSONL writer so a child crash still leaves the last reported stage.
 """
 
 import json
+import copy
+from collections import OrderedDict,deque
 import os
 import queue
 import threading
@@ -168,12 +170,14 @@ class ParentPerformanceLogger:
     def __init__(self, event_queue: Any, *, run_id: str | None = None, path: Path | None = None) -> None:
         self.event_queue = event_queue
         self.run_id = run_id or datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
-        self.path = path or PERFORMANCE_LOG_DIR / f"pipeline_{self.run_id}.jsonl"
+        log_override = os.getenv('PSU_PERFORMANCE_LOG_DIR') or (str(Path(os.environ['PSU_CHAT_LOG_DIR'])/'performance') if os.getenv('PSU_CHAT_LOG_DIR') else '')
+        self.path = path or (Path(log_override) if log_override else PERFORMANCE_LOG_DIR) / f"pipeline_{self.run_id}.jsonl"
         self._stop = threading.Event()
         self._thread: threading.Thread | None = None
         self._count = 0
         self._dropped = 0
         self._lock = threading.Lock()
+        self._recent_events = OrderedDict()
 
     def start(self) -> None:
         if self._thread is not None:
@@ -215,6 +219,13 @@ class ParentPerformanceLogger:
         with self._lock:
             return {"run_id": self.run_id, "path": str(self.path), "events_written": self._count, "events_dropped": self._dropped}
 
+    def request_snapshot(self,request_id: str) -> dict[str, Any]:
+        """Bounded partial progress, never an inferred cause of a timeout."""
+        with self._lock:
+            events=copy.deepcopy(list(self._recent_events.get(str(request_id),())))
+        return {'partial':True,'events':events,'last_reported_stage':events[-1]['stage'] if events else None,
+                'cause_confirmed':False}
+
     def _run(self) -> None:
         with self.path.open("a", encoding="utf-8", buffering=1) as handle:
             while not self._stop.is_set() or not self.event_queue.empty():
@@ -228,3 +239,10 @@ class ParentPerformanceLogger:
                     handle.flush()
                 with self._lock:
                     self._count += 1
+                    if event.get('event') in {'stage_started','stage_finished','stage_progress','stage_failed'}:
+                        request_id=str(event.get('request_id') or '')
+                        if request_id:
+                            recent=self._recent_events.setdefault(request_id,deque(maxlen=16))
+                            recent.append({key:event.get(key) for key in ('event','stage','status','sequence','elapsed_ms','remaining_ms')})
+                            self._recent_events.move_to_end(request_id)
+                            while len(self._recent_events)>64:self._recent_events.popitem(last=False)

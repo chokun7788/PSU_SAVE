@@ -91,6 +91,10 @@ def _operation_from_question(
     # The game name is a retrieval target here; it must not change the domain.
     if looks_like_competition_rule_query(question):
         return "competition_rule_lookup", "competition_rules", 0.97
+    # A contact route already establishes the subject of "where". The broad
+    # equipment-location cue below must not reject an address as equipment.
+    if route.category == "contact":
+        return "contact_lookup", "contact", max(0.94, route.confidence)
     from app.pipeline.source_task_signals import fee_comparison_query
     if fee_comparison_query(question):
         return "price_lookup", "service_fee", 0.98

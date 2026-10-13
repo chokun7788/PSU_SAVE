@@ -173,6 +173,7 @@ function saveMessages() {
 }
 
 let clientSessionId = loadOrCreateSessionId();
+let lastSeenResponseId = "";
 const messages = [];
 const experimentalRagFallback = true;
 const experimentalAllowLlm = ["localhost", "127.0.0.1"].includes(window.location.hostname);
@@ -400,6 +401,7 @@ function recentHistory() {
       route_intent: item.routeIntent || "",
       resolved_text: item.resolvedText || "",
       answer_language: item.answerLanguage || "",
+      request_plan: item.requestPlan || null,
     }));
 }
 
@@ -457,12 +459,15 @@ function renderRuntime(runtime) {
   const english = runtime.english || {};
   const rows = [
     ["Profile", runtime.profile || "-"],
-    ["Version", runtime.version || "-"],
+    [isEnglish ? "Version" : "รุ่น", runtime.version || "-"],
+    [isEnglish ? "Current page" : "หน้าที่กำลังเปิด", window.location.origin],
+    [isEnglish ? "Booking source" : "ข้อมูลจอง", (runtime.booking || {}).fetch_mode === "dashboard" ? "Booking Dashboard" : "WordPress"],
     ["Local LLM", llm.enabled ? `${on}: ${llm.model || "-"}` : off],
     ["Semantic RAG", rag.enabled ? `${on}: ${rag.embedding_model || "-"}` : off],
     ["English", english.enabled ? on : off],
     [isEnglish ? "English drafts" : "คำแปล Draft", english.draft_preview ? (isEnglish ? "Local preview only" : "ตัวอย่างเฉพาะเครื่อง") : off],
-    [isEnglish ? "Answer limit" : "เวลาสูงสุด", `${runtime.answer_timeout_sec || "-"} s`],
+    [isEnglish ? "Processing limit" : "เวลาประมวลผลสูงสุด", `${runtime.answer_timeout_sec || "-"} s`],
+    [isEnglish ? "Queue + dispatch lifetime" : "เวลารวมรอคิวและส่งประมวลผล", runtime.queue_ttl_sec ? `${runtime.queue_ttl_sec} s` : (isEnglish ? "Queue disabled" : "ไม่ได้เปิดคิว")],
   ];
   runtimeListEl.innerHTML = "";
   for (const [label, value] of rows) {
@@ -507,6 +512,8 @@ async function ask(question) {
     const {response, data} = await PSUChatRequest.requestChat({
       question: cleanQuestion,
       client_session_id: clientSessionId,
+      client_turn_id: makeSessionId(),
+      last_seen_response_id: lastSeenResponseId,
       recent_history: outgoingHistory,
       locale: selectedLocale,
       debug: true,
@@ -514,7 +521,7 @@ async function ask(question) {
       experimental_allow_llm: experimentalAllowLlm,
     }, {onRetry: (busy) => {
       const lang = busy.language?.effective || uiLocale;
-      setStatus(true, (localeCopy[lang] || copy()).queueWaiting);
+      setStatus(true, busy.job_status ? busy.message : (localeCopy[lang] || copy()).queueWaiting);
     }});
 
     if (!response.ok || !data.ok) {
@@ -528,7 +535,7 @@ async function ask(question) {
     removePending();
     const inputQuality = data.input_quality || null;
     const inputRejected = data.route_category === "input_guard";
-    const inputContextExcluded = inputRejected || inputQuality?.applied_action === "warn_and_continue";
+    const inputContextExcluded = inputRejected;
     if (inputContextExcluded) {
       const latestUser = [...messages].reverse().find((item) => item.role === "user" && item.contextEligible !== false);
       if (latestUser) {
@@ -554,6 +561,7 @@ async function ask(question) {
       notice: inputQuality && inputQuality.applied_action === "warn_and_continue" ? (localeCopy[data.language?.effective || uiLocale] || copy()).continuedTypoNotice : "",
       answerLanguage: data.language?.effective || uiLocale,
       requestId: data.request_id || "",
+      requestPlan: data.request_plan || null,
       question: cleanQuestion,
       inputRecovery: data.input_recovery || null,
     });
@@ -581,6 +589,8 @@ async function ask(question) {
       validation: data.validation,
       trace: data.trace,
     }, null, 2);
+    renderMessages();
+    lastSeenResponseId = data.request_id || lastSeenResponseId;
     setStatus(true, copy().localApi);
   } catch (error) {
     removePending();
@@ -627,6 +637,7 @@ questionEl.addEventListener("keydown", (event) => {
 clearButtonEl.addEventListener("click", () => {
   messages.length = 0;
   clientSessionId = makeSessionId();
+  lastSeenResponseId = "";
   clearMetrics();
   renderMessages();
   questionEl.focus();

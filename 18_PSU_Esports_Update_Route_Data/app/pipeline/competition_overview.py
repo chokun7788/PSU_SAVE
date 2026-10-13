@@ -122,6 +122,8 @@ def build_competition_overview(query: str, locale: str, *, recent_history=None) 
                 continue
             if item.get('contextEligible') is False or item.get('context_eligible') is False:
                 continue
+            if item.get('delivery_status') in {'prepared', 'server_written', 'uncertain'}:
+                continue
             previous = resolve_competition_targets(str(item.get('resolved_text') or ''))
             if previous.status == 'exact' and previous.targets[0].game_id == target.game_id:
                 # History only excludes already displayed clauses. It is not

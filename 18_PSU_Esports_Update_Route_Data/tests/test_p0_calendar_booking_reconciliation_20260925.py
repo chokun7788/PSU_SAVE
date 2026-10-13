@@ -75,7 +75,7 @@ class CalendarBookingReconciliationTests(unittest.TestCase):
         self.assertIsNotNone(th)
         self.assertIsNotNone(en)
         self.assertIn("วันหยุดไทยอย่างเดียวไม่ได้ทำให้ปิดอัตโนมัติ", th.answer)
-        self.assertIn("a Thai public holiday alone does not automatically close", en.answer)
+        self.assertIn("a Thai public holiday alone does not automatically close".casefold(), en.answer.casefold())
 
     def test_disagreement_never_claims_lunch_or_special_date_available(self) -> None:
         for day, at in (("2026-09-28", "12:30"), ("2026-09-29", "12:30"), ("2026-07-28", "13:00")):

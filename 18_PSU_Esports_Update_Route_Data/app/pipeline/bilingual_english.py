@@ -110,6 +110,8 @@ def requires_english_intent_review(result: EnglishSupportResult) -> bool:
         "pipeline:chatbot_identity_en",
         "pipeline:chatbot_greeting_en",
         "pipeline:english_scope_guidance_en",
+        "pipeline:structured_studio_location_en",
+        "pipeline:studio_location_target_clarification_en",
         "pipeline:english_no_answer",
         "pipeline:missing_english_localization",
     }
@@ -580,15 +582,23 @@ def _weekday_from_query(query: str, entities: EntityBundle) -> int | None:
 
 
 def _schedule_summary(weekday: int) -> str:
-    if weekday == 0:
-        return "Monday: 09:00-12:00 is maintenance; the studio is open for play from 13:00-16:00."
-    if weekday in {1, 2, 3}:
-        name = ("Tuesday", "Wednesday", "Thursday")[weekday - 1]
-        return f"{name}: the studio is open from 09:00-12:00 and 13:00-16:00."
-    if weekday == 4:
-        return "Friday: the studio is open from 09:00-12:00; 13:00-16:00 is maintenance."
-    name = "Saturday" if weekday == 5 else "Sunday"
-    return f"{name}: no regular service period is listed. Please confirm with the studio before travelling."
+    # A fixed reference week selects a weekday, not a date-specific closure.
+    slots = regular_service_slots(date(2026, 1, 5) + timedelta(days=weekday))
+    name = _WEEKDAY_NAMES_EN[weekday]
+    if not slots:
+        return f"{name}: no regular service period is listed."
+    periods = [f"{slot['time_range']} {'is open for play' if slot['state'] == 'open' else 'is maintenance (no play or booking)'}" for slot in slots]
+    return f"{name}: " + "; ".join(periods) + "."
+
+
+def _regular_week_summary_en() -> str:
+    return "\n".join([
+        "Regular service timetable (Asia/Bangkok):",
+        *[f"•    {_schedule_summary(day)}" for day in range(7)],
+        "•    12:00-13:00 is the lunch break; play and booking are unavailable.",
+        "Recorded special closures override this regular timetable. A Thai public holiday alone does not automatically close the studio.",
+        "This is the regular timetable, not live device availability.",
+    ])
 
 
 _WEEKDAY_NAMES_EN = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
@@ -649,10 +659,7 @@ def _date_aware_schedule_text(target: date, *, relative_label: str) -> str:
         _english_holiday_context(target),
         "",
         "Regular schedule details:",
-        "•    Monday 09:00-12:00 is maintenance; 13:00-16:00 is open for play.",
-        "•    Tuesday-Thursday are open from 09:00-12:00 and 13:00-16:00.",
-        "•    Friday 09:00-12:00 is open; 13:00-16:00 is maintenance.",
-        "•    Only a recorded studio closure overrides the regular schedule; a Thai public holiday alone does not automatically close the studio.",
+        _regular_week_summary_en(),
     ]
     return "\n".join(line for line in lines if line)
 
@@ -719,10 +726,7 @@ def _answer_schedule(query: str, entities: EntityBundle) -> EnglishSupportResult
     elif weekday is None and "afternoon" in tokens:
         text = "The afternoon service period is 13:00-16:00. Friday afternoon is reserved for maintenance."
     elif weekday is None:
-        text = (
-            "Regular service hours are Monday-Friday. Monday morning and Friday afternoon are maintenance periods. "
-            "Please specify a day for the exact play window."
-        )
+        text = _regular_week_summary_en()
     else:
         text = _schedule_summary(weekday)
         if "morning" in tokens:
@@ -834,7 +838,7 @@ def _answer_booking_intent(query: str, matcher: RuleMatcher) -> EnglishSupportRe
         return _rule_answer("cancel advance", matcher)
     if tokens & {"summarize", "summary", "steps", "step"} and booking_signal:
         return _rule_answer("How do I make a booking?", matcher)
-    if "advance" in tokens and booking_signal:
+    if tokens & {"advance", "ahead"} and booking_signal:
         return _rule_answer("booking advance", matcher)
     if "advance" in tokens and _phrase(query, "check in") and _known_game(query) is None:
         return _rule_answer("booking advance", matcher)
@@ -966,7 +970,7 @@ def _game_availability_answer(game: str) -> EnglishSupportResult:
 
 def _answer_game_controls(query: str, game: str, *, route_intent: str = "") -> EnglishSupportResult | None:
     tokens = _tokens(query)
-    if not (tokens & {"button", "buttons", "control", "controls", "controller", "key", "keys", "press"}) and "control" not in route_intent and not re.search(r"\b(?:gas pedal|shooting)\b", query, flags=re.IGNORECASE):
+    if not (tokens & {"button", "buttons", "control", "controls", "controller", "key", "keys", "press", "shoot", "reload"}) and "control" not in route_intent and not re.search(r"\b(?:gas pedal|shooting)\b", query, flags=re.IGNORECASE):
         return None
     game_key = _game_title_key(game)
     game_rows = [
@@ -986,7 +990,7 @@ def _answer_game_controls(query: str, game: str, *, route_intent: str = "") -> E
             answer_type="no_answer")
     if button_selection is not None:
         rows = list(button_selection.rows)
-    action_terms = ("accelerate",) if re.search(r"\bgas pedal\b", query, flags=re.IGNORECASE) else ("shoot", "fire") if re.search(r"\bshooting\b", query, flags=re.IGNORECASE) else ()
+    action_terms = ("accelerate",) if re.search(r"\bgas pedal\b", query, flags=re.IGNORECASE) else ("shoot", "fire") if re.search(r"\bshooting\b", query, flags=re.IGNORECASE) else tuple(term for action,terms in (('shoot',('fire',)),('reload',('reload',))) if re.search(r'\b'+action+r'\b',query,re.I) for term in terms)
     if action_terms and rows:
         matched_rows = [row for row in rows if any(term in str(row.get("action_en") or "").casefold() for term in action_terms)]
         if matched_rows:
@@ -1211,7 +1215,20 @@ def _answer_games(query: str, entities: EntityBundle, *, route: PipelineRoute) -
             answer_type="no_answer",
         )
     game = _known_game(query)
-    if game is None and re.search(r"\b(?:button|control|shooting|gas pedal)\b", query, flags=re.IGNORECASE):
+    if game is None and re.search(r"\b(?:about|details?|describe)\b",query,re.I):
+        family = resolve_game_entity(query,operation='game_detail')
+        family_name=family.as_dict().get('family')
+        if family.is_ambiguous and family_name and family.candidates:
+            candidates=family.candidates[:4]
+            lines=[f'The verified catalog has these {family_name} titles:']
+            lines.extend(f'- {candidate.title}: {", ".join(candidate.zones)}' for candidate in candidates)
+            lines.append('Which title do you want details for? Reply with its name.')
+            lines.append(_source_suffix(OUR_GAMES_URL).strip())
+            return _result('\n'.join(lines),category='games',intent='game_family_clarification',
+                           mode='pipeline:structured_games_family_en',confidence=.98,
+                           hits=[_hit('service_game_availability','games',OUR_GAMES_URL,c.title) for c in candidates],
+                           reason='explicit family has multiple verified titles',answer_type='clarification')
+    if game is None and re.search(r"\b(?:buttons?|controls?|shooting|gas pedal)\b", query, flags=re.IGNORECASE):
         resolution = resolve_game_entity(query, operation="controls")
         if resolution.is_ambiguous and resolution.candidates:
             candidates = list(dict.fromkeys(candidate.title for candidate in resolution.candidates[:4]))
@@ -1226,6 +1243,11 @@ def _answer_games(query: str, entities: EntityBundle, *, route: PipelineRoute) -
                     reason="control request refers to multiple verified titles in the same family",
                     answer_type="clarification",
                 )
+        if not resolution.is_exact:
+            return _result(
+                'I could not identify a verified game title with matching control information for this request. Please confirm the spelling and exact game edition.' + _source_suffix(OUR_GAMES_URL),
+                category='games',intent='game_control_lookup',mode='pipeline:game_controls_target_unconfirmed_en',
+                confidence=.98,hits=[],reason='unknown control target must not fall through to the whole game catalog',answer_type='no_answer')
     if game:
         # A named game normally means game availability/details. Competition
         # vocabulary is the explicit exception, so a broad route label cannot
@@ -1687,7 +1709,7 @@ def _answer_members(query: str, *, route: PipelineRoute) -> EnglishSupportResult
     if not _is_member_query(query, route):
         return None
     tokens = _tokens(query)
-    if re.search(r"\bhow\s+many\s+(?:categories|groups)\b",query,re.I) and tokens & {'member','members'}:
+    if re.search(r"\bhow\s+many\s+(?:(?:member|membership)\s+)?(?:categories|groups)\b",query,re.I) and tokens & {'member','members','membership'}:
         rows=_member_rows()
         groups={group:sum(str(row.get('group'))==group for row in rows) for group in dict.fromkeys(str(row.get('group') or 'Unspecified group') for row in rows)}
         answer=f"The recorded member directory has {len(groups)} groups and {len(rows)} member records:\n" + "\n".join(f"- {group}: {count} records" for group,count in groups.items())
@@ -1830,6 +1852,7 @@ def _is_competition_query(query: str, route: PipelineRoute) -> bool:
         "restrictions", "bug", "account", "protest", "dispute", "objection",
     }
     known_game = _known_game(query)
+
     competition_target = _competition_target(query)
     requested_facet = competition_facet(query)
     if tokens & {"rule", "rules"} and tokens & {"timeout", "timeouts", "protest", "protests"}:
@@ -2492,6 +2515,21 @@ def _answer_english_clarification(query: str) -> EnglishSupportResult | None:
     tokens = _tokens(query)
     known_game = _known_game(query)
 
+    generic_control_words = {'show','list','me','the','game','games','controls','control','buttons','button','please','what','are','which','keys','controller','i','want','see',
+                             'can','how','do','use','tell','need','to','for','of','in','on','about'}
+    if known_game is None and tokens & {'control','controls','button','buttons','keys'} and tokens <= generic_control_words:
+        return _result('Which game do you want controls for? Please provide the game title.',
+                       category='games',intent='game_control_lookup',mode='pipeline:game_control_missing_game_context_en',
+                       confidence=.99,hits=[],reason='control request is missing its game target',answer_type='clarification')
+    service = _detect_service(query, EntityBundle())
+    target = r'(?:pc|ps5|playstation(?:\s+5)?|nintendo(?:\s+switch)?|vr|cockpit)'
+    if service and re.fullmatch(r"(?:what\s+(?:does|do)\s+(?:the\s+)?"+target+r"\s+(?:have|include|contain|offer)|what(?:'s|\s+is)\s+in\s+(?:the\s+)?"+target+r"(?:\s+zone)?)[?!.]*",q):
+        from app.session.conversation_plan import SERVICE_LABELS
+        label=SERVICE_LABELS.get(service,service)
+        return _result(f'Which topic about {label} do you mean: games, equipment, prices, or booking? You can reply with just the topic.',
+                       category='clarification',intent='service_broad_choice',mode='pipeline:service_broad_choice_en',
+                       confidence=.99,hits=[],reason='service is selected but operation is not',answer_type='clarification')
+
     if re.fullmatch(r"(?:hel+l+o+|hey+)(?:\s+there)?[!?.]*", q):
         return _result(
             "Hello. I am PSU Esports Assistant for PSU Esports Studio - Phuket. Ask me about games, equipment, booking, opening hours, fees, rules, or studio contacts.",
@@ -2587,6 +2625,49 @@ def _answer_english_scope_guidance(query: str) -> EnglishSupportResult | None:
     )
 
 
+def _answer_studio_location(query: str, matcher: RuleMatcher) -> EnglishSupportResult | None:
+    """Bind studio-location paraphrases to the existing bilingual contact fact."""
+    q = normalize_text(query)
+    tokens = _tokens(q)
+    target = bool(tokens & {"studio", "venue", "centre", "center"} or _phrase(q, "psu esports"))
+    location = bool(tokens & {"where", "address", "location", "located", "situated"}
+                    or re.search(r"\b(?:get|go)\s+to\b|\bfind\b", q))
+    if not (target and location):
+        return None
+    # A physical device, game, person or named competition has its own source.
+    if (tokens & {"competition", "tournament", "event", "staff", "manager", "member", "members",
+                  "tv", "television", "monitor", "screen", "equipment", "keyboard", "mouse", "controller"}
+            or _known_game(q) or _detect_service(q, EntityBundle())):
+        return None
+    allowed = {"where", "is", "are", "s", "the", "a", "an", "studio", "venue", "centre", "center",
+               "psu", "esports", "phuket", "located", "situated", "what", "address", "location",
+               "of", "for", "can", "could", "would", "will", "you", "please", "tell", "show", "give",
+               "share", "me", "i", "need", "want", "to", "know", "how", "do", "get", "go", "find"}
+    if not tokens <= allowed:
+        return _result(
+            "Do you mean PSU Esports Studio - Phuket? I only have its recorded studio address; please specify the venue you mean.",
+            category="clarification", intent="studio_location_target_clarification",
+            mode="pipeline:studio_location_target_clarification_en", confidence=0.98, hits=[],
+            reason="unresolved words in a location target must not be replaced by the PSU studio",
+            answer_type="clarification",
+        )
+    matched = matcher.match("address", category="contact", locale="en")
+    if not matched or matched.get("intent") != "contact_location" or not matched.get("source_ids"):
+        return None
+    answer = str(matched.get("answer") or "").strip()
+    url = str(matched.get("source_url") or "")
+    if not answer or not url:
+        return None
+    if re.search(r"\b(?:get|go)\s+to\b", q):
+        answer += " This is the recorded address; travel directions are not provided in the studio records."
+    return _result(
+        answer + _source_suffix(url), category="contact", intent="contact_location",
+        mode="pipeline:structured_studio_location_en", confidence=0.98,
+        hits=[_hit(source_id, "contact", url, "Studio location") for source_id in matched["source_ids"]],
+        reason=f"explicit studio location request bound to existing bilingual rule {matched.get('rule_id')}",
+    )
+
+
 def answer_english_supported(
     query: str,
     *,
@@ -2594,7 +2675,8 @@ def answer_english_supported(
     route: PipelineRoute,
     matcher: RuleMatcher,
 ) -> EnglishSupportResult | None:
-    if route.intent == "chatbot_identity":
+    from app.pipeline.chatbot_identity import is_chatbot_identity_query
+    if route.intent == "chatbot_identity" and is_chatbot_identity_query(query):
         return _result(
             "I am PSU Esports Assistant, the chatbot for PSU Esports Studio - Phuket. I can help with verified information about games, equipment, booking, opening hours, service fees, rules, competitions, and studio contacts.",
             category="knowledge",
@@ -2693,6 +2775,7 @@ def answer_english_supported(
         # domains. Their data is verified and does not require an LLM rewrite.
         lambda: _answer_equipment(query, entities, route=route),
         lambda: _answer_games(query, entities, route=route),
+        lambda: _answer_studio_location(query, matcher),
         lambda: _rule_answer(query, matcher),
         lambda: _answer_approved_rag(query, route=route),
         lambda: _answer_missing_localized_domain(query, route=route),

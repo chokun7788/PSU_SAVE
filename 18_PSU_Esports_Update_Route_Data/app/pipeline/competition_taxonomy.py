@@ -208,6 +208,8 @@ def detect_competition_facet(query: str) -> str | None:
         for pause_term in ("pause", "timeout", "technical pause", "หยุดเกม", "พักเกม")
     ):
         return "pause_timeout"
+    if any(re.search(r'สมาชิกทีม.{0,35}(?:กี่คน|จำนวน)|(?:how many|number of).{0,25}members.{0,30}team',variant,re.I) for variant in variants):
+        return 'team_size'
     # When a user asks for the penalty caused by misconduct, the proposition
     # still requires a conduct clause. A generic penalty table for exploits
     # cannot establish that profanity or unsportsmanlike behavior is an

@@ -10,6 +10,7 @@ from app.pipeline.query_signals import has_live_evidence, looks_like_dynamic_fre
 from app.core.source_registry import (
     PC_SERVICE_FEE_LOCAL_UPDATE_20260727_ID,
     SERVICE_FEE_IMAGE_2026_ID,
+    ZONE_RENTAL_FEES_20261006_ID,
 )
 from app.pipeline.schemas import EntityBundle, PipelineRoute, UniversalIntent, ValidationResult
 
@@ -386,7 +387,8 @@ def validate_answer(
             and _has(question, "PC", "คอม", "คอมพิวเตอร์")
         )
         if pc_price_context:
-            if PC_SERVICE_FEE_LOCAL_UPDATE_20260727_ID not in source_ids:
+            rental_source = mode == 'pipeline:zone_rental_fee' and ZONE_RENTAL_FEES_20261006_ID in source_ids
+            if PC_SERVICE_FEE_LOCAL_UPDATE_20260727_ID not in source_ids and not rental_source:
                 errors.append("pc_price_answer_missing_pc_local_update_source")
         if PC_SERVICE_FEE_LOCAL_UPDATE_20260727_ID in source_ids and not _has(question + "\n" + answer, "PC", "คอม", "คอมพิวเตอร์"):
             warnings.append("pc_local_update_source_present_without_pc_price_context")

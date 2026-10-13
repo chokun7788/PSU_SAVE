@@ -37,6 +37,14 @@ _SLOT_SEMAPHORE: threading.BoundedSemaphore | None = None
 _SLOT_LIMIT: int | None = None
 _HELD_SLOT: ContextVar[threading.BoundedSemaphore | None] = ContextVar("psu_llm_slot", default=None)
 
+
+def configure_model_admission(messages, replies, owner, limit: int) -> None:
+    """Bind a spawned worker to its parent's model-call admission broker."""
+    global _SLOT_SEMAPHORE, _SLOT_LIMIT
+    from app.pipeline.model_admission import RemoteModelGate
+    _SLOT_SEMAPHORE = RemoteModelGate(messages, replies, owner)
+    _SLOT_LIMIT = limit
+
 # Only calls that directly establish model availability may mutate the
 # model-wide circuit. Optional planner/reviewer failures remain isolated to
 # their own kind so they cannot disable the final general-answer path.

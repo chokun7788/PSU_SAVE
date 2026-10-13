@@ -1,6 +1,7 @@
 param(
     [int]$Port = 8090,
-    [switch]$OpenBrowser
+    [switch]$OpenBrowser,
+    [string]$PythonPath = ''
 )
 
 $ErrorActionPreference = "Stop"
@@ -11,15 +12,11 @@ if ($Port -lt 1024 -or $Port -gt 65535) {
     throw "Port must be between 1024 and 65535."
 }
 
-$python = Get-Command python -ErrorAction SilentlyContinue
-if (-not $python) {
-    $codexPython = Join-Path $env:USERPROFILE ".cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe"
-    if (Test-Path -LiteralPath $codexPython) {
-        $python = [pscustomobject]@{ Source = $codexPython }
-    }
-}
-if (-not $python) {
-    throw "Python was not found. Install Python 3.11 or newer, then run this file again."
+. (Join-Path $projectRoot 'Runtime-Readiness.ps1')
+$python = Get-ChatbotPython $projectRoot $PythonPath
+if ($OpenBrowser) {
+    & (Join-Path $projectRoot 'Open-PSU-Esports-Background.ps1') -Port $Port -PythonPath $python.Path
+    return
 }
 
 try {
@@ -38,7 +35,11 @@ if ($missingModels.Count -gt 0) {
 }
 
 $env:PSU_RUNTIME_PROFILE = "owner-local-rag-assist"
-$env:PSU_RUNTIME_VERSION = "2026.09.29-multi-error-recovery-r15"
+$manifestPath = Join-Path $projectRoot 'package_manifest.json'
+$env:PSU_RUNTIME_VERSION = if (Test-Path -LiteralPath $manifestPath) {
+    (Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json).runtime_version
+} else { "2026.10.06-targeted-flow-r40.3" }
+if (-not $env:PSU_RUNTIME_VERSION) { throw 'Missing runtime_version in package_manifest.json.' }
 $env:PSU_BILINGUAL_EN_ENABLED = "1"
 $env:PSU_LOCAL_LLM_ASSIST_ENABLED = "1"
 $env:PSU_PRODUCT_BACKEND_TIMEOUT_SEC = "20"
@@ -106,8 +107,4 @@ Write-Host $(if ($ownerDashboardAt8080) { "Booking: read owner Dashboard at port
 Write-Host "Open: $url"
 Write-Host "Keep this window open while the chatbot is in use."
 
-if ($OpenBrowser) {
-    Start-Process $url
-}
-
-& $python.Source -m app.web_api.server --host 127.0.0.1 --port $Port
+& $python.Path -m app.web_api.server --host 127.0.0.1 --port $Port

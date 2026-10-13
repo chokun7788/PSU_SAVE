@@ -242,12 +242,41 @@ def looks_like_explicit_definition_question(text: str) -> bool:
     return has_any_signal(text, *_DEFINITION_TERMS)
 
 
+def looks_like_explicit_creation_request(text: str) -> bool:
+    """Named writing tasks are separate from the game's availability catalog.
+
+    Requests for actual studio policies, live data or rates remain grounded.
+    """
+    q = normalize_text(text)
+    named = bool(re.search(r'^(?:please\s+)?(?:write|draft|compose)\b.{0,100}\b(?:invitation|scene|dialogue|post|message|caption|story)\b|^(?:ช่วย)?(?:เขียน|ร่าง|แต่ง)(?:โพสต์|บทสนทนา|คำเชิญ|ข้อความชวน)', q, re.I))
+    factual = bool(re.search(r'ราคา|ค่าบริการ|จอง|(?<!ระห)ว่าง|กฎ|กฏ|กติกา|ศูนย์|มหาวิทยาลัย|\b(?:psu|studio|prices?|fees?|booking|reservations?|available|rules?|tournament|opening|official)\b',q,re.I))
+    return named and not factual
+
+
 def looks_like_clear_general_request(text: str) -> bool:
+    from app.pipeline.semantic_quality import translation_request
+    translation = translation_request(text)
+    if translation and translation['source']:
+        return True  # Quoted booking/equipment text is translation data.
     query = normalize_text(text)
     if looks_like_dynamic_freshness_query(query):
         return False
+    if looks_like_explicit_creation_request(query):
+        return True
     if has_any_signal(query, *_PSU_INVENTORY_TERMS):
         return False
+    # Interpret a task before generic words such as "session" or "each".
+    # Studio operations still require source evidence, including paraphrases.
+    if re.search(r'ค่าบริการ|ราคา|จอง|(?<!ระห)ว่าง|กติกา|กฎ|กฏ|แข่ง|ศูนย์|\b(?:prices?|fees?|rental|book(?:ing)?|reservations?|available|rules?|tournaments?|studio|ps5|playstation|nintendo|cockpit|vr)\b', query, re.I):
+        return False
+    if re.search(r'\d', query) and re.search(r'\bhow\s+many\b.+\b(?:each|box|total|left)\b|(?:กล่อง|ลูกบอล).+(?:กี่|เท่าไหร่)', query, re.I):
+        return True
+    if re.search(r'^(?:please\s+)?(?:explain|compare|define|translate|write|draft|compose)\b|^(?:please\s+)?give\s+(?:me\s+)?(?:\d+|one|two|three|four|five)\s+(?:steps?\b|ขั้นs?\b)|^(?:ช่วย)?(?:อธิบาย|เปรียบเทียบ|แปลประโยค|แปลข้อความ|เขียนข้อความ)', text.strip(), re.I):
+        return True
+    # A complete causal/order question can be general even without a glossary term.
+    # Domain operations still take precedence over broad syntax.
+    if not re.search(r'ราคา|ค่าบริการ|จอง|ว่าง|กติกา|กฎ|แข่ง|ศูนย์|\b(?:price|fee|book|available|rules?|tournament|studio)\b', query, re.I) and re.search(r'อะไรเกิดก่อน|อะไรมาก่อน|ทำไม.+(?:ถึง|จึง)|\b(?:which|what)\b.+\b(?:came|comes)\s+first\b|\bwhy\s+(?:do|does|is|are|can)\b', query, re.I):
+        return True
     if has_any_signal(query, *_GENERAL_TRANSLATION_TERMS, *_GENERAL_CREATION_TERMS):
         return True
     if has_any_signal(
@@ -271,6 +300,16 @@ def looks_like_clear_general_request(text: str) -> bool:
         "นิยามคำว่า",
         "ยกตัวอย่างคำว่า",
     )
+
+
+def has_financial_rate_signal(text: str) -> bool:
+    """A technical rate alone cannot establish a service-price request."""
+    query = normalize_text(text)
+    return bool(re.search(
+        r'\b(?:rates?)\b', query
+    ) and re.search(
+        r'\b(?:prices?|fees?|costs?|charges?|hourly|rental|rent|service|equipment|play|booking)\b|\bper\s+(?:hour|day)\b', query
+    ))
 
 
 def looks_like_missing_task_input(text: str) -> bool:

@@ -7,6 +7,7 @@ from datetime import date, timedelta
 from app.calendar.service_calendar import regular_service_slots, today_bangkok
 from app.core.normalization import normalize_text
 from app.pipeline.service_policy_claims import get_service_policy_answer
+from app.pipeline.query_signals import has_financial_rate_signal
 
 
 RESERVATION_URL = "https://esports.computing.psu.ac.th/reservation"
@@ -58,8 +59,21 @@ def _tokens(text: str) -> set[str]:
     return set(re.findall(r"[a-z]+", text))
 
 
+def is_maximum_booking_lead_query(query: str) -> bool:
+    q=normalize_text(query)
+    booking=bool(re.search(r'จอง|\b(?:book|booking|reserve|reservation)\b',q))
+    # A cancellation deadline, minimum notice and resource count are distinct
+    # policy fields. Shared booking/day words cannot identify the maximum lead.
+    if re.search(r'ยกเลิก|เช็คอิน|เช็กอิน|ชำระ|\b(?:cancel\w*|checkin|check-in|payment|pay)\b',q,re.I):return False
+    if re.search(r'ต้องจอง|อย่างน้อย|\b(?:minimum|at\s+least)\b|\b(?:must|should|need\s+to)\s+(?:i\s+)?(?:book|reserve)\b',q,re.I):return False
+    maximum=bool(re.search(r'ล่วงหน้า(?:ได้)?(?:สูงสุด|มากสุด)?กี่วัน|ล่วงหน้า.{0,20}(?:สูงสุด|มากสุด)|จอง.{0,25}(?:สูงสุด|มากสุด).{0,10}กี่วัน|\bhow\s+many\s+days?\s+(?:ahead|in\s+advance)\b|\bhow\s+far\s+(?:ahead|into\s+the\s+future)\b|\b(?:maximum|max)\b.{0,25}\b(?:advance|ahead|lead\s+time)\b',q,re.I))
+    return booking and maximum
+
 def is_weekly_booking_window_query(query: str) -> bool:
     q = normalize_text(query)
+    if is_maximum_booking_lead_query(q):return False
+    if re.search(r'ยกเลิก|แก้ไข|เช็คอิน|เช็กอิน|ชำระ|\b(?:cancel\w*|modify|edit|checkin|check-in|payment|pay)\b',q,re.I):return False
+    if re.search(r'ล่วงหน้า|ก่อนใช้งาน|\b(?:ahead|in\s+advance|minimum|at\s+least)\b',q,re.I):return False
     tokens = _tokens(q)
     asks_booking = _has(q, "จอง", "รอบที่เปิด", "book", "booking", "reserve", "reservation")
     asks_weekly_period = _has(
@@ -161,9 +175,11 @@ def _has_price_signal(q: str) -> bool:
     return (
         _has(q, "ราคา", "ค่าบริการ", "ค่าใช้บริการ", "ค่าใช้จ่าย", "กี่บาท", "คิดเงิน", "เสียเงิน", "ต้องจ่าย", "ฟรี", "ไม่เสียเงิน")
         or "how much" in q
-        or bool(_tokens(q) & {"price", "cost", "fee", "fees", "charge", "charges", "rate", "rates"})
+        or bool(_tokens(q) & {"price", "cost", "fee", "fees", "charge", "charges"})
+        or has_financial_rate_signal(q)
         or bool(re.search(r"\b(?:pay|paying|paid)\s+(?:to\s+(?:play|use|enter|visit)|for\s+(?:using|playing|access))\b", q))
         or bool(re.search(r"\b(?:what|how\s+much)\b.{0,55}\b(?:pay|paying|paid)\b", q))
+        or bool(re.search(r"\b(?:what|how\s+much)\b.{0,60}จ่ายเงิน", q))
         or bool(re.search(r"\b(?:for\s+free|free\s+(?:of\s+charge|to\s+use))\b", q))
     )
 
@@ -265,7 +281,7 @@ def _is_price_without_service(q: str, service: str | None) -> bool:
     if re.search(r'แต่ละ(?:เครื่อง|โซน|บริการ)|ตาราง.*ราคา|ค่าบริการ.*ทั้งหมด|ราคา.*ทั้งหมด|ค่าเล่น.*(?:เครื่อง|โซน).*บ้าง|\b(?:each|all)\s+(?:service|zone|device|station)s?\b',q,re.I):
         return False
     price = _has_price_signal(q)
-    usage = _has(q, "เล่น", "ใช้", "เข้าศูนย์", "อุปกรณ์", "เครื่อง") or bool(_tokens(q) & {"play", "use", "enter", "access", "visit", "equipment", "studio", "service", "station", "rate", "rates"})
+    usage = _has(q, "เล่น", "ใช้", "เข้าศูนย์", "อุปกรณ์", "เครื่อง") or bool(_tokens(q) & {"play", "use", "enter", "access", "visit", "equipment", "studio", "service", "station"}) or has_financial_rate_signal(q)
     return price and usage
 
 

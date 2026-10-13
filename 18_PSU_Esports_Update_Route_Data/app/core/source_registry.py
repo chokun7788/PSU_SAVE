@@ -6,6 +6,7 @@ from typing import Any
 
 SERVICE_FEE_IMAGE_2026_ID = "service_fee_image_2026"
 PC_SERVICE_FEE_LOCAL_UPDATE_20260727_ID = "pc_service_fee_local_update_20260727"
+ZONE_RENTAL_FEES_20261006_ID = "zone_rental_fees_user_workbook_20261006"
 
 
 @dataclass(frozen=True)
@@ -22,6 +23,20 @@ class SourceRecord:
 
 
 SOURCE_REGISTRY: dict[str, SourceRecord] = {
+    'user_service_answers_20261008': SourceRecord(
+        source_id='user_service_answers_20261008', category='knowledge',
+        title='User-provided service answers 2026-10-08', source_url='local://service_policy/user_answers_20261008',
+        source_type='user_provided_answers', trust_level='user_confirmed', updated_at='2026-10-08',
+        origin='Answers supplied by the user in this chat; original archived under data/sources',
+        description='Bounded studio access, location, parking, booking identity and payment handling facts. Blank answers and rescheduling boundaries are not inferred.',
+    ),
+    ZONE_RENTAL_FEES_20261006_ID: SourceRecord(
+        source_id=ZONE_RENTAL_FEES_20261006_ID, category="service_fee",
+        title="User-provided half/full-day zone rental fees", source_url="local://service_fee/zone_rental_fees_20261006",
+        source_type="user_provided_workbook", trust_level="user_confirmed", updated_at="2026-10-06",
+        origin="User supplied workbook on 2026-10-06; original archived under data/sources",
+        description="Zone rental for internal/external organizations; 24 rates, seating and equipment. Effective dates and rental hours are not specified.",
+    ),
     SERVICE_FEE_IMAGE_2026_ID: SourceRecord(
         source_id=SERVICE_FEE_IMAGE_2026_ID,
         category="service_fee",

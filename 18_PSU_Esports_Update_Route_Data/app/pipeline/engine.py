@@ -283,7 +283,7 @@ def _looks_like_unclear_game_meta_query(query: str) -> bool:
 
 
 _ENGLISH_COMPOUND_INTENT_PATTERNS = {
-    "price": re.compile(r"\b(?:how\s+much|price|cost|fee|charge|different\s+from|difference\s+between)\b", re.IGNORECASE),
+    "price": re.compile(r"\b(?:how\s+much|prices?|costs?|fees?|charges?|different\s+from|difference\s+between)\b", re.IGNORECASE),
     "booking": re.compile(r"\b(?:book|booking|reserve|reservation|sessions?\s+can\s+be\s+booked)\b", re.IGNORECASE),
     "schedule": re.compile(r"\b(?:opens?|opening|hours|schedule|closes?|closing)\b", re.IGNORECASE),
     "available_days": re.compile(r"\b(?:what|which)\s+days?\s+(?:are|is)\s+available\b", re.IGNORECASE),
@@ -349,7 +349,7 @@ def _split_english_compound_question(query: str) -> list[str]:
     if len(question_parts) == 2:
         left_intent = _english_compound_intent(question_parts[0])
         right_intent = _english_compound_intent(question_parts[1])
-        if left_intent and right_intent and left_intent != right_intent:
+        if left_intent and right_intent:
             return question_parts
 
     if not re.search(r"\b(?:and|also)\b", clean, flags=re.IGNORECASE):
@@ -401,7 +401,13 @@ def _split_english_compound_question(query: str) -> list[str]:
         and bool(re.search(r"\b(?:\d+|one|two|half)\s*(?:minutes?|hours?|hrs?)\b", left, flags=re.IGNORECASE))
         and bool(re.search(r"\b(?:\d+|one|two|half)\s*(?:minutes?|hours?|hrs?)\b", right, flags=re.IGNORECASE))
     )
-    if not left_intent or not right_intent or (left_intent == right_intent and not same_price_with_distinct_duration):
+    # Repeated interrogative clauses ask separate questions even when both
+    # concern the same operation. Bare noun lists still remain one request.
+    repeated_question_clauses = all(re.match(
+        r"^(?:what|how|is|are|can|who|where|which|when)\b", part,
+        flags=re.IGNORECASE,
+    ) for part in (left, right))
+    if not left_intent or not right_intent or (left_intent == right_intent and not same_price_with_distinct_duration and not repeated_question_clauses):
         return [clean]
 
     service = _english_shared_service(left)
@@ -720,6 +726,10 @@ def _split_shared_tail_multi_entity_question(query: str) -> list[str]:
     ]
     if len(raw_items) < 2 or len(raw_items) > 3:
         return [clean]
+    if any(_has(normalize_text(item), *_MULTI_OPERATION_PHRASES, *_SUBJECT_INFERENCE_PHRASES) for item in raw_items):
+        # A complete request before the conjunction already owns its own
+        # operation. Appending the final clause's operation would replace it.
+        return [clean]
 
     items: list[str] = []
     for index, item in enumerate(raw_items):
@@ -837,8 +847,10 @@ class AnswerQualityPipeline:
         locale_decision: LocaleDecision | dict | None = None,
         recent_history=None,
         keyboard_layout_direction: str | None = None,
+        request_plan: dict | None = None,
     ) -> PipelineAnswer:
-        with request_deadline(global_timeout_sec):
+        from app.booking.live_status import booking_request_snapshots
+        with request_deadline(global_timeout_sec), booking_request_snapshots():
             started = time.perf_counter()
             locale_started = time.perf_counter()
             resolved_locale = locale_from_mapping(locale_decision) or resolve_locale(
@@ -849,11 +861,203 @@ class AnswerQualityPipeline:
             )
             set_current_locale_decision(resolved_locale)
             entry_timings = [_timing_trace("locale_resolution", locale_started, metadata=deadline_metadata())]
+            from app.pipeline.studio_scope import is_explicit_unrelated_task
+            if is_explicit_unrelated_task(question):
+                from app.pipeline.experimental_fallback import build_studio_scope_fallback
+                result = build_studio_scope_fallback(question, reason='explicit_unrelated_task_before_studio_routing')
+                return self._build_result(result.answer, [], started, 'pipeline:' + result.mode, result.confidence,
+                    PipelineRoute('no_answer', 'studio_information_scope', .99, 'no_answer', 'low', 'studio information only'),
+                    EntityBundle(), ValidationResult(ok=True), [*entry_timings, result.trace])
+            from app.pipeline.semantic_quality import translation_request
+            translation = translation_request(question)
+            from app.pipeline.query_signals import looks_like_explicit_creation_request
+            if (translation and translation['source']) or looks_like_explicit_creation_request(question):
+                from app.pipeline.experimental_fallback import build_studio_scope_fallback
+                result = build_studio_scope_fallback(question, reason='generic_translation_or_creation_outside_studio_operations')
+                return self._build_result(result.answer, [], started, 'pipeline:' + result.mode, result.confidence,
+                    PipelineRoute('no_answer', 'studio_information_scope', .99, 'no_answer', 'low', 'studio information only'),
+                    EntityBundle(), ValidationResult(ok=True), [*entry_timings, result.trace])
+            from app.knowledge.common.answer import try_common_answer
+            common = try_common_answer(question, locale=resolved_locale.effective,
+                recent_history=recent_history, allow_llm=env_experimental_llm_default() if experimental_allow_llm is None else bool(experimental_allow_llm))
+            if common is not None:
+                return common
+            from app.pipeline.request_focus import explicit_request_focus
+            focused_question, focus = explicit_request_focus(question)
+            if focus:
+                entry_timings.append(PipelineTrace('explicit_request_focus','affirmative_task',1.0,
+                    'discard only an explicitly rejected task prefix with a named affirmative operation',focus))
+                question = focused_question
+            from app.pipeline.zone_rental import resolve_zone_rental_plan, build_zone_rental_answer
+            rental_plan = request_plan if request_plan and request_plan.get('schema_type')=='zone_rental_v1' else (resolve_zone_rental_plan(question,recent_history,locale=resolved_locale.effective) if request_plan is None else None)
+            if rental_plan is not None:
+                rental_result = build_zone_rental_answer(rental_plan,resolved_locale.effective)
+                if rental_result is not None:
+                    return self._build_result(rental_result['answer'],rental_result['hits'],started,rental_result['mode'],.99,
+                        rental_result['route'],rental_result['entities'],rental_result['validation'],[*entry_timings,*rental_result['trace']])
+            if request_plan and request_plan.get('schema_type') == 'dialogue_state_clarification_v1':
+                english = resolved_locale.effective == 'en'
+                messages = {
+                    'scope': ('Which topic or selection does "all" refer to: controls, prices, game lists, or zones?', 'คำว่า “ทั้งหมด” หมายถึงเรื่องหรือตัวเลือกใดครับ เช่น ปุ่มควบคุม ราคา รายชื่อเกม หรือโซน'),
+                    'no_previous_task': ('I cannot identify a previously delivered request for that topic. Please specify the game or device and what you want to know.', 'ยังระบุคำถามก่อนหน้าที่ได้รับคำตอบแล้วของเรื่องนี้ไม่ได้ครับ กรุณาระบุเกมหรืออุปกรณ์และเรื่องที่ต้องการทราบ'),
+                    'game': ('Which game do you want all the controls for?', 'ต้องการปุ่มควบคุมทั้งหมดของเกมใดครับ'),
+                    'ordinal_axis': ('Which game or zone do you mean? Please provide its name; the displayed list contains more than one level of choices.', 'หมายถึงเกมหรือโซนใดครับ กรุณาพิมพ์ชื่อ เพราะรายการที่แสดงมีตัวเลือกหลายระดับ'),
+                    'booking_scope': ('Do you want to return to live availability, the booking process, or the booking page?', 'ต้องการกลับไปเรื่องสถานะเครื่องว่าง วิธีจอง หรือหน้าจองครับ'),
+                }
+                key = request_plan.get('message_key')
+                if request_plan.get('schema_version') == 1 and key in messages:
+                    return self._build_result(messages[key][0 if english else 1], [], started,
+                        'pipeline:dialogue_state_clarification', .99,
+                        PipelineRoute('clarification', 'dialogue_scope', .99, 'clarification', 'low', request_plan.get('reason', 'unresolved dialogue scope')),
+                        EntityBundle(), ValidationResult(ok=True), [*entry_timings,
+                        PipelineTrace('task_memory_resolution', 'clarification', .99, request_plan.get('reason',''),
+                                      {'message_key': key, 'model_calls': 0})])
+            from app.pipeline.control_request import is_booking_button_request
+            navigation = self._booking_navigation_result(question, started, entry_timings)
+            if navigation is not None:
+                return navigation
+            navigation_parts = [q.strip(' ?？') for q in re.split(r'\s*(?:\band\b|และ|แล้ว|[;?？])\s*', question, flags=re.I) if q.strip(' ?？')]
+            if (2 <= len(navigation_parts) <= 3 and any(is_booking_button_request(q) for q in navigation_parts)
+                and all(is_booking_button_request(q) or _looks_like_standalone_question(q) or _english_compound_intent(q) for q in navigation_parts)):
+                return self._answer_multi(question, navigation_parts,
+                    experimental_rag_fallback=env_experimental_rag_fallback_default() if experimental_rag_fallback is None else experimental_rag_fallback,
+                    experimental_allow_llm=env_experimental_llm_default() if experimental_allow_llm is None else experimental_allow_llm,
+                    pipeline_started=started, initial_trace=[*entry_timings,
+                        PipelineTrace('navigation_compound_request', 'preserve_all_operations', .99,
+                            'navigation shortcut applies to its own child, not the whole request', {'parts': navigation_parts})])
+            if request_plan and request_plan.get('schema_type') == 'dialogue_resume_v1':
+                requests=request_plan.get('requests')
+                permitted={('game_controls','control_lookup'),('games','list'),('games','game_detail'),
+                    ('competition_rules','rule_lookup'),('equipment','equipment_lookup'),('schedule','schedule_lookup'),
+                    ('reservation','availability_lookup'),('reservation','booking_policy'),('reservation','booking_navigation'),
+                    ('members','members_lookup'),('contact','contact_lookup')}
+                if (request_plan.get('schema_version')==1 and (request_plan.get('domain'),request_plan.get('operation')) in permitted
+                    and isinstance(requests,list) and 1<=len(requests)<=4
+                    and all(isinstance(q,str) and 0<len(q)<=2000 for q in requests)):
+                    allow_rag=env_experimental_rag_fallback_default() if experimental_rag_fallback is None else experimental_rag_fallback
+                    allow_llm=env_experimental_llm_default() if experimental_allow_llm is None else experimental_allow_llm
+                    return self._answer_multi(question,requests,experimental_rag_fallback=allow_rag,experimental_allow_llm=allow_llm,
+                        pipeline_started=started,initial_trace=[*entry_timings,PipelineTrace('dialogue_resume','reexecute_archived_requests',1.0,
+                        'execute each acknowledged requested task again without replaying its previous answer',{'request_plan':request_plan})])
+                return self._build_result('Please restate the requests you want to return to.' if resolved_locale.effective=='en' else 'กรุณาระบุคำถามที่ต้องการกลับไปดูอีกครั้งครับ',
+                    [],started,'pipeline:dialogue_state_clarification',.99,PipelineRoute('clarification','dialogue_scope',.99,'clarification','low','invalid archived resume plan'),
+                    EntityBundle(),ValidationResult(ok=True),entry_timings)
+            if request_plan and request_plan.get('schema_type') == 'dialogue_selection_v1':
+                requests = request_plan.get('requests', [])
+                targets = request_plan.get('targets', [])
+                errors = request_plan.get('selection_errors', [])
+                if (request_plan.get('schema_version') == 1 and request_plan.get('selection_limit') == 4
+                    and (request_plan.get('domain'), request_plan.get('operation')) in {('game_controls','control_lookup'),('games','list')}
+                    and isinstance(errors, list) and 4 < len(errors) <= 80
+                    and all(isinstance(x, str) and 0 < len(x) <= 160 for x in errors)):
+                    english = resolved_locale.effective == 'en'
+                    text = ('Please select up to 4 items per reply so I can answer every selected item. You can ask for the remaining items in another message.' if english
+                            else 'กรุณาเลือกครั้งละไม่เกิน 4 รายการ เพื่อให้ตอบครบทุกรายการที่เลือกครับ รายการที่เหลือส่งเป็นข้อความถัดไปได้')
+                    return self._build_result(text, [], started, 'pipeline:dialogue_selection_clarification', .99,
+                        PipelineRoute('games', 'game_control_lookup' if request_plan.get('operation') == 'control_lookup' else 'games_lookup',
+                                      .99, 'clarification', 'low', 'bounded executor must not discard excess selections'),
+                        EntityBundle(), ValidationResult(ok=True), [*entry_timings,
+                            PipelineTrace('dialogue_selection','selection_limit', .99, 'technical batch limit, not studio policy',
+                                {'request_plan': request_plan, 'selected_count': len(errors), 'max_targets': 4})])
+                if (request_plan.get('schema_version') == 1 and request_plan.get('domain') == 'games'
+                    and request_plan.get('operation') == 'list' and isinstance(errors, list)
+                    and 1 <= len(errors) <= 4 and all(isinstance(x, str) and len(x) <= 160 for x in errors)):
+                    english = resolved_locale.effective == 'en'
+                    unknown = ', '.join(errors)
+                    text = (f'I could not match these choices to a studio zone: {unknown}. Please specify all the zones you want, such as PC and VR.' if english
+                            else f'ยังระบุโซนที่ตรงกับตัวเลือกเหล่านี้ไม่ได้ครับ: {unknown} กรุณาระบุโซนที่ต้องการทั้งหมดอีกครั้ง เช่น PC กับ VR')
+                    return self._build_result(text, [], started, 'pipeline:games_catalog_selection_clarification', .99,
+                        PipelineRoute('games', 'games_lookup', .99, 'clarification', 'low', 'do not silently discard an unknown selected zone'),
+                        EntityBundle(), ValidationResult(ok=True), [*entry_timings,
+                        PipelineTrace('dialogue_selection', 'unresolved_targets', .99,
+                            'the whole selected scope requires confirmation', {'request_plan': request_plan})])
+                if (request_plan.get('schema_version') == 1
+                    and (request_plan.get('domain'), request_plan.get('operation')) in {('game_controls', 'control_lookup'), ('games', 'list')}
+                    and isinstance(requests, list) and 1 <= len(requests) <= 4
+                    and isinstance(targets, list) and len(requests) == len(targets)
+                    and all(isinstance(q, str) and 0 < len(q) <= 240 for q in requests)):
+                    allow_rag = env_experimental_rag_fallback_default() if experimental_rag_fallback is None else experimental_rag_fallback
+                    allow_llm = env_experimental_llm_default() if experimental_allow_llm is None else experimental_allow_llm
+                    if len(requests) == 1:
+                        return self._answer_single(requests[0], recent_history=recent_history,
+                            experimental_rag_fallback=allow_rag, experimental_allow_llm=allow_llm,
+                            pipeline_started=started, initial_trace=entry_timings)
+                    return self._answer_multi(question, requests,
+                        experimental_rag_fallback=allow_rag, experimental_allow_llm=allow_llm,
+                        pipeline_started=started, initial_trace=[*entry_timings,
+                            PipelineTrace('dialogue_selection', 'selected_targets', .99,
+                                'execute explicit pending selections as bounded independent requests',
+                                {'request_plan': request_plan, 'expected_targets': targets})])
+            from app.pipeline.game_edition_guard import unsupported_numbered_game
+            unsupported_edition = unsupported_numbered_game(question)
+            if unsupported_edition:
+                name = unsupported_edition['requested_title']
+                english = resolved_locale.effective == 'en'
+                text = (f'I do not have verified information for {name} in the recorded studio catalog. Please confirm the game title and edition.' if english
+                        else f'ยังไม่พบข้อมูลยืนยันของ {name} ในรายการเกมของศูนย์ครับ กรุณายืนยันชื่อเกมและภาคที่ต้องการอีกครั้ง')
+                text += ('\nSource: ' if english else '\nแหล่งข้อมูล: ') + 'https://esports.phuket.psu.ac.th/Services/our-games'
+                route = PipelineRoute('games','game_edition_unconfirmed',1.0,'fact','short','explicit game version is absent from recorded aliases')
+                return self._build_result(text, [], started, 'pipeline:game_edition_unconfirmed', 1.0,
+                    route, EntityBundle(), ValidationResult(True,(),('game_edition_unconfirmed',)),
+                    [*entry_timings,PipelineTrace('game_edition_guard','unconfirmed',1.0,'protect explicit numeric edition before alias or fuzzy matching',unsupported_edition)])
+            if is_known_unsupported_game_query(question) and re.search(r'ปุ่ม|ควบคุม|\b(?:buttons?|controls?)\b',question,re.I):
+                english = resolved_locale.effective == 'en'
+                text = ('I could not find verified control information for the game you named in the studio records. Please confirm its exact title and edition.' if english
+                        else 'ยังไม่พบข้อมูลปุ่มควบคุมที่ยืนยันสำหรับเกมที่คุณระบุในฐานข้อมูลของศูนย์ครับ กรุณาตรวจชื่อเต็มและภาคของเกมอีกครั้ง')
+                text += ('\nSource: ' if english else '\nแหล่งข้อมูล: ') + 'https://esports.phuket.psu.ac.th/Services/our-games'
+                route = PipelineRoute('games','game_control_lookup',1.0,'fact','short','named unsupported game has no verified studio controls')
+                return self._build_result(text, [], started, 'pipeline:game_controls_target_unconfirmed', 1.0,
+                    route, EntityBundle(), ValidationResult(True,(),('game_controls_target_unconfirmed',)),
+                    [*entry_timings,PipelineTrace('control_target_guard','unconfirmed',1.0,'acknowledge the supplied title without requesting an absent title',{'query':question})])
+            from app.pipeline.control_request import is_generic_control_request
+            if is_generic_control_request(question):
+                english = resolved_locale.effective == 'en'
+                text = ('Which game do you want controls for? Please provide the game title.' if english
+                        else 'ต้องการดูปุ่มควบคุมของเกมใดครับ? พิมพ์ชื่อเกมที่ต้องการได้เลยครับ')
+                route = PipelineRoute('games', 'game_control_lookup', .99, 'clarification', 'low',
+                                      'generic control request has no supplied game target')
+                return self._build_result(text, [], started,
+                    'pipeline:game_control_missing_game_context' + ('_en' if english else ''), .99,
+                    route, EntityBundle(), ValidationResult(ok=True),
+                    [*entry_timings, PipelineTrace('closed_control_request', 'missing_game', .99,
+                        'ask the necessary game slot before intent/semantic model calls',
+                        {'operation': 'control_lookup', 'missing_slots': ['game'], 'model_calls': 0})])
             experimental_rag_fallback = env_experimental_rag_fallback_default() if experimental_rag_fallback is None else experimental_rag_fallback
             experimental_allow_llm = env_experimental_llm_default() if experimental_allow_llm is None else experimental_allow_llm
             cue_started = time.perf_counter()
             cue_preflight, cue_recoveries = recover_intent_cue_sequence(question)
             entry_timings.append(_timing_trace("intent_cue_preflight", cue_started, metadata=deadline_metadata()))
+            from app.session.conversation_plan import resolve_request_plan
+            from app.pipeline.conversation_fee import build_price_plan_answer
+            from app.pipeline.dialogue_choice import review_pending_choice
+            from app.pipeline.service_query_completion import split_service_operations
+            source_parts = split_service_operations(cue_preflight)
+            if len(source_parts) > 1:
+                return self._answer_multi(question, source_parts,
+                    experimental_rag_fallback=experimental_rag_fallback,
+                    experimental_allow_llm=experimental_allow_llm,pipeline_started=started,
+                    initial_trace=[*entry_timings,PipelineTrace('source_clause_split','preserve_operations',1.0,
+                        'explicit clause subjects and time filters',{'parts':source_parts})])
+            from app.pipeline.service_query_completion import answer_budget
+            budget_result = answer_budget(cue_preflight,resolved_locale.effective)
+            if budget_result:
+                return self._build_result(budget_result['answer'],budget_result['hits'],started,
+                    budget_result['mode'],.98,budget_result['route'],EntityBundle(),budget_result['validation'],
+                    [*entry_timings,*budget_result['trace']])
+            typed_plan = request_plan or resolve_request_plan(cue_preflight, recent_history, locale=resolved_locale.effective)
+            if typed_plan is not None:
+                typed_plan, choice_trace = review_pending_choice(typed_plan, resolved_locale.effective, bool(experimental_allow_llm))
+                fee_result = build_price_plan_answer(typed_plan, resolved_locale.effective)
+                if fee_result is not None:
+                    contract = fee_result['metadata']
+                    trace = [*entry_timings, PipelineTrace('conversation_request', typed_plan['act'], 1.0,
+                             'typed slots preserve user filters; assistant options are not selections',
+                             {'request_plan': typed_plan, 'outcome': contract.get('outcome')}),
+                             *([choice_trace] if choice_trace else []), *fee_result['trace']]
+                    if not any(t.stage == 'conversation_contract' for t in trace):
+                        trace.append(PipelineTrace('conversation_contract', contract['outcome'], 1.0, 'targeted dialogue clarification', contract))
+                    return self._build_result(fee_result['answer'], fee_result['hits'], started,
+                        fee_result['mode'], .98, fee_result['route'], fee_result['entities'], fee_result['validation'], trace)
             canonical_started = time.perf_counter()
             if cue_preflight == question and resolved_locale.effective == "th" and os.getenv("PSU_CANONICAL_KNOWLEDGE", "0").lower() in {"1", "true", "on"}:
                 from app.knowledge.answer import try_canonical_answer
@@ -1033,6 +1237,11 @@ class AnswerQualityPipeline:
             previous_results: list[PipelineAnswer] = []
             for index, part in enumerate(parts, 1):
                 if self._deadline_is_exceeded(trace, f"before_multi_child_{index}"):
+                    from app.pipeline.task_contract import compound_contract
+                    coverage = compound_contract(display_parts, results)
+                    coverage.update(outcome='unavailable', output_withheld=True)
+                    trace.append(PipelineTrace('task_answer_contract', 'unavailable', 1.0,
+                        'timeout withholds the answer; preserve executed and pending child evidence', coverage))
                     return self._timeout_result(
                         started=started,
                         trace=trace,
@@ -1085,7 +1294,19 @@ class AnswerQualityPipeline:
                     "child_llm_policy": "disabled_after_complex_planner_attempt" if compound_plan.profile.requires_planner else "inherited",
                 },
             ))
+        evidence_stages = {'conversation_contract','source_operation','user_service_facts','competition_overview','rulebook_coverage'}
+        trace.append(PipelineTrace('compound_source_evidence','child_source_bindings',1.0,
+            'preserve recorded assertions per child; execution coverage is not accuracy',
+            {'children': [{'question': part, 'mode': result.mode,
+                'source_traces': [{'stage': t.stage, 'decision': t.decision, 'metadata': t.metadata}
+                    for t in result.trace if t.stage in evidence_stages]}
+                for part, result in zip(display_parts, results)]}))
         if self._deadline_is_exceeded(trace, "after_multi_children"):
+            from app.pipeline.task_contract import compound_contract
+            coverage = compound_contract(display_parts, results)
+            coverage.update(outcome='unavailable', output_withheld=True)
+            trace.append(PipelineTrace('task_answer_contract', 'unavailable', 1.0,
+                'timeout withholds the answer; preserve child execution evidence', coverage))
             return self._timeout_result(
                 started=started,
                 trace=trace,
@@ -1154,6 +1375,10 @@ class AnswerQualityPipeline:
                 },
             ))
 
+        from app.pipeline.task_contract import compound_contract
+        contract = compound_contract(display_parts, results)
+        trace.append(PipelineTrace('task_answer_contract', contract['outcome'], 1.0,
+            'record each requested child execution separately from factual correctness', contract))
         return self._build_result(
             "\n\n".join(answer_blocks),
             hits,
@@ -1286,6 +1511,47 @@ class AnswerQualityPipeline:
             trace,
         )
 
+    def _booking_navigation_result(self, question, started, trace):
+        from app.pipeline.control_request import is_booking_button_request
+        if not is_booking_button_request(question):
+            return None
+        from app.pipeline.protected_intents import RESERVATION_URL
+        locale = current_locale_decision()
+        english = locale is not None and locale.effective == 'en'
+        text = ('Open the studio booking page using the link below. I cannot confirm the current button position on that page.' if english
+                else 'เปิดหน้าจองของศูนย์ได้จากลิงก์ด้านล่างครับ ยังไม่มีข้อมูลยืนยันตำแหน่งปุ่มในหน้าเว็บฉบับปัจจุบัน')
+        text += ('\nBooking page: ' if english else '\nหน้าจอง: ') + RESERVATION_URL
+        return self._build_result(text, [_hit_for_url('reservation_navigation','reservation',RESERVATION_URL)],
+            started, 'pipeline:booking_navigation', .99,
+            PipelineRoute('reservation','booking_navigation',.99,'fact','low','booking interface request must not become game controls'),
+            EntityBundle(), ValidationResult(ok=True), [*trace,
+                PipelineTrace('booking_navigation','source_link_only',.99,'use the recorded booking URL without inventing current button placement')])
+
+    def _named_game_guard(self, question, started, trace):
+        from app.pipeline.game_edition_guard import unsupported_numbered_game
+        edition = unsupported_numbered_game(question)
+        unknown_controls = (is_known_unsupported_game_query(question)
+                            and re.search(r'ปุ่ม|ควบคุม|\b(?:buttons?|controls?)\b', question, re.I))
+        if not edition and not unknown_controls:
+            return None
+        locale = current_locale_decision()
+        english = locale is not None and locale.effective == 'en'
+        if edition:
+            name = edition['requested_title']
+            text = (f'I do not have verified information for {name} in the recorded studio catalog. Please confirm the game title and edition.' if english
+                    else f'ยังไม่พบข้อมูลยืนยันของ {name} ในรายการเกมของศูนย์ครับ กรุณายืนยันชื่อเกมและภาคที่ต้องการอีกครั้ง')
+            mode, intent, metadata = 'pipeline:game_edition_unconfirmed', 'game_edition_unconfirmed', edition
+        else:
+            text = ('I do not have verified control information for the game you named in the studio records. Please confirm its exact title and edition.' if english
+                    else 'ยังไม่พบข้อมูลปุ่มควบคุมที่ยืนยันสำหรับเกมที่คุณระบุในฐานข้อมูลของศูนย์ครับ กรุณาตรวจชื่อเต็มและภาคของเกมอีกครั้ง')
+            mode, intent, metadata = 'pipeline:game_controls_target_unconfirmed', 'game_control_lookup', {'query': question}
+        text += ('\nSource: ' if english else '\nแหล่งข้อมูล: ') + 'https://esports.phuket.psu.ac.th/Services/our-games'
+        return self._build_result(text, [], started, mode, .99,
+            PipelineRoute('games', intent, .99, 'no_answer', 'low', 'named game has no verified matching studio source'),
+            EntityBundle(), ValidationResult(ok=True, warnings=(mode.removeprefix('pipeline:'),)),
+            [*trace, PipelineTrace('named_game_guard', 'unconfirmed', .99,
+                'protect the supplied target in each compound child', metadata)])
+
     def _answer_single(
         self,
         question: str,
@@ -1301,6 +1567,27 @@ class AnswerQualityPipeline:
         trace: list[PipelineTrace] = ObservedTraceList(initial_trace or [])
         rag_llm_attempted = False
         rag_source_conflict = False
+
+        # Closed source operations also run for compound children. Resolve
+        # owner facts before semantic scoring can consume their deadline.
+        from app.pipeline.user_service_facts import answer_user_service_facts
+        from app.pipeline.service_query_completion import answer_explicit_source_operation
+        locale = current_locale_decision()
+        locale_value = locale.effective if locale is not None else 'th'
+        bounded = answer_user_service_facts(question,locale_value,recent_history=recent_history)
+        if bounded is None:
+            bounded = answer_explicit_source_operation(question,locale_value,self.matcher)
+        if bounded is not None:
+            return self._build_result(bounded['answer'],bounded['hits'],started,
+                bounded['mode'],.98,bounded['route'],EntityBundle(),bounded['validation'],[*trace,*bounded.get('trace',[])])
+        # Compound requests execute children directly here, so each child must
+        # retain the same edition/unknown-target guards as a single request.
+        navigation = self._booking_navigation_result(question, started, trace)
+        if navigation is not None:
+            return navigation
+        guarded = self._named_game_guard(question, started, trace)
+        if guarded is not None:
+            return guarded
 
         preprocess_started = time.perf_counter()
         main_question = strip_nonsemantic_preface(question)
@@ -1373,6 +1660,12 @@ class AnswerQualityPipeline:
             )
 
         locale = current_locale_decision()
+        from app.pipeline.user_service_facts import answer_user_service_facts
+        user_facts = answer_user_service_facts(main_question, locale.effective if locale is not None else 'th',recent_history=recent_history)
+        if user_facts is not None:
+            return self._build_result(user_facts['answer'], user_facts['hits'], started,
+                user_facts['mode'], .98, user_facts['route'], entities, user_facts['validation'],
+                [*trace, *user_facts['trace']])
         if locale is None or locale.effective == "th":
             # Keep the original operation here: preprocessing may have
             # proposed ของ -> จอง before the clarification guard runs.
@@ -1564,6 +1857,13 @@ class AnswerQualityPipeline:
                     return self._build_result(improved.answer, improved.hits, started, improved_mode,
                         improved.confidence, improved_route, entities, improved_validation, trace)
         if competition_signal and competition_target.status == "exact":
+            from app.pipeline.conversation_rules import build_full_rule_answer
+            full = build_full_rule_answer(pre.clean_query, locale.effective if locale else 'th', recent_history=recent_history)
+            if full:
+                trace.extend(full['trace'])
+                return self._build_result(full['answer'], full['hits'], started, full['mode'], .98,
+                                          full['route'], entities, full['validation'], trace)
+        if competition_signal and competition_target.status == "exact":
             from app.pipeline.competition_source_gaps import lookup_competition_reply
             from app.pipeline.retrieval import hit_from_curated
             detail_started = time.perf_counter()
@@ -1604,13 +1904,13 @@ class AnswerQualityPipeline:
             english_initial_result = english_result
             english_direct_general = (
                 english_result is not None
-                and english_result.mode == "pipeline:english_no_answer"
+                and english_result.mode in {"pipeline:english_no_answer", "pipeline:english_clarification"}
                 and experimental_allow_llm
                 and looks_like_clear_general_request(pre.clean_query)
             )
             no_answer_recovery = (
                 english_result is not None
-                and english_result.mode == "pipeline:english_no_answer"
+                and (english_result.mode == "pipeline:english_no_answer" or english_direct_general)
                 and (
                     english_no_answer_needs_domain_recovery(pre.clean_query)
                     or english_direct_general
@@ -2757,7 +3057,7 @@ class AnswerQualityPipeline:
                 route=route,
                 entities=entities,
             )
-        if not bool(selection.get("execution_allowed", True)) and question_frame.operation == "unknown":
+        if not bool(selection.get("execution_allowed", True)) and question_frame.operation == "unknown" and not (route.category == "general" and route.risk == "low" and looks_like_clear_general_request(pre.clean_query)):
             clarify_route = PipelineRoute(
                 "clarification",
                 "candidate_margin_clarification",
@@ -4210,6 +4510,14 @@ class AnswerQualityPipeline:
         build_started = time.perf_counter()
         locale = current_locale_decision() or resolve_locale("", requested="th")
         final_validation_started = time.perf_counter()
+        # Editorial cleanup of one identified mixed-language source sentence.
+        # Preserve raw source and its unresolved physical-control verification.
+        contamination='ขยับทิศทางของตัวละคร بشكلทั่วไป'
+        if 'control' in mode and contamination in answer:
+            answer=answer.replace(contamination,'ขยับทิศทางของตัวละครทั่วไป')
+            trace.append(PipelineTrace('display_editorial_correction','mixed_language_removed',1.0,
+                'Thai rendering cleanup; original source unchanged; mapping not verified',
+                {'source_row_id':'game_control_ps5_tekken_8_08_move','original_fragment':contamination,'physical_mapping_verified':False}))
         source_validation = validate_answer("", answer, route, entities, hits=hits, mode=mode)
         language_errors: tuple[str, ...] = ()
         original_thai_member_directory = bool(
@@ -4272,6 +4580,12 @@ class AnswerQualityPipeline:
                     "errors": rejected_errors,
                 },
             ))
+            for item in trace:
+                if item.stage in {'conversation_contract', 'competition_full_coverage', 'task_answer_contract'}:
+                    item.metadata['outcome'] = 'schema_rejected'
+                    item.metadata['rejected_errors'] = rejected_errors
+                    item.metadata['returned_ids'] = []
+                    item.metadata['covered_ids'] = []
             answer = format_no_answer(route.category, locale.effective)
             hits = []
             mode = "pipeline:answer_contract_no_answer"
@@ -4292,6 +4606,11 @@ class AnswerQualityPipeline:
                     *final_validation.warnings,
                 ))),
             )
+        if not any(item.stage == 'task_answer_contract' for item in trace):
+            from app.pipeline.task_contract import single_contract
+            contract = single_contract(mode, route, validation, hits, trace)
+            trace.append(PipelineTrace('task_answer_contract', contract['outcome'], 1.0,
+                'execution coverage does not certify source facts or semantic accuracy', contract))
         universal_intent = AnswerQualityPipeline._universal_intent_from_trace(trace)
         decision_artifact = build_decision_artifact(
             mode=mode,
@@ -4303,6 +4622,8 @@ class AnswerQualityPipeline:
             hits=hits,
             universal_intent=universal_intent,
         )
+        decision_artifact['task_answer_contract'] = next(
+            item.metadata for item in reversed(trace) if item.stage == 'task_answer_contract')
         style_started = time.perf_counter()
         styled_answer = format_response_style(answer, locale.effective)
         style_elapsed = time.perf_counter() - style_started
@@ -4386,6 +4707,7 @@ def answer_question_pipeline_debug(
     locale_decision: LocaleDecision | dict | None = None,
     recent_history=None,
     keyboard_layout_direction: str | None = None,
+    request_plan: dict | None = None,
 ) -> PipelineAnswer:
     return get_pipeline().answer(
         question,
@@ -4396,6 +4718,7 @@ def answer_question_pipeline_debug(
         locale_decision=locale_decision,
         recent_history=recent_history,
         keyboard_layout_direction=keyboard_layout_direction,
+        request_plan=request_plan,
     )
 
 

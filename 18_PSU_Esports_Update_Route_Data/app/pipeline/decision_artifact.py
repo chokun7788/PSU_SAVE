@@ -170,6 +170,17 @@ def build_decision_artifact(
     selection = candidates_trace.metadata.get("selection", {}) if candidates_trace is not None else {}
     selection = selection if isinstance(selection, dict) else {}
     outcome = _outcome_for_mode(mode)
+    conversation = _trace_by_stage(trace, 'conversation_contract')
+    contract = conversation.metadata if conversation is not None else {}
+    semantic_outcome = contract.get('outcome')
+    if semantic_outcome == 'clarification_required':
+        outcome = 'clarification'
+    elif semantic_outcome in {'answered_complete', 'answered_partial'}:
+        outcome = 'answered'
+    typed_request = _trace_by_stage(trace, 'conversation_request')
+    if typed_request is not None and selected_candidate is None:
+        selected_candidate = {'capability_id': executed_capability, 'score': None,
+                              'reason': 'explicit typed dialogue contract; no candidate scoring required'}
     repair_attempted = bool(repair_traces)
     selected_matches_execution = (
         isinstance(selected_candidate, dict)
@@ -239,6 +250,9 @@ def build_decision_artifact(
         "production_metrics": {
             "policy_version": "correctness_control_flow_v2",
             "outcome": outcome,
+            "semantic_outcome": semantic_outcome,
+            "temporal_validity": contract.get('temporal_validity'),
+            "adequacy_status": 'complete_for_recorded_scope' if semantic_outcome == 'answered_complete' else semantic_outcome,
             "quality_gate_status": quality_gate_status,
             "candidate_margin": selection.get("margin"),
             "selection_status": selection.get("status", ""),
@@ -262,4 +276,6 @@ def build_decision_artifact(
         "candidate_execution": [item for item in candidate_execution if item is not None],
         "validation": _trace_dict(validation_trace),
         "llm_calls": llm_calls,
+        "conversation_contract": contract,
+        "score_semantics": 'heuristic ranking / routing confidence, not a calibrated correctness probability',
     }

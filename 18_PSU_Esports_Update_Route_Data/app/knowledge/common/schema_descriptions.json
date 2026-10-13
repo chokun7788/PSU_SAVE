@@ -1,0 +1,1786 @@
+{
+  "version": 4,
+  "purpose": "Developer schema semantics, not owner facts, not customer-question aliases",
+  "fields": {
+    "accessibility": {
+      "description_en": "Access provisions and assistance for people with disabilities or wheelchair users."
+    },
+    "account_policy_id": {
+      "description_en": "Venue policy governing player accounts."
+    },
+    "address": {
+      "description_en": "Full postal or street address."
+    },
+    "age_rating": {
+      "description_en": "Published game age classification, distinct from the venue admission policy."
+    },
+    "amount_minor": {
+      "description_en": "Price or fee in minor currency units; zero means confirmed free use."
+    },
+    "answer": {
+      "description_en": "Confirmed response to this FAQ.",
+      "intent_terms": [
+        "ตอบ",
+        "response",
+        "reply"
+      ]
+    },
+    "audience_id": {
+      "description_en": "Visitor group or organization to which this price or package applies."
+    },
+    "audience_ids": {
+      "description_en": "Visitor groups eligible for the event."
+    },
+    "bindings": {
+      "description_en": "Which buttons or inputs trigger each action, how to press them and the gameplay context.",
+      "description_th": "การควบคุม คำสั่งแต่ละอย่างกับปุ่มที่ต้องกดและวิธีกด"
+    },
+    "body": {
+      "description_en": "Information or message announced in this news item.",
+      "description_th": "เนื้อหาข่าวหรือประกาศ ว่าแจ้งรายละเอียดเรื่องใด"
+    },
+    "bookable_periods": {
+      "description_en": "Periods when a play slot can be reserved or played."
+    },
+    "booking_product_key": {
+      "description_en": "Verified product identifier used by the reservation API."
+    },
+    "building": {
+      "description_en": "Building or tower where the center is located."
+    },
+    "calculation_rule": {
+      "description_en": "Approved arithmetic rule, such as proportional or fixed pricing; do not invent multipliers."
+    },
+    "capacity_max": {
+      "description_en": "Largest group allowed in this service."
+    },
+    "capacity_min": {
+      "description_en": "Fewest participants required for this service."
+    },
+    "capacity_persons": {
+      "description_en": "Maximum simultaneous users on this physical station; not room seating."
+    },
+    "channel": {
+      "description_en": "Communication channel type, such as phone, email, website or on-site desk."
+    },
+    "competition_dates": {
+      "description_en": "Dates when this competition is held.",
+      "description_th": "วันและวันที่จัดการแข่งขัน"
+    },
+    "competition_id": {
+      "description_en": "Tournament rulebook to which this clause belongs."
+    },
+    "completeness": {
+      "description_en": "Whether this individual rule clause has been checked as complete."
+    },
+    "conditions_all": {
+      "description_en": "Conditions that must all be satisfied."
+    },
+    "consequence": {
+      "description_en": "Confirmed penalty or consequence of breaking the policy.",
+      "intent_terms": [
+        "ฝ่าฝืน",
+        "ผิดกฎ",
+        "violation"
+      ]
+    },
+    "contact_id": {
+      "description_en": "Contact channel for the announced activity."
+    },
+    "coverage": {
+      "description_en": "Whether the full rulebook documentation is complete."
+    },
+    "currency": {
+      "description_en": "Currency of the price."
+    },
+    "deadline_minutes": {
+      "description_en": "Confirmed deadline, in minutes."
+    },
+    "decision": {
+      "description_en": "Whether the behavior is permitted, forbidden, required or conditional."
+    },
+    "depends_on_ids": {
+      "description_en": "Related rule clauses and exceptions that must be read together."
+    },
+    "description": {
+      "description_en": "Purpose and scope of this venue or zone."
+    },
+    "details": {
+      "description_en": "Full policy wording with its conditions."
+    },
+    "device_type": {
+      "description_en": "Category of hardware, such as computer, console, VR headset or racing wheel."
+    },
+    "display_name": {
+      "description_en": "Name of the person approved for public display."
+    },
+    "division": {
+      "description_en": "Competition division or team category."
+    },
+    "duration_minutes": {
+      "description_en": "Confirmed duration covered by this price or rental package, in minutes."
+    },
+    "edition": {
+      "description_en": "Exact game edition or installment."
+    },
+    "eligibility": {
+      "description_en": "Who qualifies to belong to this visitor or pricing group.",
+      "description_th": "คุณสมบัติและบุคคลที่มีสิทธิ์อยู่ในกลุ่มนี้ ไม่ใช่เอกสารที่ใช้พิสูจน์สิทธิ์"
+    },
+    "equipment_included": {
+      "description_en": "Equipment or kit and quantities included in the rental package.",
+      "intent_groups": [
+        [
+          "kit",
+          "equipment",
+          "อุปกรณ์"
+        ],
+        [
+          "covered",
+          "included",
+          "รวม",
+          "ครอบคลุม"
+        ]
+      ]
+    },
+    "equipment_model_ids": {
+      "description_en": "Hardware models making up this resource."
+    },
+    "event_end": {
+      "description_en": "Date and time when the announced event finishes."
+    },
+    "event_name": {
+      "description_en": "Name and year of the competition."
+    },
+    "event_start": {
+      "description_en": "Date and time when the announced event begins."
+    },
+    "exceptions": {
+      "description_en": "Exceptions to the restriction or requirements."
+    },
+    "external_resource_key": {
+      "description_en": "Verified resource identifier used by the provider API."
+    },
+    "facet": {
+      "description_en": "Category of the competition rule."
+    },
+    "floor": {
+      "description_en": "Floor number inside the building."
+    },
+    "freshness_policy": {
+      "description_en": "Approved age limit, cache lifetime or expiry rule for live data.",
+      "description_th": "ระยะเวลาที่ข้อมูลสดยังใช้ยืนยันได้ อายุข้อมูล การหมดอายุ และเวลาแคช"
+    },
+    "game_id": {
+      "description_en": "Game to which this installation, mode, control scheme or tournament belongs."
+    },
+    "game_version": {
+      "description_en": "Installed game version or build.",
+      "description_th": "รุ่นหรือเวอร์ชันของเกมที่ติดตั้ง"
+    },
+    "genre": {
+      "description_en": "Game genre or type."
+    },
+    "heading": {
+      "description_en": "Heading of the rule clause."
+    },
+    "how_to_play": {
+      "description_en": "Game objective and basic actions or gameplay loop; how a beginner starts and progresses. Not a full walkthrough or guaranteed winning strategy.",
+      "description_th": "เป้าหมายของเกม วิธีเริ่มเล่น สิ่งที่ต้องทำระหว่างเล่นและลำดับการเล่นโดยสรุป ไม่ใช่วิธีชนะทุกด่าน"
+    },
+    "input_device": {
+      "description_en": "Type of controller or input device."
+    },
+    "installed_resource_ids": {
+      "description_en": "Specific physical stations on which this game is confirmed installed."
+    },
+    "limitations": {
+      "description_en": "Known limitations of this control scheme or unconfirmed actions."
+    },
+    "local_date": {
+      "description_en": "Calendar date affected, in the local time zone."
+    },
+    "location": {
+      "description_en": "Position of this zone or amenity inside the venue."
+    },
+    "maintenance_periods": {
+      "description_en": "Maintenance periods during which booking is blocked."
+    },
+    "map_url": {
+      "description_en": "Link to a map showing the location."
+    },
+    "mode_name": {
+      "description_en": "Name of the local or online game mode."
+    },
+    "name": {
+      "description_en": "Official name of this record."
+    },
+    "network_requirement": {
+      "description_en": "Internet, network or account requirements of this mode."
+    },
+    "occupancy_minutes": {
+      "description_en": "Time the physical device is reserved or blocked by a booking, in minutes; may exceed actual play time.",
+      "description_th": "ระยะเวลาที่ระบบจองกันหรือล็อกเครื่องเอาไว้ เป็นนาที อาจไม่เท่ากับเวลาเล่นจริง"
+    },
+    "offered": {
+      "description_en": "Whether this game is actually offered through the specified venue service.",
+      "description_th": "ศูนย์มีเกมนี้ให้เล่นในบริการที่เลือกหรือยัง และยืนยันว่ามีหรือไม่มี"
+    },
+    "office_hours": {
+      "description_en": "Hours during which staff respond through this contact channel.",
+      "intent_groups": [
+        [
+          "เวลา",
+          "ช่วง",
+          "กี่โมง",
+          "hours",
+          "when"
+        ],
+        [
+          "ติดต่อ",
+          "ตอบ",
+          "ช่วยเหลือ",
+          "contact",
+          "support",
+          "reply",
+          "respond"
+        ]
+      ]
+    },
+    "open_periods": {
+      "description_en": "Periods when visitors may enter the venue."
+    },
+    "operational_status": {
+      "description_en": "Whether the equipment is physically in service, out of service or retired; not a live booking status."
+    },
+    "operator": {
+      "description_en": "Organization that owns or operates the center."
+    },
+    "outcome": {
+      "description_en": "Confirmed outcome of following this procedure."
+    },
+    "period_label": {
+      "description_en": "Package label such as half day or full day; does not itself confirm a duration."
+    },
+    "persons_max": {
+      "description_en": "Maximum group size covered by this price."
+    },
+    "persons_min": {
+      "description_en": "Minimum group size covered by this price."
+    },
+    "physical_pool_key": {
+      "description_en": "Identifier of the shared physical resource pool used by overlapping booking products."
+    },
+    "platform": {
+      "description_en": "Device platform for this service, mode or control scheme."
+    },
+    "players_max": {
+      "description_en": "Largest number of players supported by this game mode; not service or room capacity."
+    },
+    "players_min": {
+      "description_en": "Smallest number of players required for this game mode."
+    },
+    "preconditions": {
+      "description_en": "Situations to which the procedure applies."
+    },
+    "preset": {
+      "description_en": "Name of the control layout or profile."
+    },
+    "procedure_id": {
+      "description_en": "Procedure associated with this policy."
+    },
+    "provider": {
+      "description_en": "External system supplying live status."
+    },
+    "public_contact_id": {
+      "description_en": "Public work contact for the person."
+    },
+    "public_scope": {
+      "description_en": "Information about the person approved for public release; never customer private data."
+    },
+    "publisher_url": {
+      "description_en": "Official developer or publisher source."
+    },
+    "purpose": {
+      "description_en": "Issues that this support channel can help with."
+    },
+    "question": {
+      "description_en": "Question associated with this FAQ record."
+    },
+    "reason": {
+      "description_en": "Reason for the announced hours or closure.",
+      "intent_terms": [
+        "เพราะ",
+        "เหตุผล",
+        "why"
+      ]
+    },
+    "registration_url": {
+      "description_en": "Event registration link."
+    },
+    "related_ids": {
+      "description_en": "Other catalog records related to this FAQ."
+    },
+    "required_documents": {
+      "description_en": "Paperwork or evidence to prepare for this process."
+    },
+    "required_proofs": {
+      "description_en": "Evidence, identity cards or documents a visitor must present to prove membership or eligibility.",
+      "description_th": "เอกสารหรือสิ่งที่ต้องยื่นแสดงเพื่อพิสูจน์ว่ามีสิทธิ์ในกลุ่มผู้ใช้นี้",
+      "intent_terms": [
+        "เอาอะไรมาแสดง",
+        "แสดงสิทธิ์",
+        "ยืนยันสิทธิ์"
+      ]
+    },
+    "resolution_policy_id": {
+      "description_en": "Policy for handling reservations affected by a closure."
+    },
+    "resource_ids": {
+      "description_en": "Physical stations used by this bookable service."
+    },
+    "role": {
+      "description_en": "What this person is responsible for, including duties and position.",
+      "description_th": "หน้าที่ ความรับผิดชอบ และสิ่งที่บุคคลนี้ดูแล",
+      "intent_terms": [
+        "รับผิดชอบ",
+        "ดูแลเรื่อง",
+        "responsible for"
+      ]
+    },
+    "room_seats": {
+      "description_en": "Total visitor seats in this area; not the number of people playing on a single device."
+    },
+    "rulebook_release": {
+      "description_en": "Edition or version of the rulebook governing this tournament.",
+      "description_th": "ฉบับ รุ่น หรือเวอร์ชันของกฎการแข่งขันที่รายการนี้ใช้อ้างอิง"
+    },
+    "scope_note": {
+      "description_en": "Situations to which this answer applies and its limitations."
+    },
+    "section_number": {
+      "description_en": "Original clause number."
+    },
+    "service_id": {
+      "description_en": "Bookable service to which this installation, price or live binding belongs."
+    },
+    "session_minutes": {
+      "description_en": "Actual playing time provided by one service session, in minutes.",
+      "description_th": "ระยะเวลาเล่นจริงที่ผู้ใช้ได้รับจากหนึ่งรอบบริการ เป็นนาที"
+    },
+    "specifications": {
+      "description_en": "Hardware features, components, sizes, models and their units.",
+      "intent_terms": [
+        "คุณสมบัติ",
+        "ฮาร์ดแวร์"
+      ]
+    },
+    "state": {
+      "description_en": "Closure or opening exception status: closed, modified hours or special opening override.",
+      "description_th": "สถานะเปิดหรือปิด หรือปรับเวลาพิเศษของวันที่ประกาศ",
+      "intent_terms": [
+        "เปิด",
+        "ปิด",
+        "หยุดบริการ",
+        "closure"
+      ]
+    },
+    "status_mapping": {
+      "description_en": "Meaning or translation of the provider status codes.",
+      "description_th": "ความหมายของรหัสสถานะจากระบบ หรือการแปลรหัสเหล่านั้นให้เป็นสถานะที่เข้าใจได้"
+    },
+    "steps": {
+      "description_en": "Ordered actions to carry out the process and get help."
+    },
+    "studio_supported": {
+      "description_en": "Whether the venue actually supports this mode."
+    },
+    "subject": {
+      "description_en": "Object or behavior governed by this policy."
+    },
+    "summary": {
+      "description_en": "What the game is about: theme or premise."
+    },
+    "supersedes_id": {
+      "description_en": "Earlier revision replaced by this record."
+    },
+    "supported_platforms": {
+      "description_en": "Platforms the game supports in general; not proof that the venue offers it."
+    },
+    "tax_note": {
+      "description_en": "Tax treatment and related price conditions."
+    },
+    "team": {
+      "description_en": "Team or organization to which the person belongs."
+    },
+    "terms": {
+      "description_en": "Other confirmed package conditions or extra charges."
+    },
+    "text": {
+      "description_en": "Entire wording of this rule clause, including qualifying conditions; not rulebook metadata."
+    },
+    "timezone": {
+      "description_en": "Time zone used to interpret dates and times."
+    },
+    "title": {
+      "description_en": "Official title of a game or announcement."
+    },
+    "topic": {
+      "description_en": "Semantic subject of this policy, procedure or FAQ."
+    },
+    "unit": {
+      "description_en": "Charging unit: what one quoted price pays for, such as a session, hour or person."
+    },
+    "usage": {
+      "description_en": "Instructions for operating this physical equipment."
+    },
+    "usage_conditions": {
+      "description_en": "Conditions that must be met to use this amenity."
+    },
+    "value": {
+      "description_en": "Actual contact address, phone number or URL used to reach help.",
+      "intent_terms": [
+        "reach help",
+        "ช่องทางช่วยเหลือ"
+      ]
+    },
+    "weekday": {
+      "description_en": "Day of the week in the catalog encoding."
+    },
+    "zone_id": {
+      "description_en": "Zone containing this physical resource."
+    },
+    "zone_ids": {
+      "description_en": "Zones covered by this package, schedule or closure."
+    }
+  },
+  "kinds": {
+    "center": {
+      "name": {
+        "description_en": "Official name of this record.",
+        "description_th": "ชื่อศูนย์อย่างเป็นทางการ",
+        "ask_examples": {
+          "th": "ขอ ชื่อศูนย์อย่างเป็นทางการ",
+          "en": "Tell me Official name of this record."
+        }
+      },
+      "operator": {
+        "description_en": "Organization that owns or operates the center.",
+        "description_th": "หน่วยงานเจ้าของ/ผู้ดำเนินการ",
+        "ask_examples": {
+          "th": "ขอ หน่วยงานเจ้าของ/ผู้ดำเนินการ",
+          "en": "Tell me Organization that owns or operates the center."
+        }
+      },
+      "description": {
+        "description_en": "Purpose and scope of this venue or zone.",
+        "description_th": "ศูนย์ทำอะไร/ขอบเขตบริการ",
+        "ask_examples": {
+          "th": "ขอ ศูนย์ทำอะไร/ขอบเขตบริการ",
+          "en": "Tell me Purpose and scope of this venue or zone."
+        }
+      },
+      "address": {
+        "description_en": "Full postal or street address.",
+        "description_th": "ที่อยู่เต็ม",
+        "ask_examples": {
+          "th": "ขอ ที่อยู่เต็ม",
+          "en": "Tell me Full postal or street address."
+        }
+      },
+      "building": {
+        "description_en": "Building or tower where the center is located.",
+        "description_th": "อาคาร",
+        "ask_examples": {
+          "th": "ขอ อาคาร",
+          "en": "Tell me Building or tower where the center is located."
+        }
+      },
+      "floor": {
+        "description_en": "Floor number inside the building.",
+        "description_th": "ชั้น",
+        "ask_examples": {
+          "th": "ขอ ชั้น",
+          "en": "Tell me Floor number inside the building."
+        }
+      },
+      "map_url": {
+        "description_en": "Link to a map showing the location.",
+        "description_th": "ลิงก์แผนที่",
+        "ask_examples": {
+          "th": "ขอ ลิงก์แผนที่",
+          "en": "Tell me Link to a map showing the location."
+        }
+      },
+      "timezone": {
+        "description_en": "Time zone used to interpret dates and times.",
+        "description_th": "เขตเวลา",
+        "ask_examples": {
+          "th": "ขอ เขตเวลา",
+          "en": "Tell me Time zone used to interpret dates and times."
+        }
+      }
+    },
+    "contact": {
+      "channel": {
+        "description_en": "Communication channel type, such as phone, email, website or on-site desk.",
+        "description_th": "ประเภทช่องทาง",
+        "ask_examples": {
+          "th": "ขอ ประเภทช่องทาง",
+          "en": "Tell me Communication channel type, such as phone, email, website or on-site desk."
+        }
+      },
+      "value": {
+        "description_en": "Actual contact address, phone number or URL used to reach help.",
+        "description_th": "URL/อีเมล/เบอร์โทร แยกเป็นช่อง ไม่อยู่ในข้อความลอย",
+        "ask_examples": {
+          "th": "ขอ URL/อีเมล/เบอร์โทร แยกเป็นช่อง ไม่อยู่ในข้อความลอย",
+          "en": "Tell me Actual contact address, phone number or URL used to reach help."
+        }
+      },
+      "purpose": {
+        "description_en": "Which issues this contact can help with; not its URL, phone number or response hours.",
+        "description_th": "ติดต่อเรื่องอะไรได้บ้าง",
+        "ask_examples": {
+          "th": "ขอ ติดต่อเรื่องอะไรได้บ้าง",
+          "en": "Tell me Issues that this support channel can help with."
+        }
+      },
+      "office_hours": {
+        "description_en": "Hours during which staff respond through this contact channel.",
+        "intent_groups": [
+          [
+            "เวลา",
+            "ช่วง",
+            "กี่โมง",
+            "hours",
+            "when"
+          ],
+          [
+            "ติดต่อ",
+            "ตอบ",
+            "ช่วยเหลือ",
+            "contact",
+            "support",
+            "reply",
+            "respond"
+          ]
+        ],
+        "description_th": "เวลาตอบของช่องทางนี้",
+        "ask_examples": {
+          "th": "ขอ เวลาตอบของช่องทางนี้",
+          "en": "Tell me Hours during which staff respond through this contact channel."
+        }
+      }
+    },
+    "facility": {
+      "name": {
+        "description_en": "Official name of this record.",
+        "description_th": "เช่น ที่จอดรถ/ที่นั่งพัก",
+        "ask_examples": {
+          "th": "ขอ เช่น ที่จอดรถ/ที่นั่งพัก",
+          "en": "Tell me Official name of this record."
+        }
+      },
+      "location": {
+        "description_en": "Position of this zone or amenity inside the venue.",
+        "description_th": "อยู่บริเวณไหน",
+        "ask_examples": {
+          "th": "ขอ อยู่บริเวณไหน",
+          "en": "Tell me Position of this zone or amenity inside the venue."
+        }
+      },
+      "usage_conditions": {
+        "description_en": "Conditions that must be met to use this amenity.",
+        "description_th": "เงื่อนไขใช้บริการ",
+        "ask_examples": {
+          "th": "ขอ เงื่อนไขใช้บริการ",
+          "en": "Tell me Conditions that must be met to use this amenity."
+        }
+      },
+      "accessibility": {
+        "description_en": "Access provisions and assistance for people with disabilities or wheelchair users.",
+        "description_th": "การเข้าถึง/รถเข็น หากยังไม่มีข้อมูลให้ unknown",
+        "ask_examples": {
+          "th": "ขอ การเข้าถึง/รถเข็น หากยังไม่มีข้อมูลให้ unknown",
+          "en": "Tell me Access provisions and assistance for people with disabilities or wheelchair users."
+        }
+      }
+    },
+    "zone": {
+      "name": {
+        "description_en": "Official name of this record.",
+        "description_th": "PC/PS5/Switch/Cockpit/VR เป็นชื่อรายการ",
+        "ask_examples": {
+          "th": "ขอ PC/PS5/Switch/Cockpit/VR เป็นชื่อรายการ",
+          "en": "Tell me Official name of this record."
+        }
+      },
+      "description": {
+        "description_en": "Purpose and scope of this venue or zone.",
+        "description_th": "โซนนี้ใช้ทำอะไร",
+        "ask_examples": {
+          "th": "ขอ โซนนี้ใช้ทำอะไร",
+          "en": "Tell me Purpose and scope of this venue or zone."
+        }
+      },
+      "location": {
+        "description_en": "Position of this zone or amenity inside the venue.",
+        "description_th": "ตำแหน่งในศูนย์",
+        "ask_examples": {
+          "th": "ขอ ตำแหน่งในศูนย์",
+          "en": "Tell me Position of this zone or amenity inside the venue."
+        }
+      },
+      "room_seats": {
+        "description_en": "Seating capacity of the room; not the simultaneous players of a game.",
+        "description_th": "จำนวนที่นั่งในพื้นที่",
+        "ask_examples": {
+          "th": "ขอ จำนวนที่นั่งในพื้นที่ ไม่ใช่จำนวนคนเล่นพร้อมกัน",
+          "en": "Tell me Seating capacity of the room; not the simultaneous players of a game."
+        }
+      }
+    },
+    "equipment_model": {
+      "name": {
+        "description_en": "Official name of this record.",
+        "description_th": "ชื่อรุ่นอุปกรณ์",
+        "ask_examples": {
+          "th": "ขอ ชื่อรุ่นอุปกรณ์",
+          "en": "Tell me Official name of this record."
+        }
+      },
+      "device_type": {
+        "description_en": "Category of hardware, such as computer, console, VR headset or racing wheel.",
+        "description_th": "ประเภทอุปกรณ์",
+        "ask_examples": {
+          "th": "ขอ ประเภทอุปกรณ์",
+          "en": "Tell me Category of hardware, such as computer, console, VR headset or racing wheel."
+        }
+      },
+      "specifications": {
+        "description_en": "Hardware features, components, sizes, models and their units.",
+        "description_th": "สเปกทีละค่า พร้อมหน่วย/รุ่น",
+        "ask_examples": {
+          "th": "ขอ สเปกทีละค่า พร้อมหน่วย/รุ่น",
+          "en": "Tell me Hardware features, components, sizes, models and their units."
+        }
+      },
+      "usage": {
+        "description_en": "Instructions for operating this physical equipment.",
+        "description_th": "วิธีใช้อุปกรณ์/ข้อควรทราบจากแหล่งข้อมูล",
+        "ask_examples": {
+          "th": "ขอ วิธีใช้อุปกรณ์/ข้อควรทราบจากแหล่งข้อมูล",
+          "en": "Tell me Instructions for operating this physical equipment."
+        }
+      }
+    },
+    "resource": {
+      "name": {
+        "description_en": "Official name of this record.",
+        "description_th": "ชื่อเครื่อง เช่น PC #01",
+        "ask_examples": {
+          "th": "ขอ ชื่อเครื่อง เช่น PC #01",
+          "en": "Tell me Official name of this record."
+        }
+      },
+      "zone_id": {
+        "description_en": "Zone containing this physical resource.",
+        "description_th": "โซนที่เครื่องตั้งอยู่",
+        "ask_examples": {
+          "th": "ขอ โซนที่เครื่องตั้งอยู่",
+          "en": "Tell me Zone containing this physical resource."
+        }
+      },
+      "equipment_model_ids": {
+        "description_en": "Hardware models making up this resource.",
+        "description_th": "รุ่นอุปกรณ์ที่ประกอบในเครื่องนี้",
+        "ask_examples": {
+          "th": "ขอ รุ่นอุปกรณ์ที่ประกอบในเครื่องนี้",
+          "en": "Tell me Hardware models making up this resource."
+        }
+      },
+      "capacity_persons": {
+        "description_en": "People who can use this particular resource simultaneously; not total room seating.",
+        "description_th": "จำนวนคนใช้เครื่องพร้อมกัน",
+        "ask_examples": {
+          "th": "ขอ จำนวนคนเล่นพร้อมกันของเครื่อง ไม่ใช่ห้อง",
+          "en": "Tell me People who can use this particular resource simultaneously; not total room seating."
+        }
+      },
+      "physical_pool_key": {
+        "description_en": "Identifier of the shared physical resource pool used by overlapping booking products.",
+        "description_th": "รหัสทรัพยากรร่วม เช่น VR 30/60 นาทีใช้เครื่องเดียวกัน",
+        "ask_examples": {
+          "th": "ขอ รหัสทรัพยากรร่วม เช่น VR 30/60 นาทีใช้เครื่องเดียวกัน",
+          "en": "Tell me Identifier of the shared physical resource pool used by overlapping booking products."
+        }
+      },
+      "operational_status": {
+        "description_en": "Whether the equipment is physically in service, out of service or retired; not a live booking status.",
+        "description_th": "พร้อมให้บริการทางกายภาพ ไม่ใช่สถานะจอง",
+        "ask_examples": {
+          "th": "ขอ พร้อมให้บริการทางกายภาพ ไม่ใช่สถานะจอง",
+          "en": "Tell me Whether the equipment is physically in service, out of service or retired; not a live booking status."
+        }
+      }
+    },
+    "service": {
+      "name": {
+        "description_en": "Official name of this record.",
+        "description_th": "ชื่อบริการตามหน้า WordPress",
+        "ask_examples": {
+          "th": "ขอ ชื่อบริการตามหน้า WordPress",
+          "en": "Tell me Official name of this record."
+        }
+      },
+      "resource_ids": {
+        "description_en": "Physical stations used by this bookable service.",
+        "description_th": "เครื่องจริงที่บริการใช้",
+        "ask_examples": {
+          "th": "ขอ เครื่องจริงที่บริการใช้",
+          "en": "Tell me Physical stations used by this bookable service."
+        }
+      },
+      "platform": {
+        "description_en": "Device platform for this service, mode or control scheme.",
+        "description_th": "แพลตฟอร์มของบริการ",
+        "ask_examples": {
+          "th": "ขอ แพลตฟอร์มของบริการ",
+          "en": "Tell me Device platform for this service, mode or control scheme."
+        }
+      },
+      "session_minutes": {
+        "description_en": "Actual playing time provided by one service session, in minutes.",
+        "description_th": "ระยะเวลาเล่นจริงที่ผู้ใช้ได้รับจากหนึ่งรอบบริการ เป็นนาที",
+        "ask_examples": {
+          "th": "ขอ ระยะเวลาเล่นจริงที่ผู้ใช้ได้รับจากหนึ่งรอบบริการ เป็นนาที",
+          "en": "Tell me Actual playing time provided by one service session, in minutes."
+        }
+      },
+      "occupancy_minutes": {
+        "description_en": "Time the physical device is reserved or blocked by a booking, in minutes; may exceed actual play time.",
+        "description_th": "ระยะเวลาที่ระบบจองกันหรือล็อกเครื่องเอาไว้ เป็นนาที อาจไม่เท่ากับเวลาเล่นจริง",
+        "ask_examples": {
+          "th": "ขอ ระยะเวลาที่ระบบจองกันหรือล็อกเครื่องเอาไว้ เป็นนาที อาจไม่เท่ากับเวลาเล่นจริง",
+          "en": "Tell me Time the physical device is reserved or blocked by a booking, in minutes; may exceed actual play time."
+        }
+      },
+      "capacity_min": {
+        "description_en": "Fewest participants required for this service.",
+        "description_th": "ผู้เล่นขั้นต่ำ",
+        "ask_examples": {
+          "th": "ขอ ผู้เล่นขั้นต่ำ",
+          "en": "Tell me Fewest participants required for this service."
+        }
+      },
+      "capacity_max": {
+        "description_en": "Largest group allowed in this service.",
+        "description_th": "ผู้เล่นสูงสุดตามบริการ",
+        "ask_examples": {
+          "th": "ขอ ผู้เล่นสูงสุดตามบริการ",
+          "en": "Tell me Largest group allowed in this service."
+        }
+      },
+      "booking_product_key": {
+        "description_en": "Verified product identifier used by the reservation API.",
+        "description_th": "รหัสผลิตภัณฑ์/API จาก WordPress ไม่ใช่เดาจากชื่อ",
+        "ask_examples": {
+          "th": "ขอ รหัสผลิตภัณฑ์/API จาก WordPress ไม่ใช่เดาจากชื่อ",
+          "en": "Tell me Verified product identifier used by the reservation API."
+        }
+      }
+    },
+    "game": {
+      "title": {
+        "description_en": "Official title of a game or announcement.",
+        "description_th": "ชื่อเกมอย่างเป็นทางการ",
+        "ask_examples": {
+          "th": "ขอ ชื่อเกมอย่างเป็นทางการ",
+          "en": "Tell me Official title of a game or announcement."
+        }
+      },
+      "edition": {
+        "description_en": "Exact game edition or installment.",
+        "description_th": "ภาค/edition ให้ตรง หากต้นทางไม่มีให้ unknown",
+        "ask_examples": {
+          "th": "ขอ ภาค/edition ให้ตรง หากต้นทางไม่มีให้ unknown",
+          "en": "Tell me Exact game edition or installment."
+        }
+      },
+      "genre": {
+        "description_en": "Game genre or type.",
+        "description_th": "แนวเกม",
+        "ask_examples": {
+          "th": "ขอ แนวเกม",
+          "en": "Tell me Game genre or type."
+        }
+      },
+      "summary": {
+        "description_en": "What the game is about: theme or premise.",
+        "description_th": "เกมเกี่ยวกับอะไร",
+        "ask_examples": {
+          "th": "ขอ เกมเกี่ยวกับอะไร",
+          "en": "Tell me What the game is about: theme or premise."
+        }
+      },
+      "how_to_play": {
+        "description_en": "Game objective and basic actions or gameplay loop; how a beginner starts and progresses. Not a full walkthrough or guaranteed winning strategy.",
+        "description_th": "เป้าหมายของเกม วิธีเริ่มเล่น สิ่งที่ต้องทำระหว่างเล่นและลำดับการเล่นโดยสรุป ไม่ใช่วิธีชนะทุกด่าน",
+        "ask_examples": {
+          "th": "ขอ เป้าหมายของเกม วิธีเริ่มเล่น สิ่งที่ต้องทำระหว่างเล่นและลำดับการเล่นโดยสรุป ไม่ใช่วิธีชนะทุกด่าน",
+          "en": "Tell me Game objective and basic actions or gameplay loop; how a beginner starts and progresses. Not a full walkthrough or guaranteed winning strategy."
+        }
+      },
+      "publisher_url": {
+        "description_en": "Official developer or publisher source.",
+        "description_th": "แหล่งจากผู้พัฒนาเกม",
+        "ask_examples": {
+          "th": "ขอ แหล่งจากผู้พัฒนาเกม",
+          "en": "Tell me Official developer or publisher source."
+        }
+      },
+      "supported_platforms": {
+        "description_en": "Platforms the game supports in general; not proof that the venue offers it.",
+        "description_th": "แพลตฟอร์มที่ตัวเกมรองรับ ไม่แปลว่าศูนย์มีให้เล่น",
+        "ask_examples": {
+          "th": "ขอ แพลตฟอร์มที่ตัวเกมรองรับ ไม่แปลว่าศูนย์มีให้เล่น",
+          "en": "Tell me Platforms the game supports in general; not proof that the venue offers it."
+        }
+      },
+      "age_rating": {
+        "description_en": "Published game age classification, distinct from the venue admission policy.",
+        "description_th": "เรตเกมจากต้นทาง ไม่ใช่นโยบายรับเด็กของศูนย์",
+        "ask_examples": {
+          "th": "ขอ เรตเกมจากต้นทาง ไม่ใช่นโยบายรับเด็กของศูนย์",
+          "en": "Tell me Published game age classification, distinct from the venue admission policy."
+        }
+      }
+    },
+    "game_service": {
+      "game_id": {
+        "description_en": "Game to which this installation, mode, control scheme or tournament belongs.",
+        "description_th": "เลือกเกมจากทะเบียนเกม",
+        "ask_examples": {
+          "th": "ขอ เลือกเกมจากทะเบียนเกม",
+          "en": "Tell me Game to which this installation, mode, control scheme or tournament belongs."
+        }
+      },
+      "service_id": {
+        "description_en": "Bookable service to which this installation, price or live binding belongs.",
+        "description_th": "เลือกบริการจากทะเบียนการจอง",
+        "ask_examples": {
+          "th": "ขอ เลือกบริการจากทะเบียนการจอง",
+          "en": "Tell me Bookable service to which this installation, price or live binding belongs."
+        }
+      },
+      "offered": {
+        "description_en": "Whether this game is actually offered through the specified venue service.",
+        "description_th": "ศูนย์มีเกมนี้ให้เล่นในบริการที่เลือกหรือยัง และยืนยันว่ามีหรือไม่มี",
+        "ask_examples": {
+          "th": "ขอ ศูนย์มีเกมนี้ให้เล่นในบริการที่เลือกหรือยัง และยืนยันว่ามีหรือไม่มี",
+          "en": "Tell me Whether this game is actually offered through the specified venue service."
+        }
+      },
+      "installed_resource_ids": {
+        "description_en": "Specific physical stations on which this game is confirmed installed.",
+        "description_th": "ถ้ายืนยันเฉพาะเครื่อง ให้ระบุเครื่อง ห้ามอนุมานทั้งโซน",
+        "ask_examples": {
+          "th": "ขอ ถ้ายืนยันเฉพาะเครื่อง ให้ระบุเครื่อง ห้ามอนุมานทั้งโซน",
+          "en": "Tell me Specific physical stations on which this game is confirmed installed."
+        }
+      },
+      "game_version": {
+        "description_en": "Game build installed for this venue service, not the version used to verify a control guide.",
+        "description_th": "เวอร์ชันเกมที่ติดตั้งในบริการนี้",
+        "ask_examples": {
+          "th": "ขอ รุ่นหรือเวอร์ชันของเกมที่ติดตั้ง",
+          "en": "Tell me Game build installed for this venue service, not the version used to verify a control guide."
+        }
+      },
+      "account_policy_id": {
+        "description_en": "Venue policy governing player accounts.",
+        "description_th": "นโยบายบัญชีของศูนย์",
+        "ask_examples": {
+          "th": "ขอ นโยบายบัญชีของศูนย์",
+          "en": "Tell me Venue policy governing player accounts."
+        }
+      }
+    },
+    "game_mode": {
+      "game_id": {
+        "description_en": "Game to which this installation, mode, control scheme or tournament belongs.",
+        "description_th": "เกมที่อ้างถึง",
+        "ask_examples": {
+          "th": "ขอ เกมที่อ้างถึง",
+          "en": "Tell me Game to which this installation, mode, control scheme or tournament belongs."
+        }
+      },
+      "mode_name": {
+        "description_en": "Name of the local or online game mode.",
+        "description_th": "เช่น local co-op/online multiplayer",
+        "ask_examples": {
+          "th": "ขอ เช่น local co-op/online multiplayer",
+          "en": "Tell me Name of the local or online game mode."
+        }
+      },
+      "platform": {
+        "description_en": "Device platform for this service, mode or control scheme.",
+        "description_th": "แพลตฟอร์มของโหมดนี้",
+        "ask_examples": {
+          "th": "ขอ แพลตฟอร์มของโหมดนี้",
+          "en": "Tell me Device platform for this service, mode or control scheme."
+        }
+      },
+      "players_min": {
+        "description_en": "Smallest number of players required for this game mode.",
+        "description_th": "จำนวนผู้เล่นขั้นต่ำของโหมด",
+        "ask_examples": {
+          "th": "ขอ จำนวนผู้เล่นขั้นต่ำของโหมด",
+          "en": "Tell me Smallest number of players required for this game mode."
+        }
+      },
+      "players_max": {
+        "description_en": "Largest number of players supported by this game mode; not service or room capacity.",
+        "description_th": "สูงสุดของโหมดเกม ไม่ใช่ความจุบริการ",
+        "ask_examples": {
+          "th": "ขอ สูงสุดของโหมดเกม ไม่ใช่ความจุบริการ",
+          "en": "Tell me Largest number of players supported by this game mode; not service or room capacity."
+        }
+      },
+      "network_requirement": {
+        "description_en": "Internet, network or account requirements of this mode.",
+        "description_th": "ออนไลน์/อินเทอร์เน็ต/บัญชีที่ต้องใช้",
+        "ask_examples": {
+          "th": "ขอ ออนไลน์/อินเทอร์เน็ต/บัญชีที่ต้องใช้",
+          "en": "Tell me Internet, network or account requirements of this mode."
+        }
+      },
+      "studio_supported": {
+        "description_en": "Whether the venue actually supports this mode.",
+        "description_th": "ศูนย์รองรับโหมดนี้จริงหรือยังไม่ยืนยัน",
+        "ask_examples": {
+          "th": "ขอ ศูนย์รองรับโหมดนี้จริงหรือยังไม่ยืนยัน",
+          "en": "Tell me Whether the venue actually supports this mode."
+        }
+      }
+    },
+    "control_set": {
+      "game_id": {
+        "description_en": "Game to which this installation, mode, control scheme or tournament belongs.",
+        "description_th": "เกม/edition ที่ตรงกัน",
+        "ask_examples": {
+          "th": "ขอ เกม/edition ที่ตรงกัน",
+          "en": "Tell me Game to which this installation, mode, control scheme or tournament belongs."
+        }
+      },
+      "platform": {
+        "description_en": "Device platform for this service, mode or control scheme.",
+        "description_th": "PC/PS5/Nintendo Switch/VR",
+        "ask_examples": {
+          "th": "ขอ PC/PS5/Nintendo Switch/VR",
+          "en": "Tell me Device platform for this service, mode or control scheme."
+        }
+      },
+      "input_device": {
+        "description_en": "Type of controller or input device.",
+        "description_th": "ชนิดอุปกรณ์ควบคุม",
+        "ask_examples": {
+          "th": "ขอ ชนิดอุปกรณ์ควบคุม",
+          "en": "Tell me Type of controller or input device."
+        }
+      },
+      "preset": {
+        "description_en": "Name of the control layout or profile.",
+        "description_th": "default/custom profile ชื่อชุดปุ่ม",
+        "ask_examples": {
+          "th": "ขอ default/custom profile ชื่อชุดปุ่ม",
+          "en": "Tell me Name of the control layout or profile."
+        }
+      },
+      "game_version": {
+        "description_en": "Game build against which this particular control preset was verified, not the installed service build.",
+        "description_th": "เวอร์ชันเกมที่ใช้ตรวจชุดปุ่มนี้",
+        "ask_examples": {
+          "th": "ขอ รุ่นหรือเวอร์ชันของเกมที่ติดตั้ง",
+          "en": "Tell me Game build against which this particular control preset was verified, not the installed service build."
+        }
+      },
+      "bindings": {
+        "description_en": "Which buttons or inputs trigger each action, how to press them and the gameplay context.",
+        "description_th": "การควบคุม คำสั่งแต่ละอย่างกับปุ่มที่ต้องกดและวิธีกด",
+        "ask_examples": {
+          "th": "ขอ การควบคุม คำสั่งแต่ละอย่างกับปุ่มที่ต้องกดและวิธีกด",
+          "en": "Tell me Which buttons or inputs trigger each action, how to press them and the gameplay context."
+        }
+      },
+      "limitations": {
+        "description_en": "Known limitations of this control scheme or unconfirmed actions.",
+        "description_th": "ข้อจำกัดหรือปุ่มที่ยังไม่ยืนยัน",
+        "ask_examples": {
+          "th": "ขอ ข้อจำกัดหรือปุ่มที่ยังไม่ยืนยัน",
+          "en": "Tell me Known limitations of this control scheme or unconfirmed actions."
+        }
+      }
+    },
+    "audience": {
+      "name": {
+        "description_en": "Official name of this record.",
+        "description_th": "ชื่อกลุ่ม เช่น บุคคลทั่วไป/หน่วยงานภายนอก",
+        "ask_examples": {
+          "th": "ขอ ชื่อกลุ่ม เช่น บุคคลทั่วไป/หน่วยงานภายนอก",
+          "en": "Tell me Official name of this record."
+        }
+      },
+      "eligibility": {
+        "description_en": "Who qualifies to belong to this visitor or pricing group.",
+        "description_th": "คุณสมบัติและบุคคลที่มีสิทธิ์อยู่ในกลุ่มนี้ ไม่ใช่เอกสารที่ใช้พิสูจน์สิทธิ์",
+        "ask_examples": {
+          "th": "ขอ คุณสมบัติและบุคคลที่มีสิทธิ์อยู่ในกลุ่มนี้ ไม่ใช่เอกสารที่ใช้พิสูจน์สิทธิ์",
+          "en": "Tell me Who qualifies to belong to this visitor or pricing group."
+        }
+      },
+      "required_proofs": {
+        "description_en": "Evidence, identity cards or documents a visitor must present to prove membership or eligibility.",
+        "description_th": "เอกสารหรือสิ่งที่ต้องยื่นแสดงเพื่อพิสูจน์ว่ามีสิทธิ์ในกลุ่มผู้ใช้นี้",
+        "ask_examples": {
+          "th": "ขอ เอกสารหรือสิ่งที่ต้องยื่นแสดงเพื่อพิสูจน์ว่ามีสิทธิ์ในกลุ่มผู้ใช้นี้",
+          "en": "Tell me Evidence, identity cards or documents a visitor must present to prove membership or eligibility."
+        }
+      }
+    },
+    "rate": {
+      "service_id": {
+        "description_en": "Bookable service to which this installation, price or live binding belongs.",
+        "description_th": "บริการตามระบบจอง",
+        "ask_examples": {
+          "th": "ขอ บริการตามระบบจอง",
+          "en": "Tell me Bookable service to which this installation, price or live binding belongs."
+        }
+      },
+      "audience_id": {
+        "description_en": "Visitor group or organization to which this price or package applies.",
+        "description_th": "กลุ่มผู้ใช้",
+        "ask_examples": {
+          "th": "ขอ กลุ่มผู้ใช้",
+          "en": "Tell me Visitor group or organization to which this price or package applies."
+        }
+      },
+      "amount_minor": {
+        "description_en": "Price or fee in minor currency units; zero means confirmed free use.",
+        "description_th": "จำนวนสตางค์: 70 บาท = 7000; 0 คือฟรีเมื่อยืนยันจริง",
+        "ask_examples": {
+          "th": "ขอ จำนวนสตางค์: 70 บาท = 7000; 0 คือฟรีเมื่อยืนยันจริง",
+          "en": "Tell me Price or fee in minor currency units; zero means confirmed free use."
+        }
+      },
+      "currency": {
+        "description_en": "Currency of the price.",
+        "description_th": "สกุลเงิน",
+        "ask_examples": {
+          "th": "ขอ สกุลเงิน",
+          "en": "Tell me Currency of the price."
+        }
+      },
+      "unit": {
+        "description_en": "Charging unit: what one quoted price pays for, such as a session, hour or person.",
+        "description_th": "คิดต่ออะไร",
+        "ask_examples": {
+          "th": "ขอ คิดต่ออะไร",
+          "en": "Tell me Charging unit: what one quoted price pays for, such as a session, hour or person."
+        }
+      },
+      "duration_minutes": {
+        "description_en": "Confirmed duration covered by this price or rental package, in minutes.",
+        "description_th": "ช่วงเวลาที่ราคานี้ครอบคลุม",
+        "ask_examples": {
+          "th": "ขอ ช่วงเวลาที่ราคานี้ครอบคลุม",
+          "en": "Tell me Confirmed duration covered by this price or rental package, in minutes."
+        }
+      },
+      "persons_min": {
+        "description_en": "Minimum group size covered by this price.",
+        "description_th": "ช่วงผู้ใช้ขั้นต่ำ",
+        "ask_examples": {
+          "th": "ขอ ช่วงผู้ใช้ขั้นต่ำ",
+          "en": "Tell me Minimum group size covered by this price."
+        }
+      },
+      "persons_max": {
+        "description_en": "Maximum group size covered by this price.",
+        "description_th": "ช่วงผู้ใช้สูงสุด",
+        "ask_examples": {
+          "th": "ขอ ช่วงผู้ใช้สูงสุด",
+          "en": "Tell me Maximum group size covered by this price."
+        }
+      },
+      "calculation_rule": {
+        "description_en": "Approved arithmetic rule, such as proportional or fixed pricing; do not invent multipliers.",
+        "description_th": "อนุญาตคูณเวลาได้หรือคิดตายตัว ต้องมีหลักฐาน",
+        "ask_examples": {
+          "th": "ขอ อนุญาตคูณเวลาได้หรือคิดตายตัว ต้องมีหลักฐาน",
+          "en": "Tell me Approved arithmetic rule, such as proportional or fixed pricing; do not invent multipliers."
+        }
+      },
+      "tax_note": {
+        "description_en": "Tax treatment and related price conditions.",
+        "description_th": "ภาษี/เงื่อนไข ถ้ายังไม่ระบุห้ามคิดรวมเอง",
+        "ask_examples": {
+          "th": "ขอ ภาษี/เงื่อนไข ถ้ายังไม่ระบุห้ามคิดรวมเอง",
+          "en": "Tell me Tax treatment and related price conditions."
+        }
+      }
+    },
+    "rental_package": {
+      "name": {
+        "description_en": "Official name of this record.",
+        "description_th": "ชื่อแพ็กเกจ",
+        "ask_examples": {
+          "th": "ขอ ชื่อแพ็กเกจ",
+          "en": "Tell me Official name of this record."
+        }
+      },
+      "zone_ids": {
+        "description_en": "Zones covered by this package, schedule or closure.",
+        "description_th": "โซนที่รวมในแพ็กเกจ",
+        "ask_examples": {
+          "th": "ขอ โซนที่รวมในแพ็กเกจ",
+          "en": "Tell me Zones covered by this package, schedule or closure."
+        }
+      },
+      "audience_id": {
+        "description_en": "Visitor group or organization to which this price or package applies.",
+        "description_th": "หน่วยงานภายใน/ภายนอก ไม่ใช่กลุ่มราคาบุคคล",
+        "ask_examples": {
+          "th": "ขอ หน่วยงานภายใน/ภายนอก ไม่ใช่กลุ่มราคาบุคคล",
+          "en": "Tell me Visitor group or organization to which this price or package applies."
+        }
+      },
+      "period_label": {
+        "description_en": "Package label such as half day or full day; does not itself confirm a duration.",
+        "description_th": "ครึ่งวัน/เต็มวันเป็นชื่อแพ็กเกจ",
+        "ask_examples": {
+          "th": "ขอ ครึ่งวัน/เต็มวันเป็นชื่อแพ็กเกจ",
+          "en": "Tell me Package label such as half day or full day; does not itself confirm a duration."
+        }
+      },
+      "duration_minutes": {
+        "description_en": "Confirmed duration covered by this price or rental package, in minutes.",
+        "description_th": "จำนวนจริงของนาที ต้องรอยืนยัน ไม่เดาว่า 4/8 ชั่วโมง",
+        "ask_examples": {
+          "th": "ขอ จำนวนจริงของนาที ต้องรอยืนยัน ไม่เดาว่า 4/8 ชั่วโมง",
+          "en": "Tell me Confirmed duration covered by this price or rental package, in minutes."
+        }
+      },
+      "amount_minor": {
+        "description_en": "Price or fee in minor currency units; zero means confirmed free use.",
+        "description_th": "ราคาเป็นสตางค์",
+        "ask_examples": {
+          "th": "ขอ ราคาเป็นสตางค์",
+          "en": "Tell me Price or fee in minor currency units; zero means confirmed free use."
+        }
+      },
+      "currency": {
+        "description_en": "Currency of the price.",
+        "description_th": "สกุลเงิน",
+        "ask_examples": {
+          "th": "ขอ สกุลเงิน",
+          "en": "Tell me Currency of the price."
+        }
+      },
+      "equipment_included": {
+        "description_en": "Equipment or kit and quantities included in the rental package.",
+        "description_th": "จำนวนเครื่อง/อุปกรณ์ที่รวม",
+        "ask_examples": {
+          "th": "ขอ จำนวนเครื่อง/อุปกรณ์ที่รวม",
+          "en": "Tell me Equipment or kit and quantities included in the rental package."
+        }
+      },
+      "room_seats": {
+        "description_en": "Total visitor seats in this area; not the number of people playing on a single device.",
+        "description_th": "จำนวนที่นั่งพื้นที่ตามชีต ไม่ใช่ผู้เล่นเครื่อง",
+        "ask_examples": {
+          "th": "ขอ จำนวนที่นั่งพื้นที่ตามชีต ไม่ใช่ผู้เล่นเครื่อง",
+          "en": "Tell me Total visitor seats in this area; not the number of people playing on a single device."
+        }
+      },
+      "terms": {
+        "description_en": "Other confirmed package conditions or extra charges.",
+        "description_th": "เช่น ค่าเจ้าหน้าที่นอกเวลา",
+        "ask_examples": {
+          "th": "ขอ เช่น ค่าเจ้าหน้าที่นอกเวลา",
+          "en": "Tell me Other confirmed package conditions or extra charges."
+        }
+      }
+    },
+    "schedule": {
+      "timezone": {
+        "description_en": "Time zone used to interpret dates and times.",
+        "description_th": "เขตเวลา",
+        "ask_examples": {
+          "th": "ขอ เขตเวลา",
+          "en": "Tell me Time zone used to interpret dates and times."
+        }
+      },
+      "zone_ids": {
+        "description_en": "Zones covered by this package, schedule or closure.",
+        "description_th": "ขอบเขตโซน; [] ที่ known หมายถึงทุกโซนตามประกาศ",
+        "ask_examples": {
+          "th": "ขอ ขอบเขตโซน; [] ที่ known หมายถึงทุกโซนตามประกาศ",
+          "en": "Tell me Zones covered by this package, schedule or closure."
+        }
+      },
+      "weekday": {
+        "description_en": "Day of the week in the catalog encoding.",
+        "description_th": "ISO weekday ในสเปกนี้ 0=จันทร์ ต้องแปลงจากต้นทางชัดเจน",
+        "ask_examples": {
+          "th": "ขอ ISO weekday ในสเปกนี้ 0=จันทร์ ต้องแปลงจากต้นทางชัดเจน",
+          "en": "Tell me Day of the week in the catalog encoding."
+        }
+      },
+      "open_periods": {
+        "description_en": "Periods when visitors may enter the venue.",
+        "description_th": "ช่วงเปิดพื้นที่",
+        "ask_examples": {
+          "th": "ขอ ช่วงเปิดพื้นที่",
+          "en": "Tell me Periods when visitors may enter the venue."
+        }
+      },
+      "bookable_periods": {
+        "description_en": "Periods when a play slot can be reserved or played.",
+        "description_th": "ช่วงที่จอง/เล่นได้ แยกจากเปิดพื้นที่",
+        "ask_examples": {
+          "th": "ขอ ช่วงที่จอง/เล่นได้ แยกจากเปิดพื้นที่",
+          "en": "Tell me Periods when a play slot can be reserved or played."
+        }
+      },
+      "maintenance_periods": {
+        "description_en": "Maintenance periods during which booking is blocked.",
+        "description_th": "ช่วง maintenance",
+        "ask_examples": {
+          "th": "ขอ ช่วง maintenance",
+          "en": "Tell me Maintenance periods during which booking is blocked."
+        }
+      },
+      "reason": {
+        "description_en": "Reason for the announced hours or closure.",
+        "intent_terms": [
+          "เพราะ",
+          "เหตุผล",
+          "why"
+        ],
+        "description_th": "เหตุผล/ประกาศของตาราง",
+        "ask_examples": {
+          "th": "ขอ เหตุผล/ประกาศของตาราง",
+          "en": "Tell me Reason for the announced hours or closure."
+        }
+      }
+    },
+    "closure": {
+      "local_date": {
+        "description_en": "Calendar date affected, in the local time zone.",
+        "description_th": "วันที่ ISO ค.ศ. ตามเวลาไทย",
+        "ask_examples": {
+          "th": "ขอ วันที่ ISO ค.ศ. ตามเวลาไทย",
+          "en": "Tell me Calendar date affected, in the local time zone."
+        }
+      },
+      "zone_ids": {
+        "description_en": "Zones covered by this package, schedule or closure.",
+        "description_th": "โซนที่ได้รับผล; [] = ทุกโซนเมื่อยืนยัน",
+        "ask_examples": {
+          "th": "ขอ โซนที่ได้รับผล; [] = ทุกโซนเมื่อยืนยัน",
+          "en": "Tell me Zones covered by this package, schedule or closure."
+        }
+      },
+      "state": {
+        "description_en": "Closure or opening exception status: closed, modified hours or special opening override.",
+        "description_th": "สถานะเปิดหรือปิด หรือปรับเวลาพิเศษของวันที่ประกาศ",
+        "intent_terms": [
+          "เปิด",
+          "ปิด",
+          "หยุดบริการ",
+          "closure"
+        ],
+        "ask_examples": {
+          "th": "ขอ สถานะเปิดหรือปิด หรือปรับเวลาพิเศษของวันที่ประกาศ",
+          "en": "Tell me Closure or opening exception status: closed, modified hours or special opening override."
+        }
+      },
+      "open_periods": {
+        "description_en": "Periods when visitors may enter the venue.",
+        "description_th": "เวลาใหม่ กรณี modified/open override",
+        "ask_examples": {
+          "th": "ขอ เวลาใหม่ กรณี modified/open override",
+          "en": "Tell me Periods when visitors may enter the venue."
+        }
+      },
+      "bookable_periods": {
+        "description_en": "Periods when a play slot can be reserved or played.",
+        "description_th": "เวลาที่จองได้ในวันที่ยกเว้น",
+        "ask_examples": {
+          "th": "ขอ เวลาที่จองได้ในวันที่ยกเว้น",
+          "en": "Tell me Periods when a play slot can be reserved or played."
+        }
+      },
+      "reason": {
+        "description_en": "Reason for the announced hours or closure.",
+        "intent_terms": [
+          "เพราะ",
+          "เหตุผล",
+          "why"
+        ],
+        "description_th": "เหตุผลปิด/เปิดพิเศษ",
+        "ask_examples": {
+          "th": "ขอ เหตุผลปิด/เปิดพิเศษ",
+          "en": "Tell me Reason for the announced hours or closure."
+        }
+      },
+      "resolution_policy_id": {
+        "description_en": "Policy for handling reservations affected by a closure.",
+        "description_th": "นโยบายจัดการรายการจองเดิม หากไม่มีให้ unknown",
+        "ask_examples": {
+          "th": "ขอ นโยบายจัดการรายการจองเดิม หากไม่มีให้ unknown",
+          "en": "Tell me Policy for handling reservations affected by a closure."
+        }
+      }
+    },
+    "policy": {
+      "topic": {
+        "description_en": "Semantic topic identifier, not the full response or instructions.",
+        "description_th": "หัวข้อเชิงความหมาย เช่น personal_peripherals",
+        "ask_examples": {
+          "th": "ขอ หัวข้อเชิงความหมาย เช่น personal_peripherals",
+          "en": "Tell me Semantic subject of this policy, procedure or FAQ."
+        }
+      },
+      "subject": {
+        "description_en": "Object or behavior governed by this policy.",
+        "description_th": "สิ่งที่กฎใช้กับ เช่น คีย์บอร์ด/เมาส์ส่วนตัว",
+        "ask_examples": {
+          "th": "ขอ สิ่งที่กฎใช้กับ เช่น คีย์บอร์ด/เมาส์ส่วนตัว",
+          "en": "Tell me Object or behavior governed by this policy."
+        }
+      },
+      "decision": {
+        "description_en": "Whether the behavior is permitted, forbidden, required or conditional.",
+        "description_th": "อนุญาต/ห้าม/จำเป็น/มีเงื่อนไข",
+        "ask_examples": {
+          "th": "ขอ อนุญาต/ห้าม/จำเป็น/มีเงื่อนไข",
+          "en": "Tell me Whether the behavior is permitted, forbidden, required or conditional."
+        }
+      },
+      "conditions_all": {
+        "description_en": "Conditions that must all be satisfied.",
+        "description_th": "เงื่อนไขที่ต้องครบ เช่น booking_paid=true; ไม่มีเงื่อนไขต้องยืนยันจริง",
+        "ask_examples": {
+          "th": "ขอ เงื่อนไขที่ต้องครบ เช่น booking_paid=true; ไม่มีเงื่อนไขต้องยืนยันจริง",
+          "en": "Tell me Conditions that must all be satisfied."
+        }
+      },
+      "exceptions": {
+        "description_en": "Exceptions to the restriction or requirements.",
+        "description_th": "ข้อยกเว้น หากต้นทางไม่ได้ระบุให้ unknown",
+        "ask_examples": {
+          "th": "ขอ ข้อยกเว้น หากต้นทางไม่ได้ระบุให้ unknown",
+          "en": "Tell me Exceptions to the restriction or requirements."
+        }
+      },
+      "consequence": {
+        "description_en": "Confirmed penalty or consequence of breaking the policy.",
+        "description_th": "ผลเมื่อผิดกฎ/ค่าปรับ ห้ามเติมเอง",
+        "ask_examples": {
+          "th": "ขอ ผลเมื่อผิดกฎ/ค่าปรับ ห้ามเติมเอง",
+          "en": "Tell me Confirmed penalty or consequence of breaking the policy."
+        }
+      },
+      "details": {
+        "description_en": "Full policy wording with its conditions.",
+        "description_th": "ข้อความกฎพร้อมเงื่อนไขจากต้นทาง",
+        "ask_examples": {
+          "th": "ขอ ข้อความกฎพร้อมเงื่อนไขจากต้นทาง",
+          "en": "Tell me Full policy wording with its conditions."
+        }
+      },
+      "procedure_id": {
+        "description_en": "Procedure associated with this policy.",
+        "description_th": "ขั้นตอนปฏิบัติที่เกี่ยวข้อง",
+        "ask_examples": {
+          "th": "ขอ ขั้นตอนปฏิบัติที่เกี่ยวข้อง",
+          "en": "Tell me Procedure associated with this policy."
+        }
+      }
+    },
+    "procedure": {
+      "topic": {
+        "description_en": "Semantic topic identifier, not the full response or instructions.",
+        "description_th": "เรื่องที่ขั้นตอนนี้ใช้กับ",
+        "ask_examples": {
+          "th": "ขอ เรื่องที่ขั้นตอนนี้ใช้กับ",
+          "en": "Tell me Semantic subject of this policy, procedure or FAQ."
+        }
+      },
+      "preconditions": {
+        "description_en": "Conditions under which this procedure applies, not the ordered actions to perform.",
+        "description_th": "สถานการณ์ก่อนทำ เช่น จองผิดเครื่อง",
+        "ask_examples": {
+          "th": "ขอ สถานการณ์ก่อนทำ เช่น จองผิดเครื่อง",
+          "en": "Tell me Situations to which the procedure applies."
+        }
+      },
+      "steps": {
+        "description_en": "Ordered actions to carry out the process and get help.",
+        "description_th": "ลำดับจริง; contact_id ตรวจ FK ด้วย semantic validator ใน production",
+        "ask_examples": {
+          "th": "ขอ ลำดับจริง; contact_id ตรวจ FK ด้วย semantic validator ใน production",
+          "en": "Tell me Ordered actions to carry out the process and get help."
+        }
+      },
+      "required_documents": {
+        "description_en": "Paperwork or evidence to prepare for this process.",
+        "description_th": "หลักฐาน/รายการที่ต้องเตรียม",
+        "ask_examples": {
+          "th": "ขอ หลักฐาน/รายการที่ต้องเตรียม",
+          "en": "Tell me Paperwork or evidence to prepare for this process."
+        }
+      },
+      "deadline_minutes": {
+        "description_en": "Confirmed deadline, in minutes.",
+        "description_th": "กำหนดเวลา ถ้าไม่ทราบอย่าเติม",
+        "ask_examples": {
+          "th": "ขอ กำหนดเวลา ถ้าไม่ทราบอย่าเติม",
+          "en": "Tell me Confirmed deadline, in minutes."
+        }
+      },
+      "outcome": {
+        "description_en": "Result after completing the process, not its ordered instructions.",
+        "description_th": "หลังทำแล้วได้อะไร ขอบเขตสิ่งที่ยืนยัน",
+        "ask_examples": {
+          "th": "ขอ หลังทำแล้วได้อะไร ขอบเขตสิ่งที่ยืนยัน",
+          "en": "Tell me Confirmed outcome of following this procedure."
+        }
+      }
+    },
+    "competition": {
+      "game_id": {
+        "description_en": "Game to which this installation, mode, control scheme or tournament belongs.",
+        "description_th": "เกมที่แข่งขัน",
+        "ask_examples": {
+          "th": "ขอ เกมที่แข่งขัน",
+          "en": "Tell me Game to which this installation, mode, control scheme or tournament belongs."
+        }
+      },
+      "event_name": {
+        "description_en": "Name and year of the competition.",
+        "description_th": "ชื่อรายการ+ปี+ประเภทให้ตรง",
+        "ask_examples": {
+          "th": "ขอ ชื่อรายการ+ปี+ประเภทให้ตรง",
+          "en": "Tell me Name and year of the competition."
+        }
+      },
+      "division": {
+        "description_en": "Competition division or team category.",
+        "description_th": "เช่น ทีมชาย/ทีมผสม ถ้าไม่ระบุให้ unknown",
+        "ask_examples": {
+          "th": "ขอ เช่น ทีมชาย/ทีมผสม ถ้าไม่ระบุให้ unknown",
+          "en": "Tell me Competition division or team category."
+        }
+      },
+      "rulebook_release": {
+        "description_en": "Edition or version of the rulebook governing this tournament.",
+        "description_th": "ฉบับ รุ่น หรือเวอร์ชันของกฎการแข่งขันที่รายการนี้ใช้อ้างอิง",
+        "ask_examples": {
+          "th": "ขอ ฉบับ รุ่น หรือเวอร์ชันของกฎการแข่งขันที่รายการนี้ใช้อ้างอิง",
+          "en": "Tell me Edition or version of the rulebook governing this tournament."
+        }
+      },
+      "competition_dates": {
+        "description_en": "Dates when this competition is held.",
+        "description_th": "วันและวันที่จัดการแข่งขัน",
+        "ask_examples": {
+          "th": "ขอ วันและวันที่จัดการแข่งขัน",
+          "en": "Tell me Dates when this competition is held."
+        }
+      },
+      "coverage": {
+        "description_en": "Whether the full rulebook documentation is complete.",
+        "description_th": "ความครบของเอกสาร ตรวจจากสารบัญและต้นทาง ไม่ใช่มี JSON แล้วครบ",
+        "ask_examples": {
+          "th": "ขอ ความครบของเอกสาร ตรวจจากสารบัญและต้นทาง ไม่ใช่มี JSON แล้วครบ",
+          "en": "Tell me Whether the full rulebook documentation is complete."
+        }
+      },
+      "supersedes_id": {
+        "description_en": "Earlier revision replaced by this record.",
+        "description_th": "ฉบับก่อนหน้าถ้าทราบ",
+        "ask_examples": {
+          "th": "ขอ ฉบับก่อนหน้าถ้าทราบ",
+          "en": "Tell me Earlier revision replaced by this record."
+        }
+      }
+    },
+    "competition_rule": {
+      "competition_id": {
+        "description_en": "Tournament rulebook to which this clause belongs.",
+        "description_th": "ฉบับรายการที่กฎเป็นของมัน",
+        "ask_examples": {
+          "th": "ขอ ฉบับรายการที่กฎเป็นของมัน",
+          "en": "Tell me Tournament rulebook to which this clause belongs."
+        }
+      },
+      "section_number": {
+        "description_en": "Original clause number.",
+        "description_th": "เลขข้อเดิม เช่น 6.1.5",
+        "ask_examples": {
+          "th": "ขอ เลขข้อเดิม เช่น 6.1.5",
+          "en": "Tell me Original clause number."
+        }
+      },
+      "facet": {
+        "description_en": "Category of the competition rule.",
+        "description_th": "หมวดกฎ",
+        "ask_examples": {
+          "th": "ขอ หมวดกฎ",
+          "en": "Tell me Category of the competition rule."
+        }
+      },
+      "heading": {
+        "description_en": "Heading of the rule clause.",
+        "description_th": "หัวข้อข้อกติกา",
+        "ask_examples": {
+          "th": "ขอ หัวข้อข้อกติกา",
+          "en": "Tell me Heading of the rule clause."
+        }
+      },
+      "text": {
+        "description_en": "Entire wording of this rule clause, including qualifying conditions; not rulebook metadata.",
+        "description_th": "ข้อความข้อกติกาเต็ม ห้ามตัดเงื่อนไขท้ายข้อ",
+        "ask_examples": {
+          "th": "ขอ ข้อความข้อกติกาเต็ม ห้ามตัดเงื่อนไขท้ายข้อ",
+          "en": "Tell me Entire wording of this rule clause, including qualifying conditions; not rulebook metadata."
+        }
+      },
+      "depends_on_ids": {
+        "description_en": "Related rule clauses and exceptions that must be read together.",
+        "description_th": "ข้อก่อนหน้า/ข้อยกเว้นที่ต้องดึงร่วม",
+        "ask_examples": {
+          "th": "ขอ ข้อก่อนหน้า/ข้อยกเว้นที่ต้องดึงร่วม",
+          "en": "Tell me Related rule clauses and exceptions that must be read together."
+        }
+      },
+      "completeness": {
+        "description_en": "Whether this individual rule clause has been checked as complete.",
+        "description_th": "สถานะความสมบูรณ์ของข้อนี้",
+        "ask_examples": {
+          "th": "ขอ สถานะความสมบูรณ์ของข้อนี้",
+          "en": "Tell me Whether this individual rule clause has been checked as complete."
+        }
+      }
+    },
+    "news": {
+      "title": {
+        "description_en": "Official title of a game or announcement.",
+        "description_th": "ชื่อหรือพาดหัวข่าว ใช้เมื่อถามชื่อข่าว ไม่ใช่รายละเอียดเนื้อหาที่ข่าวแจ้ง",
+        "ask_examples": {
+          "th": "ขอ หัวข้อประกาศ",
+          "en": "Tell me Official title of a game or announcement."
+        }
+      },
+      "body": {
+        "description_en": "Information or message announced in this news item.",
+        "description_th": "เนื้อหาของข่าว ว่าข่าวแจ้งเรื่องอะไรและมีรายละเอียดอย่างไร ไม่ใช่ชื่อหรือพาดหัวข่าว",
+        "ask_examples": {
+          "th": "ขอ เนื้อหาข่าวหรือประกาศ ว่าแจ้งรายละเอียดเรื่องใด",
+          "en": "Tell me Information or message announced in this news item."
+        }
+      },
+      "event_start": {
+        "description_en": "Date and time when the announced event begins.",
+        "description_th": "เวลาเริ่มกิจกรรม",
+        "ask_examples": {
+          "th": "ขอ เวลาเริ่มกิจกรรม",
+          "en": "Tell me Date and time when the announced event begins."
+        }
+      },
+      "event_end": {
+        "description_en": "Date and time when the announced event finishes.",
+        "description_th": "เวลาจบกิจกรรม",
+        "ask_examples": {
+          "th": "ขอ เวลาจบกิจกรรม",
+          "en": "Tell me Date and time when the announced event finishes."
+        }
+      },
+      "audience_ids": {
+        "description_en": "Visitor groups eligible for the event.",
+        "description_th": "ผู้เข้าร่วม/กลุ่มสิทธิ์",
+        "ask_examples": {
+          "th": "ขอ ผู้เข้าร่วม/กลุ่มสิทธิ์",
+          "en": "Tell me Visitor groups eligible for the event."
+        }
+      },
+      "contact_id": {
+        "description_en": "Contact channel for the announced activity.",
+        "description_th": "ช่องทางเกี่ยวกับกิจกรรม",
+        "ask_examples": {
+          "th": "ขอ ช่องทางเกี่ยวกับกิจกรรม",
+          "en": "Tell me Contact channel for the announced activity."
+        }
+      },
+      "registration_url": {
+        "description_en": "Event registration link.",
+        "description_th": "ลิงก์สมัคร ถ้ามี",
+        "ask_examples": {
+          "th": "ขอ ลิงก์สมัคร ถ้ามี",
+          "en": "Tell me Event registration link."
+        }
+      }
+    },
+    "person": {
+      "display_name": {
+        "description_en": "Name of the person approved for public display.",
+        "description_th": "ชื่อที่อนุญาตให้เผยแพร่",
+        "ask_examples": {
+          "th": "ขอ ชื่อที่อนุญาตให้เผยแพร่",
+          "en": "Tell me Name of the person approved for public display."
+        }
+      },
+      "role": {
+        "description_en": "What this person is responsible for, including duties and position.",
+        "description_th": "หน้าที่ ความรับผิดชอบ และสิ่งที่บุคคลนี้ดูแล",
+        "ask_examples": {
+          "th": "ขอ หน้าที่ ความรับผิดชอบ และสิ่งที่บุคคลนี้ดูแล",
+          "en": "Tell me What this person is responsible for, including duties and position."
+        }
+      },
+      "team": {
+        "description_en": "Team or organization to which the person belongs.",
+        "description_th": "ทีม/หน่วยงาน",
+        "ask_examples": {
+          "th": "ขอ ทีม/หน่วยงาน",
+          "en": "Tell me Team or organization to which the person belongs."
+        }
+      },
+      "public_contact_id": {
+        "description_en": "Public work contact for the person.",
+        "description_th": "ช่องทางงานที่อนุญาตเผยแพร่",
+        "ask_examples": {
+          "th": "ขอ ช่องทางงานที่อนุญาตเผยแพร่",
+          "en": "Tell me Public work contact for the person."
+        }
+      },
+      "public_scope": {
+        "description_en": "Information about the person approved for public release; never customer private data.",
+        "description_th": "รายละเอียดที่เผยแพร่ได้ ไม่ใส่ข้อมูลลูกค้าหรือสลิป",
+        "ask_examples": {
+          "th": "ขอ รายละเอียดที่เผยแพร่ได้ ไม่ใส่ข้อมูลลูกค้าหรือสลิป",
+          "en": "Tell me Information about the person approved for public release; never customer private data."
+        }
+      }
+    },
+    "faq": {
+      "question": {
+        "description_en": "Question associated with this FAQ record.",
+        "description_th": "คำถามตั้งต้น ไม่จำเป็นต้องเก็บทุก paraphrase",
+        "ask_examples": {
+          "th": "ขอ คำถามตั้งต้น ไม่จำเป็นต้องเก็บทุก paraphrase",
+          "en": "Tell me Question associated with this FAQ record."
+        }
+      },
+      "answer": {
+        "description_en": "Confirmed response to this FAQ.",
+        "intent_terms": [
+          "ตอบ",
+          "response",
+          "reply"
+        ],
+        "description_th": "คำตอบพร้อมหลักฐานของศูนย์",
+        "ask_examples": {
+          "th": "ขอ คำตอบพร้อมหลักฐานของศูนย์",
+          "en": "Tell me Confirmed response to this FAQ."
+        }
+      },
+      "related_ids": {
+        "description_en": "Other catalog records related to this FAQ.",
+        "description_th": "รายการที่เกี่ยวข้อง หากใช้ต้อง resolve ข้าม kind",
+        "ask_examples": {
+          "th": "ขอ รายการที่เกี่ยวข้อง หากใช้ต้อง resolve ข้าม kind",
+          "en": "Tell me Other catalog records related to this FAQ."
+        }
+      },
+      "topic": {
+        "description_en": "Semantic topic identifier, not the full response or instructions.",
+        "description_th": "หัวข้อเชิงความหมาย",
+        "ask_examples": {
+          "th": "ขอ หัวข้อเชิงความหมาย",
+          "en": "Tell me Semantic subject of this policy, procedure or FAQ."
+        }
+      },
+      "scope_note": {
+        "description_en": "Situations to which this answer applies and its limitations.",
+        "description_th": "ขอบเขตและข้อจำกัด ไม่ใช้ FAQ override ราคาหรือสถานะสด",
+        "ask_examples": {
+          "th": "ขอ ขอบเขตและข้อจำกัด ไม่ใช้ FAQ override ราคาหรือสถานะสด",
+          "en": "Tell me Situations to which this answer applies and its limitations."
+        }
+      }
+    },
+    "live_binding": {
+      "service_id": {
+        "description_en": "Bookable service to which this installation, price or live binding belongs.",
+        "description_th": "บริการของศูนย์",
+        "ask_examples": {
+          "th": "ขอ บริการของศูนย์",
+          "en": "Tell me Bookable service to which this installation, price or live binding belongs."
+        }
+      },
+      "provider": {
+        "description_en": "External system supplying live status.",
+        "description_th": "ผู้ให้ข้อมูลสด",
+        "ask_examples": {
+          "th": "ขอ ผู้ให้ข้อมูลสด",
+          "en": "Tell me External system supplying live status."
+        }
+      },
+      "external_resource_key": {
+        "description_en": "Verified resource identifier used by the provider API.",
+        "description_th": "รหัสที่ API ใช้จริง",
+        "ask_examples": {
+          "th": "ขอ รหัสที่ API ใช้จริง",
+          "en": "Tell me Verified resource identifier used by the provider API."
+        }
+      },
+      "physical_pool_key": {
+        "description_en": "Identifier of the shared physical resource pool used by overlapping booking products.",
+        "description_th": "ทรัพยากรร่วม ต้องตรง resource ที่ service ใช้",
+        "ask_examples": {
+          "th": "ขอ ทรัพยากรร่วม ต้องตรง resource ที่ service ใช้",
+          "en": "Tell me Identifier of the shared physical resource pool used by overlapping booking products."
+        }
+      },
+      "status_mapping": {
+        "description_en": "Meaning or translation of the provider status codes.",
+        "description_th": "ความหมายของรหัสสถานะจากระบบ หรือการแปลรหัสเหล่านั้นให้เป็นสถานะที่เข้าใจได้",
+        "ask_examples": {
+          "th": "ขอ ความหมายของรหัสสถานะจากระบบ หรือการแปลรหัสเหล่านั้นให้เป็นสถานะที่เข้าใจได้",
+          "en": "Tell me Meaning or translation of the provider status codes."
+        }
+      },
+      "timezone": {
+        "description_en": "Time zone used to interpret dates and times.",
+        "description_th": "เขตเวลาของการแปลงข้อมูล",
+        "ask_examples": {
+          "th": "ขอ เขตเวลาของการแปลงข้อมูล",
+          "en": "Tell me Time zone used to interpret dates and times."
+        }
+      },
+      "freshness_policy": {
+        "description_en": "Approved age limit, cache lifetime or expiry rule for live data.",
+        "description_th": "ระยะเวลาที่ข้อมูลสดยังใช้ยืนยันได้ อายุข้อมูล การหมดอายุ และเวลาแคช",
+        "ask_examples": {
+          "th": "ขอ ระยะเวลาที่ข้อมูลสดยังใช้ยืนยันได้ อายุข้อมูล การหมดอายุ และเวลาแคช",
+          "en": "Tell me Approved age limit, cache lifetime or expiry rule for live data."
+        }
+      }
+    }
+  }
+}

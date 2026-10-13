@@ -1,0 +1,4061 @@
+[
+  {
+    "kind": "center",
+    "owner_form": "ข้อมูลศูนย์",
+    "fields": [
+      {
+        "key": "name",
+        "meaning_th": "ชื่อศูนย์อย่างเป็นทางการ",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "operator",
+        "meaning_th": "หน่วยงานเจ้าของ/ผู้ดำเนินการ",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "description",
+        "meaning_th": "ศูนย์ทำอะไร/ขอบเขตบริการ",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "address",
+        "meaning_th": "ที่อยู่เต็ม",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "building",
+        "meaning_th": "อาคาร",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "floor",
+        "meaning_th": "ชั้น",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "map_url",
+        "meaning_th": "ลิงก์แผนที่",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "timezone",
+        "meaning_th": "เขตเวลา",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "enum": [
+            "Asia/Bangkok"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "contact",
+    "owner_form": "ติดต่อ",
+    "fields": [
+      {
+        "key": "channel",
+        "meaning_th": "ประเภทช่องทาง",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "enum": [
+            "facebook",
+            "email",
+            "phone",
+            "website",
+            "onsite"
+          ]
+        }
+      },
+      {
+        "key": "value",
+        "meaning_th": "URL/อีเมล/เบอร์โทร แยกเป็นช่อง ไม่อยู่ในข้อความลอย",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "purpose",
+        "meaning_th": "ติดต่อเรื่องอะไรได้บ้าง",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "office_hours",
+        "meaning_th": "เวลาตอบของช่องทางนี้",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "facility",
+    "owner_form": "สิ่งอำนวยความสะดวก",
+    "fields": [
+      {
+        "key": "name",
+        "meaning_th": "เช่น ที่จอดรถ/ที่นั่งพัก",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "location",
+        "meaning_th": "อยู่บริเวณไหน",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "usage_conditions",
+        "meaning_th": "เงื่อนไขใช้บริการ",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "accessibility",
+        "meaning_th": "การเข้าถึง/รถเข็น หากยังไม่มีข้อมูลให้ unknown",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "zone",
+    "owner_form": "โซนบริการ",
+    "fields": [
+      {
+        "key": "name",
+        "meaning_th": "PC/PS5/Switch/Cockpit/VR เป็นชื่อรายการ",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "description",
+        "meaning_th": "โซนนี้ใช้ทำอะไร",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "location",
+        "meaning_th": "ตำแหน่งในศูนย์",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "room_seats",
+        "meaning_th": "จำนวนที่นั่งในพื้นที่ ไม่ใช่จำนวนคนเล่นพร้อมกัน",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    ]
+  },
+  {
+    "kind": "equipment_model",
+    "owner_form": "รุ่นและสเปกอุปกรณ์",
+    "fields": [
+      {
+        "key": "name",
+        "meaning_th": "ชื่อรุ่นอุปกรณ์",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "device_type",
+        "meaning_th": "ประเภทอุปกรณ์",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "enum": [
+            "pc",
+            "console",
+            "vr",
+            "wheel",
+            "display",
+            "peripheral",
+            "furniture"
+          ]
+        }
+      },
+      {
+        "key": "specifications",
+        "meaning_th": "สเปกทีละค่า พร้อมหน่วย/รุ่น",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "minLength": 1
+              },
+              "value": {
+                "type": "string",
+                "minLength": 1
+              },
+              "unit": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "key",
+              "value",
+              "unit"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "key": "usage",
+        "meaning_th": "วิธีใช้อุปกรณ์/ข้อควรทราบจากแหล่งข้อมูล",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "resource",
+    "owner_form": "เครื่องหรือทรัพยากรจริง",
+    "fields": [
+      {
+        "key": "name",
+        "meaning_th": "ชื่อเครื่อง เช่น PC #01",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "zone_id",
+        "meaning_th": "โซนที่เครื่องตั้งอยู่",
+        "publish_core": true,
+        "reference_kind": "zone",
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "equipment_model_ids",
+        "meaning_th": "รุ่นอุปกรณ์ที่ประกอบในเครื่องนี้",
+        "publish_core": false,
+        "reference_kind": "equipment_model",
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      {
+        "key": "capacity_persons",
+        "meaning_th": "จำนวนคนเล่นพร้อมกันของเครื่อง ไม่ใช่ห้อง",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      {
+        "key": "physical_pool_key",
+        "meaning_th": "รหัสทรัพยากรร่วม เช่น VR 30/60 นาทีใช้เครื่องเดียวกัน",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "operational_status",
+        "meaning_th": "พร้อมให้บริการทางกายภาพ ไม่ใช่สถานะจอง",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "enum": [
+            "in_service",
+            "out_of_service",
+            "retired"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "service",
+    "owner_form": "รายการที่เลือกในระบบจอง",
+    "fields": [
+      {
+        "key": "name",
+        "meaning_th": "ชื่อบริการตามหน้า WordPress",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "resource_ids",
+        "meaning_th": "เครื่องจริงที่บริการใช้",
+        "publish_core": true,
+        "reference_kind": "resource",
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      {
+        "key": "platform",
+        "meaning_th": "แพลตฟอร์มของบริการ",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "session_minutes",
+        "meaning_th": "ระยะเวลาเล่นของบริการ",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      {
+        "key": "occupancy_minutes",
+        "meaning_th": "เวลาที่กันทรัพยากร เช่น VR 30 นาทีอาจกัน 60",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      {
+        "key": "capacity_min",
+        "meaning_th": "ผู้เล่นขั้นต่ำ",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      {
+        "key": "capacity_max",
+        "meaning_th": "ผู้เล่นสูงสุดตามบริการ",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      {
+        "key": "booking_product_key",
+        "meaning_th": "รหัสผลิตภัณฑ์/API จาก WordPress ไม่ใช่เดาจากชื่อ",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    ]
+  },
+  {
+    "kind": "game",
+    "owner_form": "ข้อมูลเกม",
+    "fields": [
+      {
+        "key": "title",
+        "meaning_th": "ชื่อเกมอย่างเป็นทางการ",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "edition",
+        "meaning_th": "ภาค/edition ให้ตรง หากต้นทางไม่มีให้ unknown",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "genre",
+        "meaning_th": "แนวเกม",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "summary",
+        "meaning_th": "เกมเกี่ยวกับอะไร",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "how_to_play",
+        "meaning_th": "เป้าหมาย/วงจรการเล่นโดยสรุป",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "publisher_url",
+        "meaning_th": "แหล่งจากผู้พัฒนาเกม",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "supported_platforms",
+        "meaning_th": "แพลตฟอร์มที่ตัวเกมรองรับ ไม่แปลว่าศูนย์มีให้เล่น",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      {
+        "key": "age_rating",
+        "meaning_th": "เรตเกมจากต้นทาง ไม่ใช่นโยบายรับเด็กของศูนย์",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "game_service",
+    "owner_form": "เกมที่ศูนย์มีให้เล่นจริง",
+    "fields": [
+      {
+        "key": "game_id",
+        "meaning_th": "เลือกเกมจากทะเบียนเกม",
+        "publish_core": true,
+        "reference_kind": "game",
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "service_id",
+        "meaning_th": "เลือกบริการจากทะเบียนการจอง",
+        "publish_core": true,
+        "reference_kind": "service",
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "offered",
+        "meaning_th": "ศูนย์ยืนยันมี/ไม่มีเกมนี้ในบริการนี้",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "boolean"
+        }
+      },
+      {
+        "key": "installed_resource_ids",
+        "meaning_th": "ถ้ายืนยันเฉพาะเครื่อง ให้ระบุเครื่อง ห้ามอนุมานทั้งโซน",
+        "publish_core": false,
+        "reference_kind": "resource",
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      {
+        "key": "game_version",
+        "meaning_th": "เวอร์ชันเกมที่ติดตั้ง ถ้าไม่ทราบให้ unknown",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "account_policy_id",
+        "meaning_th": "นโยบายบัญชีของศูนย์",
+        "publish_core": false,
+        "reference_kind": "policy",
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    ]
+  },
+  {
+    "kind": "game_mode",
+    "owner_form": "รูปแบบเล่นและเล่นกับเพื่อน",
+    "fields": [
+      {
+        "key": "game_id",
+        "meaning_th": "เกมที่อ้างถึง",
+        "publish_core": true,
+        "reference_kind": "game",
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "mode_name",
+        "meaning_th": "เช่น local co-op/online multiplayer",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "platform",
+        "meaning_th": "แพลตฟอร์มของโหมดนี้",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "players_min",
+        "meaning_th": "จำนวนผู้เล่นขั้นต่ำของโหมด",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      {
+        "key": "players_max",
+        "meaning_th": "สูงสุดของโหมดเกม ไม่ใช่ความจุบริการ",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      {
+        "key": "network_requirement",
+        "meaning_th": "ออนไลน์/อินเทอร์เน็ต/บัญชีที่ต้องใช้",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "studio_supported",
+        "meaning_th": "ศูนย์รองรับโหมดนี้จริงหรือยังไม่ยืนยัน",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "boolean"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "control_set",
+    "owner_form": "วิธีเล่นและปุ่ม",
+    "fields": [
+      {
+        "key": "game_id",
+        "meaning_th": "เกม/edition ที่ตรงกัน",
+        "publish_core": true,
+        "reference_kind": "game",
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "platform",
+        "meaning_th": "PC/PS5/Nintendo Switch/VR",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "input_device",
+        "meaning_th": "ชนิดอุปกรณ์ควบคุม",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "enum": [
+            "keyboard_mouse",
+            "gamepad",
+            "racing_wheel",
+            "vr_motion"
+          ]
+        }
+      },
+      {
+        "key": "preset",
+        "meaning_th": "default/custom profile ชื่อชุดปุ่ม",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "game_version",
+        "meaning_th": "เวอร์ชันที่ตรวจชุดปุ่มนี้",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "bindings",
+        "meaning_th": "ปุ่ม + กด/ค้าง/กดพร้อมกัน/ลำดับ + action + context; ทุกรายการต้องมีหลักฐานชุดเดียวกัน มิฉะนั้นแยก record",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "buttons": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "gesture": {
+                "type": "string",
+                "enum": [
+                  "press",
+                  "hold",
+                  "release",
+                  "double_press",
+                  "simultaneous",
+                  "sequence",
+                  "move"
+                ]
+              },
+              "action": {
+                "type": "object",
+                "properties": {
+                  "th": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "en": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "th",
+                  "en"
+                ],
+                "additionalProperties": false,
+                "anyOf": [
+                  {
+                    "properties": {
+                      "th": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  },
+                  {
+                    "properties": {
+                      "en": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+                ]
+              },
+              "context": {
+                "type": "object",
+                "properties": {
+                  "th": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "en": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "th",
+                  "en"
+                ],
+                "additionalProperties": false,
+                "anyOf": [
+                  {
+                    "properties": {
+                      "th": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  },
+                  {
+                    "properties": {
+                      "en": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "required": [
+              "buttons",
+              "gesture",
+              "action",
+              "context"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "key": "limitations",
+        "meaning_th": "ข้อจำกัดหรือปุ่มที่ยังไม่ยืนยัน",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "audience",
+    "owner_form": "กลุ่มผู้ใช้",
+    "fields": [
+      {
+        "key": "name",
+        "meaning_th": "ชื่อกลุ่ม เช่น บุคคลทั่วไป/หน่วยงานภายนอก",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "eligibility",
+        "meaning_th": "ใครอยู่ในกลุ่มนี้ ตามนโยบายจริง",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "required_proofs",
+        "meaning_th": "หลักฐานสิทธิ์ หากไม่มีข้อมูลให้ unknown",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    ]
+  },
+  {
+    "kind": "rate",
+    "owner_form": "ราคาต่อบริการ",
+    "fields": [
+      {
+        "key": "service_id",
+        "meaning_th": "บริการตามระบบจอง",
+        "publish_core": true,
+        "reference_kind": "service",
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "audience_id",
+        "meaning_th": "กลุ่มผู้ใช้",
+        "publish_core": true,
+        "reference_kind": "audience",
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "amount_minor",
+        "meaning_th": "จำนวนสตางค์: 70 บาท = 7000; 0 คือฟรีเมื่อยืนยันจริง",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      {
+        "key": "currency",
+        "meaning_th": "สกุลเงิน",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "enum": [
+            "THB"
+          ]
+        }
+      },
+      {
+        "key": "unit",
+        "meaning_th": "คิดต่ออะไร",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "enum": [
+            "per_session",
+            "per_hour",
+            "per_person",
+            "per_group"
+          ]
+        }
+      },
+      {
+        "key": "duration_minutes",
+        "meaning_th": "ช่วงเวลาที่ราคานี้ครอบคลุม",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      {
+        "key": "persons_min",
+        "meaning_th": "ช่วงผู้ใช้ขั้นต่ำ",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      {
+        "key": "persons_max",
+        "meaning_th": "ช่วงผู้ใช้สูงสุด",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      {
+        "key": "calculation_rule",
+        "meaning_th": "อนุญาตคูณเวลาได้หรือคิดตายตัว ต้องมีหลักฐาน",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "enum": [
+            "fixed",
+            "linear",
+            "no_extrapolation"
+          ]
+        }
+      },
+      {
+        "key": "tax_note",
+        "meaning_th": "ภาษี/เงื่อนไข ถ้ายังไม่ระบุห้ามคิดรวมเอง",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "rental_package",
+    "owner_form": "ราคาเหมาโซน/ห้อง",
+    "fields": [
+      {
+        "key": "name",
+        "meaning_th": "ชื่อแพ็กเกจ",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "zone_ids",
+        "meaning_th": "โซนที่รวมในแพ็กเกจ",
+        "publish_core": true,
+        "reference_kind": "zone",
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      {
+        "key": "audience_id",
+        "meaning_th": "หน่วยงานภายใน/ภายนอก ไม่ใช่กลุ่มราคาบุคคล",
+        "publish_core": true,
+        "reference_kind": "audience",
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "period_label",
+        "meaning_th": "ครึ่งวัน/เต็มวันเป็นชื่อแพ็กเกจ",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "enum": [
+            "half_day",
+            "full_day",
+            "custom"
+          ]
+        }
+      },
+      {
+        "key": "duration_minutes",
+        "meaning_th": "จำนวนจริงของนาที ต้องรอยืนยัน ไม่เดาว่า 4/8 ชั่วโมง",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      {
+        "key": "amount_minor",
+        "meaning_th": "ราคาเป็นสตางค์",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      {
+        "key": "currency",
+        "meaning_th": "สกุลเงิน",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "enum": [
+            "THB"
+          ]
+        }
+      },
+      {
+        "key": "equipment_included",
+        "meaning_th": "จำนวนเครื่อง/อุปกรณ์ที่รวม",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "room_seats",
+        "meaning_th": "จำนวนที่นั่งพื้นที่ตามชีต ไม่ใช่ผู้เล่นเครื่อง",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      {
+        "key": "terms",
+        "meaning_th": "เช่น ค่าเจ้าหน้าที่นอกเวลา",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "schedule",
+    "owner_form": "ตารางบริการ",
+    "fields": [
+      {
+        "key": "timezone",
+        "meaning_th": "เขตเวลา",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "enum": [
+            "Asia/Bangkok"
+          ]
+        }
+      },
+      {
+        "key": "zone_ids",
+        "meaning_th": "ขอบเขตโซน; [] ที่ known หมายถึงทุกโซนตามประกาศ",
+        "publish_core": true,
+        "reference_kind": "zone",
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      {
+        "key": "weekday",
+        "meaning_th": "ISO weekday ในสเปกนี้ 0=จันทร์ ต้องแปลงจากต้นทางชัดเจน",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 6
+        }
+      },
+      {
+        "key": "open_periods",
+        "meaning_th": "ช่วงเปิดพื้นที่",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "string",
+                "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+              },
+              "end": {
+                "type": "string",
+                "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+              }
+            },
+            "required": [
+              "start",
+              "end"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "key": "bookable_periods",
+        "meaning_th": "ช่วงที่จอง/เล่นได้ แยกจากเปิดพื้นที่",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "string",
+                "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+              },
+              "end": {
+                "type": "string",
+                "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+              }
+            },
+            "required": [
+              "start",
+              "end"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "key": "maintenance_periods",
+        "meaning_th": "ช่วง maintenance",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "string",
+                "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+              },
+              "end": {
+                "type": "string",
+                "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+              }
+            },
+            "required": [
+              "start",
+              "end"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "key": "reason",
+        "meaning_th": "เหตุผล/ประกาศของตาราง",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "closure",
+    "owner_form": "วันปิด/ข้อยกเว้น",
+    "fields": [
+      {
+        "key": "local_date",
+        "meaning_th": "วันที่ ISO ค.ศ. ตามเวลาไทย",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      {
+        "key": "zone_ids",
+        "meaning_th": "โซนที่ได้รับผล; [] = ทุกโซนเมื่อยืนยัน",
+        "publish_core": true,
+        "reference_kind": "zone",
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      {
+        "key": "state",
+        "meaning_th": "ประเภทข้อยกเว้น",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "enum": [
+            "closed",
+            "modified_hours",
+            "open_override"
+          ]
+        }
+      },
+      {
+        "key": "open_periods",
+        "meaning_th": "เวลาใหม่ กรณี modified/open override",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "string",
+                "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+              },
+              "end": {
+                "type": "string",
+                "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+              }
+            },
+            "required": [
+              "start",
+              "end"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "key": "bookable_periods",
+        "meaning_th": "เวลาที่จองได้ในวันที่ยกเว้น",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "string",
+                "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+              },
+              "end": {
+                "type": "string",
+                "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+              }
+            },
+            "required": [
+              "start",
+              "end"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "key": "reason",
+        "meaning_th": "เหตุผลปิด/เปิดพิเศษ",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "resolution_policy_id",
+        "meaning_th": "นโยบายจัดการรายการจองเดิม หากไม่มีให้ unknown",
+        "publish_core": false,
+        "reference_kind": "policy",
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    ]
+  },
+  {
+    "kind": "policy",
+    "owner_form": "นโยบายและกฎศูนย์",
+    "fields": [
+      {
+        "key": "topic",
+        "meaning_th": "หัวข้อเชิงความหมาย เช่น personal_peripherals",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "subject",
+        "meaning_th": "สิ่งที่กฎใช้กับ เช่น คีย์บอร์ด/เมาส์ส่วนตัว",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "decision",
+        "meaning_th": "อนุญาต/ห้าม/จำเป็น/มีเงื่อนไข",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "enum": [
+            "allowed",
+            "prohibited",
+            "required",
+            "conditional"
+          ]
+        }
+      },
+      {
+        "key": "conditions_all",
+        "meaning_th": "เงื่อนไขที่ต้องครบ เช่น booking_paid=true; ไม่มีเงื่อนไขต้องยืนยันจริง",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "field": {
+                "type": "string",
+                "minLength": 1
+              },
+              "operator": {
+                "type": "string",
+                "enum": [
+                  "eq",
+                  "in",
+                  "gte",
+                  "lte"
+                ]
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "integer",
+                  "boolean",
+                  "array"
+                ]
+              }
+            },
+            "required": [
+              "field",
+              "operator",
+              "value"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "key": "exceptions",
+        "meaning_th": "ข้อยกเว้น หากต้นทางไม่ได้ระบุให้ unknown",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "consequence",
+        "meaning_th": "ผลเมื่อผิดกฎ/ค่าปรับ ห้ามเติมเอง",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "details",
+        "meaning_th": "ข้อความกฎพร้อมเงื่อนไขจากต้นทาง",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "procedure_id",
+        "meaning_th": "ขั้นตอนปฏิบัติที่เกี่ยวข้อง",
+        "publish_core": false,
+        "reference_kind": "procedure",
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    ]
+  },
+  {
+    "kind": "procedure",
+    "owner_form": "ขั้นตอนจอง/จ่าย/เช็กอิน/แก้ปัญหา",
+    "fields": [
+      {
+        "key": "topic",
+        "meaning_th": "เรื่องที่ขั้นตอนนี้ใช้กับ",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "preconditions",
+        "meaning_th": "สถานการณ์ก่อนทำ เช่น จองผิดเครื่อง",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "field": {
+                "type": "string",
+                "minLength": 1
+              },
+              "operator": {
+                "type": "string",
+                "enum": [
+                  "eq",
+                  "in",
+                  "gte",
+                  "lte"
+                ]
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "integer",
+                  "boolean",
+                  "array"
+                ]
+              }
+            },
+            "required": [
+              "field",
+              "operator",
+              "value"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "key": "steps",
+        "meaning_th": "ลำดับจริง; contact_id ตรวจ FK ด้วย semantic validator ใน production",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "order": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "instruction": {
+                "type": "object",
+                "properties": {
+                  "th": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "en": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "th",
+                  "en"
+                ],
+                "additionalProperties": false,
+                "anyOf": [
+                  {
+                    "properties": {
+                      "th": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  },
+                  {
+                    "properties": {
+                      "en": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+                ]
+              },
+              "contact_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "order",
+              "instruction",
+              "contact_id"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "key": "required_documents",
+        "meaning_th": "หลักฐาน/รายการที่ต้องเตรียม",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      {
+        "key": "deadline_minutes",
+        "meaning_th": "กำหนดเวลา ถ้าไม่ทราบอย่าเติม",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      {
+        "key": "outcome",
+        "meaning_th": "หลังทำแล้วได้อะไร ขอบเขตสิ่งที่ยืนยัน",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "competition",
+    "owner_form": "รายการแข่งขันและฉบับกติกา",
+    "fields": [
+      {
+        "key": "game_id",
+        "meaning_th": "เกมที่แข่งขัน",
+        "publish_core": true,
+        "reference_kind": "game",
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "event_name",
+        "meaning_th": "ชื่อรายการ+ปี+ประเภทให้ตรง",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "division",
+        "meaning_th": "เช่น ทีมชาย/ทีมผสม ถ้าไม่ระบุให้ unknown",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "rulebook_release",
+        "meaning_th": "ฉบับและเวอร์ชันกติกา",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "competition_dates",
+        "meaning_th": "วันที่การแข่งขันจากต้นทาง",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      {
+        "key": "coverage",
+        "meaning_th": "ความครบของเอกสาร ตรวจจากสารบัญและต้นทาง ไม่ใช่มี JSON แล้วครบ",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "enum": [
+            "complete",
+            "partial",
+            "conflicted"
+          ]
+        }
+      },
+      {
+        "key": "supersedes_id",
+        "meaning_th": "ฉบับก่อนหน้าถ้าทราบ",
+        "publish_core": false,
+        "reference_kind": "competition",
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    ]
+  },
+  {
+    "kind": "competition_rule",
+    "owner_form": "ข้อกติกาการแข่งขัน",
+    "fields": [
+      {
+        "key": "competition_id",
+        "meaning_th": "ฉบับรายการที่กฎเป็นของมัน",
+        "publish_core": true,
+        "reference_kind": "competition",
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "section_number",
+        "meaning_th": "เลขข้อเดิม เช่น 6.1.5",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "facet",
+        "meaning_th": "หมวดกฎ",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "enum": [
+            "identity",
+            "eligibility_registration",
+            "roster_composition",
+            "competition_format",
+            "match_configuration",
+            "pre_match_on_site",
+            "in_match_operations",
+            "fair_play_conduct",
+            "penalty_matrix",
+            "protest_dispute",
+            "references_change_history",
+            "game_specific"
+          ]
+        }
+      },
+      {
+        "key": "heading",
+        "meaning_th": "หัวข้อข้อกติกา",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "text",
+        "meaning_th": "ข้อความข้อกติกาเต็ม ห้ามตัดเงื่อนไขท้ายข้อ",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "depends_on_ids",
+        "meaning_th": "ข้อก่อนหน้า/ข้อยกเว้นที่ต้องดึงร่วม",
+        "publish_core": false,
+        "reference_kind": "competition_rule",
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      {
+        "key": "completeness",
+        "meaning_th": "สถานะความสมบูรณ์ของข้อนี้",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "enum": [
+            "complete",
+            "truncated",
+            "conflicted"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "news",
+    "owner_form": "ข่าว/กิจกรรม/ประกาศ/โปรโมชัน",
+    "fields": [
+      {
+        "key": "title",
+        "meaning_th": "หัวข้อประกาศ",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "body",
+        "meaning_th": "รายละเอียด",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "event_start",
+        "meaning_th": "เวลาเริ่มกิจกรรม",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      {
+        "key": "event_end",
+        "meaning_th": "เวลาจบกิจกรรม",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      {
+        "key": "audience_ids",
+        "meaning_th": "ผู้เข้าร่วม/กลุ่มสิทธิ์",
+        "publish_core": false,
+        "reference_kind": "audience",
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      {
+        "key": "contact_id",
+        "meaning_th": "ช่องทางเกี่ยวกับกิจกรรม",
+        "publish_core": false,
+        "reference_kind": "contact",
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "registration_url",
+        "meaning_th": "ลิงก์สมัคร ถ้ามี",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    ]
+  },
+  {
+    "kind": "person",
+    "owner_form": "บุคลากร/ทีมที่เปิดเผยได้",
+    "fields": [
+      {
+        "key": "display_name",
+        "meaning_th": "ชื่อที่อนุญาตให้เผยแพร่",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "role",
+        "meaning_th": "ตำแหน่ง/หน้าที่",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "team",
+        "meaning_th": "ทีม/หน่วยงาน",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "public_contact_id",
+        "meaning_th": "ช่องทางงานที่อนุญาตเผยแพร่",
+        "publish_core": false,
+        "reference_kind": "contact",
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "public_scope",
+        "meaning_th": "รายละเอียดที่เผยแพร่ได้ ไม่ใส่ข้อมูลลูกค้าหรือสลิป",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "faq",
+    "owner_form": "คำถามเสริมและเอกสารทั่วไปของศูนย์",
+    "fields": [
+      {
+        "key": "question",
+        "meaning_th": "คำถามตั้งต้น ไม่จำเป็นต้องเก็บทุก paraphrase",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "answer",
+        "meaning_th": "คำตอบพร้อมหลักฐานของศูนย์",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "key": "related_ids",
+        "meaning_th": "รายการที่เกี่ยวข้อง หากใช้ต้อง resolve ข้าม kind",
+        "publish_core": false,
+        "reference_kind": "*",
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      {
+        "key": "topic",
+        "meaning_th": "หัวข้อเชิงความหมาย",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "scope_note",
+        "meaning_th": "ขอบเขตและข้อจำกัด ไม่ใช้ FAQ override ราคาหรือสถานะสด",
+        "publish_core": false,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "kind": "live_binding",
+    "owner_form": "การเชื่อมสถานะสด",
+    "fields": [
+      {
+        "key": "service_id",
+        "meaning_th": "บริการของศูนย์",
+        "publish_core": true,
+        "reference_kind": "service",
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "provider",
+        "meaning_th": "ผู้ให้ข้อมูลสด",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "enum": [
+            "wordpress_booking"
+          ]
+        }
+      },
+      {
+        "key": "external_resource_key",
+        "meaning_th": "รหัสที่ API ใช้จริง",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "physical_pool_key",
+        "meaning_th": "ทรัพยากรร่วม ต้องตรง resource ที่ service ใช้",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      {
+        "key": "status_mapping",
+        "meaning_th": "ความหมายสถานะจาก API ต้องมี fixture ที่รู้ผล",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "raw": {
+                "type": "string",
+                "minLength": 1
+              },
+              "normalized": {
+                "type": "string",
+                "enum": [
+                  "free",
+                  "occupied",
+                  "unavailable",
+                  "unknown"
+                ]
+              }
+            },
+            "required": [
+              "raw",
+              "normalized"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      {
+        "key": "timezone",
+        "meaning_th": "เขตเวลาของการแปลงข้อมูล",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "string",
+          "enum": [
+            "Asia/Bangkok"
+          ]
+        }
+      },
+      {
+        "key": "freshness_policy",
+        "meaning_th": "นโยบาย cache/TTL ที่อนุมัติ",
+        "publish_core": true,
+        "reference_kind": null,
+        "value_schema": {
+          "type": "object",
+          "properties": {
+            "th": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "en": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "th",
+            "en"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "properties": {
+                "th": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            {
+              "properties": {
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

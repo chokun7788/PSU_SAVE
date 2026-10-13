@@ -12,7 +12,8 @@ from app.pipeline.request_deadline import timeout_for_call
 from app.pipeline.semantic_embeddings import embed_texts, embedding_base_url, embedding_model_name, embedding_num_ctx
 
 
-MODEL_WORK = threading.BoundedSemaphore(1)
+from app.knowledge.model_gate import SharedModelGate
+MODEL_WORK = SharedModelGate()
 
 
 def warm_knowledge_models() -> dict:

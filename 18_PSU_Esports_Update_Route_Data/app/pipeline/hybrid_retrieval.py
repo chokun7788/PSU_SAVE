@@ -253,7 +253,10 @@ def retrieve_hybrid_guarded(
         scored.append((score, row))
 
     scored.sort(key=lambda item: item[0], reverse=True)
-    hits = [row for _, row in scored[:candidate_limit]]
+    from app.knowledge.common.legacy_bridge import guard_hits
+    owned_filtered, ownership_blocked = guard_hits([row for _,row in scored])
+    if ownership_blocked:blocked['common_owned_field']=ownership_blocked
+    hits = owned_filtered[:candidate_limit]
     timings_ms["hybrid_merge_and_score"] = round((time.perf_counter() - started) * 1000 - sum(timings_ms.values()), 2)
     rerank_started = time.perf_counter()
     hits, rerank_trace = rerank_documents(query, hits, limit=final_limit)

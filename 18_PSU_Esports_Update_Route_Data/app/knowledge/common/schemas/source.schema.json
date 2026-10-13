@@ -1,0 +1,70 @@
+{
+  "type": "object",
+  "properties": {
+    "source_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "owner_chat",
+        "owner_document",
+        "official_page",
+        "publisher_document",
+        "derived_curated",
+        "secondary",
+        "fixture"
+      ]
+    },
+    "path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "authority_for": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "trust": {
+      "type": "string",
+      "enum": [
+        "owner_confirmed",
+        "official",
+        "internal_verified",
+        "legacy_unreviewed",
+        "secondary_unverified",
+        "synthetic"
+      ]
+    },
+    "public_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "source_id",
+    "kind",
+    "path",
+    "sha256",
+    "authority_for",
+    "observed_at",
+    "trust",
+    "public_url"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}
