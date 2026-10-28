@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_damage_responsibility",
+  "category": "rules",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "ทำอุปกรณ์เสียหาย.*รับผิดชอบ",
+      "อุปกรณ์เสียหาย.*รับผิดชอบ",
+      "ทำอุปกรณ์เสียหาย.*จ่าย",
+      "อุปกรณ์เสียหาย.*จ่าย",
+      "เสียหาย.*ค่าปรับ",
+      "เสียหาย.*ค่าชดเชย"
+    ],
+    "en": []
+  },
+  "facts": {
+    "route_category": "penalty",
+    "intent": "damage_responsibility",
+    "patterns": [
+      "ทำอุปกรณ์เสียหาย.*รับผิดชอบ",
+      "อุปกรณ์เสียหาย.*รับผิดชอบ",
+      "ทำอุปกรณ์เสียหาย.*จ่าย",
+      "อุปกรณ์เสียหาย.*จ่าย",
+      "เสียหาย.*ค่าปรับ",
+      "เสียหาย.*ค่าชดเชย"
+    ],
+    "priority": 120
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "ถ้าทำอุปกรณ์เสียหาย ผู้ใช้งานต้องรับผิดชอบค่าปรับหรือค่าชดเชยตามระดับความเสียหาย ตั้งแต่ความเสียหายเล็กน้อย 100–500 บาท ความเสียหายปานกลางตามราคาจริงหรือ 500–2,000 บาท ไปจนถึงความเสียหายร้ายแรงที่ต้องชดเชยราคาทรัพย์สินเต็มจำนวน"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "If equipment is damaged, users are responsible for fines or compensation depending on severity, from minor damage fines to full compensation for severe damage."
+      },
+      "source_sha256": "cf380c14a1e8cf54389fb4a50cd83c9436b3561686555456228389e033df0c33",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/penalty_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_damage_minor",
+      "curated_damage_moderate",
+      "curated_damage_severe"
+    ],
+    "last_verified_at": ""
+  }
+}

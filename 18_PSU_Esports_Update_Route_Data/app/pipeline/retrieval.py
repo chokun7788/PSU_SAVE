@@ -892,7 +892,9 @@ def retrieve_curated(
                 score += 5.0
         scored.append((score, row))
     scored.sort(key=lambda item: item[0], reverse=True)
-    hits = [{**row, "_score": round(score, 3)} for score, row in scored[:limit]]
+    from app.knowledge.common.legacy_bridge import guard_hits
+    candidates, ownership_blocked = guard_hits([{**row, "_score": round(score, 3)} for score, row in scored])
+    hits = candidates[:limit]
     confidence = min(0.84, 0.45 + (hits[0]["_score"] / 10 if hits else 0.0))
     detail = f"hits={len(hits)}"
     if category == "competition_rules":

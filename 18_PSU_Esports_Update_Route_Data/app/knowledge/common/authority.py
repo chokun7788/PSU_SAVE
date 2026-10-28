@@ -37,7 +37,8 @@ def filter_legacy_hits(snapshot,hits):
     return kept,blocked
 def classify(question,snapshot,ids):
     scoped_question=strip_names(question,ids,scoped_names(snapshot))
-    if live_request(scoped_question):return {'decision':'defer','reason':'live_adapter_authority'}
+    from .query_scope import scoped_live_request
+    if live_request(scoped_question) or scoped_live_request(question,ids,(snapshot.get('release') or {}).get('records',{})):return {'decision':'defer','reason':'live_adapter_authority'}
     release=snapshot.get('release')
     if not release:return {'decision':'defer','reason':'no_published_common_release'}
     records=release['records'];withdrawn=set(snapshot['withdrawn'])

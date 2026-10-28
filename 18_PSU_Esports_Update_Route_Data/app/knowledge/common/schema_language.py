@@ -29,6 +29,13 @@ def recover_schema_language(question,kinds):
         token=m.group().casefold()
         if token in words or len(token)<4 or len(edits)>=4:return m.group()
         candidates=[w for w in words if len(w)>=4 and abs(len(w)-len(token))<=1 and osa_distance(token,w)==1]
+        # Apply the permitted error channel before the uniqueness test. An
+        # unsafe same-length substitute must not mask a unique duplicate/deletion.
+        def safe_channel(target):
+            if len(target)!=len(token):return True
+            different=[i for i,(a,b) in enumerate(zip(token,target)) if a!=b]
+            return len(different)==2 and different[1]==different[0]+1 and token[different[0]]==target[different[1]] and token[different[1]]==target[different[0]]
+        candidates=[w for w in candidates if safe_channel(w)]
         # A substitute/transposition is riskier than a missing/repeated letter.
         # Never infer a different valid word or remove a negation.
         if len(candidates)!=1:return m.group()

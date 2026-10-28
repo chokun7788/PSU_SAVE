@@ -121,7 +121,8 @@ def make_handler(store,token,actor,port):
                 if path=='/api/rollback':store.rollback(body['release_id'],actor=actor,expected_active=body['expected_active']);return self.reply(200,{'rolled_back':True})
                 if path=='/api/preview':
                     answer=preview_answer(store,body['question'],locale=body.get('locale','th'),history=body.get('history',[]),draft=body.get('draft') is True)
-                    return self.reply(200,{'answer':answer.answer if answer else 'ยังไม่มีรายการที่เผยแพร่ตรงคำถามนี้ / No matching published record','trace':answer.decision_artifact if answer else None})
+                    from .dialogue import state_from_answer
+                    return self.reply(200,{'answer':answer.answer if answer else 'ยังไม่มีรายการที่เผยแพร่ตรงคำถามนี้ / No matching published record','trace':answer.decision_artifact if answer else None,'common_read_state':state_from_answer(answer) if answer else None})
                 return self.reply(404,{'error':'Unknown endpoint'})
             except Conflict as e:return self.reply(409,{'error':str(e)})
             except (ValueError,KeyError,TypeError) as e:return self.reply(400,{'error':str(e)})

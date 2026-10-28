@@ -881,6 +881,12 @@ class ChatHandler(BaseHTTPRequestHandler):
                     response["log_sinks"] = {"status": "queued"}
                 try:
                     self._send_json(response, content_language=(result.language or locale_decision).effective)
+                    # The turn state was committed before the response. A client
+                    # can send its next turn as soon as it receives this response;
+                    # delivery bookkeeping must not keep that turn locked out.
+                    if session_lock is not None and session_acquired:
+                        session_lock.release()
+                        session_acquired = False
                     STORE.delivery(client_session_id, client_turn_id, 'server_written')
                 except (BrokenPipeError, ConnectionResetError, OSError):
                     STORE.delivery(client_session_id, client_turn_id, 'uncertain')

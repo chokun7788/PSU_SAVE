@@ -20,5 +20,5 @@ def project(record,requested,*,full=False):
     for rule in profile.get('context',[]):
         if '*' not in rule['when'] and not set(keys)&set(rule['when']):continue
         for key in rule['include']:
-            if key in fields and key not in keys:keys.append(key);basis[key]='necessary_context'
+            if key in fields and key not in keys and fields[key]['status'] not in {'unknown','not_applicable'}:keys.append(key);basis[key]='necessary_context'
     return keys,basis

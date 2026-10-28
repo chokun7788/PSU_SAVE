@@ -104,7 +104,9 @@ def validate(record, records, sources, *, publish=False, demo=False):
         if any(a['end']>b['start'] for a,b in zip(ordered,ordered[1:])):errors.append(key+': overlapping periods')
     if kind=='schedule':
         for p in value(record,'bookable_periods') or []:
-            if not any(o['start']<=p['start'] and p['end']<=o['end'] for o in value(record,'open_periods') or []):errors.append('Booking period outside opening')
+            # Partial drafts may have an unresolved opening field. Publication
+            # still requires confirmed core fields; never fabricate opening hours.
+            if fields['open_periods']['status']=='known' and not any(o['start']<=p['start'] and p['end']<=o['end'] for o in value(record,'open_periods') or []):errors.append('Booking period outside opening')
             if any(p['start']<m['end'] and m['start']<p['end'] for m in value(record,'maintenance_periods') or []):errors.append('Booking overlaps maintenance')
     if kind=='closure' and value(record,'state')=='closed' and (value(record,'open_periods') or value(record,'bookable_periods')):errors.append('Closed date cannot assert opening/booking periods')
     if kind=='service' and value(record,'occupancy_minutes') is not None and value(record,'session_minutes') is not None and value(record,'occupancy_minutes')<value(record,'session_minutes'):errors.append('Occupancy shorter than session')

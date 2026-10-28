@@ -33,6 +33,9 @@ def answer_user_service_facts(question,locale='th',recent_history=None):
         subject=' / '.join(offered)
         answer=(f'Which item do you mean is free: {subject}?' if en else f'ต้องการถามว่าอะไรฟรีครับ: {subject}?') if len(offered)>1 else ('The previous answer covered more than one condition. Which item do you mean is free?' if en else 'คำตอบก่อนหน้ามีหลายเรื่องหรือเงื่อนไข ต้องการถามค่าใช้จ่ายเรื่องใดครับ?')
         return dict(answer=answer,hits=[],mode='pipeline:service_fact_scope_clarification',route=PipelineRoute('clarification','ambiguous_service_fee',.98,'clarification','low','multiple prior service subjects'),validation=ValidationResult(True,(),('ambiguous_service_fee',)),trace=[PipelineTrace('service_fact_scope_guard','clarification',.98,'do not choose the first prior subject',{'service_fact_state':ambiguous})])
+    # Resolve competition semantics before homonyms such as maps/membership.
+    from app.pipeline.competition_targets import looks_like_competition_rule_query
+    if looks_like_competition_rule_query(q):return None
     # Tournament rules and zone-hire contracts are separate sources/scopes.
     if _has(q,r'แข่งขัน|ลงแข่ง|ตอนแข่ง|กฎแข่ง|กติกา|\b(?:competition|tournament|esports event|rental|hire)\b|เหมา'):return None
     if _has(q,r'สมาชิกทีม|\bmembers\b.*\bteam\b'):

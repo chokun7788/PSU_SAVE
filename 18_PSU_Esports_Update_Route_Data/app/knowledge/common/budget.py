@@ -39,7 +39,7 @@ def budget_request(question,records,selected_ids):
         if type(price) is not int or currency!='THB':unknown.append(rate['record_id']);continue
         if price>amount:continue
         row={'rate_id':rate['record_id'],'amount_minor':price,'currency':currency,'service_id':value(rate,'service_id'),'audience_id':value(rate,'audience_id'),'rule':rule,'duration_minutes':duration,'max_minutes':None,'max_units':None}
-        if not unresolved and rule=='linear' and price>0 and type(duration) is int and duration>0:
+        if not unresolved and rule in {'linear','session_ceil'} and price>0 and type(duration) is int and duration>0:
             row['max_units']=amount//price;row['max_minutes']=row['max_units']*duration
         # Fixed/no-extrapolation/free prices are listed without invented repeatability.
         results.append(row)

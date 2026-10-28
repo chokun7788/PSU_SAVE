@@ -20,7 +20,9 @@ def allowed_schema(record_ids,records):
     kinds={records[k]['kind'] for k in record_ids}
     kinds=scope_kinds(kinds)
     keys={f['key'] for k in kinds for f in CATALOG[k]['fields']}
-    if kinds&{'resource','service','game','audience','zone'}:keys.add('amount_minor')
+    if kinds&{'resource','service','game','audience','zone'}:
+        from .relations import related_rates
+        if any(related_rates(records,records[rid]) for rid in record_ids):keys.add('amount_minor')
     platforms=set()
     for rid in record_ids:
         r=records[rid];v=r['fields'].get('platform',{})
@@ -69,7 +71,10 @@ def semantic_guard(question,clean,record_ids,records):
     if not asks_identity and len(proposed)>1:
         for field in list(proposed):
             if field in identity and field not in fs:proposed.remove(field);removed.append(field)
-    return {**clean,'requested_fields':list(dict.fromkeys(proposed+known))},{'semantic_status':'schema_only_unverified_intent','unresolved_clauses':gaps,'preserved_strong_needs':known,'removed_unrequested_identity_fields':removed}
+    if not known:
+        return None,{'semantic_status':'rejected_unverified_intent','unresolved_clauses':gaps,'proposal':proposed}
+    supported=list(dict.fromkeys(known))
+    return {**clean,'requested_fields':supported},{'semantic_status':'typed_partial_scope','unresolved_clauses':gaps,'preserved_strong_needs':known,'removed_unrequested_fields':[f for f in proposed if f not in supported]}
 
 def plan_fields(question,records,record_ids,*,diagnostic=None):
     clauses=semantic_clauses(question)

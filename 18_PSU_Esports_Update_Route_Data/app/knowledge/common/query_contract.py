@@ -31,6 +31,8 @@ def live_request(q):
     # but asks "during/between", not availability. Preserve a separate ว่าง.
     q=q.replace('ระหว่าง',' ')
     if re.search(r'\bfree\s+(?:to\s+play|of\s+charge|admission)\b|เล่นฟรี|ไม่เสียเงิน',q):return False
+    if re.search(r'\b(?:what|which)\s+games?\b|\bgames?\s+(?:is|are)\s+available\b',q) and not re.search(r'ว่าง|ถูกจอง|\b(?:occupied|booked|vacant|busy)\b',q):return False
+    if re.search(r'\b(?:available|vacant|occupied|busy|booked)\b',q) and re.search(r'\b(?:now|currently|today|tomorrow)\b|\bthis (?:morning|afternoon|evening)\b|\b\d{1,2}:\d{2}\b|\b\d{1,2}\s*(?:am|pm)\b|\b20\d{2}-\d{2}-\d{2}\b',q):return True
     return bool(re.search(r'ว่าง|ถูกจอง|ไม่ว่าง|available\s+(?:now|today|at)|\boccupied\b|\bbooked\b|\bfree\s+(?:now|today|at|slot)\b',q))
 
 def strip_names(q,ids,names):
@@ -56,68 +58,185 @@ def scope_kinds(kinds):
 # Language descriptions/cues are attributed to field meaning, scoped by kind.
 # Adding a new record needs no changes here; unseen fields can use canonical
 # names/descriptions or the bounded semantic planner.
-CUES={
- 'how_to_play':['วิธีเล่น','เล่นยังไง','เล่นอย่างไร','เป้าหมาย','ต้องทำอะไรเพื่อเล่น','how to play','how do i play','do to play','instructions','gameplay'],
- 'genre':['แนวเกม','ประเภทเกม','genre','kind of game'],
- 'summary':['เกี่ยวกับอะไร','เนื้อเรื่อง','game about','summary','synopsis'],
- 'supported_platforms':['แพลตฟอร์ม','เครื่องไหน','อุปกรณ์ไหน','เล่นที่ไหน','supported platforms','available on','where can i play'],
- 'platform':['แพลตฟอร์ม','เครื่องประเภท','platform'],
- 'bindings':['ปุ่ม','ควบคุม','กดอะไร','กดตรงไหน','controls','buttons','jump','กระโดด','input bindings'],
- 'specifications':['สเปก','specifications','specs','hardware'],
- 'device_type':['ประเภทอุปกรณ์','อุปกรณ์ประเภท','device type'],
- 'operational_status':['ยังใช้งาน','พร้อมให้บริการ','operational status','in service','out of service','working'],
- 'session_minutes':['หนึ่งรอบ','เวลาเล่น','ได้เวลาเล่น','ระยะเวลาเล่น','session','play duration','how long can i play'],
- 'occupancy_minutes':['กินช่องจอง','กันช่อง','กันทรัพยากร','booking occupancy','occupancy'],
- 'required_proofs':['หลักฐาน','เอกสาร','proof','documents'],
- 'eligibility':['ใครใช้สิทธิ์','คุณสมบัติ','ใครอยู่','qualifies','eligible','eligibility'],
- 'value':['ติดต่อ','ช่องทาง','เบอร์','contact','reach the operator','reach them','phone','email'],
- 'office_hours':['ติดต่อได้ช่วง','เวลาตอบ','office hours','contact hours'],
- 'details':['กฎ','กฏ','ข้อกำหนด','นโยบาย','policy','rules','requirements'],
- 'conditions_all':['เงื่อนไข','conditions','requirements'],
- 'decision':['อนุญาต','ห้ามไหม','allowed','permission','permitted'],
- 'exceptions':['ข้อยกเว้น','exceptions'],
- 'consequence':['ผลเมื่อ','ค่าปรับ','consequence','penalty'],
- 'steps':['ขั้นตอน','ทำยังไง','procedure','steps','walk me through'],
- 'required_documents':['เอกสาร','หลักฐาน','documents','proof'],
- 'accessibility':['ความช่วยเหลือ','รถเข็น','เข้าถึง','accessibility','wheelchair'],
- 'offered':['มีให้เล่น','มีเกมนี้','offered','offer this game'],
- 'game_version':['ติดตั้งรุ่น','เวอร์ชันเกม','game version','build','installed version'],
- 'amount_minor':['ราคา','ค่าบริการ','กี่บาท','price','cost','fee','how much','เหมาเท่าไหร่','เล่นฟรี','free to play','free of charge'],
- 'duration_minutes':['กี่นาที','ระยะเวลา','duration','minutes','how long'],
- 'equipment_included':['รวมอุปกรณ์','อุปกรณ์ที่รวม','equipment included','which equipment'],
- 'bookable_periods':['ช่วงจอง','เวลาจอง','จองช่วง','เวลาที่จอง','ช่วงเวลาไหนที่จอง','booking hours','bookable','time periods can i book'],
- 'open_periods':['เวลาเปิด','เปิดกี่โมง','เปิดช่วง','opening hours','opening periods','opening','open hours'],
- 'maintenance_periods':['บำรุงรักษา','ซ่อมบำรุง','maintenance'],
- 'state':['เปิดหรือปิด','เปิดปิด','ปิดไหม','closed','open or closed','opening status'],
- 'reason':['เพราะอะไร','เหตุผล','why','reason'],
- 'rulebook_release':['กติกาฉบับ','กฎเวอร์ชัน','rulebook release','version of the rules'],
- 'competition_dates':['แข่งวัน','competition dates','tournament dates'],
- 'text':['เนื้อหา','ข้อความกติกา','กำหนดอะไร','rule say','rule require','text of this rule','rule text'],
- 'completeness':['ข้อมูลครบ','สมบูรณ์','content complete','completeness'],
- 'body':['ประกาศว่า','ประกาศอะไร','ข่าวนี้แจ้ง','announcement say','announced','information is in','body'],
- 'event_start':['เริ่ม','เริ่มจบ','start','begin'],
- 'event_end':['จบ','สิ้นสุด','end','finish'],
- 'role':['รับผิดชอบ','ช่วยเรื่องไหน','role','handle','responsibilities'],
- 'public_contact_id':['ติดต่อ','public contact','contact'],
- 'answer':['คำตอบ','ตอบคำถาม','answer','respond'],
- 'scope_note':['กรณีไหน','ขอบเขต','scope','limitations'],
- 'status_mapping':['จับคู่สถานะ','แปลงเป็นสถานะ','status mapping','statuses mapped','statuses translated'],
- 'freshness_policy':['เก็บข้อมูลนาน','อายุข้อมูล','freshness','cache','ttl'],
- 'building':['ตึก','อาคาร','building','tower'],
- 'floor':['ชั้น','floor'],
- 'map_url':['แผนที่','map'],
- 'age_rating':['เรตเกม','อายุเกม','age rating','age restriction'],
- 'edition':['ภาค','edition'],
-}
+CUES={'how_to_play': ['วิธีเล่น',
+                 'เล่นยังไง',
+                 'เล่นอย่างไร',
+                 'เป้าหมาย',
+                 'ต้องทำอะไรเพื่อเล่น',
+                 'how to play',
+                 'how do i play',
+                 'do to play',
+                 'instructions',
+                 'gameplay'],
+ 'genre': ['แนวเกม', 'ประเภทเกม', 'แนวไหน', 'เป็นเกมแนว', 'genre', 'kind of game'],
+ 'summary': ['เกี่ยวกับอะไร',
+             'เนื้อเรื่อง',
+             'คือเกมอะไร',
+             'เป็นเกมอะไร',
+             'game about',
+             'what is',
+             'what game is',
+             'summary',
+             'synopsis'],
+ 'supported_platforms': ['แพลตฟอร์ม',
+                         'เครื่องไหน',
+                         'อุปกรณ์ไหน',
+                         'เล่นที่ไหน',
+                         'supported platforms',
+                         'available on',
+                         'where can i play'],
+ 'platform': ['แพลตฟอร์ม', 'เครื่องประเภท', 'platform'],
+ 'bindings': ['ปุ่ม',
+              'ควบคุม',
+              'กดอะไร',
+              'กดตรงไหน',
+              'controls',
+              'button',
+              'buttons',
+              'jump',
+              'กระโดด',
+              'input bindings',
+              'R3',
+              'L3'],
+ 'specifications': ['สเปก',
+                    'specifications',
+                    'specs',
+                    'hardware',
+                    'อยู่โซนไหน',
+                    'which zone',
+                    'what zone',
+                    'การ์ดจอ',
+                    'ซีพียู',
+                    'หน่วยความจำ',
+                    'แรม',
+                    'GPU',
+                    'CPU',
+                    'RAM',
+                    'graphics card'],
+ 'device_type': ['ประเภทอุปกรณ์', 'อุปกรณ์ประเภท', 'device type'],
+ 'operational_status': ['ยังใช้งาน',
+                        'พร้อมให้บริการ',
+                        'operational status',
+                        'in service',
+                        'out of service',
+                        'working'],
+ 'session_minutes': ['หนึ่งรอบ',
+                     'เวลาเล่น',
+                     'ได้เวลาเล่น',
+                     'ระยะเวลาเล่น',
+                     'session',
+                     'play duration',
+                     'how long can i play'],
+ 'occupancy_minutes': ['กินช่องจอง', 'กันช่อง', 'กันทรัพยากร', 'booking occupancy', 'occupancy'],
+ 'required_proofs': ['หลักฐาน', 'เอกสาร', 'proof', 'documents'],
+ 'eligibility': ['ใครใช้สิทธิ์', 'คุณสมบัติ', 'ใครอยู่', 'qualifies', 'eligible', 'eligibility'],
+ 'value': ['ติดต่อ', 'ช่องทาง', 'เบอร์', 'contact', 'reach the operator', 'reach them', 'phone', 'email'],
+ 'office_hours': ['ติดต่อได้ช่วง', 'เวลาตอบ', 'office hours', 'contact hours'],
+ 'details': ['กฎ', 'กฏ', 'ข้อกำหนด', 'นโยบาย', 'policy', 'rules', 'requirements'],
+ 'conditions_all': ['เงื่อนไข', 'conditions', 'requirements'],
+ 'decision': ['อนุญาต', 'ห้ามไหม', 'allowed', 'permission', 'permitted'],
+ 'exceptions': ['ข้อยกเว้น', 'exceptions'],
+ 'consequence': ['ผลเมื่อ', 'ค่าปรับ', 'consequence', 'penalty'],
+ 'steps': ['ขั้นตอน', 'ทำยังไง', 'procedure', 'steps', 'walk me through'],
+ 'required_documents': ['เอกสาร', 'หลักฐาน', 'documents', 'proof'],
+ 'accessibility': ['ความช่วยเหลือ', 'รถเข็น', 'เข้าถึง', 'accessibility', 'wheelchair'],
+ 'offered': ['มีให้เล่น', 'มีเกมนี้', 'offered', 'offer this game'],
+ 'game_version': ['ติดตั้งรุ่น', 'เวอร์ชันเกม', 'game version', 'build', 'installed version'],
+ 'amount_minor': ['ราคา',
+                  'ค่าบริการ',
+                  'ค่าเล่น',
+                  'กี่บาท',
+                  'price',
+                  'cost',
+                  'fee',
+                  'how much',
+                  'เหมาเท่าไหร่',
+                  'เล่นฟรี',
+                  'free to play',
+                  'free of charge',
+                  'ต้องจ่าย',
+                  'จ่ายไหม',
+                  'เสียเงิน',
+                  'ต้องเสียเงิน',
+                  'pay for',
+                  'payment required'],
+ 'duration_minutes': ['กี่นาที', 'ระยะเวลา', 'duration', 'minutes', 'how long'],
+ 'equipment_included': ['รวมอุปกรณ์', 'อุปกรณ์ที่รวม', 'equipment included', 'which equipment'],
+ 'bookable_periods': ['ช่วงจอง',
+                      'เวลาจอง',
+                      'จองช่วง',
+                      'เวลาที่จอง',
+                      'ช่วงเวลาไหนที่จอง',
+                      'booking hours',
+                      'bookable',
+                      'time periods can i book'],
+ 'open_periods': ['เวลาเปิด',
+                  'เปิดกี่โมง',
+                  'เปิดช่วง',
+                  'opening hours',
+                  'opening periods',
+                  'opening',
+                  'open hours'],
+ 'maintenance_periods': ['บำรุงรักษา', 'ซ่อมบำรุง', 'maintenance'],
+ 'state': ['เปิดหรือปิด', 'เปิดปิด', 'ปิดไหม', 'closed', 'open or closed', 'opening status'],
+ 'reason': ['เพราะอะไร', 'เหตุผล', 'why', 'reason'],
+ 'rulebook_release': ['กติกาฉบับ', 'กฎเวอร์ชัน', 'rulebook release', 'version of the rules'],
+ 'competition_dates': ['แข่งวัน', 'competition dates', 'tournament dates'],
+ 'text': ['เนื้อหา',
+          'ข้อความกติกา',
+          'กำหนดอะไร',
+          'rule say',
+          'rule require',
+          'text of this rule',
+          'rule text'],
+ 'completeness': ['ข้อมูลครบ', 'สมบูรณ์', 'content complete', 'completeness'],
+ 'body': ['ประกาศว่า',
+          'ประกาศอะไร',
+          'ข่าวนี้แจ้ง',
+          'announcement say',
+          'announced',
+          'information is in',
+          'body'],
+ 'event_start': ['เริ่ม', 'เริ่มจบ', 'start', 'begin'],
+ 'event_end': ['จบ', 'สิ้นสุด', 'end', 'finish'],
+ 'role': ['รับผิดชอบ',
+          'ช่วยเรื่องไหน',
+          'role',
+          'handle',
+          'responsibilities',
+          'ตำแหน่ง',
+          'หน้าที่',
+          'job title',
+          'position'],
+ 'public_contact_id': ['ติดต่อ', 'public contact', 'contact'],
+ 'answer': ['คำตอบ', 'ตอบคำถาม', 'answer', 'respond'],
+ 'scope_note': ['กรณีไหน', 'ขอบเขต', 'scope', 'limitations'],
+ 'status_mapping': ['จับคู่สถานะ',
+                    'แปลงเป็นสถานะ',
+                    'status mapping',
+                    'statuses mapped',
+                    'statuses translated'],
+ 'freshness_policy': ['เก็บข้อมูลนาน', 'อายุข้อมูล', 'freshness', 'cache', 'ttl'],
+ 'building': ['ตึก', 'อาคาร', 'building', 'tower'],
+ 'floor': ['ชั้น', 'floor'],
+ 'map_url': ['แผนที่', 'map'],
+ 'age_rating': ['เรตเกม', 'อายุเกม', 'age rating', 'age restriction'],
+ 'edition': ['ภาค', 'edition'],
+ 'usage': ['ใช้ทำอะไร', 'ใช้สำหรับ', 'ทำอะไรได้', 'used for', 'purpose', 'use this for']}
 
 LOCATION={'center':'address','zone':'location','facility':'location','contact':'value'}
 CAPACITY={'zone':'room_seats','resource':'capacity_persons','service':'capacity_max','game_mode':'players_max','game':'players_max','rate':'persons_max','rental_package':'room_seats'}
 MINIMUM={'service':'capacity_min','game_mode':'players_min','game':'players_min','rate':'persons_min'}
 
+def button_action_question(question):
+    # A bounded grammatical frame: a bare article or game title is not a key.
+    return bool(re.search(r'\bwhat\s+does\s+(?:the\s+)?(?:[abxy]|[lr][123]|esc|enter|space|triangle|circle|cross|square)(?:\s+(?:button|key))?\s+do\b',normalize(question)))
+
+
 def resolve_fields(question,kinds=None):
     q=normalize(question);primary=set(kinds or CATALOG);scoped=scope_kinds(primary)
     keys={f['key'] for k in scoped for f in CATALOG[k]['fields']}
-    pricing=bool(re.search(r'ราคา|ค่าบริการ|กี่บาท|\b(?:price|cost|fee|billing|tax)\b|amount_minor',q))
+    pricing=bool(re.search(r'ราคา|ค่าบริการ|ค่าเล่น|กี่บาท|\b(?:price|cost|fee|billing|tax)\b|amount_minor',q))
     price_scope=bool(primary&{'resource','service','game','audience','zone'})
     if price_scope:keys.add('amount_minor')
     if price_scope and pricing:
@@ -132,6 +251,7 @@ def resolve_fields(question,kinds=None):
     found=[];evidence=[]
     def add(key,reason):
         if key in keys and key not in found:found.append(key);evidence.append({'field':key,'cue':reason,'method':'schema_attribute'})
+    if 'bindings' in cue_keys and button_action_question(q):add('bindings','button action question')
     # Canonical names and full description labels always stay dynamic/casefolded.
     for kind in sorted(scoped):
         for f in CATALOG[kind]['fields']:
@@ -140,6 +260,7 @@ def resolve_fields(question,kinds=None):
     for key,cues in CUES.items():
         if key not in cue_keys:continue
         for cue in cues:
+            if key=='summary' and cue=='what is' and not re.fullmatch(r'what is(?:\s+(?:this|that|the))?(?:\s+game)?\s*[?!.]*',q):continue
             if key=='open_periods' and cue=='opening' and re.search(r'\bopening\s+status\b',q) and not re.search(r'\bopening\s+(?:hours|periods|times)\b',q):continue
             if matches(q,cue):add(key,cue);break
     for key in sorted(cue_keys):
@@ -228,5 +349,5 @@ def strong_needs(q,kinds):
 def semantic_clauses(q):
     # Preserve 'and' inside simple noun groups by including the whole query in
     # the planner prompt too; only explicit coordination is split here.
-    parts=[p.strip(' ?!.,') for p in re.split(r'และ|แล้ว(?:ก็)?|รวมถึง|พร้อมทั้ง|\band\b|\balso\b|[;\n]',normalize(q))]
+    parts=[p.strip(' ?!.,') for p in re.split(r'และ|แล้ว(?:ก็)?|รวมถึง|พร้อมทั้ง|กับ|\band\b|\balso\b|[;\n]',normalize(q))]
     return [p for p in parts if p] or [normalize(q)]

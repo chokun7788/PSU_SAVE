@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "content_id": "rule_schedule_monday_morning_specific",
+  "category": "booking",
+  "kind": "policy_rule",
+  "lifecycle": {
+    "status": "published",
+    "version": 1
+  },
+  "aliases": {
+    "th": [
+      "จันทร์.*9\\s*โมง",
+      "วันจันทร์.*9\\s*โมง",
+      "วันจันทร์.*09:00",
+      "วันจันทร์.*09.*12",
+      "จันทร์.*09.*12",
+      "เช้าวันจันทร์.*maintenance"
+    ],
+    "en": []
+  },
+  "facts": {
+    "route_category": "reservation",
+    "intent": "schedule_monday_morning_specific",
+    "patterns": [
+      "จันทร์.*9\\s*โมง",
+      "วันจันทร์.*9\\s*โมง",
+      "วันจันทร์.*09:00",
+      "วันจันทร์.*09.*12",
+      "จันทร์.*09.*12",
+      "เช้าวันจันทร์.*maintenance"
+    ],
+    "priority": 128
+  },
+  "locales": {
+    "th": {
+      "status": "source",
+      "fields": {
+        "answer": "วันจันทร์ช่วง Morning 09:00–12:00 เป็น Maintenance* ไม่ใช่ช่วง Open for Service ดังนั้นช่วง 9 โมงเช้าวันจันทร์ยังเล่นไม่ได้"
+      }
+    },
+    "en": {
+      "status": "legacy_unreviewed",
+      "fields": {
+        "answer": "On Monday, Morning 09:00-12:00 is Maintenance*, not Open for Service, so 09:00 Monday is not available for play/service."
+      },
+      "source_sha256": "9b2dc24c4ed7937b2c82dd45ac12afe6774aa551c917cab87a59ea5e3ac8768a",
+      "approved_by": "",
+      "approved_at": ""
+    }
+  },
+  "source": {
+    "path": "data/rules/reservation_rules.jsonl",
+    "url": "https://esports.computing.psu.ac.th/",
+    "source_ids": [
+      "Reservation",
+      "curated_reservation_schedule_monday_morning",
+      "reservation-intro-schedule"
+    ],
+    "last_verified_at": ""
+  }
+}

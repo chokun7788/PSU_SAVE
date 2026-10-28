@@ -5,6 +5,21 @@ from app.knowledge.local_models import MODEL_WORK,_local_url
 from app.pipeline.request_deadline import timeout_for_call
 def protected(s):
  return sorted(x.rstrip('.,!?)]') if x.startswith('http') else x for x in re.findall(r'https?://\S+|(?<![0-9])\d+(?:[.,:/-]\d+)*(?![0-9])|\[[Ss]\d+\]',s))
+def validate_translation(source,target):
+ """Structural/literal safety checks, not proof of translation semantics."""
+ if not isinstance(target,str) or not target.strip() or len(target)>4000 or protected(source)!=protected(target):raise ValueError('Translation changed protected literals or omitted text')
+ try:wrapped=json.loads(target)
+ except ValueError:wrapped=None
+ if isinstance(wrapped,(dict,list)):raise ValueError('Translation contains a structured prompt envelope instead of prose')
+ if re.search(r'ห้าม|ไม่อนุญาต|ไม่ได้รับอนุญาต',source) and not re.search(r'\b(?:not|no|never|cannot|can\x27t|prohibit\w*|forbid\w*|disallow\w*|restrict\w*|avoid|without|disabled|off)\b',target,re.I):raise ValueError('A source prohibition may have been lost')
+ if re.search(r'เว้นแต่|ยกเว้น',source) and not re.search(r'\b(?:except\w*|unless|exempt\w*)\b',target,re.I):raise ValueError('A source exception may have been lost')
+ if 'ทำลายไม่ได้' in source and 'ทำลายได้' not in source:
+  checked=re.sub(r'\b(?:not|non)[-\s]+destructible\b','indestructible',target,flags=re.I)
+  if re.search(r'\bdestructible\b',checked,re.I):raise ValueError('Indestructible was translated as destructible')
+ for thai,english in [('เหรัญญิก',r'\btreasurer\b'),('หมากฝรั่ง',r'\bchewing gum\b')]:
+  if thai in source and re.search('[a-z]',target,re.I) and not re.search(english,target,re.I):raise ValueError('A protected source concept may have been mistranslated')
+ if 'ผศ.' in source and re.search(r'\bprof(?:essor)?\.?\b',target,re.I) and not re.search(r'\bassist(?:ant)?\.?\b',target,re.I):raise ValueError('Assistant professor rank may have been changed')
+ return target
 def translate_draft(record,*,replace_existing=False):
  draft=copy.deepcopy(record)
  for field in draft.get('fields',{}).values():
@@ -27,7 +42,7 @@ def translate_draft(record,*,replace_existing=False):
  def visit(x,spec):
   if isinstance(x,dict):
    props=spec.get('properties',{})
-   if set(props)=={'th','en'} and set(x)=={'th','en'} and isinstance(x['th'],str) and isinstance(x['en'],str) and x['th'] and (replace_existing or not x['en']):
+   if set(props)=={'th','en'} and set(x)=={'th','en'} and isinstance(x['th'],str) and (x['en'] is None or isinstance(x['en'],str)) and x['th'] and (replace_existing or not x['en']):
     slots.append(x);contexts.append({'kind':draft['kind'],'field':field_spec['key'],'meaning':field_spec['meaning_th']})
    else:
     for k,v in x.items():
@@ -48,8 +63,7 @@ def translate_draft(record,*,replace_existing=False):
   data=json.loads(envelope['response'])
   if not isinstance(data,dict) or set(data)!={'translations'} or not isinstance(data['translations'],list) or len(data['translations'])!=len(slots):raise ValueError('Invalid translation structure')
   for source,target in zip(slots,data['translations']):
-   if not isinstance(target,str) or not target.strip() or len(target)>4000 or protected(source['th'])!=protected(target):raise ValueError('Translation changed numbers/URLs or omitted text; enter English manually or retry')
-   source['en']=target
+   source['en']=validate_translation(source['th'],target)
   draft['localization']['en_status']='agent_translated';draft['localization']['source_revision_hash']=None
   return {'record':draft,'translated_count':len(slots),'saved':False,'published':False,'human_semantics_reviewed':False}
  finally:MODEL_WORK.release()
